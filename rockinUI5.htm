@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+    <title>Create Artist Object 5</title>
+
+    <script src='https://www.roxorsoxor.com/js/jquery-214.js'></script>
+    <!--
+    <script src="file:///Macintosh HD/Users/jotasprout/Documents/JotaScript/js/jquery_play.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="file:///Macintosh HD/Users/jotasprout/Documents/JotaScript/js/bootstrap/css/bootstrap.min.css">
+    <script src="file:///Macintosh HD/Users/jotasprout/Documents/JotaScript/js/bootstrap/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="file:///Macintosh HD/Users/jotasprout/Documents/JotaScript/js/bootstrap/css/justified-nav.css">
+
+    <LINK href="file:///Macintosh HD/Users/jotasprout/Documents/JotaScript/prezplay/favicon.ico" rel="icon" type="image/x-icon">
+    <LINK href="file:///Macintosh HD/Users/jotasprout/Documents/JotaScript/prezplay/favicon.ico" rel="shortcut icon" type="image/x-icon">
+    <LINK href="file:///Macintosh HD/Users/jotasprout/Documents/JotaScript/prezplay/favicon.ico" rel="icon" type="image/ico">
+-->
+</head>
+<body>
+	<div class="container">
+<!--
+        <div class="masthead">
+            <a href="http://www.jotascript.com"><img src="file:///Macintosh HD/Users/jotasprout/Documents/JotaScript/croppedmore-js-headerUnicorn.png" width="680" height="198" alt="Curiosity created a unicorn"/></a>
+        </div> 
+-->
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="http://www.jotascript.com">Home</a>
+                </div>
+
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li><a href="http://www.jotascript.com/tutes/tutes.htm">Tutorials</a></li>
+                        <li><a href="http://www.jotascript.com/education.htm">Education<span class="sr-only"> (current)</span></a></li>
+                        <li><a href="http://www.jotascript.com/experience.htm">Experience</a></li>
+                    </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="https://jotascript.wordpress.com">Blog</a></li>
+                    </ul>
+                </div> <!-- /collapse -->
+            </div> <!-- /container-fluid -->
+        </nav> <!-- /navbar -->
+
+        <form class="form-horizontal" id="rockinForm">
+            <fieldset>
+                <legend>My Rockin JS App</legend>
+
+                <div class="form-group"> <!-- Row 1 -->
+                    <label class="col-lg-2 control-label" for="artist">Ye Olde Select An Artist Menu</label>
+                    <div class="col-lg-4">
+                        <select class="form-control" id="artist" name="artist">
+                            <option value="">- Choose -</option>
+                            <option value="0oSGxfWSnnOXhD2fKuz2Gy">David Bowie</option>
+                            <option value="74ASZWbe4lXaubB36ztrGX">Bob Dylan</option>
+                            <option value="7dnB1wSxbYa8CejeVg98hz">Meat Loaf</option>
+                            <option value="3EhbVgyfGd7HkpsagwL9GS">Alice Cooper</option>
+                            <option value="3lPQ2Fk5JOwGWAF3ORFCqH">John Mellencamp</option>
+                        </select>
+                    </div>
+                </div><!-- /Row 1 -->
+
+                <div class="form-group"> <!-- Row 2 -->
+                    <div class="col-lg-4 col-lg-offset-2">
+                        <button class="btn btn-primary" type="button" id="getArtistButt">Get Artist Object</button>
+                    </div>
+                </div><!-- /Row 2 -->
+            </fieldset>
+        </form>
+
+        <h2></h2>
+        <table id="albums" class="table table-striped table-hover ">
+            <tr>
+              <th>Album ID</th>
+              <th>Album Name</th>
+              <th>Album Released</th>
+              <th>Album Popularity</th>
+            </tr>
+        </table>
+
+	</div> <!-- /container -->
+
+    <footer class="footer"><p>&copy; Sprout Means Grow 2016</p></footer>
+
+<script src="createArtistObject5.js"></script>
+</body>
+
+<!--
+
+The Stooges
+4BFMTELQyWJU1SwqcXMBm3
+
+Iggy Pop
+33EUXrFKGjpUSGacqEHhU4
+
+Iggy Pop & James Williamson
+1l8grPt6eiOS4YlzjIs0LF
+
+Kiss
+07XSN3sPlIlB2L2XNcTwJw
+
+Bruce Springsteen
+3eqjTLE0HfPfh78zjh6TqT
+
+-->
+</html>
