@@ -38,7 +38,7 @@
                                 <option value="">- Choose -</option>
 
                                 <?php
-                                    echo = 
+                                    echo
                                         "<option value='" . $aliceCooper->get_artistID . "'>" . $aliceCooper->get_artistName . "</option>" .
                                         "<option value='" . $davidBowie->get_artistID . "'>" . $davidBowie->get_artistName . "</option>" .
                                         "<option value='" . $bobDylan->get_artistID . "'>" . $bobDylan->get_artistName . "</option>" .
