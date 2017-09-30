@@ -1,0 +1,10 @@
+/**
+ Export to JSON plugin for PHPMyAdmin
+ @version 0.1
+ */
+
+// Database 'jscript_popRock'
+
+// jscript_popRock.artists
+
+[{"artistID":"07XSN3sPlIlB2L2XNcTwJw","artistName":"Kiss"}, {"artistID":"0oSGxfWSnnOXhD2fKuz2Gy","artistName":"David Bowie"}, {"artistID":"1l8grPt6eiOS4YlzjIs0LF","artistName":"Iggy Pop & James Williamsson"}, {"artistID":"33EUXrFKGjpUSGacqEHhU4","artistName":"Iggy Pop"}, {"artistID":"3EhbVgyfGd7HkpsagwL9GS","artistName":"Alice Cooper"}, {"artistID":"3eqjTLE0HfPfh78zjh6TqT","artistName":"Bruce Springsteen"}, {"artistID":"4BFMTELQyWJU1SwqcXMBm3","artistName":"Stooges"}, {"artistID":"74ASZWbe4lXaubB36ztrGX","artistName":"Bob Dylan"}, {"artistID":"7dnB1wSxbYa8CejeVg98hz","artistName":"Meat Loaf"}]
