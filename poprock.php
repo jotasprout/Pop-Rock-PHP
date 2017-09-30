@@ -12,6 +12,8 @@
   $iggyPop = new artist("33EUXrFKGjpUSGacqEHhU4","Iggy Pop");
   $popWilliamson = new artist("1l8grPt6eiOS4YlzjIs0LF","Iggy Pop and James Williamson");
   $rollingStones = new artist("22bE4uQ6baNwSHPVcDxLCe","Rolling Stones");
+
+  echo "<script>console.log('artistID is " . $aliceCooper->get_artistID() . " and artistName is " . $aliceCooper->get_artistName() . "')</script>";
 ?>
 
 <!DOCTYPE html>
@@ -38,19 +40,17 @@
                                 <option value="">- Choose -</option>
 
                                 <?php
-                                    echo
-                                        "<option value='" . $aliceCooper->get_artistID . "'>" . $aliceCooper->get_artistName . "</option>" .
-                                        "<option value='" . $davidBowie->get_artistID . "'>" . $davidBowie->get_artistName . "</option>" .
-                                        "<option value='" . $bobDylan->get_artistID . "'>" . $bobDylan->get_artistName . "</option>" .
-                                        "<option value='" . $meatLoaf->get_artistID . "'>" . $meatLoaf->get_artistName . "</option>" .
-                                        "<option value='" . $johnMellencamp->get_artistID . "'>" . $johnMellencamp->get_artistName . "</option>" .
-                                        "<option value='" . $stooges->get_artistID . "'>" . $$stooges->get_artistName . "</option>" .
-                                        "<option value='" . $bruceSpringsteen->get_artistID . "'>" . $bruceSpringsteen->get_artistName . "</option>" .
-                                        "<option value='" . $kiss->get_artistID . "'>" . $kiss->get_artistName . "</option>" .
-                                        "<option value='" . $iggyPop->get_artistID . "'>" . $iggyPop->get_artistName . "</option>" .
-                                        "<option value='" . $popWilliamson->get_artistID . "'>" . $popWilliamson->get_artistName . "</option>" .
-                                        "<option value='" . $rollingStones->get_artistID . "'>" . $rollingStones->get_artistName . "</option>"
-                                    ;
+                                    echo "<option value='" . $aliceCooper->get_artistID() . "'>" . $aliceCooper->get_artistName() . "</option>";
+                                    echo "<option value='" . $davidBowie->get_artistID() . "'>" . $davidBowie->get_artistName() . "</option>" .
+                                        "<option value='" . $bobDylan->get_artistID() . "'>" . $bobDylan->get_artistName() . "</option>" .
+                                        "<option value='" . $meatLoaf->get_artistID() . "'>" . $meatLoaf->get_artistName() . "</option>" .
+                                        "<option value='" . $johnMellencamp->get_artistID() . "'>" . $johnMellencamp->get_artistName() . "</option>" .
+                                        "<option value='" . $stooges->get_artistID() . "'>" . $$stooges->get_artistName() . "</option>" .
+                                        "<option value='" . $bruceSpringsteen->get_artistID() . "'>" . $bruceSpringsteen->get_artistName() . "</option>" .
+                                        "<option value='" . $kiss->get_artistID() . "'>" . $kiss->get_artistName() . "</option>" .
+                                        "<option value='" . $iggyPop->get_artistID() . "'>" . $iggyPop->get_artistName() . "</option>" .
+                                        "<option value='" . $popWilliamson->get_artistID() . "'>" . $popWilliamson->get_artistName() . "</option>" .
+                                        "<option value='" . $rollingStones->get_artistID() . "'>" . $rollingStones->get_artistName() . "</option>";
                                 ?>
 
                             </select>
