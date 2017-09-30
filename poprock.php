@@ -11,6 +11,7 @@
   $kiss = new artist("07XSN3sPlIlB2L2XNcTwJw","Kiss");
   $iggyPop = new artist("33EUXrFKGjpUSGacqEHhU4","Iggy Pop");
   $popWilliamson = new artist("1l8grPt6eiOS4YlzjIs0LF","Iggy Pop and James Williamson");
+  $rollingStones = new artist("22bE4uQ6baNwSHPVcDxLCe","Rolling Stones");
 ?>
 
 <!DOCTYPE html>
@@ -48,7 +49,8 @@
                                         "<option value='" . $kiss->get_artistID . "'>" . $kiss->get_artistName . "</option>" .
                                         "<option value='" . $iggyPop->get_artistID . "'>" . $iggyPop->get_artistName . "</option>" .
                                         "<option value='" . $popWilliamson->get_artistID . "'>" . $popWilliamson->get_artistName . "</option>" .
-                                    "
+                                        "<option value='" . $rollingStones->get_artistID . "'>" . $rollingStones->get_artistName . "</option>"
+                                    ;
                                 ?>
 
                             </select>
