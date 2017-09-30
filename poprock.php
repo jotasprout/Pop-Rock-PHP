@@ -35,11 +35,22 @@
                         <div class="col-lg-4">
                             <select class="form-control" id="artist" name="artist">
                                 <option value="">- Choose -</option>
-                                <option value="0oSGxfWSnnOXhD2fKuz2Gy">David Bowie</option>
-                                <option value="74ASZWbe4lXaubB36ztrGX">Bob Dylan</option>
-                                <option value="7dnB1wSxbYa8CejeVg98hz">Meat Loaf</option>
-                                <option value="3EhbVgyfGd7HkpsagwL9GS">Alice Cooper</option>
-                                <option value="3lPQ2Fk5JOwGWAF3ORFCqH">John Mellencamp</option>
+
+                                <?php
+                                    echo = 
+                                        "<option value='" . $aliceCooper->get_artistID . "'>" . $aliceCooper->get_artistName . "</option>" .
+                                        "<option value='" . $davidBowie->get_artistID . "'>" . $davidBowie->get_artistName . "</option>" .
+                                        "<option value='" . $bobDylan->get_artistID . "'>" . $bobDylan->get_artistName . "</option>" .
+                                        "<option value='" . $meatLoaf->get_artistID . "'>" . $meatLoaf->get_artistName . "</option>" .
+                                        "<option value='" . $johnMellencamp->get_artistID . "'>" . $johnMellencamp->get_artistName . "</option>" .
+                                        "<option value='" . $stooges->get_artistID . "'>" . $$stooges->get_artistName . "</option>" .
+                                        "<option value='" . $bruceSpringsteen->get_artistID . "'>" . $bruceSpringsteen->get_artistName . "</option>" .
+                                        "<option value='" . $kiss->get_artistID . "'>" . $kiss->get_artistName . "</option>" .
+                                        "<option value='" . $iggyPop->get_artistID . "'>" . $iggyPop->get_artistName . "</option>" .
+                                        "<option value='" . $popWilliamson->get_artistID . "'>" . $popWilliamson->get_artistName . "</option>" .
+                                    "
+                                ?>
+
                             </select>
                         </div>
                     </div><!-- /Row 1 -->
