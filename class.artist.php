@@ -17,7 +17,7 @@
         }
 
         function get_artistID () {
-            $this -> artistID;
+            return $this -> artistID;
         }
 
         function set_artistName ($new_artistName) {
@@ -25,7 +25,7 @@
         }
 
         function get_artistName () {
-            $this -> artistName;
+            return $this -> artistName;
         }
 
 
