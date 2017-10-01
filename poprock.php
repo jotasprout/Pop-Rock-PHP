@@ -45,7 +45,7 @@
                                     echo "<option value='" . $bobDylan->get_artistID() . "'>" . $bobDylan->get_artistName() . "</option>";
                                     echo "<option value='" . $meatLoaf->get_artistID() . "'>" . $meatLoaf->get_artistName() . "</option>";
                                     echo "<option value='" . $johnMellencamp->get_artistID() . "'>" . $johnMellencamp->get_artistName() . "</option>";
-                                    echo "<option value='" . $stooges->get_artistID() . "'>" . $$stooges->get_artistName() . "</option>";
+                                    echo "<option value='" . $stooges->get_artistID() . "'>" . $stooges->get_artistName() . "</option>";
                                     echo "<option value='" . $bruceSpringsteen->get_artistID() . "'>" . $bruceSpringsteen->get_artistName() . "</option>";
                                     echo "<option value='" . $kiss->get_artistID() . "'>" . $kiss->get_artistName() . "</option>";
                                     echo "<option value='" . $iggyPop->get_artistID() . "'>" . $iggyPop->get_artistName() . "</option>";
