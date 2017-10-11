@@ -1,18 +1,17 @@
 <?php
 
-// this needs to access my creds somewhere
+require spotifySecrets.php;
+// also require database access file
 
 class entrance {
 
 	protected $accessToken = '';
-	protected $clientID = '';
-	protected $clientSecret = '';
-	protected $redirectURI = '';
 	protected $refreshToken = '';
 	protected $request = null;
+	// need a basic URL for this to add to
 
 	public function __construct ($clientID, $clientSecret, $redirectURI = '', $request = null) {
-		$this -> setClientID ($clientIDd);
+		$this -> setClientID ($clientID);
 		$this -> setClientSecret ($clientSecret);
 		$this -> setRedirectURI ($redirectURI);
 
