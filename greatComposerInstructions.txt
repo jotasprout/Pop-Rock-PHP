@@ -1,0 +1,10 @@
+EddyRespondek commented on Oct 11, 2014 
+
+Ok, so anyone coming to this tread with the same issue the steps to install php-pdftk are:
+
+	1.	install pdftk
+	2.	install composer
+	3.	download/clone php-pdftk to where ever you want to use it
+	4.	open php-pdftk in terminal and run command > composer install
+	5.	then in your php script add - require_once( '/path/to/php-pdftk-master/vendor/autoload.php' );
+	6.	and - use mikehaertl\pdftk\Pdf;

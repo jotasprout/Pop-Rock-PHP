@@ -18,10 +18,8 @@ $options = [
 header('Location: ' . $session->getAuthorizeUrl($options));
 die();
 
-
 // Step 2
 // When the user has approved your app, Spotify will redirect the user together with a `code` to the specifed redirect URI. You'll need to use this code to request a access token from Spotify and tell the API wrapper about the access token to use, like this:
-
 
 $session = new SpotifyWebAPI\Session('CLIENT_ID', 'CLIENT_SECRET', 'REDIRECT_URI');
 $api = new SpotifyWebAPI\SpotifyWebAPI();
@@ -49,6 +47,5 @@ $accessToken = $session->getAccessToken();
 
 // Set our new access token on the API wrapper
 $api->setAccessToken($accessToken);
-
 
 ?>
