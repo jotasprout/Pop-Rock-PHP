@@ -13,7 +13,7 @@ $accessToken = $session->getAccessToken();
 $_SESSION['accessToken'] = $accessToken;
 
 // Rock on!
-header('Location: app.php');
+header('Location: app2.php');
 die();
 
 ?>

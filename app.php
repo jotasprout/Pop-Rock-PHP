@@ -15,3 +15,19 @@ print_r(
 );
 
 ?>
+
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Pseudo 10d</title>
+</head>
+
+<body>
+
+    <script src='https://www.roxorsoxor.com/js/jquery-214.js'></script>
+    <script src="pseudo_10d.js"></script>
+
+</body>
+
+</html>
