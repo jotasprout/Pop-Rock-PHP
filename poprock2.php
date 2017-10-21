@@ -64,16 +64,6 @@
                 </fieldset>
             </form>
     
-            <h2></h2>
-            <table id="albums" class="table table-striped table-hover ">
-                <tr>
-                  <th>Album ID</th>
-                  <th>Album Name</th>
-                  <th>Album Released</th>
-                  <th>Album Popularity</th>
-                </tr>
-            </table>
-    
       </div> <!-- /container -->
     
         <footer class="footer"><p>&copy; Sprout Means Grow 2017</p></footer>

@@ -17,6 +17,30 @@ $artist = $api->getArtist($artistID);
 $artistName = $artist->name;
 $artistPop = $artist->popularity;
 
-echo "<script>console.log('artist Name is " . $artistName . " and artist popularity is " . $artistPop . "')</script>";
-
 ?>
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Ye Olde Artist Results</title>
+    <script src='https://www.roxorsoxor.com/js/jquery-214.js'></script>
+</head>
+
+<body>
+
+    <?php echo "<h2>" . $artistName . "</h2>"; ?>
+    <?php echo "<p>" . $artistName . "'s popularity is " . $artistPop . ".</p>"; ?>
+
+    <table id="albums" class="table table-striped table-hover ">
+        <tr>
+        <th>Album ID</th>
+        <th>Album Name</th>
+        <th>Album Released</th>
+        <th>Album Popularity</th>
+        </tr>
+    </table>
+
+</body>
+</html>
