@@ -13,7 +13,7 @@ $accessToken = $session->getAccessToken();
 $_SESSION['accessToken'] = $accessToken;
 
 // Rock on!
-header('Location: popRock2.php');
+header('Location: poprock2.php');
 die();
 
 ?>

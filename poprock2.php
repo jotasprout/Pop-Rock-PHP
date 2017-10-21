@@ -25,7 +25,7 @@
 	<p>Home page for myRockinApp: PHP version.</p>
 	<div class="container">
     
-            <form class="form-horizontal" id="rockinForm" action="handle_choice.php" method="post">
+            <form class="form-horizontal" id="rockinForm" action="handle_choice2.php" method="post">
                 <fieldset>
                     <legend>My Rockin PHP App</legend>
     
