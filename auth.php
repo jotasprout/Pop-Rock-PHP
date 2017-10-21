@@ -1,12 +1,12 @@
 <?php
 
 session_start();
-
+require 'spotifySecrets.php';
 require 'vendor/autoload.php';
 
 $session = new SpotifyWebAPI\Session(
-    'boogers',
-    'snot'
+    $myClientID,
+    $myClientSecret
 );
 
 $session->requestCredentialsToken();
@@ -16,7 +16,7 @@ $accessToken = $session->getAccessToken();
 $_SESSION['accessToken'] = $accessToken;
 
 // Send the user along and fetch some data!
-header('Location: app.php');
+header('Location: app2.php');
 die();
 
 ?>
