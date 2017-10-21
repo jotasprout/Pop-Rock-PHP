@@ -40,6 +40,7 @@ $albumTracksIDs = array ();
 
 ?>
 
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -92,4 +93,44 @@ $albumTracksIDs = array ();
     <footer class="footer"><p>&copy; Sprout Means Grow 2017</p></footer>
 
 <script src="createArtistObject5.js"></script>
+
+<div class="container">
+		
+		<div class="panel panel-primary">
+			<div class="panel-heading">
+				<h3 class="panel-title">Music Thing</h3>
+			</div>
+			<div class="panel-body">
+
+        <!-- nuthin -->
+        <form class="form-horizontal" action="handle_choice.php" method="post">
+            <fieldset>
+				<?php
+					// Create Investigator Menu
+					echo "<div class='form-group'>";
+						echo "<label class='col-lg-2 control-label' for='chosenArtist'>Artist</label>";
+						echo "<div class='col-lg-4'>";
+							echo "<select class='form-control' name='chosenArtist'>";
+								echo "<option value=''>- Choose -</option>";
+									echo "<option value='" . $someArtist . "'>ArtistName</option>";
+							echo "</select>";
+						echo "</div>";
+					echo "</div>";
+					// echo "<script>console.log('Case Number " . $assignedCase . " is assigned to " . $username . "')</script>";
+					// When attempt is complete, connection closes
+					mysqli_close($connekt);
+				?>
+                <div class="form-group"> <!-- Last Row -->
+                    <div class="col-lg-4 col-lg-offset-2">
+                        <button class="btn btn-primary" type="submit" name="submit">Assign</button>
+                    </div>
+                </div><!-- /Last Row -->
+            </fieldset>
+        </form>
+
+		</div> <!-- /panel-body -->
+	</div> <!-- /panel-primary -->
+
+	</div> <!-- /container -->
+	<?php echo $scriptsAndSuch; ?>
 </body>

@@ -16,6 +16,7 @@ print_r(
 
 ?>
 
+<!DOCTYPE html>
 <html>
 
 <head>
