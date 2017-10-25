@@ -2,9 +2,9 @@
 -- Create table for `artists`
 --
 
-CREATE TABLE IF NOT EXISTS `artists` (
-  `artistID` varchar(48) NOT NULL,
-  `artistName` varchar(72) NOT NULL,
+CREATE TABLE IF NOT EXISTS artists (
+  artistID varchar(48) NOT NULL,
+  artistName varchar(72) NOT NULL,
   PRIMARY KEY (artistID)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -12,17 +12,20 @@ CREATE TABLE IF NOT EXISTS `artists` (
 -- inserting Artists
 --
 
-INSERT INTO `artists` (`artistID`, `artistName`) VALUES
+INSERT INTO artists (artistID, artistName) VALUES
 ('07XSN3sPlIlB2L2XNcTwJw', 'Kiss'),
 ('0oSGxfWSnnOXhD2fKuz2Gy', 'David Bowie'),
-('1l8grPt6eiOS4YlzjIs0LF', 'Iggy Pop & James Williamsson'),
+('1l8grPt6eiOS4YlzjIs0LF', 'Iggy Pop and James Williamsson'),
 ('33EUXrFKGjpUSGacqEHhU4', 'Iggy Pop'),
 ('3EhbVgyfGd7HkpsagwL9GS', 'Alice Cooper'),
 ('3eqjTLE0HfPfh78zjh6TqT', 'Bruce Springsteen'),
 ('4BFMTELQyWJU1SwqcXMBm3', 'Stooges'),
 ('74ASZWbe4lXaubB36ztrGX', 'Bob Dylan'),
-('7dnB1wSxbYa8CejeVg98hz', 'Meat Loaf');
-
+('7dnB1wSxbYa8CejeVg98hz', 'Meat Loaf'),
+('3lPQ2Fk5JOwGWAF3ORFCqH', 'John Mellencamp'),
+('22bE4uQ6baNwSHPVcDxLCe', 'Rolling Stones'),
+('2UZMlIwnkgAEDBsw1Rejkn', 'Tom Petty'),
+('4tX2TplrkIP4v05BNC903e', 'Tom Petty and the Heartbreakers');
 -- --------------------------------------------------------
 --
 -- Create table `popArtists`
