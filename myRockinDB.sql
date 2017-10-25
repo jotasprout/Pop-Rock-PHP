@@ -42,15 +42,15 @@ CREATE TABLE IF NOT EXISTS `popArtists` (
 
 -- --------------------------------------------------------
 
-CREATE TABLE IF NOT EXISTS `albums` (
-  `albumID` varchar(48) NOT NULL,
-  `albumName` varchar(255) NOT NULL,
-  `artistID` varchar(48) NOT NULL,
-  `released` year(4) NOT NULL,
-  PRIMARY KEY (`albumID`),
-  FOREIGN KEY `artistID` REFERENCES artists (`artistID`),
-  INDEX (year),
-  INDEX (artistID)
+CREATE TABLE IF NOT EXISTS albums (
+	albumID varchar(48) NOT NULL UNIQUE,
+	albumName varchar(255) NOT NULL,
+	artistID varchar(48) NOT NULL,
+	year varchar(4) NOT NULL,
+	PRIMARY KEY (albumID),
+	FOREIGN KEY (artistID) REFERENCES artists (artistID),
+	INDEX (year),
+	INDEX (artistID)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -73,12 +73,12 @@ CREATE TABLE IF NOT EXISTS `popAlbums` (
 -- Create table `tracks`
 --
 
-CREATE TABLE IF NOT EXISTS `tracks` (
-  `trackID` varchar(30) NOT NULL,
-  `trackName` varchar(255) NOT NULL,
-  `albumID` varchar(30) NOT NULL,
+CREATE TABLE IF NOT EXISTS tracks (
+  trackID varchar(30) NOT NULL,
+  trackName varchar(255) NOT NULL,
+  albumID varchar(30) NOT NULL,
   PRIMARY KEY (trackID),
-  INDEX (albumID)
+  FOREIGN KEY (albumID) REFERENCES albums (albumID)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
