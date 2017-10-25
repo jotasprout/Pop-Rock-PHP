@@ -1,15 +1,15 @@
-
 --
--- Table structure for table `artists`
+-- Create table for `artists`
 --
 
 CREATE TABLE IF NOT EXISTS `artists` (
   `artistID` varchar(48) NOT NULL,
-  `artistName` varchar(72) NOT NULL
+  `artistName` varchar(72) NOT NULL,
+  PRIMARY KEY (artistID)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `artists`
+-- inserting Artists
 --
 
 INSERT INTO `artists` (`artistID`, `artistName`) VALUES
@@ -24,147 +24,81 @@ INSERT INTO `artists` (`artistID`, `artistName`) VALUES
 ('7dnB1wSxbYa8CejeVg98hz', 'Meat Loaf');
 
 -- --------------------------------------------------------
+--
+-- Create table `popArtists`
+--
+CREATE TABLE IF NOT EXISTS `popArtists` (
+  `id` int(12) NOT NULL AUTO_INCREMENT,
+  `artistID` varchar(48) NOT NULL,
+  `date` date NOT NULL,
+  `pop` int(2) NOT NULL,
+  PRIMARY KEY (id),
+  INDEX (artistID),
+  INDEX (date)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
 
 CREATE TABLE IF NOT EXISTS `albums` (
   `albumID` varchar(48) NOT NULL,
   `albumName` varchar(255) NOT NULL,
   `artistID` varchar(48) NOT NULL,
-  `released` year(4) NOT NULL
+  `released` year(4) NOT NULL,
+  PRIMARY KEY (`albumID`),
+  FOREIGN KEY `artistID` REFERENCES artists (`artistID`),
+  INDEX (year),
+  INDEX (artistID)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
-
-
 --
--- Table structure for table `myTypes`
---
-
-CREATE TABLE IF NOT EXISTS `myTypes` (
-  `id` int(12) NOT NULL,
-  `myType` varchar(6) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `popAlbums`
+-- Create table `popAlbums`
 --
 
 CREATE TABLE IF NOT EXISTS `popAlbums` (
-  `id` int(24) NOT NULL,
+  `id` int(24) NOT NULL AUTO_INCREMENT,
   `albumID` varchar(48) NOT NULL,
   `date` date NOT NULL,
-  `pop` int(2) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  `pop` int(2) NOT NULL,
+  PRIMARY KEY (id),
+  INDEX (albumID),
+  INDEX (date)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
-
 --
--- Table structure for table `popArtists`
---
-
-CREATE TABLE IF NOT EXISTS `popArtists` (
-  `id` int(12) NOT NULL,
-  `artistID` varchar(48) NOT NULL,
-  `date` date NOT NULL,
-  `pop` int(2) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `popTracks`
---
-
-CREATE TABLE IF NOT EXISTS `popTracks` (
-  `id` int(24) NOT NULL,
-  `trackID` varchar(48) NOT NULL,
-  `date` date NOT NULL,
-  `pop` int(2) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tracks`
+-- Create table `tracks`
 --
 
 CREATE TABLE IF NOT EXISTS `tracks` (
   `trackID` varchar(30) NOT NULL,
   `trackName` varchar(255) NOT NULL,
-  `albumID` varchar(30) NOT NULL
+  `albumID` varchar(30) NOT NULL,
+  PRIMARY KEY (trackID),
+  INDEX (albumID)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+-- --------------------------------------------------------
+-- 
+-- Create table `popTracks`
 --
--- Indexes for dumped tables
+CREATE TABLE IF NOT EXISTS `popTracks` (
+  `id` int(24) NOT NULL AUTO_INCREMENT,
+  `trackID` varchar(48) NOT NULL,
+  `date` date NOT NULL,
+  `pop` int(2) NOT NULL,
+  PRIMARY KEY (id),
+  INDEX (trackID),
+  INDEX (date)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+--
+-- Table structure for table `myTypes`
 --
 
---
--- Indexes for table `albums`
---
-ALTER TABLE `albums`
-  ADD PRIMARY KEY (`albumID`), ADD KEY `artistID` (`artistID`), ADD KEY `released` (`released`), ADD KEY `artistID_2` (`artistID`), ADD KEY `artistID_3` (`artistID`);
-
---
--- Indexes for table `artists`
---
-ALTER TABLE `artists`
-  ADD PRIMARY KEY (`artistID`);
-
---
--- Indexes for table `myTypes`
---
-ALTER TABLE `myTypes`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `popAlbums`
---
-ALTER TABLE `popAlbums`
-  ADD PRIMARY KEY (`id`), ADD KEY `albumID` (`albumID`,`date`);
-
---
--- Indexes for table `popArtists`
---
-ALTER TABLE `popArtists`
-  ADD PRIMARY KEY (`id`), ADD KEY `artistID` (`artistID`,`date`);
-
---
--- Indexes for table `popTracks`
---
-ALTER TABLE `popTracks`
-  ADD PRIMARY KEY (`id`), ADD KEY `trackID` (`trackID`,`date`);
-
---
--- Indexes for table `tracks`
---
-ALTER TABLE `tracks`
-  ADD PRIMARY KEY (`trackID`), ADD KEY `albumID` (`albumID`), ADD KEY `albumID_2` (`albumID`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `myTypes`
---
-ALTER TABLE `myTypes`
-  MODIFY `id` int(12) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `popAlbums`
---
-ALTER TABLE `popAlbums`
-  MODIFY `id` int(24) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `popArtists`
---
-ALTER TABLE `popArtists`
-  MODIFY `id` int(12) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `popTracks`
---
-ALTER TABLE `popTracks`
-  MODIFY `id` int(24) NOT NULL AUTO_INCREMENT;
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+CREATE TABLE IF NOT EXISTS `myTypes` (
+  `id` int(12) NOT NULL AUTO_INCREMENT,
+  `myType` varchar(6) NOT NULL,
+  PRIMARY KEY (id)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
