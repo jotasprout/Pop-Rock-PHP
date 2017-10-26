@@ -30,8 +30,11 @@ $artistPop = $artist->popularity;
 
 <body>
 
-    <?php echo "<h2>" . $artistName . "</h2>"; ?>
-    <?php echo "<p>" . $artistName . "'s popularity is " . $artistPop . ".</p>"; ?>
+    <?php 
+        // Get artist name and popularity for tracking pop over time and comparing to other artists
+        echo "<h2>" . $artistName . "</h2>"; 
+        echo "<p>" . $artistName . "'s popularity is " . $artistPop . ".</p>"; 
+    ?>
 
     <table id="albums" class="table table-striped table-hover ">
         <tr>
@@ -40,6 +43,24 @@ $artistPop = $artist->popularity;
         <th>Album Released</th>
         <th>Album Popularity</th>
         </tr>
+
+<!-- Need a loop here that gets artist's albums -->
+
+<!-- For each album, get name, popularity, and release date to compare popularity of albums in different stages of artist's career and compare popularity of albums in those stages to similar stages in careers of other artists. -->
+
+        <?php
+
+            // Get list of artist's albums. 50 is maximum allowed. For now, no compilations. Never want outside US.
+            // Get each albumID for requesting Full Album Object with popularity
+            // Put albumIDs in array for requesting several at a time (far fewer requests)
+            // Divide albumIDs array into smaller arrays. Limit is 20 for "get several albums" requests.
+            // For each array of albums (20 at a time), "get several albums"
+
+
+        ?>
+
+
+
     </table>
 
 </body>
