@@ -34,6 +34,9 @@ $artistPop = $artist->popularity;
         // Get artist name and popularity for tracking pop over time and comparing to other artists
         echo "<h2>" . $artistName . "</h2>"; 
         echo "<p>" . $artistName . "'s popularity is " . $artistPop . ".</p>"; 
+
+        $discography = $api->getArtistAlbums($artistID);
+        echo $discography;
     ?>
 
     <table id="albums" class="table table-striped table-hover ">
