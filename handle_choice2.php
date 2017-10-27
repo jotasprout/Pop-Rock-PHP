@@ -1,7 +1,10 @@
 <?php
+
 session_start();
 
 require 'vendor/autoload.php';
+require_once 'stylesThatRock.php';
+require_once 'albums.php';
 
 // Fetch saved access token
 $accessToken = $_SESSION['accessToken'];
@@ -17,6 +20,8 @@ $artist = $api->getArtist($artistID);
 $artistName = $artist->name;
 $artistPop = $artist->popularity;
 
+$artistAlbums = array ();
+
 ?>
 
 <!DOCTYPE html>
@@ -25,11 +30,12 @@ $artistPop = $artist->popularity;
 <head>
     <meta charset="UTF-8">
     <title>Ye Olde Artist Results</title>
-    <script src='https://www.roxorsoxor.com/js/jquery-214.js'></script>
+    <?php echo $stylesAndSuch; ?>
 </head>
 
 <body>
 
+<div class="container">
     <?php 
         // Get artist name and popularity for tracking pop over time and comparing to other artists
         echo "<h2>" . $artistName . "</h2>"; 
@@ -44,10 +50,10 @@ $artistPop = $artist->popularity;
 
     <table id="albums" class="table table-striped table-hover ">
         <tr>
-        <th>Album ID</th>
-        <th>Album Name</th>
-        <th>Album Released</th>
-        <th>Album Popularity</th>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Released</th>
+        <th>Popularity</th>
         </tr>
 
 <!-- Need a loop here that gets artist's albums -->
@@ -58,21 +64,39 @@ $artistPop = $artist->popularity;
 
             // Get list of artist's albums. 50 is maximum allowed. For now, no compilations. Never want outside US.
             foreach ($discography->items as $album) {
-                echo '<tr><td>id</td><td>' . $album->name . '</td><td>release date</td><td>popularity</td></tr>';
+
+                // Get each albumID for requesting Full Album Object with popularity
+                $albumID = $album->id;
+                $albumName = $album->name;
+                
+                // Put albumIDs in array for requesting several at a time (far fewer requests)
+                $artistAlbums [] = $albumID;
+
+                echo '<tr><td>' . $albumID . '</td><td>' . $albumName . '</td><td>release date</td><td>popularity</td></tr>';
+                
             }
 
             echo '</table>';
-            // Get each albumID for requesting Full Album Object with popularity
-            // Put albumIDs in array for requesting several at a time (far fewer requests)
-            // Divide albumIDs array into smaller arrays. Limit is 20 for "get several albums" requests.
-            // For each array of albums (20 at a time), "get several albums"
 
+            // Divide albumIDs array into smaller arrays. Limit is 20 for "get several albums" requests.
+            divideCombineAlbums ($artistAlbums);
+
+            echo '<p>Just IDs</p>';
+            echo '<ul>';
+
+            foreach($artistAlbums as $artistAlbum) {
+                echo '<li>' . $artistAlbum . '</li>';
+            }
+
+            echo '</ul>';
+            
+            // For each array of albums (20 at a time), "get several albums"
 
         ?>
 
-
-
     </table>
+        </div> <!-- closing container -->
+    <?php echo $scriptsAndSuch; ?>
 
 </body>
 </html>

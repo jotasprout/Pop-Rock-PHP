@@ -3,7 +3,8 @@
     
     require 'artists.php';
     require 'vendor/autoload.php';
-    
+    require_once 'stylesThatRock.php';
+
     // Fetch saved access token
     $accessToken = $_SESSION['accessToken'];
     
@@ -18,19 +19,20 @@
 <head>
     <meta charset="UTF-8">
     <title>My Rocking Software Application</title>
-    <script src='https://www.roxorsoxor.com/js/jquery-214.js'></script>
+    <?php echo $stylesAndSuch; ?>
 </head>
 
 <body>
-	<p>Home page for myRockinApp: PHP version.</p>
 	<div class="container">
     
             <form class="form-horizontal" id="rockinForm" action="handle_choice2.php" method="post">
                 <fieldset>
-                    <legend>My Rockin PHP App</legend>
+                    <legend>Ye Olde Select An Artist Menu</legend>
     
                     <div class="form-group"> <!-- Row 1 -->
-                        <label class="col-lg-2 control-label" for="artist">Ye Olde Select An Artist Menu</label>
+<!--                        
+                    <label class="col-lg-2 control-label" for="artist">Ye Olde Select An Artist Menu</label>
+-->
                         <div class="col-lg-4">
                             <select class="form-control" id="artist" name="artist">
                                 <option value="">- Choose -</option>
@@ -67,7 +69,7 @@
       </div> <!-- /container -->
     
         <footer class="footer"><p>&copy; Sprout Means Grow 2017</p></footer>
-
+        <?php echo $scriptsAndSuch; ?>
     </body>
     
     </html>
