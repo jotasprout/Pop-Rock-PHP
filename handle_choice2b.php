@@ -40,6 +40,7 @@ $artistPop = $artist->popularity;
             'album_type' => 'album',
             'int' => 'US'
         ]);
+        echo $discography;
     ?>
 
     <table id="albums" class="table table-striped table-hover ">
@@ -58,7 +59,7 @@ $artistPop = $artist->popularity;
 
             // Get list of artist's albums. 50 is maximum allowed. For now, no compilations. Never want outside US.
             foreach ($discography->items as $album) {
-                echo '<tr><td>id</td><td>' . $album->name . '</td><td>release date</td><td>popularity</td></tr>';
+                echo '<tr><td>' . $album->id . '</td><td>' . $album->name . '</td><td>' . $album->release_date . '</td><td>' . $album->popularity . '</td></tr>';
             }
 
             echo '</table>';
