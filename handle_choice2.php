@@ -35,7 +35,11 @@ $artistPop = $artist->popularity;
         echo "<h2>" . $artistName . "</h2>"; 
         echo "<p>" . $artistName . "'s popularity is " . $artistPop . ".</p>"; 
 
-        $discography = $api->getArtistAlbums($artistID);
+        $discography = $api->getArtistAlbums($artistID, [
+            'country' => 'us',
+            'album_type' => 'album',
+            'int' => 'US'
+        ]);
         echo $discography;
     ?>
 
@@ -54,6 +58,11 @@ $artistPop = $artist->popularity;
         <?php
 
             // Get list of artist's albums. 50 is maximum allowed. For now, no compilations. Never want outside US.
+            foreach ($discography->items as $album) {
+                echo '<tr><td>' . $album->id . '</td><td>' . $album->name . '</td><td>' . $album->release_date . '</td><td>' . $album->popularity . '</td></tr>';
+            }
+
+            echo '</table>';
             // Get each albumID for requesting Full Album Object with popularity
             // Put albumIDs in array for requesting several at a time (far fewer requests)
             // Divide albumIDs array into smaller arrays. Limit is 20 for "get several albums" requests.
