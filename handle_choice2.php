@@ -36,9 +36,9 @@ $artistPop = $artist->popularity;
         echo "<p>" . $artistName . "'s popularity is " . $artistPop . ".</p>"; 
 
         $discography = $api->getArtistAlbums($artistID, [
-            'country' => 'us',
+            'market' => 'us',
             'album_type' => 'album',
-            'int' => 'US'
+            'limit' => '50'
         ]);
     ?>
 
