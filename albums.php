@@ -28,6 +28,8 @@ function divideCombineAlbums ($artistAlbums) {
 	echo 'artistAlbumsChunk contains ' . implode(", ", $artistAlbumsChunk) . '<br>';
 	echo 'albumsArrays includes ' . implode(", ", $albumsArrays[0]) . '<br>';
 	echo 'albumsArrays includes ' . implode(", ", $albumsArrays[1]) . '<br>';
+
+	getAllAlbums ($albumsArrays);
     
 }
 
