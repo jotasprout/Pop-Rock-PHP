@@ -20,8 +20,6 @@ $artist = $api->getArtist($artistID);
 $artistName = $artist->name;
 $artistPop = $artist->popularity;
 
-$artistAlbums = array ();
-
 ?>
 
 <!DOCTYPE html>
@@ -72,25 +70,16 @@ $artistAlbums = array ();
                 // Put albumIDs in array for requesting several at a time (far fewer requests)
                 $artistAlbums [] = $albumID;
 
-                echo '<tr><td>' . $albumID . '</td><td>' . $albumName . '</td><td>release date</td><td>popularity</td></tr>';
+                // Divide albumIDs array into smaller arrays. Limit is 20 for "get several albums" requests.
+                divideCombineAlbums ($artistAlbums);
+                
+                getAllAlbums ($albumsArrays);
                 
             }
 
             echo '</table>';
-
-            // Divide albumIDs array into smaller arrays. Limit is 20 for "get several albums" requests.
-            divideCombineAlbums ($artistAlbums);
-
-            echo '<p>Just IDs</p>';
-            echo '<ul>';
-
-            foreach($artistAlbums as $artistAlbum) {
-                echo '<li>' . $artistAlbum . '</li>';
-            }
-
-            echo '</ul>';
             
-            // For each array of albums (20 at a time), "get several albums"
+            
 
         ?>
 
