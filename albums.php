@@ -39,10 +39,10 @@ function getAllAlbums ($albumsArrays) {
 	// for each albumsChunk in $albumsArrays
 	for ($i=0; $i<(count($albumsArrays)); ++$i) {
 
-		$albumIds = implode(",", $albumsArrays[$i]);
+		// $albumIds = implode(",", $albumsArrays[$i]);
 
 		// For each array of albums (20 at a time), "get several albums"
-		$albumsChunk = $api->getAlbums($albumIds);
+		$albumsChunk = $api->getAlbums($albumsArrays[$i]);
 
 		foreach($albumsChunk as $thisAlbum) {
 			$albumID = $album->id;
