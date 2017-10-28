@@ -69,13 +69,13 @@ $artistPop = $artist->popularity;
                 
                 // Put albumIDs in array for requesting several at a time (far fewer requests)
                 $artistAlbums [] = $albumID;
-
-                // Divide albumIDs array into smaller arrays. Limit is 20 for "get several albums" requests.
-                divideCombineAlbums ($artistAlbums);
-                
-                getAllAlbums ($albumsArrays);
                 
             }
+
+            // Divide albumIDs array into smaller arrays. Limit is 20 for "get several albums" requests.
+            divideCombineAlbums ($artistAlbums);
+            
+            getAllAlbums ($albumsArrays);
 
             echo '</table>';
             
