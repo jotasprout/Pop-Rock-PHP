@@ -25,9 +25,9 @@ function divideCombineAlbums ($artistAlbums) {
 	
 	// am I leaving any garbage behind? Check with the following
 	echo 'artistAlbums are ' . implode(", ", $artistAlbums) . '<br>';
-	echo 'artistAlbumsChunk contains ' . implode(", ", $artistAlbumsChunk) . '<br>';
-	echo 'albumsArrays includes ' . implode(", ", $albumsArrays[0]) . '<br>';
-	echo 'albumsArrays includes ' . implode(", ", $albumsArrays[1]) . '<br>';
+	echo 'artistAlbumsChunk contains <br>' . implode(", ", $artistAlbumsChunk) . '<br>';
+	echo 'albumsArrays [0] includes <br>' . implode(", ", $albumsArrays[0]) . '<br>';
+	echo 'albumsArrays [1] includes <br>' . implode(", ", $albumsArrays[1]) . '<br>';
 
 	getAllAlbums ($albumsArrays);
     
