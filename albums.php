@@ -24,10 +24,10 @@ function divideCombineAlbums ($artistAlbums) {
 	};
 	
 	// am I leaving any garbage behind? Check with the following
-	echo 'artistAlbums are ' . implode(", ", $artistAlbums) . '<br>';
-	echo 'artistAlbumsChunk contains <br>' . implode(", ", $artistAlbumsChunk) . '<br>';
-	echo 'albumsArrays [0] includes <br>' . implode(", ", $albumsArrays[0]) . '<br>';
-	echo 'albumsArrays [1] includes <br>' . implode(", ", $albumsArrays[1]) . '<br>';
+	echo '<b>artistAlbums are</b> ' . implode(", ", $artistAlbums) . '<br>';
+	echo '<b>artistAlbumsChunk contains</b> <br>' . implode(", ", $artistAlbumsChunk) . '<br>';
+	echo '<b>albumsArrays [0] includes</b> <br>' . implode(", ", $albumsArrays[0]) . '<br>';
+	echo '<b>albumsArrays [1] includes</b> <br>' . implode(", ", $albumsArrays[1]) . '<br>';
 
 	getAllAlbums ($albumsArrays);
     
@@ -39,12 +39,12 @@ function getAllAlbums ($albumsArrays) {
 	// for each albumsChunk in $albumsArrays
 	for ($i=0; $i<(count($albumsArrays)); ++$i) {
 
-		// $albumIds = implode(",", $albumsArrays[$i]);
+		$albumIds = implode(",", $albumsArrays[$i]);
 
 		// For each array of albums (20 at a time), "get several albums"
-		$albumsChunk = $api->getAlbums($albumsArrays[$i]);
+		$FirstAlbumsBatch = $api->getAlbums($albumIds);
 
-		foreach($albumsChunk as $thisAlbum) {
+		foreach($firstAlbumsBatch as $thisAlbum) {
 			$albumID = $album->id;
 			$albumName = $album->name;
 			$albumReleased = $thisAlbum->release_date;
