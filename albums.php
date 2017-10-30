@@ -1,5 +1,7 @@
 <?php
 
+require 'vendor/autoload.php';
+
 $artistAlbums = array ();
 $artistAlbumsChunk = array ();
 $albumsArrays = array ();
@@ -25,11 +27,11 @@ function divideCombineAlbums ($artistAlbums) {
 	
 	// am I leaving any garbage behind? Check with the following
 	echo '<b>artistAlbums are</b> ' . implode(", ", $artistAlbums) . '<br>';
-	echo '<b>artistAlbumsChunk contains</b> <br>' . implode(", ", $artistAlbumsChunk) . '<br>';
+	// echo '<b>artistAlbumsChunk contains</b> <br>' . implode(", ", $artistAlbumsChunk) . '<br>';
 	echo '<b>albumsArrays [0] includes</b> <br>' . implode(", ", $albumsArrays[0]) . '<br>';
 	echo '<b>albumsArrays [1] includes</b> <br>' . implode(", ", $albumsArrays[1]) . '<br>';
-
-	getAllAlbums ($albumsArrays);
+	// echo 'albumsArrays is = <br>' . $albumsArrays;
+	// getAllAlbums ($albumsArrays);
     
 }
 
@@ -39,19 +41,25 @@ function getAllAlbums ($albumsArrays) {
 	// for each albumsChunk in $albumsArrays
 	for ($i=0; $i<(count($albumsArrays)); ++$i) {
 
-		$albumIds = implode(",", $albumsArrays[$i]);
+		// echo '<b>albumsArrays [' . $i . '] includes</b> <br>' . implode(", ", $albumsArrays[$i]) . '<br>';
+
+		// $albumIds = implode(",", $albumsArrays[$i]);
+		echo '<b>this albumIds batch includes</b> <br>' . $albumIds . '<br>';
 
 		// For each array of albums (20 at a time), "get several albums"
-		$FirstAlbumsBatch = $api->getAlbums($albumIds);
+		$thisAlbumsBatch = $api->getAlbums($albumsArrays[$i]);
 
-		foreach($firstAlbumsBatch as $thisAlbum) {
+		echo 'thisalbumsBatch includes ' . $thisAlbumsBatch . '<br>';
+
+		foreach($thisAlbumsBatch as $thisAlbum) {
 			$albumID = $album->id;
 			$albumName = $album->name;
+			echo $albumName;
 			$albumReleased = $thisAlbum->release_date;
 			$albumPop = $thisAlbum->popularity;
 			$artistID = $thisAlbum->artists->id;
 
-			echo '<tr><td>' . $albumID . '</td><td>' . $albumName . '</td><td>' . $albumReleased . '</td><td>' . $albumPop . '</td></tr>';
+			// echo '<tr><td>' . $albumID . '</td><td>' . $albumName . '</td><td>' . $albumReleased . '</td><td>' . $albumPop . '</td></tr>';
 		}
 
 	};
