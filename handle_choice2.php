@@ -75,31 +75,6 @@ $artistPop = $artist->popularity;
             // Divide albumIDs array into smaller arrays. Limit is 20 for "get several albums" requests.
             divideCombineAlbums ($artistAlbums);
             
-            for ($i=0; $i<(count($albumsArrays)); ++$i) {
-                
-                // echo '<b>albumsArrays [' . $i . '] includes</b> <br>' . implode(", ", $albumsArrays[$i]) . '<br>';
-        
-                $albumIds = implode(",", $albumsArrays[$i]);
-                echo '<b>this albumIds batch includes</b> <br>' . $albumIds . '<br>';
-        
-                // For each array of albums (20 at a time), "get several albums"
-                $thisAlbumsBatch = $api->getAlbums($albumsArrays[$i]);
-        
-                echo 'thisalbumsBatch includes ' . $thisAlbumsBatch . '<br>';
-        
-                foreach($thisAlbumsBatch as $thisAlbum) {
-                    $albumID = $album->id;
-                    $albumName = $album->name;
-                    echo $albumName;
-                    $albumReleased = $thisAlbum->release_date;
-                    $albumPop = $thisAlbum->popularity;
-                    $artistID = $thisAlbum->artists->id;
-        
-                    // echo '<tr><td>' . $albumID . '</td><td>' . $albumName . '</td><td>' . $albumReleased . '</td><td>' . $albumPop . '</td></tr>';
-                }
-        
-            };
-            
             
 
         ?>

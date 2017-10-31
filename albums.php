@@ -31,7 +31,7 @@ function divideCombineAlbums ($artistAlbums) {
 	echo '<b>albumsArrays [0] includes</b> <br>' . implode(", ", $albumsArrays[0]) . '<br>';
 	echo '<b>albumsArrays [1] includes</b> <br>' . implode(", ", $albumsArrays[1]) . '<br>';
 	// echo 'albumsArrays is = <br>' . $albumsArrays;
-	// getAllAlbums ($albumsArrays);
+	getAllAlbums ($albumsArrays);
     
 }
 
@@ -43,11 +43,11 @@ function getAllAlbums ($albumsArrays) {
 
 		// echo '<b>albumsArrays [' . $i . '] includes</b> <br>' . implode(", ", $albumsArrays[$i]) . '<br>';
 
-		// $albumIds = implode(",", $albumsArrays[$i]);
-		// echo '<b>this albumIds batch includes</b> <br>' . $albumIds . '<br>';
+		$albumIds = $albumsArrays[$i];
+		echo '<b>this albumIds batch includes</b> <br>' . $albumIds[$i] . '<br>';
 
 		// For each array of albums (20 at a time), "get several albums"
-		$thisAlbumsBatch = $api->getAlbums($albumsArrays[$i]);
+		$thisAlbumsBatch = $api->getAlbums($albumIds);
 
 		echo 'thisalbumsBatch includes ' . $thisAlbumsBatch . '<br>';
 
@@ -59,7 +59,7 @@ function getAllAlbums ($albumsArrays) {
 			$albumPop = $thisAlbum->popularity;
 			$artistID = $thisAlbum->artists->id;
 
-			// echo '<tr><td>' . $albumID . '</td><td>' . $albumName . '</td><td>' . $albumReleased . '</td><td>' . $albumPop . '</td></tr>';
+			echo '<tr><td>' . $albumID . '</td><td>' . $albumName . '</td><td>' . $albumReleased . '</td><td>' . $albumPop . '</td></tr>';
 		}
 
 	};
