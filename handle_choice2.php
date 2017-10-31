@@ -79,7 +79,7 @@ $artistPop = $artist->popularity;
                 
                 // echo '<b>albumsArrays [' . $i . '] includes</b> <br>' . implode(", ", $albumsArrays[$i]) . '<br>';
         
-                // $albumIds = implode(",", $albumsArrays[$i]);
+                $albumIds = implode(",", $albumsArrays[$i]);
                 echo '<b>this albumIds batch includes</b> <br>' . $albumIds . '<br>';
         
                 // For each array of albums (20 at a time), "get several albums"
@@ -99,8 +99,6 @@ $artistPop = $artist->popularity;
                 }
         
             };
-
-            echo '</table>';
             
             
 

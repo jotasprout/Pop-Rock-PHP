@@ -44,7 +44,7 @@ function getAllAlbums ($albumsArrays) {
 		// echo '<b>albumsArrays [' . $i . '] includes</b> <br>' . implode(", ", $albumsArrays[$i]) . '<br>';
 
 		// $albumIds = implode(",", $albumsArrays[$i]);
-		echo '<b>this albumIds batch includes</b> <br>' . $albumIds . '<br>';
+		// echo '<b>this albumIds batch includes</b> <br>' . $albumIds . '<br>';
 
 		// For each array of albums (20 at a time), "get several albums"
 		$thisAlbumsBatch = $api->getAlbums($albumsArrays[$i]);
