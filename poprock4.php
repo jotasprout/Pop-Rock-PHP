@@ -25,7 +25,7 @@
 <body>
 	<div class="container">
     
-            <form class="form-horizontal" id="rockinForm" action="handle_choice4.php" method="post">
+            <form class="form-horizontal" id="rockinForm">
                 <fieldset>
                     <legend>Ye Olde Select An Artist Menu</legend>
     
@@ -60,7 +60,7 @@
     
                     <div class="form-group"> <!-- Row 2 -->
                         <div class="col-lg-4 col-lg-offset-2">
-                            <button class="btn btn-primary" type="submit" name="submit">Get Artist Shizzle</button>
+                            <button class="btn btn-primary" type="submit" name="submit" id="getArtistButt">Get Artist Shizzle</button>
                         </div>
                     </div><!-- /Row 2 -->
                 </fieldset>
@@ -70,6 +70,7 @@
     
         <footer class="footer"><p>&copy; Sprout Means Grow 2017</p></footer>
         <?php echo $scriptsAndSuch; ?>
+        <script src="createArtistObject5.js"></script>
     </body>
     
     </html>
