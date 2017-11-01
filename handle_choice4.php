@@ -46,13 +46,7 @@ $artistPop = $artist->popularity;
         ]);
     ?>
 
-    <table class="table">
-        <tr>
-        <th>ID</th>
-        <th>Name</th>
-        <th>Released</th>
-        <th>Popularity</th>
-        </tr>
+
 
 <!-- Need a loop here that gets artist's albums -->
 
@@ -74,8 +68,38 @@ $artistPop = $artist->popularity;
 
             // Divide albumIDs array into smaller arrays. Limit is 20 for "get several albums" requests.
             divideCombineAlbums ($artistAlbums);
-            
-            
+
+                        
+            echo '<table class="table">
+            <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Released</th>
+            <th>Popularity</th>
+            </tr>';
+
+            // for each albumsChunk in $albumsArrays
+	        for ($i=0; $i<(count($albumsArrays)); ++$i) {
+        
+                $albumIds = implode('", "', $albumsArrays[$i]);
+                // echo '<b>this albumIds batch includes</b> <br>' . $albumIds . '<br>';
+        
+                // For each array of albums (20 at a time), "get several albums"
+                $thisAlbumsBatch = $api->getAlbums([$albumIds]);
+
+                foreach($thisAlbumsBatch->albums as $album) {
+                    
+                    // Get each albumID for requesting Full Album Object with popularity
+                    $albumID = $album->id;
+                    $albumName = $album->name;
+                    $albumReleased = $album->release_date;
+                    $albumPop = $album->popularity;
+                    $artistID = $album->artists->id;
+                
+                    echo '<tr><td>' . $albumID . '</td><td>' . $albumName . '</td><td>' . $albumReleased . '</td><td>' . $albumPop . '</td></tr>';
+                }
+        
+            };
 
         ?>
 
