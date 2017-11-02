@@ -6,6 +6,7 @@
 
         var $artistID;
         var $artistName;
+		var $artistPop;
 
         function __construct ($artists_id, $artists_name) {
             $this -> artistID = $artists_id;
@@ -26,6 +27,14 @@
 
         function get_artistName () {
             return $this -> artistName;
+        }
+		
+		function set_artistPop ($new_artistPop) {
+            $this -> artistPop = $new_artistPop;
+        }
+
+        function get_artistPop () {
+            return $this -> artistPop;
         }
 
 

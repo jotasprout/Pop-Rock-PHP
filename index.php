@@ -1,15 +1,17 @@
 <?php
-    session_start();
+
+	session_start();
     
-    require 'artists.php';
     require 'vendor/autoload.php';
+	require_once 'auth.php';
     require_once 'stylesThatRock.php';
+	require 'artists.php';
 
     // Fetch saved access token
     $accessToken = $_SESSION['accessToken'];
     
-    $api = new SpotifyWebAPI\SpotifyWebAPI();
-    $api->setAccessToken($accessToken);
+    $GLOBALS['api'] = new SpotifyWebAPI\SpotifyWebAPI();
+    $GLOBALS['api']->setAccessToken($accessToken);
     
 ?>
 
@@ -18,14 +20,14 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>My Rocking Software Application</title>
+    <title>Pop Rox</title>
     <?php echo $stylesAndSuch; ?>
 </head>
 
 <body>
 	<div class="container">
     
-            <form class="form-horizontal" id="rockinForm">
+            <form class="form-horizontal" id="rockinForm" action="album_results.php" method="post">
                 <fieldset>
                     <legend>Ye Olde Select An Artist Menu</legend>
     
@@ -60,7 +62,7 @@
     
                     <div class="form-group"> <!-- Row 2 -->
                         <div class="col-lg-4 col-lg-offset-2">
-                            <button class="btn btn-primary" type="submit" name="submit" id="getArtistButt">Get Artist Shizzle</button>
+                            <button class="btn btn-primary" type="submit" name="submit">Get Artist Shizzle</button>
                         </div>
                     </div><!-- /Row 2 -->
                 </fieldset>
@@ -68,9 +70,8 @@
     
       </div> <!-- /container -->
     
-        <footer class="footer"><p>&copy; Sprout Means Grow 2017</p></footer>
+        <footer class="footer"><p>&copy; Sprout Means Grow and RoxorSoxor 2017</p></footer>
         <?php echo $scriptsAndSuch; ?>
-        <script src="createArtistObject5.js"></script>
     </body>
     
     </html>

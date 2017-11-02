@@ -1,6 +1,5 @@
 <?php
 
-session_start();
 require 'spotifySecrets.php';
 require 'vendor/autoload.php';
 
@@ -13,7 +12,6 @@ $accessToken = $session->getAccessToken();
 $_SESSION['accessToken'] = $accessToken;
 
 // Rock on!
-header('Location: app.php');
 die();
 
 ?>

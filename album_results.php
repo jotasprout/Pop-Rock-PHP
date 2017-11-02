@@ -4,24 +4,22 @@ session_start();
 
 require 'vendor/autoload.php';
 require_once 'stylesThatRock.php';
-
-// Fetch saved access token
-$accessToken = $_SESSION['accessToken'];
-
-// $api = new SpotifyWebAPI\SpotifyWebAPI();
-$GLOBALS['api'] = new SpotifyWebAPI\SpotifyWebAPI();
-$api->setAccessToken($accessToken);
+require_once 'api.php';
+require ("class.artist.php");
 
 // could next line go in artist class?
 $artistID = $_POST['artist'];
 
-// could these be methods in the artist class?    
-$artist = $api->getArtist($artistID);
-$artistName = $artist->name;
-$artistPop = $artist->popularity;
+// could these be methods in the artist class? 
+// Let me count the ways this could be more efficient and elegant
+$thisArtist = $api->getArtist($artistID);
+$artist = new artist($artistID);
+$artistName = $thisArtist->name;
+$artist->set_artistName($artistName);
+$artistPop = $thisArtist->popularity;
+$artist->set_artistPop($artistPop);
 
 $artistAlbums = array ();
-
 $albumsArrays = array ();
 
 // should this go in albums? albums should be a class.
@@ -55,7 +53,6 @@ function divideCombineAlbums ($artistAlbums) {
 				$albumName = $album->name;
 				$albumReleased = $album->release_date;
 				$albumPop = $album->popularity;
-				$thisArtistName = $album->artists[0]->name;
 			
 				echo '<tr><td>' . $albumName . '</td><td>' . $albumReleased . '</td><td>' . $albumPop . '</td></tr>';
 			}
