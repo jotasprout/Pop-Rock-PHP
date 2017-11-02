@@ -11,12 +11,15 @@ $accessToken = $_SESSION['accessToken'];
 $api = new SpotifyWebAPI\SpotifyWebAPI();
 $api->setAccessToken($accessToken);
 
+// could next line go in artist class?
 $artistID = $_POST['artist'];
-    
+
+// could these be methods in the artist class?    
 $artist = $api->getArtist($artistID);
 $artistName = $artist->name;
 $artistPop = $artist->popularity;
 
+// should this go in albums? albums should be a class.
 $discography = $api->getArtistAlbums($artistID, [
 	'market' => 'us',
 	'album_type' => 'album',
@@ -25,13 +28,8 @@ $discography = $api->getArtistAlbums($artistID, [
 
 ?>
 
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>Ye Olde Artist Results</title>
-    <?php echo $stylesAndSuch; ?>
-</head>
+<!DOCTYPE html><html>
+<head><meta charset="UTF-8"><title>Ye Olde Artist Results</title><?php echo $stylesAndSuch; ?></head>
 <body>
 
 <div class="container">
@@ -40,13 +38,13 @@ $discography = $api->getArtistAlbums($artistID, [
 echo "<h2>" . $artistName . "</h2>"; 
 echo "<p>" . $artistName . "'s popularity is " . $artistPop . ".</p>";
 echo '<table class="table">';
-echo '<tr><th>ID</th><th>Name</th><th>Released</th><th>Popularity</th></tr>';
+echo '<tr><th>Artist Name</th><th>Album ID</th><th>Album Name</th><th>Released</th><th>Popularity</th></tr>';
 
+// should be method in albums class
 foreach ($discography->items as $album) {
 	
 	// Get each albumID for requesting Full Album Object with popularity
 	$albumID = $album->id;
-	$albumName = $album->name;
 	
 	// Put albumIDs in array for requesting several at a time (far fewer requests)
 	$artistAlbums [] = $albumID;
@@ -55,36 +53,22 @@ foreach ($discography->items as $album) {
 
 divideCombineAlbums ($artistAlbums);
 
-foreach ($bunchofalbums->albums as $album) {
-    
-    // Get each albumID for requesting Full Album Object with popularity
-    $albumID = $album->id;
-    $albumName = $album->name;
-    $albumReleased = $album->release_date;
-    $albumPop = $album->popularity;
-    $artistID = $album->artists->id;
+for ($i=0; $i<(count($albumsArrays)); ++$i) {
 
-    echo '<tr><td>' . $albumID . '</td><td>' . $albumName . '</td><td>' . $albumReleased . '</td><td>' . $albumPop . '</td></tr>';
-}
+	$albumIds = '["' . implode('","', $albumsArrays[$i]) . '"]';
 
+	// For each array of albums (20 at a time), "get several albums"
+	$bunchofalbums = $api->getAlbums($albumIds);
 
+	foreach ($bunchofalbums->albums as $album) {
 
-$bunchofalbums = $api->getAlbums(['6p7jHbG5Bd6z2JgfKx0um7','4CR04QNS93ZYEt4mJNOSij']);
-
-// $bunchofalbums = $api->getAlbums(['3P2p1wEaLrAeuainTWeq7e','3tAWE5mBEFzkQVnB04ygqB','36n2UcQrpMJDXRTPNxTj4N','6a5LpJhC02l1PlRiXmxr4T','25Jo67rdeQQWaWF6x6jY2b','24kjyGW47XaNL3AqyaEL07','2d0borBFxjqcmjmMiqgV9E','7GwAz2iAtNu6f5mvMsPKj1','4CR04QNS93ZYEt4mJNOSij, 1OBOTv0qiBwO05w41mOCKB','2PlFEQG4JRHtW1yXO5MMYg','7atI6qWYXKVYjyiD0kFn0d','4BU7PgNyj5kvWFklAVziuB','1Bwa1kD95xPzyVQkZBFXEU','0lhICEAy0rRGbhvWzlP0Ke','033cvSPAuSU5ArRfIgQSDU','4nWnmRz6C8AZXE6MjJ1X74','5UUhQDSXBdRgIELKusNkmI','3F3JU1MJDN9PgHFwbCvFvV']);
-
-// echo '<b>bunchofalbums includes</b> <br>' . implode(", ", $bunchofalbums) . '<br>';
-
-foreach ($bunchofalbums->albums as $album) {
-    
-    // Get each albumID for requesting Full Album Object with popularity
-    $albumID = $album->id;
-    $albumName = $album->name;
-    $albumReleased = $album->release_date;
-    $albumPop = $album->popularity;
-    $artistID = $album->artists->id;
-
-    echo '<tr><td>' . $albumID . '</td><td>' . $albumName . '</td><td>' . $albumReleased . '</td><td>' . $albumPop . '</td></tr>';
+		$albumID = $album->id;
+		$albumName = $album->name;
+		$albumReleased = $album->release_date;
+		$albumPop = $album->popularity;
+		$thisArtistName = $album->artists[0]->name;
+	
+		echo '<tr><td>' . $thisArtistName . '</td><td>' . $albumID . '</td><td>' . $albumName . '</td><td>' . $albumReleased . '</td><td>' . $albumPop . '</td></tr>';
 }
 
 ?>
@@ -92,6 +76,6 @@ foreach ($bunchofalbums->albums as $album) {
 </table>
     </div> <!-- closing container -->
 <?php echo $scriptsAndSuch; ?>
-
+<footer class="footer"><p>&copy; Sprout Means Grow and RoxorSoxor 2017</p></footer>
 </body>
 </html>
