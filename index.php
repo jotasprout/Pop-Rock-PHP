@@ -4,7 +4,7 @@
     
     require 'vendor/autoload.php';
 	require_once 'auth.php';
-    require_once 'stylesThatRock.php';
+    require_once 'stylesAndScripts.php';
 	require 'artists.php';
 
     // Fetch saved access token

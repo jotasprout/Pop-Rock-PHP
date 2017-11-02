@@ -4,6 +4,7 @@ session_start();
 
 require 'vendor/autoload.php';
 require_once 'stylesAndScripts.php';
+require_once 'albums6.php';
 
 // Fetch saved access token
 $accessToken = $_SESSION['accessToken'];
@@ -19,48 +20,6 @@ $artistID = $_POST['artist'];
 $artist = $GLOBALS['api']->getArtist($artistID);
 $artistName = $artist->name;
 $artistPop = $artist->popularity;
-
-$artistAlbums = array ();
-$albumsArrays = array ();
-
-// should this go in albums? albums should be a class.
-
-function divideCombineAlbums ($artistAlbums) {
-	
-	// Divide all artist's albums into chunks of 20
-	$artistAlbumsChunk = array ();
-	$x = ceil((count($artistAlbums))/20);
-
-	$firstAlbum = 0;
-	
-    for ($i=0; $i<$x; ++$i) {
-	  $lastAlbum = $firstAlbum + 19;
-      $artistAlbumsChunk = array_slice($artistAlbums, $firstAlbum, $lastAlbum);
-	  // put chunks of 20 into an array
-      $albumsArrays [] = $artistAlbumsChunk;
-      $firstAlbum += 19;
-	};
-
-	for ($i=0; $i<(count($albumsArrays)); ++$i) {
-				
-			$albumIds = implode(',', $albumsArrays[$i]);
-		
-			// For each array of albums (20 at a time), "get several albums"
-			$bunchofalbums = $GLOBALS['api']->getAlbums($albumIds);
-				
-			foreach ($bunchofalbums->albums as $album) {
-		
-				$albumID = $album->id;
-				$albumName = $album->name;
-				$albumReleased = $album->release_date;
-				$albumPop = $album->popularity;
-				$thisArtistName = $album->artists[0]->name;
-			
-				echo '<tr><td>' . $albumName . '</td><td>' . $albumReleased . '</td><td>' . $albumPop . '</td></tr>';
-			}
-		};
-  
-}
 
 ?>
 

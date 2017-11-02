@@ -3,7 +3,7 @@
 session_start();
 
 require 'vendor/autoload.php';
-require_once 'stylesThatRock.php';
+require_once 'stylesAndScripts.php';
 require_once 'api.php';
 require ("class.artist.php");
 
