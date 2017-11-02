@@ -8,7 +8,8 @@ require_once 'stylesThatRock.php';
 // Fetch saved access token
 $accessToken = $_SESSION['accessToken'];
 
-$api = new SpotifyWebAPI\SpotifyWebAPI();
+// $api = new SpotifyWebAPI\SpotifyWebAPI();
+$GLOBALS['api'] = new SpotifyWebAPI\SpotifyWebAPI();
 $api->setAccessToken($accessToken);
 
 // could next line go in artist class?
@@ -23,9 +24,7 @@ $artistAlbums = array ();
 
 $albumsArrays = array ();
 
-
 // should this go in albums? albums should be a class.
-
 
 function divideCombineAlbums ($artistAlbums) {
 	
@@ -43,10 +42,24 @@ function divideCombineAlbums ($artistAlbums) {
       $firstAlbum += 19;
 	};
 
-	echo '<b>artistAlbums are</b> ' . implode(", ", $artistAlbums) . '<br>';
-	echo '<b>artistAlbumsChunk contains</b> <br>' . implode(", ", $artistAlbumsChunk) . '<br>';
-	echo '<b>albumsArrays [0] includes</b> <br>' . implode(", ", $albumsArrays[0]) . '<br>';
-	echo '<b>albumsArrays [1] includes</b> <br>' . implode(", ", $albumsArrays[1]) . '<br>';
+	for ($i=0; $i<(count($albumsArrays)); ++$i) {
+				
+			$albumIds = implode(',', $albumsArrays[$i]);
+		
+			// For each array of albums (20 at a time), "get several albums"
+			$bunchofalbums = $GLOBALS['api']->getAlbums($albumIds);
+				
+			foreach ($bunchofalbums->albums as $album) {
+		
+				$albumID = $album->id;
+				$albumName = $album->name;
+				$albumReleased = $album->release_date;
+				$albumPop = $album->popularity;
+				$thisArtistName = $album->artists[0]->name;
+			
+				echo '<tr><td>' . $albumName . '</td><td>' . $albumReleased . '</td><td>' . $albumPop . '</td></tr>';
+			}
+		};
   
 }
 
@@ -62,7 +75,7 @@ function divideCombineAlbums ($artistAlbums) {
 echo "<h2>" . $artistName . "</h2>"; 
 echo "<p>" . $artistName . "'s popularity is " . $artistPop . ".</p>";
 echo '<table class="table">';
-echo '<tr><th>Artist Name</th><th>Album ID</th><th>Album Name</th><th>Released</th><th>Popularity</th></tr>';
+echo '<tr><th>Album Name</th><th>Released</th><th>Popularity</th></tr>';
 
 $discography = $api->getArtistAlbums($artistID, [
 	'market' => 'us',
@@ -82,30 +95,6 @@ foreach ($discography->items as $album) {
 }
 
 divideCombineAlbums ($artistAlbums);
-
-for ($i=0; $i<(count($albumsArrays)); ++$i) {
-
-	echo 'yay';
-
-	$albumIds = '["' . implode('","', $albumsArrays[$i]) . '"]';
-	echo '<b>albumsIds [' . $i . '] includes</b> <br>' . implode(", ", $albumIds) . '<br>';
-
-	// For each array of albums (20 at a time), "get several albums"
-	$bunchofalbums = $api->getAlbums($albumIds);
-
-	echo '<b>bunchofalbums [' . $i . '] includes</b> <br>' . implode(", ", $bunchofalbums) . '<br>';
-
-	foreach ($bunchofalbums->albums as $album) {
-
-		$albumID = $album->id;
-		$albumName = $album->name;
-		$albumReleased = $album->release_date;
-		$albumPop = $album->popularity;
-		$thisArtistName = $album->artists[0]->name;
-	
-		echo '<tr><td>' . $thisArtistName . '</td><td>' . $albumID . '</td><td>' . $albumName . '</td><td>' . $albumReleased . '</td><td>' . $albumPop . '</td></tr>';
-	}
-};
 
 ?>
 
