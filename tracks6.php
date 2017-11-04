@@ -4,7 +4,7 @@ $albumsTracksArrays = array ();
 
 function divideCombineTracks ($AlbumsTracks) {
 
-	// Divide all artist's albums into chunks of 20
+	// Divide all artist's tracks into chunks of 50
 	$tracksChunk = array ();
 	$x = ceil((count($AlbumsTracks))/50);
 
@@ -13,7 +13,7 @@ function divideCombineTracks ($AlbumsTracks) {
 	for ($i=0; $i<$x; ++$i) {
 		$lastTrack = $firstTrack + 49;
 		$tracksChunk = array_slice($AlbumsTracks, $firstTrack, $lastTrack);
-		// put chunks of 20 into an array
+		// put chunks of 50 into an array
 		$albumsTracksArrays [] = $tracksChunk;
 		$firstTrack += 49;
 	};
@@ -22,7 +22,7 @@ function divideCombineTracks ($AlbumsTracks) {
 				
 		$trackIds = implode(',', $albumsTracksArrays[$i]);
 
-		// For each array of albums (20 at a time), "get several albums"
+		// For each array of tracks (50 at a time), "get several tracks"
 		$bunchoftracks = $GLOBALS['api']->getTracks($trackIds);
 			
 		foreach ($bunchoftracks->tracks as $track) {

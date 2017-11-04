@@ -2,6 +2,7 @@
 fromRockinJS
 misc
 spotifySecrets.php
+rockdb.php
 old
 vendor
 spotifyAuthorization.txt
