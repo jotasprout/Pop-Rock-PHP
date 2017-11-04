@@ -24,7 +24,7 @@ $artistPop = $artist->popularity;
 ?>
 
 <!DOCTYPE html><html>
-<head><meta charset="UTF-8"><title>Ye Olde Artist Results</title><?php echo $stylesAndSuch; ?></head>
+<head><meta charset="UTF-8"><title>Ye Olde Album Results</title><?php echo $stylesAndSuch; ?></head>
 <body>
 
 <div class="container">
