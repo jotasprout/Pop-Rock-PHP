@@ -54,8 +54,6 @@ foreach ($discography->items as $album) {
 
 divideCombineAlbumsForTracks ($artistAlbums);
 
-
-
 ?>
 
 </table>
