@@ -1,5 +1,5 @@
 <?php
-require_once 'tracks6.php';
+// require_once 'tracks6.php';
 
 $artistAlbums = array ();
 
@@ -84,7 +84,8 @@ function divideCombineAlbums ($artistAlbums) {
 	
 			$albumID = $album->id;
 			$albumName = $album->name;
-			$albumReleased = $album->release_date;
+			$albumReleasedWhole = $album->release_date;
+			$albumReleased = substr($albumReleasedWhole, 0, 4);
 			$albumPop = $album->popularity;
 			$thisArtistName = $album->artists[0]->name;
 		
