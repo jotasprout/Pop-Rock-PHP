@@ -1,6 +1,6 @@
 <?php
 // require_once 'tracks6.php';
-require_once 'rockdb.php';
+// require_once 'rockdb.php';
 
 $artistAlbums = array ();
 
@@ -95,6 +95,10 @@ function divideCombineAlbums ($artistAlbums) {
             // echo '<tr><td>' . $albumName . '</td><td>' . $albumReleased . '</td><td>' . $albumPop . '</td></tr>';
             
 			// insert into tables 
+			$host = 'localhost';
+			$db = 'poprock';
+			$un = 'jay';
+			$magicword = 'M3b4uN0tMew/oU';
 
 			$connekt = new mysqli($host, $un, $magicword, $db);
 			if ($connekt->connect_error) die($connekt->connect_error);
@@ -117,10 +121,8 @@ function divideCombineAlbums ($artistAlbums) {
 			
 			// Feedback of whether INSERT worked or not
 			if(!$rockon){
-				  die('Crap. Could not insert your albums: ' . mysql_error());
+				  die('Double-Crap. Could not insert your albums.');
 			  }
-			
-			echo "<script>console.log('Looks like it worked.')</script>";
 			
 			// When attempt is complete, connection closes
 			mysqli_close($connekt);

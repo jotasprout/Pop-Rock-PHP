@@ -3,11 +3,9 @@
 session_start();
 
 require 'vendor/autoload.php';
-
+// require_once 'rockdb.php';
 require_once 'stylesAndScripts.php';
 require_once 'albums7.php';
-
-$slider = new Slideitin ();
 
 // Fetch saved access token
 $accessToken = $_SESSION['accessToken'];
