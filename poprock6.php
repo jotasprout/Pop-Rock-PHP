@@ -8,8 +8,8 @@
     // Fetch saved access token
     $accessToken = $_SESSION['accessToken'];
     
-    $api = new SpotifyWebAPI\SpotifyWebAPI();
-    $api->setAccessToken($accessToken);
+    $GLOBALS['api'] = new SpotifyWebAPI\SpotifyWebAPI();
+    $GLOBALS['api']->setAccessToken($accessToken);
     
 ?>
 
@@ -73,4 +73,3 @@
     </body>
     
     </html>
-    
