@@ -93,39 +93,6 @@ function divideCombineAlbums ($artistAlbums) {
 			$thisArtistID = $album->artists[0]->id;
 		
             // echo '<tr><td>' . $albumName . '</td><td>' . $albumReleased . '</td><td>' . $albumPop . '</td></tr>';
-            
-			// insert into tables 
-			$host = 'localhost';
-			$db = 'poprock';
-			$un = 'jay';
-			$magicword = 'M3b4uN0tMew/oU';
-
-			$connekt = new mysqli($host, $un, $magicword, $db);
-			if ($connekt->connect_error) die($connekt->connect_error);
-				
-			$insertAlbum = "
-			INSERT INTO albums (
-				albumID,
-				albumName,
-				albumReleased,
-				thisArtistID
-				) 
-			VALUES(
-				'$albumID',
-				'$albumName',
-				'$albumReleased',
-				'$thisArtistID'
-			)";
-			
-			$rockon = $connekt->query($insertAlbum);
-			
-			// Feedback of whether INSERT worked or not
-			if(!$rockon){
-				  die('Double-Crap. Could not insert your albums.');
-			  }
-			
-			// When attempt is complete, connection closes
-			mysqli_close($connekt);
 
 			// these didn't work
 			// $rocker = new rockstar();
