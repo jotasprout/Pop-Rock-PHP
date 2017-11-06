@@ -29,12 +29,6 @@
     
     // $rockon = $connekt->query($insertArtist);
     $rockout = $connekt->query($insertAlice);
-    // $rockaway = $connekt->query($showArtist);
-
-    // Feedback of whether SELECT worked or not
-    if(!$rockaway){
-        echo 'Nope. Can not show your Artists.';
-    }
     
     // Feedback of whether INSERT worked or not
     if(!$rockon){
