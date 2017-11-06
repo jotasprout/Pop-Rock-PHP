@@ -92,7 +92,7 @@ function divideCombineAlbums ($artistAlbums) {
 			$thisArtistName = $album->artists[0]->name;
 			$thisArtistID = $album->artists[0]->id;
 		
-            // echo '<tr><td>' . $albumName . '</td><td>' . $albumReleased . '</td><td>' . $albumPop . '</td></tr>';
+            echo '<tr><td>' . $albumName . '</td><td>' . $albumReleased . '</td><td>' . $albumPop . '</td></tr>';
 
 			// these didn't work
 			// $rocker = new rockstar();
