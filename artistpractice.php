@@ -13,32 +13,23 @@
         echo 'Darn. Did not connect.';
     };
         
-    $insertArtist = "
-    INSERT INTO artists (
+    $insertArtistsPopQuery = "
+    INSERT INTO popArtists (
         artistID,
-        artistName
+        artistPop
         ) 
     VALUES(
         '$artistID',
-        '$artistName',
+        '$artistPop',
     )"; 
-
-    // $query = "SELECT * FROM cases ORDER BY cases.caseName ASC";
-
-    // $showArtist = "SELECT * FROM artists ORDER BY artists.artistName ASC";
     
     // $rockon = $connekt->query($insertArtist);
-    $rockout = $connekt->query($insertAlice);
+    $insertArtistsPopResult = $connekt->query($insertArtistsPopQuery);
     
     // Feedback of whether INSERT worked or not
-    if(!$rockon){
-       echo 'Double-Crap. Could not insert your Artist.';
+    if(!$insertArtistsPopResult){
+       echo "Quintuple-Crap. Could not insert your Artists' popularity.";
     }
-    
-    // Feedback of whether INSERT worked or not
-    if(!$rockout){
-        echo 'Triple-Crap. Could not insert Alice.';
-        }
 
     // When attempt is complete, connection closes
     mysqli_close($connekt);
