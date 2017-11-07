@@ -33,7 +33,7 @@ function getArtistsPop ($artists) {
 		$artistName = $artist->name;
 		$artistPop = $artist->popularity;
 		
-		$insertArtistsPop = "INSERT INTO popArtists (artistID,artistPop) VALUES('$artistID','$artistPop')";
+		$insertArtistsPop = "INSERT INTO popArtists (artistID,pop) VALUES('$artistID','$artistPop')";
 		
 		$connekt = new mysqli($GLOBALS['host'], $GLOBALS['un'], $GLOBALS['magicword'], $GLOBALS['db']);
 		
