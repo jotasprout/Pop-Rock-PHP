@@ -15,7 +15,7 @@ $GLOBALS['api'] = new SpotifyWebAPI\SpotifyWebAPI();
 $GLOBALS['api']->setAccessToken($accessToken);
 
 // could these be methods in the artist class?    
-$artist = $GLOBALS['api']->getArtists($artists);
+// $artist = $GLOBALS['api']->getArtists($artists);
 
 ?>
 
@@ -27,21 +27,9 @@ $artist = $GLOBALS['api']->getArtists($artists);
 
 <?php
 echo '<table class="table">';
-echo '<tr><th>Artist Name</th><th>Popularity</th><th>Artist ID</th></tr>';
+echo '<tr><th>Artist Name</th><th>Popularity</th></tr>';
 
-$supergroup = $GLOBALS['api']->getArtists($artists);
-
-// should be method in albums class
-foreach ($supergroup->artists as $artist) {
-	
-	// Get each albumID for requesting Full Album Object with popularity
-	$artistName = $artist->name;
-	$artistPop = $artist->popularity;
-	$artistID = $artist->id;
-
-	echo '<tr><td>' . $artistName . '</td><td>' . $artistPop . '</td><td>' . $artistID . '</td></tr>';
-	
-}
+getArtistsPop ($artists);
 
 echo '</table>';
 

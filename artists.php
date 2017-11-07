@@ -33,7 +33,7 @@ function getArtistsPop ($artists) {
 		$artistName = $artist->name;
 		$artistPop = $artist->popularity;
 		
-		$insertVampires = "INSERT INTO artists (artistID,artistName) VALUES('3k4YA0uPsWc2PuOQlJNpdH','Hollywood Vampires')";
+		$insertArtistsPop = "INSERT INTO popArtists (artistID,artistPop) VALUES('$artistID','$artistPop')";
 		
 		$connekt = new mysqli($host, $un, $magicword, $db);
 		
@@ -41,19 +41,19 @@ function getArtistsPop ($artists) {
 			echo 'Darn. Did not connect.';
 		};
 		
-		// $rockon = $connekt->query($insertArtist);
-		$rockout = $connekt->query($insertVampires);
+		$rockout = $connekt->query($insertArtistsPop);
 		
-		// Feedback of whether INSERT worked or not
 		if(!$rockout){
-			echo 'Triple-Crap. Could not insert Hollywood Vampires.';
-			}
+			echo 'Cursed-Crap. Could not insert artists popularity.';
+		}
 	
+		echo '<tr><td>' . $artistName . '</td><td>' . $artistPop . '</td></tr>';
+		
 		// When attempt is complete, connection closes
 		mysqli_close($connekt);
 
 	}
-	// echo '<tr><td>' . $albumName . '</td><td>' . $albumReleased . '</td><td>' . $albumPop . '</td></tr>';
+	
   
 }
 
