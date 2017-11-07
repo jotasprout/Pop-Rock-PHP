@@ -35,7 +35,7 @@ function getArtistsPop ($artists) {
 		
 		$insertArtistsPop = "INSERT INTO popArtists (artistID,artistPop) VALUES('$artistID','$artistPop')";
 		
-		$connekt = new mysqli($host, $un, $magicword, $db);
+		$connekt = new mysqli($GLOBALS['host'], $GLOBALS['un'], $GLOBALS['magicword'], $GLOBALS['db']);
 		
 		if (!$connekt) {
 			echo 'Darn. Did not connect.';
@@ -48,7 +48,7 @@ function getArtistsPop ($artists) {
 		}
 	
 		echo '<tr><td>' . $artistName . '</td><td>' . $artistPop . '</td></tr>';
-		
+
 		// When attempt is complete, connection closes
 		mysqli_close($connekt);
 
