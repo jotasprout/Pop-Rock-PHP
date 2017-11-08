@@ -14,11 +14,11 @@ function divideCombineAlbumsForTracks ($artistAlbums) {
 	$firstAlbum = 0;
 	
     for ($i=0; $i<$x; ++$i) {
-	  $lastAlbum = $firstAlbum + 19;
+	  $lastAlbum = 19;
       $artistAlbumsChunk = array_slice($artistAlbums, $firstAlbum, $lastAlbum);
 	  // put chunks of 20 into an array
       $albumsArrays [] = $artistAlbumsChunk;
-      $firstAlbum += 19;
+      $firstAlbum += 20;
 	};
 
 	for ($i=0; $i<(count($albumsArrays)); ++$i) {

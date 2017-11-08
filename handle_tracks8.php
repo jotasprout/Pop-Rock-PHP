@@ -4,7 +4,7 @@ session_start();
 
 require 'vendor/autoload.php';
 require_once 'stylesAndScripts.php';
-require_once 'albums6.php';
+require_once 'albums8.php';
 require_once 'tracks6.php';
 
 // Fetch saved access token
@@ -30,14 +30,14 @@ $artistPop = $artist->popularity;
 <div class="container">
 
 <?php
-echo "<h2>" . $artistName . "</h2>"; 
-echo "<p>" . $artistName . "'s popularity is " . $artistPop . ".</p>";
+// echo "<h2>" . $artistName . "</h2>"; 
+// echo "<p>" . $artistName . "'s popularity is " . $artistPop . ".</p>";
 echo '<table class="table">';
 echo '<tr><th>Album Name</th><th>Track Name</th><th>Track Popularity</th></tr>';
 
 $discography = $GLOBALS['api']->getArtistAlbums($artistID, [
 	'market' => 'us',
-	'album_type' => 'album',
+	// 'album_type' => 'album',
 	'limit' => '50'
 ]);
 
