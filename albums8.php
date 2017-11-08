@@ -65,14 +65,22 @@ function divideCombineAlbums ($artistAlbums) {
 	$firstAlbum = 0;
 	
     for ($i=0; $i<$x; ++$i) {
-	  $lastAlbum = $firstAlbum + 19;
-      $artistAlbumsChunk = array_slice($artistAlbums, $firstAlbum, $lastAlbum);
+	  $lastAlbum = 19;
+	  $artistAlbumsChunk = array_slice($artistAlbums, $firstAlbum, $lastAlbum);
+	  // $howmanytotal = count($artistAlbumsChunk);
+	  // echo $howmanytotal . '<br>';
 	  // put chunks of 20 into an array
       $albumsArrays [] = $artistAlbumsChunk;
-      $firstAlbum += 19;
+      $firstAlbum += 20;
 	};
 
+	$howmany = count($albumsArrays);
+	echo $howmany . '<br>';
+
 	for ($i=0; $i<(count($albumsArrays)); ++$i) {
+
+		$howmanyhere = count($albumsArrays[$i]);
+		echo $howmanyhere . '<br>';
 				
 		$albumIds = implode(',', $albumsArrays[$i]);
 	
@@ -80,28 +88,40 @@ function divideCombineAlbums ($artistAlbums) {
 		$bunchofalbums = $GLOBALS['api']->getAlbums($albumIds);
 			
 		foreach ($bunchofalbums->albums as $album) {
+
+			$connekt = new mysqli($GLOBALS['host'], $GLOBALS['un'], $GLOBALS['magicword'], $GLOBALS['db']);
 	
-			$albumID = $album->id;
-			$albumName = $album->name;
+			$albumID = $album->id;	
+			$albumNameYucky = $album->name;
+			$albumName = mysqli_real_escape_string($connekt,$albumNameYucky);
+			// $albumName = mysqli_real_escape_string($connekt, htmlspecialchars($albumNameYucky));
 			$albumReleasedWhole = $album->release_date;
 			$albumReleased = substr($albumReleasedWhole, 0, 4);
 			$thisArtistID = $album->artists[0]->id;
+			$thisArtistName = $album->artists[0]->name;
+			$albumPop = $album->popularity;
 
 			$insertAlbums = "INSERT INTO albums (albumID,albumName,artistID,year) VALUES('$albumID','$albumName','$thisArtistID','$albumReleased')";
-
-			$connekt = new mysqli($GLOBALS['host'], $GLOBALS['un'], $GLOBALS['magicword'], $GLOBALS['db']);
 			
 			if (!$connekt) {
-				echo 'Darn. Did not connect.';
+				echo 'Darn. Did not connect.<br>';
 			};
 			
 			$rockout = $connekt->query($insertAlbums);
 
 			if(!$rockout){
-				echo 'Crap de General Tsao! Could not insert albums.';
+				echo 'Crap de General Tsao! Could not insert album.<br>';
+			}
+
+			$insertAlbumsPop = "INSERT INTO popAlbums (albumID,pop) VALUES('$albumID','$albumPop')";
+
+			$rockin = $connekt->query($insertAlbumsPop);
+			
+			if(!$rockin){
+				echo 'Sweet & Sour Crap! Could not insert albums popularity.';
 			}
 		
-            echo '<tr><td>' . $albumName . '</td><td>' . $albumReleased . '</td><td>' . $albumPop . '</td></tr>';
+            echo '<tr><td>' . $thisArtistID . '</td><td>' . $thisArtistName . '</td><td>' . $albumName . '</td><td>' . $albumReleased . '</td><<td>' . $albumPop . '</td></tr>';
 
 		}
 	};
@@ -117,11 +137,11 @@ function getAlbumsPop ($artistAlbums) {
 	$firstAlbum = 0;
 	
     for ($i=0; $i<$x; ++$i) {
-	  $lastAlbum = $firstAlbum + 19;
+	  $lastAlbum = 19;
       $artistAlbumsChunk = array_slice($artistAlbums, $firstAlbum, $lastAlbum);
 	  // put chunks of 20 into an array
       $albumsArrays [] = $artistAlbumsChunk;
-      $firstAlbum += 19;
+      $firstAlbum += 20;
 	};
 
 	for ($i=0; $i<(count($albumsArrays)); ++$i) {
@@ -132,13 +152,16 @@ function getAlbumsPop ($artistAlbums) {
 		$bunchofalbums = $GLOBALS['api']->getAlbums($albumIds);
 			
 		foreach ($bunchofalbums->albums as $album) {
+
+			$connekt = new mysqli($GLOBALS['host'], $GLOBALS['un'], $GLOBALS['magicword'], $GLOBALS['db']);
 	
 			$albumID = $album->id;
 			$albumPop = $album->popularity;
-
+			$albumNameYucky = $album->name;
+			$albumName = mysqli_real_escape_string($connekt,$albumNameYucky);
+			$albumReleasedWhole = $album->release_date;
+			$albumReleased = substr($albumReleasedWhole, 0, 4);
 			$insertAlbumsPop = "INSERT INTO popAlbums (albumID,pop) VALUES('$albumID','$albumPop')";
-
-			$connekt = new mysqli($GLOBALS['host'], $GLOBALS['un'], $GLOBALS['magicword'], $GLOBALS['db']);
 			
 			if (!$connekt) {
 				echo 'Darn. Did not connect.';
@@ -150,7 +173,7 @@ function getAlbumsPop ($artistAlbums) {
 				echo 'Sweet & Sour Crap! Could not insert albums popularity.';
 			}
 		
-            echo '<tr><td>' . $albumName . '</td><<td>' . $albumPop . '</td></tr>';
+            echo '<tr><td>' . $thisArtistID . '</td><td>' . $thisArtistName . '</td><td>' . $albumName . '</td><td>' . $albumReleased . '</td><<td>' . $albumPop . '</td></tr>';
 
 		}
 	};

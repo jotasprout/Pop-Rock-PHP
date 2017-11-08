@@ -34,7 +34,7 @@ $artistID = $_POST['artist'];
 // echo "<h2>" . $artistName . "</h2>"; 
 // echo "<p>" . $artistName . "'s popularity is " . $artistPop . ".</p>";
 echo '<table class="table">';
-echo '<tr><th>Album Name</th><th>Released</th><th>Popularity</th></tr>';
+echo '<tr><th>Artist ID</th><th>Artist Name</th><th>Album Name</th><th>Released</th><th>Popularity</th></tr>';
 
 $discography = $GLOBALS['api']->getArtistAlbums($artistID, [
 	'market' => 'us',
@@ -54,6 +54,10 @@ foreach ($discography->items as $album) {
 	
 }
 
+$howmanytotal = count($artistAlbums);
+echo $howmanytotal . '<br>';
+
+// getAlbumsPop ($artistAlbums);
 divideCombineAlbums ($artistAlbums);
 
 ?>
