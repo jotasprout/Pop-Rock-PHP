@@ -5,7 +5,7 @@ session_start();
 require 'vendor/autoload.php';
 // require_once 'rockdb.php';
 require_once 'stylesAndScripts.php';
-require_once 'albums7.php';
+require_once 'albums8.php';
 
 // Fetch saved access token
 $accessToken = $_SESSION['accessToken'];
@@ -18,9 +18,9 @@ $GLOBALS['api']->setAccessToken($accessToken);
 $artistID = $_POST['artist'];
 
 // could these be methods in the artist class?    
-$artist = $GLOBALS['api']->getArtist($artistID);
-$artistName = $artist->name;
-$artistPop = $artist->popularity;
+// $artist = $GLOBALS['api']->getArtist($artistID);
+// $artistName = $artist->name;
+// $artistPop = $artist->popularity;
 
 ?>
 
@@ -31,14 +31,15 @@ $artistPop = $artist->popularity;
 <div class="container">
 
 <?php
-echo "<h2>" . $artistName . "</h2>"; 
-echo "<p>" . $artistName . "'s popularity is " . $artistPop . ".</p>";
+// echo "<h2>" . $artistName . "</h2>"; 
+// echo "<p>" . $artistName . "'s popularity is " . $artistPop . ".</p>";
 echo '<table class="table">';
 echo '<tr><th>Album Name</th><th>Released</th><th>Popularity</th></tr>';
 
 $discography = $GLOBALS['api']->getArtistAlbums($artistID, [
 	'market' => 'us',
-	'album_type' => 'album',
+	// Removing next line because most users probably grab most popular songs from compilations
+	// 'album_type' => 'album',
 	'limit' => '50'
 ]);
 
