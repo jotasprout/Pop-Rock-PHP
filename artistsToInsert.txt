@@ -1,210 +1,205 @@
 2018 Nominees
 
-Bon Jovi','
-Kate Bush','
-'The Cars','
-'
-Depeche Mode','
-'
-Dire Straits','
-'
-Eurythmics','
-'
-J. Geils Band','
-'
-Judas Priest
-LL Cool J
-The MC5
-The Meters
-Moody Blues
-Radiohead
-Rage Against the Machine
-Rufus featuring Chaka Khan
-Nina Simone
-Sister Rosetta Tharpe
-Link Wray
-The Zombies
-
+ = ("Bon Jovi", "58lV9VcRSjABbAbfWS6skp");
+ = ("Kate Bush", "1aSxMhuvixZ8h9dK9jIDwL");
+ = ("The Cars", "6DCIj8jNaNpBz8e5oKFPtp");
+ = ("Depeche Mode", "762310PdDnwsDxAQxzQkfX");
+ = ("Dire Straits", "0WwSkZ7LtFUFjGjMZBMt6T");
+ = ("Eurythmics", "0NKDgy9j66h3DLnN8qu1bB");
+ = ("J, Geils Band", "69Mj3u4FTUrpyeGNSIaU6F");
+ = ("Judas Priest", "2tRsMl4eGxwoNabM08Dm4I");
+ = ("LL Cool J", "1P8IfcNKwrkQP5xJWuhaOC");
+ = ("The MC5", "4WquJweZPIK9qcfVFhTKvf");
+ = ("The Meters", "2JRvXPGWiINrnJljNJhG5s");
+ = ("Moody Blues", "5BcZ22XONcRoLhTbZRuME1");
+ = ("Radiohead", "4Z8W4fKeB5YxbusRsdQVPb");
+ = ("Rage Against the Machine", "2d0hyoQ5ynDBnkvAbJKORj");
+ = ("Rufus featuring Chaka Khan", "1YLsqPcFg1rj7VvhfwnDWm");
+ = ("Nina Simone", "7G1GBhoKtEPnP86X2PvEYO");
+ = ("Sister Rosetta Tharpe", "2dXf5lu5iilcaTQJZodce7");
+ = ("Link Wray", "2vQavlZtDA660mnZotYIto");
+ = ("The Zombies", "2jgPkn6LuUazBoBk6vvjh5");
+ = ("Traveling Wilburys", "2hO4YtXUFJiUYS2uYFvHNK");
+ = ("Chaka Khan','6mQfAAqZGBzIfrmlZCeaYT');
 
 OTHERS WAITING
 
-B-52's
-Bad Company
-Bjork
-Black Flag
-Bauhaus
-Carpenters
-Commodores
-The Cure
-Dead Kennedys
-Def Leppard
-Devo
-Doobie Brothers
-Duran Duran
-Emerson, Lake & Palmer
-Eurythmics
-Gram Parsons
-Guess Who
-Harry Nilsson
-Husker Du
-INXS
-Iron Maiden
-Jan & Dean
-Jane's Addiction
-Jethro Tull
-Joy Division
-King Crimson
-Krafwerk
-Megadeth
-Monkees
-Motley Crue
-Motorhead
-New Order
-New York Dolls
-Ozzy Osbourne
-Pixies
-Replacements
-Roxy Music
-Runaways
-Siouxsie & the Banshees
-Slayer
-Smashing Pumpkins
-The Smiths
-The Specials
-Steppenwolf
-T. Rex
-Thin LIzzy
-Three Dog Night
-Warren Zevon
-Weird Al Yankovic
-X
-XTC
+ = ("B-52's", "");
+ = ("Bad Company", "");
+ = ("Bjork", "");
+ = ("Black Flag", "");
+ = ("Bauhaus", "");
+ = ("Carpenters", "");
+ = ("Commodores", "");
+ = ("The Cure", "");
+ = ("Dead Kennedys", "");
+ = ("Def Leppard", "");
+ = ("Devo", "");
+ = ("Doobie Brothers", "");
+ = ("Duran Duran", "");
+ = ("Emerson, Lake & Palmer", "");
+ = ("Eurythmics", "");
+ = ("Gram Parsons", "");
+ = ("Guess Who", "");
+ = ("Harry Nilsson", "");
+ = ("Husker Du", "");
+ = ("INXS", "");
+ = ("Iron Maiden", "");
+ = ("Jan & Dean", "");
+ = ("Jane's Addiction", "");
+ = ("Jethro Tull", "");
+ = ("Joy Division", "");
+ = ("King Crimson", "");
+ = ("Krafwerk", "");
+ = ("Megadeth", "");
+ = ("Monkees", "");
+ = ("Motley Crue", "");
+ = ("Motorhead", "");
+ = ("New Order", "");
+ = ("New York Dolls", "");
+ = ("Ozzy Osbourne", "");
+ = ("Pixies", "");
+ = ("Replacements", "");
+ = ("Roxy Music", "");
+ = ("Runaways", "");
+ = ("Siouxsie & the Banshees", "");
+ = ("Slayer", "");
+ = ("Smashing Pumpkins", "");
+ = ("The Smiths", "");
+ = ("The Specials", "");
+ = ("Steppenwolf", "");
+ = ("T. Rex", "");
+ = ("Thin Lizzy", "");
+ = ("Three Dog Night", "");
+ = ("Warren Zevon", "");
+ = ("Weird Al Yankovic", "");
+ = ("X", "");
+ = ("XTC", "");
 
 OTHERS THAT ARE IN
 
-Chuck Berry
-James Brown
-Ray Charles
-Sam Cooke
-Fats Domino
-The Everly Brothers
-Buddy Holly
-Jerry Lee Lewis
-Little Richard
-Elvis Presley
-The Coasters
-Eddie Cochran
-Bo Diddley
-Aretha Franklin
-Marvin Gaye
-Bill Haley
-B.B. King
-Clyde McPhatter
-Ricky Nelson
-Roy Orbison
-Carl Perkins
-Smokey Robinson
-Big Joe Turner
-Muddy Waters
-Jackie Wilson
-The Beach Boys
-The Beatles
-The Drifters
-Bob Dylan
-The Supremes
-Dion
-Otis Redding
-The Rolling Stones
-The Temptations
-Stevie Wonder
-Hank Ballard
-Bobby Darin
-The Four Seasons
-Four Tops
-The Kinks
-The Platters
-Simon & Garfunkel
-The Who
-LaVern Baker
-The Byrds
-John Lee Hooker
-The Impressions
-Wilson Pickett
-Jimmy Reed
-Ike & Tina Turner
-Bobby "Blue" Bland
-Booker T. & the M.G.'s
-Johnny Cash
-The Jimi Hendrix Experience
-Sam & Dave
-The Yardbirds
-Cream
-Creedence Clearwater Revival
-The Doors
-The Animals
-Elton John
-John Lennon
-Rod Stewart
-Led Zeppelin
-Neil Young
-
-Frank Zappa
-David Bowie
-Gladys Knight & the Pips
-Jefferson Airplane
-Little Willie John
-Pink Floyd
-Roger Waters
-David Gilmour
-The Velvet Underground
-Bee Gees
-Crosby, Stills & Nash
-Parliament-Funkadelic
-Eagles
-Fleetwood Mac
-Santana
-Billy Joel
-Paul McCartney
-Eric Clapton
-Earth, Wind & Fire
-The Lovin' Spoonful
-Aerosmith
-Ramones
-Talking Heads
-AC/DC
-The Clash
-George Harrison
-Prince
-Bob Seger
-ZZ Top
-U2
-Black Sabbath
-Blondie
-Lynyrd Skynyrd
-Sex Pistols
-R.E.M.
-Patti Smith
-Van Halen
-Madonna
-Jeff Beck
-Metallica
-Run–D.M.C.
-ABBA
-Genesis
-Beastie Boys
-Donovan
-Guns N' Roses
-Red Hot Chili Peppers
-Small Faces/Faces
-Heart
-Public Enemy
-Rush
-Joan Jett & the Blackhearts
-Lou Reed
-Green Day
-Cheap Trick
-Chicago
-Deep Purple
-Journey
-Pearl Jam
-Yes
+ = ("Chuck Berry", "");
+ = ("James Brown", "");
+ = ("Ray Charles", "");
+ = ("Sam Cooke", "");
+ = ("Fats Domino", "");
+ = ("The Everly Brothers", "");
+ = ("Buddy Holly", "");
+ = ("Jerry Lee Lewis", "");
+ = ("Little Richard", "");
+ = ("Elvis Presley", "");
+ = ("The Coasters", "");
+ = ("Eddie Cochran", "");
+ = ("Bo Diddley", "");
+ = ("Aretha Franklin", "");
+ = ("Marvin Gaye", "");
+ = ("Bill Haley", "");
+ = ("B.B. King", "");
+ = ("Clyde McPhatter", "");
+ = ("Ricky Nelson", "");
+ = ("Roy Orbison", "");
+ = ("Carl Perkins", "");
+ = ("Smokey Robinson", "");
+ = ("Big Joe Turner", "");
+ = ("Muddy Waters", "");
+ = ("Jackie Wilson", "");
+ = ("The Beach Boys", "");
+ = ("The Beatles", "");
+ = ("The Drifters", "");
+ = ("Bob Dylan", "");
+ = ("The Supremes", "");
+ = ("Dion", "");
+ = ("Otis Redding", "");
+ = ("The Rolling Stones", "");
+ = ("The Temptations", "");
+ = ("Stevie Wonder", "");
+ = ("Hank Ballard", "");
+ = ("Bobby Darin", "");
+ = ("The Four Seasons", "");
+ = ("Four Tops", "");
+ = ("The Kinks", "");
+ = ("The Platters", "");
+ = ("Simon & Garfunkel", "");
+ = ("The Who", "");
+ = ("LaVern Baker", "");
+ = ("The Byrds", "");
+ = ("John Lee Hooker", "");
+ = ("The Impressions", "");
+ = ("Wilson Pickett", "");
+ = ("Jimmy Reed", "");
+ = ("Ike & Tina Turner", "");
+ = ("Bobby "Blue" Bland", "");
+ = ("Booker T, & the M.G.'s", "");
+ = ("Johnny Cash", "");
+ = ("The Jimi Hendrix Experience", "");
+ = ("Sam & Dave", "");
+ = ("The Yardbirds", "");
+ = ("Cream", "");
+ = ("Creedence Clearwater Revival", "");
+ = ("The Doors", "");
+ = ("The Animals", "");
+ = ("Elton John", "");
+ = ("John Lennon", "");
+ = ("Rod Stewart", "");
+ = ("Led Zeppelin", "");
+ = ("Neil Young", "");
+ = ("Frank Zappa", "");
+ = ("David Bowie", "");
+ = ("Gladys Knight & the Pips", "");
+ = ("Jefferson Airplane", "");
+ = ("Little Willie John", "");
+ = ("Pink Floyd", "");
+ = ("Roger Waters", "");
+ = ("David Gilmour", "");
+ = ("The Velvet Underground", "");
+ = ("Bee Gees", "");
+ = ("Crosby, Stills & Nash", "");
+ = ("Parliament-Funkadelic", "");
+ = ("Eagles", "");
+ = ("Fleetwood Mac", "");
+ = ("Santana", "");
+ = ("Billy Joel", "");
+ = ("Paul McCartney", "");
+ = ("Eric Clapton", "");
+ = ("Earth, Wind & Fire", "");
+ = ("The Lovin' Spoonful", "");
+ = ("Aerosmith", "");
+ = ("Ramones", "");
+ = ("Talking Heads", "");
+ = ("AC/DC", "");
+ = ("The Clash", "");
+ = ("George Harrison", "");
+ = ("Prince", "");
+ = ("Bob Seger", "");
+ = ("ZZ Top", "");
+ = ("U2", "");
+ = ("Black Sabbath", "");
+ = ("Blondie", "");
+ = ("Lynyrd Skynyrd", "");
+ = ("Sex Pistols", "");
+ = ("R.E.M.", "");
+ = ("Patti Smith", "");
+ = ("Van Halen", "");
+ = ("Madonna", "");
+ = ("Jeff Beck", "");
+ = ("Metallica", "");
+ = ("Run–D.M.C.", "");
+ = ("ABBA", "");
+ = ("Genesis", "");
+ = ("Beastie Boys", "");
+ = ("Donovan", "");
+ = ("Guns N' Roses", "");
+ = ("Red Hot Chili Peppers", "");
+ = ("Small Faces/Faces", "");
+ = ("Heart", "");
+ = ("Public Enemy", "");
+ = ("Rush", "");
+ = ("Joan Jett & the Blackhearts", "");
+ = ("Lou Reed", "");
+ = ("Green Day", "");
+ = ("Cheap Trick", "");
+ = ("Chicago", "");
+ = ("Deep Purple", "");
+ = ("Journey", "");
+ = ("Pearl Jam", "");
+ = ("Yes", "");
