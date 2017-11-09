@@ -94,4 +94,27 @@ function getArtistsAndPop ($artists) {
 
 }
 
+function showArtists () {
+	
+	$artistInfo = "SELECT a.artistID, a.artistName, b.pop 
+		FROM artists a
+			INNER JOIN popArtists b ON a.artistID = b.artistID
+				ORDER BY a.artistName ASC";
+
+	// how do I get most recent pop?
+
+	$getit = $connekt->query($artistInfo);
+
+	while ($row = mysqli_fetch_array($getit)) {
+		// $artistID = $row["artistID"];
+		$artistName = $row["artistName"];
+		$artistPop = $row["pop"];
+		
+		echo "<tr>";
+		echo "<td>" . $artistName . "</td>";
+		echo "<td>" . $artistPop . "</td>";
+		echo "</tr>";
+	}
+}
+
 ?>

@@ -180,4 +180,30 @@ function getAlbumsPop ($artistAlbums) {
   
 }
 
+function showAlbums () {
+
+	$gatherAlbumInfo = "SELECT a.albumID, a.albumName, a.year, b.pop, a.artistID, c.artistName 
+		FROM albums a
+			INNER JOIN popAlbums b ON a.albumID = b.albumID
+			INNER JOIN artists c ON a.artistID = c.artistID
+				ORDER BY a.year ASC";
+
+	$getit = $connekt->query($gatherAlbumInfo);
+
+	while ($row = mysqli_fetch_array($getit)) {
+		// $artistID = $row["artistID"];
+		$artistName = $row["artistName"];
+		$albumName = $row["albumName"];
+		$albumReleased = $row["year"];
+		$albumPop = $row["pop"];
+		
+		echo "<tr>";
+		echo "<td>" . $artistName . "</td>";
+		echo "<td>" . $albumName . "</td>";
+		echo "<td>" . $albumReleased . "</td>";
+		echo "<td>" . $albumPop . "</td>";
+		echo "</tr>";
+	}
+}
+
 ?>
