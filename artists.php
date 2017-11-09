@@ -43,7 +43,51 @@ $Zombies = ("The Zombies", "2jgPkn6LuUazBoBk6vvjh5");
 $TravelingWilburys = ("Traveling Wilburys", "2hO4YtXUFJiUYS2uYFvHNK");
 $ChakaKhan = ("Chaka Khan", "6mQfAAqZGBzIfrmlZCeaYT");
 
-$2018nominees = array ();
+$nominees2018 = array ("58lV9VcRSjABbAbfWS6skp", "1aSxMhuvixZ8h9dK9jIDwL", "6DCIj8jNaNpBz8e5oKFPtp", "762310PdDnwsDxAQxzQkfX", "0WwSkZ7LtFUFjGjMZBMt6T", "0NKDgy9j66h3DLnN8qu1bB", "69Mj3u4FTUrpyeGNSIaU6F", "2tRsMl4eGxwoNabM08Dm4I", "1P8IfcNKwrkQP5xJWuhaOC", "4WquJweZPIK9qcfVFhTKvf", "2JRvXPGWiINrnJljNJhG5s", "5BcZ22XONcRoLhTbZRuME1", "4Z8W4fKeB5YxbusRsdQVPb", "2d0hyoQ5ynDBnkvAbJKORj", "1YLsqPcFg1rj7VvhfwnDWm", "7G1GBhoKtEPnP86X2PvEYO", "2dXf5lu5iilcaTQJZodce7", "2vQavlZtDA660mnZotYIto", "2jgPkn6LuUazBoBk6vvjh5", "2hO4YtXUFJiUYS2uYFvHNK", "6mQfAAqZGBzIfrmlZCeaYT");
+
+function inserttArtistsAndPop ($nominees2018) {
+
+	$connekt = new mysqli($GLOBALS['host'], $GLOBALS['un'], $GLOBALS['magicword'], $GLOBALS['db']);
+
+	$bunchofartists = $GLOBALS['api']->getArtists($nominees2018);
+
+	foreach ($bunchofartists->artists as $artist) {
+
+	$artistID = $artist->id;
+	$artistNameYucky = $artist->name;
+	$artistName = mysqli_real_escape_string($connekt,$artistNameYucky);
+	$artistPop = $artist->popularity;
+
+	$insertArtistsInfo = "INSERT INTO artists (artistID,artistName) VALUES('$artistID','$artistName')";
+
+	if (!$connekt) {
+		echo 'Darn. Did not connect.';
+	};
+
+	$rockout = $connekt->query($insertArtistsInfo);
+
+	if(!$rockout){
+		echo 'Cursed-Crap. Could not insert artists.';
+	}
+
+	$insertArtistsPop = "INSERT INTO popArtists (artistID,pop) VALUES('$artistID','$artistPop')";
+
+	$rockpop = $connekt->query($insertArtistsPop);
+	
+	if(!$rockpop){
+		echo 'Cursed-Crap. Could not insert artists popularity.';
+	}
+
+	else {
+		echo '<tr><td>' . $artistName . '</td><td>' . $artistPop . '</td></tr>';
+	}
+
+	// When attempt is complete, connection closes
+	mysqli_close($connekt);
+
+	}
+
+}
 
 function getArtistsPop ($artists) {
 				

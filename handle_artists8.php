@@ -20,7 +20,7 @@ $GLOBALS['api']->setAccessToken($accessToken);
 ?>
 
 <!DOCTYPE html><html>
-<head><meta charset="UTF-8"><title>Ye Olde Album Results</title><?php echo $stylesAndSuch; ?></head>
+<head><meta charset="UTF-8"><title>Artists and Such</title><?php echo $stylesAndSuch; ?></head>
 <body>
 
 <div class="container">
@@ -29,7 +29,7 @@ $GLOBALS['api']->setAccessToken($accessToken);
 echo '<table class="table">';
 echo '<tr><th>Artist Name</th><th>Popularity</th></tr>';
 
-getArtistsPop ($artists);
+inserttArtistsAndPop ($nominees2018);
 
 echo '</table>';
 
