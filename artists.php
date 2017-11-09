@@ -53,39 +53,39 @@ function inserttArtistsAndPop ($nominees2018) {
 
 	foreach ($bunchofartists->artists as $artist) {
 
-	$artistID = $artist->id;
-	$artistNameYucky = $artist->name;
-	$artistName = mysqli_real_escape_string($connekt,$artistNameYucky);
-	$artistPop = $artist->popularity;
+		$artistID = $artist->id;
+		$artistNameYucky = $artist->name;
+		$artistName = mysqli_real_escape_string($connekt,$artistNameYucky);
+		$artistPop = $artist->popularity;
 
-	$insertArtistsInfo = "INSERT INTO artists (artistID,artistName) VALUES('$artistID','$artistName')";
+		$insertArtistsInfo = "INSERT INTO artists (artistID,artistName) VALUES('$artistID','$artistName')";
 
-	if (!$connekt) {
-		echo 'Darn. Did not connect.';
-	};
+		if (!$connekt) {
+			echo 'Darn. Did not connect.';
+		};
 
-	$rockout = $connekt->query($insertArtistsInfo);
+		$rockout = $connekt->query($insertArtistsInfo);
 
-	if(!$rockout){
-		echo 'Cursed-Crap. Could not insert artists.';
-	}
+		if(!$rockout){
+			echo 'Cursed-Crap. Could not insert artists.';
+		}
 
-	$insertArtistsPop = "INSERT INTO popArtists (artistID,pop) VALUES('$artistID','$artistPop')";
+		$insertArtistsPop = "INSERT INTO popArtists (artistID,pop) VALUES('$artistID','$artistPop')";
 
-	$rockpop = $connekt->query($insertArtistsPop);
-	
-	if(!$rockpop){
-		echo 'Cursed-Crap. Could not insert artists popularity.';
-	}
+		$rockpop = $connekt->query($insertArtistsPop);
+		
+		if(!$rockpop){
+			echo 'Cursed-Crap. Could not insert artists popularity.';
+		}
 
-	else {
-		echo '<tr><td>' . $artistName . '</td><td>' . $artistPop . '</td></tr>';
+		else {
+			echo '<tr><td>' . $artistName . '</td><td>' . $artistPop . '</td></tr>';
+		}
+
 	}
 
 	// When attempt is complete, connection closes
 	mysqli_close($connekt);
-
-	}
 
 }
 
