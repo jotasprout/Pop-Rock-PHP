@@ -29,7 +29,8 @@ $GLOBALS['api']->setAccessToken($accessToken);
 echo '<table class="table">';
 echo '<tr><th>Artist Name</th><th>Popularity</th></tr>';
 
-inserttArtistsAndPop ($nominees2018);
+// inserttArtistsAndPop ($nominees2018);
+getArtistsPop ($artists);
 
 echo '</table>';
 
