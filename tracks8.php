@@ -43,7 +43,8 @@ function divideCombineInsertTracksAndPop ($AlbumsTracks) {
 			$trackAlbumID = $track->album->id;
 			$trackAlbumNameYucky = $track->album->name;
 			$trackAlbumName = mysqli_real_escape_string($connekt,$trackAlbumNameYucky);
-			$trackName = $track->name;
+			$trackNameYucky = $track->name;
+			$trackName = mysqli_real_escape_string($connekt,$trackNameYucky);
 			$trackPop = $track->popularity;
 			
 			$insertTrackInfo = "INSERT INTO tracks (trackID,trackName,albumID) VALUES('$trackID','$trackName','$trackAlbumID')";
