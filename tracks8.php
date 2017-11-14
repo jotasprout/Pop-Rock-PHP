@@ -40,17 +40,18 @@ function divideCombineInsertTracksAndPop ($AlbumsTracks) {
 			};			
 
 			$trackID = $track->id;
+			$trackAlbumID = $track->album->id;
 			$trackAlbumNameYucky = $track->album->name;
 			$trackAlbumName = mysqli_real_escape_string($connekt,$trackAlbumNameYucky);
 			$trackName = $track->name;
 			$trackPop = $track->popularity;
 			
-			$insertTrackInfo = "INSERT INTO tracks (trackID,trackName) VALUES('$trackID','$trackName')";
+			$insertTrackInfo = "INSERT INTO tracks (trackID,trackName,albumID) VALUES('$trackID','$trackName','$trackAlbumID')";
 	
 			$rockout = $connekt->query($insertTrackInfo);
 	
 			if(!$rockout){
-				echo 'Cursed-Crap. Could not insert track.';
+				echo 'Cursed-Crap. Could not insert "' . $trackName . '" from <i>' . $trackAlbumName . '</i>.<br>';
 			}
 	
 			$insertTrackPop = "INSERT INTO popTracks (trackID,pop) VALUES('$trackID','$trackPop')";
@@ -58,7 +59,7 @@ function divideCombineInsertTracksAndPop ($AlbumsTracks) {
 			$rockpop = $connekt->query($insertTrackPop);
 			
 			if(!$rockpop){
-				echo 'Cursed-Crap. Could not insert track popularity.';
+				echo 'Confounded-Crap. Could not insert POPULARITY for "' . $trackName . '" from <i>' . $trackAlbumName . '</i>.<br>';
 			}
 	
 			else {
