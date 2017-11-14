@@ -25,7 +25,7 @@
 <body>
 	<div class="container">
     
-            <form class="form-horizontal" id="rockinForm" action="handle_albums8.php" method="post">
+            <form class="form-horizontal" id="rockinForm" action="handle_tracks8.php" method="post">
                 <fieldset>
                     <legend>Ye Olde Select An Artist Menu</legend>
     
@@ -40,6 +40,7 @@
                                 <?php
                                     // I really need to make an artist array ... the following is just stupid
                                     echo "<option value='" . $aliceCooper->get_artistID() . "'>" . $aliceCooper->get_artistName() . "</option>";
+									echo "<option value='" . $hollywoodVampires->get_artistID() . "'>" . $hollywoodVampires->get_artistName() . "</option>";
                                     echo "<option value='" . $davidBowie->get_artistID() . "'>" . $davidBowie->get_artistName() . "</option>";
                                     echo "<option value='" . $bobDylan->get_artistID() . "'>" . $bobDylan->get_artistName() . "</option>";
                                     echo "<option value='" . $meatLoaf->get_artistID() . "'>" . $meatLoaf->get_artistName() . "</option>";

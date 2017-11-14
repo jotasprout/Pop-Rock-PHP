@@ -19,7 +19,7 @@ $tomPetty = new artist("2UZMlIwnkgAEDBsw1Rejkn","Tom Petty");
 $tpHeartbreakers = new artist("4tX2TplrkIP4v05BNC903e","Tom Petty & the Heartbreakers");
 $travelingWilburys = new artist("2hO4YtXUFJiUYS2uYFvHNK","Traveling Wilburys");
 
-$artists = array ("58lV9VcRSjABbAbfWS6skp", "3k4YA0uPsWc2PuOQlJNpdH","3EhbVgyfGd7HkpsagwL9GS","0oSGxfWSnnOXhD2fKuz2Gy","74ASZWbe4lXaubB36ztrGX","7dnB1wSxbYa8CejeVg98hz","3lPQ2Fk5JOwGWAF3ORFCqH","4BFMTELQyWJU1SwqcXMBm3","3eqjTLE0HfPfh78zjh6TqT","07XSN3sPlIlB2L2XNcTwJw","33EUXrFKGjpUSGacqEHhU4","1l8grPt6eiOS4YlzjIs0LF","22bE4uQ6baNwSHPVcDxLCe","2UZMlIwnkgAEDBsw1Rejkn","4tX2TplrkIP4v05BNC903e");
+$artists = array ("3k4YA0uPsWc2PuOQlJNpdH","3EhbVgyfGd7HkpsagwL9GS","0oSGxfWSnnOXhD2fKuz2Gy","74ASZWbe4lXaubB36ztrGX","7dnB1wSxbYa8CejeVg98hz","3lPQ2Fk5JOwGWAF3ORFCqH","4BFMTELQyWJU1SwqcXMBm3","3eqjTLE0HfPfh78zjh6TqT","07XSN3sPlIlB2L2XNcTwJw","33EUXrFKGjpUSGacqEHhU4","1l8grPt6eiOS4YlzjIs0LF","22bE4uQ6baNwSHPVcDxLCe","2UZMlIwnkgAEDBsw1Rejkn","4tX2TplrkIP4v05BNC903e");
 
 $BonJovi = new artist ("Bon Jovi", "58lV9VcRSjABbAbfWS6skp");
 $KateBush = new artist ("Kate Bush", "1aSxMhuvixZ8h9dK9jIDwL");
@@ -43,7 +43,7 @@ $Zombies = new artist ("The Zombies", "2jgPkn6LuUazBoBk6vvjh5");
 $TravelingWilburys = new artist ("Traveling Wilburys", "2hO4YtXUFJiUYS2uYFvHNK");
 $ChakaKhan = new artist ("Chaka Khan", "6mQfAAqZGBzIfrmlZCeaYT");
 
-$nominees2018 = array ("58lV9VcRSjABbAbfWS6skp", "58lV9VcRSjABbAbfWS6skp", "1aSxMhuvixZ8h9dK9jIDwL", "6DCIj8jNaNpBz8e5oKFPtp", "762310PdDnwsDxAQxzQkfX", "0WwSkZ7LtFUFjGjMZBMt6T", "0NKDgy9j66h3DLnN8qu1bB", "69Mj3u4FTUrpyeGNSIaU6F", "2tRsMl4eGxwoNabM08Dm4I", "1P8IfcNKwrkQP5xJWuhaOC", "4WquJweZPIK9qcfVFhTKvf", "2JRvXPGWiINrnJljNJhG5s", "5BcZ22XONcRoLhTbZRuME1", "4Z8W4fKeB5YxbusRsdQVPb", "2d0hyoQ5ynDBnkvAbJKORj", "1YLsqPcFg1rj7VvhfwnDWm", "7G1GBhoKtEPnP86X2PvEYO", "2dXf5lu5iilcaTQJZodce7", "2vQavlZtDA660mnZotYIto", "2jgPkn6LuUazBoBk6vvjh5", "2hO4YtXUFJiUYS2uYFvHNK", "6mQfAAqZGBzIfrmlZCeaYT");
+$nominees2018 = array ("58lV9VcRSjABbAbfWS6skp", "1aSxMhuvixZ8h9dK9jIDwL", "6DCIj8jNaNpBz8e5oKFPtp", "762310PdDnwsDxAQxzQkfX", "0WwSkZ7LtFUFjGjMZBMt6T", "0NKDgy9j66h3DLnN8qu1bB", "69Mj3u4FTUrpyeGNSIaU6F", "2tRsMl4eGxwoNabM08Dm4I", "1P8IfcNKwrkQP5xJWuhaOC", "4WquJweZPIK9qcfVFhTKvf", "2JRvXPGWiINrnJljNJhG5s", "5BcZ22XONcRoLhTbZRuME1", "4Z8W4fKeB5YxbusRsdQVPb", "2d0hyoQ5ynDBnkvAbJKORj", "1YLsqPcFg1rj7VvhfwnDWm", "7G1GBhoKtEPnP86X2PvEYO", "2dXf5lu5iilcaTQJZodce7", "2vQavlZtDA660mnZotYIto", "2jgPkn6LuUazBoBk6vvjh5", "2hO4YtXUFJiUYS2uYFvHNK", "6mQfAAqZGBzIfrmlZCeaYT");
 
 function inserttArtistsAndPop ($nominees2018) {
 

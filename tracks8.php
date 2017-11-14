@@ -2,6 +2,130 @@
 
 $albumsTracksArrays = array ();
 
+function divideCombineInsertTracksAndPop ($AlbumsTracks) {
+
+	$totalTracks = count($AlbumsTracks);
+	echo $totalTracks . '<br>';
+
+	// Divide all artist's tracks into chunks of 50
+	$tracksChunk = array ();
+	$x = ceil((count($AlbumsTracks))/50);
+
+	$firstTrack = 0;
+
+	for ($i=0; $i<$x; ++$i) {
+		$lastTrack = 49;
+		$tracksChunk = array_slice($AlbumsTracks, $firstTrack, $lastTrack);
+		// put chunks of 50 into an array
+		$albumsTracksArrays [] = $tracksChunk;
+		$firstTrack += 50;
+	};
+
+	for ($i=0; $i<(count($albumsTracksArrays)); ++$i) {
+				
+		$tracksThisTime = count($albumsTracksArrays[$i]);
+		echo $tracksThisTime . '<br>';
+
+		$trackIds = implode(',', $albumsTracksArrays[$i]);
+
+		// For each array of tracks (50 at a time), "get several tracks"
+		$bunchoftracks = $GLOBALS['api']->getTracks($trackIds);
+			
+		foreach ($bunchoftracks->tracks as $track) {
+			
+			$connekt = new mysqli($GLOBALS['host'], $GLOBALS['un'], $GLOBALS['magicword'], $GLOBALS['db']);
+			
+			if (!$connekt) {
+				echo 'Darn. Did not connect.';
+			};			
+
+			$trackID = $track->id;
+			$trackAlbumNameYucky = $track->album->name;
+			$trackAlbumName = mysqli_real_escape_string($connekt,$trackAlbumNameYucky);
+			$trackName = $track->name;
+			$trackPop = $track->popularity;
+			
+			$insertTrackInfo = "INSERT INTO tracks (trackID,trackName) VALUES('$trackID','$trackName')";
+	
+			$rockout = $connekt->query($insertTrackInfo);
+	
+			if(!$rockout){
+				echo 'Cursed-Crap. Could not insert track.';
+			}
+	
+			$insertTrackPop = "INSERT INTO popTracks (trackID,pop) VALUES('$trackID','$trackPop')";
+	
+			$rockpop = $connekt->query($insertTrackPop);
+			
+			if(!$rockpop){
+				echo 'Cursed-Crap. Could not insert track popularity.';
+			}
+	
+			else {
+				echo "<tr><td>" . $trackAlbumName . "</td><td>" . $trackName . "</td><td>" . $trackPop . "</td></tr>";
+			}
+		}
+	};
+}
+
+function divideCombineInsertPopTracks ($AlbumsTracks) {
+
+	$totalTracks = count($AlbumsTracks);
+	echo $totalTracks . '<br>';
+
+	// Divide all artist's tracks into chunks of 50
+	$tracksChunk = array ();
+	$x = ceil((count($AlbumsTracks))/50);
+
+	$firstTrack = 0;
+
+	for ($i=0; $i<$x; ++$i) {
+		$lastTrack = 49;
+		$tracksChunk = array_slice($AlbumsTracks, $firstTrack, $lastTrack);
+		// put chunks of 50 into an array
+		$albumsTracksArrays [] = $tracksChunk;
+		$firstTrack += 50;
+	};
+
+	for ($i=0; $i<(count($albumsTracksArrays)); ++$i) {
+				
+		$tracksThisTime = count($albumsTracksArrays[$i]);
+		echo $tracksThisTime . '<br>';
+
+		$trackIds = implode(',', $albumsTracksArrays[$i]);
+
+		// For each array of tracks (50 at a time), "get several tracks"
+		$bunchoftracks = $GLOBALS['api']->getTracks($trackIds);
+			
+		foreach ($bunchoftracks->tracks as $track) {
+			
+			$connekt = new mysqli($GLOBALS['host'], $GLOBALS['un'], $GLOBALS['magicword'], $GLOBALS['db']);
+			
+			if (!$connekt) {
+				echo 'Darn. Did not connect.';
+			};			
+
+			$trackID = $track->id;
+			$trackAlbumNameYucky = $track->album->name;
+			$trackAlbumName = mysqli_real_escape_string($connekt,$trackAlbumNameYucky);
+			$trackName = $track->name;
+			$trackPop = $track->popularity;
+	
+			$insertTrackPop = "INSERT INTO popTracks (trackID,pop) VALUES('$trackID','$trackPop')";
+	
+			$rockpop = $connekt->query($insertTrackPop);
+			
+			if(!$rockpop){
+				echo 'Cursed-Crap. Could not insert track popularity.';
+			}
+	
+			else {
+				echo "<tr><td>" . $trackAlbumName . "</td><td>" . $trackName . "</td><td>" . $trackPop . "</td></tr>";
+			}
+		}
+	};
+}
+
 function divideCombineTracks ($AlbumsTracks) {
 
 	$totalTracks = count($AlbumsTracks);
@@ -43,16 +167,16 @@ function divideCombineTracks ($AlbumsTracks) {
   
 }
 
-function showAlbums () {
+function showTracks () {
 	
-	$gatherAlbumInfo = "SELECT a.trackID, a.trackName, a.albumID, b.albumName, b.artistID, b.year, c.pop, d.artistName 
+	$gatherTrackInfo = "SELECT a.trackID, a.trackName, a.albumID, b.albumName, b.artistID, b.year, c.pop, d.artistName 
 		FROM tracks a
 			INNER JOIN albums b ON a.albumID = b.albumID
 			INNER JOIN popTracks c ON a.trackID = c.trackID
 			INNER JOIN artists d ON b.artistID = d.artistID
 				ORDER BY b.albumName ASC";
 
-	$getit = $connekt->query($gatherAlbumInfo);
+	$getit = $connekt->query($gatherTrackInfo);
 
 	while ($row = mysqli_fetch_array($getit)) {
 		// $artistID = $row["artistID"];

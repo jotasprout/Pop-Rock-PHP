@@ -47,7 +47,8 @@ function divideCombineAlbumsForTracks ($artistAlbums) {
 				
 			}
 
-			divideCombineTracks ($AlbumsTracks);
+			divideCombineInsertTracksAndPop ($AlbumsTracks);
+			// divideCombineInsertPopTracks ($AlbumsTracks);
 			unset($AlbumsTracks);
 			
 		}
