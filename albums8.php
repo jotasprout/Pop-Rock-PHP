@@ -183,6 +183,8 @@ function getAlbumsPop ($artistAlbums) {
 
 function showAlbums ($artistID) {
 
+	$connekt = new mysqli($GLOBALS['host'], $GLOBALS['un'], $GLOBALS['magicword'], $GLOBALS['db']);
+
 	$gatherAlbumInfo = "SELECT a.albumID, a.albumName, a.year, b.pop, a.artistID, c.artistName 
 		FROM albums a
 			INNER JOIN popAlbums b ON a.albumID = b.albumID
