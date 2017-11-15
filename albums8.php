@@ -181,12 +181,13 @@ function getAlbumsPop ($artistAlbums) {
   
 }
 
-function showAlbums () {
+function showAlbums ($artistID) {
 
 	$gatherAlbumInfo = "SELECT a.albumID, a.albumName, a.year, b.pop, a.artistID, c.artistName 
 		FROM albums a
 			INNER JOIN popAlbums b ON a.albumID = b.albumID
 			INNER JOIN artists c ON a.artistID = c.artistID
+			WHERE a.artistID = '$artistID'
 				ORDER BY a.year ASC";
 
 	$getit = $connekt->query($gatherAlbumInfo);
