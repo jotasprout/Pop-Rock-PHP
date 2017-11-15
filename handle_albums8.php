@@ -32,15 +32,11 @@ $artistID = $_POST['artist'];
 
 <nav class='navbar navbar-default'>	
 	<div id='header' class='container-fluid'>		
-		<h1 class="hide"><a href="index.php">Stakeout</a></h1>
 		<ul class='nav navbar-nav'>		
-		<li><a id='home' href='http://www.roxorsoxor.com/stakeout/index.php'>Home</a></li>						
-		<li><a id='cases' href='http://www.roxorsoxor.com/stakeout/cases.php'>Cases</a></li>				
-		<li><a href='http://www.roxorsoxor.com/stakeout/observations.php'>Observations</a></li>				
-		<li><a href='http://www.roxorsoxor.com/stakeout/gators.php'>Investigators</a></li>				
-		<li><a href='http://www.roxorsoxor.com/stakeout/assignments.php'>Assignments</a></li>	
-		<li><a href='http://www.roxorsoxor.com/stakeout/reports.php'>Reports</a></li>
-		<li><a href='http://www.roxorsoxor.com/stakeout/logout.php'>Logout</a></li>			
+			<li><a id='home' href='http://www.roxorsoxor.com/stakeout/index.php'>Choose Artist</a></li>					
+			<li><a id='cases' href='https://roxorsoxor.com/poprock/handle_artists8.php'>Artists</a></li>				
+			<li><a href='https://roxorsoxor.com/poprock/handle_albums8.php'>Albums</a></li>				
+			<li><a href='https://roxorsoxor.com/poprock/handle_tracks8.php'>Tracks</a></li>						
 		</ul>
 	</div> <!-- /container-fluid -->   
 </nav> <!-- /navbar -->	
@@ -49,7 +45,7 @@ $artistID = $_POST['artist'];
 	
 <div class="panel panel-primary">
 	<div class="panel-heading">
-		<h3 class="panel-title">Cases</h3>
+		<h3 class="panel-title">Albums</h3>
 	</div>
 	<div class="panel-body"> 
 		
@@ -79,8 +75,8 @@ foreach ($discography->items as $album) {
 	
 }
 
-$howmanytotal = count($artistAlbums);
-echo $howmanytotal . '<br>';
+// $howmanytotal = count($artistAlbums);
+// echo $howmanytotal . '<br>';
 
 // getAlbumsPop ($artistAlbums);
 // divideCombineAlbums ($artistAlbums);
@@ -90,8 +86,9 @@ showAlbums ($artistID);
 
 </table>
 </div> <!-- panel body -->
-<footer class="footer"><p>&copy; Sprout Means Grow and RoxorSoxor 2017</p></footer>
+
     </div> <!-- closing container -->
+	<footer class="footer"><p>&copy; Sprout Means Grow and RoxorSoxor 2017</p></footer>
 <?php echo $scriptsAndSuch; ?>
 
 </body>
