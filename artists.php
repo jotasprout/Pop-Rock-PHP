@@ -89,6 +89,31 @@ function inserttArtistsAndPop ($nominees2018) {
 
 }
 
+function getArtistsPopCron ($artists) {
+	
+	$artistsIds = implode(',', $artists);
+
+	$bunchofartists = $GLOBALS['api']->getArtists($artistsIds);
+
+	foreach ($bunchofartists->artists as $artist) {
+
+		$artistID = $artist->id;
+		$artistName = $artist->name;
+		$artistPop = $artist->popularity;
+
+		$insertArtistsPop = "INSERT INTO popArtists (artistID,pop) VALUES('$artistID','$artistPop')";
+
+		$connekt = new mysqli($GLOBALS['host'], $GLOBALS['un'], $GLOBALS['magicword'], $GLOBALS['db']);
+
+		$rockout = $connekt->query($insertArtistsPop);
+
+		// When attempt is complete, connection closes
+		mysqli_close($connekt);
+
+	}
+
+}
+
 function getArtistsPop ($artists) {
 				
 	$artistsIds = implode(',', $artists);
