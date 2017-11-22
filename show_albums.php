@@ -16,11 +16,6 @@ $GLOBALS['api']->setAccessToken($accessToken);
 // could next line go in artist class?
 $artistID = $_POST['artist'];
 
-// could these be methods in the artist class?    
-// $artist = $GLOBALS['api']->getArtist($artistID);
-// $artistName = $artist->name;
-// $artistPop = $artist->popularity;
-
 ?>
 
 <!DOCTYPE html><html>
@@ -47,29 +42,6 @@ $artistID = $_POST['artist'];
 echo '<table class="table">';
 echo '<tr><th>Artist Name</th><th>Album Name</th><th>Released</th><th>Popularity</th></tr>';
 
-$discography = $GLOBALS['api']->getArtistAlbums($artistID, [
-	'market' => 'us',
-	// Removing next line because most users probably grab most popular songs from compilations
-	// 'album_type' => 'album',
-	'limit' => '50'
-]);
-
-// should be method in albums class
-foreach ($discography->items as $album) {
-	
-	// Get each albumID for requesting Full Album Object with popularity
-	$albumID = $album->id;
-	
-	// Put albumIDs in array for requesting several at a time (far fewer requests)
-	$artistAlbums [] = $albumID;
-	
-}
-
-// $howmanytotal = count($artistAlbums);
-// echo $howmanytotal . '<br>';
-
-// getAlbumsPop ($artistAlbums);
-// divideCombineAlbums ($artistAlbums);
 showAlbums ($artistID);
 
 ?>

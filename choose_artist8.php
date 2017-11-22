@@ -25,7 +25,7 @@
 <body>
 	<div class="container">
     
-            <form class="form-horizontal" id="rockinForm" action="handle_tracks8.php" method="post">
+            <form class="form-horizontal" id="rockinForm" action="show_albums.php" method="post">
                 <fieldset>
                     <legend>Ye Olde Select An Artist Menu</legend>
     

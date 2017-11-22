@@ -186,10 +186,11 @@ function getArtistsAndPop ($artists) {
 
 function showArtists () {
 	
-	$artistInfo = "SELECT a.artistID, a.artistName, b.pop 
+	$artistInfo = "SELECT a.artistID, a.artistName, b.pop, b.date 
 		FROM artists a
 			INNER JOIN popArtists b ON a.artistID = b.artistID
-				ORDER BY a.artistName ASC";
+				WHERE b.date = (select max(b.date))
+		ORDER BY a.artistName ASC";
 
 	// how do I get most recent pop?
 

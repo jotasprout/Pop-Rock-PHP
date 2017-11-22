@@ -185,12 +185,13 @@ function showAlbums ($artistID) {
 
 	$connekt = new mysqli($GLOBALS['host'], $GLOBALS['un'], $GLOBALS['magicword'], $GLOBALS['db']);
 
-	$gatherAlbumInfo = "SELECT a.albumID, a.albumName, a.year, b.pop, a.artistID, c.artistName 
+	$gatherAlbumInfo = "SELECT a.albumID, a.albumName, a.year, b.pop, b.date, a.artistID, c.artistName 
 		FROM albums a
 			INNER JOIN popAlbums b ON a.albumID = b.albumID
+				WHERE b.date = (select max(b.date))
 			INNER JOIN artists c ON a.artistID = c.artistID
-			WHERE a.artistID = '$artistID'
-				ORDER BY a.year ASC";
+				WHERE a.artistID = '$artistID'
+					ORDER BY a.year ASC";
 
 	$getit = $connekt->query($gatherAlbumInfo);
 
