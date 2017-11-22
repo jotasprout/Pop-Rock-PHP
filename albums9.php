@@ -157,6 +157,7 @@ function getAlbumsPop ($artistAlbums) {
 			$connekt = new mysqli($GLOBALS['host'], $GLOBALS['un'], $GLOBALS['magicword'], $GLOBALS['db']);
 	
 			$albumID = $album->id;
+			$artistName = $album->artists[0]->name;
 			$albumPop = $album->popularity;
 			$albumNameYucky = $album->name;
 			$albumName = mysqli_real_escape_string($connekt,$albumNameYucky);
@@ -173,8 +174,13 @@ function getAlbumsPop ($artistAlbums) {
 			if(!$rockout){
 				echo 'Sweet & Sour Crap! Could not insert albums popularity.';
 			}
-		
-            echo '<tr><td>' . $thisArtistID . '</td><td>' . $thisArtistName . '</td><td>' . $albumName . '</td><td>' . $albumReleased . '</td><<td>' . $albumPop . '</td></tr>';
+						
+			echo "<tr>";
+			echo "<td>" . $artistName . "</td>";
+			echo "<td>" . $albumName . "</td>";
+			echo "<td>" . $albumReleased . "</td>";
+			echo "<td>" . $albumPop . "</td>";
+			echo "</tr>";
 
 		}
 	};
@@ -195,10 +201,19 @@ function showAlbums ($artistID) {
 				WHERE a.artistID = '$artistID'
 					ORDER BY a.year ASC";
 
-	// the next line works in stakeout but not here
+	$query2 = "SELECT a.albumID, a.albumName, a.year, b.pop, a.artistID, c.artistName 
+		FROM albums a 
+			INNER JOIN popAlbums b ON a.albumID = b.albumID
+				WHERE b.date = (select max(b2.date)
+								FROM popAlbums b2)
+			INNER JOIN artists c ON c.artistID = a.artistID
+				WHERE a.artistID = '$artistID'
+					ORDER BY a.year ASC";
+
+// the next line works in stakeout but not here
 	// $result = $connekt->query($query);
 
-	$result = mysqli_query($connekt,$query);
+	$result = mysqli_query($connekt,$query2);
 
 	while ($row = mysqli_fetch_array($result)) {
 		// $artistID = $row["artistID"];

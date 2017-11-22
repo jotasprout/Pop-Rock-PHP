@@ -176,7 +176,7 @@ function showTracks () {
 			INNER JOIN albums b ON a.albumID = b.albumID
 			INNER JOIN popTracks c ON a.trackID = c.trackID
 			INNER JOIN artists d ON b.artistID = d.artistID
-				ORDER BY b.albumName ASC";
+				ORDER BY b.trackName ASC";
 
 	$getit = $connekt->query($gatherTrackInfo);
 
@@ -189,10 +189,8 @@ function showTracks () {
 		$trackPop = $row["pop"];
 		
 		echo "<tr>";
-		echo "<td>" . $artistName . "</td>";
 		echo "<td>" . $albumName . "</td>";
 		echo "<td>" . $trackName . "</td>";
-		echo "<td>" . $albumReleased . "</td>";
 		echo "<td>" . $trackPop . "</td>";
 		echo "</tr>";
 	}

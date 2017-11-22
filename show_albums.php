@@ -13,7 +13,7 @@ $accessToken = $_SESSION['accessToken'];
 $GLOBALS['api'] = new SpotifyWebAPI\SpotifyWebAPI();
 $GLOBALS['api']->setAccessToken($accessToken);
 
-// could next line go in artist class?
+// $artistID = $_SESSION['artist'];
 $artistID = $_POST['artist'];
 
 ?>

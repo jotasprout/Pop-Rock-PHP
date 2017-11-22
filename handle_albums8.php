@@ -5,7 +5,7 @@ session_start();
 require 'vendor/autoload.php';
 require_once 'navbar_rock.php';
 require_once 'stylesAndScripts.php';
-require_once 'albums8.php';
+require_once 'albums9.php';
 
 // Fetch saved access token
 $accessToken = $_SESSION['accessToken'];
@@ -14,7 +14,9 @@ $GLOBALS['api'] = new SpotifyWebAPI\SpotifyWebAPI();
 $GLOBALS['api']->setAccessToken($accessToken);
 
 // could next line go in artist class?
+
 $artistID = $_POST['artist'];
+$_SESSION['artist'] = $artistID;
 
 // could these be methods in the artist class?    
 // $artist = $GLOBALS['api']->getArtist($artistID);
@@ -68,9 +70,8 @@ foreach ($discography->items as $album) {
 // $howmanytotal = count($artistAlbums);
 // echo $howmanytotal . '<br>';
 
-// getAlbumsPop ($artistAlbums);
+getAlbumsPop ($artistAlbums);
 // divideCombineAlbums ($artistAlbums);
-showAlbums ($artistID);
 
 ?>
 
