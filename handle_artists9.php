@@ -1,21 +1,25 @@
 <?php
 
 session_start();
-
+require 'spotifySecrets.php';
 require 'vendor/autoload.php';
 require_once 'rockdb.php';
+require_once 'navbar_rock.php';
 require_once 'stylesAndScripts.php';
 require_once 'artists.php';
 
-// Fetch saved access token
+$session = new SpotifyWebAPI\Session($myClientID, $myClientSecret);
+
+$session->requestCredentialsToken();
+$accessToken = $session->getAccessToken();
+
+// I don't think the cron needs this next line 
+$_SESSION['accessToken'] = $accessToken;
+// and I don't think the cron needs this next line either
 $accessToken = $_SESSION['accessToken'];
 
-// $GLOBALS['api'] = new SpotifyWebAPI\SpotifyWebAPI();
 $GLOBALS['api'] = new SpotifyWebAPI\SpotifyWebAPI();
 $GLOBALS['api']->setAccessToken($accessToken);
-
-// could these be methods in the artist class?    
-// $artist = $GLOBALS['api']->getArtists($artists);
 
 ?>
 

@@ -45,6 +45,73 @@ $ChakaKhan = new artist ("Chaka Khan", "6mQfAAqZGBzIfrmlZCeaYT");
 
 $nominees2018 = array ("58lV9VcRSjABbAbfWS6skp", "1aSxMhuvixZ8h9dK9jIDwL", "6DCIj8jNaNpBz8e5oKFPtp", "762310PdDnwsDxAQxzQkfX", "0WwSkZ7LtFUFjGjMZBMt6T", "0NKDgy9j66h3DLnN8qu1bB", "69Mj3u4FTUrpyeGNSIaU6F", "2tRsMl4eGxwoNabM08Dm4I", "1P8IfcNKwrkQP5xJWuhaOC", "4WquJweZPIK9qcfVFhTKvf", "2JRvXPGWiINrnJljNJhG5s", "5BcZ22XONcRoLhTbZRuME1", "4Z8W4fKeB5YxbusRsdQVPb", "2d0hyoQ5ynDBnkvAbJKORj", "1YLsqPcFg1rj7VvhfwnDWm", "7G1GBhoKtEPnP86X2PvEYO", "2dXf5lu5iilcaTQJZodce7", "2vQavlZtDA660mnZotYIto", "2jgPkn6LuUazBoBk6vvjh5", "2hO4YtXUFJiUYS2uYFvHNK", "6mQfAAqZGBzIfrmlZCeaYT");
 
+
+$allArtists = array ("3k4YA0uPsWc2PuOQlJNpdH","3EhbVgyfGd7HkpsagwL9GS","0oSGxfWSnnOXhD2fKuz2Gy","74ASZWbe4lXaubB36ztrGX","7dnB1wSxbYa8CejeVg98hz","3lPQ2Fk5JOwGWAF3ORFCqH","4BFMTELQyWJU1SwqcXMBm3","3eqjTLE0HfPfh78zjh6TqT","07XSN3sPlIlB2L2XNcTwJw","33EUXrFKGjpUSGacqEHhU4","1l8grPt6eiOS4YlzjIs0LF","22bE4uQ6baNwSHPVcDxLCe","2UZMlIwnkgAEDBsw1Rejkn","4tX2TplrkIP4v05BNC903e","58lV9VcRSjABbAbfWS6skp", "1aSxMhuvixZ8h9dK9jIDwL", "6DCIj8jNaNpBz8e5oKFPtp", "762310PdDnwsDxAQxzQkfX", "0WwSkZ7LtFUFjGjMZBMt6T", "0NKDgy9j66h3DLnN8qu1bB", "69Mj3u4FTUrpyeGNSIaU6F", "2tRsMl4eGxwoNabM08Dm4I", "1P8IfcNKwrkQP5xJWuhaOC", "4WquJweZPIK9qcfVFhTKvf", "2JRvXPGWiINrnJljNJhG5s", "5BcZ22XONcRoLhTbZRuME1", "4Z8W4fKeB5YxbusRsdQVPb", "2d0hyoQ5ynDBnkvAbJKORj", "1YLsqPcFg1rj7VvhfwnDWm", "7G1GBhoKtEPnP86X2PvEYO", "2dXf5lu5iilcaTQJZodce7", "2vQavlZtDA660mnZotYIto", "2jgPkn6LuUazBoBk6vvjh5", "2hO4YtXUFJiUYS2uYFvHNK", "6mQfAAqZGBzIfrmlZCeaYT");
+
+function divideCombineArtists ($allArtists) {
+	
+	$totalTracks = count($allArtists);
+
+	// Divide all artists into chunks of 50
+	$artistsChunk = array ();
+	$x = ceil((count($allArtists))/50);
+
+	$firstArtist = 0;
+
+	for ($i=0; $i<$x; ++$i) {
+		$lastArtist = 49;
+		$artistsChunk = array_slice($allArtists, $firstArtist, $lastArtist);
+		// put chunks of 50 into an array
+		$artistsArrays [] = $artistsChunk;
+		$firstArtist += 50;
+	};
+
+	for ($i=0; $i<(count($artistsArrays)); ++$i) {
+				
+		$artistsThisTime = count($artistsArrays[$i]);
+
+		$artistIds = implode(',', $artistsArrays[$i]);
+
+		// For each array of artists (50 at a time), "get several artists"
+		$bunchofartists = $GLOBALS['api']->getTracks($artistIds);
+			
+		foreach ($bunchofartists->artists as $artist) {
+
+			$artistID = $artist->id;
+			$artistNameYucky = $artist->name;
+			$artistName = mysqli_real_escape_string($connekt,$artistNameYucky);
+			$artistPop = $artist->popularity;
+			$insertArtistsInfo = "INSERT INTO artists (artistID,artistName) VALUES('$artistID','$artistName')";
+			
+			if (!$connekt) {
+				echo 'Darn. Did not connect.';
+			};
+	
+			$rockout = $connekt->query($insertArtistsInfo);
+	
+			if(!$rockout){
+				echo 'Cursed-Crap. Could not insert artists.';
+			}
+	
+			$insertArtistsPop = "INSERT INTO popArtists (artistID,pop) VALUES('$artistID','$artistPop')";
+	
+			$rockpop = $connekt->query($insertArtistsPop);
+			
+			if(!$rockpop){
+				echo 'Cursed-Crap. Could not insert artists popularity.';
+			}
+	
+			else {
+				echo '<tr><td>' . $artistName . '</td><td>' . $artistPop . '</td></tr>';
+			}
+		}
+	};
+	
+}
+
+
+
+
 function inserttArtistsAndPop ($nominees2018) {
 
 	$connekt = new mysqli($GLOBALS['host'], $GLOBALS['un'], $GLOBALS['magicword'], $GLOBALS['db']);
@@ -185,16 +252,22 @@ function getArtistsAndPop ($artists) {
 }
 
 function showArtists () {
+
+	$connekt = new mysqli($GLOBALS['host'], $GLOBALS['un'], $GLOBALS['magicword'], $GLOBALS['db']);
 	
 	$artistInfo = "SELECT a.artistID, a.artistName, b.pop, b.date 
 		FROM artists a
 			INNER JOIN popArtists b ON a.artistID = b.artistID
-				WHERE b.date = (select max(b.date))
 		ORDER BY a.artistName ASC";
 
-	// how do I get most recent pop?
+	$artistInfo2 = "SELECT a.artistID, a.artistName, b.pop, b.date 
+		FROM artists a
+			INNER JOIN popArtists b ON a.artistID = b.artistID
+				WHERE b.date = (select max(b2.date)
+								FROM popArtists b2)
+		ORDER BY a.artistName ASC";
 
-	$getit = $connekt->query($artistInfo);
+	$getit = $connekt->query($artistInfo2);
 
 	while ($row = mysqli_fetch_array($getit)) {
 		// $artistID = $row["artistID"];
