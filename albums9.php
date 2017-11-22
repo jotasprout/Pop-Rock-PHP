@@ -199,21 +199,30 @@ function showAlbums ($artistID) {
 			INNER JOIN popAlbums b ON a.albumID = b.albumID
 			INNER JOIN artists c ON a.artistID = c.artistID
 				WHERE a.artistID = '$artistID'
-					ORDER BY a.year ASC";
+					ORDER BY a.year ASC;";
 
 	$query2 = "SELECT a.albumID, a.albumName, a.year, b.pop, a.artistID, c.artistName 
-		FROM albums a 
+		FROM popAlbums b
+		 ON a.artistID = '$artistID'
 			INNER JOIN popAlbums b ON a.albumID = b.albumID
 				WHERE b.date = (select max(b2.date)
 								FROM popAlbums b2)
-			INNER JOIN artists c ON c.artistID = a.artistID
-				WHERE a.artistID = '$artistID'
+			INNER JOIN artists c ON a.artistID = c.artistID
+				
 					ORDER BY a.year ASC";
+
+	$query3 = "SELECT a.albumID, a.albumName, a.artistID, a.year, b.artistName, c.pop, c.date
+		FROM albums a ON a.artistID = '$artistID'
+			INNER JOIN artists b ON b.artistID = a.artistID
+			INNER JOIN popAlbums c ON c.albumID = a.albumID
+				WHERE c.date = (SELECT max (c2.date)
+								FROM popAlbums c2)
+		ORDER BY a.year ASC";
 
 // the next line works in stakeout but not here
 	// $result = $connekt->query($query);
 
-	$result = mysqli_query($connekt,$query2);
+	$result = mysqli_query($connekt,$query3);
 
 	while ($row = mysqli_fetch_array($result)) {
 		// $artistID = $row["artistID"];
