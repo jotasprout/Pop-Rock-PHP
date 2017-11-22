@@ -73,37 +73,19 @@ function divideCombineArtists ($allArtists) {
 		$artistIds = implode(',', $artistsArrays[$i]);
 
 		// For each array of artists (50 at a time), "get several artists"
-		$bunchofartists = $GLOBALS['api']->getTracks($artistIds);
+		$bunchofartists = $GLOBALS['api']->getArtists($artistIds);
 			
 		foreach ($bunchofartists->artists as $artist) {
-
+			$connekt = new mysqli($GLOBALS['host'], $GLOBALS['un'], $GLOBALS['magicword'], $GLOBALS['db']);
 			$artistID = $artist->id;
 			$artistNameYucky = $artist->name;
 			$artistName = mysqli_real_escape_string($connekt,$artistNameYucky);
 			$artistPop = $artist->popularity;
-			$insertArtistsInfo = "INSERT INTO artists (artistID,artistName) VALUES('$artistID','$artistName')";
-			
-			if (!$connekt) {
-				echo 'Darn. Did not connect.';
-			};
-	
-			$rockout = $connekt->query($insertArtistsInfo);
-	
-			if(!$rockout){
-				echo 'Cursed-Crap. Could not insert artists.';
-			}
 	
 			$insertArtistsPop = "INSERT INTO popArtists (artistID,pop) VALUES('$artistID','$artistPop')";
 	
 			$rockpop = $connekt->query($insertArtistsPop);
 			
-			if(!$rockpop){
-				echo 'Cursed-Crap. Could not insert artists popularity.';
-			}
-	
-			else {
-				echo '<tr><td>' . $artistName . '</td><td>' . $artistPop . '</td></tr>';
-			}
 		}
 	};
 	
