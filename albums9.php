@@ -188,10 +188,9 @@ function showAlbums ($artistID) {
 
 	$connekt = new mysqli($GLOBALS['host'], $GLOBALS['un'], $GLOBALS['magicword'], $GLOBALS['db']);
 
-	$query = "SELECT a.albumID, a.albumName, a.year, b.pop, b.date, a.artistID, c.artistName 
+	$query = "SELECT a.albumID, a.albumName, a.year, b.pop, a.artistID, c.artistName 
 		FROM albums a
 			INNER JOIN popAlbums b ON a.albumID = b.albumID
-				WHERE b.date = max(b.date)
 			INNER JOIN artists c ON a.artistID = c.artistID
 				WHERE a.artistID = '$artistID'
 					ORDER BY a.year ASC";
