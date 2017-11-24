@@ -206,6 +206,30 @@ function showAlbums ($artistID) {
 			INNER JOIN artists c ON a.artistID = c.artistID
 				WHERE a.artistID = '$artistID'
 					ORDER BY a.year ASC;";
+					
+	$maybe = "SELECT  R.SId ,R.SName,R.Sprice
+				FROM (SELECT  Staff.SId ,Staff.SName,Sprice,updateStaff.SDate,updateStaff.stime
+					  FROM Staff
+						LEFT JOIN updateStaff ON Staff.SId = updateStaff.SId ) AS R
+				WHERE R.stime = (SELECT MAX(stime) FROM updateStaff us WHERE us.SId =R.SId
+					  and us.sdate =(select max(sdate) from updateStaff us2 where us2.sid = us.sid))
+				ORDER BY R.SId , R.SName;";
+				
+	$maybe2 = "SELECT	b.ID,
+						b.BookingID,
+						a.Name,
+						b.departureDate,
+						b.Amount
+				FROM    Table1 a
+						INNER JOIN Table2 b
+							ON a.ID = b.BookingID
+						INNER JOIN
+						(
+							SELECT  BookingID, MAX(DepartureDate) Max_Date
+							FROM    Table2
+							GROUP   BY BookingID
+						) c ON  b.BookingID = c.BookingID AND
+								b.DepartureDate = c.Max_date";
 
 // the next line works in stakeout but not here
 	// $result = $connekt->query($query);
