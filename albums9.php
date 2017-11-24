@@ -189,40 +189,28 @@ function getAlbumsPop ($artistAlbums) {
 
 function showAlbums ($artistID) {
 
-	// $thisArtist = $artistID;
-	// before trying above I am trying 201
-
 	$connekt = new mysqli($GLOBALS['host'], $GLOBALS['un'], $GLOBALS['magicword'], $GLOBALS['db']);
 
-	$query = "SELECT a.albumID, a.albumName, a.year, b.pop, a.artistID, c.artistName 
+	$query = "SELECT a.albumID, a.albumName, a.artistID, a.year, b.pop, c.artistName 
 		FROM albums a
 			INNER JOIN popAlbums b ON a.albumID = b.albumID
 			INNER JOIN artists c ON a.artistID = c.artistID
 				WHERE a.artistID = '$artistID'
 					ORDER BY a.year ASC;";
 
-	$query2 = "SELECT a.albumID, a.albumName, a.year, b.pop, a.artistID, c.artistName 
-		FROM popAlbums b
-		 ON a.artistID = '$artistID'
+	$query2 = "SELECT a.albumID, a.albumName, a.artistID, a.year, b.pop, b.date, c.artistName
+		FROM albums a 
 			INNER JOIN popAlbums b ON a.albumID = b.albumID
-				WHERE b.date = (select max(b2.date)
+				WHERE b.date = (SELECT max(b2.date)
 								FROM popAlbums b2)
 			INNER JOIN artists c ON a.artistID = c.artistID
-				
-					ORDER BY a.year ASC";
-
-	$query3 = "SELECT a.albumID, a.albumName, a.artistID, a.year, b.artistName, c.pop, c.date
-		FROM albums a ON a.artistID = '$artistID'
-			INNER JOIN artists b ON b.artistID = a.artistID
-			INNER JOIN popAlbums c ON c.albumID = a.albumID
-				WHERE c.date = (SELECT max (c2.date)
-								FROM popAlbums c2)
-		ORDER BY a.year ASC";
+				WHERE a.artistID = '$artistID'
+					ORDER BY a.year ASC;";
 
 // the next line works in stakeout but not here
 	// $result = $connekt->query($query);
 
-	$result = mysqli_query($connekt,$query3);
+	$result = mysqli_query($connekt,$query2);
 
 	while ($row = mysqli_fetch_array($result)) {
 		// $artistID = $row["artistID"];
