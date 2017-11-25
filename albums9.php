@@ -48,13 +48,10 @@ function divideCombineAlbumsForTracks ($artistAlbums) {
 			}
 
 			divideCombineInsertTracksAndPop ($AlbumsTracks);
-			// divideCombineInsertPopTracks ($AlbumsTracks);
 			unset($AlbumsTracks);
 			
-		}
-		
+		}		
 	};
-	
 }
 
 function divideCombineAlbums ($artistAlbums) {
@@ -68,8 +65,7 @@ function divideCombineAlbums ($artistAlbums) {
     for ($i=0; $i<$x; ++$i) {
 	  $lastAlbum = 19;
 	  $artistAlbumsChunk = array_slice($artistAlbums, $firstAlbum, $lastAlbum);
-	  // $howmanytotal = count($artistAlbumsChunk);
-	  // echo $howmanytotal . '<br>';
+
 	  // put chunks of 20 into an array
       $albumsArrays [] = $artistAlbumsChunk;
       $firstAlbum += 20;
@@ -95,7 +91,6 @@ function divideCombineAlbums ($artistAlbums) {
 			$albumID = $album->id;	
 			$albumNameYucky = $album->name;
 			$albumName = mysqli_real_escape_string($connekt,$albumNameYucky);
-			// $albumName = mysqli_real_escape_string($connekt, htmlspecialchars($albumNameYucky));
 			$albumReleasedWhole = $album->release_date;
 			$albumReleased = substr($albumReleasedWhole, 0, 4);
 			$thisArtistID = $album->artists[0]->id;
@@ -206,6 +201,16 @@ function showAlbums ($artistID) {
 			INNER JOIN artists c ON a.artistID = c.artistID
 				WHERE a.artistID = '$artistID'
 					ORDER BY a.year ASC;";
+
+	$query3 = "SELECT a.albumID, a.albumName, a.artistID, a.year, b.pop, b.date, c.artistName
+	FROM albums a ON a.artistID = '$artistID'
+		LEFT JOIN popAlbums b ON a.albumID = b.albumID
+			AND b.date = (SELECT max(b2.date)
+							FROM popAlbums b2)
+		INNER JOIN artists c ON a.artistID = c.artistID
+				ORDER BY a.year ASC;";
+
+	$query4 = "SELECT albumID, pop, max(date) FROM popAlbums ";
 					
 	$maybe = "SELECT  R.SId ,R.SName,R.Sprice
 				FROM (SELECT  Staff.SId ,Staff.SName,Sprice,updateStaff.SDate,updateStaff.stime
@@ -225,16 +230,15 @@ function showAlbums ($artistID) {
 							ON a.ID = b.BookingID
 						INNER JOIN
 						(
-							SELECT  BookingID, MAX(DepartureDate) Max_Date
-							FROM    Table2
-							GROUP   BY BookingID
-						) c ON  b.BookingID = c.BookingID AND
+							SELECT  pop, MAX(date) mostRecentPop
+							FROM    popAlbums
+						) c ON  a.albumID = b.albumID AND
 								b.DepartureDate = c.Max_date";
 
 // the next line works in stakeout but not here
 	// $result = $connekt->query($query);
 
-	$result = mysqli_query($connekt,$query2);
+	$result = mysqli_query($connekt,$query3);
 
 	while ($row = mysqli_fetch_array($result)) {
 		// $artistID = $row["artistID"];
