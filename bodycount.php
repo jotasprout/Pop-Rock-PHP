@@ -1,33 +1,15 @@
+<?php
+
+    require_once 'stylesAndScripts.php';
+    require_once 'navbar_rock.php';
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
-
-		<link rel="stylesheet" type="text/css" href="js/bootstrap/css/bootstrap.min.css">
-	    <script src="js/bootstrap/js/bootstrap.min.js"></script>
-	    <link rel="stylesheet" type="text/css" href="js/bootstrap/css/justified-nav.css">
-
-	    <script src="js/jquery-214.js" language="javascript" type="text/javascript"></script>
-
-		<LINK href="favicon.ico" rel="icon" type="image/x-icon">
-	    <LINK href="favicon.ico" rel="shortcut icon" type="image/x-icon">
-	    <LINK href="favicon.ico" rel="icon" type="image/ico">
-
-		<title>Bodycount Using D3 and SVG</title>
-		<script type="text/javascript" src="/js/d3/d3.js"></script>
-		<style type="text/css">
-		/*
-			rect {
-				-moz-transition: all 0.3s;
-				-o-transition: all 0.3s;
-				-webkit-transition: all 0.3s;
-				transition: all 0.3s;
-			}
-			rect:hover {
-				fill: red;
-			}
-		*/
-		</style>
+		<?php echo $stylesAndSuch; ?>
 	</head>
 
 	<body>
@@ -41,26 +23,7 @@
 
 			</div> <!-- /masthead -->
 	    
-		    <nav class="navbar navbar-default">
-				<div class="container-fluid">
-		    		<div class="navbar-header">
-		      			<a class="navbar-brand" href="http://www.jotascript.com">Home</a>
-		    		</div>
-		    		
-		            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-		    			<ul class="nav navbar-nav">
-		                    <li><a href="http://www.jotascript.com/tutes/tutes.htm">Tutorials</a></li>
-		                    <li><a href="http://www.jotascript.com/education.htm">Education<span class="sr-only"> (current)</span></a></li>
-		                    <li><a href="http://www.jotascript.com/experience.htm">Experience</a></li>
-					    </ul>
-		      
-						<ul class="nav navbar-nav navbar-right">
-							<li><a href="https://jotascript.wordpress.com">Blog</a></li>
-						</ul>
-					</div> <!-- /collapse -->
-				</div> <!-- /container-fluid -->
-		  
-			</nav> <!-- /navbar -->
+		    <?php echo $navbar ?> <!-- /navbar -->
 
 			<div id="forChart"> <!-- main -->
 				<script type="text/javascript">

@@ -28,19 +28,17 @@ $GLOBALS['api']->setAccessToken($accessToken);
 <body>
 
 <div class="container">
+    <?php echo $navbar ?>
+    <table class="table">
+    <tr><th>Artist Name</th><th>Popularity</th></tr>
 
-<?php
-echo '<table class="table">';
-echo '<tr><th>Artist Name</th><th>Popularity</th></tr>';
+        <?php 
+            divideCombineArtists ($allArtists);
+        ?>
+    </table>
 
-divideCombineArtists ($allArtists);
+</div> <!-- closing container -->
 
-echo '</table>';
-
-?>
-
-</table>
-    </div> <!-- closing container -->
 <?php echo $scriptsAndSuch; ?>
 <footer class="footer"><p>&copy; Sprout Means Grow and RoxorSoxor 2017</p></footer>
 </body>

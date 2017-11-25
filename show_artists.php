@@ -1,48 +1,47 @@
 <?php
 
-session_start();
-require 'spotifySecrets.php';
-require 'vendor/autoload.php';
-require_once 'rockdb.php';
-require_once 'navbar_rock.php';
-require_once 'stylesAndScripts.php';
-require_once 'artists.php';
+    session_start();
+    require 'spotifySecrets.php';
+    require 'vendor/autoload.php';
+    require_once 'rockdb.php';
+    require_once 'navbar_rock.php';
+    require_once 'stylesAndScripts.php';
+    require_once 'artists.php';
 
-$session = new SpotifyWebAPI\Session($myClientID, $myClientSecret);
+    $session = new SpotifyWebAPI\Session($myClientID, $myClientSecret);
 
-$session->requestCredentialsToken();
-$accessToken = $session->getAccessToken();
+    $session->requestCredentialsToken();
+    $accessToken = $session->getAccessToken();
 
-// I don't think the cron needs this next line 
-$_SESSION['accessToken'] = $accessToken;
-// and I don't think the cron needs this next line either
-$accessToken = $_SESSION['accessToken'];
+    $_SESSION['accessToken'] = $accessToken;
+    $accessToken = $_SESSION['accessToken'];
 
-$GLOBALS['api'] = new SpotifyWebAPI\SpotifyWebAPI();
-$GLOBALS['api']->setAccessToken($accessToken);
+    $GLOBALS['api'] = new SpotifyWebAPI\SpotifyWebAPI();
+    $GLOBALS['api']->setAccessToken($accessToken);
 
 ?>
 
-<!DOCTYPE html><html>
-<head><meta charset="UTF-8"><title>Artists and Such</title><?php echo $stylesAndSuch; ?></head>
-<body>
+<!DOCTYPE html>
 
-<div class="container">
-	<?php echo $navbar ?>
+<html>
+    <head><meta charset="UTF-8"><title>Artists and Such</title><?php echo $stylesAndSuch; ?></head>
 
-<?php
-echo '<table class="table">';
-echo '<tr><th>Artist Name</th><th>Popularity</th></tr>';
+    <body>
 
-showArtists ();
+        <div class="container">
+            <?php echo $navbar ?>
 
-echo '</table>';
+            <!-- D3 chart goes here -->
 
-?>
+            <table class="table">
+                <tr><th>Artist Name</th><th>Popularity</th></tr>
+                <?php showArtists (); ?>
+            </table>
 
-</table>
-    </div> <!-- closing container -->
-<?php echo $scriptsAndSuch; ?>
-<footer class="footer"><p>&copy; Sprout Means Grow and RoxorSoxor 2017</p></footer>
-</body>
+        </div> <!-- close container -->
+        
+        <?php echo $scriptsAndSuch; ?>
+        <footer class="footer"><p>&copy; Sprout Means Grow and RoxorSoxor 2017</p></footer>
+
+    </body>
 </html>
