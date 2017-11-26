@@ -8,20 +8,12 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<meta charset="utf-8">
 		<?php echo $stylesAndSuch; ?>
 	</head>
 
 	<body>
 
 		<DIV class="container">
-
-		    <DIV class="masthead">
-				<a href="http://www.jotascript.com">
-					<img src="croppedmore-js-headerUnicorn.png" width="680" height="198" alt="Curiosity created a unicorn"/>
-				</a>       
-
-			</div> <!-- /masthead -->
 	    
 		    <?php echo $navbar ?> <!-- /navbar -->
 
@@ -103,5 +95,7 @@
 
 			</footer>
 		</div> 	<!-- /container -->	
+
+		<?php echo $scriptsAndSuch; ?>	
 	</body>
 </html>

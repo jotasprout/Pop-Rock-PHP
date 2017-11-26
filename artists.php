@@ -247,21 +247,6 @@ function showArtists () {
 
 	$getit = $connekt->query($artistInfoRecent);
 
-    if (!$getit) {
-        echo mysql_error();
-        die;
-    }
-    
-    $data = array();
-    
-    for ($x = 0; $x < mysql_num_rows($getit); $x++) {
-        $data[] = mysql_fetch_assoc($getit);
-    }
-    
-	echo json_encode($data); 	
-	// should next line go here or after while loop?
-	mysql_close($server);
-
 	while ($row = mysqli_fetch_array($getit)) {
 		// $artistID = $row["artistID"];
 		$artistName = $row["artistName"];
