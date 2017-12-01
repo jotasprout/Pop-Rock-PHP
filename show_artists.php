@@ -24,7 +24,12 @@
 <!DOCTYPE html>
 
 <html>
-    <head><meta charset="UTF-8"><title>Artists and Such</title><?php echo $stylesAndSuch; ?></head>
+<head>
+    <meta charset="UTF-8">
+    <title>Artists and Such</title>
+    <?php echo $stylesAndSuch; ?>
+    <script src='https://d3js.org/d3.v4.min.js'></script>
+</head>
 
     <body>
 
