@@ -1,4 +1,5 @@
 <?php
+
 $stylesAndSuch = "
     <meta charset='UTF-8'> 
     <link rel='stylesheet' type='text/css' href='https://www.roxorsoxor.com/bootstrap/css/bootstrap.min.css'>
@@ -10,6 +11,6 @@ $scriptsAndSuch = "
     <script src='https://www.roxorsoxor.com/js/jquery-214.js'></script>
     <script src='https://code.jquery.com/ui/1.12.1/jquery-ui.js'></script>
     <script src='https://www.roxorsoxor.com/bootstrap/js/bootstrap.min.js'></script>
-    
 ";
+
 ?>
