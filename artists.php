@@ -251,10 +251,12 @@ function showArtists () {
 		// $artistID = $row["artistID"];
 		$artistName = $row["artistName"];
 		$artistPop = $row["pop"];
+		$popDate = $row["date"];
 		
 		echo "<tr>";
 		echo "<td>" . $artistName . "</td>";
 		echo "<td>" . $artistPop . "</td>";
+		echo "<td>" . $popDate . "</td>";
 		echo "</tr>";
 	}
 }

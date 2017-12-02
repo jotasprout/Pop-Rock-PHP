@@ -193,6 +193,15 @@ function showAlbums ($artistID) {
 				WHERE a.artistID = '$artistID'
 					ORDER BY a.year ASC;";
 
+	$query1 = "SELECT a1.albumID, a1.albumName, a1.artistID, a1.year, p1.pop, a2.artistName
+	FROM albums a1 
+		WHERE a1.artistID = '$artistID'
+			JOIN popAlbums p1 ON a1.albumID = p1.albumID
+				WHERE p1.date = (SELECT max(p2.date)
+								FROM popAlbums p2)
+			JOIN artists a2 ON a2.artistID = '$artistID'
+				ORDER BY a1.year ASC;";					
+
 	$query2 = "SELECT a.albumID, a.albumName, a.artistID, a.year, b.pop, b.date, c.artistName
 		FROM albums a 
 			INNER JOIN popAlbums b ON a.albumID = b.albumID
@@ -238,7 +247,7 @@ function showAlbums ($artistID) {
 // the next line works in stakeout but not here
 	// $result = $connekt->query($query);
 
-	$result = mysqli_query($connekt,$query3);
+	$result = mysqli_query($connekt,$query1);
 
 	while ($row = mysqli_fetch_array($result)) {
 		// $artistID = $row["artistID"];

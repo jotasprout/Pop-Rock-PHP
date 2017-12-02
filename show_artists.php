@@ -39,7 +39,7 @@
             <!-- D3 chart goes here -->
 
             <table class="table">
-                <tr><th>Artist Name</th><th>Popularity</th></tr>
+                <tr><th>Artist Name</th><th>Popularity</th><th>Date</th></tr>
                 <?php showArtists (); ?>
             </table>
 
