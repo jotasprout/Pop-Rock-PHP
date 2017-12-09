@@ -249,16 +249,7 @@ function showAlbums ($artistID) {
 			ON q.albumID = a.albumID
 		JOIN artists c ON c.artistID = '$artistID'
 		ORDER BY a.year ASC;";	
-		SELECT a.albumID, a.albumName, a.artistID, a.year, q.pop, q.date, c.artistName
-		FROM albums a 
-			WHERE a.artistID = '3EhbVgyfGd7HkpsagwL9GS'
-		JOIN (SELECT z.albumID, z.pop, z.date 
-				FROM popAlbums z
-				WHERE z.date = (SELECT max(z2.date)
-							FROM popAlbums z2)) q
-			ON q.albumID = a.albumID
-		JOIN artists c ON c.artistID = '3EhbVgyfGd7HkpsagwL9GS'
-		ORDER BY a.year ASC;
+
 	$query5b = "SELECT a.albumID, a.albumName, a.artistID, a.year, q.pop, q.date, c.artistName
 		FROM albums a 
 			WHERE a.artistID = '3EhbVgyfGd7HkpsagwL9GS'
@@ -276,10 +267,27 @@ function showAlbums ($artistID) {
 						JOIN artists z ON z.artistID = '3EhbVgyfGd7HkpsagwL9GS'
 						ORDER BY a.year ASC;";
 
+	$latestAlbumPop2 = "SELECT a.albumName, a.year, p1.pop, z.artistName
+						FROM (SELECT
+								y.albumID AS albumID,
+								y.albumName AS albumName,
+								y.artistID AS artistID,
+								y.year AS year
+								FROM albums y WHERE (y.artistID = '$artistID')) a
+						JOIN (SELECT
+								popAlbums.albumID AS albumID,
+								popAlbums.pop AS pop,
+								max(popAlbums.date) AS max(date)
+								FROM popAlbums 
+								GROUP BY popAlbums.albumID) p1 
+								ON a.albumID = p1.albumID
+						JOIN artists z ON z.artistID = '$artistID'
+						ORDER BY a.year ASC;";						
+
 // the next line works in stakeout but not here
 	// $result = $connekt->query($query);
 
-	$result = mysqli_query($connekt,$query2);
+	$result = mysqli_query($connekt,$latestAlbumPop2);
 
 	while ($row = mysqli_fetch_array($result)) {
 		// $artistID = $row["artistID"];
@@ -296,5 +304,7 @@ function showAlbums ($artistID) {
 		echo "</tr>";
 	}
 }
+
+
 
 ?>
