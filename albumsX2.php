@@ -249,16 +249,7 @@ function showAlbums ($artistID) {
 			ON q.albumID = a.albumID
 		JOIN artists c ON c.artistID = '$artistID'
 		ORDER BY a.year ASC;";	
-		SELECT a.albumID, a.albumName, a.artistID, a.year, q.pop, q.date, c.artistName
-		FROM albums a 
-			WHERE a.artistID = '3EhbVgyfGd7HkpsagwL9GS'
-		JOIN (SELECT z.albumID, z.pop, z.date 
-				FROM popAlbums z
-				WHERE z.date = (SELECT max(z2.date)
-							FROM popAlbums z2)) q
-			ON q.albumID = a.albumID
-		JOIN artists c ON c.artistID = '3EhbVgyfGd7HkpsagwL9GS'
-		ORDER BY a.year ASC;
+
 	$query5b = "SELECT a.albumID, a.albumName, a.artistID, a.year, q.pop, q.date, c.artistName
 		FROM albums a 
 			WHERE a.artistID = '3EhbVgyfGd7HkpsagwL9GS'
