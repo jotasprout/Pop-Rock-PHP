@@ -243,7 +243,7 @@ function showArtists () {
 			INNER JOIN popArtists b ON a.artistID = b.artistID
 				WHERE b.date = (select max(b2.date)
 								FROM popArtists b2)
-		ORDER BY a.artistName ASC";
+		ORDER BY b.pop ASC";
 
 	$getit = $connekt->query($artistInfoRecent);
 

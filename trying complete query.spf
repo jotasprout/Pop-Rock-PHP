@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>ContentFilters</key>
+	<dict/>
+	<key>auto_connect</key>
+	<true/>
+	<key>data</key>
+	<dict>
+		<key>connection</key>
+		<dict>
+			<key>database</key>
+			<string>poprock</string>
+			<key>host</key>
+			<string>roxorsoxor.com</string>
+			<key>kcid</key>
+			<string>3405552021751384721</string>
+			<key>name</key>
+			<string>popRock</string>
+			<key>port</key>
+			<integer>3306</integer>
+			<key>rdbms_type</key>
+			<string>mysql</string>
+			<key>ssh_host</key>
+			<string>roxorsoxor.com</string>
+			<key>ssh_keyLocation</key>
+			<string>~/.ssh/known_hosts</string>
+			<key>ssh_keyLocationEnabled</key>
+			<integer>1</integer>
+			<key>ssh_port</key>
+			<integer>7822</integer>
+			<key>ssh_user</key>
+			<string>jay</string>
+			<key>sslCACertFileLocation</key>
+			<string></string>
+			<key>sslCACertFileLocationEnabled</key>
+			<integer>0</integer>
+			<key>sslCertificateFileLocation</key>
+			<string></string>
+			<key>sslCertificateFileLocationEnabled</key>
+			<integer>0</integer>
+			<key>sslKeyFileLocation</key>
+			<string></string>
+			<key>sslKeyFileLocationEnabled</key>
+			<integer>0</integer>
+			<key>type</key>
+			<string>SPSSHTunnelConnection</string>
+			<key>useSSL</key>
+			<integer>0</integer>
+			<key>user</key>
+			<string>jay</string>
+		</dict>
+		<key>session</key>
+		<dict>
+			<key>connectionEncoding</key>
+			<string>latin1</string>
+			<key>contentPageNumber</key>
+			<integer>1</integer>
+			<key>contentSelection</key>
+			<data>
+			YnBsaXN0MDDUAQIDBAUGJCVYJHZlcnNpb25YJG9iamVjdHNZJGFy
+			Y2hpdmVyVCR0b3ASAAGGoKgHCBMUFRYaIVUkbnVsbNMJCgsMDxJX
+			TlMua2V5c1pOUy5vYmplY3RzViRjbGFzc6INDoACgAOiEBGABIAF
+			gAdUdHlwZVRyb3dzXxAdU2VsZWN0aW9uRGV0YWlsVHlwZU5TSW5k
+			ZXhTZXTSFwsYGVxOU1JhbmdlQ291bnQQAIAG0hscHR5aJGNsYXNz
+			bmFtZVgkY2xhc3Nlc1pOU0luZGV4U2V0oh8gWk5TSW5kZXhTZXRY
+			TlNPYmplY3TSGxwiI1xOU0RpY3Rpb25hcnmiIiBfEA9OU0tleWVk
+			QXJjaGl2ZXLRJidUZGF0YYABAAgAEQAaACMALQAyADcAQABGAE0A
+			VQBgAGcAagBsAG4AcQBzAHUAdwB8AIEAoQCmALMAtQC3ALwAxwDQ
+			ANsA3gDpAPIA9wEEAQcBGQEcASEAAAAAAAACAQAAAAAAAAAoAAAA
+			AAAAAAAAAAAAAAABIw==
+			</data>
+			<key>contentSortColIsAsc</key>
+			<true/>
+			<key>contentViewport</key>
+			<string>{{0, 0}, {694, 450}}</string>
+			<key>isToolbarVisible</key>
+			<true/>
+			<key>queries</key>
+			<string>SELECT a.albumName, a.year, p1.pop, z.artistName
+						FROM (SELECT
+								y.albumID AS albumID,
+								y.albumName AS albumName,
+								y.artistID AS artistID,
+								y.year AS year
+								FROM albums y WHERE (y.artistID = '3EhbVgyfGd7HkpsagwL9GS')) a
+						JOIN (SELECT p.albumID AS albumID,
+									p.pop AS pop,
+									max(p.date) AS date
+								FROM popAlbums p
+								WHERE p.date = (SELECT max(p2.date)
+												FROM popAlbums p2)
+								GROUP BY p.albumID) p1 
+								ON a.albumID = p1.albumID
+						JOIN artists z ON z.artistID = '3EhbVgyfGd7HkpsagwL9GS'
+						ORDER BY a.year ASC</string>
+			<key>table</key>
+			<string>popAlbumsLatest</string>
+			<key>view</key>
+			<string>SP_VIEW_CUSTOMQUERY</string>
+			<key>windowVerticalDividerPosition</key>
+			<real>200</real>
+		</dict>
+	</dict>
+	<key>encrypted</key>
+	<false/>
+	<key>format</key>
+	<string>connection</string>
+	<key>queryFavorites</key>
+	<array/>
+	<key>queryHistory</key>
+	<array>
+		<string>SELECT a.albumName, a.year, p1.pop, z.artistName
+						FROM (SELECT
+								y.albumID AS albumID,
+								y.albumName AS albumName,
+								y.artistID AS artistID,
+								y.year AS year
+								FROM albums y WHERE (y.artistID = '3EhbVgyfGd7HkpsagwL9GS')) a
+						JOIN (SELECT p.albumID AS albumID,
+									p.pop AS pop,
+									p.date AS date
+								FROM popAlbums p
+								WHERE p.date = (SELECT max(p2.date)
+												FROM popAlbums p2)) p1 
+								ON a.albumID = p1.albumID
+						JOIN artists z ON z.artistID = '3EhbVgyfGd7HkpsagwL9GS'
+						ORDER BY a.year ASC</string>
+		<string>SELECT a.albumName, a.year, p1.pop, z.artistName
+						FROM (SELECT
+								y.albumID AS albumID,
+								y.albumName AS albumName,
+								y.artistID AS artistID,
+								y.year AS year
+								FROM albums y WHERE (y.artistID = '3EhbVgyfGd7HkpsagwL9GS')) a
+						JOIN (SELECT p.albumID AS albumID,
+									p.pop AS pop,
+								FROM popAlbums p
+								WHERE p.date = (SELECT max(p2.date)
+												FROM popAlbums p2)) p1 
+								ON a.albumID = p1.albumID
+						JOIN artists z ON z.artistID = '3EhbVgyfGd7HkpsagwL9GS'
+						ORDER BY a.year ASC</string>
+		<string>SELECT a.albumName, a.year, z.artistName
+						FROM (SELECT
+								y.albumID AS albumID,
+								y.albumName AS albumName,
+								y.artistID AS artistID,
+								y.year AS year
+								FROM albums y WHERE (y.artistID = '3EhbVgyfGd7HkpsagwL9GS')) a
+						JOIN artists z ON z.artistID = '3EhbVgyfGd7HkpsagwL9GS'
+						ORDER BY a.year ASC</string>
+		<string>SELECT a.albumName, a.year, z.artistName
+						FROM (SELECT
+								y.albumID AS albumID,
+								y.albumName AS albumName,
+								y.artistID AS artistID,
+								y.year AS year
+								FROM albums y WHERE (y.artistID = '3EhbVgyfGd7HkpsagwL9GS')) a</string>
+		<string>SELECT a.albumName, a.year, p1.pop, z.artistName
+						FROM (SELECT
+								y.albumID AS albumID,
+								y.albumName AS albumName,
+								y.artistID AS artistID,
+								y.year AS year
+								FROM albums y WHERE (y.artistID = '3EhbVgyfGd7HkpsagwL9GS')) a</string>
+		<string>SELECT a.albumName, a.year, p1.pop, z.artistName
+						FROM (SELECT
+								y.albumID AS albumID,
+								y.albumName AS albumName,
+								y.artistID AS artistID,
+								y.year AS year
+								FROM albums y WHERE (y.artistID = '3EhbVgyfGd7HkpsagwL9GS')) a
+						JOIN (SELECT
+								popAlbums.albumID AS albumID,
+								popAlbums.pop AS pop,
+								max(popAlbums.date) AS max(date)
+								FROM popAlbums 
+								GROUP BY popAlbums.albumID) p1 
+								ON a.albumID = p1.albumID
+						JOIN artists z ON z.artistID = '3EhbVgyfGd7HkpsagwL9GS'
+						ORDER BY a.year ASC</string>
+		<string>SELECT * 
+FROM aliceCooperAlbums a
+JOIN popAlbums b ON a.albumID = b.albumID</string>
+		<string>SELECT * FROM aliceCooperAlbums</string>
+		<string>CREATE view aliceCooperAlbums as
+SELECT
+	a.albumID, 
+	a.albumName, 
+	a.artistID, 
+	a.year 
+FROM 
+	albums a
+WHERE 
+	a.artistID = '3EhbVgyfGd7HkpsagwL9GS'</string>
+		<string>SELECT
+	a.albumID, 
+	a.albumName, 
+	a.artistID, 
+	a.year 
+FROM albums a
+WHERE 
+	a.artistID = '3EhbVgyfGd7HkpsagwL9GS'</string>
+		<string>SELECT a.albumID, a.albumName, a.artistID, a.year 
+		FROM albums a
+		WHERE a.artistID = '3EhbVgyfGd7HkpsagwL9GS'
+		ORDER BY a.year ASC</string>
+		<string>SELECT a.albumID, a.albumName, a.artistID, a.year, b.pop, c.artistName 
+		FROM albums a
+		WHERE a.artistID = '3EhbVgyfGd7HkpsagwL9GS'
+		ORDER BY a.year ASC</string>
+		<string>SELECT a.albumID, a.albumName, a.artistID, a.year, b.pop, c.artistName 
+		FROM albums a
+		WHERE a.artistID = '3EhbVgyfGd7HkpsagwL9GS'
+		JOIN popAlbums b ON albumID
+		ORDER BY a.year ASC</string>
+		<string>SELECT a.albumID, a.albumName, a.artistID, a.year, b.pop, c.artistName 
+		FROM albums a
+		WHERE a.artistID = '3EhbVgyfGd7HkpsagwL9GS'
+		JOIN popAlbums b ON a.albumID = b.albumID
+		ORDER BY a.year ASC</string>
+		<string>SELECT a.albumID, a.albumName, a.artistID, a.year, b.pop, c.artistName 
+		FROM albums a
+		WHERE a.artistID = '3EhbVgyfGd7HkpsagwL9GS'
+		JOIN popAlbums b ON a.albumID = b.albumID
+		JOIN artists c ON a.artistID = '3EhbVgyfGd7HkpsagwL9GS'
+		ORDER BY a.year ASC</string>
+		<string>SELECT a.albumID, a.albumName, a.artistID, a.year, b.pop, c.artistName 
+		FROM albums a
+		WHERE a.artistID = '$3EhbVgyfGd7HkpsagwL9GS'
+		JOIN popAlbums b ON a.albumID = b.albumID
+		JOIN artists c ON a.artistID = '$3EhbVgyfGd7HkpsagwL9GS'
+		ORDER BY a.year ASC</string>
+		<string>SELECT a.albumID, a.albumName, a.artistID, a.year, b.pop, c.artistName 
+		FROM albums a
+		WHERE a.artistID = '$3EhbVgyfGd7HkpsagwL9GS'
+		JOIN popAlbums b ON a.albumID = b.albumID
+		JOIN artists c ON a.artistID = c.artistID
+		ORDER BY a.year ASC</string>
+		<string>SELECT a.albumID, a.albumName, a.artistID, a.year, b.pop, c.artistName 
+		FROM albums a
+			INNER JOIN popAlbums b ON a.albumID = b.albumID
+			INNER JOIN artists c ON a.artistID = c.artistID
+				WHERE a.artistID = '$3EhbVgyfGd7HkpsagwL9GS'
+					ORDER BY a.year ASC</string>
+		<string>SELECT p.albumID, p.pop, p.date
+FROM popAlbums p
+WHERE p.date = (SELECT max(p2.date)
+							FROM popAlbums p2)</string>
+		<string>SELECT a.albumID, a.albumName, a.artistID, a.year, q.albumID, q.pop
+		FROM albums a 
+			WHERE a.artistID = '3EhbVgyfGd7HkpsagwL9GS'
+		LEFT JOIN (SELECT z.albumID, z.pop, z.date 
+			FROM popAlbums z
+			WHERE z.date = (SELECT max(z2.date)
+							FROM popAlbums z2)) q</string>
+	</array>
+	<key>rdbms_type</key>
+	<string>mysql</string>
+	<key>rdbms_version</key>
+	<string>5.5.56-MariaDB</string>
+	<key>version</key>
+	<integer>1</integer>
+</dict>
+</plist>
