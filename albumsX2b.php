@@ -267,78 +267,10 @@ function showAlbums ($artistID) {
 						JOIN artists z ON z.artistID = '3EhbVgyfGd7HkpsagwL9GS'
 						ORDER BY a.year ASC;";
 
-	$latestAlbumPop2 = "SELECT a.albumName, a.year, p1.pop, z.artistName
-						FROM (SELECT
-								y.albumID AS albumID,
-								y.albumName AS albumName,
-								y.artistID AS artistID,
-								y.year AS year
-								FROM albums y WHERE (y.artistID = '$artistID')) a
-						JOIN (SELECT
-								popAlbums.albumID AS albumID,
-								popAlbums.pop AS pop,
-								max(popAlbums.date) AS max(date)
-								FROM popAlbums 
-								GROUP BY popAlbums.albumID) p1 
-								ON a.albumID = p1.albumID
-						JOIN artists z ON z.artistID = '$artistID'
-						ORDER BY a.year ASC;";		
-						
-	$latestAlbumPop2b = "SELECT a.albumName, a.year, p1.pop, z.artistName
-						FROM (SELECT
-								y.albumID AS albumID,
-								y.albumName AS albumName,
-								y.artistID AS artistID,
-								y.year AS year
-								FROM albums y WHERE (y.artistID = '3EhbVgyfGd7HkpsagwL9GS')) a
-						JOIN (SELECT
-								popAlbums.albumID AS albumID,
-								popAlbums.pop AS pop,
-								max(popAlbums.date) AS max(date)
-								FROM popAlbums 
-								GROUP BY popAlbums.albumID) p1 
-								ON a.albumID = p1.albumID
-						JOIN artists z ON z.artistID = '3EhbVgyfGd7HkpsagwL9GS'
-						ORDER BY a.year ASC;";	
-						
-	$maybeScabies = "SELECT a.albumName, a.year, z.artistName, p1.pop
-	FROM (SELECT
-				y.albumID AS albumID,
-				y.albumName AS albumName,
-				y.artistID AS artistID,
-				y.year AS year
-			FROM albums y 
-			WHERE y.artistID = '$artistID') a
-	JOIN artists z ON z.artistID = '$artistID'
-	JOIN (SELECT
-		popAlbums.albumID AS albumID,
-		popAlbums.pop AS pop,
-		max(popAlbums.date) AS latestDate
-	FROM popAlbums  
-	GROUP BY popAlbums.albumID) p1 ON a.albumID = p1.albumID
-	ORDER BY a.year ASC;";
-
-$maybeScabiesArtistID = "SELECT a.albumName, a.year, z.artistName, p1.pop
-FROM (SELECT
-			y.albumID AS albumID,
-			y.albumName AS albumName,
-			y.artistID AS artistID,
-			y.year AS year
-		FROM albums y 
-		WHERE y.artistID = '3EhbVgyfGd7HkpsagwL9GS') a
-JOIN artists z ON z.artistID = '3EhbVgyfGd7HkpsagwL9GS'
-JOIN (SELECT
-	popAlbums.albumID AS albumID,
-	popAlbums.pop AS pop,
-	max(popAlbums.date) AS latestDate
-FROM popAlbums  
-GROUP BY popAlbums.albumID) p1 ON a.albumID = p1.albumID
-ORDER BY a.year ASC;";
-
 // the next line works in stakeout but not here
 	// $result = $connekt->query($query);
 
-	$result = mysqli_query($connekt,$maybeScabies);
+	$result = mysqli_query($connekt,$query2);
 
 	while ($row = mysqli_fetch_array($result)) {
 		// $artistID = $row["artistID"];
@@ -355,7 +287,5 @@ ORDER BY a.year ASC;";
 		echo "</tr>";
 	}
 }
-
-
 
 ?>
