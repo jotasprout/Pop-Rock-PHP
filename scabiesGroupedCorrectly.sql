@@ -7,10 +7,12 @@ FROM (SELECT
 		FROM albums y 
         WHERE y.artistID = '3EhbVgyfGd7HkpsagwL9GS') a
 JOIN artists z ON z.artistID = '3EhbVgyfGd7HkpsagwL9GS'
-JOIN (SELECT
-	popAlbums.albumID AS albumID,
-	popAlbums.pop AS pop,
-	max(popAlbums.date) AS date
-FROM popAlbums  
-GROUP BY popAlbums.albumID) p1 ON a.albumID = p1.albumID
+JOIN (SELECT p.*
+		FROM popAlbums p
+        INNER JOIN (SELECT albumID, pop, max(date) AS MaxDate
+					FROM popAlbums  
+					GROUP BY albumID) groupedp
+		ON p.albumID = groupedp.albumID
+        AND p.date = groupedp.MaxDate) p1 
+ON a.albumID = p1.albumID
 ORDER BY a.year ASC

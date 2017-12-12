@@ -10,7 +10,6 @@ JOIN artists z ON z.artistID = '3EhbVgyfGd7HkpsagwL9GS'
 JOIN (SELECT
 	popAlbums.albumID AS albumID,
 	popAlbums.pop AS pop,
-	max(popAlbums.date) AS date
-FROM popAlbums  
-GROUP BY popAlbums.albumID) p1 ON a.albumID = p1.albumID
-ORDER BY a.year ASC
+	popAlbums.date AS date
+FROM popAlbums) p1 ON a.albumID = p1.albumID
+ORDER BY a.albumID ASC
