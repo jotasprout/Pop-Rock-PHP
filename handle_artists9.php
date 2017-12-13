@@ -33,7 +33,7 @@ $GLOBALS['api']->setAccessToken($accessToken);
     <tr><th>Artist Name</th><th>Popularity</th></tr>
 
         <?php 
-            divideCombineArtists ($allArtists);
+            inserttArtistsAndPop ($newBatch);
         ?>
     </table>
 

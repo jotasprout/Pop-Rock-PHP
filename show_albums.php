@@ -44,6 +44,7 @@ echo '<tr><th>Artist Name</th><th>Album Name</th><th>Released</th><th>Popularity
 
 showAlbums ($artistID);
 
+
 ?>
 
 </table>

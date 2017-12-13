@@ -13,7 +13,7 @@ $accessToken = $session->getAccessToken();
 $_SESSION['accessToken'] = $accessToken;
 
 // Rock on!
-header('Location: choose_artist8class2018.php');
+header('Location: choose_xianArtist.php');
 die();
 
 ?>

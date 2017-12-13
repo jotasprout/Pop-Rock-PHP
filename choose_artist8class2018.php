@@ -37,30 +37,29 @@
                             <select class="form-control" id="artist" name="artist">
                                 <option value="">- Choose -</option>
 
-                                <?php
-                                    // I really need to make an artist array ... the following is just stupid
-                                    echo "<option value='" . $BonJovi->get_artistID() . "'>" . $BonJovi->get_artistName() . "</option>";
-									echo "<option value='" . $KateBush->get_artistID() . "'>" . $KateBush->get_artistName() . "</option>";
-                                    echo "<option value='" . $Cars->get_artistID() . "'>" . $Cars->get_artistName() . "</option>";
-                                    echo "<option value='" . $DepecheMode->get_artistID() . "'>" . $DepecheMode->get_artistName() . "</option>";
-                                    echo "<option value='" . $DireStraits->get_artistID() . "'>" . $DireStraits->get_artistName() . "</option>";
-                                    echo "<option value='" . $Eurythmics->get_artistID() . "'>" . $Eurythmics->get_artistName() . "</option>";
-                                    echo "<option value='" . $JGeilsBand->get_artistID() . "'>" . $JGeilsBand->get_artistName() . "</option>";
-                                    echo "<option value='" . $JudasPriest->get_artistID() . "'>" . $JudasPriest->get_artistName() . "</option>";
-                                    echo "<option value='" . $LLCoolJ->get_artistID() . "'>" . $LLCoolJ->get_artistName() . "</option>";
-                                    echo "<option value='" . $MC5->get_artistID() . "'>" . $MC5->get_artistName() . "</option>";
-                                    echo "<option value='" . $TheMeters->get_artistID() . "'>" . $TheMeters->get_artistName() . "</option>";
-                                    echo "<option value='" . $MoodyBlues->get_artistID() . "'>" . $MoodyBlues->get_artistName() . "</option>";
-                                    echo "<option value='" . $Radiohead->get_artistID() . "'>" . $Radiohead->get_artistName() . "</option>";
-                                    echo "<option value='" . $RageAgainstTheMachine->get_artistID() . "'>" . $RageAgainstTheMachine->get_artistName() . "</option>";
-                                    echo "<option value='" . $RufusFeatChakaKhan->get_artistID() . "'>" . $RufusFeatChakaKhan->get_artistName() . "</option>";
-                                    echo "<option value='" . $NinaSimone->get_artistID() . "'>" . $NinaSimone->get_artistName() . "</option>";
-                                    echo "<option value='" . $SisterRosettaTharpe->get_artistID() . "'>" . $SisterRosettaTharpe->get_artistName() . "</option>";
-                                    echo "<option value='" . $LinkWray->get_artistID() . "'>" . $LinkWray->get_artistName() . "</option>";
-                                    echo "<option value='" . $Zombies->get_artistID() . "'>" . $Zombies->get_artistName() . "</option>";
-                                    echo "<option value='" . $RageAgainstTheMachine->get_artistID() . "'>" . $RageAgainstTheMachine->get_artistName() . "</option>";
-                                    echo "<option value='" . $ChakaKhan->get_artistID() . "'>" . $ChakaKhan->get_artistName() . "</option>";									
-                                ?>
+<?php
+    // I really need to make an artist array ... the following is just stupid
+    echo "<option value='" . $BonJovi->get_artistID() . "'>" . $BonJovi->get_artistName() . "</option>";
+    echo "<option value='" . $KateBush->get_artistID() . "'>" . $KateBush->get_artistName() . "</option>";
+    echo "<option value='" . $Cars->get_artistID() . "'>" . $Cars->get_artistName() . "</option>";
+    echo "<option value='" . $DepecheMode->get_artistID() . "'>" . $DepecheMode->get_artistName() . "</option>";
+    echo "<option value='" . $DireStraits->get_artistID() . "'>" . $DireStraits->get_artistName() . "</option>";
+    echo "<option value='" . $Eurythmics->get_artistID() . "'>" . $Eurythmics->get_artistName() . "</option>";
+    echo "<option value='" . $JGeilsBand->get_artistID() . "'>" . $JGeilsBand->get_artistName() . "</option>";
+    echo "<option value='" . $JudasPriest->get_artistID() . "'>" . $JudasPriest->get_artistName() . "</option>";
+    echo "<option value='" . $LLCoolJ->get_artistID() . "'>" . $LLCoolJ->get_artistName() . "</option>";
+    echo "<option value='" . $MC5->get_artistID() . "'>" . $MC5->get_artistName() . "</option>";
+    echo "<option value='" . $TheMeters->get_artistID() . "'>" . $TheMeters->get_artistName() . "</option>";
+    echo "<option value='" . $MoodyBlues->get_artistID() . "'>" . $MoodyBlues->get_artistName() . "</option>";
+    echo "<option value='" . $Radiohead->get_artistID() . "'>" . $Radiohead->get_artistName() . "</option>";
+    echo "<option value='" . $RageAgainstTheMachine->get_artistID() . "'>" . $RageAgainstTheMachine->get_artistName() . "</option>";
+    echo "<option value='" . $RufusFeatChakaKhan->get_artistID() . "'>" . $RufusFeatChakaKhan->get_artistName() . "</option>";
+    echo "<option value='" . $NinaSimone->get_artistID() . "'>" . $NinaSimone->get_artistName() . "</option>";
+    echo "<option value='" . $SisterRosettaTharpe->get_artistID() . "'>" . $SisterRosettaTharpe->get_artistName() . "</option>";
+    echo "<option value='" . $LinkWray->get_artistID() . "'>" . $LinkWray->get_artistName() . "</option>";
+    echo "<option value='" . $Zombies->get_artistID() . "'>" . $Zombies->get_artistName() . "</option>";
+    echo "<option value='" . $ChakaKhan->get_artistID() . "'>" . $ChakaKhan->get_artistName() . "</option>";									
+?>
 
                             </select>
                         </div>

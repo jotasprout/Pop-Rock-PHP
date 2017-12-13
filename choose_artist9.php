@@ -38,7 +38,6 @@
                         <option value="">- Choose -</option>
 
 <?php
-// I really need to make an artist array ... the following is just stupid
 echo "<option value='" . $aliceCooper->get_artistID() . "'>" . $aliceCooper->get_artistName() . "</option>";
 echo "<option value='" . $hollywoodVampires->get_artistID() . "'>" . $hollywoodVampires->get_artistName() . "</option>";
 echo "<option value='" . $davidBowie->get_artistID() . "'>" . $davidBowie->get_artistName() . "</option>";
@@ -54,6 +53,20 @@ echo "<option value='" . $rollingStones->get_artistID() . "'>" . $rollingStones-
 echo "<option value='" . $tomPetty->get_artistID() . "'>" . $tomPetty->get_artistName() . "</option>";
 echo "<option value='" . $tpHeartbreakers->get_artistID() . "'>" . $tpHeartbreakers->get_artistName() . "</option>";
 echo "<option value='" . $travelingWilburys->get_artistID() . "'>" . $travelingWilburys->get_artistName() . "</option>";
+echo "<option value='" . $bobSeger->get_artistID() . "'>" . $bobSeger->get_artistName() . "</option>";
+echo "<option value='" . $johnnyCash->get_artistID() . "'>" . $johnnyCash->get_artistName() . "</option>";
+echo "<option value='" . $zzTop->get_artistID() . "'>" . $zzTop->get_artistName() . "</option>";
+echo "<option value='" . $u2->get_artistID() . "'>" . $u2->get_artistName() . "</option>";
+echo "<option value='" . $blackSabbath->get_artistID() . "'>" . $blackSabbath->get_artistName() . "</option>";
+echo "<option value='" . $ironMaiden->get_artistID() . "'>" . $ironMaiden->get_artistName() . "</option>";
+echo "<option value='" . $HeavenHell->get_artistID() . "'>" . $HeavenHell->get_artistName() . "</option>";
+echo "<option value='" . $ozzyOsbourne->get_artistID() . "'>" . $ozzyOsbourne->get_artistName() . "</option>";
+echo "<option value='" . $dio->get_artistID() . "'>" . $dio->get_artistName() . "</option>";
+echo "<option value='" . $ronnieJamesDio->get_artistID() . "'>" . $ronnieJamesDio->get_artistName() . "</option>";
+echo "<option value='" . $jethroTull->get_artistID() . "'>" . $jethroTull->get_artistName() . "</option>";
+echo "<option value='" . $garyNuman->get_artistID() . "'>" . $garyNuman->get_artistName() . "</option>";
+echo "<option value='" . $prince->get_artistID() . "'>" . $prince->get_artistName() . "</option>";
+echo "<option value='" . $acdc->get_artistID() . "'>" . $acdc->get_artistName() . "</option>";
 ?>
 
                     </select>
@@ -67,10 +80,10 @@ echo "<option value='" . $travelingWilburys->get_artistID() . "'>" . $travelingW
             </div><!-- /Row 2 -->
         </fieldset>
     </form>
-
+<footer class="footer"><p>&copy; Sprout Means Grow and RoxorSoxor 2017</p></footer>
 </div> <!-- /container -->
 
-<footer class="footer"><p>&copy; Sprout Means Grow and RoxorSoxor 2017</p></footer>
+
 <?php echo $scriptsAndSuch; ?>
 </body>
 
