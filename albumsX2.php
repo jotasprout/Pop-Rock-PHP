@@ -197,109 +197,12 @@ function showAlbums ($artistID) {
 			INNER JOIN artists c ON a.artistID = c.artistID
 				WHERE a.artistID = '$artistID'
 					ORDER BY a.year ASC;";
-
-	$query2 = "SELECT a.albumID, a.albumName, a.artistID, a.year, b.pop, b.date, c.artistName
-		FROM albums a 
-			INNER JOIN popAlbums b ON a.albumID = b.albumID
-				WHERE b.date = (SELECT max(b2.date)
-								FROM popAlbums b2)
-			INNER JOIN artists c ON a.artistID = c.artistID
-				WHERE a.artistID = '$artistID'
-					ORDER BY a.year ASC;";
-					
-	$queryInProgress = "SELECT a.albumID, a.albumName, a.artistID, a.year, b.pop, b.date, c.artistName
-		FROM albums a 
-			WHERE a.artistID = '$artistID'
-		JOIN popAlbums b ON a.albumID = b.albumID
-				WHERE b.date = (SELECT max(b2.date)
-								FROM popAlbums b2)
-			INNER JOIN artists c ON a.artistID = c.artistID
-					ORDER BY a.year ASC;";	
-					
-	$query3 = "SELECT a.albumID, a.albumName, a.artistID, a.year, b.pop, b.date
-		FROM albums a 
-			WHERE a.artistID = '$artistID'
-		JOIN popAlbums b ON a.albumID = b.albumID
-				WHERE b.date = (SELECT max(b2.date)
-								FROM popAlbums b2);";	
-								
-	$query4a = "SELECT p.albumID, a.albumName, a.artistID, a.year, p.pop, p.date, (SELECT artistName FROM artists WHERE artistID = '$artistID')
-		FROM popAlbums p
-			WHERE p.date = (SELECT max(p2.date)
-							FROM popAlbums p2)
-		RIGHT JOIN albums a 
-		ON p.albumID = a.albumID
-			WHERE a.artistID = '$artistID';";
-			
-	$query4b = "SELECT p.albumID, a.albumName, a.artistID, a.year, p.pop, p.date, (SELECT artistName FROM artists WHERE artistName = '3EhbVgyfGd7HkpsagwL9GS')
-		FROM popAlbums p
-			WHERE p.date = (SELECT max(p2.date)
-							FROM popAlbums p2)
-		RIGHT JOIN albums a 
-		ON p.albumID = a.albumID
-			WHERE a.artistID = '$3EhbVgyfGd7HkpsagwL9GS';";			
-			
-	$query5a = "SELECT a.albumID, a.albumName, a.artistID, a.year, q.pop, q.date, c.artistName
-		FROM albums a 
-			WHERE a.artistID = '$artistID'
-		JOIN (SELECT z.albumID, z.pop, z.date 
-				FROM popAlbums z
-				WHERE z.date = (SELECT max(z2.date)
-							FROM popAlbums z2)) q
-			ON q.albumID = a.albumID
-		JOIN artists c ON c.artistID = '$artistID'
-		ORDER BY a.year ASC;";	
-
-	$query5b = "SELECT a.albumID, a.albumName, a.artistID, a.year, q.pop, q.date, c.artistName
-		FROM albums a 
-			WHERE a.artistID = '3EhbVgyfGd7HkpsagwL9GS'
-		JOIN (SELECT z.albumID, z.pop, z.date 
-				FROM popAlbums z
-				WHERE z.date = (SELECT max(z2.date)
-							FROM popAlbums z2)) q
-			ON q.albumID = a.albumID
-		JOIN artists c ON c.artistID = '3EhbVgyfGd7HkpsagwL9GS'
-		ORDER BY a.year ASC;";		
 					
 	$latestAlbumPop = "SELECT a.albumName, a.year, p1.pop, z.artistName
 						FROM aliceCooperAlbums a
 						JOIN popAlbumsLatest p1 ON a.albumID = p1.albumID
 						JOIN artists z ON z.artistID = '3EhbVgyfGd7HkpsagwL9GS'
 						ORDER BY a.year ASC;";
-
-	$latestAlbumPop2 = "SELECT a.albumName, a.year, p1.pop, z.artistName
-						FROM (SELECT
-								y.albumID AS albumID,
-								y.albumName AS albumName,
-								y.artistID AS artistID,
-								y.year AS year
-								FROM albums y WHERE (y.artistID = '$artistID')) a
-						JOIN (SELECT
-								popAlbums.albumID AS albumID,
-								popAlbums.pop AS pop,
-								max(popAlbums.date) AS max(date)
-								FROM popAlbums 
-								GROUP BY popAlbums.albumID) p1 
-								ON a.albumID = p1.albumID
-						JOIN artists z ON z.artistID = '$artistID'
-						ORDER BY a.year ASC;";		
-						
-	$latestAlbumPop2b = "SELECT a.albumName, a.year, p1.pop, z.artistName
-						FROM (SELECT
-								y.albumID AS albumID,
-								y.albumName AS albumName,
-								y.artistID AS artistID,
-								y.year AS year
-								FROM albums y WHERE (y.artistID = '3EhbVgyfGd7HkpsagwL9GS')) a
-						JOIN (SELECT
-								popAlbums.albumID AS albumID,
-								popAlbums.pop AS pop,
-								max(popAlbums.date) AS max(date)
-								FROM popAlbums 
-								GROUP BY popAlbums.albumID) p1 
-								ON a.albumID = p1.albumID
-						JOIN artists z ON z.artistID = '3EhbVgyfGd7HkpsagwL9GS'
-						ORDER BY a.year ASC;";	
 						
 	$maybeScabies = "SELECT a.albumName, a.year, z.artistName, p1.pop
 	FROM (SELECT

@@ -302,6 +302,7 @@ function showArtists () {
 		echo "<td>" . $popDate . "</td>";
 		echo "</tr>";
 	}
+
 }
 
 ?>
