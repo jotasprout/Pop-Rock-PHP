@@ -39,7 +39,6 @@ function console_log( $data ){
   }
 
 // A MYSQLI EXAMPLE
-
   // Create connection
 $conn = mysqli_connect($servername, $username, $password, $dbname);
 // Check connection
@@ -63,6 +62,25 @@ if (mysqli_num_rows($result) > 0) {
 }
 
 mysqli_close($conn);
+
+// FROM PSYCHO CODES
+
+$host = "localhost";
+$db = "psychocodes";
+$user = "your username";  //enter your database username
+$pass = "your password";  //enter your database password
+$conn = new mysqli($host,$user,$pass,$db); 
+$rows = array();
+
+$sql = "SELECT * FROM data";
+$result = $conn->query($sql) or die("cannot write");
+while($row = $result->fetch_assoc()){
+	$rows[] = $row;
+}
+
+echo "<pre>";
+print json_encode(array('serverres'=>$rows));
+echo "</pre>";
 
 // A PDO EXAMPLE
 
@@ -89,25 +107,6 @@ while ($row = $sql->fetchall()) {
 }
 echo json_encode($rows);
 
-
-// FROM PSYCHO CODES
-
-$host = "localhost";
-$db = "psychocodes";
-$user = "your username";  //enter your database username
-$pass = "your password";  //enter your database password
-$conn = new mysqli($host,$user,$pass,$db); 
-$rows = array();
-
-$sql = "SELECT * FROM data";
-$result = $conn->query($sql) or die("cannot write");
-while($row = $result->fetch_assoc()){
-	$rows[] = $row;
-}
-
-echo "<pre>";
-print json_encode(array('serverres'=>$rows));
-echo "</pre>";
 
 
 ?>
