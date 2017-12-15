@@ -5,7 +5,7 @@ session_start();
 require 'vendor/autoload.php';
 require_once 'navbar_rock.php';
 require_once 'stylesAndScripts.php';
-require_once 'albums9.php';
+require_once 'albumsX2.php';
 
 // Fetch saved access token
 $accessToken = $_SESSION['accessToken'];
@@ -47,7 +47,7 @@ $_SESSION['artist'] = $artistID;
 // echo "<h2>" . $artistName . "</h2>"; 
 // echo "<p>" . $artistName . "'s popularity is " . $artistPop . ".</p>";
 echo '<table class="table">';
-echo '<tr><th>Artist Name</th><th>Album Name</th><th>Released</th><th>Popularity</th></tr>';
+echo '<tr><th>Album Cover</th><th>Album Name</th><th>Released</th><th>Popularity</th></tr>';
 
 $discography = $GLOBALS['api']->getArtistAlbums($artistID, [
 	'market' => 'us',
@@ -70,8 +70,8 @@ foreach ($discography->items as $album) {
 // $howmanytotal = count($artistAlbums);
 // echo $howmanytotal . '<br>';
 
-getAlbumsPop ($artistAlbums);
-// divideCombineAlbums ($artistAlbums);
+// getAlbumsPop ($artistAlbums);
+divideCombineAlbumsForArt ($artistAlbums);
 
 ?>
 
