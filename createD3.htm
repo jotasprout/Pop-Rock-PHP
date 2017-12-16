@@ -1,18 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<title>Artists in D3</title>
-		<script src='https://d3js.org/d3.v4.min.js'></script>
-	</head>
 
-	<body>
+<head>
+	<meta charset="utf-8">
+	<title>Artists in D3</title>
+	<script src='https://d3js.org/d3.v4.min.js'></script>
+	<link rel='stylesheet' type='text/css' href='d3styles.css'>
+</head>
 
-			<script type="text/javascript">
-				d3.json("createD3.php", function(data) {
-					console.log(data);
+<body>
+
+	<script type="text/javascript">
+		d3.json("createD3.php", function(data) {
+			console.log(data);
+
+			d3.select("body").selectAll("div")
+				.data(data)
+				.enter()
+				.append("div")
+				.attr("class", "bar")
+				.style("height", function(d) {
+					var barHeight = d * 5;
+					return barHeight + "px";
 				});
-			</script>
-	
-	</body>
+		});
+	</script>
+
+</body>
+
 </html>
