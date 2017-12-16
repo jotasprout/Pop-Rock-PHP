@@ -45,7 +45,7 @@ function divideCombineAlbumsForArt ($artistAlbums) {
 			$thisArtistName = $album->artists[0]->name;
 			$albumPop = $album->popularity;
 
-			$insertAlbumArt = "UPDATE albums SET albumArt = $albumArt WHERE albumID = $albumID";
+			$insertAlbumArt = "UPDATE albums SET albumArt = '$albumArt' WHERE albumID = '$albumID'";
 			
 			if (!$connekt) {
 				echo 'Darn. Did not connect.<br>';
@@ -69,7 +69,6 @@ function divideCombineAlbumsForArt ($artistAlbums) {
 
 		}
 	};
-  
 }
 
 
@@ -122,9 +121,7 @@ function divideCombineAlbumsForTracks ($artistAlbums) {
 			unset($AlbumsTracks);
 			
 		}
-		
 	};
-	
 }
 
 function divideCombineAlbums ($artistAlbums) {
