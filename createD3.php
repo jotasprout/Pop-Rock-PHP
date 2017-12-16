@@ -19,9 +19,10 @@ $artistInfoRecent = "	SELECT a.artistID, a.artistName, b.pop, b.date
 												FROM popArtists b2)
 						ORDER BY b.pop ASC";
 
-$happyScabies = "	SELECT a.albumName, a.year, z.artistName, p1.pop, p1.date
+$happyScabies = "	SELECT a.albumName, a.year, a.albumArt, z.artistName, p1.pop, p1.date
 					FROM (SELECT
 								y.albumID AS albumID,
+								y.albumArt AS albumArt,
 								y.albumName AS albumName,
 								y.artistID AS artistID,
 								y.year AS year
