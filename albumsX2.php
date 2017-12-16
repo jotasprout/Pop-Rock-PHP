@@ -251,6 +251,7 @@ function getAlbumsPop ($artistAlbums) {
   
 }
 
+
 function showAlbums ($artistID) {
 
 	$connekt = new mysqli($GLOBALS['host'], $GLOBALS['un'], $GLOBALS['magicword'], $GLOBALS['db']);
@@ -286,12 +287,16 @@ function showAlbums ($artistID) {
 
 	$result = mysqli_query($connekt,$happyScabies);
 
+	$rows = array();
+
 	while ($row = mysqli_fetch_array($result)) {
 		// $artistID = $row["artistID"];
 		$artistName = $row['artistName'];
 		$albumName = $row['albumName'];
 		$albumReleased = $row['year'];
 		$albumPop = $row['pop'];
+
+		$rows[] = $row;
 		
 		echo "<tr>";
 		echo "<td>" . $artistName . "</td>";
@@ -299,8 +304,11 @@ function showAlbums ($artistID) {
 		echo "<td>" . $albumReleased . "</td>";
 		echo "<td>" . $albumPop . "</td>";
 		echo "</tr>";
-	}
-}
 
+	}
+
+	echo json_encode($rows);
+
+}
 
 ?>
