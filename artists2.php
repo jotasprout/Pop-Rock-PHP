@@ -153,7 +153,7 @@ $allArtists = array ("3k4YA0uPsWc2PuOQlJNpdH","3EhbVgyfGd7HkpsagwL9GS","0oSGxfWS
 
 function divideCombineArtists ($allArtists) {
 	
-	$totalTracks = count($allArtists);
+	// $totalArtists = count($allArtists);
 
 	// Divide all artists into chunks of 50
 	$artistsChunk = array ();
@@ -184,21 +184,10 @@ function divideCombineArtists ($allArtists) {
 			$artistNameYucky = $artist->name;
 			$artistName = mysqli_real_escape_string($connekt,$artistNameYucky);
 			$artistPop = $artist->popularity;
-			$insertArtistsInfo = "INSERT INTO artists (artistID,artistName) VALUES('$artistID','$artistName')";
-			$rockout = $connekt->query($insertArtistsInfo);
-			if(!$rockout){
-				echo 'Cursed-Crap. Could not insert artists.';
-			}
 	
 			$insertArtistsPop = "INSERT INTO popArtists (artistID,pop) VALUES('$artistID','$artistPop')";
-			$rockpop = $connekt->query($insertArtistsPop);
-			if(!$rockpop){
-				echo 'Cursed-Crap. Could not insert artists popularity.';
-			}
 	
-			else {
-				echo '<tr><td>' . $artistName . '</td><td>' . $artistPop . '</td></tr>';
-			}
+			$rockpop = $connekt->query($insertArtistsPop);
 			
 		}
 	};	
@@ -209,39 +198,58 @@ function inserttArtistsAndPop ($artistsToInsert) {
 
 	$connekt = new mysqli($GLOBALS['host'], $GLOBALS['un'], $GLOBALS['magicword'], $GLOBALS['db']);
 
-	$bunchofartists = $GLOBALS['api']->getArtists($artistsToInsert);
+	$artistsChunk = array ();
+	$x = ceil((count($allArtists))/50);
 
-	foreach ($bunchofartists->artists as $artist) {
+	$firstArtist = 0;
 
-		$artistID = $artist->id;
-		$artistNameYucky = $artist->name;
-		$artistName = mysqli_real_escape_string($connekt,$artistNameYucky);
-		$artistPop = $artist->popularity;
+	for ($i=0; $i<$x; ++$i) {
+		$lastArtist = 49;
+		$artistsChunk = array_slice($allArtists, $firstArtist, $lastArtist);
+		// put chunks of 50 into an array
+		$artistsArrays [] = $artistsChunk;
+		$firstArtist += 50;
+	};
 
-		$insertArtistsInfo = "INSERT INTO artists (artistID,artistName) VALUES('$artistID','$artistName')";
+	for ($i=0; $i<(count($artistsArrays)); ++$i) {
+				
+		$artistsThisTime = count($artistsArrays[$i]);
 
-		if (!$connekt) {
-			echo 'Darn. Did not connect.';
+		$artistIds = implode(',', $artistsArrays[$i]);
+
+		$bunchofartists = $GLOBALS['api']->getArtists($artistsToInsert);
+
+		foreach ($bunchofartists->artists as $artist) {
+
+			$artistID = $artist->id;
+			$artistNameYucky = $artist->name;
+			$artistName = mysqli_real_escape_string($connekt,$artistNameYucky);
+			$artistPop = $artist->popularity;
+
+			$insertArtistsInfo = "INSERT INTO artists (artistID,artistName) VALUES('$artistID','$artistName')";
+
+			if (!$connekt) {
+				echo 'Darn. Did not connect.';
+			};
+
+			$rockout = $connekt->query($insertArtistsInfo);
+
+			if(!$rockout){
+				echo 'Cursed-Crap. Could not insert artists.';
+			}
+
+			$insertArtistsPop = "INSERT INTO popArtists (artistID,pop) VALUES('$artistID','$artistPop')";
+
+			$rockpop = $connekt->query($insertArtistsPop);
+			
+			if(!$rockpop){
+				echo 'Cursed-Crap. Could not insert artists popularity.';
+			}
+
+			else {
+				echo '<tr><td>' . $artistName . '</td><td>' . $artistPop . '</td></tr>';
+			}
 		};
-
-		$rockout = $connekt->query($insertArtistsInfo);
-
-		if(!$rockout){
-			echo 'Cursed-Crap. Could not insert artists.';
-		}
-
-		$insertArtistsPop = "INSERT INTO popArtists (artistID,pop) VALUES('$artistID','$artistPop')";
-
-		$rockpop = $connekt->query($insertArtistsPop);
-		
-		if(!$rockpop){
-			echo 'Cursed-Crap. Could not insert artists popularity.';
-		}
-
-		else {
-			echo '<tr><td>' . $artistName . '</td><td>' . $artistPop . '</td></tr>';
-		}
-
 	}
 
 	// When attempt is complete, connection closes

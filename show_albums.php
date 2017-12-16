@@ -16,7 +16,7 @@ $artistID = $_POST['artist'];
 ?>
 
 <!DOCTYPE html><html>
-<head><meta charset="UTF-8"><title>Ye Olde Album Results</title><?php echo $stylesAndSuch; ?></head>
+<head><meta charset="UTF-8"><title>Album Info</title><?php echo $stylesAndSuch; ?></head>
 <body>
 
 <div class="container">
