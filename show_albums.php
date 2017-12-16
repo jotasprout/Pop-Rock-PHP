@@ -1,7 +1,6 @@
 <?php
 
 session_start();
-
 require 'vendor/autoload.php';
 require_once 'navbar_rock.php';
 require_once 'stylesAndScripts.php';
@@ -9,10 +8,8 @@ require_once 'albumsX2.php';
 
 // Fetch saved access token
 $accessToken = $_SESSION['accessToken'];
-
 $GLOBALS['api'] = new SpotifyWebAPI\SpotifyWebAPI();
 $GLOBALS['api']->setAccessToken($accessToken);
-
 // $artistID = $_SESSION['artist'];
 $artistID = $_POST['artist'];
 
@@ -36,22 +33,17 @@ $artistID = $_POST['artist'];
 		
 		<!-- Panel Content --> 
 
-<?php
-// echo "<h2>" . $artistName . "</h2>"; 
-// echo "<p>" . $artistName . "'s popularity is " . $artistPop . ".</p>";
-echo '<table class="table">';
-echo '<tr><th>Album Art</th><th>Album Name</th><th>Released</th><th>Popularity</th></tr>';
+	<?php
+	echo '<table class="table">';
+	echo '<tr><th>Album Art</th><th>Album Name</th><th>Released</th><th>Popularity</th></tr>';
+	showAlbums ($artistID);
+	?>
 
-showAlbums ($artistID);
-
-
-?>
-
-</table>
-</div> <!-- panel body -->
-
-    </div> <!-- closing container -->
+	</table>
+	</div> <!-- panel body -->
 	<footer class="footer"><p>&copy; Sprout Means Grow and RoxorSoxor 2017</p></footer>
+</div> <!-- closing container -->
+	
 <?php echo $scriptsAndSuch; ?>
 
 </body>
