@@ -18,7 +18,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Choose an Artist</title>
+    <title>Choose a Christian Artist</title>
     <?php echo $stylesAndSuch; ?>
 </head>
 
@@ -27,12 +27,9 @@
     
     <form class="form-horizontal" id="rockinForm" action="handle_albums8.php" method="post">
         <fieldset>
-            <legend>Ye Olde Select An Artist Menu</legend>
+            <legend>Select a Christian Artist</legend>
 
             <div class="form-group"> <!-- Row 1 -->
-<!--                        
-            <label class="col-lg-2 control-label" for="artist">Ye Olde Select An Artist Menu</label>
--->
                 <div class="col-lg-4">
                     <select class="form-control" id="artist" name="artist">
                         <option value="">- Choose -</option>
