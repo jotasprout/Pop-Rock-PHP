@@ -25,7 +25,7 @@
 <body>
 	<div class="container">
     
-    <form class="form-horizontal" id="rockinForm" action="show_albums.php" method="post">
+    <form class="form-horizontal" id="rockinForm" action="handle_albums8.php" method="post">
         <fieldset>
             <legend>Select a Christian Artist</legend>
 
