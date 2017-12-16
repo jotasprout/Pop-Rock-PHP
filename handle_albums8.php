@@ -26,7 +26,7 @@ $_SESSION['artist'] = $artistID;
 ?>
 
 <!DOCTYPE html><html>
-<head><meta charset="UTF-8"><title>Ye Olde Album Results</title><?php echo $stylesAndSuch; ?></head>
+<head><meta charset="UTF-8"><title>Get Album Data from Spotify</title><?php echo $stylesAndSuch; ?></head>
 <body>
 
 <div class="container">
@@ -69,17 +69,17 @@ foreach ($discography->items as $album) {
 
 // $howmanytotal = count($artistAlbums);
 // echo $howmanytotal . '<br>';
-
+divideCombineAlbums ($artistAlbums);
 // getAlbumsPop ($artistAlbums);
-divideCombineAlbumsForArt ($artistAlbums);
+// divideCombineAlbumsForArt ($artistAlbums);
 
 ?>
 
 </table>
 </div> <!-- panel body -->
-
+<footer class="footer"><p>&copy; Sprout Means Grow and RoxorSoxor 2017</p></footer>
     </div> <!-- closing container -->
-	<footer class="footer"><p>&copy; Sprout Means Grow and RoxorSoxor 2017</p></footer>
+
 <?php echo $scriptsAndSuch; ?>
 
 </body>
