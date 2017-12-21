@@ -1,18 +1,24 @@
 <?php
+
     require_once 'stylesAndScripts.php';
     require_once 'navbar_rock.php';
+
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
-	<head><meta charset="utf-8"><?php echo $stylesAndSuch; ?></head>
+	<head>
+		<?php echo $stylesAndSuch; ?>
+		<script src='https://d3js.org/d3.v4.min.js'></script>
+	</head>
 
 	<body>
 
-		<DIV class="container">	<!-- open container -->    
-		    <?php echo $navbar ?> 
+		<DIV class="container">
+	    
+		    <?php echo $navbar ?> <!-- /navbar -->
 
-			<div id="forChart"> <!-- open main -->
+			<div id="forChart"> <!-- main -->
 				<script type="text/javascript">
 
 					//Width and height
@@ -77,13 +83,20 @@
 						.attr("fill", "white");
 						
 				</script>
+
+				<p><strong>Source:</strong> <a href="http://www.fridaythe13thfranchise.com/2011/07/body-count.html">Fridaythe13thFranchise.com</a></p>
+				<p>Other sites and articles with less credibility and no apparent research have significantly different numbers. The DataViz-inclined may enjoy <a href="http://i2.wp.com/bitcast-a-sm.bitgravity.com/slashfilm/wp/wp-content/images/Jason-Voorhees-Body-Count.jpg">this infographic from Slashfilm</a>.
 			
-            </div> <!-- close main -->
-            
 
+			</div> <!-- main -->
 
+			<footer class="footer">
 
-            
-		</div> 	<!--  close container -->	
+				<p>&copy; Sprout Means Grow 2016</p>
+
+			</footer>
+		</div> 	<!-- /container -->	
+
+		<?php echo $scriptsAndSuch; ?>	
 	</body>
 </html>
