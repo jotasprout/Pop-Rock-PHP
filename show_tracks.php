@@ -15,7 +15,10 @@ $GLOBALS['api'] = new SpotifyWebAPI\SpotifyWebAPI();
 $GLOBALS['api']->setAccessToken($accessToken);
 
 // could next line go in artist class?
-$artistID = $_POST['artist'];
+$artistID = $_SESSION['artist'];
+// temporarily commenting out next line and using previous line
+// $artistID = $_POST['artist'];
+// $_SESSION['artist'] = $artistID;
 // could these be methods in the artist class?    
 $artist = $GLOBALS['api']->getArtist($artistID);
 

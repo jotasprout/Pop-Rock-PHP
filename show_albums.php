@@ -10,8 +10,10 @@ require_once 'albumsX2.php';
 $accessToken = $_SESSION['accessToken'];
 $GLOBALS['api'] = new SpotifyWebAPI\SpotifyWebAPI();
 $GLOBALS['api']->setAccessToken($accessToken);
-// $artistID = $_SESSION['artist'];
+$artistID = $_SESSION['artist'];
+// temporarily commenting out next line and using previous line
 $artistID = $_POST['artist'];
+// $_SESSION['artist'] = $artistID;
 
 ?>
 

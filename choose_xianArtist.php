@@ -8,8 +8,10 @@
     // Fetch saved access token
     $accessToken = $_SESSION['accessToken'];
     
+    // Do I need the next two lines?
     $GLOBALS['api'] = new SpotifyWebAPI\SpotifyWebAPI();
     $GLOBALS['api']->setAccessToken($accessToken);
+    // What happened to my globals? Where are they? Is this where they're set?
     
 ?>
 
