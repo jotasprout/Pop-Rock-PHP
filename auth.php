@@ -10,10 +10,13 @@ $session->requestCredentialsToken();
 $accessToken = $session->getAccessToken();
 
 // Store access token 
-$_SESSION['accessToken'] = $accessToken;
+// $_SESSION['accessToken'] = $accessToken;
+
+$GLOBALS['api'] = new SpotifyWebAPI\SpotifyWebAPI();
+$GLOBALS['api']->setAccessToken($accessToken);
 
 // Rock on!
-header('Location: choose_artist.php');
+// header('Location: choose_artist.php');
 die();
 
 ?>

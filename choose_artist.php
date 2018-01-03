@@ -1,6 +1,6 @@
 <?php
     session_start();
-    
+    require_once 'auth.php';
     require 'artists.php';
     require 'vendor/autoload.php';
     require_once 'stylesAndScripts.php';
