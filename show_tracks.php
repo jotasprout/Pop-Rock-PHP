@@ -35,7 +35,7 @@ $artist = $GLOBALS['api']->getArtist($artistID);
 echo '<table class="table">';
 echo '<tr><th>Album Name</th><th>Track Name</th><th>Track Popularity</th></tr>';
 
-showTracks ();
+showTracks ($artistID);
 
 echo '</table>';
 
@@ -44,6 +44,6 @@ echo '</table>';
 </table>
     </div> <!-- closing container -->
 <?php echo $scriptsAndSuch; ?>
-<footer class="footer"><p>&copy; Sprout Means Grow and RoxorSoxor 2017</p></footer>
+<footer class="footer"><p>&copy; Sprout Means Grow and RoxorSoxor 2018</p></footer>
 </body>
 </html>
