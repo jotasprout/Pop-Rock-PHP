@@ -19,6 +19,9 @@
     $GLOBALS['api'] = new SpotifyWebAPI\SpotifyWebAPI();
     $GLOBALS['api']->setAccessToken($accessToken);
 
+    $artistID = $_POST['artist'];
+    $_SESSION['artist'] = $artistID;
+
 ?>
 
 <!DOCTYPE html>
@@ -40,8 +43,13 @@
 
             <table class="table">
                 <tr><th>Artist Name</th><th>Popularity</th><th>Date</th></tr>
-                <?php showArtists (); ?>
+                <?php showThisArtist (); ?>
             </table>
+
+            <?php
+            echo "<h2>" . $artistName . "</h2>"; 
+            echo "<p>" . $artistName . "'s popularity is " . $artistPop . ".</p>";
+            ?>
 
         </div> <!-- close container -->
         
