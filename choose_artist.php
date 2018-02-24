@@ -103,7 +103,6 @@ echo "<option value='" . $resurrectionBand->get_artistID() . "'>" . $resurrectio
 echo "<option value='" . $xlDBD->get_artistID() . "'>" . $xlDBD->get_artistName() . "</option>";
 echo "<option value='" . $crucified->get_artistID() . "'>" . $crucified->get_artistName() . "</option>";
 echo "<option value='" . $playdough->get_artistID() . "'>" . $playdough->get_artistName() . "</option>";
-
 echo "<option value='" . $saint->get_artistID() . "'>" . $saint->get_artistName() . "</option>";
 echo "<option value='" . $twelthTribe->get_artistID() . "'>" . $twelthTribe->get_artistName() . "</option>";
 echo "<option value='" . $seventySevens->get_artistID() . "'>" . $seventySevens->get_artistName() . "</option>";
