@@ -4,8 +4,8 @@ session_start();
 
 require 'vendor/autoload.php';
 require_once 'stylesAndScripts.php';
-require_once 'albums9.php';
-require_once 'tracks8.php';
+require_once 'albums.php';
+require_once 'tracks.php';
 
 // Fetch saved access token
 $accessToken = $_SESSION['accessToken'];

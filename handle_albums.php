@@ -5,7 +5,7 @@ session_start();
 require 'vendor/autoload.php';
 require_once 'navbar_rock.php';
 require_once 'stylesAndScripts.php';
-require_once 'albumsX2.php';
+require_once 'albums.php';
 
 // Fetch saved access token
 $accessToken = $_SESSION['accessToken'];
