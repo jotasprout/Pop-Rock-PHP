@@ -1,6 +1,6 @@
 <?php
 
-// require ("class.artist.php");
+require ("class.artist.php");
 require_once 'rockdb.php';
 
 $hollywoodVampires = new artist ("3k4YA0uPsWc2PuOQlJNpdH","Hollywood Vampires");
