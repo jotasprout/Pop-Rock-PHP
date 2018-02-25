@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-
+require_once 'auth.php';
 require 'vendor/autoload.php';
 require_once 'navbar_rock.php';
 require_once 'stylesAndScripts.php';
@@ -19,9 +19,9 @@ $artistID = $_POST['artist'];
 $_SESSION['artist'] = $artistID;
 
 // could these be methods in the artist class?    
-// $artist = $GLOBALS['api']->getArtist($artistID);
-// $artistName = $artist->name;
-// $artistPop = $artist->popularity;
+$artist = $GLOBALS['api']->getArtist($artistID);
+$artistName = $artist->name;
+$artistPop = $artist->popularity;
 
 ?>
 
@@ -44,15 +44,14 @@ $_SESSION['artist'] = $artistID;
 		<!-- Panel Content --> 
 
 <?php
-// echo "<h2>" . $artistName . "</h2>"; 
-// echo "<p>" . $artistName . "'s popularity is " . $artistPop . ".</p>";
+echo "<h2>" . $artistName . "</h2>"; 
+echo "<p>" . $artistName . "'s popularity is " . $artistPop . ".</p>";
 echo '<table class="table">';
 echo '<tr><th>Album Cover</th><th>Album Name</th><th>Released</th><th>Popularity</th></tr>';
 
 $discography = $GLOBALS['api']->getArtistAlbums($artistID, [
 	'market' => 'us',
-	// Removing next line because most users probably grab most popular songs from compilations
-	// 'album_type' => 'album',
+	'album_type' => 'album',
 	'limit' => '50'
 ]);
 
@@ -69,9 +68,9 @@ foreach ($discography->items as $album) {
 
 // $howmanytotal = count($artistAlbums);
 // echo $howmanytotal . '<br>';
-divideCombineAlbums ($artistAlbums);
+// divideCombineAlbums ($artistAlbums);
 // getAlbumsPop ($artistAlbums);
-// divideCombineAlbumsForArt ($artistAlbums);
+divideCombineAlbumsForArt ($artistAlbums);
 
 ?>
 

@@ -1,6 +1,6 @@
 <?php
     session_start();
-    // require_once 'auth.php';
+    require_once 'auth.php';
     // site pages only get from my DB so they don't need auth
     require_once 'rockdb.php';
     require 'artists.php';
@@ -9,7 +9,7 @@
     require_once 'navbar_rock.php';
 
     // Fetch saved access token
-    // $accessToken = $_SESSION['accessToken'];
+    $accessToken = $_SESSION['accessToken'];
     
 ?>
 
@@ -25,7 +25,7 @@
 <body>
 	<div class="container">
     
-    <form class="form-horizontal" id="rockinForm" action="this_artist.php" method="post">
+    <form class="form-horizontal" id="rockinForm" action="handle_albums.php" method="post">
         <fieldset>
             <legend>Ye Olde Select An Artist Menu</legend>
 

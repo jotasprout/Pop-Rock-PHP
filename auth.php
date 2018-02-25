@@ -1,6 +1,6 @@
 <?php
 
-session_start();
+// session_start();
 require 'spotifySecrets.php';
 require 'vendor/autoload.php';
 
@@ -17,7 +17,7 @@ $GLOBALS['api'] = new SpotifyWebAPI\SpotifyWebAPI();
 $GLOBALS['api']->setAccessToken($accessToken);
 
 // Rock on!
-// header('Location: choose_artist.php');
+header('Location: choose_artist.php');
 die();
 
 ?>
