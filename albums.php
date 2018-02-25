@@ -314,7 +314,7 @@ $happyScabies2 = "	SELECT a.albumName, a.year, a.albumArt, z.artistName, p1.pop,
 
 	$rows = array();
 
-	while ($row = mysqli_fetch_array($result)) {
+	while ($row = mysqli_fetch_array($getit)) {
 		// $artistID = $row["artistID"];
 		$artistName = $row['artistName'];
 		// $albumArt = $row['albumArt'];

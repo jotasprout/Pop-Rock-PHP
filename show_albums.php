@@ -35,8 +35,7 @@ $artistID = $_SESSION['artist'];
 	<div class="panel-body"> 
 		
 		<!-- Panel Content --> 
-
-		echo "<p>" . $artistID . "</p>";
+		<?php echo '<p>' . $artistID . '</p>'; ?>
 
 	<?php
 	echo '<table class="table">';
