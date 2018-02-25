@@ -362,11 +362,15 @@ function showArtists () {
 }
 
 function showThisArtist () {
+	
 	$connekt = new mysqli($GLOBALS['host'], $GLOBALS['un'], $GLOBALS['magicword'], $GLOBALS['db']);
+
 	$artistInfoAll = "SELECT a.artistID, a.artistName, b.pop, b.date 
 		FROM artists a
 			INNER JOIN popArtists b ON a.artistID = b.artistID
 		ORDER BY a.artistName ASC";
+
+	$getit = $connekt->query($artistInfoRecent);
 
 	while ($row = mysqli_fetch_array($getit)) {
 		// $artistID = $row["artistID"];

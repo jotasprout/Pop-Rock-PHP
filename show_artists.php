@@ -9,9 +9,7 @@
     require_once 'artists.php';
 
     $accessToken = $_SESSION['accessToken'];
-
-
-
+    
 ?>
 
 <!DOCTYPE html>
