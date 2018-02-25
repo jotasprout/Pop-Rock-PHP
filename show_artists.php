@@ -1,7 +1,6 @@
 <?php
 
     session_start();
-    require_once 'auth.php';
     require 'vendor/autoload.php';
     require_once 'rockdb.php';
     require_once 'navbar_rock.php';

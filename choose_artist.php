@@ -1,6 +1,10 @@
 <?php
     session_start();
     require_once 'auth.php';
+        // Fetch saved access token
+        $accessToken = $_SESSION['accessToken'];
+
+
     // site pages only get from my DB so they don't need auth
     require_once 'rockdb.php';
     require 'artists.php';
@@ -8,8 +12,7 @@
     require_once 'stylesAndScripts.php';
     require_once 'navbar_rock.php';
 
-    // Fetch saved access token
-    $accessToken = $_SESSION['accessToken'];
+
     
 ?>
 
