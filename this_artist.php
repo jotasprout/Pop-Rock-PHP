@@ -18,7 +18,7 @@
     // $GLOBALS['api']->setAccessToken($accessToken);
 
     $artistID = $_POST['artist'];
-    $_SESSION['artist'] = $artistID;
+    $_SESSION['artist'] = $_POST['artist'];
     // this page loads directly from choose_artist so it gets the post
     // all other pages will get session artist from this page
 

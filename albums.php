@@ -300,12 +300,17 @@ $happyScabies2 = "	SELECT a.albumName, a.year, a.albumArt, z.artistName, p1.pop,
 							ON p.albumID = groupedp.albumID
 							AND p.date = groupedp.MaxDate) p1 
 					ON a.albumID = p1.albumID
-					ORDER BY a.year ASC;";					
+					ORDER BY a.year ASC;";
 
-	// the next line works in stakeout but not here
-	// $result = $connekt->query($query);
+	if (!$connekt) {
+		echo 'Darn. Did not connect.';
+	};
 
-	$result = mysqli_query($connekt,$happyScabies);
+	$getit = $connekt->query($happyScabies2);
+
+	if(!$getit){
+		echo 'Cursed-Crap. Did not run the query.';
+	}
 
 	$rows = array();
 

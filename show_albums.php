@@ -36,6 +36,8 @@ $artistID = $_SESSION['artist'];
 		
 		<!-- Panel Content --> 
 
+		echo "<p>" . $artistID . "</p>";
+
 	<?php
 	echo '<table class="table">';
 	// echo '<tr><th>Album Art</th><th>Album Name</th><th>Released</th><th>Popularity</th></tr>';
