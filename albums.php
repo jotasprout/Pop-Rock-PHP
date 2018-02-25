@@ -325,7 +325,7 @@ $happyScabies2 = "	SELECT a.albumName, a.year, a.albumArt, z.artistName, p1.pop,
 		$rows[] = $row;
 		
 		echo "<tr>";
-		// echo "<td><img src='" . $albumArt . "' height='64' width='64'></td>";
+		echo "<td><img src='" . $albumArt . "' height='64' width='64'></td>";
 		echo "<td>" . $albumName . "</td>";
 		echo "<td>" . $albumReleased . "</td>";
 		echo "<td>" . $albumPop . "</td>";
