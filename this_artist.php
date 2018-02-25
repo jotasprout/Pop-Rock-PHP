@@ -1,22 +1,21 @@
 <?php
 
     session_start();
-
     require_once 'rockdb.php';
-    require_once 'navbar_rock.php';
     require_once 'stylesAndScripts.php';
+    require_once 'navbar_rock.php';
     require_once 'artists.php';
 
-    $session = new SpotifyWebAPI\Session($myClientID, $myClientSecret);
+   // $session = new SpotifyWebAPI\Session($myClientID, $myClientSecret);
 
-    $session->requestCredentialsToken();
-    $accessToken = $session->getAccessToken();
+    // $session->requestCredentialsToken();
+    // $accessToken = $session->getAccessToken();
 
-    $_SESSION['accessToken'] = $accessToken;
-    $accessToken = $_SESSION['accessToken'];
+    // $_SESSION['accessToken'] = $accessToken;
+    // $accessToken = $_SESSION['accessToken'];
 
-    $GLOBALS['api'] = new SpotifyWebAPI\SpotifyWebAPI();
-    $GLOBALS['api']->setAccessToken($accessToken);
+    // $GLOBALS['api'] = new SpotifyWebAPI\SpotifyWebAPI();
+    // $GLOBALS['api']->setAccessToken($accessToken);
 
     $artistID = $_POST['artist'];
     $_SESSION['artist'] = $artistID;

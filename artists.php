@@ -365,11 +365,11 @@ function showThisArtist ($artistID) {
 	$connekt = new mysqli($GLOBALS['host'], $GLOBALS['un'], $GLOBALS['magicword'], $GLOBALS['db']);
 
 	$artistInfoAll = "SELECT a.artistID, a.artistName, b.pop, b.date 
-		FROM artists a
+		FROM artists a WHERE a.artistID = '$artistID'
 			INNER JOIN popArtists b ON a.artistID = b.artistID
-		ORDER BY a.artistName ASC";
+		ORDER BY b.date ASC";
 
-	$getit = $connekt->query($artistInfoRecent);
+	$getit = $connekt->query($artistInfoAll);
 
 	while ($row = mysqli_fetch_array($getit)) {
 		// $artistID = $row["artistID"];
