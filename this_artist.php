@@ -47,8 +47,8 @@
             </table>
 
             <?php
-            echo "<h2>" . $artistName . "</h2>"; 
-            echo "<p>" . $artistName . "'s popularity is " . $artistPop . ".</p>";
+            // echo "<h2>" . $artistName . "</h2>"; 
+            // echo "<p>" . $artistName . "'s popularity is " . $artistPop . ".</p>";
             ?>
 
         </div> <!-- close container -->

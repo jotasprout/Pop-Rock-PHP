@@ -2,18 +2,19 @@
 
 session_start();
 require 'vendor/autoload.php';
+require_once 'rockdb.php';
 require_once 'navbar_rock.php';
 require_once 'stylesAndScripts.php';
 require_once 'albums.php';
 
 // Fetch saved access token
-$accessToken = $_SESSION['accessToken'];
-$GLOBALS['api'] = new SpotifyWebAPI\SpotifyWebAPI();
-$GLOBALS['api']->setAccessToken($accessToken);
+// $accessToken = $_SESSION['accessToken'];
+// $GLOBALS['api'] = new SpotifyWebAPI\SpotifyWebAPI();
+// $GLOBALS['api']->setAccessToken($accessToken);
 $artistID = $_SESSION['artist'];
 // temporarily commenting out next line and using previous line
 // $artistID = $_POST['artist'];
-// $_SESSION['artist'] = $artistID;
+$_SESSION['artist'] = $artistID;
 
 ?>
 
@@ -43,7 +44,7 @@ $artistID = $_SESSION['artist'];
 
 	</table>
 	</div> <!-- panel body -->
-	<footer class="footer"><p>&copy; Sprout Means Grow and RoxorSoxor 2017</p></footer>
+	<footer class="footer"><p>&copy; Sprout Means Grow and RoxorSoxor 2018</p></footer>
 </div> <!-- closing container -->
 	
 <?php echo $scriptsAndSuch; ?>
