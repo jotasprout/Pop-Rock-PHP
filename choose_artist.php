@@ -1,4 +1,5 @@
 <?php
+    session_start();
     require_once 'auth.php';
     require 'artists.php';
     require 'vendor/autoload.php';
@@ -21,7 +22,7 @@
 <body>
 	<div class="container">
     
-    <form class="form-horizontal" id="rockinForm" action="handle_albums8.php" method="post">
+    <form class="form-horizontal" id="rockinForm" action="this_artist.php" method="post">
         <fieldset>
             <legend>Ye Olde Select An Artist Menu</legend>
 
