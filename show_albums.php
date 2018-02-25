@@ -14,7 +14,7 @@ require_once 'albums.php';
 $artistID = $_SESSION['artist'];
 // temporarily commenting out next line and using previous line
 // $artistID = $_POST['artist'];
-$_SESSION['artist'] = $artistID;
+// $_SESSION['artist'] = $artistID;
 
 ?>
 
