@@ -379,6 +379,5 @@ function showThisArtist () {
 		echo "<td>" . $artistPop . "</td>";
 		echo "<td>" . $popDate . "</td>";
 		echo "</tr>";
-	}
-
-?>
+	} 
+}
