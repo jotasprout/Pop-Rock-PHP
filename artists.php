@@ -371,6 +371,14 @@ function showThisArtist ($artistID) {
 
 	$getit = $connekt->query($artistInfoAll);
 
+	if (!$connekt) {
+		echo 'Darn. Did not connect.';
+	};	
+
+	if(!$getit){
+		echo 'Cursed-Crap. Did not run the query.';
+	}	
+
 	while ($row = mysqli_fetch_array($getit)) {
 		// $artistID = $row["artistID"];
 		$artistName = $row["artistName"];
