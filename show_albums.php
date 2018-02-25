@@ -38,7 +38,8 @@ $artistID = $_SESSION['artist'];
 
 	<?php
 	echo '<table class="table">';
-	echo '<tr><th>Album Art</th><th>Album Name</th><th>Released</th><th>Popularity</th></tr>';
+	// echo '<tr><th>Album Art</th><th>Album Name</th><th>Released</th><th>Popularity</th></tr>';
+	echo '<tr><th>Album Name</th><th>Released</th><th>Popularity</th></tr>';
 	showAlbums ($artistID);
 	?>
 
