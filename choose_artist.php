@@ -1,5 +1,4 @@
 <?php
-    session_start();
     require_once 'auth.php';
     require 'artists.php';
     require 'vendor/autoload.php';

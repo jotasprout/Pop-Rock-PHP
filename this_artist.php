@@ -1,8 +1,7 @@
 <?php
 
     session_start();
-    require 'spotifySecrets.php';
-    require 'vendor/autoload.php';
+
     require_once 'rockdb.php';
     require_once 'navbar_rock.php';
     require_once 'stylesAndScripts.php';
@@ -21,6 +20,8 @@
 
     $artistID = $_POST['artist'];
     $_SESSION['artist'] = $artistID;
+    // this page loads directly from choose_artist so it gets the post
+    // all other pages will get session artist from this page
 
 ?>
 
@@ -43,7 +44,7 @@
 
             <table class="table">
                 <tr><th>Artist Name</th><th>Popularity</th><th>Date</th></tr>
-                <?php showThisArtist (); ?>
+                <?php showThisArtist ($artistID); ?>
             </table>
 
             <?php

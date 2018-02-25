@@ -1,6 +1,6 @@
 <?php
 
-require ("class.artist.php");
+// require ("class.artist.php");
 require_once 'rockdb.php';
 
 $hollywoodVampires = new artist ("3k4YA0uPsWc2PuOQlJNpdH","Hollywood Vampires");
@@ -189,7 +189,6 @@ function divideCombineArtists ($allArtists) {
 	};	
 }
 
-
 function inserttArtistsAndPop ($artistsToInsert) {
 
 	$connekt = new mysqli($GLOBALS['host'], $GLOBALS['un'], $GLOBALS['magicword'], $GLOBALS['db']);
@@ -361,7 +360,7 @@ function showArtists () {
 
 }
 
-function showThisArtist () {
+function showThisArtist ($artistID) {
 	
 	$connekt = new mysqli($GLOBALS['host'], $GLOBALS['un'], $GLOBALS['magicword'], $GLOBALS['db']);
 
