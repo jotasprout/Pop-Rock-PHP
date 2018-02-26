@@ -1,8 +1,6 @@
 <?php
 
-session_start();
-
-require 'vendor/autoload.php';
+require_once 'auth.php';
 require_once 'stylesAndScripts.php';
 require_once 'albums.php';
 require_once 'tracks.php';
@@ -15,7 +13,8 @@ $GLOBALS['api'] = new SpotifyWebAPI\SpotifyWebAPI();
 $GLOBALS['api']->setAccessToken($accessToken);
 
 // could next line go in artist class?
-$artistID = $_POST['artist'];
+// $artistID = $_POST['artist'];
+$artistID = $_SESSION['artist'];
 // could these be methods in the artist class?    
 $artist = $GLOBALS['api']->getArtist($artistID);
 $artistName = $artist->name;
