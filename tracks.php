@@ -51,9 +51,9 @@ function divideCombineInsertTracksAndPop ($AlbumsTracks) {
 	
 			$rockout = $connekt->query($insertTrackInfo);
 	
-			if(!$rockout){
-				echo 'Cursed-Crap. Could not insert "' . $trackName . '" from <i>' . $trackAlbumName . '</i>.<br>';
-			}
+			// if(!$rockout){
+			//	echo 'Cursed-Crap. Could not insert "' . $trackName . '" from <i>' . $trackAlbumName . '</i>.<br>';
+			// }
 	
 			$insertTrackPop = "INSERT INTO popTracks (trackID,pop) VALUES('$trackID','$trackPop')";
 	

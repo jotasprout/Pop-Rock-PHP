@@ -36,7 +36,7 @@ echo '<tr><th>Album Name</th><th>Track Name</th><th>Track Popularity</th></tr>';
 
 $discography = $GLOBALS['api']->getArtistAlbums($artistID, [
 	'market' => 'us',
-	// 'album_type' => 'album',
+	'album_type' => 'album',
 	'limit' => '50'
 ]);
 
