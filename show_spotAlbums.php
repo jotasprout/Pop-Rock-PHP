@@ -7,7 +7,7 @@ require_once 'stylesAndScripts.php';
 require_once 'albums.php';
 
 // Fetch saved access token
-// $accessToken = $_SESSION['accessToken'];
+$accessToken = $_SESSION['accessToken'];
 // $GLOBALS['api'] = new SpotifyWebAPI\SpotifyWebAPI();
 // $GLOBALS['api']->setAccessToken($accessToken);
 $artistID = $_SESSION['artist'];

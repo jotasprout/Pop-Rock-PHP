@@ -1,8 +1,8 @@
 <?php
-    session_start();
+
     require_once 'auth.php';
         // Fetch saved access token
-        $accessToken = $_SESSION['accessToken'];
+        // $accessToken = $_SESSION['accessToken'];
 
 
     // site pages only get from my DB so they don't need auth
