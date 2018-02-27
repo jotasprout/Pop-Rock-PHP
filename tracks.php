@@ -130,7 +130,7 @@ function divideCombineInsertPopTracks ($AlbumsTracks) {
 
 function divideCombineTracks ($AlbumsTracks) {
 
-	/ $totalTracks = count($AlbumsTracks);
+	// $totalTracks = count($AlbumsTracks);
 	// echo $totalTracks . '<br>';
 
 	// Divide all artist's tracks into chunks of 50
