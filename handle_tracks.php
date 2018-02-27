@@ -4,7 +4,7 @@ require_once 'auth.php';
 require_once 'stylesAndScripts.php';
 require_once 'albums.php';
 require_once 'tracks.php';
-require_once 'navbar_rock.php';
+// require_once 'navbar_rock.php';
 
 // Fetch saved access token
 $accessToken = $_SESSION['accessToken'];
