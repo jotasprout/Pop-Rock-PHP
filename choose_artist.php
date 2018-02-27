@@ -63,6 +63,7 @@ echo "<option value='" . $HeavenHell->get_artistID() . "'>" . $HeavenHell->get_a
 echo "<option value='" . $ozzyOsbourne->get_artistID() . "'>" . $ozzyOsbourne->get_artistName() . "</option>";
 echo "<option value='" . $dio->get_artistID() . "'>" . $dio->get_artistName() . "</option>";
 echo "<option value='" . $ronnieJamesDio->get_artistID() . "'>" . $ronnieJamesDio->get_artistName() . "</option>";
+echo "<option value='" . $rainbow->get_artistID() . "'>" . $rainbow->get_artistName() . "</option>";
 echo "<option value='" . $jethroTull->get_artistID() . "'>" . $jethroTull->get_artistName() . "</option>";
 echo "<option value='" . $garyNuman->get_artistID() . "'>" . $garyNuman->get_artistName() . "</option>";
 echo "<option value='" . $prince->get_artistID() . "'>" . $prince->get_artistName() . "</option>";

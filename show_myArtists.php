@@ -1,7 +1,5 @@
 <?php
 
-    session_start();
-    require 'vendor/autoload.php';
     require_once 'rockdb.php';
     require_once 'navbar_rock.php';
     require_once 'stylesAndScripts.php';
