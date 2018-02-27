@@ -1,9 +1,8 @@
 <?php
 
     require_once 'auth.php';
-        // Fetch saved access token
-        // $accessToken = $_SESSION['accessToken'];
-
+    // Fetch saved access token
+    // $accessToken = $_SESSION['accessToken'];
 
     // site pages only get from my DB so they don't need auth
     require_once 'rockdb.php';
@@ -11,8 +10,6 @@
     require 'vendor/autoload.php';
     require_once 'stylesAndScripts.php';
     require_once 'navbar_rock.php';
-
-
     
 ?>
 
