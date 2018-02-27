@@ -6,14 +6,7 @@ require_once 'navbar_rock.php';
 require_once 'stylesAndScripts.php';
 require_once 'albums.php';
 
-// Fetch saved access token
-// $accessToken = $_SESSION['accessToken'];
-// $GLOBALS['api'] = new SpotifyWebAPI\SpotifyWebAPI();
-// $GLOBALS['api']->setAccessToken($accessToken);
 $artistID = $_SESSION['artist'];
-// temporarily commenting out next line and using previous line
-// $artistID = $_POST['artist'];
-// $_SESSION['artist'] = $artistID;
 
 ?>
 
@@ -34,19 +27,17 @@ $artistID = $_SESSION['artist'];
 	<div class="panel-body"> 
 		
 		<!-- Panel Content --> 
-		<?php echo '<p>' . $artistID . '</p>'; ?>
+		<table class="table">
+			<tr><th>Album Art</th><th>Album Name</th><th>Released</th><th>Popularity</th></tr>
+			<?php
+				showAlbums ($artistID);
+			?>
 
-	<?php
-	echo '<table class="table">';
-	echo '<tr><th>Album Art</th><th>Album Name</th><th>Released</th><th>Popularity</th></tr>';
-	// echo '<tr><th>Album Name</th><th>Released</th><th>Popularity</th></tr>';
-	showAlbums ($artistID);
-	?>
-
-	</table>
-	</div> <!-- panel body -->
-	<footer class="footer"><p>&copy; Sprout Means Grow and RoxorSoxor 2018</p></footer>
-</div> <!-- closing container -->
+		</table>
+</div> <!-- panel body -->
+<footer class="footer"><p>&copy; Sprout Means Grow and RoxorSoxor 2018</p></footer>
+</div> <!-- panel panel-primary -->
+    </div> <!-- closing container -->
 	
 <?php echo $scriptsAndSuch; ?>
 
