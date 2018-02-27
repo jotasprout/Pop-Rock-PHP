@@ -24,7 +24,7 @@ $artistPop = $artist->popularity;
 ?>
 
 <!DOCTYPE html><html>
-<head><meta charset="UTF-8"><title>Get Album Data from Spotify</title><?php echo $stylesAndSuch; ?></head>
+<head><meta charset="UTF-8"><title>Latest Album Data from Spotify</title><?php echo $stylesAndSuch; ?></head>
 <body>
 
 <div class="container">
@@ -74,7 +74,7 @@ divideCombineAlbumsForArt ($artistAlbums);
 
 </table>
 </div> <!-- panel body -->
-<footer class="footer"><p>&copy; Sprout Means Grow and RoxorSoxor 2017</p></footer>
+<footer class="footer"><p>&copy; Sprout Means Grow and RoxorSoxor 2018</p></footer>
 </div> <!-- panel panel-primary -->
     </div> <!-- closing container -->
 

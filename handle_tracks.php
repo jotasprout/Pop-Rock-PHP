@@ -1,10 +1,10 @@
 <?php
 
 require_once 'auth.php';
+require_once 'navbar_rock.php';
 require_once 'stylesAndScripts.php';
 require_once 'albums.php';
 require_once 'tracks.php';
-// require_once 'navbar_rock.php';
 
 // Fetch saved access token
 $accessToken = $_SESSION['accessToken'];
@@ -24,10 +24,22 @@ $artistPop = $artist->popularity;
 ?>
 
 <!DOCTYPE html><html>
-<head><meta charset="UTF-8"><title>Ye Olde Popularity de Tracks</title><?php echo $stylesAndSuch; ?></head>
+<head><meta charset="UTF-8"><title>Latest Tracks Data from Spotify</title><?php echo $stylesAndSuch; ?></head>
 <body>
 
 <div class="container">
+
+	<?php echo $navbar ?>
+	
+	<!-- main -->
+	
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		<h3 class="panel-title">Latest Tracks Info from Spotify</h3>
+	</div>
+	<div class="panel-body"> 
+		
+		<!-- Panel Content --> 
 
 <?php
 // echo "<h2>" . $artistName . "</h2>"; 
@@ -57,8 +69,9 @@ divideCombineAlbumsForTracks ($artistAlbums);
 ?>
 
 </table>
+</div> <!-- panel body -->
+<footer class="footer"><p>&copy; Sprout Means Grow and RoxorSoxor 2018</p></footer>
+</div> <!-- panel panel-primary -->
     </div> <!-- closing container -->
-<?php echo $scriptsAndSuch; ?>
-<footer class="footer"><p>&copy; Sprout Means Grow and RoxorSoxor 2017</p></footer>
 </body>
 </html>
