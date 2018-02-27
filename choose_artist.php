@@ -170,7 +170,6 @@ echo "<option value='" . $stPerfectFoil->get_artistID() . "'>" . $stPerfectFoil-
 echo "<option value='" . $stDanielsonFoil->get_artistID() . "'>" . $stDanielsonFoil->get_artistName() . "</option>";
 echo "<option value='" . $testament->get_artistID() . "'>" . $testament->get_artistName() . "</option>";
 echo "<option value='" . $tourniquet->get_artistID() . "'>" . $tourniquet->get_artistName() . "</option>";
-echo "<option value='" . $travelingWilburys->get_artistID() . "'>" . $travelingWilburys->get_artistName() . "</option>";
 echo "<option value='" . $twelthTribe->get_artistID() . "'>" . $twelthTribe->get_artistName() . "</option>";
 
 echo "<option value='" . $u2->get_artistID() . "'>" . $u2->get_artistName() . "</option>";
