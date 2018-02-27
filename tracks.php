@@ -4,8 +4,8 @@ $albumsTracksArrays = array ();
 
 function divideCombineInsertTracksAndPop ($AlbumsTracks) {
 
-	$totalTracks = count($AlbumsTracks);
-	echo $totalTracks . '<br>';
+	// $totalTracks = count($AlbumsTracks);
+	// echo $totalTracks . '<br>';
 
 	// Divide all artist's tracks into chunks of 50
 	$tracksChunk = array ();
@@ -24,7 +24,7 @@ function divideCombineInsertTracksAndPop ($AlbumsTracks) {
 	for ($i=0; $i<(count($albumsTracksArrays)); ++$i) {
 				
 		$tracksThisTime = count($albumsTracksArrays[$i]);
-		echo $tracksThisTime . '<br>';
+		// echo $tracksThisTime . '<br>';
 
 		$trackIds = implode(',', $albumsTracksArrays[$i]);
 
@@ -72,8 +72,8 @@ function divideCombineInsertTracksAndPop ($AlbumsTracks) {
 
 function divideCombineInsertPopTracks ($AlbumsTracks) {
 
-	$totalTracks = count($AlbumsTracks);
-	echo $totalTracks . '<br>';
+	// $totalTracks = count($AlbumsTracks);
+	// echo $totalTracks . '<br>';
 
 	// Divide all artist's tracks into chunks of 50
 	$tracksChunk = array ();
@@ -91,8 +91,8 @@ function divideCombineInsertPopTracks ($AlbumsTracks) {
 
 	for ($i=0; $i<(count($albumsTracksArrays)); ++$i) {
 				
-		$tracksThisTime = count($albumsTracksArrays[$i]);
-		echo $tracksThisTime . '<br>';
+		// $tracksThisTime = count($albumsTracksArrays[$i]);
+		// echo $tracksThisTime . '<br>';
 
 		$trackIds = implode(',', $albumsTracksArrays[$i]);
 
@@ -130,8 +130,8 @@ function divideCombineInsertPopTracks ($AlbumsTracks) {
 
 function divideCombineTracks ($AlbumsTracks) {
 
-	$totalTracks = count($AlbumsTracks);
-	echo $totalTracks . '<br>';
+	/ $totalTracks = count($AlbumsTracks);
+	// echo $totalTracks . '<br>';
 
 	// Divide all artist's tracks into chunks of 50
 	$tracksChunk = array ();
@@ -149,8 +149,8 @@ function divideCombineTracks ($AlbumsTracks) {
 
 	for ($i=0; $i<(count($albumsTracksArrays)); ++$i) {
 				
-		$tracksThisTime = count($albumsTracksArrays[$i]);
-		echo $tracksThisTime . '<br>';
+		// $tracksThisTime = count($albumsTracksArrays[$i]);
+		// echo $tracksThisTime . '<br>';
 
 		$trackIds = implode(',', $albumsTracksArrays[$i]);
 

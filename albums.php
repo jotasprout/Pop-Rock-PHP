@@ -138,13 +138,13 @@ function divideCombineAlbums ($artistAlbums) {
       $firstAlbum += 20;
 	};
 
-	$howmany = count($albumsArrays);
-	echo $howmany . '<br>';
+	// $howmany = count($albumsArrays);
+	// echo $howmany . '<br>';
 
 	for ($i=0; $i<(count($albumsArrays)); ++$i) {
 
-		$howmanyhere = count($albumsArrays[$i]);
-		echo $howmanyhere . '<br>';
+		// $howmanyhere = count($albumsArrays[$i]);
+		// echo $howmanyhere . '<br>';
 				
 		$albumIds = implode(',', $albumsArrays[$i]);
 	
