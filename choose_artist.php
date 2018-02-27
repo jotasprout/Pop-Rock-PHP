@@ -38,6 +38,7 @@
                         <option value="">- Choose -</option>
 
 <?php
+echo "<option value='" . $metallica->get_artistID() . "'>" . $metallica->get_artistName() . "</option>";
 echo "<option value='" . $aliceCooper->get_artistID() . "'>" . $aliceCooper->get_artistName() . "</option>";
 echo "<option value='" . $hollywoodVampires->get_artistID() . "'>" . $hollywoodVampires->get_artistName() . "</option>";
 echo "<option value='" . $davidBowie->get_artistID() . "'>" . $davidBowie->get_artistName() . "</option>";
