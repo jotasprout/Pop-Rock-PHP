@@ -75,6 +75,7 @@ divideCombineAlbumsForArt ($artistAlbums);
 </table>
 </div> <!-- panel body -->
 <footer class="footer"><p>&copy; Sprout Means Grow and RoxorSoxor 2017</p></footer>
+</div> <!-- panel panel-primary -->
     </div> <!-- closing container -->
 
 <?php echo $scriptsAndSuch; ?>
