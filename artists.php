@@ -3,45 +3,51 @@
 require ("class.artist.php");
 require_once 'rockdb.php';
 
+$aerosmith = new artist ("7Ey4PD4MYsKc5I2dolUwbH", "Aerosmith");
+$acdc = new artist("711MCceyCBcFnzjGY4Q7Un","AC/DC");
+
+$blackSabbath = new artist("5M52tdBnJaKSvOpJGz8mfZ","Black Sabbath");
+$johnnyCash = new artist("6kACVPfCOnqzgfEF5ryl0x","Johnny Cash");
+$bruceSpringsteen = new artist("3eqjTLE0HfPfh78zjh6TqT","Bruce Springsteen");
 $hollywoodVampires = new artist ("3k4YA0uPsWc2PuOQlJNpdH","Hollywood Vampires");
 $aliceCooper = new artist("3EhbVgyfGd7HkpsagwL9GS","Alice Cooper");
+$cure = new artist ("7bu3H8JO7d0UbMoVzbo70s", "The Cure");
+
 $davidBowie = new artist("0oSGxfWSnnOXhD2fKuz2Gy","David Bowie");
 $bobDylan = new artist("74ASZWbe4lXaubB36ztrGX","Bob Dylan");
-$meatLoaf = new artist("7dnB1wSxbYa8CejeVg98hz","Meat Loaf");
-$johnMellencamp = new artist("3lPQ2Fk5JOwGWAF3ORFCqH","John Mellencamp");
-$stooges = new artist("4BFMTELQyWJU1SwqcXMBm3","The Stooges");
-$bruceSpringsteen = new artist("3eqjTLE0HfPfh78zjh6TqT","Bruce Springsteen");
-$kiss = new artist("07XSN3sPlIlB2L2XNcTwJw","Kiss");
-$iggyPop = new artist("33EUXrFKGjpUSGacqEHhU4","Iggy Pop");
-$popWilliamson = new artist("1l8grPt6eiOS4YlzjIs0LF","Iggy Pop & James Williamson");
-$rollingStones = new artist("22bE4uQ6baNwSHPVcDxLCe","Rolling Stones");
-$tomPetty = new artist("2UZMlIwnkgAEDBsw1Rejkn","Tom Petty");
-$tpHeartbreakers = new artist("4tX2TplrkIP4v05BNC903e","Tom Petty & the Heartbreakers");
-$travelingWilburys = new artist("2hO4YtXUFJiUYS2uYFvHNK","Traveling Wilburys");
 $garyNuman = new artist("5KQMtyPE8DCQNUzoNqlEsE","Gary Numan");
 $jethroTull = new artist("6w6z8m4WXX7Tub4Rb6Lu7R","Jethro Tull");
 $ronnieJamesDio = new artist("4M3c7tg4BzLQ5pIOupZL65","Ronnie James Dio");
 $dio = new artist("4CYeVo5iZbtYGBN4Isc3n6","Dio");
-$ozzyOsbourne = new artist("6ZLTlhejhndI4Rh53vYhrY","Ozzy Osbourne");
-$HeavenHell = new artist("4UjiBRkTw9VmvDZiJZKPJ7","Heaven and Hell");
-$ironMaiden = new artist("6mdiAmATAx73kdxrNrnlao","Iron Maiden");
-$blackSabbath = new artist("5M52tdBnJaKSvOpJGz8mfZ","Black Sabbath");
-$u2 = new artist("51Blml2LZPmy7TTiAg47vQ","U2");
-$zzTop = new artist("2AM4ilv6UzW0uMRuqKtDgN","ZZ Top");
-$johnnyCash = new artist("6kACVPfCOnqzgfEF5ryl0x","Johnny Cash");
-$bobSeger = new artist("485uL27bPomh29R4JmQehQ","Bob Seger");
-$prince = new artist("5a2EaR3hamoenG9rDuVn8j","Prince");
-$acdc = new artist("711MCceyCBcFnzjGY4Q7Un","AC/DC");
 $journey = new artist ("0rvjqX7ttXeg3mTy8Xscbt", "Journey");
-$aerosmith = new artist ("7Ey4PD4MYsKc5I2dolUwbH", "Aerosmith");
-$metallica = new artist ("2ye2Wgw4gimLv2eAKyk1NB", "Metallica");
 $joyDivision = new artist ("432R46LaYsJZV2Gmc4jUV5", "Joy Division");
+
+$kiss = new artist("07XSN3sPlIlB2L2XNcTwJw","Kiss");
+$meatLoaf = new artist("7dnB1wSxbYa8CejeVg98hz","Meat Loaf");
+$johnMellencamp = new artist("3lPQ2Fk5JOwGWAF3ORFCqH","John Mellencamp");
+$metallica = new artist ("2ye2Wgw4gimLv2eAKyk1NB", "Metallica");
 $newOrder = new artist ("0yNLKJebCb8Aueb54LYya3", "New Order");
 $pixies = new artist ("6zvul52xwTWzilBZl6BUbT", "Pixies");
 $petShopBoys = new artist ("2ycnb8Er79LoH2AsR5ldjh", "Pet Shop Boys");
 $psychedelicFurs = new artist ("0O0lrN34wrcuBenkqlEDZe", "Psychedelic Furs");
+$iggyPop = new artist("33EUXrFKGjpUSGacqEHhU4","Iggy Pop");
+$popWilliamson = new artist("1l8grPt6eiOS4YlzjIs0LF","Iggy Pop & James Williamson");
+$rollingStones = new artist("22bE4uQ6baNwSHPVcDxLCe","Rolling Stones");
+$stooges = new artist("4BFMTELQyWJU1SwqcXMBm3","The Stooges");
+
+$tomPetty = new artist("2UZMlIwnkgAEDBsw1Rejkn","Tom Petty");
+$tpHeartbreakers = new artist("4tX2TplrkIP4v05BNC903e","Tom Petty & the Heartbreakers");
+$travelingWilburys = new artist("2hO4YtXUFJiUYS2uYFvHNK","Traveling Wilburys");
+
+$ozzyOsbourne = new artist("6ZLTlhejhndI4Rh53vYhrY","Ozzy Osbourne");
+$HeavenHell = new artist("4UjiBRkTw9VmvDZiJZKPJ7","Heaven and Hell");
+$ironMaiden = new artist("6mdiAmATAx73kdxrNrnlao","Iron Maiden");
+$u2 = new artist("51Blml2LZPmy7TTiAg47vQ","U2");
+$zzTop = new artist("2AM4ilv6UzW0uMRuqKtDgN","ZZ Top");
+
+$bobSeger = new artist("485uL27bPomh29R4JmQehQ","Bob Seger");
+$prince = new artist("5a2EaR3hamoenG9rDuVn8j","Prince");
 $steveEarle = new artist ("2UBTfUoLI07iRqGeUrwhZh", "Steve Earle");
-$cure = new artist ("7bu3H8JO7d0UbMoVzbo70s", "The Cure");
 $rush = new artist ("2Hkut4rAAyrQxRdof7FVJq", "Rush");
 $kingsX = new artist ("3tn79LMMIdIT1T0TXumjaH", "King's X");
 $fleetwoodMac = new artist ("08GQAI4eElDnROBrJRGE0X", "Fleetwood Mac");
