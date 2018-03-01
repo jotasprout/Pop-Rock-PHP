@@ -11,7 +11,7 @@ $artistID = $_SESSION['artist'];
 ?>
 
 <!DOCTYPE html><html>
-<head><meta charset="UTF-8"><title>Album Info</title><?php echo $stylesAndSuch; ?></head>
+<head><meta charset="UTF-8"><title>My Album Info</title><?php echo $stylesAndSuch; ?></head>
 <body>
 
 <div class="container">
@@ -22,7 +22,7 @@ $artistID = $_SESSION['artist'];
 	
 <div class="panel panel-primary">
 	<div class="panel-heading">
-		<h3 class="panel-title">Albums</h3>
+		<h3 class="panel-title">Album Info from My DB</h3>
 	</div>
 	<div class="panel-body"> 
 		

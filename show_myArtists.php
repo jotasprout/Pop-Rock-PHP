@@ -4,8 +4,6 @@
     require_once 'navbar_rock.php';
     require_once 'stylesAndScripts.php';
     require_once 'artists.php';
-
-    $accessToken = $_SESSION['accessToken'];
     
 ?>
 
@@ -14,7 +12,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Artists and Such</title>
+    <title>Artists from My DB</title>
     <?php echo $stylesAndSuch; ?>
     <script src='https://d3js.org/d3.v4.min.js'></script>
 </head>
