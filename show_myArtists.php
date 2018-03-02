@@ -1,5 +1,8 @@
 <?php
 
+    session_start();    
+    $artistID = $_SESSION['artist'];
+    $_SESSION['artist'] = $artistID;
     require_once 'rockdb.php';
     require_once 'navbar_rock.php';
     require_once 'stylesAndScripts.php';
