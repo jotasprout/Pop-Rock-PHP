@@ -7,8 +7,8 @@ require_once 'stylesAndScripts.php';
 require_once 'albums.php';
 require_once 'tracks.php';
 
-// could next line go in artist class?
 $artistID = $_SESSION['artist'];
+$_SESSION['artist'] = $artistID;
 
 ?>
 

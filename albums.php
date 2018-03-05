@@ -312,7 +312,7 @@ $happyScabies2 = "	SELECT a.albumName, a.year, a.albumArt, z.artistName, p1.pop,
 		echo 'Cursed-Crap. Did not run the query.';
 	}
 
-	$rows = array();
+	// $rows = array();
 
 	while ($row = mysqli_fetch_array($getit)) {
 		// $artistID = $row["artistID"];
@@ -322,7 +322,7 @@ $happyScabies2 = "	SELECT a.albumName, a.year, a.albumArt, z.artistName, p1.pop,
 		$albumReleased = $row['year'];
 		$albumPop = $row['pop'];
 
-		$rows[] = $row;
+		// $rows[] = $row;
 		
 		echo "<tr>";
 		echo "<td><img src='" . $albumArt . "' height='64' width='64'></td>";

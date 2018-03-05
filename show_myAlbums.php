@@ -7,6 +7,7 @@ require_once 'stylesAndScripts.php';
 require_once 'albums.php';
 
 $artistID = $_SESSION['artist'];
+$_SESSION['artist'] = $artistID;
 
 ?>
 
