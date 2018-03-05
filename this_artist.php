@@ -8,8 +8,6 @@
 
     $artistID = $_SESSION['artist'];
     $_SESSION['artist'] = $_POST['artist'];
-    // this page loads directly from choose_artist so it gets the post
-    // all other pages will get session artist from this page
 
 ?>
 
@@ -34,11 +32,6 @@
                 <tr><th>Artist Name</th><th>Popularity</th><th>Date</th></tr>
                 <?php showThisArtist ($artistID); ?>
             </table>
-
-            <?php
-            // echo "<h2>" . $artistName . "</h2>"; 
-            // echo "<p>" . $artistName . "'s popularity is " . $artistPop . ".</p>";
-            ?>
 
         </div> <!-- close container -->
         
