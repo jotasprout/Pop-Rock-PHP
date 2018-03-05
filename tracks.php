@@ -178,6 +178,7 @@ function showTracks () {
 			INNER JOIN albums b ON a.albumID = b.albumID
 			INNER JOIN popTracks c ON a.trackID = c.trackID
 			INNER JOIN artists d ON b.artistID = d.artistID
+				WHERE b.artistID = '$artistID' 
 				ORDER BY a.trackName ASC";
 
 	$getit = $connekt->query($gatherTrackInfo);
