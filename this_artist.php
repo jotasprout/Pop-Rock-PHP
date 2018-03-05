@@ -32,11 +32,11 @@
                 <tr><th>Artist Name</th><th>Popularity</th><th>Date</th></tr>
                 <?php showThisArtist ($artistID); ?>
             </table>
-
+            <footer class="footer"><p>&copy; Sprout Means Grow and RoxorSoxor 2017</p></footer>
         </div> <!-- close container -->
         
         <?php echo $scriptsAndSuch; ?>
-        <footer class="footer"><p>&copy; Sprout Means Grow and RoxorSoxor 2017</p></footer>
+        
 
     </body>
 </html>
