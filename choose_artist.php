@@ -54,6 +54,7 @@ echo "<option value='" . $davidBowie->get_artistID() . "'>" . $davidBowie->get_a
 echo "<option value='" . $bride->get_artistID() . "'>" . $bride->get_artistName() . "</option>";
 echo "<option value='" . $KateBush->get_artistID() . "'>" . $KateBush->get_artistName() . "</option>";
 
+echo "<option value='" . $cannibalCorpse->get_artistID() . "'>" . $cannibalCorpse->get_artistName() . "</option>";
 echo "<option value='" . $Cars->get_artistID() . "'>" . $Cars->get_artistName() . "</option>";
 echo "<option value='" . $johnnyCash->get_artistID() . "'>" . $johnnyCash->get_artistName() . "</option>";
 echo "<option value='" . $celticFrost->get_artistID() . "'>" . $celticFrost->get_artistName() . "</option>";
