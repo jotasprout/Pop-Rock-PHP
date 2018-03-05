@@ -169,7 +169,7 @@ function divideCombineTracks ($AlbumsTracks) {
   
 }
 
-function showTracks () {
+function showTracks ($artistID) {
 
 	$connekt = new mysqli($GLOBALS['host'], $GLOBALS['un'], $GLOBALS['magicword'], $GLOBALS['db']);
 	
