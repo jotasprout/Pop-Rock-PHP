@@ -7,7 +7,7 @@
     require_once 'artists.php';
 
     $artistID = $_SESSION['artist'];
-    $_SESSION['artist'] = $_POST['artist'];
+    $_SESSION['artist'] = $artistID;
 
 ?>
 
