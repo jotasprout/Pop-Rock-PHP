@@ -42,8 +42,6 @@ $artistPop = $artist->popularity;
 		<!-- Panel Content --> 
 
 <?php
-echo "<h2>" . $artistName . "</h2>"; 
-echo "<p>" . $artistName . "'s popularity is " . $artistPop . ".</p>";
 echo '<table class="table">';
 echo '<tr><th>Album Cover</th><th>Album Name</th><th>Released</th><th>Popularity</th></tr>';
 
