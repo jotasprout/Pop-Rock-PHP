@@ -1,6 +1,5 @@
+<?php session_start(); ?>
 <?php
-
-    session_start();
     require_once 'rockdb.php';
     require_once 'stylesAndScripts.php';
     require_once 'navbar_rock.php';

@@ -1,5 +1,4 @@
 <?php
-
 session_start();
 require 'vendor/autoload.php';
 require 'spotifySecrets.php';
@@ -18,6 +17,6 @@ $GLOBALS['api']->setAccessToken($accessToken);
 
 // Rock on!
 // header('Location: choose_artist.php');
-// die();
+die();
 
 ?>

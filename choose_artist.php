@@ -4,7 +4,7 @@
     // Fetch saved access token
     // $accessToken = $_SESSION['accessToken'];
     // Will next line fix the lurking legacy layover of previous artist's tracks?
-    $_SESSION['artist'] = "";
+    // $_SESSION['artist'] = "";
 
     // site pages only get from my DB so they don't need auth
     require_once 'rockdb.php';
