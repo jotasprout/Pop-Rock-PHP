@@ -1,5 +1,6 @@
 <?php
 
+include 'sesh.php';
 require_once 'auth.php';
 require_once 'navbar_rock.php';
 require_once 'stylesAndScripts.php';

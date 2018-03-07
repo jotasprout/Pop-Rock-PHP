@@ -1,6 +1,6 @@
 <?php
 
-    session_start();    
+    include 'sesh.php';   
     $artistID = $_SESSION['artist'];
     $_SESSION['artist'] = $artistID;
     require_once 'rockdb.php';

@@ -1,14 +1,14 @@
 <?php
 
-session_start();
+include 'sesh.php';
+$artistID = $_SESSION['artist'];
+$_SESSION['artist'] = $artistID;
+
 require_once 'rockdb.php';
 require_once 'navbar_rock.php';
 require_once 'stylesAndScripts.php';
 require_once 'albums.php';
 require_once 'tracks.php';
-
-$artistID = $_SESSION['artist'];
-$_SESSION['artist'] = $artistID;
 
 ?>
 
