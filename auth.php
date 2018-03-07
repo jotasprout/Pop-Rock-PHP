@@ -17,6 +17,6 @@ $GLOBALS['api']->setAccessToken($accessToken);
 
 // Rock on!
 // header('Location: choose_artist.php');
-die();
+// die();
 
 ?>

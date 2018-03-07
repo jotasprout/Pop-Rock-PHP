@@ -1,9 +1,10 @@
 <?php
 
-    include 'sesh.php';    
+    include 'sesh.php';   
+    // echo 'sesh worked'; 
     require_once 'auth.php';
-
-    require_once 'rockdb.php';
+    // echo 'auth worked';
+    // require_once 'rockdb.php';
     require 'artists.php';
     require 'vendor/autoload.php';
     require_once 'stylesAndScripts.php';
