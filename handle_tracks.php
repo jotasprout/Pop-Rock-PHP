@@ -1,8 +1,8 @@
 <?php
 
 include 'sesh.php';
-// $artistID = $_SESSION['artist'];
-// $_SESSION['artist'] = $artistID;
+$artistID = $_SESSION['artist'];
+$_SESSION['artist'] = $artistID;
 
 require_once 'auth.php';
 require_once 'navbar_rock.php';
