@@ -85,7 +85,6 @@ function divideCombineAlbumsForArt ($artistAlbums) {
 	};
 }
 
-
 function divideCombineArtistsForAlbums ($allArtists) {
 
 	// Divide all artists into chunks of 50
@@ -99,16 +98,18 @@ function divideCombineArtistsForAlbums ($allArtists) {
 		$artistsChunk = array_slice($allArtists, $firstArtist, $lastArtist);
 		// put chunks of 50 into an array
 		$artistsArrays [] = $artistsChunk;
+		echo $artistsArrays;
 		$firstArtist += 50;
 	};
 
 	for ($i=0; $i<(count($artistsArrays)); ++$i) {
 
-		$artistIds = implode(',', $artistsArrays[$i]);
+		$artistsIds = implode(',', $artistsArrays[$i]);
+		echo $artistsIds;
 			
 		for ($b=0; $b<$artistsIds; ++$b) {
 
-			$artistID = $bunchofartists[$b];
+			$artistID = $artistsIds[$b];
 			echo $artistID;
 
 			$discography = $GLOBALS['api']->getArtistAlbums($artistID, [
