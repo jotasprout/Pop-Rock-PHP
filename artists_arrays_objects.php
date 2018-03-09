@@ -1,7 +1,5 @@
 <?php
 
-require ("class.artist.php");
-
 $acdc = new artist("711MCceyCBcFnzjGY4Q7Un","AC/DC");
 $aerosmith = new artist ("7Ey4PD4MYsKc5I2dolUwbH", "Aerosmith");
 $anthrax = new artist ("3JysSUOyfVs1UQ0UaESheP", "Anthrax");

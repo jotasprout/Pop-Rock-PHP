@@ -1,7 +1,6 @@
 <?php
 
 require ("class.artist.php");
-require_once 'rockdb.php';
 
 function divideCombineArtists ($allArtists) {
 	
