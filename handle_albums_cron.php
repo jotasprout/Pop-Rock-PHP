@@ -105,11 +105,8 @@ function divideCombineArtistsForAlbums ($allArtists) {
 	for ($i=0; $i<(count($artistsArrays)); ++$i) {
 
 		$artistIds = implode(',', $artistsArrays[$i]);
-
-		// For each array of artists (50 at a time), "get several artists"
-		$bunchofartists = $GLOBALS['api']->getArtists($artistIds);
 			
-		foreach ($b=0; $b<$bunchofartists; ++$b) {
+		for ($b=0; $b<$artistsIds; ++$b) {
 
 			$artistID = $bunchofartists[$b];
 			echo $artistID;
@@ -125,7 +122,6 @@ function divideCombineArtistsForAlbums ($allArtists) {
 				$artistAlbums [] = $albumID;
 			}
 			
-			// HERE IS WHERE I divideCombineAlbums using 
 			divideCombineAlbumsForArt ($artistAlbums);
 			
 		}
