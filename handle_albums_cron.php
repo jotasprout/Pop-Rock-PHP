@@ -5,7 +5,8 @@ require 'spotifySecrets.php';
 require 'vendor/autoload.php';
 require_once 'rockdb.php';
 require_once 'albums.php';
-require 'artists_arrays_objects';
+require 'artists.php';
+require 'artists_arrays_objects.php';
 
 $session = new SpotifyWebAPI\Session($myClientID, $myClientSecret);
 
@@ -19,27 +20,6 @@ $accessToken = $_SESSION['accessToken'];
 
 $GLOBALS['api'] = new SpotifyWebAPI\SpotifyWebAPI();
 $GLOBALS['api']->setAccessToken($accessToken);
-
-$artist = $GLOBALS['api']->getArtist($artistID);
-$artistName = $artist->name;
-$artistPop = $artist->popularity;
-
-$discography = $GLOBALS['api']->getArtistAlbums($artistID, [
-	'market' => 'us',
-	'album_type' => 'album',
-	'limit' => '50'
-]);
-
-// should be method in albums class
-foreach ($discography->items as $album) {
-	
-	// Get each albumID for requesting Full Album Object with popularity
-	$albumID = $album->id;
-	
-	// Put albumIDs in array for requesting several at a time (far fewer requests)
-	$artistAlbums [] = $albumID;
-	
-}
 
 function divideCombineAlbumsForArt ($artistAlbums) {
 	
@@ -99,7 +79,7 @@ function divideCombineAlbumsForArt ($artistAlbums) {
 				echo 'Sweet Christmas! Could not insert albums popularity.';
 			}
 		
-            echo '<tr><td><img src="' . $albumArt . '" height="64" width="64"></td><td>' . $albumName . '</td><td>' . $albumReleased . '</td><<td>' . $albumPop . '</td></tr>';
+            echo $albumName . ' released ' . $albumReleased . ' is ' . $albumPop . '<br>';
 
 		}
 	};
@@ -107,8 +87,6 @@ function divideCombineAlbumsForArt ($artistAlbums) {
 
 
 function divideCombineArtistsForAlbums ($allArtists) {
-	
-	$totalTracks = count($allArtists);
 
 	// Divide all artists into chunks of 50
 	$artistsChunk = array ();
@@ -125,35 +103,30 @@ function divideCombineArtistsForAlbums ($allArtists) {
 	};
 
 	for ($i=0; $i<(count($artistsArrays)); ++$i) {
-				
-		$artistsThisTime = count($artistsArrays[$i]);
 
 		$artistIds = implode(',', $artistsArrays[$i]);
 
 		// For each array of artists (50 at a time), "get several artists"
 		$bunchofartists = $GLOBALS['api']->getArtists($artistIds);
 			
-		foreach ($bunchofartists->artists as $artist) {
-			$connekt = new mysqli($GLOBALS['host'], $GLOBALS['un'], $GLOBALS['magicword'], $GLOBALS['db']);
-			$artistID = $artist->id;
+		foreach ($b=0; $b<$bunchofartists; ++$b) {
 
-			// HERE IS WHERE I get discography
+			$artistID = $bunchofartists[$b];
+			echo $artistID;
+
+			$discography = $GLOBALS['api']->getArtistAlbums($artistID, [
+				'market' => 'us',
+				'album_type' => 'album',
+				'limit' => '50'
+			]);
 			
-			$insertArtistsInfo = "INSERT INTO artists (artistID,artistName) VALUES('$artistID','$artistName')";
-			$rockout = $connekt->query($insertArtistsInfo);
-			if(!$rockout){
-				echo 'Cursed-Crap. Could not insert artists.';
+			foreach ($discography->items as $album) {
+				$albumID = $album->id;
+				$artistAlbums [] = $albumID;
 			}
-	
-			$insertArtistsPop = "INSERT INTO popArtists (artistID,pop) VALUES('$artistID','$artistPop')";
-			$rockpop = $connekt->query($insertArtistsPop);
-			if(!$rockpop){
-				echo 'Cursed-Crap. Could not insert artists popularity.';
-			}
-	
-			else {
-				echo '<tr><td>' . $artistName . '</td><td>' . $artistPop . '</td></tr>';
-			}
+			
+			// HERE IS WHERE I divideCombineAlbums using 
+			divideCombineAlbumsForArt ($artistAlbums);
 			
 		}
 	};	
