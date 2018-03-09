@@ -5,6 +5,7 @@ require 'spotifySecrets.php';
 require 'vendor/autoload.php';
 require_once 'rockdb.php';
 require_once 'albums.php';
+require 'artists_arrays_objects';
 
 $session = new SpotifyWebAPI\Session($myClientID, $myClientSecret);
 
@@ -19,9 +20,26 @@ $accessToken = $_SESSION['accessToken'];
 $GLOBALS['api'] = new SpotifyWebAPI\SpotifyWebAPI();
 $GLOBALS['api']->setAccessToken($accessToken);
 
+$artist = $GLOBALS['api']->getArtist($artistID);
+$artistName = $artist->name;
+$artistPop = $artist->popularity;
 
+$discography = $GLOBALS['api']->getArtistAlbums($artistID, [
+	'market' => 'us',
+	'album_type' => 'album',
+	'limit' => '50'
+]);
 
-
+// should be method in albums class
+foreach ($discography->items as $album) {
+	
+	// Get each albumID for requesting Full Album Object with popularity
+	$albumID = $album->id;
+	
+	// Put albumIDs in array for requesting several at a time (far fewer requests)
+	$artistAlbums [] = $albumID;
+	
+}
 
 function divideCombineAlbumsForArt ($artistAlbums) {
 	
@@ -88,11 +106,6 @@ function divideCombineAlbumsForArt ($artistAlbums) {
 }
 
 
-
-
-
-
-
 function divideCombineArtistsForAlbums ($allArtists) {
 	
 	$totalTracks = count($allArtists);
@@ -123,9 +136,9 @@ function divideCombineArtistsForAlbums ($allArtists) {
 		foreach ($bunchofartists->artists as $artist) {
 			$connekt = new mysqli($GLOBALS['host'], $GLOBALS['un'], $GLOBALS['magicword'], $GLOBALS['db']);
 			$artistID = $artist->id;
-			$artistNameYucky = $artist->name;
-			$artistName = mysqli_real_escape_string($connekt,$artistNameYucky);
-			$artistPop = $artist->popularity;
+
+			// HERE IS WHERE I get discography
+			
 			$insertArtistsInfo = "INSERT INTO artists (artistID,artistName) VALUES('$artistID','$artistName')";
 			$rockout = $connekt->query($insertArtistsInfo);
 			if(!$rockout){
