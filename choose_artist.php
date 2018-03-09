@@ -6,7 +6,7 @@
     // echo 'auth worked';
     // require_once 'rockdb.php';
     require 'artists.php';
-    require 'artists_arrays_objects';
+    require 'artists_arrays_objects.php';
     require 'vendor/autoload.php';
     require_once 'stylesAndScripts.php';
     require_once 'navbar_rock.php';
