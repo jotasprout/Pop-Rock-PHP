@@ -4,7 +4,7 @@ session_start();
 require 'spotifySecrets.php';
 require 'vendor/autoload.php';
 require_once 'rockdb.php';
-require_once 'albums.php';
+// require_once 'albums.php';
 require 'artists.php';
 require 'artists_arrays_objects.php';
 
