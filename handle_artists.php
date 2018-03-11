@@ -1,12 +1,12 @@
 <?php
 
-session_start();
-require 'spotifySecrets.php';
-require 'vendor/autoload.php';
+include 'sesh.php';
+require_once 'auth.php';
 require_once 'rockdb.php';
 require_once 'navbar_rock.php';
 require_once 'stylesAndScripts.php';
 require_once 'artists.php';
+require_once 'artists_arrays_objects.php';
 
 $session = new SpotifyWebAPI\Session($myClientID, $myClientSecret);
 
@@ -33,7 +33,7 @@ $GLOBALS['api']->setAccessToken($accessToken);
     <tr><th>Artist Name</th><th>Popularity</th></tr>
 
         <?php 
-            divideCombineArtists ($allArtists);
+            inserttArtistsAndPop ($newbies);
         ?>
     </table>
 

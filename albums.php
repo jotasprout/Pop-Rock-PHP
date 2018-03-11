@@ -186,7 +186,7 @@ function divideCombineAlbums ($artistAlbums) {
 				echo 'Sweet & Sour Crap! Could not insert albums popularity.';
 			}
 		
-            echo '<tr><td><img src="' . $albumArt . '" height="64" width="64"></td><td>' . $albumName . '</td><td>' . $albumReleased . '</td><<td>' . $albumPop . '</td></tr>';
+            echo '<p><img src="' . $albumArt . '" height="64" width="64"><br>' . $albumName . '<br>' . $albumReleased . '<br>Pop is ' . $albumPop . '</p>';
 
 		}
 	};

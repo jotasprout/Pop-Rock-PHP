@@ -2,19 +2,19 @@
 
 require ("class.artist.php");
 
-function divideCombineArtists ($allArtists) {
+function divideCombineArtists ($theseArtists) {
 	
-	$totalTracks = count($allArtists);
+	$totalTracks = count($theseArtists);
 
 	// Divide all artists into chunks of 50
 	$artistsChunk = array ();
-	$x = ceil((count($allArtists))/50);
+	$x = ceil((count($theseArtists))/50);
 
 	$firstArtist = 0;
 
 	for ($i=0; $i<$x; ++$i) {
 		$lastArtist = 49;
-		$artistsChunk = array_slice($allArtists, $firstArtist, $lastArtist);
+		$artistsChunk = array_slice($theseArtists, $firstArtist, $lastArtist);
 		// put chunks of 50 into an array
 		$artistsArrays [] = $artistsChunk;
 		$firstArtist += 50;
@@ -31,6 +31,9 @@ function divideCombineArtists ($allArtists) {
 			
 		foreach ($bunchofartists->artists as $artist) {
 			$connekt = new mysqli($GLOBALS['host'], $GLOBALS['un'], $GLOBALS['magicword'], $GLOBALS['db']);
+			if(!$connekt){
+				echo 'Fiddlesticks! Could not connect to database.<br>';
+			}
 			$artistID = $artist->id;
 			$artistNameYucky = $artist->name;
 			$artistName = mysqli_real_escape_string($connekt,$artistNameYucky);
@@ -38,7 +41,7 @@ function divideCombineArtists ($allArtists) {
 			$insertArtistsInfo = "INSERT INTO artists (artistID,artistName) VALUES('$artistID','$artistName')";
 			$rockout = $connekt->query($insertArtistsInfo);
 			if(!$rockout){
-				echo 'Cursed-Crap. Could not insert artists.';
+				echo 'Cursed-Crap. Could not insert artist ' . $artistName . '.<br>';
 			}
 	
 			$insertArtistsPop = "INSERT INTO popArtists (artistID,pop) VALUES('$artistID','$artistPop')";
@@ -77,7 +80,7 @@ function inserttArtistsAndPop ($artistsToInsert) {
 		$rockout = $connekt->query($insertArtistsInfo);
 
 		if(!$rockout){
-			echo 'Cursed-Crap. Could not insert artists.';
+			echo 'Cursed-Crap. Could not insert artist ' . $artistName . '.<br>';
 		}
 
 		$insertArtistsPop = "INSERT INTO popArtists (artistID,pop) VALUES('$artistID','$artistPop')";
@@ -85,7 +88,7 @@ function inserttArtistsAndPop ($artistsToInsert) {
 		$rockpop = $connekt->query($insertArtistsPop);
 		
 		if(!$rockpop){
-			echo 'Cursed-Crap. Could not insert artists popularity.';
+			echo 'Cursed-Crap. Could not insert artists popularity.<br>';
 		}
 
 		else {

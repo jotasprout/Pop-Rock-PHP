@@ -2,6 +2,8 @@
 include 'sesh.php';
 require_once 'auth.php';
 
+require_once 'rockdb.php';
+
 if ($_POST['artist']) {
 	$artistID = $_POST['artist'];
 	$_SESSION['artist'] = $artistID;	
