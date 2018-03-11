@@ -51,9 +51,9 @@ function divideCombineInsertTracksAndPop ($AlbumsTracks) {
 	
 			$rockout = $connekt->query($insertTrackInfo);
 	
-			// if(!$rockout){
-			//	echo 'Cursed-Crap. Could not insert "' . $trackName . '" from <i>' . $trackAlbumName . '</i>.<br>';
-			// }
+			if(!$rockout){
+				echo 'Cursed-Crap. Could not insert "' . $trackName . '" from <i>' . $trackAlbumName . '</i>.<br>';
+			}
 	
 			$insertTrackPop = "INSERT INTO popTracks (trackID,pop) VALUES('$trackID','$trackPop')";
 	
@@ -173,7 +173,7 @@ function showTracks ($artistID) {
 
 	$connekt = new mysqli($GLOBALS['host'], $GLOBALS['un'], $GLOBALS['magicword'], $GLOBALS['db']);
 	
-	$gatherTrackInfo = "SELECT a.trackID, a.trackName, a.albumID, b.albumName, b.artistID, b.year, c.pop, d.artistName 
+	$gatherTrackInfo = "SELECT a.trackID, a.trackName, a.albumID, b.albumName, b.artistID, b.year, c.pop, d.artistName, a.date 
 		FROM tracks a
 			INNER JOIN albums b ON a.albumID = b.albumID
 			INNER JOIN popTracks c ON a.trackID = c.trackID
@@ -190,11 +190,14 @@ function showTracks ($artistID) {
 		$trackName = $row["trackName"];
 		$albumReleased = $row["year"];
 		$trackPop = $row["pop"];
+		$popDate = $row["date"];
 		
 		echo "<tr>";
+		echo "<td>" . $artistName . "</td>";
 		echo "<td>" . $albumName . "</td>";
 		echo "<td>" . $trackName . "</td>";
 		echo "<td>" . $trackPop . "</td>";
+		echo "<td>" . $popDate . "</td>";
 		echo "</tr>";
 	}
 }
