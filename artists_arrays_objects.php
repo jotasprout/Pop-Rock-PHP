@@ -15,7 +15,6 @@ $bride = new artist("3G7qoMSLvu9Pmb0xGtf9fl","Bride");
 $KateBush = new artist ("1aSxMhuvixZ8h9dK9jIDwL", "Kate Bush");
 
 $cannibalCorpse = new artist ("0yLwGBQiBqhXOvmTfH2A7n", "Cannibal Corpse");
-
 $Cars = new artist ("6DCIj8jNaNpBz8e5oKFPtp", "The Cars");
 $johnnyCash = new artist("6kACVPfCOnqzgfEF5ryl0x","Johnny Cash");
 $celticFrost = new artist ("4ZISAmHmQUDCpv8xydqeKG", "Celtic Frost");

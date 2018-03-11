@@ -1,5 +1,4 @@
 <?php
-
 	session_save_path ($_SERVER['DOCUMENT_ROOT'] . '/tmp');	
 	session_start();
 	// session_unset();

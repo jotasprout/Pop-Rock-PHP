@@ -1,6 +1,6 @@
 <?php
-
 include 'sesh.php';
+require_once 'auth.php';
 
 if ($_POST['artist']) {
 	$artistID = $_POST['artist'];
@@ -12,7 +12,6 @@ if ($_POST['artist']) {
 	echo 'There is no session artist, baby!';
 }
 
-require_once 'auth.php';
 require_once 'navbar_rock.php';
 require_once 'stylesAndScripts.php';
 require_once 'albums.php';
