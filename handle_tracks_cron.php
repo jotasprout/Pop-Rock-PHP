@@ -21,17 +21,17 @@ $accessToken = $_SESSION['accessToken'];
 $GLOBALS['api'] = new SpotifyWebAPI\SpotifyWebAPI();
 $GLOBALS['api']->setAccessToken($accessToken);
 
-function divideCombineArtistsForAlbums ($allArtists) {
+function divideCombineArtistsForAlbums ($theseArtists) {
 
 	// Divide all artists into chunks of 50
 	$artistsChunk = array ();
-	$x = ceil((count($allArtists))/50);
+	$x = ceil((count($theseArtists))/50);
 
 	$firstArtist = 0;
 
 	for ($i=0; $i<$x; ++$i) {
 		$lastArtist = 49;
-		$artistsChunk = array_slice($allArtists, $firstArtist, $lastArtist);
+		$artistsChunk = array_slice($theseArtists, $firstArtist, $lastArtist);
 		// put chunks of 50 into an array
 		$artistsArraysArray [] = $artistsChunk;
 		$firstArtist += 50;
@@ -67,7 +67,7 @@ function divideCombineArtistsForAlbums ($allArtists) {
 	};	
 }
 
-divideCombineArtistsForAlbums ($allArtists);
+divideCombineArtistsForAlbums ($restofFirstBatch);
 
 die();
 
