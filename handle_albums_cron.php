@@ -102,14 +102,14 @@ function divideCombineArtistsForAlbums ($allArtists) {
 
 	for ($i=0; $i<(count($artistsArraysArray)); ++$i) {
 		// echo '<br> $artistsArrays[$i] is ' . $artistsArrays[$i];
-		// $artistsIds = implode(',', $artistsArrays[$i]);
-		// echo '<br>these are the artist IDs ' . $artistsIds;
+		$artistsIds = implode(',', $artistsArraysArray[$i]);
+		echo '<br>these are the artist IDs ' . $artistsIds;
 		$artistsArray = $artistsArraysArray[$i];
 			
-		for ($i=0; $i<(count($artistsArray)); ++$i) {
+		for ($j=0; $j<(count($artistsArray)); ++$j) {
 
-			$artistID = $artistsArray[$i];
-			echo '<br>this is a single artist ID ' . $artistsArray[$i] . '<br>';
+			$artistID = $artistsArray[$j];
+			echo '<br>this is a single artist ID ' . $artistID . '<br>';
 
 			$discography = $GLOBALS['api']->getArtistAlbums($artistID, [
 				'market' => 'us',
@@ -123,6 +123,8 @@ function divideCombineArtistsForAlbums ($allArtists) {
 			}
 			
 			divideCombineAlbumsForArt ($artistAlbums);
+
+			unset($artistAlbums);
 			
 		}
 	};	
