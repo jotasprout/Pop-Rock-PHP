@@ -64,7 +64,7 @@ function divideCombineInsertTracksAndPop ($AlbumsTracks) {
 			}
 	
 			else {
-				echo "<tr><td>" . $trackAlbumName . "</td><td>" . $trackName . "</td><td>" . $trackPop . "</td></tr>";
+				echo $trackAlbumName . " track " . $trackName . " has pop " . $trackPop . "<br>";
 			}
 		}
 	};
