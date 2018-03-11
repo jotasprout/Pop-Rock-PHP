@@ -1,8 +1,7 @@
 <?php
 
 session_start();
-require 'spotifySecrets.php';
-require 'vendor/autoload.php';
+require 'auth.php';
 require_once 'rockdb.php';
 // require_once 'albums.php';
 require 'artists.php';
@@ -97,20 +96,20 @@ function divideCombineArtistsForAlbums ($allArtists) {
 		$lastArtist = 49;
 		$artistsChunk = array_slice($allArtists, $firstArtist, $lastArtist);
 		// put chunks of 50 into an array
-		$artistsArrays [] = $artistsChunk;
-		echo $artistsArrays;
+		$artistsArraysArray [] = $artistsChunk;
 		$firstArtist += 50;
 	};
 
-	for ($i=0; $i<(count($artistsArrays)); ++$i) {
-
-		$artistsIds = implode(',', $artistsArrays[$i]);
-		echo $artistsIds;
+	for ($i=0; $i<(count($artistsArraysArray)); ++$i) {
+		// echo '<br> $artistsArrays[$i] is ' . $artistsArrays[$i];
+		// $artistsIds = implode(',', $artistsArrays[$i]);
+		// echo '<br>these are the artist IDs ' . $artistsIds;
+		$artistsArray = $artistsArraysArray[$i];
 			
-		for ($b=0; $b<$artistsIds; ++$b) {
+		for ($i=0; $i<(count($artistsArray)); ++$i) {
 
-			$artistID = $artistsIds[$b];
-			echo $artistID;
+			$artistID = $artistsArray[$i];
+			echo '<br>this is a single artist ID ' . $artistsArray[$i];
 
 			$discography = $GLOBALS['api']->getArtistAlbums($artistID, [
 				'market' => 'us',
