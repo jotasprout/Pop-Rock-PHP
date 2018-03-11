@@ -109,7 +109,7 @@ function divideCombineArtistsForAlbums ($allArtists) {
 		for ($i=0; $i<(count($artistsArray)); ++$i) {
 
 			$artistID = $artistsArray[$i];
-			echo '<br>this is a single artist ID ' . $artistsArray[$i];
+			echo '<br>this is a single artist ID ' . $artistsArray[$i] . '<br>';
 
 			$discography = $GLOBALS['api']->getArtistAlbums($artistID, [
 				'market' => 'us',
