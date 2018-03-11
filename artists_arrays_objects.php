@@ -163,11 +163,13 @@ $restofFirstBatch = array ("2AM4ilv6UzW0uMRuqKtDgN","51Blml2LZPmy7TTiAg47vQ","5M
 
 $newbies = array ("1ZwdS5xdxEREPySFridCfh", "2jgPkn6LuUazBoBk6vvjh5", "0O0lrN34wrcuBenkqlEDZe", "1Qp56T7n950O3EGMsSl81D");
 
-$middle = array ("1KxokFLctHsnu4YDSWY3MF", "06T4NL0adq4kfYAr2nZv5t", "0nxo4nAEYNbNpA8wwNvqXY", "5R7kd09oJizY4DlJoIMLGb", "2Cg6J3WtX1P093c4VKt0Xe", "31LBSeuapFzeec1JCDDMZS", "1FFP0sOEvSSKgjocovruDl", "2IIRfan7YtrHcldR6G8EmM", "0AA0qugrTsIv7JFMEnhaqu", "3lHPBMb024SqetFwwVwuwH", "2V27BrLW9marAftTzfW8WN", "0ReWwVR3RCZtXLP8CZFCrb", "60GtR6PIcDY1pikPgKHNk9", "1lhoWboIGHmazhnBQ8eVF3");
+$middle = array ("1KxokFLctHsnu4YDSWY3MF", "06T4NL0adq4kfYAr2nZv5t", "0nxo4nAEYNbNpA8wwNvqXY", "5R7kd09oJizY4DlJoIMLGb", "2Cg6J3WtX1P093c4VKt0Xe", "31LBSeuapFzeec1JCDDMZS", "1FFP0sOEvSSKgjocovruDl", "3lHPBMb024SqetFwwVwuwH", "2V27BrLW9marAftTzfW8WN", "0ReWwVR3RCZtXLP8CZFCrb", "60GtR6PIcDY1pikPgKHNk9", "1lhoWboIGHmazhnBQ8eVF3");
 
-$bottomFirstA = array ("7hW3Ezs4uzy0QQvdnF0Imi","6lE1ly8K8H7u8k2ej2plvv","5WJ6VEY43MOngJJJNabAId","3G7qoMSLvu9Pmb0xGtf9fl","0t1uzfQspxLvAifZLdmFe2","5MQsxr7sbsewUTIEEYxauR","0PGxNwykt4KgnvSnNHVUSZ","3lgxzeCbj6oMQMmaUhH2H6","0sNPk98oyaTeaRojDYglDY","1P72cdCRCvytPnFLkGSeVm","3PXQl96QHBJbzAGENdJWc1","1zK4ACgLi1lVPpfmmcwOTh","1LZqY4X3vFpZaEgXkmiYrG","5kadFhaVFgdn1J4rX3HqB2","3G5wgSAeFzEa6Jv5UNDs4N");
+$bottomFirstA = array ("7hW3Ezs4uzy0QQvdnF0Imi","6lE1ly8K8H7u8k2ej2plvv","5WJ6VEY43MOngJJJNabAId","3G7qoMSLvu9Pmb0xGtf9fl","3lgxzeCbj6oMQMmaUhH2H6","0sNPk98oyaTeaRojDYglDY","1P72cdCRCvytPnFLkGSeVm","3PXQl96QHBJbzAGENdJWc1","1zK4ACgLi1lVPpfmmcwOTh","1LZqY4X3vFpZaEgXkmiYrG","5kadFhaVFgdn1J4rX3HqB2");
 
-$bottomFirstB = array ("2hjEGPXpN1BGpNjODQ4ImL","6K1KoB3WXLSOaphD2YoWNU","0rvjqX7ttXeg3mTy8Xscbt", "7Ey4PD4MYsKc5I2dolUwbH", "2ye2Wgw4gimLv2eAKyk1NB", "6zvul52xwTWzilBZl6BUbT", "03r4iKL2g2442PT9n2UKsx", "4ZISAmHmQUDCpv8xydqeKG","0fY32zOZQBIUFh6rDMfbMt", "76bg2Fvfs7TcQV2un3iNdO","3MAQykZ3MwPcviv5eIVqgb","3h66yQiOXZpT6AV2Np5yIq", "0klkYTAeGHgItyB4R9YYjU", "2S0M8fVXCom9z4JjV8UoXO", "6SLAMfhOi7UJI0fMztaK0m");
+$newBunch = array ("2IIRfan7YtrHcldR6G8EmM", "3G5wgSAeFzEa6Jv5UNDs4N", "0AA0qugrTsIv7JFMEnhaqu","0t1uzfQspxLvAifZLdmFe2","5MQsxr7sbsewUTIEEYxauR","0PGxNwykt4KgnvSnNHVUSZ");
+
+$bottomFirstB = array ("2hjEGPXpN1BGpNjODQ4ImL", "0rvjqX7ttXeg3mTy8Xscbt", "7Ey4PD4MYsKc5I2dolUwbH", "2ye2Wgw4gimLv2eAKyk1NB", "6zvul52xwTWzilBZl6BUbT", "03r4iKL2g2442PT9n2UKsx", "4ZISAmHmQUDCpv8xydqeKG","0fY32zOZQBIUFh6rDMfbMt", "76bg2Fvfs7TcQV2un3iNdO", "6SLAMfhOi7UJI0fMztaK0m");
 
 $bottomSecondA = array ("0yNLKJebCb8Aueb54LYya3", "432R46LaYsJZV2Gmc4jUV5", "2ycnb8Er79LoH2AsR5ldjh", "2UBTfUoLI07iRqGeUrwhZh", "7bu3H8JO7d0UbMoVzbo70s", "2Hkut4rAAyrQxRdof7FVJq", "3tn79LMMIdIT1T0TXumjaH", "08GQAI4eElDnROBrJRGE0X", "1IQ2e1buppatiN1bxUVkrk", "5fwaejlOHVBAw1KhIPPaQe", "3dnH7fdVm2X07MK6Fkbhbt", "0VOvF0kfqCTRe37XzWQdvH", "4bMVHZcJe0AmG8f3b120qL", "1BcAEs4W94BrXMmVCOgwSx");
 
