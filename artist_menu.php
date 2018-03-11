@@ -45,6 +45,7 @@ echo "<option value='" . $fiveIronFrenzy->get_artistID() . "'>" . $fiveIronFrenz
 echo "<option value='" . $fleetwoodMac->get_artistID() . "'>" . $fleetwoodMac->get_artistName() . "</option>";
 echo "<option value='" . $freedomSoul->get_artistID() . "'>" . $freedomSoul->get_artistName() . "</option>";
 
+echo "<option value='" . $ghost->get_artistID() . "'>" . $ghost->get_artistName() . "</option>";
 echo "<option value='" . $ghotiHook->get_artistID() . "'>" . $ghotiHook->get_artistName() . "</option>";
 echo "<option value='" . $gwar->get_artistID() . "'>" . $gwar->get_artistName() . "</option>";
 
@@ -132,6 +133,7 @@ echo "<option value='" . $stPerfectFoil->get_artistID() . "'>" . $stPerfectFoil-
 echo "<option value='" . $stDanielsonFoil->get_artistID() . "'>" . $stDanielsonFoil->get_artistName() . "</option>";
 echo "<option value='" . $testament->get_artistID() . "'>" . $testament->get_artistName() . "</option>";
 echo "<option value='" . $tourniquet->get_artistID() . "'>" . $tourniquet->get_artistName() . "</option>";
+echo "<option value='" . $tupac->get_artistID() . "'>" . $tupac->get_artistName() . "</option>";
 echo "<option value='" . $twelthTribe->get_artistID() . "'>" . $twelthTribe->get_artistName() . "</option>";
 
 echo "<option value='" . $u2->get_artistID() . "'>" . $u2->get_artistName() . "</option>";
