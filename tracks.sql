@@ -1,10 +1,10 @@
-SELECT a.trackID, a.trackName, a.albumID, b.albumName, b.artistID, b.year, c.pop, d.artistName 
-    FROM tracks a
-        INNER JOIN albums b ON a.albumID = b.albumID
-        INNER JOIN popTracks c ON a.trackID = c.trackID
-        INNER JOIN artists d ON b.artistID = d.artistID
-            WHERE b.artistID = '5kadFhaVFgdn1J4rX3HqB2' 
-            ORDER BY a.trackName ASC;
+SELECT t.trackID, t.trackName, t.albumID, a.albumName, a.artistID, a.year, p.pop, r.artistName 
+    FROM tracks t
+        INNER JOIN albums a ON t.albumID = a.albumID
+        INNER JOIN popTracks p ON t.trackID = p.trackID
+        INNER JOIN artists r ON a.artistID = r.artistID
+            WHERE a.artistID = '5kadFhaVFgdn1J4rX3HqB2' 
+            ORDER BY t.trackName ASC;
 
 
 /* ADAPTED HAPPY SCABIES 2 FOR TRACKS */
@@ -51,6 +51,7 @@ SELECT a.albumName, a.year, a.albumArt, z.artistName, p1.pop, p1.date
             AND p.date = groupedp.MaxDate) p1 
     ON a.albumID = p1.albumID
     ORDER BY a.year ASC;
+
 
 /* THIS ORIGINAL WORKS SHOWING ALL TRACKS FROM ALL DATES */
 
