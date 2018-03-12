@@ -1,8 +1,8 @@
 <?php
 
 include 'sesh.php';
-$artistID = $_POST['artist'];
-// $artistID = $_SESSION['artist'];
+// $artistID = $_POST['artist'];
+$artistID = $_SESSION['artist'];
 $_SESSION['artist'] = $artistID;
 
 require_once 'rockdb.php';
@@ -30,7 +30,7 @@ require_once 'tracks.php';
 <div class="panel-body"> 
 
 <table class="table">
-	<tr><th>Artist</th><th>Album</th><th>Track</th><th>Track Popularity</th><th>Most Recent</th></tr>
+	<tr><th>Artist</th><th>Album</th><th>Track</th><th>Track Popularity</th><th>Date</th></tr>
 	<?php
 		showTracks ($artistID);
 	?>

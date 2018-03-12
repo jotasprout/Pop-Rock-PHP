@@ -10,7 +10,7 @@ function showTracks ($artistID) {
 		echo 'Darn. Did not connect.';
 	};
 	
-	$gatherTrackInfo = "SELECT a.trackID, a.trackName, a.albumID, b.albumName, b.artistID, b.year, c.pop, d.artistName 
+	$gatherTrackInfo = "SELECT a.trackID, a.trackName, a.albumID, b.albumName, b.artistID, b.year, c.pop, d.artistName, c.date 
 		FROM tracks a
 			INNER JOIN albums b ON a.albumID = b.albumID
 			INNER JOIN popTracks c ON a.trackID = c.trackID
