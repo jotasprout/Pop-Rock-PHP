@@ -2,6 +2,47 @@
 
 $albumsTracksArrays = array ();
 
+function showTracks ($artistID) {
+
+	$connekt = new mysqli($GLOBALS['host'], $GLOBALS['un'], $GLOBALS['magicword'], $GLOBALS['db']);
+
+	if (!$connekt) {
+		echo 'Darn. Did not connect.';
+	};
+	
+	$gatherTrackInfo = "SELECT a.trackID, a.trackName, a.albumID, b.albumName, b.artistID, b.year, c.pop, d.artistName, a.date 
+		FROM tracks a
+			INNER JOIN albums b ON a.albumID = b.albumID
+			INNER JOIN popTracks c ON a.trackID = c.trackID
+			INNER JOIN artists d ON b.artistID = d.artistID
+				WHERE b.artistID = '$artistID' 
+				ORDER BY a.trackName ASC";
+
+	$getit = $connekt->query($gatherTrackInfo);
+
+	if(!$getit){
+		echo 'Cursed-Crap. Did not run the query.';
+	}
+
+	while ($row = mysqli_fetch_array($getit)) {
+		// $artistID = $row["artistID"];
+		$artistName = $row["artistName"];
+		$albumName = $row["albumName"];
+		$trackName = $row["trackName"];
+		$albumReleased = $row["year"];
+		$trackPop = $row["pop"];
+		$popDate = $row["date"];
+		
+		echo "<tr>";
+		echo "<td>" . $artistName . "</td>";
+		echo "<td>" . $albumName . "</td>";
+		echo "<td>" . $trackName . "</td>";
+		echo "<td>" . $trackPop . "</td>";
+		echo "<td>" . $popDate . "</td>";
+		echo "</tr>";
+	}
+}
+
 function divideCombineInsertTracksAndPop ($AlbumsTracks) {
 
 	// $totalTracks = count($AlbumsTracks);
@@ -168,47 +209,6 @@ function divideCombineTracks ($AlbumsTracks) {
 		}
 	};
   
-}
-
-function showTracks ($artistID) {
-
-	$connekt = new mysqli($GLOBALS['host'], $GLOBALS['un'], $GLOBALS['magicword'], $GLOBALS['db']);
-
-	if (!$connekt) {
-		echo 'Darn. Did not connect.';
-	};
-	
-	$gatherTrackInfo = "SELECT a.trackID, a.trackName, a.albumID, b.albumName, b.artistID, b.year, c.pop, d.artistName, a.date 
-		FROM tracks a
-			INNER JOIN albums b ON a.albumID = b.albumID
-			INNER JOIN popTracks c ON a.trackID = c.trackID
-			INNER JOIN artists d ON b.artistID = d.artistID
-				WHERE b.artistID = '$artistID' 
-				ORDER BY a.trackName ASC";
-
-	$getit = $connekt->query($gatherTrackInfo);
-
-	if(!$getit){
-		echo 'Cursed-Crap. Did not run the query.';
-	}
-
-	while ($row = mysqli_fetch_array($getit)) {
-		// $artistID = $row["artistID"];
-		$artistName = $row["artistName"];
-		$albumName = $row["albumName"];
-		$trackName = $row["trackName"];
-		$albumReleased = $row["year"];
-		$trackPop = $row["pop"];
-		$popDate = $row["date"];
-		
-		echo "<tr>";
-		echo "<td>" . $artistName . "</td>";
-		echo "<td>" . $albumName . "</td>";
-		echo "<td>" . $trackName . "</td>";
-		echo "<td>" . $trackPop . "</td>";
-		echo "<td>" . $popDate . "</td>";
-		echo "</tr>";
-	}
 }
 
 ?>

@@ -3,6 +3,68 @@
 $artistAlbums = array ();
 require_once 'rockdb.php';
 
+function showAlbums ($artistID) {
+
+	$connekt = new mysqli($GLOBALS['host'], $GLOBALS['un'], $GLOBALS['magicword'], $GLOBALS['db']);
+
+	if (!$connekt) {
+		echo 'Darn. Did not connect.';
+	};
+
+	$happyScabies2 = "SELECT a.albumName, a.year, a.albumArt, z.artistName, p1.pop, p1.date
+						FROM (SELECT
+									y.albumID AS albumID,
+									y.albumName AS albumName,
+									y.artistID AS artistID,
+									y.albumArt AS albumArt,
+									y.year AS year
+								FROM albums y 
+								WHERE y.artistID = '$artistID') a
+						JOIN artists z ON z.artistID = '$artistID'
+						JOIN (SELECT p.*
+								FROM popAlbums p
+								INNER JOIN (SELECT albumID, pop, max(date) AS MaxDate
+											FROM popAlbums  
+											GROUP BY albumID) groupedp
+								ON p.albumID = groupedp.albumID
+								AND p.date = groupedp.MaxDate) p1 
+						ON a.albumID = p1.albumID
+						ORDER BY a.year ASC;";
+
+	$getit = $connekt->query($happyScabies2);
+
+	if(!$getit){
+		echo 'Cursed-Crap. Did not run the query.';
+	}
+
+	// $rows = array();
+
+	while ($row = mysqli_fetch_array($getit)) {
+		// $artistID = $row["artistID"];
+		$artistName = $row['artistName'];
+		$albumArt = $row['albumArt'];
+		$albumName = $row['albumName'];
+		$albumReleased = $row['year'];
+		$albumPop = $row['pop'];
+		$date = $row['date'];
+
+		// $rows[] = $row;
+		
+		echo "<tr>";
+		echo "<td><img src='" . $albumArt . "' height='64' width='64'></td>";
+		echo "<td>" . $albumName . "</td>";
+		echo "<td>" . $albumReleased . "</td>";
+		echo "<td>" . $albumPop . "</td>";
+		echo "<td>" . $date . "</td>";
+		echo "</tr>";
+
+	}
+
+	// echo json_encode($rows);
+	// make the above echo a js script that sends the json to the console
+
+}
+
 function divideCombineAlbumsForArt ($artistAlbums) {
 	
 	// Divide all artist's albums into chunks of 20
@@ -66,7 +128,6 @@ function divideCombineAlbumsForArt ($artistAlbums) {
 		}
 	};
 }
-
 
 function divideCombineAlbumsForTracks ($artistAlbums) {
 
@@ -249,69 +310,6 @@ function getAlbumsPop ($artistAlbums) {
 		}
 	};
   
-}
-
-
-function showAlbums ($artistID) {
-
-	$connekt = new mysqli($GLOBALS['host'], $GLOBALS['un'], $GLOBALS['magicword'], $GLOBALS['db']);
-
-	if (!$connekt) {
-		echo 'Darn. Did not connect.';
-	};
-
-	$happyScabies2 = "SELECT a.albumName, a.year, a.albumArt, z.artistName, p1.pop, p1.date
-						FROM (SELECT
-									y.albumID AS albumID,
-									y.albumName AS albumName,
-									y.artistID AS artistID,
-									y.albumArt AS albumArt,
-									y.year AS year
-								FROM albums y 
-								WHERE y.artistID = '$artistID') a
-						JOIN artists z ON z.artistID = '$artistID'
-						JOIN (SELECT p.*
-								FROM popAlbums p
-								INNER JOIN (SELECT albumID, pop, max(date) AS MaxDate
-											FROM popAlbums  
-											GROUP BY albumID) groupedp
-								ON p.albumID = groupedp.albumID
-								AND p.date = groupedp.MaxDate) p1 
-						ON a.albumID = p1.albumID
-						ORDER BY a.year ASC;";
-
-	$getit = $connekt->query($happyScabies2);
-
-	if(!$getit){
-		echo 'Cursed-Crap. Did not run the query.';
-	}
-
-	// $rows = array();
-
-	while ($row = mysqli_fetch_array($getit)) {
-		// $artistID = $row["artistID"];
-		$artistName = $row['artistName'];
-		$albumArt = $row['albumArt'];
-		$albumName = $row['albumName'];
-		$albumReleased = $row['year'];
-		$albumPop = $row['pop'];
-		$date = $row['date'];
-
-		// $rows[] = $row;
-		
-		echo "<tr>";
-		echo "<td><img src='" . $albumArt . "' height='64' width='64'></td>";
-		echo "<td>" . $albumName . "</td>";
-		echo "<td>" . $albumReleased . "</td>";
-		echo "<td>" . $albumPop . "</td>";
-		echo "<td>" . $date . "</td>";
-		echo "</tr>";
-
-	}
-
-	// echo json_encode($rows);
-	// make the above echo a js script that sends the json to the console
-
 }
 
 ?>
