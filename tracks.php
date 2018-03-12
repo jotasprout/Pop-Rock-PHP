@@ -173,6 +173,10 @@ function divideCombineTracks ($AlbumsTracks) {
 function showTracks ($artistID) {
 
 	$connekt = new mysqli($GLOBALS['host'], $GLOBALS['un'], $GLOBALS['magicword'], $GLOBALS['db']);
+
+	if (!$connekt) {
+		echo 'Darn. Did not connect.';
+	};
 	
 	$gatherTrackInfo = "SELECT a.trackID, a.trackName, a.albumID, b.albumName, b.artistID, b.year, c.pop, d.artistName, a.date 
 		FROM tracks a
@@ -183,6 +187,10 @@ function showTracks ($artistID) {
 				ORDER BY a.trackName ASC";
 
 	$getit = $connekt->query($gatherTrackInfo);
+
+	if(!$getit){
+		echo 'Cursed-Crap. Did not run the query.';
+	}
 
 	while ($row = mysqli_fetch_array($getit)) {
 		// $artistID = $row["artistID"];

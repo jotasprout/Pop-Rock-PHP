@@ -1,13 +1,13 @@
 <?php
 
-    include 'sesh.php';   
+    // include 'sesh.php';   
     // echo 'sesh worked'; 
-    require_once 'auth.php';
+    // require_once 'auth.php';
     // echo 'auth worked';
     // require_once 'rockdb.php';
     require 'artists.php';
     require 'artists_arrays_objects.php';
-    require 'vendor/autoload.php';
+    // require 'vendor/autoload.php';
     require_once 'stylesAndScripts.php';
     require_once 'navbar_rock.php';
     
@@ -37,9 +37,9 @@
                     <select class="form-control" id="artist" name="artist">
                         <option value="">- Choose -</option>
 
-<?php
-include 'artist_menu.php';
-?>
+                        <?php
+                        include 'artist_menu.php';
+                        ?>
 
                     </select>
                 </div>

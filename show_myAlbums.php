@@ -30,7 +30,7 @@ require_once 'albums.php';
 		
 		<!-- Panel Content --> 
 		<table class="table">
-			<tr><th>Album Art</th><th>Album Name</th><th>Released</th><th>Popularity</th></tr>
+			<tr><th>Album Art</th><th>Album Name</th><th>Released</th><th>Popularity</th><th>Date</th></tr>
 			<?php
 				showAlbums ($artistID);
 			?>
