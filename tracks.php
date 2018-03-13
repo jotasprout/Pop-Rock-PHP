@@ -10,13 +10,18 @@ function showTracks ($artistID) {
 		echo 'Darn. Did not connect.';
 	};
 	
-	$gatherTrackInfo = "SELECT a.trackID, a.trackName, a.albumID, b.albumName, b.artistID, b.year, c.pop, d.artistName, c.date 
-		FROM tracks a
-			INNER JOIN albums b ON a.albumID = b.albumID
-			INNER JOIN popTracks c ON a.trackID = c.trackID
-			INNER JOIN artists d ON b.artistID = d.artistID
-				WHERE b.artistID = '$artistID' 
-				ORDER BY a.trackName ASC";
+	$gatherTrackInfo = "SELECT t.trackID, t.trackName, a.albumName, a.artistID, p1.pop, p1.date
+    FROM tracks t
+    INNER JOIN albums a ON a.albumID = t.albumID
+    JOIN (SELECT p.* FROM popTracks p
+            INNER JOIN (SELECT trackID, pop, max(date) AS MaxDate
+                        FROM popTracks  
+                        GROUP BY trackID) groupedp
+            ON p.trackID = groupedp.trackID
+            AND p.date = groupedp.MaxDate) p1 
+    ON t.trackID = p1.trackID
+    WHERE a.artistID = '1Qp56T7n950O3EGMsSl81D'
+    ORDER BY t.trackName ASC";
 
 	$getit = $connekt->query($gatherTrackInfo);
 
