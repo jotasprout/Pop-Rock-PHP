@@ -20,7 +20,7 @@ function showTracks ($artistID) {
             ON p.trackID = groupedp.trackID
             AND p.date = groupedp.MaxDate) p1 
     ON t.trackID = p1.trackID
-    WHERE a.artistID = '1Qp56T7n950O3EGMsSl81D'
+    WHERE a.artistID = '$artistID'
     ORDER BY t.trackName ASC";
 
 	$getit = $connekt->query($gatherTrackInfo);
