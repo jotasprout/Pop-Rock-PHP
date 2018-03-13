@@ -67,7 +67,7 @@ function divideCombineArtistsForAlbums ($theseArtists) {
 	};	
 }
 
-divideCombineArtistsForAlbums ($nominees2018);
+divideCombineArtistsForAlbums ($remaining);
 
 die();
 
