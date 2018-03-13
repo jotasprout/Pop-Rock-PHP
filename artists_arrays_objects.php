@@ -161,7 +161,7 @@ $done = array ("3k4YA0uPsWc2PuOQlJNpdH","3EhbVgyfGd7HkpsagwL9GS","0oSGxfWSnnOXhD
 
 $restofFirstBatch = array ("2AM4ilv6UzW0uMRuqKtDgN","51Blml2LZPmy7TTiAg47vQ","5M52tdBnJaKSvOpJGz8mfZ","6mdiAmATAx73kdxrNrnlao","4UjiBRkTw9VmvDZiJZKPJ7","6ZLTlhejhndI4Rh53vYhrY","4CYeVo5iZbtYGBN4Isc3n6","4M3c7tg4BzLQ5pIOupZL65","6w6z8m4WXX7Tub4Rb6Lu7R","5KQMtyPE8DCQNUzoNqlEsE", "76bg2Fvfs7TcQV2un3iNdO","1ZwdS5xdxEREPySFridCfh");
 
-$newbies = array ("1ZwdS5xdxEREPySFridCfh", "2jgPkn6LuUazBoBk6vvjh5", "0O0lrN34wrcuBenkqlEDZe", "1Qp56T7n950O3EGMsSl81D");
+$newbies = array ("1ZwdS5xdxEREPySFridCfh", "2jgPkn6LuUazBoBk6vvjh5", "0O0lrN34wrcuBenkqlEDZe", "1Qp56T7n950O3EGMsSl81D", "5M52tdBnJaKSvOpJGz8mfZ");
 
 $middle = array ("1KxokFLctHsnu4YDSWY3MF", "06T4NL0adq4kfYAr2nZv5t", "0nxo4nAEYNbNpA8wwNvqXY", "5R7kd09oJizY4DlJoIMLGb", "2Cg6J3WtX1P093c4VKt0Xe", "31LBSeuapFzeec1JCDDMZS", "1FFP0sOEvSSKgjocovruDl", "3lHPBMb024SqetFwwVwuwH", "2V27BrLW9marAftTzfW8WN", "0ReWwVR3RCZtXLP8CZFCrb", "60GtR6PIcDY1pikPgKHNk9", "1lhoWboIGHmazhnBQ8eVF3");
 
