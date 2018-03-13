@@ -31,15 +31,15 @@ function showTracks ($artistID) {
 
 	while ($row = mysqli_fetch_array($getit)) {
 		// $artistID = $row["artistID"];
-		$artistName = $row["artistName"];
+		// $artistName = $row["artistName"];
 		$albumName = $row["albumName"];
 		$trackName = $row["trackName"];
-		$albumReleased = $row["year"];
+		// $albumReleased = $row["year"];
 		$trackPop = $row["pop"];
 		$popDate = $row["date"];
 		
 		echo "<tr>";
-		echo "<td>" . $artistName . "</td>";
+		// echo "<td>" . $artistName . "</td>";
 		echo "<td>" . $albumName . "</td>";
 		echo "<td>" . $trackName . "</td>";
 		echo "<td>" . $trackPop . "</td>";

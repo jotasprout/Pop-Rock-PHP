@@ -30,7 +30,7 @@ require_once 'tracks.php';
 <div class="panel-body"> 
 
 <table class="table">
-	<tr><th>Artist</th><th>Album</th><th>Track</th><th>Track Popularity</th><th>Date</th></tr>
+	<tr><th>Album</th><th>Track</th><th>Track Popularity</th><th>Date</th></tr>
 	<?php
 		showTracks ($artistID);
 	?>
