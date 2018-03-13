@@ -1,3 +1,5 @@
+$blackSabbath = new artist("5M52tdBnJaKSvOpJGz8mfZ","Black Sabbath");
+
 OTHERS WAITING
 
  = ("B-52's", "");
@@ -152,7 +154,7 @@ OTHERS THAT ARE IN
  = ("Madonna", "");
  = ("Jeff Beck", "");
 
- = ("Run–D.M.C.", "");
+ = ("Runï¿½D.M.C.", "");
  = ("ABBA", "");
  = ("Genesis", "");
 

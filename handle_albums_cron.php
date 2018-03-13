@@ -67,7 +67,7 @@ function divideCombineArtistsForAlbums ($theseArtists) {
 	};	
 }
 
-divideCombineArtistsForAlbums ($bottomSecondA);
+divideCombineArtistsForAlbums ($restofFirstBatch);
 
 die();
 
