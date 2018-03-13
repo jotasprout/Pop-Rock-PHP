@@ -6,29 +6,25 @@ SELECT t.trackID, t.trackName, t.albumID, a.albumName, a.artistID, a.year, p.pop
             WHERE a.artistID = '5kadFhaVFgdn1J4rX3HqB2' 
             ORDER BY t.trackName ASC;
 
+/* ADAPTED HAPPY SCABIES 2 FOR TRACKS 
+t = tracks
+a = albums
+r = artists (rockstars)
+p = popularity
+*/
 
-/* ADAPTED HAPPY SCABIES 2 FOR TRACKS */
-
-SELECT a.albumName, z.artistName, p1.pop, p1.date
-    FROM (SELECT
-                y.albumID AS albumID,
-                y.albumName AS albumName,
-                y.artistID AS artistID,
-                y.albumArt AS albumArt,
-                y.year AS year
-            FROM albums y 
-            WHERE y.artistID = '$artistID') a
-    JOIN artists z ON z.artistID = '$artistID'
-    JOIN (SELECT p.*
-            FROM popAlbums p
-            INNER JOIN (SELECT albumID, pop, max(date) AS MaxDate
-                        FROM popAlbums  
-                        GROUP BY albumID) groupedp
-            ON p.albumID = groupedp.albumID
+SELECT t.trackID, t.trackName, t.albumName, a.artistID, p1.pop, p1.date
+    FROM tracks t
+    INNER JOIN albums a ON a.albumID = t.albumID
+    JOIN (SELECT p.* FROM popTracks p
+            INNER JOIN (SELECT trackID, pop, max(date) AS MaxDate
+                        FROM popTracks  
+                        GROUP BY trackID) groupedp
+            ON p.trackID = groupedp.trackID
             AND p.date = groupedp.MaxDate) p1 
-    ON a.albumID = p1.albumID
-    ORDER BY a.year ASC;
-
+    ON t.trackID = p1.trackID
+    WHERE a.artistID = '$artistID'
+    ORDER BY t.trackName ASC;
 
 /* ORIGINAL WORKING ALBUM QUERY -- HAPPY SCABIES 2 */
 
@@ -51,7 +47,6 @@ SELECT a.albumName, a.year, a.albumArt, z.artistName, p1.pop, p1.date
             AND p.date = groupedp.MaxDate) p1 
     ON a.albumID = p1.albumID
     ORDER BY a.year ASC;
-
 
 /* THIS ORIGINAL WORKS SHOWING ALL TRACKS FROM ALL DATES */
 
