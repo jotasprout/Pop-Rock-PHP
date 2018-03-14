@@ -161,8 +161,8 @@ $eltonJohn = new artist ("3PhoLpVuITZKcymswpck5b", "Elton John");
 $kingDiamond = new artist ("5i0ph60TnwTlIGrOZAmcZa", "King Diamond");
 $kinks = new artist ("1SQRv42e4PjEYfPhS0Tk9E", "The Kinks");
 $ledZeppelin = new artist ("36QJpDe2go2KgaRleHCDTp", "Led Zeppelin");
-$jerryLeeLewis = new artist ("", "Jerry Lee Lewis");
-$littleRichard = new artist ("", "Little Richard");
+$jerryLeeLewis = new artist ("2zyz0VJqrDXeFDIyrfVXSo", "Jerry Lee Lewis");
+$littleRichard = new artist ("4xls23Ye9WR9yy3yYMpAMm", "Little Richard");
 $kraftwerk = new artist ("0dmPX6ovclgOy8WWJaFEUU", "Krafwerk");
 $motleyCrue = new artist ("0cc6vw3VN8YlIcvr1v7tBL", "Motley Crue");
 $harryNilsson = new artist ("3RTzAwFprBqiskp550eSJX", "Harry Nilsson");
@@ -173,7 +173,7 @@ $vanHalen = new artist ("2cnMpRsOVqtPMfq7YiFE6K", "Van Halen");
 $who = new artist ("67ea9eGLXYMsO2eYQRui3w", "The Who");
 $neilYoung = new artist ("6v8FB84lnmJs434UJf2Mrm", "Neil Young");
 
-$brandnew = array ("","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","");
+$brandnew = array ("2zyz0VJqrDXeFDIyrfVXSo","4xls23Ye9WR9yy3yYMpAMm","5N5tQ9Dx1h8Od7aRmGj7Fi","5Mhs3Eu8lU6sRCtRYsmABV","4tpUmLEVLCGFr93o8hFFIB","30U8fYtiNpeA5KH6H87QUV","6H1RjVyNruCmrBEWRbD0VZ","0UKfenbZb15sqhfPC6zbt3","0lZoBs4Pzo7R89JM9lxwoT","3PhoLpVuITZKcymswpck5b","5i0ph60TnwTlIGrOZAmcZa","1SQRv42e4PjEYfPhS0Tk9E","36QJpDe2go2KgaRleHCDTp","0dmPX6ovclgOy8WWJaFEUU","0cc6vw3VN8YlIcvr1v7tBL","3RTzAwFprBqiskp550eSJX","3yY2gUcIsjMr8hjo51PoJ8","2y8Jo9CKhJvtfeKOsYzRdT","2x9SpqnPi8rlE9pjHBwmSC","2cnMpRsOVqtPMfq7YiFE6K","67ea9eGLXYMsO2eYQRui3w","6v8FB84lnmJs434UJf2Mrm");
 
 $xianArtists = array ("7hW3Ezs4uzy0QQvdnF0Imi","6lE1ly8K8H7u8k2ej2plvv","5WJ6VEY43MOngJJJNabAId","3G7qoMSLvu9Pmb0xGtf9fl","0t1uzfQspxLvAifZLdmFe2","5MQsxr7sbsewUTIEEYxauR","0PGxNwykt4KgnvSnNHVUSZ","3lgxzeCbj6oMQMmaUhH2H6","0sNPk98oyaTeaRojDYglDY","1P72cdCRCvytPnFLkGSeVm","3PXQl96QHBJbzAGENdJWc1","1zK4ACgLi1lVPpfmmcwOTh","1LZqY4X3vFpZaEgXkmiYrG","5kadFhaVFgdn1J4rX3HqB2","3G5wgSAeFzEa6Jv5UNDs4N","3MAQykZ3MwPcviv5eIVqgb","3h66yQiOXZpT6AV2Np5yIq","2hjEGPXpN1BGpNjODQ4ImL","6K1KoB3WXLSOaphD2YoWNU","0fY32zOZQBIUFh6rDMfbMt", "76bg2Fvfs7TcQV2un3iNdO", "1KxokFLctHsnu4YDSWY3MF", "06T4NL0adq4kfYAr2nZv5t", "0nxo4nAEYNbNpA8wwNvqXY", "5R7kd09oJizY4DlJoIMLGb", "2Cg6J3WtX1P093c4VKt0Xe", "31LBSeuapFzeec1JCDDMZS", "1FFP0sOEvSSKgjocovruDl", "2IIRfan7YtrHcldR6G8EmM", "0AA0qugrTsIv7JFMEnhaqu", "3lHPBMb024SqetFwwVwuwH", "2V27BrLW9marAftTzfW8WN", "0ReWwVR3RCZtXLP8CZFCrb", "60GtR6PIcDY1pikPgKHNk9", "1lhoWboIGHmazhnBQ8eVF3", "3yZKOUXaZEUIuezZBsDQ62", "1cSpfa4Un4NCOzeOKgGtG9", "38G8E1MViuxPZPd5qIgbic", "0VOvF0kfqCTRe37XzWQdvH", "4bMVHZcJe0AmG8f3b120qL", "1BcAEs4W94BrXMmVCOgwSx", "0klkYTAeGHgItyB4R9YYjU", "2S0M8fVXCom9z4JjV8UoXO");
 
