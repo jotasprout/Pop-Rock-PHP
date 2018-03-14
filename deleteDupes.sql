@@ -1,0 +1,12 @@
+DELETE FROM popArtists WHERE id = '';
+DELETE FROM popArtists WHERE id = '';
+DELETE FROM popArtists WHERE id = '';
+DELETE FROM popArtists WHERE id = '';
+DELETE FROM popArtists WHERE id = '';
+DELETE FROM popArtists WHERE id = '';
+DELETE FROM popArtists WHERE id = '';
+DELETE FROM popArtists WHERE id = '';
+DELETE FROM popArtists WHERE id = '';
+DELETE FROM popArtists WHERE id = '';
+DELETE FROM popArtists WHERE id = '';
+DELETE FROM popArtists WHERE id = '';

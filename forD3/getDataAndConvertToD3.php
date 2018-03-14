@@ -31,13 +31,6 @@ function artistsD3 () {
 
 artistsD3();
 
-// SOMETHING I FOUND 
-function console_log( $data ){
-	echo '<script>';
-	echo 'console.log('. json_encode( $data ) .')';
-	echo '</script>';
-  }
-
 // A MYSQLI EXAMPLE
   // Create connection
 $conn = mysqli_connect($servername, $username, $password, $dbname);
@@ -97,7 +90,6 @@ $opt = [
         PDO::ATTR_EMULATE_PREPARES   => false,
         ];
 
-
 $dbh = new PDO($dsn, $user, $pass, $opt);
 
 $sql  = $dbh->query("SELECT * FROM cpu");
@@ -106,9 +98,5 @@ while ($row = $sql->fetchall()) {
     $rows[] = $row;
 }
 echo json_encode($rows);
-
-
-
-?>
 
 ?>
