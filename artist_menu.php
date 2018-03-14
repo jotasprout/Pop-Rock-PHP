@@ -4,6 +4,8 @@ echo "<option value='" . $aerosmith->get_artistID() . "'>" . $aerosmith->get_art
 echo "<option value='" . $anthrax->get_artistID() . "'>" . $anthrax->get_artistName() . "</option>";
 echo "<option value='" . $argylePark->get_artistID() . "'>" . $argylePark->get_artistName() . "</option>";
 
+echo "<option value='" . $blah->get_artistID() . "'>" . $blah->get_artistName() . "</option>";
+
 echo "<option value='" . $barrenCross->get_artistID() . "'>" . $barrenCross->get_artistName() . "</option>";
 echo "<option value='" . $beastieBoys->get_artistID() . "'>" . $beastieBoys->get_artistName() . "</option>";
 echo "<option value='" . $blackSabbath->get_artistID() . "'>" . $blackSabbath->get_artistName() . "</option>";
