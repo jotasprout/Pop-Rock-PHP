@@ -173,8 +173,6 @@ $neilYoung = new artist ("6v8FB84lnmJs434UJf2Mrm", "Neil Young");
 $Zombies = new artist ("2jgPkn6LuUazBoBk6vvjh5", "The Zombies");
 $zzTop = new artist("2AM4ilv6UzW0uMRuqKtDgN","ZZ Top");
 
-
-
 $brandnew = array ("2zyz0VJqrDXeFDIyrfVXSo","4xls23Ye9WR9yy3yYMpAMm","5N5tQ9Dx1h8Od7aRmGj7Fi","5Mhs3Eu8lU6sRCtRYsmABV","4tpUmLEVLCGFr93o8hFFIB","30U8fYtiNpeA5KH6H87QUV","6H1RjVyNruCmrBEWRbD0VZ","0UKfenbZb15sqhfPC6zbt3","0lZoBs4Pzo7R89JM9lxwoT","3PhoLpVuITZKcymswpck5b","5i0ph60TnwTlIGrOZAmcZa","1SQRv42e4PjEYfPhS0Tk9E","36QJpDe2go2KgaRleHCDTp","0dmPX6ovclgOy8WWJaFEUU","0cc6vw3VN8YlIcvr1v7tBL","3RTzAwFprBqiskp550eSJX","3yY2gUcIsjMr8hjo51PoJ8","2y8Jo9CKhJvtfeKOsYzRdT","2x9SpqnPi8rlE9pjHBwmSC","2cnMpRsOVqtPMfq7YiFE6K","67ea9eGLXYMsO2eYQRui3w","6v8FB84lnmJs434UJf2Mrm");
 
 $nominees2018 = array ("58lV9VcRSjABbAbfWS6skp", "1aSxMhuvixZ8h9dK9jIDwL", "6DCIj8jNaNpBz8e5oKFPtp", "762310PdDnwsDxAQxzQkfX", "0WwSkZ7LtFUFjGjMZBMt6T", "0NKDgy9j66h3DLnN8qu1bB", "69Mj3u4FTUrpyeGNSIaU6F", "2tRsMl4eGxwoNabM08Dm4I", "1P8IfcNKwrkQP5xJWuhaOC", "4WquJweZPIK9qcfVFhTKvf", "2JRvXPGWiINrnJljNJhG5s", "5BcZ22XONcRoLhTbZRuME1", "4Z8W4fKeB5YxbusRsdQVPb", "2d0hyoQ5ynDBnkvAbJKORj", "1YLsqPcFg1rj7VvhfwnDWm", "7G1GBhoKtEPnP86X2PvEYO", "2dXf5lu5iilcaTQJZodce7", "2vQavlZtDA660mnZotYIto", "2jgPkn6LuUazBoBk6vvjh5", "2hO4YtXUFJiUYS2uYFvHNK", "6mQfAAqZGBzIfrmlZCeaYT");
