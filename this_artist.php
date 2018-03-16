@@ -14,6 +14,7 @@
 <!DOCTYPE html>
 
 <html>
+
 <head>
     <meta charset="UTF-8">
     <title>This Artist</title>
@@ -21,22 +22,26 @@
     <script src='https://d3js.org/d3.v4.min.js'></script>
 </head>
 
-    <body>
+<body>
 
-        <div class="container">
-            <?php echo $navbar ?>
+    <div class="container">
+        <?php echo $navbar ?>
 
-            <!-- D3 chart goes here -->
+        <!-- D3 chart goes here -->
 
-            <table class="table">
-                <tr><th>Artist Name</th><th>Popularity</th><th>Date</th></tr>
-                <?php showThisArtist ($artistID); ?>
-            </table>
-            <footer class="footer"><p>&copy; Sprout Means Grow and RoxorSoxor 2017</p></footer>
-        </div> <!-- close container -->
-        
-        <?php echo $scriptsAndSuch; ?>
-        
+        <table class="table">
+            <tr>
+            <th>Artist Name</th>
+            <th>Popularity</th>
+            <th>Date</th></tr>
+            <?php showThisArtist ($artistID); ?>
+        </table>
+        <footer class="footer"><p>&copy; Sprout Means Grow and RoxorSoxor 2017</p></footer>
+    </div> <!-- close container -->
+    
+    <?php echo $scriptsAndSuch; ?>
+    
 
-    </body>
+</body>
+
 </html>

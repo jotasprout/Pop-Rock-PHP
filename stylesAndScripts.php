@@ -8,9 +8,12 @@ $stylesAndSuch = "
 ";
 
 $scriptsAndSuch = "
-    <script src='https://www.roxorsoxor.com/js/jquery-214.js'></script>
+    <script src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
     <script src='https://code.jquery.com/ui/1.12.1/jquery-ui.js'></script>
     <script src='https://www.roxorsoxor.com/bootstrap/js/bootstrap.min.js'></script>
+    <script src='https://www.roxorsoxor.com/poprock/sortingHat.js'></script>
 ";
+
+// <script src='https://www.roxorsoxor.com/js/jquery-214.js'></script>
 
 ?>
