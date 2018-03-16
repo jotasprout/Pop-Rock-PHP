@@ -62,7 +62,9 @@ function showThisD3Artist ($artistID) {
     <meta charset="UTF-8">
     <title>This D3 Artist</title>
     <?php echo $stylesAndSuch; ?>
-    <script src='https://d3js.org/d3.v4.min.js'></script>
+	<script src='https://d3js.org/d3.v4.min.js'></script>
+	<script src='node_modules/idb/lib/idb.js'></script>
+	<script src='gwg.js'></script>
 </head>
 
 <body>
