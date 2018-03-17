@@ -32,21 +32,11 @@ require_once 'sortingHat.php';
 	<div class="panel-body"> 
 		
 		<!-- Panel Content --> 
-		<table class="table" id="recordCollection">
 
-			<tr>
-				<th>Album Art</th>
-				<th onClick="sortColumn('<?php echo $albumName ?>', 'ASC')">Album Name</th>
-				<th onClick="sortColumn('<?php echo $albumReleased ?>', 'ASC')">Released</th>
-				<th onClick="sortColumn('<?php echo $albumPop ?>', 'ASC')">Popularity</th>
-				<th>Date</th>
-			</tr>
 
 			<?php
 				showAlbums ($artistID);
 			?>
-
-		</table>
 
 	</div> <!-- panel body -->
 
