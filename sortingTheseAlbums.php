@@ -69,7 +69,15 @@ if(!$sortit){
 	echo 'Cursed-Crap. Did not run the query.';
 }
 
-// NEED HEADERS HERE
+echo '<table class="table-content">
+<thead>
+	<tr>
+	  <th width="30%" onClick="orderColumn(\'post_title\',\'<?php echo $postTitleNextOrder; ?>\')"><span>Post Title</span></th>
+	  <th width="50%" onClick="orderColumn(\'description\',\'<?php echo $descriptionNextOrder; ?>\')"><span>Description</span></th>
+	  <th width="20%" onClick="orderColumn(\'post_at\',\'<?php echo $postAtNextOrder; ?>\')"><span>Post Date</span></th>	 
+	</tr>
+</thead>
+<tbody>';
 
 while ($row = mysqli_fetch_array($sortit)) {
 	// $artistID = $row["artistID"];
@@ -92,12 +100,11 @@ while ($row = mysqli_fetch_array($sortit)) {
 
 }
 
+echo '</tbody></table>';
 // echo json_encode($rows);
 // make the above echo a js script that sends the json to the console
 
 sortTheseAlbums ($artistID);
-
-}
 
 
 ?>

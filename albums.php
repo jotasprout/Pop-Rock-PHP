@@ -38,13 +38,14 @@ function showAlbums ($artistID) {
 	}
 
 	echo '<table class="table" id="recordCollection">
-			<tr>
+			<tr><thead>
 				<th>Album Art</th>
 				<th onClick="sortColumn('<?php echo $albumName ?>', 'ASC')">Album Name</th>
 				<th onClick="sortColumn('<?php echo $albumReleased ?>', 'ASC')">Released</th>
 				<th onClick="sortColumn('<?php echo $albumPop ?>', 'ASC')">Popularity</th>
 				<th>Date</th>
-			</tr>';
+			</thead></tr>
+			<tbody>';
 
 	while ($row = mysqli_fetch_array($getit)) {
 		// $artistID = $row["artistID"];
@@ -67,7 +68,7 @@ function showAlbums ($artistID) {
 
 	}
 
-	echo "</table>";
+	echo "</tbody></table>";
 
 	// echo json_encode($rows);
 	// make the above echo a js script that sends the json to the console
