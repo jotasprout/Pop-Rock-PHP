@@ -40,9 +40,9 @@ function showAlbums ($artistID) {
 	echo '<table class="table" id="recordCollection">
 			<tr><thead>
 				<th>Album Art</th>
-				<th onClick="sortColumn('<?php echo $albumName ?>', 'ASC')">Album Name</th>
-				<th onClick="sortColumn('<?php echo $albumReleased ?>', 'ASC')">Released</th>
-				<th onClick="sortColumn('<?php echo $albumPop ?>', 'ASC')">Popularity</th>
+				<th onClick="sortColumn(\'<?php echo $albumName ?>\', \'ASC\')">Album Name</th>
+				<th onClick="sortColumn(\'<?php echo $albumReleased ?>\', \'ASC\')">Released</th>
+				<th onClick="sortColumn(\'<?php echo $albumPop ?>\', \'ASC\')">Popularity</th>
 				<th>Date</th>
 			</thead></tr>
 			<tbody>';
