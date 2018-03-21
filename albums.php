@@ -29,8 +29,8 @@ function showAlbums ($artistID) {
 								ON p.albumID = groupedp.albumID
 								AND p.date = groupedp.MaxDate) p1 
 						ON a.albumID = p1.albumID
-						ORDER BY a.year ASC;";
-
+						ORDER BY year ASC;";
+// ORDER BY a.year ASC;"; 
 	$getit = $connekt->query($happyScabies2);
 
 	if(!$getit){

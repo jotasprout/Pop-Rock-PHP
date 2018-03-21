@@ -31,7 +31,7 @@
 				ON p.albumID = groupedp.albumID
 				AND p.date = groupedp.MaxDate) p1 
 		ON a.albumID = p1.albumID
-		ORDER BY a.year ASC;";
+		ORDER BY year ASC;";
 
 	$getit = $connekt->query($happyScabies2);
 ?>
@@ -70,8 +70,8 @@
 					<tr>
 						<th>Album Art</th>
 						<th onClick="sortColumn('albumName', 'ASC')">Album Name</th>
-						<th onClick="sortColumn('albumReleased', 'ASC')">Released</th>
-						<th onClick="sortColumn('albumPop', 'ASC')">Popularity</th>
+						<th onClick="sortColumn('year', 'ASC')">Released</th>
+						<th onClick="sortColumn('pop', 'ASC')">Popularity</th>
 						<th>Date</th>
 					</tr>
 				</thead>

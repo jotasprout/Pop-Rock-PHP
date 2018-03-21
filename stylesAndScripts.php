@@ -12,9 +12,7 @@ $stylesAndSuch = "
 $scriptsAndSuch = "
 
     <script src='https://www.roxorsoxor.com/bootstrap/js/bootstrap.min.js'></script>
-    <script src='https://www.roxorsoxor.com/poprock/sortingHat.js'></script>
-";
 
-// <script src='https://www.roxorsoxor.com/js/jquery-214.js'></script>
+";
 
 ?>

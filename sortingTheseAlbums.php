@@ -12,14 +12,16 @@ if ( !$connekt ) {
 	echo 'Darn. Did not connect.';
 };
 
-$sortBy = "a.year";
+$sortBy = "year";
 $order = "ASC";
 
-if ( !empty( $POST_[ "sortBy" ] ) ) {
+if ( !empty( $_POST[ "sortBy" ] ) ) {
+	echo $_POST[ "sortBy" ] . "<br>";
 	$sortBy = $_POST[ "sortBy" ];
 }
 
-if ( !empty( $POST_[ "order" ] ) ) {
+if ( !empty( $_POST[ "order" ] ) ) {
+	echo $order = $_POST[ "order" ] . "<br>";
 	$order = $_POST[ "order" ];
 }
 
@@ -31,11 +33,11 @@ if ( $sortBy == "albumName" and $order == "ASC" ) {
 	$albumNameNextOrder = "DESC";
 }
 
-if ( $sortBy == "albumReleased" and $order == "ASC" ) {
+if ( $sortBy == "year" and $order == "ASC" ) {
 	$yearNextOrder = "DESC";
 }
 
-if ( $sortBy == "albumPop" and $order == "ASC" ) {
+if ( $sortBy == "pop" and $order == "ASC" ) {
 	$albumPopNextOrder = "DESC";
 }
 
@@ -77,8 +79,8 @@ if(!empty($sortit))	 { ?>
 	<tr>
 	  	<th>Album Art</th>
 		<th onClick="sortColumn('albumName', '<?php echo $albumNameNextOrder; ?>')">Album Name</th>
-		<th onClick="sortColumn('albumReleased', '<?php echo $yearNextOrder; ?>')">Released</th>
-		<th onClick="sortColumn('albumPop', '<?php echo $popNextOrder; ?>')">Popularity</th>
+		<th onClick="sortColumn('year', '<?php echo $yearNextOrder; ?>')">Released</th>
+		<th onClick="sortColumn('pop', '<?php echo $popNextOrder; ?>')">Popularity</th>
 		<th>Date</th>	 
 	</tr>
 </thead>
