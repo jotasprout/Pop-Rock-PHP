@@ -1,5 +1,8 @@
 <?php
 
+include 'sesh.php';
+$artistID = $_SESSION['artist'];
+$_SESSION['artist'] = $artistID;
 require_once 'rockdb.php';
 require( "class.artist.php" );
 
@@ -24,15 +27,15 @@ $albumNameNextOrder = "ASC";
 $yearNextOrder = "ASC";
 $popNextOrder = "ASC";
 
-if ( $sortBy == $albumName and $order == "ASC" ) {
+if ( $sortBy == "albumName" and $order == "ASC" ) {
 	$albumNameNextOrder = "DESC";
 }
 
-if ( $sortBy == $albumReleased and $order == "ASC" ) {
+if ( $sortBy == "albumReleased" and $order == "ASC" ) {
 	$yearNextOrder = "DESC";
 }
 
-if ( $sortBy == $albumPop and $order == "ASC" ) {
+if ( $sortBy == "albumPop" and $order == "ASC" ) {
 	$albumPopNextOrder = "DESC";
 }
 
