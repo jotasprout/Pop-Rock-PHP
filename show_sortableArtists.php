@@ -1,15 +1,15 @@
 <?php
 
-include 'sesh.php'; 
+include 'sesh.php';
 require_once 'rockdb.php';
 require_once 'navbar_rock.php';
 require_once 'stylesAndScripts.php';
-require_once 'artists.php';
+// require_once 'artists.php';
 
-$connekt = new mysqli($GLOBALS['host'], $GLOBALS['un'], $GLOBALS['magicword'], $GLOBALS['db']);
+$connekt = new mysqli( $GLOBALS[ 'host' ], $GLOBALS[ 'un' ], $GLOBALS[ 'magicword' ], $GLOBALS[ 'db' ] );
 
-if (!$connekt) {
-    echo 'Darn. Did not connect.';
+if ( !$connekt ) {
+	echo 'Darn. Did not connect.';
 };
 
 $artistInfoRecent = "SELECT a.artistID AS artistID, a.artistName AS artistName, b.pop AS pop, b.date AS date
@@ -19,76 +19,85 @@ $artistInfoRecent = "SELECT a.artistID AS artistID, a.artistName AS artistName, 
                             FROM popArtists b2)
     ORDER BY b.pop DESC";
 
-$getit = $connekt->query($artistInfoRecent);
+$getit = $connekt->query( $artistInfoRecent );
 
-while ($row = mysqli_fetch_array($getit)) {
-    // $artistID = $row["artistID"];
-    $artistName = $row["artistName"];
-    $artistPop = $row["pop"];
-    $popDate = $row["date"];
-    
-    echo "<tr>";
-    echo "<td>" . $artistName . "</td>";
-    echo "<td>" . $artistPop . "</td>";
-    echo "<td>" . $popDate . "</td>";
-    echo "</tr>";
-}
-    
 ?>
 
 <!DOCTYPE html>
 
 <html>
+
 <head>
-    <meta charset="UTF-8">
-    <title>Artists and Such</title>
-    <?php echo $stylesAndSuch; ?>
-    <script src='https://d3js.org/d3.v4.min.js'></script>
+	<meta charset="UTF-8">
+	<title>Artists Popularity</title>
+	<?php echo $stylesAndSuch; ?>
 </head>
 
-    <body>
+<body>
 
-        <div class="container">
-            <?php echo $navbar ?>
+	<div class="container">
+		<?php echo $navbar ?>
 
-            <!-- main -->
+		<!-- main -->
 
-            <div class="panel panel-primary">
+		<div class="panel panel-primary">
 
-                <div class="panel-heading">
-                    <h3 class="panel-title">Album Info from My DB</h3>
-                </div>
+			<div class="panel-heading">
+				<h3 class="panel-title">Most Recent Artist Popularity in My DB</h3>
+			</div>
 
-                <div class="panel-body"> 
-                    
-                    <!-- Panel Content --> 
-                    <!-- D3 chart goes here -->
-                    <?php if (!empty($getit)) { ?>
+			<div class="panel-body">
 
-                        <table class="table" id = "tableoartists">
-                            <thead>
-                                <tr>
-                                    <th>Artist Name</th>
-                                    <th>Popularity</th>
-                                    <th>Date</th>
-                                </tr>
-                            <?php showArtists (); ?>
-                        </table>
+				<!-- Panel Content -->
+				<!-- D3 chart goes here -->
+				<?php if (!empty($getit)) { ?>
 
-                    }
+				<table class="table" id="tableoartists">
+					<thead>
+						<tr>
+							<th onClick="sortColumn('artistName', 'ASC')">Artist Name</th>
+							<th onClick="sortColumn('pop', 'ASC')">Popularity</th>
+							<th>Date</th>
+						</tr>
+					</thead>
 
-                    <?php
-                        } // end of if
-                    ?>
+					<tbody>
 
-                </div> <!-- panel body -->
+					<?php
+					while ( $row = mysqli_fetch_array( $getit ) ) {
+						$artistName = $row[ "artistName" ];
+						$artistPop = $row[ "pop" ];
+						$popDate = $row[ "date" ];
+						?>
 
-            </div> <!-- panel panel-primary -->
+					<tr>
+						<td><?php echo $artistName ?></td>
+						<td><?php echo $artistPop ?></td>
+						<td><?php echo $popDate ?></td>
+					</tr>
 
-        </div> <!-- close container -->
-        
-        <?php echo $scriptsAndSuch; ?>
-        <script src="https://www.roxorsoxor.com/poprock/sortTheseArtists.js"></script>
+					<?php 
+						} // end of while
+					?>
 
-    </body>
+					</tbody>
+				</table>
+				<?php 
+					} // end of if
+				?>
+
+			</div>
+			<!-- panel body -->
+
+		</div>
+		<!-- panel panel-primary -->
+
+	</div>
+	<!-- close container -->
+
+	<?php echo $scriptsAndSuch; ?>
+	<script src="https://www.roxorsoxor.com/poprock/sortTheseArtists.js"></script>
+
+</body>
+
 </html>

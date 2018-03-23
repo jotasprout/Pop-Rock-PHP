@@ -1,75 +1,79 @@
 <?php
 
-    session_start();
-    require 'vendor/autoload.php';
-    require_once 'rockdb.php';
-    require_once 'navbar_rock.php';
-    require_once 'stylesAndScripts.php';
-    require_once 'artists.php';
+include 'sesh.php';
+require_once 'rockdb.php';
 
-    $accessToken = $_SESSION['accessToken'];
+$connekt = new mysqli($GLOBALS['host'], $GLOBALS['un'], $GLOBALS['magicword'], $GLOBALS['db']);
 
-function showArtists () {
+if (!$connekt) {
+    echo 'Darn. Did not connect.';
+};
 
-	$connekt = new mysqli($GLOBALS['host'], $GLOBALS['un'], $GLOBALS['magicword'], $GLOBALS['db']);
-	
-	$artistInfoAll = "SELECT a.artistID, a.artistName, b.pop, b.date 
-		FROM artists a
-			INNER JOIN popArtists b ON a.artistID = b.artistID
-		ORDER BY a.artistName ASC";
+$sortBy = "pop";
+$order = "DESC";
 
-	$artistInfoRecent = "SELECT a.artistID, a.artistName, b.pop, b.date 
-		FROM artists a
-			INNER JOIN popArtists b ON a.artistID = b.artistID
-				WHERE b.date = (select max(b2.date)
-								FROM popArtists b2)
-		ORDER BY b.pop DESC";
-
-	$getit = $connekt->query($artistInfoRecent);
-
-	while ($row = mysqli_fetch_array($getit)) {
-		// $artistID = $row["artistID"];
-		$artistName = $row["artistName"];
-		$artistPop = $row["pop"];
-		$popDate = $row["date"];
-		
-		echo "<tr>";
-		echo "<td>" . $artistName . "</td>";
-		echo "<td>" . $artistPop . "</td>";
-		echo "<td>" . $popDate . "</td>";
-		echo "</tr>";
-	}
-
+if ( !empty( $_POST[ "sortBy" ] ) ) {
+	// echo $_POST[ "sortBy" ] . "<br>";
+	$sortBy = $_POST[ "sortBy" ];
 }
-    
+
+if ( !empty( $_POST[ "order" ] ) ) {
+	// echo $order = $_POST[ "order" ] . "<br>";
+	$order = $_POST[ "order" ];
+}
+
+$artistNameNextOrder = "ASC";
+$popNextOrder = "ASC";
+
+if ( $sortBy == "artistName" and $order == "ASC" ) {
+	$artistNameNextOrder = "DESC";
+}
+
+if ( $sortBy == "pop" and $order == "ASC" ) {
+	$popNextOrder = "DESC";
+}
+
+$artistInfoRecent = "SELECT a.artistID, a.artistName, b.pop, b.date 
+	FROM artists a
+		INNER JOIN popArtists b ON a.artistID = b.artistID
+			WHERE b.date = (select max(b2.date)
+							FROM popArtists b2)
+	ORDER BY " . $sortBy . " " . $order . ";";
+
+$sortit = $connekt->query($artistInfoRecent); 
+
+if (!empty($sortit)) { ?>
+
+	<table class="table" id="tableoartists">
+		<thead>
+			<tr>
+				<th onClick="sortColumn('artistName', '<?php echo $artistNameNextOrder; ?>')">Artist Name</th>
+				<th onClick="sortColumn('pop', '<?php echo $popNextOrder; ?>')">Popularity</th>
+				<th>Date</th>
+			</tr>
+		</thead>
+
+		<tbody>
+
+		<?php
+			while ($row = mysqli_fetch_array($sortit)) {
+				$artistName = $row["artistName"];
+				$artistPop = $row["pop"];
+				$popDate = $row["date"];
+		?>
+
+		<tr>
+			<td><?php echo $artistName ?></td>
+			<td><?php echo $artistPop ?></td>
+			<td><?php echo $popDate ?></td>
+		</tr>
+
+		<?php 
+			} // end of while
+		?>
+
+		</tbody>
+	</table>
+<?php 
+	} // end of if
 ?>
-
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>Artists and Such</title>
-    <?php echo $stylesAndSuch; ?>
-    <script src='https://d3js.org/d3.v4.min.js'></script>
-</head>
-
-    <body>
-
-        <div class="container">
-            <?php echo $navbar ?>
-
-            <!-- D3 chart goes here -->
-
-            <table class="table">
-                <tr><th>Artist Name</th><th>Popularity</th><th>Date</th></tr>
-                <?php showArtists (); ?>
-            </table>
-
-        </div> <!-- close container -->
-        
-        <?php echo $scriptsAndSuch; ?>
-        <footer class="footer"><p>&copy; Sprout Means Grow and RoxorSoxor 2017</p></footer>
-
-    </body>
-</html>

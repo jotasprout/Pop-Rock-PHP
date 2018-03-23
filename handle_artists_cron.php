@@ -20,7 +20,7 @@ $accessToken = $_SESSION['accessToken'];
 $GLOBALS['api'] = new SpotifyWebAPI\SpotifyWebAPI();
 $GLOBALS['api']->setAccessToken($accessToken);
 
-divideCombineArtists ($brandnew);
+divideCombineArtists ($allArtists);
 
 die();
 
