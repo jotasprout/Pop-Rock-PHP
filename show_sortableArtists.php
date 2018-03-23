@@ -21,8 +21,6 @@ $artistInfoRecent = "SELECT a.artistID AS artistID, a.artistName AS artistName, 
 
 $getit = $connekt->query($artistInfoRecent);
 
-?>
-
 while ($row = mysqli_fetch_array($getit)) {
     // $artistID = $row["artistID"];
     $artistName = $row["artistName"];
@@ -67,7 +65,7 @@ while ($row = mysqli_fetch_array($getit)) {
                     <!-- D3 chart goes here -->
                     <?php if (!empty($getit)) { ?>
 
-                        <table class="table" id = "artistTable">
+                        <table class="table" id = "tableoartists">
                             <thead>
                                 <tr>
                                     <th>Artist Name</th>
@@ -90,7 +88,7 @@ while ($row = mysqli_fetch_array($getit)) {
         </div> <!-- close container -->
         
         <?php echo $scriptsAndSuch; ?>
-        <footer class="footer"><p>&copy; Sprout Means Grow and RoxorSoxor 2017</p></footer>
+        <script src="https://www.roxorsoxor.com/poprock/sortTheseArtists.js"></script>
 
     </body>
 </html>

@@ -63,10 +63,6 @@ $sortScabies = "SELECT a.albumName, a.year, a.albumArt, z.artistName, p1.pop, p1
 
 $sortit = $connekt->query( $sortScabies );
 
-?>
-
-<?php
-
 if ( !$sortit ) {
 	echo 'Cursed-Crap. Did not run the query.';
 }
@@ -115,5 +111,4 @@ while ( $row = mysqli_fetch_array( $sortit ) ) {
 </table>
 <?php
 } // end of if
-?>
 ?>
