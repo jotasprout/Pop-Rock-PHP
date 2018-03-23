@@ -1,89 +1,98 @@
 <?php
 
 include 'sesh.php';
-// $artistID = $_POST['artist'];
-$artistID = $_SESSION['artist'];
-$_SESSION['artist'] = $artistID;
-
+$artistID = $_SESSION[ 'artist' ];
+$_SESSION[ 'artist' ] = $artistID;
 require_once 'rockdb.php';
 require_once 'navbar_rock.php';
 require_once 'stylesAndScripts.php';
-require_once 'albums.php';
-require_once 'tracks.php';
 
-function showTracks ($artistID) {
+$connekt = new mysqli( $GLOBALS[ 'host' ], $GLOBALS[ 'un' ], $GLOBALS[ 'magicword' ], $GLOBALS[ 'db' ] );
 
-	$connekt = new mysqli($GLOBALS['host'], $GLOBALS['un'], $GLOBALS['magicword'], $GLOBALS['db']);
+if ( !$connekt ) {
+	echo 'Darn. Did not connect.';
+};
 
-	if (!$connekt) {
-		echo 'Darn. Did not connect.';
-	};
-	
-	$gatherTrackInfo = "SELECT t.trackID, t.trackName, a.albumName, a.artistID, p1.pop, p1.date
-    FROM tracks t
-    INNER JOIN albums a ON a.albumID = t.albumID
-    JOIN (SELECT p.* FROM popTracks p
-            INNER JOIN (SELECT trackID, pop, max(date) AS MaxDate
-                        FROM popTracks  
-                        GROUP BY trackID) groupedp
-            ON p.trackID = groupedp.trackID
-            AND p.date = groupedp.MaxDate) p1 
-    ON t.trackID = p1.trackID
-    WHERE a.artistID = '$artistID'
-    ORDER BY t.trackName ASC";
+$sortBy = "trackName";
+$order = "ASC";
 
-	$getit = $connekt->query($gatherTrackInfo);
-
-	if(!$getit){
-		echo 'Cursed-Crap. Did not run the query.';
-	}
-
-	while ($row = mysqli_fetch_array($getit)) {
-		// $artistID = $row["artistID"];
-		// $artistName = $row["artistName"];
-		$albumName = $row["albumName"];
-		$trackName = $row["trackName"];
-		// $albumReleased = $row["year"];
-		$trackPop = $row["pop"];
-		$popDate = $row["date"];
-		
-		echo "<tr>";
-		// echo "<td>" . $artistName . "</td>";
-		echo "<td>" . $albumName . "</td>";
-		echo "<td>" . $trackName . "</td>";
-		echo "<td>" . $trackPop . "</td>";
-		echo "<td>" . $popDate . "</td>";
-		echo "</tr>";
-	}
+if ( !empty( $_POST[ "sortBy" ] ) ) {
+	echo $_POST[ "sortBy" ] . "<br>";
+	$sortBy = $_POST[ "sortBy" ];
 }
 
-?>
+if ( !empty( $_POST[ "order" ] ) ) {
+	echo $order = $_POST[ "order" ] . "<br>";
+	$order = $_POST[ "order" ];
+}
 
-<!DOCTYPE html><html>
-<head><meta charset="UTF-8"><title>Tracks of My Database</title><?php echo $stylesAndSuch; ?></head>
-<body>
+$albumNameNextOrder = "ASC";
+$trackNameNextOrder = "ASC";
+$popNextOrder = "ASC";
 
-<div class="container">
+if ( $sortBy == "albumName" and $order == "ASC" ) {
+	$albumNameNextOrder = "DESC";
+}
 
-<?php echo $navbar ?>
+if ( $sortBy == "trackName" and $order == "DESC" ) {
+	$yearNextOrder = "ASC";
+}
 
-<!-- main -->
+if ( $sortBy == "pop" and $order == "ASC" ) {
+	$popNextOrder = "DESC";
+}
 
-<div class="panel panel-primary">
-<div class="panel-heading">
-	<h3 class="panel-title">Latest Tracks Info from My Database</h3>
-</div>
-<div class="panel-body"> 
+$gatherTrackInfo = "SELECT t.trackID, t.trackName, a.albumName, a.artistID, p1.pop, p1.date
+						FROM tracks t
+						INNER JOIN albums a ON a.albumID = t.albumID
+						JOIN (SELECT p.* FROM popTracks p
+								INNER JOIN (SELECT trackID, pop, max(date) AS MaxDate
+											FROM popTracks  
+											GROUP BY trackID) groupedp
+								ON p.trackID = groupedp.trackID
+								AND p.date = groupedp.MaxDate) p1 
+						ON t.trackID = p1.trackID
+						WHERE a.artistID = '$artistID'
+						ORDER BY " . $sortBy . " " . $order . ";";
 
-<table class="table">
-	<tr><th>Album</th><th>Track</th><th>Track Popularity</th><th>Date</th></tr>
+$sortit = $connekt->query( $gatherTrackInfo );
+
+if ( !$sortit ) {
+	echo 'Cursed-Crap. Did not run the query.';
+}
+
+if(!empty($sortit)) { ?>
+
+<table class="table" id="tableotracks">
+	<thead>
+		<tr>
+			<th onClick="sortColumn('albumName', '<?php echo $albumNameNextOrder; ?>')">Album Name</th>
+			<th onClick="sortColumn('trackName', '<?php echo $trackNameNextOrder; ?>')">Track</th>
+			<th onClick="sortColumn('pop', '<?php echo $popNextOrder; ?>')">Track Popularity</th>
+			<th>Date</th>
+		</tr>
+	</thead>
+
+	<tbody>
 	<?php
-		showTracks ($artistID);
+		while ( $row = mysqli_fetch_array( $sortit ) ) {
+			$albumName = $row[ "albumName" ];
+			$trackName = $row[ "trackName" ];
+			$trackPop = $row[ "pop" ];
+			$popDate = $row[ "date" ];
 	?>
+			<tr>
+				<td><?php echo $albumName ?></td>
+				<td><?php echo $trackName ?></td>
+				<td><?php echo $trackPop ?></td>
+				<td><?php echo $popDate ?></td>
+			</tr>
+	<?php 
+		} // end of while
+	?>
+
+	</tbody>
 </table>
-</div> <!-- panel body -->
-<footer class="footer"><p>&copy; Sprout Means Grow and RoxorSoxor 2018</p></footer>
-</div> <!-- panel panel-primary -->
-    </div> <!-- closing container -->
-</body>
-</html>
+<?php 
+	} // end of if
+?>

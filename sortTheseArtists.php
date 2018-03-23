@@ -13,12 +13,12 @@ $sortBy = "pop";
 $order = "DESC";
 
 if ( !empty( $_POST[ "sortBy" ] ) ) {
-	// echo $_POST[ "sortBy" ] . "<br>";
+	echo $_POST[ "sortBy" ] . "<br>";
 	$sortBy = $_POST[ "sortBy" ];
 }
 
 if ( !empty( $_POST[ "order" ] ) ) {
-	// echo $order = $_POST[ "order" ] . "<br>";
+	echo $order = $_POST[ "order" ] . "<br>";
 	$order = $_POST[ "order" ];
 }
 
@@ -41,6 +41,10 @@ $artistInfoRecent = "SELECT a.artistID, a.artistName, b.pop, b.date
 	ORDER BY " . $sortBy . " " . $order . ";";
 
 $sortit = $connekt->query($artistInfoRecent); 
+
+if (!$sortit) {
+    echo 'Darn. No query.';
+};
 
 if (!empty($sortit)) { ?>
 
