@@ -29,8 +29,8 @@ $albumNameNextOrder = "ASC";
 $yearNextOrder = "ASC";
 $popNextOrder = "ASC";
 
-if ( $sortBy == "albumName" and $order == "DESC" ) {
-	$albumNameNextOrder = "ASC";
+if ( $sortBy == "albumName" and $order == "ASC" ) {
+	$albumNameNextOrder = "DESC";
 }
 
 if ( $sortBy == "year" and $order == "ASC" ) {

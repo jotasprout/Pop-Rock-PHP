@@ -14,7 +14,7 @@ if ( !$connekt ) {
 };
 
 $sortBy = "trackName";
-$order = "ASC";
+$order = "DESC";
 
 if ( !empty( $_POST[ "sortBy" ] ) ) {
 	// echo $_POST[ "sortBy" ] . "<br>";
@@ -27,7 +27,7 @@ if ( !empty( $_POST[ "order" ] ) ) {
 }
 
 $albumNameNextOrder = "ASC";
-$trackNameNextOrder = "ASC";
+$trackNameNextOrder = "DESC";
 $popNextOrder = "ASC";
 
 if ( $sortBy == "albumName" and $order == "ASC" ) {
@@ -35,7 +35,7 @@ if ( $sortBy == "albumName" and $order == "ASC" ) {
 }
 
 if ( $sortBy == "trackName" and $order == "DESC" ) {
-	$yearNextOrder = "ASC";
+	$trackNameNextOrder = "ASC";
 }
 
 if ( $sortBy == "pop" and $order == "ASC" ) {
