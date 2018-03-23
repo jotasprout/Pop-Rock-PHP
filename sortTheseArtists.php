@@ -53,7 +53,9 @@ if (!empty($sortit)) { ?>
 			<tr>
 				<th onClick="sortColumn('artistName', '<?php echo $artistNameNextOrder; ?>')">Artist Name</th>
 				<th onClick="sortColumn('pop', '<?php echo $popNextOrder; ?>')">Popularity</th>
-				<th>Date</th>
+				<!--
+		<th>Date</th>	
+		--> 
 			</tr>
 		</thead>
 
@@ -69,7 +71,9 @@ if (!empty($sortit)) { ?>
 		<tr>
 			<td><?php echo $artistName ?></td>
 			<td><?php echo $artistPop ?></td>
-			<td><?php echo $popDate ?></td>
+			<!--
+								<td><?php //echo $popDate ?></td>
+								-->
 		</tr>
 
 		<?php 

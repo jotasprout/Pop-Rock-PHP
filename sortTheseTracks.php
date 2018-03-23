@@ -69,7 +69,9 @@ if(!empty($sortit)) { ?>
 			<th onClick="sortColumn('albumName', '<?php echo $albumNameNextOrder; ?>')">Album Name</th>
 			<th onClick="sortColumn('trackName', '<?php echo $trackNameNextOrder; ?>')">Track</th>
 			<th onClick="sortColumn('pop', '<?php echo $popNextOrder; ?>')">Track Popularity</th>
-			<th>Date</th>
+			<!--
+		<th>Date</th>	
+		--> 
 		</tr>
 	</thead>
 
@@ -85,7 +87,9 @@ if(!empty($sortit)) { ?>
 				<td><?php echo $albumName ?></td>
 				<td><?php echo $trackName ?></td>
 				<td><?php echo $trackPop ?></td>
-				<td><?php echo $popDate ?></td>
+				<!--
+								<td><?php //echo $popDate ?></td>
+								-->
 			</tr>
 	<?php 
 		} // end of while

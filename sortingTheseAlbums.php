@@ -77,7 +77,9 @@ if(!empty($sortit))	 { ?>
 		<th onClick="sortColumn('albumName', '<?php echo $albumNameNextOrder; ?>')">Album Name</th>
 		<th onClick="sortColumn('year', '<?php echo $yearNextOrder; ?>')">Released</th>
 		<th onClick="sortColumn('pop', '<?php echo $popNextOrder; ?>')">Popularity</th>
-		<th>Date</th>	 
+		<!--
+		<th>Date</th>	
+		--> 
 	</tr>
 </thead>
 	
@@ -101,7 +103,9 @@ while ( $row = mysqli_fetch_array( $sortit ) ) {
 		<td><?php echo $albumName; ?></td>
 		<td><?php echo $albumReleased; ?></td>
 		<td><?php echo $albumPop; ?></td>
-		<td><?php echo $date; ?></td>
+		<!--
+		<td><?php // echo $date; ?></td>
+		-->
 	</tr>
 
 <?php

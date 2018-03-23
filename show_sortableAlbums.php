@@ -74,7 +74,9 @@ $getit = $connekt->query($happyScabies2);
 						<th onClick="sortColumn('albumName', 'ASC')">Album Name</th>
 						<th onClick="sortColumn('year', 'DESC')">Released</th>
 						<th onClick="sortColumn('pop', 'ASC')">Popularity</th>
-						<th>Date</th>
+						<!--
+		<th>Date</th>	
+		--> 
 					</tr>
 				</thead>
 				<tbody>
@@ -94,7 +96,10 @@ $getit = $connekt->query($happyScabies2);
 						<td><?php echo $albumName ?></td>
 						<td><?php echo $albumReleased ?></td>
 						<td><?php echo $albumPop ?></td>
-						<td><?php echo $date ?></td>
+						
+						<!--
+								<td><?php //echo $date ?></td>
+								-->
 					</tr>
 					
 					<?php 

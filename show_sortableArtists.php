@@ -57,7 +57,9 @@ $getit = $connekt->query( $artistInfoRecent );
 						<tr>
 							<th onClick="sortColumn('artistName', 'ASC')">Artist Name</th>
 							<th onClick="sortColumn('pop', 'ASC')">Popularity</th>
-							<th>Date</th>
+							<!--
+		<th>Date</th>	
+		--> 
 						</tr>
 					</thead>
 
@@ -73,7 +75,9 @@ $getit = $connekt->query( $artistInfoRecent );
 					<tr>
 						<td><?php echo $artistName ?></td>
 						<td><?php echo $artistPop ?></td>
-						<td><?php echo $popDate ?></td>
+						<!--
+								<td><?php //echo $popDate ?></td>
+								-->
 					</tr>
 
 					<?php 
