@@ -2,40 +2,6 @@
 
 require ("class.artist.php");
 
-function showThisArtist ($artistID) {
-	
-	$connekt = new mysqli($GLOBALS['host'], $GLOBALS['un'], $GLOBALS['magicword'], $GLOBALS['db']);
-
-	$artistInfoAll = "SELECT a.artistID, a.artistName, b.pop, b.date 
-		FROM artists a
-			INNER JOIN popArtists b ON a.artistID = b.artistID
-				WHERE a.artistID = '$artistID'
-					ORDER BY b.date ASC";
-
-	$getit = $connekt->query($artistInfoAll);
-
-	if (!$connekt) {
-		echo 'Darn. Did not connect.';
-	};	
-
-	if(!$getit){
-		echo 'Cursed-Crap. Did not run the query.';
-	}	
-
-	while ($row = mysqli_fetch_array($getit)) {
-		// $artistID = $row["artistID"];
-		$artistName = $row["artistName"];
-		$artistPop = $row["pop"];
-		$popDate = $row["date"];
-		
-		echo "<tr>";
-		echo "<td>" . $artistName . "</td>";
-		echo "<td>" . $artistPop . "</td>";
-		echo "<td>" . $popDate . "</td>";
-		echo "</tr>";
-	} 
-}
-
 function divideCombineArtists ($theseArtists) {
 	
 	$totalTracks = count($theseArtists);
@@ -72,11 +38,11 @@ function divideCombineArtists ($theseArtists) {
 			$artistNameYucky = $artist->name;
 			$artistName = mysqli_real_escape_string($connekt,$artistNameYucky);
 			$artistPop = $artist->popularity;
-			$insertArtistsInfo = "INSERT INTO artists (artistID,artistName) VALUES('$artistID','$artistName')";
-			$rockout = $connekt->query($insertArtistsInfo);
-			if(!$rockout){
-				echo 'Cursed-Crap. Could not insert artist ' . $artistName . '.<br>';
-			}
+			// $insertArtistsInfo = "INSERT INTO artists (artistID,artistName) VALUES('$artistID','$artistName')";
+			// $rockout = $connekt->query($insertArtistsInfo);
+			// if(!$rockout){
+			//	echo 'Cursed-Crap. Could not insert artist ' . $artistName . '.<br>';
+			// }
 	
 			$insertArtistsPop = "INSERT INTO popArtists (artistID,pop) VALUES('$artistID','$artistPop')";
 			$rockpop = $connekt->query($insertArtistsPop);
@@ -90,6 +56,41 @@ function divideCombineArtists ($theseArtists) {
 			
 		}
 	};	
+}
+
+
+function showThisArtist ($artistID) {
+	
+	$connekt = new mysqli($GLOBALS['host'], $GLOBALS['un'], $GLOBALS['magicword'], $GLOBALS['db']);
+
+	$artistInfoAll = "SELECT a.artistID, a.artistName, b.pop, b.date 
+		FROM artists a
+			INNER JOIN popArtists b ON a.artistID = b.artistID
+				WHERE a.artistID = '$artistID'
+					ORDER BY b.date ASC";
+
+	$getit = $connekt->query($artistInfoAll);
+
+	if (!$connekt) {
+		echo 'Darn. Did not connect.';
+	};	
+
+	if(!$getit){
+		echo 'Cursed-Crap. Did not run the query.';
+	}	
+
+	while ($row = mysqli_fetch_array($getit)) {
+		// $artistID = $row["artistID"];
+		$artistName = $row["artistName"];
+		$artistPop = $row["pop"];
+		$popDate = $row["date"];
+		
+		echo "<tr>";
+		echo "<td>" . $artistName . "</td>";
+		echo "<td>" . $artistPop . "</td>";
+		echo "<td>" . $popDate . "</td>";
+		echo "</tr>";
+	} 
 }
 
 function inserttArtistsAndPop ($artistsToInsert) {
