@@ -12,21 +12,40 @@ if (!$connekt) {
 	echo 'Darn. Did not connect.';
 };	
 
+$sortBy = "date";
+$order = "ASC";
+
+if ( !empty( $_POST[ "sortBy" ] ) ) {
+	// echo $_POST[ "sortBy" ] . "<br>";
+	$sortBy = $_POST[ "sortBy" ];
+}
+
+if ( !empty( $_POST[ "order" ] ) ) {
+	// echo $_POST[ "order" ] . "<br>";
+	$order = $_POST[ "order" ];
+}
+
+$dateNextOrder = "ASC";
+
+if ( $order == "ASC" ) {
+	$dateNextOrder = "DESC";
+}
+
 $artistInfoAll = "SELECT a.artistID, a.artistName, b.pop, b.date 
 	FROM artists a
 		INNER JOIN popArtists b ON a.artistID = b.artistID
 			WHERE a.artistID = '$artistID'
-				ORDER BY b.date ASC";
+			ORDER BY " . $sortBy . " " . $order . ";";
 
-$getit = $connekt->query($artistInfoAll);
+$sortit = $connekt->query($artistInfoAll);
 
-if(!$getit){
+if(!$sortit){
 	echo 'Cursed-Crap. Did not run the query.';
 }
 
 if(!empty($sortit))	 { ?>
 
-	<table class="table-content">
+	<table class="table-content" id="artistTable">
 		<thead>
 			<tr>
 				<th>Artist Name</th>
@@ -37,7 +56,7 @@ if(!empty($sortit))	 { ?>
 		<tbody>
 
 <?php
-		while ($row = mysqli_fetch_array($getit)) {
+		while ($row = mysqli_fetch_array($sortit)) {
 	// $artistID = $row["artistID"];
 	$artistName = $row["artistName"];
 	$artistPop = $row["pop"];

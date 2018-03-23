@@ -29,8 +29,8 @@ $albumNameNextOrder = "ASC";
 $yearNextOrder = "ASC";
 $popNextOrder = "ASC";
 
-if ( $sortBy == "albumName" and $order == "ASC" ) {
-	$albumNameNextOrder = "DESC";
+if ( $sortBy == "albumName" and $order == "DESC" ) {
+	$albumNameNextOrder = "ASC";
 }
 
 if ( $sortBy == "year" and $order == "ASC" ) {
@@ -69,7 +69,7 @@ if ( !$sortit ) {
 
 if(!empty($sortit))	 { ?>
 
-<table class="table-content">
+<table class="table-content" id="recordCollection">
 	
 <thead>
 	<tr>

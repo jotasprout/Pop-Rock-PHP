@@ -17,12 +17,12 @@ $sortBy = "trackName";
 $order = "ASC";
 
 if ( !empty( $_POST[ "sortBy" ] ) ) {
-	echo $_POST[ "sortBy" ] . "<br>";
+	// echo $_POST[ "sortBy" ] . "<br>";
 	$sortBy = $_POST[ "sortBy" ];
 }
 
 if ( !empty( $_POST[ "order" ] ) ) {
-	echo $order = $_POST[ "order" ] . "<br>";
+	// echo $order = $_POST[ "order" ] . "<br>";
 	$order = $_POST[ "order" ];
 }
 

@@ -49,12 +49,12 @@ if(!$getit){
         <!-- D3 chart goes here -->
 		<?php if(!empty($getit)) { ?>
 		
-        <table class="table">
+        <table class="table" id="artistTable">
 			<thead>
 				<tr>
 					<th>Artist Name</th>
 					<th>Popularity</th>
-					<th  onClick="sortColumn('pop', 'DESC')">Date</th>
+					<th  onClick="sortColumn('date', 'DESC')">Date</th>
 				</tr>	
 			</thead>
 			<tbody>

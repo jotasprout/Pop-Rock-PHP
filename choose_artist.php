@@ -25,7 +25,7 @@
 <body>
 	<div class="container">
     
-    <form class="form-horizontal" id="rockinForm" action="this_artist.php" method="post">
+    <form class="form-horizontal" id="rockinForm" action="this_sortableArtist.php" method="post">
         <fieldset>
             <legend>Ye Olde Select An Artist Menu</legend>
 
