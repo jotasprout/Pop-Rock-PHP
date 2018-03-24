@@ -65,10 +65,27 @@ function showThisD3Artist ($artistID) {
 	<script src='https://d3js.org/d3.v4.min.js'></script>
 	<script src='node_modules/idb/lib/idb.js'></script>
 	<script>
-		idb.open('rockin-db', 1, function(upgradeDb) {
+
+		var dbPromise = idb.open('rockin-db', 1, function(upgradeDb) {
 			var keyValStore = upgradeDb.createObjectStore('keyval');
 			keyValStore.put('Alice Cooper', 'artist01');
 		});
+
+		/*
+
+
+
+		*/
+		
+		dbPromise.then(function(db) {
+			var tx = db.transaction('keyval');
+			var keyValStore = tx.objectStore('keyval');
+			return keyValStore.get('artist01');
+		}).then(function(val) {
+			console.log ('The first artist is: ', val;)
+		});
+
+
 	</script>
 </head>
 

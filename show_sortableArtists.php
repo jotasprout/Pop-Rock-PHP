@@ -31,6 +31,39 @@ $getit = $connekt->query( $artistInfoRecent );
 	<meta charset="UTF-8">
 	<title>Artists Popularity</title>
 	<?php echo $stylesAndSuch; ?>
+
+	<script src='node_modules/idb/lib/idb.js'></script>
+	<script>
+
+		var dbPromise = idb.open('rockin-db2', 1, function(upgradeDb) {
+			var keyValStore = upgradeDb.createObjectStore('keyval');
+			keyValStore.put('Meat Loaf', 'artist01');
+		});
+
+		dbPromise.then(function(db) {
+			var tx = db.transaction('keyval');
+			var keyValStore = tx.objectStore('keyval');
+			return keyValStore.get('artist01');
+		}).then(function(val) {
+			console.log ('The first artist is: ', val);
+		});
+
+		dbPromise.then(function(db) {
+			var tx = db.transaction ('keyval', 'readwrite');
+			var keyValStore = tx.objectStore('keyval');
+			keyValStore.put ('Iggy Pop', 'artist02');
+			return tx.complete; 
+		}).then(function() {
+			console.log ('Added Iggy');
+		});
+
+		/*
+
+		*/
+		
+
+	</script>
+
 </head>
 
 <body>
