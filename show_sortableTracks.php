@@ -63,9 +63,9 @@ if ( !$getit ) {
 				<table class="table" id="tableotracks">
 					<thead>
 						<tr>
-							<th onClick="sortColumn('albumName', 'ASC')">Album Name</th>
-							<th onClick="sortColumn('trackName', 'DESC')">Track</th>
-							<th onClick="sortColumn('pop', 'ASC')">Track Popularity</th>
+							<th onClick="sortColumn('albumName', 'ASC')"><div class="pointyHead">Album Name</div></th>
+							<th onClick="sortColumn('trackName', 'DESC')"><div class="pointyHead">Track</div></th>
+							<th onClick="sortColumn('pop', 'ASC')"><div class="pointyHead">Track Popularity</div></th>
 							<!--
 		<th>Date</th>	
 		--> 

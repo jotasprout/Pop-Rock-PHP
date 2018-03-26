@@ -88,10 +88,11 @@ $getit = $connekt->query( $artistInfoRecent );
 				<table class="table" id="tableoartists">
 					<thead>
 						<tr>
-							<th onClick="sortColumn('artistName', 'ASC')">Artist Name</th>
-							<th onClick="sortColumn('pop', 'ASC')">Popularity</th>
+							<th onClick="sortColumn('artistName', 'ASC')"><div class="pointyHead">Artist Name</div></th>
+							<th onClick="sortColumn('pop', 'ASC')"><div class="pointyHead">Popularity</div></th>
+							<th>Date</th>
 							<!--
-		<th>Date</th>	
+			
 		--> 
 						</tr>
 					</thead>

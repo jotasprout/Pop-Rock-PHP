@@ -54,7 +54,7 @@ if(!$getit){
 				<tr>
 					<th>Artist Name</th>
 					<th>Popularity</th>
-					<th  onClick="sortColumn('date', 'DESC')">Date</th>
+					<th  onClick="sortColumn('date', 'DESC')"><div class="pointyHead">Date</div></th>
 				</tr>	
 			</thead>
 			<tbody>

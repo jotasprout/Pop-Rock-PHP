@@ -66,9 +66,9 @@ if(!empty($sortit)) { ?>
 <table class="table" id="tableotracks">
 	<thead>
 		<tr>
-			<th onClick="sortColumn('albumName', '<?php echo $albumNameNextOrder; ?>')">Album Name</th>
-			<th onClick="sortColumn('trackName', '<?php echo $trackNameNextOrder; ?>')">Track</th>
-			<th onClick="sortColumn('pop', '<?php echo $popNextOrder; ?>')">Track Popularity</th>
+			<th onClick="sortColumn('albumName', '<?php echo $albumNameNextOrder; ?>')"><div class="pointyHead">Album Name</div></th>
+			<th onClick="sortColumn('trackName', '<?php echo $trackNameNextOrder; ?>')"><div class="pointyHead">Track</div></th>
+			<th onClick="sortColumn('pop', '<?php echo $popNextOrder; ?>')"><div class="pointyHead">Track Popularity</div></th>
 			<!--
 		<th>Date</th>	
 		--> 

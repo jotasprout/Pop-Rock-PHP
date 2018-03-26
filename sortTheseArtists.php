@@ -51,10 +51,11 @@ if (!empty($sortit)) { ?>
 	<table class="table" id="tableoartists">
 		<thead>
 			<tr>
-				<th onClick="sortColumn('artistName', '<?php echo $artistNameNextOrder; ?>')">Artist Name</th>
-				<th onClick="sortColumn('pop', '<?php echo $popNextOrder; ?>')">Popularity</th>
+				<th onClick="sortColumn('artistName', '<?php echo $artistNameNextOrder; ?>')"><div class="pointyHead">Artist Name</div></th>
+				<th onClick="sortColumn('pop', '<?php echo $popNextOrder; ?>')"><div class="pointyHead">Popularity</div></th>
+				<th>Date</th>
 				<!--
-		<th>Date</th>	
+			
 		--> 
 			</tr>
 		</thead>

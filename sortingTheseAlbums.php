@@ -74,8 +74,8 @@ if(!empty($sortit))	 { ?>
 <thead>
 	<tr>
 	  	<th>Album Art</th>
-		<th onClick="sortColumn('albumName', '<?php echo $albumNameNextOrder; ?>')">Album Name</th>
-		<th onClick="sortColumn('year', '<?php echo $yearNextOrder; ?>')">Released</th>
+		<th onClick="sortColumn('albumName', '<?php echo $albumNameNextOrder; ?>')"><div class="pointyHead">Album Name</div></th>
+		<th onClick="sortColumn('year', '<?php echo $yearNextOrder; ?>')"><div id="pointyHead">Released</div></th>
 		<th onClick="sortColumn('pop', '<?php echo $popNextOrder; ?>')">Popularity</th>
 		<!--
 		<th>Date</th>	

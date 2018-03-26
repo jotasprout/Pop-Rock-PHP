@@ -71,9 +71,9 @@ $getit = $connekt->query($happyScabies2);
 				<thead>
 					<tr>
 						<th>Album Art</th>
-						<th onClick="sortColumn('albumName', 'ASC')">Album Name</th>
-						<th onClick="sortColumn('year', 'DESC')">Released</th>
-						<th onClick="sortColumn('pop', 'ASC')">Popularity</th>
+						<th onClick="sortColumn('albumName', 'ASC')"><div class="pointyHead">Album Name</div></th>
+						<th onClick="sortColumn('year', 'DESC')"><div class="pointyHead">Released</div></th>
+						<th onClick="sortColumn('pop', 'ASC')"><div class="pointyHead">Popularity</div></th>
 						<!--
 		<th>Date</th>	
 		--> 

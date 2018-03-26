@@ -50,7 +50,7 @@ if(!empty($sortit))	 { ?>
 			<tr>
 				<th>Artist Name</th>
 				<th>Popularity</th>
-				<th onClick="sortColumn('date', '<?php echo $dateNextOrder; ?>')">Date</th>
+				<th onClick="sortColumn('date', '<?php echo $dateNextOrder; ?>')"><div class="pointyHead">Date</div></th>
 			</tr>
 		</thead>
 		<tbody>
