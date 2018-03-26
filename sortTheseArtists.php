@@ -72,8 +72,9 @@ if (!empty($sortit)) { ?>
 		<tr>
 			<td><?php echo $artistName ?></td>
 			<td><?php echo $artistPop ?></td>
+			<td><?php //echo $popDate ?></td>
 			<!--
-								<td><?php //echo $popDate ?></td>
+								
 								-->
 		</tr>
 
