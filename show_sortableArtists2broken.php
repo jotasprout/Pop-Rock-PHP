@@ -23,6 +23,26 @@ $getit = $connekt->query( $artistInfoRecent );
 
 if(!$getit){ echo 'Cursed-Crap. Did not run the query.'; }	
 
+$popArray = array ();
+
+while ($row = mysqli_fetch_array($getit)) {
+	$popArray[] = $row;
+} 
+
+// echo json_encode($popArray) . '<br>';
+
+// $jPop = json_encode($popArray);
+
+// mysqli_close($connekt);
+
+function console_log ($popArray) {
+	echo '<script>';
+	echo 'console.log('. json_encode ($popArray) .')';
+	echo '</script>';
+  }
+
+console_log ($popArray);
+
 ?>
 
 <!DOCTYPE html>
@@ -34,6 +54,40 @@ if(!$getit){ echo 'Cursed-Crap. Did not run the query.'; }
 	<title>Artists Popularity</title>
 	<?php echo $stylesAndSuch; ?>
 	<script src='node_modules/idb/lib/idb.js'></script>
+	<script>
+
+	function openDatabase() {
+		return idb.open('rocknroll-db', 1, function(upgradeDb) {
+			var store = upgradeDb.createObjectStore('rockstars', {
+				keyPath: 'artistID'
+			});
+			store.createIndex('by-date', 'date');
+		});	
+	}
+	
+	dbPromise = openDatabase();
+
+	dbPromise.then(function(db) {
+		var tx = db.transaction('rockstars');
+		var rockStore = tx.objectStore('rockstars');
+		return rockStore.get('artist01');
+	}).then(function(val) {
+		console.log ('The first artist is: ', val);
+	});
+
+
+		dbPromise.then(function(db) {
+			var tx = db.transaction ('rockstars', 'readwrite');
+			var rockStore = tx.objectStore('rockstars');
+			rockStore.put ('Iggy Pop', 'artist02');
+			return tx.complete; 
+		}).then(function() {
+			console.log ('Added Iggy');
+		});
+	
+
+	</script>
+
 </head>
 
 <body>
