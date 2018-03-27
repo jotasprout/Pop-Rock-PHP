@@ -21,6 +21,28 @@ $artistInfoRecent = "SELECT a.artistID AS artistID, a.artistName AS artistName, 
 
 $getit = $connekt->query( $artistInfoRecent );
 
+if(!$getit){ echo 'Cursed-Crap. Did not run the query.'; }	
+
+$popArray = array ();
+
+while ($row = mysqli_fetch_array($getit)) {
+	$popArray[] = $row;
+} 
+
+echo json_encode($popArray) . '<br>';
+
+$jPop = json_encode($popArray);
+
+mysqli_close($connekt);
+
+function console_log ($popArray) {
+	echo '<script>';
+	echo 'console.log('. json_encode ($popArray) .')';
+	echo '</script>';
+  }
+
+console_log ($popArray);
+
 ?>
 
 <!DOCTYPE html>
@@ -31,11 +53,10 @@ $getit = $connekt->query( $artistInfoRecent );
 	<meta charset="UTF-8">
 	<title>Artists Popularity</title>
 	<?php echo $stylesAndSuch; ?>
-
 	<script src='node_modules/idb/lib/idb.js'></script>
 	<script>
 
-		var dbPromise = idb.open('rockin-db2', 1, function(upgradeDb) {
+		var dbPromise = idb.open('artists-db', 1, function(upgradeDb) {
 			var keyValStore = upgradeDb.createObjectStore('keyval');
 			keyValStore.put('Meat Loaf', 'artist01');
 		});
