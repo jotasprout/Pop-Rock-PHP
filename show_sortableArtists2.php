@@ -105,6 +105,10 @@ if(!$getit){ echo 'Cursed-Crap. Did not run the query.'; }
 	<?php echo $scriptsAndSuch; ?>
 	<script src="https://www.roxorsoxor.com/poprock/sortTheseArtists2.js"></script>
 
+	<script>
+	
+	</script>
+
 </body>
 
 </html>
