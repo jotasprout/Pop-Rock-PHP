@@ -20,7 +20,7 @@ $artistInfoAll = "SELECT a.artistID, a.artistName, b.pop, b.date
 	FROM artists a
 		INNER JOIN popArtists b ON a.artistID = b.artistID
 			WHERE a.artistID = '$artistID'
-				ORDER BY b.date ASC";
+				ORDER BY b.date DESC";
 
 $getit = $connekt->query($artistInfoAll);
 

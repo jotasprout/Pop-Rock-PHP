@@ -43,7 +43,7 @@ $getit = $connekt->query($happyScabies2);
 	
 <head>
 	<meta charset="UTF-8">
-	<title>My Album Info</title>
+	<title>Album Info from My DB</title>
 	<?php echo $stylesAndSuch; ?>
 </head>
 	
