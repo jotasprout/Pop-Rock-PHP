@@ -24,7 +24,19 @@ $artistInfoRecentNoArtYet = "SELECT a.artistID AS artistID, a.artistName AS arti
 	ON a.artistID = p1.artistID
 	ORDER BY p1.pop DESC";
 
-$getit = $connekt->query( $artistInfoRecentNoArtYet );
+$artistInfoRecentWithArt = "SELECT a.artistID AS artistID, a.artistArt AS artistArt, a.artistName AS artistName, p1.pop AS pop, p1.date AS date
+    FROM artists a
+    JOIN (SELECT p.*
+			FROM popArtists p
+			INNER JOIN (SELECT artistID, pop, max(date) AS MaxDate
+						FROM popArtists  
+						GROUP BY artistID) groupedp
+			ON p.artistID = groupedp.artistID
+			AND p.date = groupedp.MaxDate) p1
+	ON a.artistID = p1.artistID
+	ORDER BY p1.pop DESC";
+
+$getit = $connekt->query( $artistInfoRecentWithArt );
 
 if(!$getit){ echo 'Cursed-Crap. Did not run the query.'; }	
 
@@ -63,7 +75,8 @@ if(!$getit){ echo 'Cursed-Crap. Did not run the query.'; }
 				<table class="table" id="tableoartists">
 					<thead>
 						<tr>
-							<th onClick="sortColumn('artistName', 'ASC')"><div class="pointyHead">Artist Name</div></th>
+						<th>Pretty Face</th>	
+						<th onClick="sortColumn('artistName', 'ASC')"><div class="pointyHead">Artist Name</div></th>
 							<th onClick="sortColumn('pop', 'DESC')"><div class="pointyHead">Popularity</div></th>
 							<th>Date</th>
 							<!--
@@ -77,10 +90,12 @@ if(!$getit){ echo 'Cursed-Crap. Did not run the query.'; }
 					while ( $row = mysqli_fetch_array( $getit ) ) {
 						$artistName = $row[ "artistName" ];
 						$artistPop = $row[ "pop" ];
+						$artistArt = $row[ "artistArt" ];
 						$popDate = $row[ "date" ];
 						?>
 
 					<tr>
+						<td><img src='<?php echo $artistArt ?>' height='64' width='64'></td>	
 						<td><?php echo $artistName ?></td>
 						<td><?php echo $artistPop ?></td>
 						<td><?php echo $popDate ?></td>
