@@ -40,6 +40,6 @@ $GLOBALS['api']->setAccessToken($accessToken);
 </div> <!-- closing container -->
 
 <?php echo $scriptsAndSuch; ?>
-<footer class="footer"><p>&copy; Sprout Means Grow and RoxorSoxor 2017</p></footer>
+<footer class="footer"></footer>
 </body>
 </html>

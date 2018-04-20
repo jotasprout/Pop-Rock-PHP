@@ -3,12 +3,15 @@
 require ("class.artist.php");
 
 function divideCombineArtists ($theseArtists) {
+	echo 'all these artists are ' . $theseArtists . '<br>';
 	
-	$totalTracks = count($theseArtists);
+	$totalArtists = count($theseArtists);
+	echo 'there are ' . $totalArtists . ' total artists<br>';
 
 	// Divide all artists into chunks of 50
 	$artistsChunk = array ();
 	$x = ceil((count($theseArtists))/50);
+	echo $totalArtists . ' divided by 50 is ' . $x . '<br>';
 
 	$firstArtist = 0;
 
@@ -23,6 +26,7 @@ function divideCombineArtists ($theseArtists) {
 	for ($i=0; $i<(count($artistsArrays)); ++$i) {
 				
 		$artistsThisTime = count($artistsArrays[$i]);
+		echo 'there are ' . $artistsThisTime . ' artists this time<br>';
 
 		$artistIds = implode(',', $artistsArrays[$i]);
 
