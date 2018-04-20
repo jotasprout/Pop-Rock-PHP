@@ -6,7 +6,7 @@ var svg = d3.select('body').append('svg').attr({
 
 svg.append('svg:image')
 .attr({
-  'xlink:href': 'http://www.iconpng.com/png/beautiful_flat_color/computer.png',  // can also add svg file here
+  'xlink:href': 'http://www.iconpng.com/png/beautiful_flat_color/computer.png',  
   x: 0,
   y: 0,
   width: 128,

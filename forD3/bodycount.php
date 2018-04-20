@@ -1,8 +1,6 @@
 <?php
-
     require_once 'stylesAndScripts.php';
     require_once 'navbar_rock.php';
-
 ?>
 
 <!DOCTYPE html>
@@ -92,7 +90,7 @@
 
 			<footer class="footer">
 
-				<p>&copy; Sprout Means Grow 2016</p>
+				
 
 			</footer>
 		</div> 	<!-- /container -->	
