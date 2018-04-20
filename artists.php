@@ -2,6 +2,61 @@
 
 require ("class.artist.php");
 
+
+function divideCombineArtistsForArt ($theseArtists) {
+	echo 'all these artists are ' . $theseArtists . '<br>';
+	
+	$totalArtists = count($theseArtists);
+	echo 'there are ' . $totalArtists . ' total artists<br>';
+
+	// Divide all artists into chunks of 50
+	$artistsChunk = array ();
+	$x = ceil((count($theseArtists))/50);
+	echo $totalArtists . ' divided by 50 is ' . $x . '<br>';
+
+	$firstArtist = 0;
+
+	for ($i=0; $i<$x; ++$i) {
+		$lastArtist = 49;
+		$artistsChunk = array_slice($theseArtists, $firstArtist, $lastArtist);
+		// put chunks of 50 into an array
+		$artistsArrays [] = $artistsChunk;
+		$firstArtist += 50;
+	};
+
+	for ($i=0; $i<(count($artistsArrays)); ++$i) {
+				
+		$artistsThisTime = count($artistsArrays[$i]);
+		echo 'there are ' . $artistsThisTime . ' artists this time<br>';
+
+		$artistIds = implode(',', $artistsArrays[$i]);
+
+		// For each array of artists (50 at a time), "get several artists"
+		$bunchofartists = $GLOBALS['api']->getArtists($artistIds);
+			
+		foreach ($bunchofartists->artists as $artist) {
+			$connekt = new mysqli($GLOBALS['host'], $GLOBALS['un'], $GLOBALS['magicword'], $GLOBALS['db']);
+			if(!$connekt){
+				echo 'Fiddlesticks! Could not connect to database.<br>';
+			}
+			$artistID = $artist->id;
+			$artistArt = $artist->images[0]->url;
+			$artistNameYucky = $artist->name;
+			$artistName = mysqli_real_escape_string($connekt,$artistNameYucky);
+			$insertArtistArt = "UPDATE artists SET artistArt = '$artistArt' WHERE artistID = '$artistID'";
+			$rockpop = $connekt->query($insertArtistArt);
+			if(!$rockpop){
+				echo 'Cursed-Crap. Could not insert artists popularity.';
+			}
+	
+			else {
+				echo '<tr><td>' . $artistName . '</td><img src="' . $artistArt . '" height="64" width="64"></td></tr>';
+			}
+			
+		}
+	};	
+}
+
 function divideCombineArtists ($theseArtists) {
 	echo 'all these artists are ' . $theseArtists . '<br>';
 	
