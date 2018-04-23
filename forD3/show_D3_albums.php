@@ -1,14 +1,22 @@
+<?php
+    require_once '../stylesAndScripts.php';
+    require_once '../navbar_rock.php';
+?>
+
 <!doctype html>
 <html>
 
 <head>
     <meta charset="utf-8">
+    <?php echo $stylesAndSuch; ?>
     <script src="https://d3js.org/d3.v4.min.js"></script>
 </head>
 
 <body>
-
-<div id="chart"></div>
+<DIV class="container">
+	    
+        <?php echo $navbar ?> <!-- /navbar -->
+        <div id="chart"></div>
 
 <script>
 
@@ -38,7 +46,7 @@
             .attr("height", function(d) {
                 return (d[4] + 64);
             });
-
+/*
         svg.selectAll("svg:image")
             .data(dataset)
             .enter()
@@ -53,14 +61,23 @@
             .attr("y", 64)
             .attr("width", 64)
             .attr("height", 64);
-            
+*/           
 
     });
 
 
 
 </script>
+							</div> <!-- main -->
 
+<footer class="footer">
+
+    
+
+</footer>
+</div> 	<!-- /container -->	
+
+<?php echo $scriptsAndSuch; ?>	
 </body>
 
 </html>

@@ -20,22 +20,7 @@
 		    <?php echo $navbar ?> <!-- /navbar -->
 
 			<div id="forChart"> <!-- main -->
-<!--			
-	<script type="text/javascript">
-		d3.json("createD3.php", function(data) {
-			console.log(data);
 
-			d3.select("body").selectAll("div")
-				.data(data)
-				.enter()
-				.append("div")
-				.attr("class", "bar")
-				.style("height", function(d) {
-					return d[4] + "px";
-				});
-		});
-	</script>
--->
 			<script type="text/javascript">
 				d3.json("createD3.php", function(dataset) {
 					console.log(dataset);

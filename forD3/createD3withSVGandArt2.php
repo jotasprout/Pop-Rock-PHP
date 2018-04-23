@@ -40,48 +40,34 @@
 					   .data(dataset)
 					   .enter()
 					   .append("rect")
-					   .attr("x", function(d, i) {
-					   		return i * (w / dataset.length);
-					   })
-					   .attr("y", function(d) {
-					   		return h - (d[4] * 10);
-					   })
-					   .attr("width", w / dataset.length - barPadding)
-					   .attr("height", function(d) {
-					   		return (d[4] * 10);
-					   })
-					   .attr("fill", function(d){
-					   		return "rgb(0, 0, " + (d * 10) + ")";
-					   	})
-					   .on("mouseover", function() {
-					   		d3.select(this)
-					   			.attr("fill", "red");
-					   })
-					   .on("mouseout", function(d) {
-						   d3.select(this)
-						   		.transition()
-						   		.duration(250)
-								.attr("fill", "rgb(0, 0, " + (d * 10) + ")");
-					   });
+                       .attr("x", function (d,i) {
+                            return i * 65;
+                        })
+                        .attr("y", function(d) {
+                            return h - 64 - (d[4] * 10)
+                        })
+                        .attr("width", 64)
+                        .attr("height", function(d) {
+                            return (d[4] * 10);
+                        });
 
 					// Images
 					svg.selectAll("image")
 					   .data(dataset)
 					   .enter()
 					   .append("svg:image")
-					   .attr("x", function(d, i) {
-					   		return i * (w / dataset.length);
-					   })
-					   .attr("y", function(d) {
-					   		return d[4];
-					   })
-					   .attr("width", w / dataset.length - barPadding)
-					   .attr("height", function(d) {
-					   		return (d[4] * 10);
-					   })
-					   .attr("fill", function(d){
-					   		return "rgb(0, 0, " + (d * 10) + ")";
-					   	})				   
+                       .attr("xlink:href", function (d){
+                            return d.albumArt;
+                            console.log(d.albumArt);
+                        })
+                        .attr("x", function (d,i) {
+                            return i * 65;
+                        })
+                        .attr("y", function(d) {
+                            return h - 64
+                        })
+                        .attr("width", 64)
+                        .attr("height", 64);			   
 				   
 					
 					// Labels
@@ -94,10 +80,10 @@
 						})
 						.attr("text-anchor", "middle")
 						.attr("x", function (d, i){
-							return i * (w / dataset.length) + (w / dataset.length - barPadding) / 2;
+							return i * 65 + 65 / 2;
 						})
 						.attr("y", function(d){
-							return h - (d[4] * 10) + 14;
+							return h - 64 - (d[4] * 10) + 14;
 						})
 						.attr("font-family", "sans-serif")
 						.attr("font-size", "11px")
