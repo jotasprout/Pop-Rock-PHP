@@ -1,4 +1,8 @@
 <?php
+	include '../sesh.php';
+	$artistID = $_SESSION['artist'];
+	$_SESSION['artist'] = $artistID;
+	require( "../class.artist.php" );
     require_once '../stylesAndScripts.php';
     require_once '../navbar_rock.php';
 ?>
@@ -15,18 +19,19 @@
 </head>
 
 <body>
-		<DIV class="container">
-	    
-		    <?php echo $navbar ?> <!-- /navbar -->
+<?php echo $navbar ?> <!-- /navbar -->
 
-			<div id="forChart"> <!-- main -->
+	    <!--  -->
+		<DIV id="forChart">
+
+			 <!-- <div id="forChart"> -->
 
 			<script type="text/javascript">
-				d3.json("createD3.php", function(dataset) {
+				d3.json("createD3b.php", function(dataset) {
 					console.log(dataset);
 					// Width and height
-					var w = 1000;
-					var h = 200;
+					var w = 4000;
+					var h = 265;
 					var barPadding = 1;
 					
 					// Create SVG element
@@ -44,11 +49,11 @@
                             return i * 65;
                         })
                         .attr("y", function(d) {
-                            return h - 64 - (d[4] * 10)
+                            return h - 64 - (d[4] * 2)
                         })
                         .attr("width", 64)
                         .attr("height", function(d) {
-                            return (d[4] * 10);
+                            return (d[4] * 2);
                         });
 
 					// Images
@@ -83,7 +88,7 @@
 							return i * 65 + 65 / 2;
 						})
 						.attr("y", function(d){
-							return h - 64 - (d[4] * 10) + 14;
+							return h - 64 - (d[4] * 2) - 5;
 						})
 						.attr("font-family", "sans-serif")
 						.attr("font-size", "11px")
@@ -91,15 +96,11 @@
 				});		
 			</script>			
 				
-							</div> <!-- main -->
+							 <!-- </div> -->
 
-			<footer class="footer">
+		 	<!--  -->	
 
-				
-
-			</footer>
-		</div> 	<!-- /container -->	
-
+			</div>
 		<?php echo $scriptsAndSuch; ?>	
 </body>
 
