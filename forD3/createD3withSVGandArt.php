@@ -40,8 +40,8 @@
 				d3.json("createD3.php", function(dataset) {
 					console.log(dataset);
 					//Width and height
-					var w = 500;
-					var h = 100;
+					var w = 1000;
+					var h = 200;
 					var barPadding = 1;
 					
 					//Create SVG element
@@ -59,11 +59,11 @@
 					   		return i * (w / dataset.length);
 					   })
 					   .attr("y", function(d) {
-					   		return h - (d[4] * 4);
+					   		return h - (d[4] * 10);
 					   })
 					   .attr("width", w / dataset.length - barPadding)
 					   .attr("height", function(d) {
-					   		return d[4] * 10;
+					   		return (d[4] * 10);
 					   })
 					   .attr("fill", function(d){
 					   		return "rgb(0, 0, " + (d * 10) + ")";
@@ -93,7 +93,7 @@
 							return i * (w / dataset.length) + (w / dataset.length - barPadding) / 2;
 						})
 						.attr("y", function(d){
-							return h - (d[4] * 4) + 14;
+							return h - (d[4] * 10) + 14;
 						})
 						.attr("font-family", "sans-serif")
 						.attr("font-size", "11px")

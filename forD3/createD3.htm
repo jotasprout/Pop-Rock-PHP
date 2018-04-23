@@ -5,7 +5,10 @@
 	<meta charset="utf-8">
 	<title>Albums in D3</title>
 	<script src='https://d3js.org/d3.v4.min.js'></script>
-	<link rel='stylesheet' type='text/css' href='d3styles.css'>
+
+		<link rel='stylesheet' type='text/css' href='d3styles.css'>
+
+	
 </head>
 
 <body>
@@ -20,8 +23,19 @@
 				.append("div")
 				.attr("class", "bar")
 				.style("height", function(d) {
-					return d[4] + "px";
-				});
+					return (d[4] * 10) + "px";
+				})
+			
+			
+
+			d3.selectAll("rect").append("svg:image")
+				.attr("xlink:href", function(d) {
+					return d.albumArt
+					console.log(d.albumArt);
+				})
+				.attr("width", 64)
+				.attr("height", 64);
+			
 		});
 	</script>
 
