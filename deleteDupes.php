@@ -6,6 +6,16 @@ function showThisArtist ($artistID) {
 	
 	$connekt = new mysqli($GLOBALS['host'], $GLOBALS['un'], $GLOBALS['magicword'], $GLOBALS['db']);
 
+	$findDupes = "	SELECT * FROM popArtists 
+					WHERE artistID = '6kACVPfCOnqzgfEF5ryl0x' 
+					AND DATE(date) = '2017-12-13'";
+
+	$dupeyDupes = "	SELECT id, artistID, date, pop, COUNT(DATE(date)) dupeDate
+					FROM popArtists 
+					WHERE artistID = "6kACVPfCOnqzgfEF5ryl0x" 
+					GROUP BY DATE(date)
+					HAVING dupeDate >1";
+
 	$artistInfoAll = "SELECT a.artistID, a.artistName, b.pop, b.date 
 		FROM artists a
 			INNER JOIN popArtists b ON a.artistID = b.artistID

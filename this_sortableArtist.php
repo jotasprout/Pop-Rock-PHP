@@ -16,6 +16,12 @@ if (!$connekt) {
 	echo 'Darn. Did not connect.';
 };
 
+$rangeForLineChart = "	SELECT id, artistID, DATE(date), pop
+						FROM popArtists
+						WHERE artistID = '6kACVPfCOnqzgfEF5ryl0x'
+						AND DATE(date) > '2017-12-17'
+						AND DATE(date) < '2018-02-18';";
+
 $artistInfoAll = "SELECT a.artistID, a.artistName, b.pop, b.date 
 	FROM artists a
 		INNER JOIN popArtists b ON a.artistID = b.artistID
