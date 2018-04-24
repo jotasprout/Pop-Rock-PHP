@@ -53,6 +53,7 @@ $fiveIronFrenzy = new artist ("1BcAEs4W94BrXMmVCOgwSx", "Five Iron Frenzy");
 $fleetwoodMac = new artist ("08GQAI4eElDnROBrJRGE0X", "Fleetwood Mac");
 $freedomSoul = new artist("0sNPk98oyaTeaRojDYglDY","Freedom of Soul");
 
+$genesis = new artist("3CkvROUTQ6nRi9yQOcsB50", "Genesis");
 $ghost = new artist("1Qp56T7n950O3EGMsSl81D", "Ghost");
 $ghotiHook = new artist ("4bMVHZcJe0AmG8f3b120qL", "Ghoti Hook");
 $gwar = new artist ("3dnH7fdVm2X07MK6Fkbhbt", "GWAR");
