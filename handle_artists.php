@@ -30,10 +30,10 @@ $GLOBALS['api']->setAccessToken($accessToken);
 <div class="container">
     <?php echo $navbar ?>
     <table class="table">
-    <tr><th>Artist Name</th><th>Pretty Picture</th></tr>
+    <tr><th>Pretty Picture</th><th>Artist Name</th><th>Artist Popularity</th></tr>
 
         <?php 
-            divideCombineArtistsForArt ($allArtists);
+            divideCombineArtists ($allArtists);
         ?>
     </table>
 

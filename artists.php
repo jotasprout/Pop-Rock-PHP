@@ -96,12 +96,13 @@ function divideCombineArtists ($theseArtists) {
 			$artistID = $artist->id;
 			$artistNameYucky = $artist->name;
 			$artistName = mysqli_real_escape_string($connekt,$artistNameYucky);
+			$artistArt = $artist->images[0]->url;
 			$artistPop = $artist->popularity;
-			// $insertArtistsInfo = "INSERT INTO artists (artistID,artistName) VALUES('$artistID','$artistName')";
-			// $rockout = $connekt->query($insertArtistsInfo);
-			// if(!$rockout){
-			//	echo 'Cursed-Crap. Could not insert artist ' . $artistName . '.<br>';
-			// }
+			$insertArtistsInfo = "INSERT INTO artists (artistID,artistName, artistArt) VALUES('$artistID','$artistName', '$artistArt')";
+			$rockout = $connekt->query($insertArtistsInfo);
+			if(!$rockout){
+			echo 'Cursed-Crap. Could not insert artist ' . $artistName . '.<br>';
+			}
 	
 			$insertArtistsPop = "INSERT INTO popArtists (artistID,pop) VALUES('$artistID','$artistPop')";
 			$rockpop = $connekt->query($insertArtistsPop);
@@ -110,7 +111,7 @@ function divideCombineArtists ($theseArtists) {
 			}
 	
 			else {
-				echo '<tr><td>' . $artistName . '</td><td>' . $artistPop . '</td></tr>';
+				echo '<tr><td>' . $artistArt . '</td><td>' . $artistName . '</td><td>' . $artistPop . '</td></tr>';
 			}
 			
 		}

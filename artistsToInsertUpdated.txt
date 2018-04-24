@@ -44,11 +44,10 @@
 
 OTHERS THAT ARE IN
 
- $ = new artist ("", "Chuck Berry");
  $ = new artist ("", "James Brown");
  $ = new artist ("", "Ray Charles");
  $ = new artist ("", "Sam Cooke");
- $ = new artist ("", "Fats Domino");
+
  $ = new artist ("", "The Everly Brothers");
  $ = new artist ("", "Buddy Holly");
 
@@ -61,12 +60,8 @@ OTHERS THAT ARE IN
  $ = new artist ("", "Bill Haley");
  $ = new artist ("", "B.B. King");
  $ = new artist ("", "Clyde McPhatter");
- $ = new artist ("", "Ricky Nelson");
- $ = new artist ("", "Roy Orbison");
- $ = new artist ("", "Carl Perkins");
  $ = new artist ("", "Smokey Robinson");
  $ = new artist ("", "Big Joe Turner");
- $ = new artist ("", "Muddy Waters");
  $ = new artist ("", "Jackie Wilson");
  $ = new artist ("", "The Beach Boys");
  $ = new artist ("", "The Beatles");
@@ -97,9 +92,9 @@ OTHERS THAT ARE IN
  $ = new artist ("", "The Jimi Hendrix Experience");
  $ = new artist ("", "Sam & Dave");
  $ = new artist ("", "The Yardbirds");
- $ = new artist ("", "Cream");
+
  $ = new artist ("", "Creedence Clearwater Revival");
- $ = new artist ("", "The Doors");
+
  $ = new artist ("", "The Animals");
  $ = new artist ("", "John Lennon");
 
@@ -114,7 +109,7 @@ OTHERS THAT ARE IN
  $ = new artist ("", "The Velvet Underground");
  $ = new artist ("", "Bee Gees");
  $ = new artist ("", "Crosby, Stills & Nash");
- $ = new artist ("", "Parliament-Funkadelic");
+
  $ = new artist ("", "Eagles");
 
  $ = new artist ("", "Santana");
@@ -123,9 +118,6 @@ OTHERS THAT ARE IN
  $ = new artist ("", "Eric Clapton");
  $ = new artist ("", "Earth, Wind & Fire");
  $ = new artist ("", "The Lovin' Spoonful");
-
- $ = new artist ("", "Ramones");
-
 
  $ = new artist ("", "The Clash");
  $ = new artist ("", "George Harrison");
@@ -140,10 +132,9 @@ OTHERS THAT ARE IN
 
  $ = new artist ("", "Run�D.M.C.");
  $ = new artist ("", "ABBA");
- $ = new artist ("", "Genesis");
 
  $ = new artist ("", "Donovan");
- $ = new artist ("", "Guns N' Roses");
+
  $ = new artist ("", "Red Hot Chili Peppers");
  $ = new artist ("", "Small Faces/Faces");
  $ = new artist ("", "Heart");
@@ -152,9 +143,9 @@ OTHERS THAT ARE IN
  $ = new artist ("", "Green Day");
  $ = new artist ("", "Cheap Trick");
  $ = new artist ("", "Chicago");
- $ = new artist ("", "Deep Purple");
+
  $ = new artist ("", "Pearl Jam");
- $ = new artist ("", "Yes");
+
 
 CHRISTIAN
 

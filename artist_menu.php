@@ -154,6 +154,7 @@ echo "<option value='" . $testament->get_artistID() . "'>" . $testament->get_art
 echo "<option value='" . $tourniquet->get_artistID() . "'>" . $tourniquet->get_artistName() . "</option>";
 echo "<option value='" . $tupac->get_artistID() . "'>" . $tupac->get_artistName() . "</option>";
 echo "<option value='" . $twelthTribe->get_artistID() . "'>" . $twelthTribe->get_artistName() . "</option>";
+echo "<option value='" . $twistedSister->get_artistID() . "'>" . $twistedSister->get_artistName() . "</option>";
 
 echo "<option value='" . $u2->get_artistID() . "'>" . $u2->get_artistName() . "</option>";
 

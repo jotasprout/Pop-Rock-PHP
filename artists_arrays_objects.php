@@ -147,15 +147,17 @@ $stryper = new artist("6lE1ly8K8H7u8k2ej2plvv","Stryper");
 $smiths = new artist ("3yY2gUcIsjMr8hjo51PoJ8", "The Smiths");
 $rodStewart = new artist ("2y8Jo9CKhJvtfeKOsYzRdT", "Rod Stewart");
 
+$talkingHeads = new artist ("2x9SpqnPi8rlE9pjHBwmSC", "Talking Heads");
 $steveTaylor = new artist("0t1uzfQspxLvAifZLdmFe2","Steve Taylor");
 $stPerfectFoil = new artist("5MQsxr7sbsewUTIEEYxauR","Steve Taylor & the Perfect Foil");
 $stDanielsonFoil = new artist("0PGxNwykt4KgnvSnNHVUSZ","Steve Taylor and the Danielson Foil");
 $testament = new artist ("28hJdGN1Awf7u3ifk2lVkg", "Testament");
 $tourniquet = new artist ("3lHPBMb024SqetFwwVwuwH", "Tourniquet");
 $TravelingWilburys = new artist ("2hO4YtXUFJiUYS2uYFvHNK", "Traveling Wilburys");
-$twelthTribe = new artist ("76bg2Fvfs7TcQV2un3iNdO", "12th Tribe");
 $tupac = new artist ("1ZwdS5xdxEREPySFridCfh", "Tupac");
-$talkingHeads = new artist ("2x9SpqnPi8rlE9pjHBwmSC", "Talking Heads");
+$twelthTribe = new artist ("76bg2Fvfs7TcQV2un3iNdO", "12th Tribe");
+$twistedSister = new artist ("7b85ve82Sh36a3UAx74wut", "Twisted Sister");
+
 
 $u2 = new artist("51Blml2LZPmy7TTiAg47vQ","U2");
 
@@ -172,6 +174,28 @@ $neilYoung = new artist ("6v8FB84lnmJs434UJf2Mrm", "Neil Young");
 
 $Zombies = new artist ("2jgPkn6LuUazBoBk6vvjh5", "The Zombies");
 $zzTop = new artist("2AM4ilv6UzW0uMRuqKtDgN","ZZ Top");
+
+$rickyNelson = new artist ("73sSFVlM6pkweLXE8qw1OS", "Ricky Nelson");
+$yes = new artist ("7AC976RDJzL2asmZuz7qil", "Yes");
+$cream = new artist ("74oJ4qxwOZvX6oSsu1DGnw", "Cream");
+$gunsRoses = new artist ("3qm84nBOXUEQ2vnTfUTTFC", "Guns N' Roses");
+$genesis = new artist ("3CkvROUTQ6nRi9yQOcsB50", "Genesis");
+$parliament = new artist ("5SMVzTJyKFJ7TUb46DglcH", "Parliament");
+$deepPurple = new artist ("568ZhdwyaiCyOGJRtNYhWf", "Deep Purple");
+$billyIdol = new artist ("7lzordPuZEXxwt9aoVZYmG", "Billy Idol");
+$genX = new artist ("1inWec2E2UgfzMAhwjgTXe", "Generation X");
+$doors = new artist ("22WZ7M8sxp5THdruNY3gXt", "The Doors");
+$ramones = new artist ("1co4F2pPNH8JjTutZkmgSm", "Ramones");
+$royOrbison = new artist ("0JDkhL4rjiPNEp92jAgJnS", "Roy Orbison");
+$carlPerkins = new artist ("5hIClg6noTaCzMu2s5wp4f", "Carl Perkins");
+$muddyWaters = new artist ("4y6J8jwRAwO4dssiSmN91R", "Muddy Waters");
+$chuckBerry = new artist ("293zczrfYafIItmnmM3coR", "Chuck Berry");
+$fatsDomino = new artist ("09C0xjtosNAIXP36wTnWxd", "Fats Domino");
+$eddieCochran = new artist ("1p0t3JtUTayV2wb1RGN9mO", "Eddie Cochran");
+$geneVincent = new artist ("5VAHm7V5mnsxvQrWw3KHmx", "Gene Vincent");
+$geneVincentBlueCaps = new artist ("7lKaTIgVek1R2lqpCulQmq", "Gene Vincent and Blue Caps");
+
+$april2018 = array ("7b85ve82Sh36a3UAx74wut", "7lzordPuZEXxwt9aoVZYmG", "09C0xjtosNAIXP36wTnWxd", "293zczrfYafIItmnmM3coR", "4y6J8jwRAwO4dssiSmN91R", "5hIClg6noTaCzMu2s5wp4f", "1p0t3JtUTayV2wb1RGN9mO", "5VAHm7V5mnsxvQrWw3KHmx", "7lKaTIgVek1R2lqpCulQmq", "0JDkhL4rjiPNEp92jAgJnS", "1co4F2pPNH8JjTutZkmgSm", "22WZ7M8sxp5THdruNY3gXt", "1inWec2E2UgfzMAhwjgTXe", "568ZhdwyaiCyOGJRtNYhWf", "5SMVzTJyKFJ7TUb46DglcH", "73sSFVlM6pkweLXE8qw1OS", "3CkvROUTQ6nRi9yQOcsB50", "3qm84nBOXUEQ2vnTfUTTFC", "74oJ4qxwOZvX6oSsu1DGnw", "7AC976RDJzL2asmZuz7qil");
 
 $nominees2018 = array ("58lV9VcRSjABbAbfWS6skp", "1aSxMhuvixZ8h9dK9jIDwL", "6DCIj8jNaNpBz8e5oKFPtp", "762310PdDnwsDxAQxzQkfX", "0WwSkZ7LtFUFjGjMZBMt6T", "0NKDgy9j66h3DLnN8qu1bB", "69Mj3u4FTUrpyeGNSIaU6F", "2tRsMl4eGxwoNabM08Dm4I", "1P8IfcNKwrkQP5xJWuhaOC", "4WquJweZPIK9qcfVFhTKvf", "2JRvXPGWiINrnJljNJhG5s", "5BcZ22XONcRoLhTbZRuME1", "4Z8W4fKeB5YxbusRsdQVPb", "2d0hyoQ5ynDBnkvAbJKORj", "1YLsqPcFg1rj7VvhfwnDWm", "7G1GBhoKtEPnP86X2PvEYO", "2dXf5lu5iilcaTQJZodce7", "2vQavlZtDA660mnZotYIto", "2jgPkn6LuUazBoBk6vvjh5", "2hO4YtXUFJiUYS2uYFvHNK", "6mQfAAqZGBzIfrmlZCeaYT");
 
