@@ -1,16 +1,8 @@
 <?php
-
-    // include 'sesh.php';   
-    // echo 'sesh worked'; 
-    // require_once 'auth.php';
-    // echo 'auth worked';
-    // require_once 'rockdb.php';
     require 'artists.php';
     require 'artists_arrays_objects.php';
-    // require 'vendor/autoload.php';
     require_once 'stylesAndScripts.php';
-    require_once 'navbar_rock.php';
-    
+    require_once 'navbar_rock.php';  
 ?>
 
 <!DOCTYPE html>
@@ -30,9 +22,7 @@
             <legend>Ye Olde Select An Artist Menu</legend>
 
             <div class="form-group"> <!-- Row 1 -->
-<!--                        
-            <label class="col-lg-2 control-label" for="artist">Ye Olde Select An Artist Menu</label>
--->
+
                 <div class="col-lg-4">
                     <select class="form-control" id="artist" name="artist">
                         <option value="">- Choose -</option>
@@ -52,7 +42,7 @@
             </div><!-- /Row 2 -->
         </fieldset>
     </form>
-<footer class="footer"><p>&copy; Sprout Means Grow and RoxorSoxor 2017</p></footer>
+<footer class="footer"></footer>
 </div> <!-- /container -->
 
 

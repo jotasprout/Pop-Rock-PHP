@@ -3,7 +3,6 @@
 include 'sesh.php';
 $artistID = $_SESSION[ 'artist' ];
 $_SESSION[ 'artist' ] = $artistID;
-
 require_once 'rockdb.php';
 require_once 'navbar_rock.php';
 require_once 'stylesAndScripts.php';
@@ -66,10 +65,10 @@ if ( !$getit ) {
 							<th onClick="sortColumn('albumName', 'ASC')"><div class="pointyHead">Album Name</div></th>
 							<th onClick="sortColumn('trackName', 'DESC')"><div class="pointyHead">Track</div></th>
 							<th onClick="sortColumn('pop', 'ASC')"><div class="pointyHead">Track Popularity</div></th>
-							<th>Date</th>
+							
 							<!--
-			
-		--> 
+								<th>Date</th>
+							--> 
 						</tr>
 					</thead>
 					
@@ -85,9 +84,9 @@ if ( !$getit ) {
 								<td><?php echo $albumName ?></td>
 								<td><?php echo $trackName ?></td>
 								<td><?php echo $trackPop ?></td>
-								<td><?php echo $popDate ?></td>
-								<!--
 								
+								<!--
+								<td><?php //echo $popDate ?></td>
 								-->
 							</tr>
 					<?php 

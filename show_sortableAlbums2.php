@@ -1,7 +1,6 @@
 <?php
 
 include 'sesh.php';
-// $artistID = $_POST['artist'];
 $artistID = $_SESSION['artist'];
 $_SESSION['artist'] = $artistID;
 require_once 'rockdb.php';
@@ -74,9 +73,9 @@ $getit = $connekt->query($happyScabies2);
 						<th onClick="sortColumn('albumName', 'ASC')"><div class="pointyHead">Album Name</div></th>
 						<th onClick="sortColumn('year', 'DESC')"><div class="pointyHead">Released</div></th>
 						<th onClick="sortColumn('pop', 'ASC')"><div class="pointyHead">Popularity</div></th>
-						<th>Date</th>
-						<!--
-			
+						
+		<!--
+			<th>Date</th>
 		--> 
 					</tr>
 				</thead>
@@ -97,11 +96,11 @@ $getit = $connekt->query($happyScabies2);
 						<td><?php echo $albumName ?></td>
 						<td><?php echo $albumReleased ?></td>
 						<td><?php echo $albumPop ?></td>
-						<td><?php echo $date ?></td>
+						
 						
 						<!--
-								
-								-->
+							<td><?php //echo $date ?></td>	
+						-->
 					</tr>
 					
 					<?php 
@@ -115,9 +114,7 @@ $getit = $connekt->query($happyScabies2);
 		?>
 
 	</div> <!-- panel body -->
-<!--
-<footer class="footer"><p>&copy; Sprout Means Grow and RoxorSoxor 2018</p></footer>
--->
+
 </div> <!-- panel panel-primary -->
     </div> <!-- closing container -->
 	

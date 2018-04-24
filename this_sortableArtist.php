@@ -85,9 +85,6 @@ if(!$getit){
 		} // end of if
 		?>
 
-		<!--
-        <footer class="footer"><p>&copy; Sprout Means Grow and RoxorSoxor 2017</p></footer>
-		-->
     </div> <!-- close container -->
     
     <?php echo $scriptsAndSuch; ?>
