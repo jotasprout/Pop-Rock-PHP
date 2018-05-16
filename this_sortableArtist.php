@@ -16,12 +16,6 @@ if (!$connekt) {
 	echo 'Darn. Did not connect.';
 };
 
-$rangeForLineChart = "	SELECT id, artistID, DATE(date), pop
-						FROM popArtists
-						WHERE artistID = '6kACVPfCOnqzgfEF5ryl0x'
-						AND DATE(date) > '2017-12-17'
-						AND DATE(date) < '2018-02-18';";
-
 $artistInfoAll = "SELECT a.artistID, a.artistName, b.pop, b.date 
 	FROM artists a
 		INNER JOIN popArtists b ON a.artistID = b.artistID
@@ -60,7 +54,10 @@ if(!$getit){
 				<tr>
 					<th>Artist Name</th>
 					<th>Popularity</th>
-					<th  onClick="sortColumn('date', 'DESC')"><div class="pointyHead">Date</div></th>
+					<!--
+					<th onClick="sortColumn('date', 'DESC')"><div class="pointyHead">Date</div></th>
+					-->
+					<th>Date</th>
 				</tr>	
 			</thead>
 			<tbody>
@@ -72,12 +69,16 @@ if(!$getit){
 				$artistName = $row["artistName"];
 				$artistPop = $row["pop"];
 				$popDate = $row["date"];
+				$popDateShort = substr($popDate, 0, 10);
 			?>
 							
 			<tr>
 				<td><?php echo $artistName ?></td>
 				<td><?php echo $artistPop ?></td>
-				<td><?php echo $popDate ?></td>
+				<!--
+				<td><?php // echo $popDate ?></td>
+			-->
+				<td><?php echo $popDateShort ?></td>
 			</tr>
 
 			<?php 
