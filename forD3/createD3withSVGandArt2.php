@@ -20,8 +20,8 @@
 <body>
 <?php echo $navbar ?> <!-- /navbar -->
 
-<div class="container">
-	    <!--  -->
+ 
+	    <!-- <div class="container"> -->
 		<DIV id="forChart">
 
 			<script type="text/javascript">
@@ -92,12 +92,12 @@
 						.attr("font-size", "11px")
 						.attr("fill", "white");
 				});		
-			</script>			
+			</script>				
 
-		 	<!--  -->	
+			</div> <!-- /for chart -->
 
-			</div>
-			</div>
+		 	<!-- </div> -->			
+			 <!-- /container -->
 		<?php echo $scriptsAndSuch; ?>	
 </body>
 
