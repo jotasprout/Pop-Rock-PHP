@@ -3,10 +3,8 @@
 	$artistID = $_SESSION['artist'];
 	$_SESSION['artist'] = $artistID;
 	require( "../class.artist.php" );
-    require_once '../stylesAndScripts.php';
     require_once '../navbar_rock.php';
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -14,15 +12,15 @@
 <head>
 	<meta charset="utf-8">
 	<title>Albums in D3</title>
-	<?php echo $stylesAndSuch; ?>
+    <script src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
+    <script src='https://code.jquery.com/ui/1.12.1/jquery-ui.js'></script>
 	<script src='https://d3js.org/d3.v4.min.js'></script>
 </head>
 
 <body>
-
 	    
-		    <?php echo $navbar ?> <!-- /navbar -->
-			<DIV class="container">
+		    <?php // echo $navbar ?> 
+			<!-- <div class="container"> -->
 			<div id="forChart"> 
 
 			<script type="text/javascript">
@@ -91,15 +89,14 @@
 						})
 						.attr("font-family", "sans-serif")
 						.attr("font-size", "11px")
-						.attr("fill", "white");
+						.attr("fill", "red");
 				});		
 			</script>			
 				
 		</div> <!-- for chart -->
 
-		</div> 	<!-- /container -->	
+		<!-- </div> -->	 	<!-- /container -->	
 
-		<?php echo $scriptsAndSuch; ?>	
 </body>
 
 </html>

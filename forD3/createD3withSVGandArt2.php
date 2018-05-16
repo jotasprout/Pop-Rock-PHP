@@ -14,14 +14,13 @@
 	<meta charset="utf-8">
 	<title>Albums in D3</title>
 	<?php echo $stylesAndSuch; ?>
-	<script src='https://d3js.org/d3.v4.min.js'></script>
 </head>
 
 <body>
 <?php echo $navbar ?> <!-- /navbar -->
 
- 
-	    <!-- <div class="container"> -->
+ <div class="container">
+	    <!--  -->
 		<DIV id="forChart">
 
 			<script type="text/javascript">
@@ -95,8 +94,8 @@
 			</script>				
 
 			</div> <!-- /for chart -->
-
-		 	<!-- </div> -->			
+			</div>
+		 	<!--  -->			
 			 <!-- /container -->
 		<?php echo $scriptsAndSuch; ?>	
 </body>

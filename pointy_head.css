@@ -2,10 +2,13 @@
 
 #pointyHead { cursor: pointer; }
 
-
-/*
-#forChart {
-    width: 1500px;
-    margin: auto;
+.container {
+    margin-right: 0;
+    margin-left: 0;
+    padding-left: 15px;
+    padding-right: 15px;
 }
-*/
+
+#forChart {
+    margin: 10pxo;
+}
