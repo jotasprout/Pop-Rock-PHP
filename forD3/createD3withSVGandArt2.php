@@ -7,7 +7,6 @@
     require_once '../navbar_rock.php';
 ?>
 
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,16 +20,15 @@
 <body>
 <?php echo $navbar ?> <!-- /navbar -->
 
+<div class="container">
 	    <!--  -->
 		<DIV id="forChart">
-
-			 <!-- <div id="forChart"> -->
 
 			<script type="text/javascript">
 				d3.json("createD3b.php", function(dataset) {
 					console.log(dataset);
 					// Width and height
-					var w = 4000;
+					var w = 2400;
 					var h = 265;
 					var barPadding = 1;
 					
@@ -95,11 +93,10 @@
 						.attr("fill", "white");
 				});		
 			</script>			
-				
-							 <!-- </div> -->
 
 		 	<!--  -->	
 
+			</div>
 			</div>
 		<?php echo $scriptsAndSuch; ?>	
 </body>
