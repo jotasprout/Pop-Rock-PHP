@@ -64,7 +64,12 @@ if(!$getit){ echo 'Cursed-Crap. Did not run the query.'; }
 						<tr>
 						<th>Pretty Face</th>	
 						<th onClick="sortColumn('artistName', 'ASC')"><div class="pointyHead">Artist Name</div></th>
-							<th onClick="sortColumn('pop', 'DESC')"><div class="pointyHead">Popularity</div></th>
+						<th onClick="sortColumn('pop', 'DESC')"><div class="pointyHead">Popularity</div></th>
+						<th>1 day</th>
+						<th>7 days</th>
+						<th>30 days</th>
+						<th>90 days</th>
+						<th>180 days</th>
 							
 							<!--
 								<th>Date</th>
@@ -86,7 +91,11 @@ if(!$getit){ echo 'Cursed-Crap. Did not run the query.'; }
 						<td><img src='<?php echo $artistArt ?>' height='64' width='64'></td>	
 						<td><?php echo $artistName ?></td>
 						<td><?php echo $artistPop ?></td>
-						
+						<td>*</td>
+						<td>*</td>
+						<td>*</td>
+						<td>*</td>
+						<td>*</td>
 						<!--
 							<td><?php echo $popDate ?></td>
 						-->

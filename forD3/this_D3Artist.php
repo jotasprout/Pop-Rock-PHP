@@ -26,7 +26,11 @@
         
 		<div id="forChart">
 
-		</div>
+			<script>
+				
+			</script>
+
+		</div> <!-- close forChart -->
 
     </div> <!-- close container -->
     
