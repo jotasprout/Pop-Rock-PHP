@@ -13,7 +13,7 @@ if (!$connekt) {
 	echo 'Darn. Did not connect.';
 };
 
-$happyScabies2 = "SELECT a.albumName, a.year, a.albumArt, z.artistName, p1.pop, p1.date
+$happyScabies2 = "SELECT a.albumName, a.year, a.albumArt, z.artistName, p1.pop, p1.date, a.albumID
 	FROM (SELECT
 				y.albumID AS albumID,
 				y.albumName AS albumName,
@@ -73,7 +73,6 @@ $getit = $connekt->query($happyScabies2);
 						<th onClick="sortColumn('albumName', 'ASC')"><div class="pointyHead">Album Name</div></th>
 						<th onClick="sortColumn('year', 'DESC')"><div class="pointyHead">Released</div></th>
 						<th onClick="sortColumn('pop', 'ASC')"><div class="pointyHead">Popularity</div></th>
-						
 		<!--
 			<th>Date</th>
 		--> 
@@ -85,6 +84,7 @@ $getit = $connekt->query($happyScabies2);
 						while ($row = mysqli_fetch_array($getit)) {
 							$artistName = $row['artistName'];
 							$albumArt = $row['albumArt'];
+							$albumID = $row['albumID'];
 							$albumName = $row['albumName'];
 							$albumReleased = $row['year'];
 							$albumPop = $row['pop'];
@@ -93,7 +93,8 @@ $getit = $connekt->query($happyScabies2);
 					
 					<tr>
 						<td><img src='<?php echo $albumArt ?>' height='64' width='64'></td>
-						<td><?php echo $albumName ?></td>
+						<!-- NEED TO CREATE FUNCTION IN NEXT LINE -->
+						<td onClick="showAlbumPage('<?php echo $albumID ?>')"><?php echo $albumName ?></td>
 						<td><?php echo $albumReleased ?></td>
 						<td><?php echo $albumPop ?></td>
 						

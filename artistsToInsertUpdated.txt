@@ -7,7 +7,6 @@
  $ = new artist ("", "Carpenters");
  $ = new artist ("", "Commodores");
 
-
  $ = new artist ("", "Doobie Brothers");
  $ = new artist ("", "Emerson, Lake & Palmer");
 
@@ -145,7 +144,6 @@ OTHERS THAT ARE IN
  $ = new artist ("", "Chicago");
 
  $ = new artist ("", "Pearl Jam");
-
 
 CHRISTIAN
 
