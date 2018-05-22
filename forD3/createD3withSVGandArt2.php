@@ -2,7 +2,7 @@
 	include '../sesh.php';
 	$artistID = $_SESSION['artist'];
 	$_SESSION['artist'] = $artistID;
-	require( "../class.artist.php" );
+	// require( "../class.artist.php" );
     require_once '../stylesAndScripts.php';
     require_once '../navbar_rock.php';
 ?>

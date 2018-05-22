@@ -2,11 +2,8 @@
 	include '../sesh.php';
 	$artistID = $_SESSION['artist'];
 	$_SESSION['artist'] = $artistID;
-	// what about artist class?
-	require_once 'rockdb.php';
 	require_once '../stylesAndScripts.php';
 	require_once '../navbar_rock.php';
-	require_once 'artists.php';
 ?>
 
 <!DOCTYPE html>
@@ -27,6 +24,9 @@
 		<div id="forChart">
 
 			<script>
+				d3.json("createD3c.php", function(dataset) {
+					console.log(dataset);
+				});
 				
 			</script>
 

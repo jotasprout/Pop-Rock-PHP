@@ -34,12 +34,6 @@ $happyScabies2 = "SELECT a.albumName, a.year, a.albumArt, z.artistName, p1.pop, 
 
 $result = mysqli_query($connekt, $happyScabies2);
 
-function consoleLog ($result) {
-	echo '<script>';
-	echo 'console.log('. json_encode($result) .')';
-	echo '</script>';
-}
-
 if (mysqli_num_rows($result) > 0) {
 	$rows = array();
 	while ($row = mysqli_fetch_array($result)) {

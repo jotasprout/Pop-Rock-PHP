@@ -18,17 +18,11 @@ $artistInfoAll = "SELECT a.artistID, a.artistName, b.pop, b.date
 			WHERE a.artistID = '$artistID'
 				ORDER BY b.date DESC";
 
-$getit = $connekt->query($artistInfoAll);
+$getit = mysqli_query($connekt, $artistInfoAll);
 
 if(!$getit){
 	echo 'Cursed-Crap. Did not run the query.';
 }	
-
-function consoleLog ($getit) {
-	echo '<script>';
-	echo 'console.log('. json_encode($getit) .')';
-	echo '</script>';
-}
 
 if (mysqli_num_rows($getit) > 0) {
 	$rows = array();
@@ -37,13 +31,6 @@ if (mysqli_num_rows($getit) > 0) {
 	}
 	echo json_encode($rows);
 }
-
-while ($row = mysqli_fetch_array($getit)) {
-    $artistName = $row["artistName"];
-    $artistPop = $row["pop"];
-    $popDate = $row["date"];
-    $popDateShort = substr($popDate, 0, 10);
-} // end of while
 
 else {
 	echo "Nope. Nothing to see here.";
