@@ -13,7 +13,14 @@
 <head>
     <meta charset="UTF-8">
     <title>This D3 Artist</title>
-    <?php echo $stylesAndSuch; ?>
+	<?php echo $stylesAndSuch; ?>
+	<style type="text/css">
+		.line {
+			fill: none;
+			stroke: teal;
+			stroke-width: 0.5;
+		}
+	</style>
 </head>
 
 <body>
@@ -24,8 +31,27 @@
 		<div id="forChart">
 
 			<script>
-				d3.json("createD3c.php", function(dataset) {
+
+				var w = 800;
+				var h = 300;
+				var padding = 40;
+
+				var dataset, xScale, yScale, xAxis, yAxis, line;
+
+				d3.json("createD3c.php", function(data) {
+					
+					var dataset = data;
+
+					var parseDate = d3.timeParse("%Y-%m-%d");
+
+					dataset.forEach(function(d) {
+						d[3] = parseDate(d[3]);
+						console.log(d[3]);
+					});
+
 					console.log(dataset);
+
+					console.table(dataset, ["date", "pop"] );
 				});
 				
 			</script>
