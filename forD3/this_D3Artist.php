@@ -17,8 +17,8 @@
 	<style type="text/css">
 		.line {
 			fill: none;
-			stroke: teal;
-			stroke-width: 0.5;
+			stroke: yellow;
+			stroke-width: 1;
 		}
 	</style>
 </head>
@@ -42,10 +42,11 @@
 					
 					var dataset = data;
 
-					var parseTime = d3.timeParse("%d-%m-%y");
+					var parseTime = d3.timeParse("%y-%m-%d");
 
 					dataset.forEach(function(d) {
-						d.date = parseTime(d.date);
+						// date = parseTime(d.date);
+						d.date = new Date(d.date);
 						d.pop = +d.pop;
 						console.log(d.date);
 					});
