@@ -24,71 +24,67 @@
 </head>
 
 <body>
-	<?php echo $navbar ?>
+<?php echo $navbar ?>
 
-    <div class="container">
-        
-		<div id="forChart">
+<div class="container">
+	
+	<div id="forChart">
 
-			<script>
+	<script>
 
-				var w = 800;
-				var h = 300;
-				var padding = 40;
+		var w = 800;
+		var h = 300;
+		var padding = 40;
 
-				var dataset, xScale, yScale, xAxis, yAxis, line;
+		var dataset, xScale, yScale, xAxis, yAxis, line;
 
-				d3.json("createD3c.php", function(data) {
-					
-					var dataset = data;
+		d3.json("createD3c.php", function(data) {
+			
+			var dataset = data;
 
-					var parseTime = d3.timeParse("%y-%m-%d");
+			var parseTime = d3.timeParse("%y-%m-%d");
 
-					dataset.forEach(function(d) {
-						// date = parseTime(d.date);
-						d.date = new Date(d.date);
-						d.pop = +d.pop;
-						console.log(d.date);
-					});
+			dataset.forEach(function(d) {
+				// date = parseTime(d.date);
+				d.date = new Date(d.date);
+				d.pop = +d.pop;
+			});
 
-					xScale = d3.scaleTime()
-								.domain([
-									d3.min(dataset, function(d) { return d.date; }),
-									d3.max(dataset, function(d) { return d.date; })
-								])
-								.range([0,w]);
+			xScale = d3.scaleTime()
+						.domain([
+							d3.min(dataset, function(d) { return d.date; }),
+							d3.max(dataset, function(d) { return d.date; })
+						])
+						.range([0,w]);
 
-					yScale = d3.scaleLinear()
-								.domain([0,100])
-								.range([h, 0]);
+			yScale = d3.scaleLinear()
+						.domain([0,100])
+						.range([h, 0]);
 
-					var line = d3.line()
-								.x(function(d) { return xScale(d.date); })
-								.y(function(d) { return yScale(d.pop); });
+			var line = d3.line()
+						.x(function(d) { return xScale(d.date); })
+						.y(function(d) { return yScale(d.pop); });
 
-					var svg = d3.select("#forChart")
-									.append("svg")
-									.attr("width", w)
-									.attr("height", h);
+			var svg = d3.select("#forChart")
+							.append("svg")
+							.attr("width", w)
+							.attr("height", h);
 
-					svg.append("path")
-						.datum(dataset)
-						.attr("class", "line")
-						.attr("d", line);
+			svg.append("path")
+				.datum(dataset)
+				.attr("class", "line")
+				.attr("d", line);
 
-					console.log(dataset);
+		});
+		
+	</script>
 
-					console.table(dataset, ["date", "pop"] );
-				});
-				
-			</script>
+	</div> <!-- close forChart -->
 
-		</div> <!-- close forChart -->
+</div> <!-- close container -->
 
-    </div> <!-- close container -->
-    
-    <?php echo $scriptsAndSuch; ?>
-	<script src="https://www.roxorsoxor.com/poprock/sortThisArtist.js"></script>
+<?php echo $scriptsAndSuch; ?>
+<script src="https://www.roxorsoxor.com/poprock/sortThisArtist.js"></script>
 </body>
 
 </html>
