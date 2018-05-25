@@ -42,13 +42,6 @@
 					
 					var dataset = data;
 
-					var parseDate = d3.timeParse("%Y-%m-%d");
-
-					dataset.forEach(function(d) {
-						d[3] = parseDate(d[3]);
-						console.log(d[3]);
-					});
-
 					console.log(dataset);
 
 					console.table(dataset, ["date", "pop"] );
