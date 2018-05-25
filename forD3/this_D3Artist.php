@@ -42,6 +42,39 @@
 					
 					var dataset = data;
 
+					var parseTime = d3.timeParse("%d-%m-%y");
+
+					dataset.forEach(function(d) {
+						d.date = parseTime(d.date);
+						d.pop = +d.pop;
+						console.log(d.date);
+					});
+
+					xScale = d3.scaleTime()
+								.domain([
+									d3.min(dataset, function(d) { return d.date; }),
+									d3.max(dataset, function(d) { return d.date; })
+								])
+								.range([0,w]);
+
+					yScale = d3.scaleLinear()
+								.domain([0,100])
+								.range([h, 0]);
+
+					var line = d3.line()
+								.x(function(d) { return xScale(d.date); })
+								.y(function(d) { return yScale(d.pop); });
+
+					var svg = d3.select("#forChart")
+									.append("svg")
+									.attr("width", w)
+									.attr("height", h);
+
+					svg.append("path")
+						.datum(dataset)
+						.attr("class", "line")
+						.attr("d", line);
+
 					console.log(dataset);
 
 					console.table(dataset, ["date", "pop"] );
