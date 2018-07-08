@@ -12,7 +12,8 @@ At present, user selects an artist from a menu. Menu fetches data stored in my M
 At present, this is my only line graph. Purpose is to compare artists' popularity scores using album release dates as "years."
 
 ## Back End
-* Hope to make all PHP strictly back-end
+* Eventually, all PHP will be strictly back-end
+* Cron jobs collect Spotify Web API data regularly and store it in my database
 
 ## Status
 Active.
