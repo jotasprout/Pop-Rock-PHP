@@ -1,6 +1,9 @@
 # Pop-PHP
 Gets popularity data via Spotify API for artists, albums, and songs to store in a MySQL database and track popularity over time as well as comparing popularity data across artists, albums, songs. Building interactive data visualization using **D3.js** and **jQuery**.
 
+## Current Examples
+![Column chart created with D3 displaying popularity score for Billy Idol albums. Album cover art appears beneath each column. Numerical score appears above each column.](https://jotascript.files.wordpress.com/2018/05/idol.png)
+
 ## Back End
 * Hope to make all PHP strictly back-end
 
