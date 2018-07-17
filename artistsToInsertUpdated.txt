@@ -1,6 +1,5 @@
 ﻿OTHERS WAITING
 
- $ = new artist ("", "B-52's");
  $ = new artist ("", "Bad Company");
  $ = new artist ("", "Bjork");
 
@@ -39,7 +38,6 @@
  $ = new artist ("", "Warren Zevon");
  $ = new artist ("", "Weird Al Yankovic");
  $ = new artist ("", "X");
- $ = new artist ("", "XTC");
 
 OTHERS THAT ARE IN
 
@@ -57,7 +55,6 @@ OTHERS THAT ARE IN
  $ = new artist ("", "Aretha Franklin");
  $ = new artist ("", "Marvin Gaye");
  $ = new artist ("", "Bill Haley");
- $ = new artist ("", "B.B. King");
  $ = new artist ("", "Clyde McPhatter");
  $ = new artist ("", "Smokey Robinson");
  $ = new artist ("", "Big Joe Turner");
@@ -80,7 +77,7 @@ OTHERS THAT ARE IN
  $ = new artist ("", "Simon & Garfunkel");
  $ = new artist ("", "LaVern Baker");
  $ = new artist ("", "The Byrds");
- $ = new artist ("", "John Lee Hooker");
+
  $ = new artist ("", "The Impressions");
  $ = new artist ("", "Wilson Pickett");
  $ = new artist ("", "Jimmy Reed");
@@ -93,6 +90,7 @@ OTHERS THAT ARE IN
  $ = new artist ("", "The Yardbirds");
 
  $ = new artist ("", "Creedence Clearwater Revival");
+ $robertjohnson = new artist ("0f8MDDzIc6M4uH1xH0o0gy", "Robert Johnson");
 
  $ = new artist ("", "The Animals");
  $ = new artist ("", "John Lennon");
@@ -118,12 +116,11 @@ OTHERS THAT ARE IN
  $ = new artist ("", "Earth, Wind & Fire");
  $ = new artist ("", "The Lovin' Spoonful");
 
- $ = new artist ("", "The Clash");
  $ = new artist ("", "George Harrison");
 
  $ = new artist ("", "Lynyrd Skynyrd");
  $ = new artist ("", "Sex Pistols");
- $ = new artist ("", "R.E.M.");
+ 
  $ = new artist ("", "Patti Smith");
 
  $ = new artist ("", "Madonna");

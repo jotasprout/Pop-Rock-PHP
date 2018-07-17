@@ -4,6 +4,7 @@ echo "<option value='" . $aerosmith->get_artistID() . "'>" . $aerosmith->get_art
 echo "<option value='" . $anthrax->get_artistID() . "'>" . $anthrax->get_artistName() . "</option>";
 echo "<option value='" . $argylePark->get_artistID() . "'>" . $argylePark->get_artistName() . "</option>";
 
+echo "<option value='" . $b52s->get_artistID() . "'>" . $b52s->get_artistName() . "</option>";
 echo "<option value='" . $barrenCross->get_artistID() . "'>" . $barrenCross->get_artistName() . "</option>";
 echo "<option value='" . $beastieBoys->get_artistID() . "'>" . $beastieBoys->get_artistName() . "</option>";
 echo "<option value='" . $chuckBerry->get_artistID() . "'>" . $chuckBerry->get_artistName() . "</option>";
@@ -25,12 +26,14 @@ echo "<option value='" . $chagallGuevara->get_artistID() . "'>" . $chagallGuevar
 echo "<option value='" . $ChakaKhan->get_artistID() . "'>" . $ChakaKhan->get_artistName() . "</option>";
 echo "<option value='" . $circleDust->get_artistID() . "'>" . $circleDust->get_artistName() . "</option>";
 echo "<option value='" . $cirithUngol->get_artistID() . "'>" . $cirithUngol->get_artistName() . "</option>";
+echo "<option value='" . $clash->get_artistID() . "'>" . $clash->get_artistName() . "</option>";
 echo "<option value='" . $eddieCochran->get_artistID() . "'>" . $eddieCochran->get_artistName() . "</option>";
 echo "<option value='" . $aliceCooper->get_artistID() . "'>" . $aliceCooper->get_artistName() . "</option>";
 echo "<option value='" . $cream->get_artistID() . "'>" . $cream->get_artistName() . "</option>";
 echo "<option value='" . $crucified->get_artistID() . "'>" . $crucified->get_artistName() . "</option>";
 echo "<option value='" . $cure->get_artistID() . "'>" . $cure->get_artistName() . "</option>";
 
+echo "<option value='" . $revgarydavis->get_artistID() . "'>" . $revgarydavis->get_artistName() . "</option>";
 echo "<option value='" . $dcTalk->get_artistID() . "'>" . $dcTalk->get_artistName() . "</option>";
 echo "<option value='" . $deathAngel->get_artistID() . "'>" . $deathAngel->get_artistName() . "</option>";
 echo "<option value='" . $deepPurple->get_artistID() . "'>" . $deepPurple->get_artistName() . "</option>";
@@ -42,7 +45,6 @@ echo "<option value='" . $ronnieJamesDio->get_artistID() . "'>" . $ronnieJamesDi
 echo "<option value='" . $DireStraits->get_artistID() . "'>" . $DireStraits->get_artistName() . "</option>";
 echo "<option value='" . $fatsDomino->get_artistID() . "'>" . $fatsDomino->get_artistName() . "</option>";
 echo "<option value='" . $bobDylan->get_artistID() . "'>" . $bobDylan->get_artistName() . "</option>";
-
 echo "<option value='" . $doors->get_artistID() . "'>" . $doors->get_artistName() . "</option>";
 echo "<option value='" . $dynamicTwins->get_artistID() . "'>" . $dynamicTwins->get_artistName() . "</option>";
 echo "<option value='" . $deadKennedys->get_artistID() . "'>" . $deadKennedys->get_artistName() . "</option>";
@@ -66,8 +68,9 @@ echo "<option value='" . $ghotiHook->get_artistID() . "'>" . $ghotiHook->get_art
 echo "<option value='" . $gunsRoses->get_artistID() . "'>" . $gunsRoses->get_artistName() . "</option>";
 echo "<option value='" . $gwar->get_artistID() . "'>" . $gwar->get_artistName() . "</option>";
 
-echo "<option value='" . $hollywoodVampires->get_artistID() . "'>" . $hollywoodVampires->get_artistName() . "</option>";
 echo "<option value='" . $HeavenHell->get_artistID() . "'>" . $HeavenHell->get_artistName() . "</option>";
+echo "<option value='" . $hollywoodVampires->get_artistID() . "'>" . $hollywoodVampires->get_artistName() . "</option>";
+echo "<option value='" . $johnleehooker->get_artistID() . "'>" . $johnleehooker->get_artistName() . "</option>";
 
 echo "<option value='" . $billyIdol->get_artistID() . "'>" . $billyIdol->get_artistName() . "</option>";
 echo "<option value='" . $ironMaiden->get_artistID() . "'>" . $ironMaiden->get_artistName() . "</option>";
@@ -75,11 +78,13 @@ echo "<option value='" . $ironMaiden->get_artistID() . "'>" . $ironMaiden->get_a
 echo "<option value='" . $JGeilsBand->get_artistID() . "'>" . $JGeilsBand->get_artistName() . "</option>";
 echo "<option value='" . $jerusalem->get_artistID() . "'>" . $jerusalem->get_artistName() . "</option>";
 echo "<option value='" . $jethroTull->get_artistID() . "'>" . $jethroTull->get_artistName() . "</option>";
+echo "<option value='" . $eltonJohn->get_artistID() . "'>" . $eltonJohn->get_artistName() . "</option>";
+echo "<option value='" . $robertjohnson->get_artistID() . "'>" . $robertjohnson->get_artistName() . "</option>";
 echo "<option value='" . $journey->get_artistID() . "'>" . $journey->get_artistName() . "</option>";
 echo "<option value='" . $joyDivision->get_artistID() . "'>" . $joyDivision->get_artistName() . "</option>";
 echo "<option value='" . $JudasPriest->get_artistID() . "'>" . $JudasPriest->get_artistName() . "</option>";
-echo "<option value='" . $eltonJohn->get_artistID() . "'>" . $eltonJohn->get_artistName() . "</option>";
 
+echo "<option value='" . $bbking->get_artistID() . "'>" . $bbking->get_artistName() . "</option>";
 echo "<option value='" . $kingDiamond->get_artistID() . "'>" . $kingDiamond->get_artistName() . "</option>";
 echo "<option value='" . $kinks->get_artistID() . "'>" . $kinks->get_artistName() . "</option>";
 echo "<option value='" . $glennKaiser->get_artistID() . "'>" . $glennKaiser->get_artistName() . "</option>";
@@ -136,10 +141,13 @@ echo "<option value='" . $prince->get_artistID() . "'>" . $prince->get_artistNam
 echo "<option value='" . $psychedelicFurs->get_artistID() . "'>" . $psychedelicFurs->get_artistName() . "</option>";
 echo "<option value='" . $publicEnemy->get_artistID() . "'>" . $publicEnemy->get_artistName() . "</option>";
 
+echo "<option value='" . $queen->get_artistID() . "'>" . $queen->get_artistName() . "</option>";
+
 echo "<option value='" . $Radiohead->get_artistID() . "'>" . $Radiohead->get_artistName() . "</option>";
 echo "<option value='" . $RageAgainstTheMachine->get_artistID() . "'>" . $RageAgainstTheMachine->get_artistName() . "</option>";
 echo "<option value='" . $rainbow->get_artistID() . "'>" . $rainbow->get_artistName() . "</option>";
 echo "<option value='" . $ramones->get_artistID() . "'>" . $ramones->get_artistName() . "</option>";
+echo "<option value='" . $rem->get_artistID() . "'>" . $rem->get_artistName() . "</option>";
 echo "<option value='" . $resurrectionBand->get_artistID() . "'>" . $resurrectionBand->get_artistName() . "</option>";
 echo "<option value='" . $rollingStones->get_artistID() . "'>" . $rollingStones->get_artistName() . "</option>";
 echo "<option value='" . $rosarium->get_artistID() . "'>" . $rosarium->get_artistName() . "</option>";
@@ -185,6 +193,7 @@ echo "<option value='" . $whitecross->get_artistID() . "'>" . $whitecross->get_a
 echo "<option value='" . $who->get_artistID() . "'>" . $who->get_artistName() . "</option>";
 
 echo "<option value='" . $xlDBD->get_artistID() . "'>" . $xlDBD->get_artistName() . "</option>";
+echo "<option value='" . $xtc->get_artistID() . "'>" . $xtc->get_artistName() . "</option>";
 
 echo "<option value='" . $yes->get_artistID() . "'>" . $yes->get_artistName() . "</option>";
 echo "<option value='" . $neilYoung->get_artistID() . "'>" . $neilYoung->get_artistName() . "</option>";
