@@ -200,4 +200,10 @@ echo "<option value='" . $neilYoung->get_artistID() . "'>" . $neilYoung->get_art
 
 echo "<option value='" . $Zombies->get_artistID() . "'>" . $Zombies->get_artistName() . "</option>";
 echo "<option value='" . $zzTop->get_artistID() . "'>" . $zzTop->get_artistName() . "</option>";
+
+echo "<option value='" . $cheechchong->get_artistID() . "'>" . $cheechchong->get_artistName() . "</option>";
+echo "<option value='" . $billcosby->get_artistID() . "'>" . $billcosby->get_artistName() . "</option>";
+echo "<option value='" . $stevemartin->get_artistID() . "'>" . $stevemartin->get_artistName() . "</option>";
+echo "<option value='" . $eddiemurphy->get_artistID() . "'>" . $eddiemurphy->get_artistName() . "</option>";
+echo "<option value='" . $richardpryor->get_artistID() . "'>" . $richardpryor->get_artistName() . "</option>";
 ?>
