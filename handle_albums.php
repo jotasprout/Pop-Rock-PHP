@@ -17,6 +17,8 @@ if ($_POST['artist']) {
 require_once 'navbar_rock.php';
 require_once 'stylesAndScripts.php';
 require_once 'albums.php';
+require_once 'artists.php';
+require_once 'artists_arrays_objects.php';
 
 // Fetch saved access token
 $accessToken = $_SESSION['accessToken'];

@@ -71,7 +71,7 @@ $gwar = new artist ("3dnH7fdVm2X07MK6Fkbhbt", "GWAR");
 
 $HeavenHell = new artist("4UjiBRkTw9VmvDZiJZKPJ7","Heaven and Hell");
 $hollywoodVampires = new artist ("3k4YA0uPsWc2PuOQlJNpdH","Hollywood Vampires");
-$johnleehoker = new artist ("1yNOfXGQNGjAynk77wv85x", "John Lee Hooker");
+$johnleehooker = new artist ("1yNOfXGQNGjAynk77wv85x", "John Lee Hooker");
 
 $billyIdol = new artist ("7lzordPuZEXxwt9aoVZYmG", "Billy Idol");
 $ironMaiden = new artist("6mdiAmATAx73kdxrNrnlao","Iron Maiden");
@@ -210,7 +210,11 @@ $stevemartin = new artist ("1Bd4UVlqlaKEXYRG3wgrCK", "Steve Martin");
 $cheechchong = new artist ("0TorzrcTerTn7l5q9LVjmt", "Cheech and Chong");
 $eddiemurphy = new artist ("1Zq8pfBl4ejCMrWdeAdphc", "Eddie Murphy");
 
-$july2018 = array ("1dfeR4HaWDbWqFHLkxsg1d", "3RGLhK1IP9jnYFH4BRFJBS", "4KWTAlx2RvbpseOGMEmROg", "2qT62DYO8Ajb276vUJmvhz", "3gdbcIdNypBsYNu3iiCjtN", "1yNOfXGQNGjAynk77wv85x", "5xLSa7l4IV1gsQfhAMvl0U", "0f8MDDzIc6M4uH1xH0o0gy", "7DtrCdyysCDj5BlVKcassv", "5kO4xdEKLuHHHPreu3UmkZ", "4JeqRr8Upw5uxLEu6jgIRm", "0zokIKbH4c7crvZP9Xel1Y", "1Bd4UVlqlaKEXYRG3wgrCK", "0TorzrcTerTn7l5q9LVjmt", "1Zq8pfBl4ejCMrWdeAdphc");
+$july2018a = array ("3gdbcIdNypBsYNu3iiCjtN", "1yNOfXGQNGjAynk77wv85x", "5xLSa7l4IV1gsQfhAMvl0U", "0f8MDDzIc6M4uH1xH0o0gy");
+
+$july2018b = array ("5kO4xdEKLuHHHPreu3UmkZ", "4JeqRr8Upw5uxLEu6jgIRm", "0zokIKbH4c7crvZP9Xel1Y", "1Bd4UVlqlaKEXYRG3wgrCK");
+
+$july2018c = array ("7DtrCdyysCDj5BlVKcassv", "1Zq8pfBl4ejCMrWdeAdphc", "0TorzrcTerTn7l5q9LVjmt");
 
 $april2018 = array ("7b85ve82Sh36a3UAx74wut", "7lzordPuZEXxwt9aoVZYmG", "09C0xjtosNAIXP36wTnWxd", "293zczrfYafIItmnmM3coR", "4y6J8jwRAwO4dssiSmN91R", "5hIClg6noTaCzMu2s5wp4f", "1p0t3JtUTayV2wb1RGN9mO", "5VAHm7V5mnsxvQrWw3KHmx", "7lKaTIgVek1R2lqpCulQmq", "0JDkhL4rjiPNEp92jAgJnS", "1co4F2pPNH8JjTutZkmgSm", "22WZ7M8sxp5THdruNY3gXt", "1inWec2E2UgfzMAhwjgTXe", "568ZhdwyaiCyOGJRtNYhWf", "5SMVzTJyKFJ7TUb46DglcH", "73sSFVlM6pkweLXE8qw1OS", "3qm84nBOXUEQ2vnTfUTTFC", "74oJ4qxwOZvX6oSsu1DGnw", "7AC976RDJzL2asmZuz7qil");
 

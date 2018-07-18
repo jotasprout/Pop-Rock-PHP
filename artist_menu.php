@@ -79,6 +79,7 @@ echo "<option value='" . $JGeilsBand->get_artistID() . "'>" . $JGeilsBand->get_a
 echo "<option value='" . $jerusalem->get_artistID() . "'>" . $jerusalem->get_artistName() . "</option>";
 echo "<option value='" . $jethroTull->get_artistID() . "'>" . $jethroTull->get_artistName() . "</option>";
 echo "<option value='" . $eltonJohn->get_artistID() . "'>" . $eltonJohn->get_artistName() . "</option>";
+echo "<option value='" . $blindwilliejohnson->get_artistID() . "'>" . $blindwilliejohnson->get_artistName() . "</option>";
 echo "<option value='" . $robertjohnson->get_artistID() . "'>" . $robertjohnson->get_artistName() . "</option>";
 echo "<option value='" . $journey->get_artistID() . "'>" . $journey->get_artistName() . "</option>";
 echo "<option value='" . $joyDivision->get_artistID() . "'>" . $joyDivision->get_artistName() . "</option>";

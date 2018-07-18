@@ -3,6 +3,7 @@
 session_start();
 require 'auth.php';
 require_once 'rockdb.php';
+require 'tracks.php';
 require_once 'albums.php';
 require 'artists.php';
 require 'artists_arrays_objects.php';
@@ -19,7 +20,6 @@ $accessToken = $_SESSION['accessToken'];
 
 $GLOBALS['api'] = new SpotifyWebAPI\SpotifyWebAPI();
 $GLOBALS['api']->setAccessToken($accessToken);
-
 
 function divideCombineArtistsForAlbums ($theseArtists) {
 
@@ -59,7 +59,7 @@ function divideCombineArtistsForAlbums ($theseArtists) {
 				$artistAlbums [] = $albumID;
 			}
 			
-			divideCombineAlbums ($artistAlbums);
+			divideCombineAlbumsForTracks ($artistAlbums);
 
 			unset($artistAlbums);
 			
@@ -67,7 +67,7 @@ function divideCombineArtistsForAlbums ($theseArtists) {
 	};	
 }
 
-divideCombineArtistsForAlbums ($july2018);
+divideCombineArtistsForAlbums ($july2018a);
 
 die();
 
