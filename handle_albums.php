@@ -74,7 +74,7 @@ foreach ($discography->items as $album) {
 
 // $howmanytotal = count($artistAlbums);
 // echo $howmanytotal . '<br>';
-divideCombineAlbums ($july2018);
+divideCombineAlbums ($discography);
 // getAlbumsPop ($artistAlbums);
 // divideCombineAlbumsForArt ($artistAlbums);
 
