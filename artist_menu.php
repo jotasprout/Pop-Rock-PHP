@@ -1,6 +1,7 @@
 <?php
 echo "<option value='" . $acdc->get_artistID() . "'>" . $acdc->get_artistName() . "</option>";
 echo "<option value='" . $aerosmith->get_artistID() . "'>" . $aerosmith->get_artistName() . "</option>";
+echo "<option value='" . $amboydukes->get_artistID() . "'>" . $amboydukes->get_artistName() . "</option>";
 echo "<option value='" . $anthrax->get_artistID() . "'>" . $anthrax->get_artistName() . "</option>";
 echo "<option value='" . $argylePark->get_artistID() . "'>" . $argylePark->get_artistName() . "</option>";
 
@@ -120,6 +121,7 @@ echo "<option value='" . $harryNilsson->get_artistID() . "'>" . $harryNilsson->g
 echo "<option value='" . $ninetyPoundWuss->get_artistID() . "'>" . $ninetyPoundWuss->get_artistName() . "</option>";
 echo "<option value='" . $newOrder->get_artistID() . "'>" . $newOrder->get_artistName() . "</option>";
 echo "<option value='" . $larryNorman->get_artistID() . "'>" . $larryNorman->get_artistName() . "</option>";
+echo "<option value='" . $tednugent->get_artistID() . "'>" . $tednugent->get_artistName() . "</option>";
 echo "<option value='" . $garyNuman->get_artistID() . "'>" . $garyNuman->get_artistName() . "</option>";
 echo "<option value='" . $NWA->get_artistID() . "'>" . $NWA->get_artistName() . "</option>";
 

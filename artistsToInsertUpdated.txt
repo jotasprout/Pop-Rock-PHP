@@ -90,7 +90,6 @@ OTHERS THAT ARE IN
  $ = new artist ("", "The Yardbirds");
 
  $ = new artist ("", "Creedence Clearwater Revival");
- $robertjohnson = new artist ("0f8MDDzIc6M4uH1xH0o0gy", "Robert Johnson");
 
  $ = new artist ("", "The Animals");
  $ = new artist ("", "John Lennon");
