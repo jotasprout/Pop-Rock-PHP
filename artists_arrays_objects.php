@@ -235,4 +235,4 @@ $artists04 = array ("76bg2Fvfs7TcQV2un3iNdO", "1KxokFLctHsnu4YDSWY3MF", "06T4NL0
 
 $artists05 = array ("1BcAEs4W94BrXMmVCOgwSx", "0klkYTAeGHgItyB4R9YYjU", "2S0M8fVXCom9z4JjV8UoXO", "6SLAMfhOi7UJI0fMztaK0m", "76bg2Fvfs7TcQV2un3iNdO","1ZwdS5xdxEREPySFridCfh", "1Qp56T7n950O3EGMsSl81D", "2zyz0VJqrDXeFDIyrfVXSo", "4xls23Ye9WR9yy3yYMpAMm","5N5tQ9Dx1h8Od7aRmGj7Fi","5Mhs3Eu8lU6sRCtRYsmABV", "4tpUmLEVLCGFr93o8hFFIB","30U8fYtiNpeA5KH6H87QUV", "6H1RjVyNruCmrBEWRbD0VZ","0UKfenbZb15sqhfPC6zbt3","0lZoBs4Pzo7R89JM9lxwoT","3PhoLpVuITZKcymswpck5b","5i0ph60TnwTlIGrOZAmcZa","1SQRv42e4PjEYfPhS0Tk9E","36QJpDe2go2KgaRleHCDTp","0dmPX6ovclgOy8WWJaFEUU","0cc6vw3VN8YlIcvr1v7tBL","3RTzAwFprBqiskp550eSJX","3yY2gUcIsjMr8hjo51PoJ8","2y8Jo9CKhJvtfeKOsYzRdT","2x9SpqnPi8rlE9pjHBwmSC","2cnMpRsOVqtPMfq7YiFE6K","67ea9eGLXYMsO2eYQRui3w","6v8FB84lnmJs434UJf2Mrm", "7b85ve82Sh36a3UAx74wut", "7lzordPuZEXxwt9aoVZYmG", "09C0xjtosNAIXP36wTnWxd", "293zczrfYafIItmnmM3coR", "4y6J8jwRAwO4dssiSmN91R", "5hIClg6noTaCzMu2s5wp4f");
 
-$artists06 = array ("21ysNsPzHdqYN2fQ75ZswG", "5cVLuEqb7aOHuzwssXHzWI")
+$artists06 = array ("21ysNsPzHdqYN2fQ75ZswG", "5cVLuEqb7aOHuzwssXHzWI");
