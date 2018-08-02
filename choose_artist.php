@@ -1,8 +1,8 @@
 <?php
-    require 'artists.php';
-    require 'artists_arrays_objects.php';
-    require_once 'stylesAndScripts.php';
-    require_once 'navbar_rock.php';  
+    require 'functions/artists.php';
+    require 'data_text/artists_arrays_objects.php';
+    require_once 'page_pieces/stylesAndScripts.php';
+    require_once 'page_pieces/navbar_rock.php';  
 ?>
 
 <!DOCTYPE html>
@@ -20,7 +20,7 @@
  <form class="form-horizontal" id="rockinForm" action="handle_tracks.php" method="post"> 
 -->
 
-<form class="form-horizontal" id="rockinForm" action="this_sortableArtist.php" method="post">
+<form class="form-horizontal" id="rockinForm" action="this_artistPopList.php" method="post">
         <fieldset>
             <legend>Ye Olde Select An Artist Menu</legend>
 
@@ -31,7 +31,7 @@
                         <option value="">- Choose -</option>
 
                         <?php
-                        include 'artist_menu.php';
+                        include 'page_pieces/artist_menu.php';
                         ?>
 
                     </select>
