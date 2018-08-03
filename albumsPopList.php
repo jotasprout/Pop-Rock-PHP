@@ -2,6 +2,8 @@
 
 include 'page_pieces/sesh.php';
 $artistID = $_SESSION['artist'];
+// $artistID = "5M52tdBnJaKSvOpJGz8mfZ";
+
 echo $artistID;
 $_SESSION['artist'] = $artistID;
 require_once 'rockdb.php';

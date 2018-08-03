@@ -1,6 +1,7 @@
 <?php 
 	include 'page_pieces/sesh.php';
 	$artistID = $_SESSION['artist'];
+	echo $artistID;
 	$_SESSION['artist'] = $artistID;
 	require_once 'page_pieces/stylesAndScripts.php';
 	require_once 'page_pieces/navbar_rock.php';
@@ -38,7 +39,9 @@
 
 		var dataset, xScale, yScale, xAxis, yAxis, line;
 
-		d3.json("createD3c.php", function(data) {
+		d3.json("functions/createD3c.php", function(data) {
+			
+			console.log(data);
 			
 			var dataset = data;
 
@@ -84,7 +87,7 @@
 </div> <!-- close container -->
 
 <?php echo $scriptsAndSuch; ?>
-<script src="https://www.roxorsoxor.com/poprock/sortThisArtist.js"></script>
+<script src="https://www.roxorsoxor.com/poprock/functions/sortThisArtist.js"></script>
 </body>
 
 </html>

@@ -95,7 +95,7 @@ if(!$getit){
     </div> <!-- close container -->
     
     <?php echo $scriptsAndSuch; ?>
-	<script src="https://www.roxorsoxor.com/poprock/sortThisArtist.js"></script>
+	<script src="https://www.roxorsoxor.com/poprock/functions/sortThisArtist.js"></script>
 </body>
 
 </html>
