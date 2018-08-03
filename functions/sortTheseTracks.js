@@ -1,6 +1,6 @@
 function sortColumn (columnName, columnOrder) {
 	$.ajax ({
-		url: "sortTheseTracks.php",
+		url: "functions/sortTheseTracks.php",
 		data: "sortBy=" + columnName + "&order=" + columnOrder,
 		type: "POST",
 		success: function (data) {

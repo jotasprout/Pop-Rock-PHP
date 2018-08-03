@@ -2,6 +2,7 @@
 
 include 'page_pieces/sesh.php';
 $artistID = $_SESSION['artist'];
+echo $artistID;
 $_SESSION['artist'] = $artistID;
 require_once 'rockdb.php';
 require_once 'page_pieces/navbar_rock.php';
@@ -34,6 +35,10 @@ $happyScabies2 = "SELECT a.albumName, a.year, a.albumArt, z.artistName, p1.pop, 
 	ORDER BY year ASC;";
 
 $getit = $connekt->query($happyScabies2);
+
+if(!$getit){
+	echo 'Cursed-Crap. Did not run the query.';
+}
 
 ?>
 
@@ -129,7 +134,7 @@ $getit = $connekt->query($happyScabies2);
     </div> <!-- closing container -->
 	
 <?php echo $scriptsAndSuch; ?>
-<script src="https://www.roxorsoxor.com/poprock/sortTheseAlbums2.js"></script>
+<script src="https://www.roxorsoxor.com/poprock/functions/sortTheseAlbums2.js"></script>
 </body>
 	
 </html>

@@ -120,7 +120,7 @@ if(!$getit){ echo 'Cursed-Crap. Did not run the query.'; }
 	<!-- close container -->
 
 	<?php echo $scriptsAndSuch; ?>
-	<script src="https://www.roxorsoxor.com/poprock/sortTheseArtists2.js"></script>
+	<script src="https://www.roxorsoxor.com/poprock/functions/sortTheseArtists2.js"></script>
 
 	<script>
 	
