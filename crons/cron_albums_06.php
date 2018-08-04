@@ -59,7 +59,7 @@ function divideCombineArtistsForAlbums ($theseArtists) {
 				$artistAlbums [] = $albumID;
 			}
 			
-			divideCombineAlbumsForTracks ($artistAlbums);
+			divideCombineAlbums ($artistAlbums);
 
 			unset($artistAlbums);
 			

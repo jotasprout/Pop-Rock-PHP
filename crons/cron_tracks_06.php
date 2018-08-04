@@ -3,8 +3,8 @@
 session_start();
 require '../auth.php';
 require_once '../rockdb.php';
-require '../tracks.php';
-require_once '../albums.php';
+require '../functions/tracks.php';
+require_once '../functions/albums.php';
 require '../functions/artists.php';
 require '../artists_arrays_objects.php';
 
