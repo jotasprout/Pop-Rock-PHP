@@ -3,7 +3,7 @@
 session_start();
 require '../secrets/spotifySecrets.php';
 require '../vendor/autoload.php';
-require_once '../secrets/rockdb.php';
+require_once '../rockdb.php';
 require_once '../functions/artists.php';
 require_once '../data_text/artists_arrays_objects.php';
 
@@ -13,14 +13,16 @@ $session->requestCredentialsToken();
 $accessToken = $session->getAccessToken();
 
 // I don't think the cron needs this next line 
-// $_SESSION['accessToken'] = $accessToken;
+$_SESSION['accessToken'] = $accessToken;
 // and I don't think the cron needs this next line either
-// $accessToken = $_SESSION['accessToken'];
+$accessToken = $_SESSION['accessToken'];
 
 $GLOBALS['api'] = new SpotifyWebAPI\SpotifyWebAPI();
 $GLOBALS['api']->setAccessToken($accessToken);
 
-getArtistsPopCron2 ($allArtists);
+// getArtistsPopCron2 ($allArtists);
+
+divideCombineArtists ($allArtists);
 
 die();
 
