@@ -103,7 +103,7 @@ if ( !$getit ) {
 	</div> <!-- closing container -->
 	
 <?php echo $scriptsAndSuch; ?>
-<script src="https://www.roxorsoxor.com/poprock/sortTheseTracks.js"></script>
+<script src="https://www.roxorsoxor.com/poprock/functions/sortTheseTracks.js"></script>
 </body>
 	
 </html>
