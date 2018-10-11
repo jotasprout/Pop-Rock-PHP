@@ -17,9 +17,8 @@ $accessToken = $_SESSION['accessToken'];
 // put these in api.php and require that
 $GLOBALS['api'] = new SpotifyWebAPI\SpotifyWebAPI();
 $GLOBALS['api']->setAccessToken($accessToken);
-
-// could these be methods in the artist class?    
-$artist = $GLOBALS['api']->getArtist($artistID);
+   
+$artist = $GLOBALS['api']->$artistID);
 $artistName = $artist->name;
 $artistPop = $artist->popularity;
 

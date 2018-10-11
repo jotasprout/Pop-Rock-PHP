@@ -1,0 +1,61 @@
+<!--
+    require 'functions/artists.php';
+    require 'data_text/artists_arrays_objects.php';
+-->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>My Rockin' App</title>
+    <link rel='stylesheet' type='text/css' href='https://www.roxorsoxor.com/bootstrap/css/bootstrap.min.css'>
+    <script src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
+    <script src='https://code.jquery.com/ui/1.12.1/jquery-ui.js'></script>
+    <link rel='stylesheet' href='https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css'>
+    <link rel='stylesheet' href='https://www.roxorsoxor.com/poprock/css/pointy_head.css'>
+    <script src='https://d3js.org/d3.v4.min.js'></script>
+    <script src='https://d3js.org/d3-time-format.v2.min.js'></script>
+    
+    <meta name='viewport' content='user-scalable=no, width=device-width, initial-scale=1' />
+    <meta name='apple-mobile-web-app-capable' content='yes'>
+    <meta name='mobile-web-app-capable' content='yes'>  
+</head>
+
+<body>
+	<div class="container">
+
+<form class="form-horizontal" id="rockinForm" action="this_artistPopList.php" method="post">
+        <fieldset>
+            <legend>Ye Olde Select An Artist Menu</legend>
+
+            <div class="form-group"> <!-- Row 1 -->
+
+                <div class="col-lg-4">
+                    <select class="form-control" id="artist" name="artist">
+                        <option value="">- Choose -</option>
+
+                        <?php
+                        include 'page_pieces/artist_menu.php';
+                        ?>
+
+                    </select>
+                </div>
+            </div><!-- /Row 1 -->
+
+            <div class="form-group"> <!-- Row 2 -->
+                <div class="col-lg-4 col-lg-offset-2">
+                    <button class="btn btn-primary" type="submit" name="submit">Get Artist Shizzle</button>
+                </div>
+            </div><!-- /Row 2 -->
+        </fieldset>
+    </form>
+<footer class="footer"></footer>
+</div> <!-- /container -->
+
+
+<script src='https://www.roxorsoxor.com/bootstrap/js/bootstrap.min.js'></script>
+
+</body>
+
+</html>

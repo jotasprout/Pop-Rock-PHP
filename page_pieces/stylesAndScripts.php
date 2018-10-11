@@ -19,9 +19,7 @@ $stylesAndSuch = "
 ";
 
 $scriptsAndSuch = "
-
     <script src='https://www.roxorsoxor.com/bootstrap/js/bootstrap.min.js'></script>
-
 ";
 
 ?>
