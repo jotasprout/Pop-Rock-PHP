@@ -1,8 +1,5 @@
 <?php 
-	include 'page_pieces/sesh.php';
-	$artistID = $_SESSION['artist'];
-	echo $artistID;
-	$_SESSION['artist'] = $artistID;
+	$artistID = $_COOKIE['artistID'];
 	require_once 'page_pieces/stylesAndScripts.php';
 	require_once 'page_pieces/navbar_rock.php';
 ?>
@@ -87,7 +84,10 @@
 </div> <!-- close container -->
 
 <?php echo $scriptsAndSuch; ?>
+<!--
 <script src="https://www.roxorsoxor.com/poprock/functions/sortThisArtist.js"></script>
+-->
+
 </body>
 
 </html>

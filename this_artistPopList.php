@@ -1,9 +1,9 @@
 <?php 
 
-include 'page_pieces/sesh.php';
-// $artistID = $_SESSION['artist'];
+// create new cookie
 $artistID = $_POST['artist'];
-$_SESSION['artist'] = $artistID;
+$cookieExpiration = time() + 3600;
+setcookie ('artistID', $artistID, $cookieExpiration, '/', 'roxorsoxor.com');
 
 require_once 'rockdb.php';
 require_once 'page_pieces/stylesAndScripts.php';

@@ -3,6 +3,11 @@
     require 'data_text/artists_arrays_objects.php';
     require_once 'page_pieces/stylesAndScripts.php';
     require_once 'page_pieces/navbar_rock.php';  
+
+    // delete any old cookie
+    $cookieSelfDestruct = time() - 3600;
+    //setcookie ('artistID', '', $cookieSelfDestruct, '/', 'roxorsoxor.com');
+    setcookie ('artistID', false, $cookieSelfDestruct, '/', 'roxorsoxor.com');
 ?>
 
 <!DOCTYPE html>

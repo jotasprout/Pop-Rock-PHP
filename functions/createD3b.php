@@ -1,8 +1,7 @@
 <?php
 
-include '../page_pieces/sesh.php';
-$artistID = $_SESSION['artist'];
-$_SESSION['artist'] = $artistID;
+$artistID = $_COOKIE['artistID'];
+
 require_once '../rockdb.php';
 require( "class.artist.php" );
 
