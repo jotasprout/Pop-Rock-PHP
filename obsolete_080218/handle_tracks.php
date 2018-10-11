@@ -3,9 +3,6 @@ include 'page_pieces/sesh.php';
 require_once 'secrets/auth.php';
 require_once 'functions/artists.php';
 $artistID = $_POST['artist'];
-// $artistID = $_SESSION['artist'];
-// $_SESSION['artist'] = $artistID;
-
 require_once 'page_pieces/navbar_rock.php';
 require_once 'page_pieces/stylesAndScripts.php';
 require_once 'functions/albums.php';

@@ -2,11 +2,6 @@
 
 $artistID = $_COOKIE['artistID'];
 
-// include 'page_pieces/sesh.php';
-// echo $_SESSION['artist'];
-// $artistID = $_SESSION[ 'artist' ];
-// echo $artistID;
-// $_SESSION[ 'artist' ] = $artistID;
 require_once 'rockdb.php';
 require_once 'page_pieces/navbar_rock.php';
 require_once 'page_pieces/stylesAndScripts.php';
@@ -43,7 +38,7 @@ if ( !$getit ) {
 
 <head>
 	<meta charset="UTF-8">
-	<title>Latest Fetched Tracks Stats</title>
+	<title>Latest Tracks Stats from My Database</title>
 	<?php echo $stylesAndSuch; ?>
 </head>
 
@@ -69,10 +64,6 @@ if ( !$getit ) {
 							<th onClick="sortColumn('albumName', 'ASC')"><div class="pointyHead">Album Name</div></th>
 							<th onClick="sortColumn('trackName', 'DESC')"><div class="pointyHead">Track</div></th>
 							<th onClick="sortColumn('pop', 'ASC')"><div class="pointyHead">Track Popularity</div></th>
-							<th>Date</th>
-							<!--
-								
-							--> 
 						</tr>
 					</thead>
 					
@@ -88,10 +79,6 @@ if ( !$getit ) {
 								<td><?php echo $albumName ?></td>
 								<td><?php echo $trackName ?></td>
 								<td><?php echo $trackPop ?></td>
-								<td><?php echo $popDate ?></td>
-								<!--
-								
-								-->
 							</tr>
 					<?php 
 						} // end of while

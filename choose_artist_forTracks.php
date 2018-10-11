@@ -1,0 +1,59 @@
+<?php
+    require 'functions/artists.php';
+    require 'data_text/artists_arrays_objects.php';
+    require_once 'page_pieces/stylesAndScripts.php';
+    require_once 'page_pieces/navbar_rock.php';  
+
+    // delete any old cookie
+    $cookieSelfDestruct = time() - 3600;
+    setcookie ('artistID', false, $cookieSelfDestruct, '/', 'roxorsoxor.com');
+?>
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Choose an Artist for Tracks</title>
+    <?php echo $stylesAndSuch; ?>
+</head>
+
+<body>
+	<div class="container">
+    <!--
+ <form class="form-horizontal" id="rockinForm" action="handle_tracks.php" method="post"> 
+-->
+
+<form class="form-horizontal" id="rockinForm" action="functions/add_new_tracks.php" method="post">
+        <fieldset>
+            <legend>Choose an Artist for Tracks</legend>
+
+            <div class="form-group"> <!-- Row 1 -->
+
+                <div class="col-lg-4">
+                    <select class="form-control" id="artist" name="artist">
+                        <option value="">- Choose -</option>
+
+                        <?php
+                        include 'page_pieces/artist_menu.php';
+                        ?>
+
+                    </select>
+                </div>
+            </div><!-- /Row 1 -->
+
+            <div class="form-group"> <!-- Row 2 -->
+                <div class="col-lg-4 col-lg-offset-2">
+                    <button class="btn btn-primary" type="submit" name="submit">Get Artist Shizzle</button>
+                </div>
+            </div><!-- /Row 2 -->
+        </fieldset>
+    </form>
+<footer class="footer"></footer>
+</div> <!-- /container -->
+
+
+<?php echo $scriptsAndSuch; ?>
+</body>
+
+</html>

@@ -1,12 +1,7 @@
 <?php
 
 $artistID = $_COOKIE['artistID'];
-// include 'page_pieces/sesh.php';
-// echo $_SESSION['artist'];
-// $artistID = $_SESSION['artist'];
-// $artistID = "5M52tdBnJaKSvOpJGz8mfZ";
-// echo $artistID;
-// $_SESSION['artist'] = $artistID;
+
 require_once 'rockdb.php';
 require_once 'page_pieces/navbar_rock.php';
 require_once 'page_pieces/stylesAndScripts.php';

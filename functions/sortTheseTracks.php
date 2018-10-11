@@ -1,8 +1,7 @@
 <?php
 
-include '../page_pieces/sesh.php';
-$artistID = $_SESSION[ 'artist' ];
-$_SESSION[ 'artist' ] = $artistID;
+$artistID = $_COOKIE['artistID'];
+
 require_once '../rockdb.php';
 require_once '../page_pieces/navbar_rock.php';
 require_once '../page_pieces/stylesAndScripts.php';
@@ -69,9 +68,6 @@ if(!empty($sortit)) { ?>
 			<th onClick="sortColumn('albumName', '<?php echo $albumNameNextOrder; ?>')"><div class="pointyHead">Album Name</div></th>
 			<th onClick="sortColumn('trackName', '<?php echo $trackNameNextOrder; ?>')"><div class="pointyHead">Track</div></th>
 			<th onClick="sortColumn('pop', '<?php echo $popNextOrder; ?>')"><div class="pointyHead">Track Popularity</div></th>
-			<!--
-		<th>Date</th>	
-		--> 
 		</tr>
 	</thead>
 
@@ -87,9 +83,6 @@ if(!empty($sortit)) { ?>
 				<td><?php echo $albumName ?></td>
 				<td><?php echo $trackName ?></td>
 				<td><?php echo $trackPop ?></td>
-				<!--
-								<td><?php //echo $popDate ?></td>
-								-->
 			</tr>
 	<?php 
 		} // end of while

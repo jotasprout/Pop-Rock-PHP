@@ -1,4 +1,12 @@
 <?php
+
+echo "<option value='" . $janetJackson->get_artistID() . "'>" . $janetJackson->get_artistName() . "</option>";
+echo "<option value='" . $johnPrine->get_artistID() . "'>" . $johnPrine->get_artistName() . "</option>";
+echo "<option value='" . $roxyMusic->get_artistID() . "'>" . $roxyMusic->get_artistName() . "</option>";
+echo "<option value='" . $stevieNicks->get_artistID() . "'>" . $stevieNicks->get_artistName() . "</option>";
+echo "<option value='" . $toddRundgren->get_artistID() . "'>" . $toddRundgren->get_artistName() . "</option>";
+echo "<option value='" . $newYorkDolls->get_artistID() . "'>" . $newYorkDolls->get_artistName() . "</option>";
+
 echo "<option value='" . $acdc->get_artistID() . "'>" . $acdc->get_artistName() . "</option>";
 echo "<option value='" . $aerosmith->get_artistID() . "'>" . $aerosmith->get_artistName() . "</option>";
 echo "<option value='" . $amboydukes->get_artistID() . "'>" . $amboydukes->get_artistName() . "</option>";

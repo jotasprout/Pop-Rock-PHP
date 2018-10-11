@@ -1,8 +1,7 @@
 <?php
 
-include '../page_pieces/sesh.php';
-$artistID = $_SESSION['artist'];
-$_SESSION['artist'] = $artistID;
+$artistID = $_COOKIE['artistID'];
+
 require_once '../rockdb.php';
 require( "class.artist.php" );
 
@@ -18,13 +17,13 @@ $currentOrder = "ASC";
 
 if ( !empty( $_POST[ "sortThisColumn" ] ) ) {
     // if the column name came through, use it
-    echo $_POST[ "sortThisColumn" ] . "<br>";
+    // echo $_POST[ "sortThisColumn" ] . "<br>";
 	$sortThisColumn = $_POST[ "sortThisColumn" ];
 }
 
 if ( !empty( $_POST[ "currentOrder" ] ) ) {
     // if the current order came through, use it
-    echo $_POST[ "currentOrder" ] . "<br>";
+    // echo $_POST[ "currentOrder" ] . "<br>";
 	$currentOrder = $_POST[ "currentOrder" ];
 }
 
@@ -93,6 +92,11 @@ if(!empty($sortit))	 { ?>
 		<th onClick="sortColumn('albumName', '<?php echo $albumNameNewOrder; ?>')"><div class="pointyHead">Album Name</div></th>
 		<th onClick="sortColumn('year', '<?php echo $yearNewOrder; ?>')"><div id="pointyHead">Released</div></th>
 		<th onClick="sortColumn('pop', '<?php echo $popNewOrder; ?>')">Popularity</th>
+		<th>1 day</th>
+		<th>7 days</th>
+		<th>30 days</th>
+		<th>90 days</th>
+		<th>180 days</th>
 		<!--
 		<th>Date</th>	
 		--> 
@@ -119,9 +123,11 @@ while ( $row = mysqli_fetch_array( $sortit ) ) {
 		<td><?php echo $albumName; ?></td>
 		<td><?php echo $albumReleased; ?></td>
 		<td><?php echo $albumPop; ?></td>
-		<!--
-		<td><?php // echo $date; ?></td>
-		-->
+		<td>*</td>
+		<td>*</td>
+		<td>*</td>
+		<td>*</td>
+		<td>*</td>
 	</tr>
 
 <?php

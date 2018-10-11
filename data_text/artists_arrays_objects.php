@@ -212,6 +212,13 @@ $stevemartin = new artist ("1Bd4UVlqlaKEXYRG3wgrCK", "Steve Martin");
 $cheechchong = new artist ("0TorzrcTerTn7l5q9LVjmt", "Cheech and Chong");
 $eddiemurphy = new artist ("1Zq8pfBl4ejCMrWdeAdphc", "Eddie Murphy");
 
+$janetJackson = new artist ("4qwGe91Bz9K2T8jXTZ815W", "Janet Jackson");
+$johnPrine = new artist("0nJUwPwC9Ti4vvuJ0q3MfT","John Prine");
+$roxyMusic = new artist ("3fhOTtm0LBJ3Ojn4hIljLo", "Roxy Music");
+$stevieNicks = new artist ("7crPfGd2k81ekOoSqQKWWz", "Stevie Nicks");
+$toddRundgren = new artist ("0Lpr5wXzWLtDWm1SjNbpPb", "Todd Rundgren");
+$newYorkDolls = new artist ("0WhGV9lzljq2QKJ8ipw6jx", "New York Dolls");
+
 $nominees2018 = array (
     "4qwGe91Bz9K2T8jXTZ815W", // Janet Jackson
     "0nJUwPwC9Ti4vvuJ0q3MfT", // John Prine
