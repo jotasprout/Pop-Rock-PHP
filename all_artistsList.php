@@ -64,6 +64,7 @@ if(!$getit){ echo 'Cursed-Crap. Did not run the query.'; }
 						<th>Pretty Face</th>	
 						<th onClick="sortColumn('artistName', 'ASC')"><div class="pointyHead">Artist Name</div></th>
 						<th onClick="sortColumn('pop', 'DESC')"><div class="pointyHead">Popularity</div></th>
+						<th>Date</th>
 						<th>1 day</th>
 						<th>7 days</th>
 						<th>30 days</th>
@@ -71,7 +72,7 @@ if(!$getit){ echo 'Cursed-Crap. Did not run the query.'; }
 						<th>180 days</th>
 							
 							<!--
-								<th>Date</th>
+								
 							--> 
 						</tr>
 					</thead>
@@ -90,13 +91,14 @@ if(!$getit){ echo 'Cursed-Crap. Did not run the query.'; }
 						<td><img src='<?php echo $artistArt ?>' height='64' width='64'></td>	
 						<td><?php echo $artistName ?></td>
 						<td><?php echo $artistPop ?></td>
+						<td><?php echo $popDate ?></td>
 						<td>*</td>
 						<td>*</td>
 						<td>*</td>
 						<td>*</td>
 						<td>*</td>
 						<!--
-							<td><?php echo $popDate ?></td>
+							
 						-->
 					</tr>
 
@@ -120,7 +122,7 @@ if(!$getit){ echo 'Cursed-Crap. Did not run the query.'; }
 	<!-- close container -->
 
 	<?php echo $scriptsAndSuch; ?>
-	<script src="https://www.roxorsoxor.com/poprock/functions/sortTheseArtists2.js"></script>
+	<script src="https://www.roxorsoxor.com/poprock/functions/sortTheseArtists.js"></script>
 
 	<script>
 	

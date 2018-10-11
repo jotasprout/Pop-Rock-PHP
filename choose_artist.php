@@ -6,7 +6,6 @@
 
     // delete any old cookie
     $cookieSelfDestruct = time() - 3600;
-    //setcookie ('artistID', '', $cookieSelfDestruct, '/', 'roxorsoxor.com');
     setcookie ('artistID', false, $cookieSelfDestruct, '/', 'roxorsoxor.com');
 ?>
 
