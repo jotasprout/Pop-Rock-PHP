@@ -1,32 +1,34 @@
 <!doctype html>
 
 <html>
-    <head>
-        <title>Adding Stuff</title>
-    </head>
+<head>
+    <title>Adding Stuff</title>
+</head>
 
-    <body>
+<body>
 
-        <form class="form-horizontal" id="addartist" action="functions/add_new_artist.php" method="post">
-            <div class="form-group">
-                <label for="selectIDtype">Choose ID type</label>
-                <select class="form-control" id="selectIDtype">
-                    <option value="artistID">artistID</option>
-                    <option value="albumID">albumID</option>
-                    <option value="trackID">trackID</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="ID">Artist</label>
-                <textarea class="form-control" id="ID" rows="1"></textarea>
-            </div>           
-            <div class="form-group form-check">
-              <input type="checkbox" class="form-check-input" id="exampleCheck1">
-              <textarea class="form-control" id="somethin" rows="1"></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-          </form>
+<form class="form-horizontal" id="addartist" action="functions/add_new_artist.php" method="post">
 
-    </body>
+<div class="form-group">
+    <label for="artist">Artist</label>
+    <textarea class="form-control" id="artist" rows="1"></textarea>
+</div>     
+
+<button type="submit" class="btn btn-primary">Submit</button>
+
+</form>
+
+</body>
 
 </html>
+
+<!--
+    <div class="form-group">
+        <label for="selectIDtype">Choose ID type</label>
+        <select class="form-control" id="selectIDtype">
+            <option value="artistID">artistID</option>
+            <option value="albumID">albumID</option>
+            <option value="trackID">trackID</option>
+        </select>
+    </div>
+-->

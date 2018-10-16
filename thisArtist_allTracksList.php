@@ -23,7 +23,7 @@ $gatherTrackInfo = "SELECT t.trackID, t.trackName, a.albumName, a.artistID, p1.p
 								AND p.date = groupedp.MaxDate) p1 
 						ON t.trackID = p1.trackID
 						WHERE a.artistID = '$artistID'
-						ORDER BY t.trackName ASC";
+						ORDER BY p1.pop DESC";
 
 $getit = $connekt->query( $gatherTrackInfo );
 
