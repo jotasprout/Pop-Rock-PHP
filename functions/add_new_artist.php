@@ -55,7 +55,7 @@ function addArtist ($getThisArtist) {
 	};	
 }
 
-divideCombineArtists ($allArtists);
+addArtist ($getThisArtist);
 
 die();
 
