@@ -24,6 +24,8 @@ $baseURL = "https://api.spotify.com/v1/artists/";
 
 $artistID = $_POST['artist'];
 
+echo $artistID;
+
 $getThisArtist = $GLOBALS['api']->getArtist($artistID);
 
 function addArtist ($getThisArtist) {
