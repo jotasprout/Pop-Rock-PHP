@@ -1,7 +1,7 @@
 .DS_Store
 fromRockinJS
 misc
-spotifySecrets.php
+secrets
 rockdb.php
 old_archive
 vendor
