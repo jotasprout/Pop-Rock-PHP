@@ -25,8 +25,10 @@ function submitArtist (event) {
   const url = 'functions/add_new_artist.php';
 
   fetch(url, artistOptions).then(response => {
-      return response.json();
-  }).then((res) => console.log(res()))
+      return response;
+      // return response.json();
+  // }).then((res) => console.log(res()))
+    }).then((response) => (console.log(response)))
   .catch((err) => console.log (err));
 
 }; // end of sendartistToServer
