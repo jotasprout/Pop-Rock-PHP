@@ -21,9 +21,13 @@ $baseURL = "https://api.spotify.com/v1/artists/";
 // $artistFromJS = $_POST['artist'];
 
 // $thisArtist = json_encode($artistFromJS);
+
 $thisArtist = $_POST['artist'];
+
 echo $thisArtist;
+
 function addArtist ($thisArtist) {
+
     echo $thisArtist;
     $artist = $GLOBALS['api']->getArtist($thisArtist);
 			
@@ -54,6 +58,9 @@ function addArtist ($thisArtist) {
         echo '<table><tr><td>' . $artistArt . '</td><td>' . $artistName . '</td><td>' . $artistPop . '</td></tr></table>';
     }
 };
-addArtist ($thisArtist);
+
+// addArtist ($thisArtist);
+
 die();
+
 ?>

@@ -22,10 +22,8 @@
  $ = new artist ("", "Monkees");
  $ = new artist ("", "Motorhead");
 
- $ = new artist ("", "New York Dolls");
-
  $ = new artist ("", "Replacements");
- $ = new artist ("", "Roxy Music");
+ 
  $ = new artist ("", "Runaways");
  $ = new artist ("", "Siouxsie & the Banshees");
 

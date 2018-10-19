@@ -9,9 +9,9 @@ function submitArtist (event) {
     const artistToSend = {
         artist
     };    
-    /*
+/*
 */
-    console.log(artist); 
+    // console.log(artist); 
 
     const artistOptions = {
         method: 'POST',
