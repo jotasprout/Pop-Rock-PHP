@@ -12,8 +12,12 @@ function submitArtist (event) {
     };   
 
 /*
+    let body = new FormData;
+    body.append('artist', artist);
 */
     console.log(artist); 
+
+
 
     const artistOptions = {
         method: 'POST',
@@ -35,15 +39,6 @@ function submitArtist (event) {
   .catch((err) => console.log (err));
 
 }; // end of sendartistToServer
-
-
-
-
-
-
-
-
-
 
 
 // Try this

@@ -21,6 +21,7 @@ $baseURL = "https://api.spotify.com/v1/artists/";
 // $artistFromJS = $_POST['artist'];
 
 // $thisArtist = json_encode($artistFromJS);
+$_POST = json_decode(file_get_contents('php://input'), true);
 
 $thisArtist = $_POST['artist'];
 
@@ -29,12 +30,15 @@ echo $thisArtist;
 function addArtist ($thisArtist) {
 
     echo $thisArtist;
+
     $artist = $GLOBALS['api']->getArtist($thisArtist);
 			
     $connekt = new mysqli($GLOBALS['host'], $GLOBALS['un'], $GLOBALS['magicword'], $GLOBALS['db']);
+
     if(!$connekt){
         echo 'Fiddlesticks! Could not connect to database.<br>';
     }
+
     $artistID = $artist->id;
     echo $artistID;
     $artistNameYucky = $artist->name;
@@ -44,8 +48,11 @@ function addArtist ($thisArtist) {
     echo $artistArt;
     $artistPop = $artist->popularity;
     echo $artistPop;
+
     $insertArtistsInfo = "INSERT INTO artists (artistID,artistName, artistArt) VALUES('$artistID','$artistName', '$artistArt')";
+
     $rockout = $connekt->query($insertArtistsInfo);
+
     if(!$rockout){
         echo 'Cursed-Crap. Could not insert artist ' . $artistName . '.<br>';
     }
