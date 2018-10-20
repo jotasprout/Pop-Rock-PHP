@@ -59,7 +59,7 @@ function addArtist ($thisArtist) {
     }
 };
 
-// addArtist ($thisArtist);
+addArtist ($thisArtist);
 
 die();
 

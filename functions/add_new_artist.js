@@ -1,5 +1,6 @@
 const artistForm = document.getElementById('addartist').addEventListener('submit', submitArtist);  
 
+
 function submitArtist (event) {
 
     event.preventDefault();
@@ -8,10 +9,11 @@ function submitArtist (event) {
 
     const artistToSend = {
         artist
-    };    
+    };   
+
 /*
 */
-    // console.log(artist); 
+    console.log(artist); 
 
     const artistOptions = {
         method: 'POST',
@@ -24,7 +26,8 @@ function submitArtist (event) {
 
   const url = 'functions/add_new_artist.php';
 
-  fetch(url, artistOptions).then(response => {
+  fetch(url, artistOptions)
+  .then(response => {
       return response;
       // return response.json();
   // }).then((res) => console.log(res()))
@@ -33,23 +36,31 @@ function submitArtist (event) {
 
 }; // end of sendartistToServer
 
-// SEOMTHING I FOUND
 
-// Use jQuerys AJAX function to send data to a PHP Service:
 
+
+
+
+
+
+
+
+
+// Try this
+/*
 $.ajax({
         type: 'POST',
-        url: path + '/php/yourService.php',
-        data: 'var=' + var,
+        url: 'functions/add_new_artist.php',
+        data: 'artist=' + artist,
         success: function (response) {
-           // Do smth with the response
+           console.log(response);
         }
     });
-
+*/
 // In your PHP Service read out data of the database:
 
 // connect to your database first
-
+/*
 $username = $_POST["var"];  
 $sql="SELECT * FROM users WHERE anything = '$var'";
 $result = mysql_query($sql);
@@ -114,3 +125,4 @@ url: 'https://domain.com/page.php',
         })
     }
 });
+*/
