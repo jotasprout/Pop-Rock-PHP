@@ -25,11 +25,11 @@ $_POST = json_decode(file_get_contents('php://input'), true);
 
 $thisArtist = $_POST['artist'];
 
-echo $thisArtist;
+// echo $thisArtist;
 
 function addArtist ($thisArtist) {
 
-    echo $thisArtist;
+    // echo $thisArtist;
 
     $artist = $GLOBALS['api']->getArtist($thisArtist);
 			
@@ -40,14 +40,20 @@ function addArtist ($thisArtist) {
     }
 
     $artistID = $artist->id;
-    echo $artistID;
+    // echo $artistID;
     $artistNameYucky = $artist->name;
     $artistName = mysqli_real_escape_string($connekt,$artistNameYucky);
-    echo $artistName;
+    // echo $artistName;
     $artistArt = $artist->images[0]->url;
-    echo $artistArt;
+    // echo $artistArt;
     $artistPop = $artist->popularity;
-    echo $artistPop;
+    // echo $artistPop;
+    $artistInfo = '{"artistID": "' . $artistID . ', "artistName": "' . $artistName . '", "artistArt": "' . $artistArt . '", "artistPop": "' . $artistPop . '"}';
+    // array ();
+    //     $artistInfo[] = $artistID;
+    //     $artistInfo[] = $artistName;
+    //     $artistInfo[] = $artistArt;
+    //     $artistInfo[] = $artistPop;
 
     $insertArtistsInfo = "INSERT INTO artists (artistID,artistName, artistArt) VALUES('$artistID','$artistName', '$artistArt')";
 
@@ -61,9 +67,9 @@ function addArtist ($thisArtist) {
     if(!$rockpop){
         echo 'Cursed-Crap. Could not insert artists popularity.';
     }
-    else {
-        echo '<table><tr><td>' . $artistArt . '</td><td>' . $artistName . '</td><td>' . $artistPop . '</td></tr></table>';
-    }
+   else {
+     echo json_encode($artistInfo);
+   }
 };
 
 addArtist ($thisArtist);
