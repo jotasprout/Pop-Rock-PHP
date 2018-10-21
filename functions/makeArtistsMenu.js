@@ -2,7 +2,8 @@ let artists;
 
 /* Fetch artists as soon as the page is loaded. */
 document.addEventListener('DOMContentLoaded', (event) => {
-  fetchMyArtists();
+  makeArtistMenu();
+  // fetchMyArtists();
 /*
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('../../sw.js', {
@@ -32,7 +33,8 @@ function fetchMyArtists () {
 
   fetch(url, myArtistsOptions).then(response => response.json())
   .then(json => {
-    console.log(json);
+    return json;
+
   }).catch(err => {
     console.log (err);
   });
@@ -44,15 +46,17 @@ const makeArtistsMenu = () => {
     if (error) { // Got an error
       console.error(error);
     } else {
-      // 
+      const menu = document.getElementById('artistMenu');
       artists.forEach(artist => {
         console.log(artist);
+        const option = document.createElement('option');
+        option.innerHTML = artist.artistName;
+        option.value = artist.artistID;
+        select.append(option);
         /*
-      const option = document.createElement('option');
-      option.innerHTML = artist;
-      option.value = artist;
+
       option.setAttribute('role','option');
-      select.append(option);
+      
       */
       });
     }
