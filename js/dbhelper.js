@@ -1,6 +1,5 @@
-class rockinDBhelper {
+class DBhelper {
 
-    static fetchThisArtistAlbums (callback) {
-        
-    }
+
+
 }

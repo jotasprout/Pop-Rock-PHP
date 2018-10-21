@@ -1,12 +1,8 @@
 const artistForm = document.getElementById('addartist').addEventListener('submit', submitArtist);  
 
-
 function submitArtist (event) {
-
     event.preventDefault();
-
     let artist = document.getElementById('artist').value;
-
     const artistToSend = {
         artist
     };   
@@ -14,8 +10,6 @@ function submitArtist (event) {
 /*
 */
     console.log(artist); 
-
-
 
     const artistOptions = {
         method: 'POST',
