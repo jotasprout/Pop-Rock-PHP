@@ -23,6 +23,27 @@ function sendArtistToServer (artist) {
     .then(json => {
         console.log(json);
         console.log("this artist is " + json.name);
+
+        const table = document.getElementById('artistInfo');
+        const tr1 = document.createElement('tr');
+        const td1 = document.createElement('td');
+        const image = document.createElement('img');
+        const imageURL = json.images[0].url;
+        image.src = imageURL;
+        td1.append(image);
+        tr1.append(td1);
+        table.append(tr1);
+        const tr2 = document.createElement('tr');
+        const td2 = document.createElement('td');
+        td2.innerHTML = json.name;
+        tr2.append(td2);
+        table.append(tr2);
+        const tr3 = document.createElement('tr');
+        const td3 = document.createElement('td');
+        td3.innerHTML = json.popularity;
+        tr3.append(td3);
+        table.append(tr3);
+
     }).catch(err => {
         console.log (err);
     });
