@@ -48,7 +48,7 @@ function addArtist ($thisArtist) {
     // echo $artistArt;
     $artistPop = $artist->popularity;
     // echo $artistPop;
-    $artistInfo = '{"artistID": "' . $artistID . ', "artistName": "' . $artistName . '", "artistArt": "' . $artistArt . '", "artistPop": "' . $artistPop . '"}';
+    $artistInfo = '{"artistID": "' . $artistID . '", "artistName": "' . $artistName . '", "artistArt": "' . $artistArt . '", "artistPop": "' . $artistPop . '"}';
     // array ();
     //     $artistInfo[] = $artistID;
     //     $artistInfo[] = $artistName;
@@ -68,7 +68,7 @@ function addArtist ($thisArtist) {
         echo 'Cursed-Crap. Could not insert artists popularity.';
     }
    else {
-     echo json_encode($artistInfo);
+     echo json_encode($artist);
    }
 };
 
