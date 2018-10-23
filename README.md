@@ -44,3 +44,8 @@ Active.
 
 ## Background
 PHP-based version of [rockinJS](https://github.com/jotasprout/rockinJS) which replaced [myRockinApp](https://github.com/jotasprout/myRockinApp) (Python). Moved on to using PHP and MySQL with Pop-PHP because I couldn't get the objects to build as completely as I wanted in either Python to Javascript. 
+
+## ADA
+### To Do
+- Add speech output, descriptions of charts, results
+- Alternate input for those who can't see to drag & drop
