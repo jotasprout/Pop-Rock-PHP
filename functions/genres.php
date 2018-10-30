@@ -23,26 +23,20 @@ $thisArtist = '3D4qYDvoPn5cQxtBm4oseo';
 
 function addGenres ($thisArtist) {
 
-    // echo $thisArtist;
+    echo $thisArtist . '<br>';
 
     $artist = $GLOBALS['api']->getArtist($thisArtist);
-			
-    $connekt = new mysqli($GLOBALS['host'], $GLOBALS['un'], $GLOBALS['magicword'], $GLOBALS['db']);
-
-    if(!$connekt){
-        echo 'Fiddlesticks! Could not connect to database.<br>';
-    }
 
     $artistID = $artist->id;
     // echo $artistID;
     $artistNameYucky = $artist->name;
     $artistName = mysqli_real_escape_string($connekt,$artistNameYucky);
-    echo $artistName;
+    echo $artistName . '<br>';
     //$artistGenres = $artist->genres[0]->url;
     // $artistGenresArray = array();
 
     $thisArtistGenres = $artist->genres;
-    echo $thisArtistGenres;
+    echo $thisArtistGenres . '<br>';
 
     foreach ($thisArtistGenres->genres as $genre) {
 				
@@ -55,10 +49,16 @@ function addGenres ($thisArtist) {
         } else {
             echo $artistName . ' has the genre of ' . $genre . '<br>';
         }
-        
     }
+}
 
-addGenres ($thisArtist);
+$connekt = new mysqli($GLOBALS['host'], $GLOBALS['un'], $GLOBALS['magicword'], $GLOBALS['db']);
+
+if(!$connekt){
+    echo 'Fiddlesticks! Could not connect to database.<br>';
+} else {
+    addGenres ($thisArtist);
+}
 
 die();
 
