@@ -1,0 +1,2644 @@
+Hollywood Vampires has 1 genres:
+hard glam
+Yay! We are connected to the database!
+Inserted genre of hard glam for Hollywood Vampires.
+Alice Cooper has 9 genres:
+album rock
+classic rock
+comic
+glam metal
+glam rock
+hard rock
+metal
+protopunk
+rock
+Yay! We are connected to the database!
+Inserted genre of album rock for Alice Cooper.
+Inserted genre of classic rock for Alice Cooper.
+Inserted genre of comic for Alice Cooper.
+Inserted genre of glam metal for Alice Cooper.
+Inserted genre of glam rock for Alice Cooper.
+Inserted genre of hard rock for Alice Cooper.
+Inserted genre of metal for Alice Cooper.
+Inserted genre of protopunk for Alice Cooper.
+Inserted genre of rock for Alice Cooper.
+David Bowie has 7 genres:
+art rock
+dance rock
+glam rock
+new wave
+permanent wave
+protopunk
+rock
+Yay! We are connected to the database!
+Inserted genre of art rock for David Bowie.
+Inserted genre of dance rock for David Bowie.
+Inserted genre of glam rock for David Bowie.
+Inserted genre of new wave for David Bowie.
+Inserted genre of permanent wave for David Bowie.
+Inserted genre of protopunk for David Bowie.
+Inserted genre of rock for David Bowie.
+Bob Dylan has 9 genres:
+album rock
+classic rock
+folk
+folk rock
+folk-pop
+mellow gold
+rock
+roots rock
+singer-songwriter
+Yay! We are connected to the database!
+Inserted genre of album rock for Bob Dylan.
+Inserted genre of classic rock for Bob Dylan.
+Inserted genre of folk for Bob Dylan.
+Inserted genre of folk rock for Bob Dylan.
+Inserted genre of folk-pop for Bob Dylan.
+Inserted genre of mellow gold for Bob Dylan.
+Inserted genre of rock for Bob Dylan.
+Inserted genre of roots rock for Bob Dylan.
+Inserted genre of singer-songwriter for Bob Dylan.
+Meat Loaf has 4 genres:
+album rock
+mellow gold
+rock
+soft rock
+Yay! We are connected to the database!
+Inserted genre of album rock for Meat Loaf.
+Inserted genre of mellow gold for Meat Loaf.
+Inserted genre of rock for Meat Loaf.
+Inserted genre of soft rock for Meat Loaf.
+John Mellencamp has 10 genres:
+album rock
+classic rock
+folk rock
+heartland rock
+mellow gold
+pop rock
+rock
+singer-songwriter
+soft rock
+southern rock
+Yay! We are connected to the database!
+Inserted genre of album rock for John Mellencamp.
+Inserted genre of classic rock for John Mellencamp.
+Inserted genre of folk rock for John Mellencamp.
+Inserted genre of heartland rock for John Mellencamp.
+Inserted genre of mellow gold for John Mellencamp.
+Inserted genre of pop rock for John Mellencamp.
+Inserted genre of rock for John Mellencamp.
+Inserted genre of singer-songwriter for John Mellencamp.
+Inserted genre of soft rock for John Mellencamp.
+Inserted genre of southern rock for John Mellencamp.
+The Stooges has 17 genres:
+alternative rock
+blues-rock
+classic rock
+dance rock
+experimental rock
+garage rock
+grunge
+neo-psychedelic
+new wave
+permanent wave
+post-punk
+protopunk
+psychedelic rock
+punk
+punk blues
+rock
+uk post-punk
+Yay! We are connected to the database!
+Inserted genre of alternative rock for The Stooges.
+Inserted genre of blues-rock for The Stooges.
+Inserted genre of classic rock for The Stooges.
+Inserted genre of dance rock for The Stooges.
+Inserted genre of experimental rock for The Stooges.
+Inserted genre of garage rock for The Stooges.
+Inserted genre of grunge for The Stooges.
+Inserted genre of neo-psychedelic for The Stooges.
+Inserted genre of new wave for The Stooges.
+Inserted genre of permanent wave for The Stooges.
+Inserted genre of post-punk for The Stooges.
+Inserted genre of protopunk for The Stooges.
+Inserted genre of psychedelic rock for The Stooges.
+Inserted genre of punk for The Stooges.
+Inserted genre of punk blues for The Stooges.
+Inserted genre of rock for The Stooges.
+Inserted genre of uk post-punk for The Stooges.
+Bruce Springsteen has 5 genres:
+heartland rock
+mellow gold
+permanent wave
+rock
+singer-songwriter
+Yay! We are connected to the database!
+Inserted genre of heartland rock for Bruce Springsteen.
+Inserted genre of mellow gold for Bruce Springsteen.
+Inserted genre of permanent wave for Bruce Springsteen.
+Inserted genre of rock for Bruce Springsteen.
+Inserted genre of singer-songwriter for Bruce Springsteen.
+KISS has 6 genres:
+album rock
+classic rock
+glam rock
+hard rock
+metal
+rock
+Yay! We are connected to the database!
+Inserted genre of album rock for KISS.
+Inserted genre of classic rock for KISS.
+Inserted genre of glam rock for KISS.
+Inserted genre of hard rock for KISS.
+Inserted genre of metal for KISS.
+Inserted genre of rock for KISS.
+Iggy Pop has 11 genres:
+alternative rock
+classic rock
+dance rock
+garage rock
+glam rock
+new wave
+permanent wave
+protopunk
+psychedelic rock
+punk
+rock
+Yay! We are connected to the database!
+Inserted genre of alternative rock for Iggy Pop.
+Inserted genre of classic rock for Iggy Pop.
+Inserted genre of dance rock for Iggy Pop.
+Inserted genre of garage rock for Iggy Pop.
+Inserted genre of glam rock for Iggy Pop.
+Inserted genre of new wave for Iggy Pop.
+Inserted genre of permanent wave for Iggy Pop.
+Inserted genre of protopunk for Iggy Pop.
+Inserted genre of psychedelic rock for Iggy Pop.
+Inserted genre of punk for Iggy Pop.
+Inserted genre of rock for Iggy Pop.
+Iggy Pop & James Williamson has 0 genres:
+Yay! We are connected to the database!
+The Rolling Stones has 5 genres:
+album rock
+british invasion
+classic rock
+protopunk
+rock
+Yay! We are connected to the database!
+Inserted genre of album rock for The Rolling Stones.
+Inserted genre of british invasion for The Rolling Stones.
+Inserted genre of classic rock for The Rolling Stones.
+Inserted genre of protopunk for The Rolling Stones.
+Inserted genre of rock for The Rolling Stones.
+Tom Petty has 10 genres:
+album rock
+classic rock
+folk rock
+heartland rock
+mellow gold
+pop rock
+rock
+roots rock
+singer-songwriter
+soft rock
+Yay! We are connected to the database!
+Inserted genre of album rock for Tom Petty.
+Inserted genre of classic rock for Tom Petty.
+Inserted genre of folk rock for Tom Petty.
+Inserted genre of heartland rock for Tom Petty.
+Inserted genre of mellow gold for Tom Petty.
+Inserted genre of pop rock for Tom Petty.
+Inserted genre of rock for Tom Petty.
+Inserted genre of roots rock for Tom Petty.
+Inserted genre of singer-songwriter for Tom Petty.
+Inserted genre of soft rock for Tom Petty.
+Tom Petty and the Heartbreakers has 10 genres:
+album rock
+classic rock
+folk rock
+heartland rock
+mellow gold
+pop rock
+psychedelic rock
+rock
+roots rock
+soft rock
+Yay! We are connected to the database!
+Inserted genre of album rock for Tom Petty and the Heartbreakers.
+Inserted genre of classic rock for Tom Petty and the Heartbreakers.
+Inserted genre of folk rock for Tom Petty and the Heartbreakers.
+Inserted genre of heartland rock for Tom Petty and the Heartbreakers.
+Inserted genre of mellow gold for Tom Petty and the Heartbreakers.
+Inserted genre of pop rock for Tom Petty and the Heartbreakers.
+Inserted genre of psychedelic rock for Tom Petty and the Heartbreakers.
+Inserted genre of rock for Tom Petty and the Heartbreakers.
+Inserted genre of roots rock for Tom Petty and the Heartbreakers.
+Inserted genre of soft rock for Tom Petty and the Heartbreakers.
+Bon Jovi has 2 genres:
+glam metal
+rock
+Yay! We are connected to the database!
+Inserted genre of glam metal for Bon Jovi.
+Inserted genre of rock for Bon Jovi.
+Kate Bush has 10 genres:
+art pop
+art rock
+dance rock
+folk-pop
+new wave
+new wave pop
+permanent wave
+piano rock
+pop rock
+singer-songwriter
+Yay! We are connected to the database!
+Inserted genre of art pop for Kate Bush.
+Inserted genre of art rock for Kate Bush.
+Inserted genre of dance rock for Kate Bush.
+Inserted genre of folk-pop for Kate Bush.
+Inserted genre of new wave for Kate Bush.
+Inserted genre of new wave pop for Kate Bush.
+Inserted genre of permanent wave for Kate Bush.
+Inserted genre of piano rock for Kate Bush.
+Inserted genre of pop rock for Kate Bush.
+Inserted genre of singer-songwriter for Kate Bush.
+The Cars has 15 genres:
+album rock
+art rock
+classic rock
+dance rock
+folk rock
+hard rock
+mellow gold
+new romantic
+new wave
+new wave pop
+permanent wave
+pop rock
+power pop
+rock
+soft rock
+Yay! We are connected to the database!
+Inserted genre of album rock for The Cars.
+Inserted genre of art rock for The Cars.
+Inserted genre of classic rock for The Cars.
+Inserted genre of dance rock for The Cars.
+Inserted genre of folk rock for The Cars.
+Inserted genre of hard rock for The Cars.
+Inserted genre of mellow gold for The Cars.
+Inserted genre of new romantic for The Cars.
+Inserted genre of new wave for The Cars.
+Inserted genre of new wave pop for The Cars.
+Inserted genre of permanent wave for The Cars.
+Inserted genre of pop rock for The Cars.
+Inserted genre of power pop for The Cars.
+Inserted genre of rock for The Cars.
+Inserted genre of soft rock for The Cars.
+Depeche Mode has 5 genres:
+dance rock
+new romantic
+new wave
+permanent wave
+synthpop
+Yay! We are connected to the database!
+Inserted genre of dance rock for Depeche Mode.
+Inserted genre of new romantic for Depeche Mode.
+Inserted genre of new wave for Depeche Mode.
+Inserted genre of permanent wave for Depeche Mode.
+Inserted genre of synthpop for Depeche Mode.
+Dire Straits has 5 genres:
+album rock
+classic rock
+mellow gold
+rock
+soft rock
+Yay! We are connected to the database!
+Inserted genre of album rock for Dire Straits.
+Inserted genre of classic rock for Dire Straits.
+Inserted genre of mellow gold for Dire Straits.
+Inserted genre of rock for Dire Straits.
+Inserted genre of soft rock for Dire Straits.
+Eurythmics has 10 genres:
+dance rock
+disco
+europop
+mellow gold
+new romantic
+new wave
+new wave pop
+rock
+soft rock
+synthpop
+Yay! We are connected to the database!
+Inserted genre of dance rock for Eurythmics.
+Inserted genre of disco for Eurythmics.
+Inserted genre of europop for Eurythmics.
+Inserted genre of mellow gold for Eurythmics.
+Inserted genre of new romantic for Eurythmics.
+Inserted genre of new wave for Eurythmics.
+Inserted genre of new wave pop for Eurythmics.
+Inserted genre of rock for Eurythmics.
+Inserted genre of soft rock for Eurythmics.
+Inserted genre of synthpop for Eurythmics.
+The J. Geils Band has 12 genres:
+album rock
+blues-rock
+classic rock
+country rock
+folk rock
+hard rock
+mellow gold
+power pop
+rock
+roots rock
+soft rock
+southern rock
+Yay! We are connected to the database!
+Inserted genre of album rock for The J. Geils Band.
+Inserted genre of blues-rock for The J. Geils Band.
+Inserted genre of classic rock for The J. Geils Band.
+Inserted genre of country rock for The J. Geils Band.
+Inserted genre of folk rock for The J. Geils Band.
+Inserted genre of hard rock for The J. Geils Band.
+Inserted genre of mellow gold for The J. Geils Band.
+Inserted genre of power pop for The J. Geils Band.
+Inserted genre of rock for The J. Geils Band.
+Inserted genre of roots rock for The J. Geils Band.
+Inserted genre of soft rock for The J. Geils Band.
+Inserted genre of southern rock for The J. Geils Band.
+Judas Priest has 6 genres:
+album rock
+groove metal
+hard rock
+metal
+power metal
+rock
+Yay! We are connected to the database!
+Inserted genre of album rock for Judas Priest.
+Inserted genre of groove metal for Judas Priest.
+Inserted genre of hard rock for Judas Priest.
+Inserted genre of metal for Judas Priest.
+Inserted genre of power metal for Judas Priest.
+Inserted genre of rock for Judas Priest.
+LL Cool J has 10 genres:
+dirty south rap
+east coast hip hop
+hardcore hip hop
+hip hop
+hip pop
+new jack swing
+old school hip hop
+pop rap
+rap
+southern hip hop
+Yay! We are connected to the database!
+Inserted genre of dirty south rap for LL Cool J.
+Inserted genre of east coast hip hop for LL Cool J.
+Inserted genre of hardcore hip hop for LL Cool J.
+Inserted genre of hip hop for LL Cool J.
+Inserted genre of hip pop for LL Cool J.
+Inserted genre of new jack swing for LL Cool J.
+Inserted genre of old school hip hop for LL Cool J.
+Inserted genre of pop rap for LL Cool J.
+Inserted genre of rap for LL Cool J.
+Inserted genre of southern hip hop for LL Cool J.
+MC5 has 9 genres:
+blues-rock
+classic rock
+garage rock
+post-punk
+protopunk
+psychedelic rock
+pub rock
+punk
+punk blues
+Yay! We are connected to the database!
+Inserted genre of blues-rock for MC5.
+Inserted genre of classic rock for MC5.
+Inserted genre of garage rock for MC5.
+Inserted genre of post-punk for MC5.
+Inserted genre of protopunk for MC5.
+Inserted genre of psychedelic rock for MC5.
+Inserted genre of pub rock for MC5.
+Inserted genre of punk for MC5.
+Inserted genre of punk blues for MC5.
+The Meters has 9 genres:
+afrobeat
+classic soul
+deep funk
+funk
+jazz funk
+new orleans funk
+soul
+soul jazz
+southern soul
+Yay! We are connected to the database!
+Inserted genre of afrobeat for The Meters.
+Inserted genre of classic soul for The Meters.
+Inserted genre of deep funk for The Meters.
+Inserted genre of funk for The Meters.
+Inserted genre of jazz funk for The Meters.
+Inserted genre of new orleans funk for The Meters.
+Inserted genre of soul for The Meters.
+Inserted genre of soul jazz for The Meters.
+Inserted genre of southern soul for The Meters.
+The Moody Blues has 13 genres:
+album rock
+art rock
+british invasion
+classic rock
+folk
+folk rock
+hard rock
+mellow gold
+progressive rock
+psychedelic rock
+rock
+soft rock
+symphonic rock
+Yay! We are connected to the database!
+Inserted genre of album rock for The Moody Blues.
+Inserted genre of art rock for The Moody Blues.
+Inserted genre of british invasion for The Moody Blues.
+Inserted genre of classic rock for The Moody Blues.
+Inserted genre of folk for The Moody Blues.
+Inserted genre of folk rock for The Moody Blues.
+Inserted genre of hard rock for The Moody Blues.
+Inserted genre of mellow gold for The Moody Blues.
+Inserted genre of progressive rock for The Moody Blues.
+Inserted genre of psychedelic rock for The Moody Blues.
+Inserted genre of rock for The Moody Blues.
+Inserted genre of soft rock for The Moody Blues.
+Inserted genre of symphonic rock for The Moody Blues.
+Radiohead has 6 genres:
+alternative rock
+art rock
+melancholia
+modern rock
+permanent wave
+rock
+Yay! We are connected to the database!
+Inserted genre of alternative rock for Radiohead.
+Inserted genre of art rock for Radiohead.
+Inserted genre of melancholia for Radiohead.
+Inserted genre of modern rock for Radiohead.
+Inserted genre of permanent wave for Radiohead.
+Inserted genre of rock for Radiohead.
+Rage Against The Machine has 9 genres:
+alternative metal
+alternative rock
+conscious hip hop
+funk metal
+hard rock
+nu metal
+post-grunge
+rap metal
+rock
+Yay! We are connected to the database!
+Inserted genre of alternative metal for Rage Against The Machine.
+Inserted genre of alternative rock for Rage Against The Machine.
+Inserted genre of conscious hip hop for Rage Against The Machine.
+Inserted genre of funk metal for Rage Against The Machine.
+Inserted genre of hard rock for Rage Against The Machine.
+Inserted genre of nu metal for Rage Against The Machine.
+Inserted genre of post-grunge for Rage Against The Machine.
+Inserted genre of rap metal for Rage Against The Machine.
+Inserted genre of rock for Rage Against The Machine.
+Rufus Featuring Chaka Khan has 1 genres:
+funk
+Yay! We are connected to the database!
+Inserted genre of funk for Rufus Featuring Chaka Khan.
+Nina Simone has 5 genres:
+christmas
+jazz blues
+soul
+soul jazz
+vocal jazz
+Yay! We are connected to the database!
+Inserted genre of christmas for Nina Simone.
+Inserted genre of jazz blues for Nina Simone.
+Inserted genre of soul for Nina Simone.
+Inserted genre of soul jazz for Nina Simone.
+Inserted genre of vocal jazz for Nina Simone.
+Sister Rosetta Tharpe has 4 genres:
+blues
+gospel blues
+rhythm and blues
+traditional blues
+Yay! We are connected to the database!
+Inserted genre of blues for Sister Rosetta Tharpe.
+Inserted genre of gospel blues for Sister Rosetta Tharpe.
+Inserted genre of rhythm and blues for Sister Rosetta Tharpe.
+Inserted genre of traditional blues for Sister Rosetta Tharpe.
+Link Wray has 8 genres:
+garage rock
+native american
+protopunk
+psychedelic rock
+punk blues
+rock-and-roll
+rockabilly
+surf music
+Yay! We are connected to the database!
+Inserted genre of garage rock for Link Wray.
+Inserted genre of native american for Link Wray.
+Inserted genre of protopunk for Link Wray.
+Inserted genre of psychedelic rock for Link Wray.
+Inserted genre of punk blues for Link Wray.
+Inserted genre of rock-and-roll for Link Wray.
+Inserted genre of rockabilly for Link Wray.
+Inserted genre of surf music for Link Wray.
+The Zombies has 8 genres:
+art rock
+brill building pop
+british invasion
+bubblegum pop
+classic rock
+folk rock
+psychedelic rock
+rock
+Yay! We are connected to the database!
+Inserted genre of art rock for The Zombies.
+Inserted genre of brill building pop for The Zombies.
+Inserted genre of british invasion for The Zombies.
+Inserted genre of bubblegum pop for The Zombies.
+Inserted genre of classic rock for The Zombies.
+Inserted genre of folk rock for The Zombies.
+Inserted genre of psychedelic rock for The Zombies.
+Inserted genre of rock for The Zombies.
+Traveling Wilburys has 9 genres:
+album rock
+art rock
+classic rock
+folk rock
+heartland rock
+mellow gold
+rock
+roots rock
+soft rock
+Yay! We are connected to the database!
+Inserted genre of album rock for Traveling Wilburys.
+Inserted genre of art rock for Traveling Wilburys.
+Inserted genre of classic rock for Traveling Wilburys.
+Inserted genre of folk rock for Traveling Wilburys.
+Inserted genre of heartland rock for Traveling Wilburys.
+Inserted genre of mellow gold for Traveling Wilburys.
+Inserted genre of rock for Traveling Wilburys.
+Inserted genre of roots rock for Traveling Wilburys.
+Inserted genre of soft rock for Traveling Wilburys.
+Chaka Khan has 8 genres:
+disco
+funk
+motown
+neo soul
+post-disco
+quiet storm
+soul
+urban contemporary
+Yay! We are connected to the database!
+Inserted genre of disco for Chaka Khan.
+Inserted genre of funk for Chaka Khan.
+Inserted genre of motown for Chaka Khan.
+Inserted genre of neo soul for Chaka Khan.
+Inserted genre of post-disco for Chaka Khan.
+Inserted genre of quiet storm for Chaka Khan.
+Inserted genre of soul for Chaka Khan.
+Inserted genre of urban contemporary for Chaka Khan.
+AC/DC has 4 genres:
+album rock
+australian rock
+hard rock
+rock
+Yay! We are connected to the database!
+Inserted genre of album rock for AC/DC.
+Inserted genre of australian rock for AC/DC.
+Inserted genre of hard rock for AC/DC.
+Inserted genre of rock for AC/DC.
+Prince has 2 genres:
+funk
+motown
+Yay! We are connected to the database!
+Inserted genre of funk for Prince.
+Inserted genre of motown for Prince.
+Bob Seger has 9 genres:
+album rock
+classic rock
+folk rock
+hard rock
+heartland rock
+mellow gold
+rock
+soft rock
+southern rock
+Yay! We are connected to the database!
+Inserted genre of album rock for Bob Seger.
+Inserted genre of classic rock for Bob Seger.
+Inserted genre of folk rock for Bob Seger.
+Inserted genre of hard rock for Bob Seger.
+Inserted genre of heartland rock for Bob Seger.
+Inserted genre of mellow gold for Bob Seger.
+Inserted genre of rock for Bob Seger.
+Inserted genre of soft rock for Bob Seger.
+Inserted genre of southern rock for Bob Seger.
+Johnny Cash has 2 genres:
+outlaw country
+traditional country
+Yay! We are connected to the database!
+Inserted genre of outlaw country for Johnny Cash.
+Inserted genre of traditional country for Johnny Cash.
+ZZ Top has 7 genres:
+album rock
+blues-rock
+classic rock
+hard rock
+metal
+rock
+southern rock
+Yay! We are connected to the database!
+Inserted genre of album rock for ZZ Top.
+Inserted genre of blues-rock for ZZ Top.
+Inserted genre of classic rock for ZZ Top.
+Inserted genre of hard rock for ZZ Top.
+Inserted genre of metal for ZZ Top.
+Inserted genre of rock for ZZ Top.
+Inserted genre of southern rock for ZZ Top.
+U2 has 3 genres:
+irish rock
+permanent wave
+rock
+Yay! We are connected to the database!
+Inserted genre of irish rock for U2.
+Inserted genre of permanent wave for U2.
+Inserted genre of rock for U2.
+Black Sabbath has 6 genres:
+album rock
+classic rock
+hard rock
+metal
+rock
+stoner rock
+Yay! We are connected to the database!
+Inserted genre of album rock for Black Sabbath.
+Inserted genre of classic rock for Black Sabbath.
+Inserted genre of hard rock for Black Sabbath.
+Inserted genre of metal for Black Sabbath.
+Inserted genre of rock for Black Sabbath.
+Inserted genre of stoner rock for Black Sabbath.
+Iron Maiden has 5 genres:
+album rock
+hard rock
+metal
+nwobhm
+rock
+Yay! We are connected to the database!
+Inserted genre of album rock for Iron Maiden.
+Inserted genre of hard rock for Iron Maiden.
+Inserted genre of metal for Iron Maiden.
+Inserted genre of nwobhm for Iron Maiden.
+Inserted genre of rock for Iron Maiden.
+Heaven & Hell has 5 genres:
+hard rock
+metal
+nwobhm
+rock
+speed metal
+Yay! We are connected to the database!
+Inserted genre of hard rock for Heaven & Hell.
+Inserted genre of metal for Heaven & Hell.
+Inserted genre of nwobhm for Heaven & Hell.
+Inserted genre of rock for Heaven & Hell.
+Inserted genre of speed metal for Heaven & Hell.
+Ozzy Osbourne has 5 genres:
+album rock
+classic rock
+hard rock
+metal
+rock
+Yay! We are connected to the database!
+Inserted genre of album rock for Ozzy Osbourne.
+Inserted genre of classic rock for Ozzy Osbourne.
+Inserted genre of hard rock for Ozzy Osbourne.
+Inserted genre of metal for Ozzy Osbourne.
+Inserted genre of rock for Ozzy Osbourne.
+Dio has 8 genres:
+album rock
+glam metal
+hard rock
+metal
+power metal
+progressive metal
+rock
+speed metal
+Yay! We are connected to the database!
+Inserted genre of album rock for Dio.
+Inserted genre of glam metal for Dio.
+Inserted genre of hard rock for Dio.
+Inserted genre of metal for Dio.
+Inserted genre of power metal for Dio.
+Inserted genre of progressive metal for Dio.
+Inserted genre of rock for Dio.
+Inserted genre of speed metal for Dio.
+Ronnie James Dio has 2 genres:
+hard rock
+metal
+Yay! We are connected to the database!
+Inserted genre of hard rock for Ronnie James Dio.
+Inserted genre of metal for Ronnie James Dio.
+Jethro Tull has 10 genres:
+album rock
+art rock
+blues-rock
+classic rock
+folk rock
+hard rock
+progressive rock
+psychedelic rock
+rock
+symphonic rock
+Yay! We are connected to the database!
+Inserted genre of album rock for Jethro Tull.
+Inserted genre of art rock for Jethro Tull.
+Inserted genre of blues-rock for Jethro Tull.
+Inserted genre of classic rock for Jethro Tull.
+Inserted genre of folk rock for Jethro Tull.
+Inserted genre of hard rock for Jethro Tull.
+Inserted genre of progressive rock for Jethro Tull.
+Inserted genre of psychedelic rock for Jethro Tull.
+Inserted genre of rock for Jethro Tull.
+Inserted genre of symphonic rock for Jethro Tull.
+Gary Numan has 12 genres:
+art rock
+dance rock
+electronic
+industrial
+industrial rock
+new romantic
+new wave
+new wave pop
+permanent wave
+post-punk
+synthpop
+uk post-punk
+Yay! We are connected to the database!
+Inserted genre of art rock for Gary Numan.
+Inserted genre of dance rock for Gary Numan.
+Inserted genre of electronic for Gary Numan.
+Inserted genre of industrial for Gary Numan.
+Inserted genre of industrial rock for Gary Numan.
+Inserted genre of new romantic for Gary Numan.
+Inserted genre of new wave for Gary Numan.
+Inserted genre of new wave pop for Gary Numan.
+Inserted genre of permanent wave for Gary Numan.
+Inserted genre of post-punk for Gary Numan.
+Inserted genre of synthpop for Gary Numan.
+Inserted genre of uk post-punk for Gary Numan.
+One Bad Pig has 4 genres:
+christian hardcore
+christian metal
+christian punk
+deep christian rock
+Yay! We are connected to the database!
+Inserted genre of christian hardcore for One Bad Pig.
+Inserted genre of christian metal for One Bad Pig.
+Inserted genre of christian punk for One Bad Pig.
+Inserted genre of deep christian rock for One Bad Pig.
+Stryper has 3 genres:
+christian metal
+glam metal
+hard rock
+Yay! We are connected to the database!
+Inserted genre of christian metal for Stryper.
+Inserted genre of glam metal for Stryper.
+Inserted genre of hard rock for Stryper.
+Bloodgood has 2 genres:
+christian metal
+deep christian rock
+Yay! We are connected to the database!
+Inserted genre of christian metal for Bloodgood.
+Inserted genre of deep christian rock for Bloodgood.
+Bride has 3 genres:
+christian metal
+christian punk
+deep christian rock
+Yay! We are connected to the database!
+Inserted genre of christian metal for Bride.
+Inserted genre of christian punk for Bride.
+Inserted genre of deep christian rock for Bride.
+Steve Taylor has 1 genres:
+deep christian rock
+Yay! We are connected to the database!
+Inserted genre of deep christian rock for Steve Taylor.
+Steve Taylor & The Perfect Foil has 1 genres:
+deep christian rock
+Yay! We are connected to the database!
+Inserted genre of deep christian rock for Steve Taylor & The Perfect Foil.
+Steve Taylor & the Danielson Foil has 0 genres:
+Yay! We are connected to the database!
+Vengeance Rising has 3 genres:
+christian hardcore
+christian metal
+unblack metal
+Yay! We are connected to the database!
+Inserted genre of christian hardcore for Vengeance Rising.
+Inserted genre of christian metal for Vengeance Rising.
+Inserted genre of unblack metal for Vengeance Rising.
+Freedom Of Soul has 0 genres:
+Yay! We are connected to the database!
+P.I.D. has 0 genres:
+Yay! We are connected to the database!
+SFC has 0 genres:
+Yay! We are connected to the database!
+DC Talk has 5 genres:
+ccm
+christian alternative rock
+christian music
+christian rock
+worship
+Yay! We are connected to the database!
+Inserted genre of ccm for DC Talk.
+Inserted genre of christian alternative rock for DC Talk.
+Inserted genre of christian music for DC Talk.
+Inserted genre of christian rock for DC Talk.
+Inserted genre of worship for DC Talk.
+The Dynamic Twins has 1 genres:
+gospel rap
+Yay! We are connected to the database!
+Inserted genre of gospel rap for The Dynamic Twins.
+E-Roc has 1 genres:
+gospel rap
+Yay! We are connected to the database!
+Inserted genre of gospel rap for E-Roc.
+Glenn Kaiser has 2 genres:
+christian metal
+deep christian rock
+Yay! We are connected to the database!
+Inserted genre of christian metal for Glenn Kaiser.
+Inserted genre of deep christian rock for Glenn Kaiser.
+Resurrection Band has 3 genres:
+christian metal
+christian punk
+deep christian rock
+Yay! We are connected to the database!
+Inserted genre of christian metal for Resurrection Band.
+Inserted genre of christian punk for Resurrection Band.
+Inserted genre of deep christian rock for Resurrection Band.
+XL and Death Before Dishonor has 0 genres:
+Yay! We are connected to the database!
+Playdough has 0 genres:
+Yay! We are connected to the database!
+The Crucified has 4 genres:
+christian hardcore
+christian metal
+christian punk
+unblack metal
+Yay! We are connected to the database!
+Inserted genre of christian hardcore for The Crucified.
+Inserted genre of christian metal for The Crucified.
+Inserted genre of christian punk for The Crucified.
+Inserted genre of unblack metal for The Crucified.
+Journey has 5 genres:
+album rock
+hard rock
+mellow gold
+rock
+soft rock
+Yay! We are connected to the database!
+Inserted genre of album rock for Journey.
+Inserted genre of hard rock for Journey.
+Inserted genre of mellow gold for Journey.
+Inserted genre of rock for Journey.
+Inserted genre of soft rock for Journey.
+Aerosmith has 4 genres:
+album rock
+classic rock
+hard rock
+rock
+Yay! We are connected to the database!
+Inserted genre of album rock for Aerosmith.
+Inserted genre of classic rock for Aerosmith.
+Inserted genre of hard rock for Aerosmith.
+Inserted genre of rock for Aerosmith.
+Metallica has 5 genres:
+hard rock
+metal
+rock
+speed metal
+thrash metal
+Yay! We are connected to the database!
+Inserted genre of hard rock for Metallica.
+Inserted genre of metal for Metallica.
+Inserted genre of rock for Metallica.
+Inserted genre of speed metal for Metallica.
+Inserted genre of thrash metal for Metallica.
+Pixies has 9 genres:
+alternative rock
+boston rock
+garage rock
+indie rock
+modern rock
+new wave
+noise pop
+permanent wave
+rock
+Yay! We are connected to the database!
+Inserted genre of alternative rock for Pixies.
+Inserted genre of boston rock for Pixies.
+Inserted genre of garage rock for Pixies.
+Inserted genre of indie rock for Pixies.
+Inserted genre of modern rock for Pixies.
+Inserted genre of new wave for Pixies.
+Inserted genre of noise pop for Pixies.
+Inserted genre of permanent wave for Pixies.
+Inserted genre of rock for Pixies.
+New Order has 14 genres:
+alternative rock
+art rock
+britpop
+dance rock
+electronic
+madchester
+new romantic
+new wave
+new wave pop
+permanent wave
+post-punk
+rock
+synthpop
+uk post-punk
+Yay! We are connected to the database!
+Inserted genre of alternative rock for New Order.
+Inserted genre of art rock for New Order.
+Inserted genre of britpop for New Order.
+Inserted genre of dance rock for New Order.
+Inserted genre of electronic for New Order.
+Inserted genre of madchester for New Order.
+Inserted genre of new romantic for New Order.
+Inserted genre of new wave for New Order.
+Inserted genre of new wave pop for New Order.
+Inserted genre of permanent wave for New Order.
+Inserted genre of post-punk for New Order.
+Inserted genre of rock for New Order.
+Inserted genre of synthpop for New Order.
+Inserted genre of uk post-punk for New Order.
+Joy Division has 11 genres:
+alternative rock
+art rock
+dance rock
+garage rock
+indie rock
+madchester
+modern rock
+new wave
+post-punk
+rock
+uk post-punk
+Yay! We are connected to the database!
+Inserted genre of alternative rock for Joy Division.
+Inserted genre of art rock for Joy Division.
+Inserted genre of dance rock for Joy Division.
+Inserted genre of garage rock for Joy Division.
+Inserted genre of indie rock for Joy Division.
+Inserted genre of madchester for Joy Division.
+Inserted genre of modern rock for Joy Division.
+Inserted genre of new wave for Joy Division.
+Inserted genre of post-punk for Joy Division.
+Inserted genre of rock for Joy Division.
+Inserted genre of uk post-punk for Joy Division.
+Pet Shop Boys has 9 genres:
+art pop
+dance pop
+dance rock
+europop
+new romantic
+new wave
+new wave pop
+permanent wave
+synthpop
+Yay! We are connected to the database!
+Inserted genre of art pop for Pet Shop Boys.
+Inserted genre of dance pop for Pet Shop Boys.
+Inserted genre of dance rock for Pet Shop Boys.
+Inserted genre of europop for Pet Shop Boys.
+Inserted genre of new romantic for Pet Shop Boys.
+Inserted genre of new wave for Pet Shop Boys.
+Inserted genre of new wave pop for Pet Shop Boys.
+Inserted genre of permanent wave for Pet Shop Boys.
+Inserted genre of synthpop for Pet Shop Boys.
+The Psychedelic Furs has 9 genres:
+alternative rock
+art rock
+dance rock
+new romantic
+new wave
+new wave pop
+post-punk
+rock
+uk post-punk
+Yay! We are connected to the database!
+Inserted genre of alternative rock for The Psychedelic Furs.
+Inserted genre of art rock for The Psychedelic Furs.
+Inserted genre of dance rock for The Psychedelic Furs.
+Inserted genre of new romantic for The Psychedelic Furs.
+Inserted genre of new wave for The Psychedelic Furs.
+Inserted genre of new wave pop for The Psychedelic Furs.
+Inserted genre of post-punk for The Psychedelic Furs.
+Inserted genre of rock for The Psychedelic Furs.
+Inserted genre of uk post-punk for The Psychedelic Furs.
+Steve Earle has 11 genres:
+alternative country
+country rock
+folk
+heartland rock
+outlaw country
+rock
+roots rock
+singer-songwriter
+texas country
+traditional country
+traditional folk
+Yay! We are connected to the database!
+Inserted genre of alternative country for Steve Earle.
+Inserted genre of country rock for Steve Earle.
+Inserted genre of folk for Steve Earle.
+Inserted genre of heartland rock for Steve Earle.
+Inserted genre of outlaw country for Steve Earle.
+Inserted genre of rock for Steve Earle.
+Inserted genre of roots rock for Steve Earle.
+Inserted genre of singer-songwriter for Steve Earle.
+Inserted genre of texas country for Steve Earle.
+Inserted genre of traditional country for Steve Earle.
+Inserted genre of traditional folk for Steve Earle.
+The Cure has 5 genres:
+dance rock
+new romantic
+new wave
+permanent wave
+rock
+Yay! We are connected to the database!
+Inserted genre of dance rock for The Cure.
+Inserted genre of new romantic for The Cure.
+Inserted genre of new wave for The Cure.
+Inserted genre of permanent wave for The Cure.
+Inserted genre of rock for The Cure.
+Rush has 10 genres:
+album rock
+art rock
+canadian metal
+classic canadian rock
+classic rock
+hard rock
+metal
+progressive metal
+progressive rock
+rock
+Yay! We are connected to the database!
+Inserted genre of album rock for Rush.
+Inserted genre of art rock for Rush.
+Inserted genre of canadian metal for Rush.
+Inserted genre of classic canadian rock for Rush.
+Inserted genre of classic rock for Rush.
+Inserted genre of hard rock for Rush.
+Inserted genre of metal for Rush.
+Inserted genre of progressive metal for Rush.
+Inserted genre of progressive rock for Rush.
+Inserted genre of rock for Rush.
+King's X has 1 genres:
+funk metal
+Yay! We are connected to the database!
+Inserted genre of funk metal for King's X.
+Fleetwood Mac has 4 genres:
+album rock
+mellow gold
+rock
+soft rock
+Yay! We are connected to the database!
+Inserted genre of album rock for Fleetwood Mac.
+Inserted genre of mellow gold for Fleetwood Mac.
+Inserted genre of rock for Fleetwood Mac.
+Inserted genre of soft rock for Fleetwood Mac.
+Slayer has 9 genres:
+alternative metal
+death metal
+groove metal
+hard rock
+metal
+nu metal
+rock
+speed metal
+thrash metal
+Yay! We are connected to the database!
+Inserted genre of alternative metal for Slayer.
+Inserted genre of death metal for Slayer.
+Inserted genre of groove metal for Slayer.
+Inserted genre of hard rock for Slayer.
+Inserted genre of metal for Slayer.
+Inserted genre of nu metal for Slayer.
+Inserted genre of rock for Slayer.
+Inserted genre of speed metal for Slayer.
+Inserted genre of thrash metal for Slayer.
+Venom has 12 genres:
+black metal
+black thrash
+british black metal
+crossover thrash
+death metal
+groove metal
+hard rock
+metal
+nwobhm
+rock
+speed metal
+thrash metal
+Yay! We are connected to the database!
+Inserted genre of black metal for Venom.
+Inserted genre of black thrash for Venom.
+Inserted genre of british black metal for Venom.
+Inserted genre of crossover thrash for Venom.
+Inserted genre of death metal for Venom.
+Inserted genre of groove metal for Venom.
+Inserted genre of hard rock for Venom.
+Inserted genre of metal for Venom.
+Inserted genre of nwobhm for Venom.
+Inserted genre of rock for Venom.
+Inserted genre of speed metal for Venom.
+Inserted genre of thrash metal for Venom.
+Gwar has 9 genres:
+alternative metal
+comic
+crossover thrash
+funk rock
+groove metal
+metal
+nu metal
+speed metal
+thrash metal
+Yay! We are connected to the database!
+Inserted genre of alternative metal for Gwar.
+Inserted genre of comic for Gwar.
+Inserted genre of crossover thrash for Gwar.
+Inserted genre of funk rock for Gwar.
+Inserted genre of groove metal for Gwar.
+Inserted genre of metal for Gwar.
+Inserted genre of nu metal for Gwar.
+Inserted genre of speed metal for Gwar.
+Inserted genre of thrash metal for Gwar.
+Cannibal Corpse has 9 genres:
+alternative metal
+brutal death metal
+death metal
+deathgrind
+groove metal
+metal
+nu metal
+speed metal
+technical death metal
+Yay! We are connected to the database!
+Inserted genre of alternative metal for Cannibal Corpse.
+Inserted genre of brutal death metal for Cannibal Corpse.
+Inserted genre of death metal for Cannibal Corpse.
+Inserted genre of deathgrind for Cannibal Corpse.
+Inserted genre of groove metal for Cannibal Corpse.
+Inserted genre of metal for Cannibal Corpse.
+Inserted genre of nu metal for Cannibal Corpse.
+Inserted genre of speed metal for Cannibal Corpse.
+Inserted genre of technical death metal for Cannibal Corpse.
+Megadeth has 8 genres:
+album rock
+alternative metal
+groove metal
+hard rock
+metal
+rock
+speed metal
+thrash metal
+Yay! We are connected to the database!
+Inserted genre of album rock for Megadeth.
+Inserted genre of alternative metal for Megadeth.
+Inserted genre of groove metal for Megadeth.
+Inserted genre of hard rock for Megadeth.
+Inserted genre of metal for Megadeth.
+Inserted genre of rock for Megadeth.
+Inserted genre of speed metal for Megadeth.
+Inserted genre of thrash metal for Megadeth.
+Anthrax has 10 genres:
+album rock
+alternative metal
+groove metal
+hard rock
+metal
+nu metal
+rap metal
+rock
+speed metal
+thrash metal
+Yay! We are connected to the database!
+Inserted genre of album rock for Anthrax.
+Inserted genre of alternative metal for Anthrax.
+Inserted genre of groove metal for Anthrax.
+Inserted genre of hard rock for Anthrax.
+Inserted genre of metal for Anthrax.
+Inserted genre of nu metal for Anthrax.
+Inserted genre of rap metal for Anthrax.
+Inserted genre of rock for Anthrax.
+Inserted genre of speed metal for Anthrax.
+Inserted genre of thrash metal for Anthrax.
+Kreator has 9 genres:
+crossover thrash
+death metal
+german metal
+groove metal
+hard rock
+metal
+power metal
+speed metal
+thrash metal
+Yay! We are connected to the database!
+Inserted genre of crossover thrash for Kreator.
+Inserted genre of death metal for Kreator.
+Inserted genre of german metal for Kreator.
+Inserted genre of groove metal for Kreator.
+Inserted genre of hard rock for Kreator.
+Inserted genre of metal for Kreator.
+Inserted genre of power metal for Kreator.
+Inserted genre of speed metal for Kreator.
+Inserted genre of thrash metal for Kreator.
+Exodus has 7 genres:
+crossover thrash
+death metal
+groove metal
+hard rock
+metal
+speed metal
+thrash metal
+Yay! We are connected to the database!
+Inserted genre of crossover thrash for Exodus.
+Inserted genre of death metal for Exodus.
+Inserted genre of groove metal for Exodus.
+Inserted genre of hard rock for Exodus.
+Inserted genre of metal for Exodus.
+Inserted genre of speed metal for Exodus.
+Inserted genre of thrash metal for Exodus.
+Testament has 10 genres:
+alternative metal
+crossover thrash
+death metal
+groove metal
+hard rock
+metal
+progressive metal
+rock
+speed metal
+thrash metal
+Yay! We are connected to the database!
+Inserted genre of alternative metal for Testament.
+Inserted genre of crossover thrash for Testament.
+Inserted genre of death metal for Testament.
+Inserted genre of groove metal for Testament.
+Inserted genre of hard rock for Testament.
+Inserted genre of metal for Testament.
+Inserted genre of progressive metal for Testament.
+Inserted genre of rock for Testament.
+Inserted genre of speed metal for Testament.
+Inserted genre of thrash metal for Testament.
+Overkill has 10 genres:
+crossover thrash
+death metal
+groove metal
+hard rock
+metal
+nwobhm
+power metal
+rock
+speed metal
+thrash metal
+Yay! We are connected to the database!
+Inserted genre of crossover thrash for Overkill.
+Inserted genre of death metal for Overkill.
+Inserted genre of groove metal for Overkill.
+Inserted genre of hard rock for Overkill.
+Inserted genre of metal for Overkill.
+Inserted genre of nwobhm for Overkill.
+Inserted genre of power metal for Overkill.
+Inserted genre of rock for Overkill.
+Inserted genre of speed metal for Overkill.
+Inserted genre of thrash metal for Overkill.
+Death Angel has 6 genres:
+crossover thrash
+death metal
+groove metal
+metal
+speed metal
+thrash metal
+Yay! We are connected to the database!
+Inserted genre of crossover thrash for Death Angel.
+Inserted genre of death metal for Death Angel.
+Inserted genre of groove metal for Death Angel.
+Inserted genre of metal for Death Angel.
+Inserted genre of speed metal for Death Angel.
+Inserted genre of thrash metal for Death Angel.
+Sodom has 9 genres:
+black thrash
+crossover thrash
+death metal
+german metal
+groove metal
+metal
+nwobhm
+speed metal
+thrash metal
+Yay! We are connected to the database!
+Inserted genre of black thrash for Sodom.
+Inserted genre of crossover thrash for Sodom.
+Inserted genre of death metal for Sodom.
+Inserted genre of german metal for Sodom.
+Inserted genre of groove metal for Sodom.
+Inserted genre of metal for Sodom.
+Inserted genre of nwobhm for Sodom.
+Inserted genre of speed metal for Sodom.
+Inserted genre of thrash metal for Sodom.
+Cirith Ungol has 7 genres:
+doom metal
+metal
+neo-trad metal
+nwobhm
+nwothm
+speed metal
+thrash metal
+Yay! We are connected to the database!
+Inserted genre of doom metal for Cirith Ungol.
+Inserted genre of metal for Cirith Ungol.
+Inserted genre of neo-trad metal for Cirith Ungol.
+Inserted genre of nwobhm for Cirith Ungol.
+Inserted genre of nwothm for Cirith Ungol.
+Inserted genre of speed metal for Cirith Ungol.
+Inserted genre of thrash metal for Cirith Ungol.
+Public Enemy has 7 genres:
+conscious hip hop
+east coast hip hop
+gangster rap
+hardcore hip hop
+hip hop
+old school hip hop
+rap
+Yay! We are connected to the database!
+Inserted genre of conscious hip hop for Public Enemy.
+Inserted genre of east coast hip hop for Public Enemy.
+Inserted genre of gangster rap for Public Enemy.
+Inserted genre of hardcore hip hop for Public Enemy.
+Inserted genre of hip hop for Public Enemy.
+Inserted genre of old school hip hop for Public Enemy.
+Inserted genre of rap for Public Enemy.
+N.W.A. has 8 genres:
+conscious hip hop
+gangster rap
+hardcore hip hop
+hip hop
+old school hip hop
+pop rap
+rap
+west coast rap
+Yay! We are connected to the database!
+Inserted genre of conscious hip hop for N.W.A..
+Inserted genre of gangster rap for N.W.A..
+Inserted genre of hardcore hip hop for N.W.A..
+Inserted genre of hip hop for N.W.A..
+Inserted genre of old school hip hop for N.W.A..
+Inserted genre of pop rap for N.W.A..
+Inserted genre of rap for N.W.A..
+Inserted genre of west coast rap for N.W.A..
+Beastie Boys has 5 genres:
+alternative rock
+east coast hip hop
+hip hop
+old school hip hop
+rap
+Yay! We are connected to the database!
+Inserted genre of alternative rock for Beastie Boys.
+Inserted genre of east coast hip hop for Beastie Boys.
+Inserted genre of hip hop for Beastie Boys.
+Inserted genre of old school hip hop for Beastie Boys.
+Inserted genre of rap for Beastie Boys.
+Celtic Frost has 9 genres:
+black metal
+black thrash
+crossover thrash
+death metal
+doom metal
+groove metal
+metal
+speed metal
+swiss metal
+Yay! We are connected to the database!
+Inserted genre of black metal for Celtic Frost.
+Inserted genre of black thrash for Celtic Frost.
+Inserted genre of crossover thrash for Celtic Frost.
+Inserted genre of death metal for Celtic Frost.
+Inserted genre of doom metal for Celtic Frost.
+Inserted genre of groove metal for Celtic Frost.
+Inserted genre of metal for Celtic Frost.
+Inserted genre of speed metal for Celtic Frost.
+Inserted genre of swiss metal for Celtic Frost.
+Saint has 1 genres:
+christian metal
+Yay! We are connected to the database!
+Inserted genre of christian metal for Saint.
+12th Tribe has 0 genres:
+Yay! We are connected to the database!
+77s has 1 genres:
+deep christian rock
+Yay! We are connected to the database!
+Inserted genre of deep christian rock for 77s.
+Mortification has 3 genres:
+christian hardcore
+christian metal
+unblack metal
+Yay! We are connected to the database!
+Inserted genre of christian hardcore for Mortification.
+Inserted genre of christian metal for Mortification.
+Inserted genre of unblack metal for Mortification.
+Living Sacrifice has 4 genres:
+christian hardcore
+christian metal
+christian punk
+unblack metal
+Yay! We are connected to the database!
+Inserted genre of christian hardcore for Living Sacrifice.
+Inserted genre of christian metal for Living Sacrifice.
+Inserted genre of christian punk for Living Sacrifice.
+Inserted genre of unblack metal for Living Sacrifice.
+say what? has 0 genres:
+Yay! We are connected to the database!
+Barren Cross has 2 genres:
+christian metal
+deep christian rock
+Yay! We are connected to the database!
+Inserted genre of christian metal for Barren Cross.
+Inserted genre of deep christian rock for Barren Cross.
+Jerusalem has 0 genres:
+Yay! We are connected to the database!
+Lust Control has 1 genres:
+christian punk
+Yay! We are connected to the database!
+Inserted genre of christian punk for Lust Control.
+Argyle Park has 0 genres:
+Yay! We are connected to the database!
+Deliverance has 3 genres:
+christian metal
+christian punk
+unblack metal
+Yay! We are connected to the database!
+Inserted genre of christian metal for Deliverance.
+Inserted genre of christian punk for Deliverance.
+Inserted genre of unblack metal for Deliverance.
+Tourniquet has 3 genres:
+christian hardcore
+christian metal
+christian punk
+Yay! We are connected to the database!
+Inserted genre of christian hardcore for Tourniquet.
+Inserted genre of christian metal for Tourniquet.
+Inserted genre of christian punk for Tourniquet.
+Mortal has 3 genres:
+christian metal
+christian punk
+deep christian rock
+Yay! We are connected to the database!
+Inserted genre of christian metal for Mortal.
+Inserted genre of christian punk for Mortal.
+Inserted genre of deep christian rock for Mortal.
+Klank has 0 genres:
+Yay! We are connected to the database!
+Circle of Dust has 2 genres:
+industrial metal
+industrial rock
+Yay! We are connected to the database!
+Inserted genre of industrial metal for Circle of Dust.
+Inserted genre of industrial rock for Circle of Dust.
+Deitiphobia has 0 genres:
+Yay! We are connected to the database!
+Rosarium² has 0 genres:
+Yay! We are connected to the database!
+MxPx has 5 genres:
+christian punk
+emo
+pop punk
+punk
+skate punk
+Yay! We are connected to the database!
+Inserted genre of christian punk for MxPx.
+Inserted genre of emo for MxPx.
+Inserted genre of pop punk for MxPx.
+Inserted genre of punk for MxPx.
+Inserted genre of skate punk for MxPx.
+Whitecross has 2 genres:
+christian metal
+deep christian rock
+Yay! We are connected to the database!
+Inserted genre of christian metal for Whitecross.
+Inserted genre of deep christian rock for Whitecross.
+Ninety Pound Wuss has 2 genres:
+christian hardcore
+christian punk
+Yay! We are connected to the database!
+Inserted genre of christian hardcore for Ninety Pound Wuss.
+Inserted genre of christian punk for Ninety Pound Wuss.
+Ghoti Hook has 1 genres:
+christian punk
+Yay! We are connected to the database!
+Inserted genre of christian punk for Ghoti Hook.
+Five Iron Frenzy has 5 genres:
+christian punk
+christian rock
+modern ska punk
+ska
+ska punk
+Yay! We are connected to the database!
+Inserted genre of christian punk for Five Iron Frenzy.
+Inserted genre of christian rock for Five Iron Frenzy.
+Inserted genre of modern ska punk for Five Iron Frenzy.
+Inserted genre of ska for Five Iron Frenzy.
+Inserted genre of ska punk for Five Iron Frenzy.
+Larry Norman has 2 genres:
+christian metal
+deep christian rock
+Yay! We are connected to the database!
+Inserted genre of christian metal for Larry Norman.
+Inserted genre of deep christian rock for Larry Norman.
+Scaterd Few has 2 genres:
+christian punk
+deep christian rock
+Yay! We are connected to the database!
+Inserted genre of christian punk for Scaterd Few.
+Inserted genre of deep christian rock for Scaterd Few.
+Rainbow has 7 genres:
+album rock
+blues-rock
+classic rock
+glam metal
+hard rock
+metal
+rock
+Yay! We are connected to the database!
+Inserted genre of album rock for Rainbow.
+Inserted genre of blues-rock for Rainbow.
+Inserted genre of classic rock for Rainbow.
+Inserted genre of glam metal for Rainbow.
+Inserted genre of hard rock for Rainbow.
+Inserted genre of metal for Rainbow.
+Inserted genre of rock for Rainbow.
+12th Tribe has 0 genres:
+Yay! We are connected to the database!
+2Pac has 6 genres:
+g funk
+gangster rap
+hip hop
+pop rap
+rap
+west coast rap
+Yay! We are connected to the database!
+Inserted genre of g funk for 2Pac.
+Inserted genre of gangster rap for 2Pac.
+Inserted genre of hip hop for 2Pac.
+Inserted genre of pop rap for 2Pac.
+Inserted genre of rap for 2Pac.
+Inserted genre of west coast rap for 2Pac.
+Ghost has 1 genres:
+metal
+Yay! We are connected to the database!
+Inserted genre of metal for Ghost.
+Jerry Lee Lewis has 5 genres:
+brill building pop
+piano rock
+rock-and-roll
+rockabilly
+traditional country
+Yay! We are connected to the database!
+Inserted genre of brill building pop for Jerry Lee Lewis.
+Inserted genre of piano rock for Jerry Lee Lewis.
+Inserted genre of rock-and-roll for Jerry Lee Lewis.
+Inserted genre of rockabilly for Jerry Lee Lewis.
+Inserted genre of traditional country for Jerry Lee Lewis.
+Little Richard has 7 genres:
+adult standards
+brill building pop
+christmas
+motown
+rock-and-roll
+rockabilly
+soul
+Yay! We are connected to the database!
+Inserted genre of adult standards for Little Richard.
+Inserted genre of brill building pop for Little Richard.
+Inserted genre of christmas for Little Richard.
+Inserted genre of motown for Little Richard.
+Inserted genre of rock-and-roll for Little Richard.
+Inserted genre of rockabilly for Little Richard.
+Inserted genre of soul for Little Richard.
+Bauhaus has 11 genres:
+alternative rock
+dance rock
+dark wave
+experimental
+gothic rock
+industrial
+industrial rock
+new romantic
+new wave
+post-punk
+uk post-punk
+Yay! We are connected to the database!
+Inserted genre of alternative rock for Bauhaus.
+Inserted genre of dance rock for Bauhaus.
+Inserted genre of dark wave for Bauhaus.
+Inserted genre of experimental for Bauhaus.
+Inserted genre of gothic rock for Bauhaus.
+Inserted genre of industrial for Bauhaus.
+Inserted genre of industrial rock for Bauhaus.
+Inserted genre of new romantic for Bauhaus.
+Inserted genre of new wave for Bauhaus.
+Inserted genre of post-punk for Bauhaus.
+Inserted genre of uk post-punk for Bauhaus.
+Black Flag has 7 genres:
+alternative rock
+crossover thrash
+grunge
+hardcore punk
+post-hardcore
+punk
+skate punk
+Yay! We are connected to the database!
+Inserted genre of alternative rock for Black Flag.
+Inserted genre of crossover thrash for Black Flag.
+Inserted genre of grunge for Black Flag.
+Inserted genre of hardcore punk for Black Flag.
+Inserted genre of post-hardcore for Black Flag.
+Inserted genre of punk for Black Flag.
+Inserted genre of skate punk for Black Flag.
+Blondie has 9 genres:
+candy pop
+dance rock
+new romantic
+new wave
+new wave pop
+permanent wave
+pop rock
+power pop
+rock
+Yay! We are connected to the database!
+Inserted genre of candy pop for Blondie.
+Inserted genre of dance rock for Blondie.
+Inserted genre of new romantic for Blondie.
+Inserted genre of new wave for Blondie.
+Inserted genre of new wave pop for Blondie.
+Inserted genre of permanent wave for Blondie.
+Inserted genre of pop rock for Blondie.
+Inserted genre of power pop for Blondie.
+Inserted genre of rock for Blondie.
+Dead Kennedys has 7 genres:
+alternative rock
+garage rock
+hardcore punk
+punk
+rock
+ska punk
+skate punk
+Yay! We are connected to the database!
+Inserted genre of alternative rock for Dead Kennedys.
+Inserted genre of garage rock for Dead Kennedys.
+Inserted genre of hardcore punk for Dead Kennedys.
+Inserted genre of punk for Dead Kennedys.
+Inserted genre of rock for Dead Kennedys.
+Inserted genre of ska punk for Dead Kennedys.
+Inserted genre of skate punk for Dead Kennedys.
+Def Leppard has 4 genres:
+album rock
+glam metal
+hard rock
+rock
+Yay! We are connected to the database!
+Inserted genre of album rock for Def Leppard.
+Inserted genre of glam metal for Def Leppard.
+Inserted genre of hard rock for Def Leppard.
+Inserted genre of rock for Def Leppard.
+DEVO has 14 genres:
+alternative rock
+art rock
+dance rock
+experimental
+experimental rock
+neo-psychedelic
+new romantic
+new wave
+new wave pop
+post-punk
+punk
+synthpop
+uk post-punk
+zolo
+Yay! We are connected to the database!
+Inserted genre of alternative rock for DEVO.
+Inserted genre of art rock for DEVO.
+Inserted genre of dance rock for DEVO.
+Inserted genre of experimental for DEVO.
+Inserted genre of experimental rock for DEVO.
+Inserted genre of neo-psychedelic for DEVO.
+Inserted genre of new romantic for DEVO.
+Inserted genre of new wave for DEVO.
+Inserted genre of new wave pop for DEVO.
+Inserted genre of post-punk for DEVO.
+Inserted genre of punk for DEVO.
+Inserted genre of synthpop for DEVO.
+Inserted genre of uk post-punk for DEVO.
+Inserted genre of zolo for DEVO.
+Duran Duran has 7 genres:
+dance rock
+new romantic
+new wave
+new wave pop
+rock
+soft rock
+synthpop
+Yay! We are connected to the database!
+Inserted genre of dance rock for Duran Duran.
+Inserted genre of new romantic for Duran Duran.
+Inserted genre of new wave for Duran Duran.
+Inserted genre of new wave pop for Duran Duran.
+Inserted genre of rock for Duran Duran.
+Inserted genre of soft rock for Duran Duran.
+Inserted genre of synthpop for Duran Duran.
+Elton John has 5 genres:
+glam rock
+mellow gold
+piano rock
+rock
+soft rock
+Yay! We are connected to the database!
+Inserted genre of glam rock for Elton John.
+Inserted genre of mellow gold for Elton John.
+Inserted genre of piano rock for Elton John.
+Inserted genre of rock for Elton John.
+Inserted genre of soft rock for Elton John.
+King Diamond has 12 genres:
+album rock
+danish metal
+death metal
+groove metal
+hard rock
+metal
+nwobhm
+power metal
+progressive metal
+rock
+speed metal
+thrash metal
+Yay! We are connected to the database!
+Inserted genre of album rock for King Diamond.
+Inserted genre of danish metal for King Diamond.
+Inserted genre of death metal for King Diamond.
+Inserted genre of groove metal for King Diamond.
+Inserted genre of hard rock for King Diamond.
+Inserted genre of metal for King Diamond.
+Inserted genre of nwobhm for King Diamond.
+Inserted genre of power metal for King Diamond.
+Inserted genre of progressive metal for King Diamond.
+Inserted genre of rock for King Diamond.
+Inserted genre of speed metal for King Diamond.
+Inserted genre of thrash metal for King Diamond.
+The Kinks has 12 genres:
+album rock
+art rock
+british invasion
+classic rock
+dance rock
+folk rock
+glam rock
+mellow gold
+protopunk
+psychedelic rock
+rock
+roots rock
+Yay! We are connected to the database!
+Inserted genre of album rock for The Kinks.
+Inserted genre of art rock for The Kinks.
+Inserted genre of british invasion for The Kinks.
+Inserted genre of classic rock for The Kinks.
+Inserted genre of dance rock for The Kinks.
+Inserted genre of folk rock for The Kinks.
+Inserted genre of glam rock for The Kinks.
+Inserted genre of mellow gold for The Kinks.
+Inserted genre of protopunk for The Kinks.
+Inserted genre of psychedelic rock for The Kinks.
+Inserted genre of rock for The Kinks.
+Inserted genre of roots rock for The Kinks.
+Led Zeppelin has 4 genres:
+album rock
+classic rock
+hard rock
+rock
+Yay! We are connected to the database!
+Inserted genre of album rock for Led Zeppelin.
+Inserted genre of classic rock for Led Zeppelin.
+Inserted genre of hard rock for Led Zeppelin.
+Inserted genre of rock for Led Zeppelin.
+Kraftwerk has 10 genres:
+art pop
+art rock
+dance rock
+electro
+electronic
+german techno
+krautrock
+new romantic
+new wave
+synthpop
+Yay! We are connected to the database!
+Inserted genre of art pop for Kraftwerk.
+Inserted genre of art rock for Kraftwerk.
+Inserted genre of dance rock for Kraftwerk.
+Inserted genre of electro for Kraftwerk.
+Inserted genre of electronic for Kraftwerk.
+Inserted genre of german techno for Kraftwerk.
+Inserted genre of krautrock for Kraftwerk.
+Inserted genre of new romantic for Kraftwerk.
+Inserted genre of new wave for Kraftwerk.
+Inserted genre of synthpop for Kraftwerk.
+Mötley Crüe has 7 genres:
+album rock
+classic rock
+glam metal
+hard rock
+metal
+rock
+sleaze rock
+Yay! We are connected to the database!
+Inserted genre of album rock for Mötley Crüe.
+Inserted genre of classic rock for Mötley Crüe.
+Inserted genre of glam metal for Mötley Crüe.
+Inserted genre of hard rock for Mötley Crüe.
+Inserted genre of metal for Mötley Crüe.
+Inserted genre of rock for Mötley Crüe.
+Inserted genre of sleaze rock for Mötley Crüe.
+Harry Nilsson has 12 genres:
+art rock
+brill building pop
+bubblegum pop
+classic rock
+folk
+folk rock
+mellow gold
+rock
+roots rock
+singer-songwriter
+soft rock
+traditional folk
+Yay! We are connected to the database!
+Inserted genre of art rock for Harry Nilsson.
+Inserted genre of brill building pop for Harry Nilsson.
+Inserted genre of bubblegum pop for Harry Nilsson.
+Inserted genre of classic rock for Harry Nilsson.
+Inserted genre of folk for Harry Nilsson.
+Inserted genre of folk rock for Harry Nilsson.
+Inserted genre of mellow gold for Harry Nilsson.
+Inserted genre of rock for Harry Nilsson.
+Inserted genre of roots rock for Harry Nilsson.
+Inserted genre of singer-songwriter for Harry Nilsson.
+Inserted genre of soft rock for Harry Nilsson.
+Inserted genre of traditional folk for Harry Nilsson.
+The Smiths has 7 genres:
+dance rock
+indie rock
+madchester
+new wave
+permanent wave
+rock
+uk post-punk
+Yay! We are connected to the database!
+Inserted genre of dance rock for The Smiths.
+Inserted genre of indie rock for The Smiths.
+Inserted genre of madchester for The Smiths.
+Inserted genre of new wave for The Smiths.
+Inserted genre of permanent wave for The Smiths.
+Inserted genre of rock for The Smiths.
+Inserted genre of uk post-punk for The Smiths.
+Rod Stewart has 3 genres:
+mellow gold
+rock
+soft rock
+Yay! We are connected to the database!
+Inserted genre of mellow gold for Rod Stewart.
+Inserted genre of rock for Rod Stewart.
+Inserted genre of soft rock for Rod Stewart.
+Talking Heads has 9 genres:
+alternative rock
+art rock
+dance rock
+folk rock
+new wave
+permanent wave
+post-punk
+rock
+zolo
+Yay! We are connected to the database!
+Inserted genre of alternative rock for Talking Heads.
+Inserted genre of art rock for Talking Heads.
+Inserted genre of dance rock for Talking Heads.
+Inserted genre of folk rock for Talking Heads.
+Inserted genre of new wave for Talking Heads.
+Inserted genre of permanent wave for Talking Heads.
+Inserted genre of post-punk for Talking Heads.
+Inserted genre of rock for Talking Heads.
+Inserted genre of zolo for Talking Heads.
+Van Halen has 5 genres:
+album rock
+classic rock
+hard rock
+metal
+rock
+Yay! We are connected to the database!
+Inserted genre of album rock for Van Halen.
+Inserted genre of classic rock for Van Halen.
+Inserted genre of hard rock for Van Halen.
+Inserted genre of metal for Van Halen.
+Inserted genre of rock for Van Halen.
+The Who has 11 genres:
+album rock
+art rock
+british invasion
+classic rock
+folk rock
+hard rock
+mellow gold
+protopunk
+psychedelic rock
+rock
+roots rock
+Yay! We are connected to the database!
+Inserted genre of album rock for The Who.
+Inserted genre of art rock for The Who.
+Inserted genre of british invasion for The Who.
+Inserted genre of classic rock for The Who.
+Inserted genre of folk rock for The Who.
+Inserted genre of hard rock for The Who.
+Inserted genre of mellow gold for The Who.
+Inserted genre of protopunk for The Who.
+Inserted genre of psychedelic rock for The Who.
+Inserted genre of rock for The Who.
+Inserted genre of roots rock for The Who.
+Neil Young has 9 genres:
+album rock
+classic canadian rock
+classic rock
+mellow gold
+permanent wave
+psychedelic rock
+rock
+roots rock
+singer-songwriter
+Yay! We are connected to the database!
+Inserted genre of album rock for Neil Young.
+Inserted genre of classic canadian rock for Neil Young.
+Inserted genre of classic rock for Neil Young.
+Inserted genre of mellow gold for Neil Young.
+Inserted genre of permanent wave for Neil Young.
+Inserted genre of psychedelic rock for Neil Young.
+Inserted genre of rock for Neil Young.
+Inserted genre of roots rock for Neil Young.
+Inserted genre of singer-songwriter for Neil Young.
+Twisted Sister has 5 genres:
+album rock
+glam metal
+hard rock
+metal
+rock
+Yay! We are connected to the database!
+Inserted genre of album rock for Twisted Sister.
+Inserted genre of glam metal for Twisted Sister.
+Inserted genre of hard rock for Twisted Sister.
+Inserted genre of metal for Twisted Sister.
+Inserted genre of rock for Twisted Sister.
+Billy Idol has 10 genres:
+album rock
+classic rock
+dance rock
+hard rock
+mellow gold
+new romantic
+new wave
+new wave pop
+rock
+soft rock
+Yay! We are connected to the database!
+Inserted genre of album rock for Billy Idol.
+Inserted genre of classic rock for Billy Idol.
+Inserted genre of dance rock for Billy Idol.
+Inserted genre of hard rock for Billy Idol.
+Inserted genre of mellow gold for Billy Idol.
+Inserted genre of new romantic for Billy Idol.
+Inserted genre of new wave for Billy Idol.
+Inserted genre of new wave pop for Billy Idol.
+Inserted genre of rock for Billy Idol.
+Inserted genre of soft rock for Billy Idol.
+Fats Domino has 11 genres:
+adult standards
+brill building pop
+christmas
+louisiana blues
+lounge
+new orleans blues
+piano blues
+rhythm and blues
+rock-and-roll
+rockabilly
+soul
+Yay! We are connected to the database!
+Inserted genre of adult standards for Fats Domino.
+Inserted genre of brill building pop for Fats Domino.
+Inserted genre of christmas for Fats Domino.
+Inserted genre of louisiana blues for Fats Domino.
+Inserted genre of lounge for Fats Domino.
+Inserted genre of new orleans blues for Fats Domino.
+Inserted genre of piano blues for Fats Domino.
+Inserted genre of rhythm and blues for Fats Domino.
+Inserted genre of rock-and-roll for Fats Domino.
+Inserted genre of rockabilly for Fats Domino.
+Inserted genre of soul for Fats Domino.
+Chuck Berry has 7 genres:
+christmas
+classic rock
+folk rock
+rock
+rock-and-roll
+rockabilly
+soul
+Yay! We are connected to the database!
+Inserted genre of christmas for Chuck Berry.
+Inserted genre of classic rock for Chuck Berry.
+Inserted genre of folk rock for Chuck Berry.
+Inserted genre of rock for Chuck Berry.
+Inserted genre of rock-and-roll for Chuck Berry.
+Inserted genre of rockabilly for Chuck Berry.
+Inserted genre of soul for Chuck Berry.
+Muddy Waters has 7 genres:
+blues
+blues-rock
+chicago blues
+classic rock
+electric blues
+soul
+traditional blues
+Yay! We are connected to the database!
+Inserted genre of blues for Muddy Waters.
+Inserted genre of blues-rock for Muddy Waters.
+Inserted genre of chicago blues for Muddy Waters.
+Inserted genre of classic rock for Muddy Waters.
+Inserted genre of electric blues for Muddy Waters.
+Inserted genre of soul for Muddy Waters.
+Inserted genre of traditional blues for Muddy Waters.
+Carl Perkins has 2 genres:
+rock-and-roll
+rockabilly
+Yay! We are connected to the database!
+Inserted genre of rock-and-roll for Carl Perkins.
+Inserted genre of rockabilly for Carl Perkins.
+Eddie Cochran has 6 genres:
+adult standards
+brill building pop
+christmas
+doo-wop
+rock-and-roll
+rockabilly
+Yay! We are connected to the database!
+Inserted genre of adult standards for Eddie Cochran.
+Inserted genre of brill building pop for Eddie Cochran.
+Inserted genre of christmas for Eddie Cochran.
+Inserted genre of doo-wop for Eddie Cochran.
+Inserted genre of rock-and-roll for Eddie Cochran.
+Inserted genre of rockabilly for Eddie Cochran.
+Gene Vincent has 2 genres:
+rock-and-roll
+rockabilly
+Yay! We are connected to the database!
+Inserted genre of rock-and-roll for Gene Vincent.
+Inserted genre of rockabilly for Gene Vincent.
+Gene Vincent & His Blue Caps has 2 genres:
+rock-and-roll
+rockabilly
+Yay! We are connected to the database!
+Inserted genre of rock-and-roll for Gene Vincent & His Blue Caps.
+Inserted genre of rockabilly for Gene Vincent & His Blue Caps.
+Roy Orbison has 9 genres:
+adult standards
+brill building pop
+bubblegum pop
+christmas
+folk rock
+mellow gold
+rock
+rock-and-roll
+rockabilly
+Yay! We are connected to the database!
+Inserted genre of adult standards for Roy Orbison.
+Inserted genre of brill building pop for Roy Orbison.
+Inserted genre of bubblegum pop for Roy Orbison.
+Inserted genre of christmas for Roy Orbison.
+Inserted genre of folk rock for Roy Orbison.
+Inserted genre of mellow gold for Roy Orbison.
+Inserted genre of rock for Roy Orbison.
+Inserted genre of rock-and-roll for Roy Orbison.
+Inserted genre of rockabilly for Roy Orbison.
+Ramones has 4 genres:
+permanent wave
+punk
+rock
+skate punk
+Yay! We are connected to the database!
+Inserted genre of permanent wave for Ramones.
+Inserted genre of punk for Ramones.
+Inserted genre of rock for Ramones.
+Inserted genre of skate punk for Ramones.
+The Doors has 5 genres:
+album rock
+classic rock
+piano rock
+psychedelic rock
+rock
+Yay! We are connected to the database!
+Inserted genre of album rock for The Doors.
+Inserted genre of classic rock for The Doors.
+Inserted genre of piano rock for The Doors.
+Inserted genre of psychedelic rock for The Doors.
+Inserted genre of rock for The Doors.
+Generation X has 2 genres:
+pub rock
+punk
+Yay! We are connected to the database!
+Inserted genre of pub rock for Generation X.
+Inserted genre of punk for Generation X.
+Deep Purple has 7 genres:
+album rock
+blues-rock
+classic rock
+hard rock
+metal
+psychedelic rock
+rock
+Yay! We are connected to the database!
+Inserted genre of album rock for Deep Purple.
+Inserted genre of blues-rock for Deep Purple.
+Inserted genre of classic rock for Deep Purple.
+Inserted genre of hard rock for Deep Purple.
+Inserted genre of metal for Deep Purple.
+Inserted genre of psychedelic rock for Deep Purple.
+Inserted genre of rock for Deep Purple.
+Parliament has 5 genres:
+deep funk
+funk
+motown
+p funk
+soul
+Yay! We are connected to the database!
+Inserted genre of deep funk for Parliament.
+Inserted genre of funk for Parliament.
+Inserted genre of motown for Parliament.
+Inserted genre of p funk for Parliament.
+Inserted genre of soul for Parliament.
+Ricky Nelson has 12 genres:
+adult standards
+brill building pop
+bubblegum pop
+christmas
+doo-wop
+folk rock
+lounge
+merseybeat
+nashville sound
+rhythm and blues
+rock-and-roll
+rockabilly
+Yay! We are connected to the database!
+Inserted genre of adult standards for Ricky Nelson.
+Inserted genre of brill building pop for Ricky Nelson.
+Inserted genre of bubblegum pop for Ricky Nelson.
+Inserted genre of christmas for Ricky Nelson.
+Inserted genre of doo-wop for Ricky Nelson.
+Inserted genre of folk rock for Ricky Nelson.
+Inserted genre of lounge for Ricky Nelson.
+Inserted genre of merseybeat for Ricky Nelson.
+Inserted genre of nashville sound for Ricky Nelson.
+Inserted genre of rhythm and blues for Ricky Nelson.
+Inserted genre of rock-and-roll for Ricky Nelson.
+Inserted genre of rockabilly for Ricky Nelson.
+Guns N' Roses has 3 genres:
+glam metal
+hard rock
+rock
+Yay! We are connected to the database!
+Inserted genre of glam metal for Guns N' Roses.
+Inserted genre of hard rock for Guns N' Roses.
+Inserted genre of rock for Guns N' Roses.
+Cream has 10 genres:
+album rock
+art rock
+blues-rock
+classic rock
+folk rock
+hard rock
+mellow gold
+psychedelic rock
+rock
+roots rock
+Yay! We are connected to the database!
+Inserted genre of album rock for Cream.
+Inserted genre of art rock for Cream.
+Inserted genre of blues-rock for Cream.
+Inserted genre of classic rock for Cream.
+Inserted genre of folk rock for Cream.
+Inserted genre of hard rock for Cream.
+Inserted genre of mellow gold for Cream.
+Inserted genre of psychedelic rock for Cream.
+Inserted genre of rock for Cream.
+Inserted genre of roots rock for Cream.
+Yes has 9 genres:
+album rock
+art rock
+classic rock
+hard rock
+jazz fusion
+progressive rock
+psychedelic rock
+rock
+symphonic rock
+Yay! We are connected to the database!
+Inserted genre of album rock for Yes.
+Inserted genre of art rock for Yes.
+Inserted genre of classic rock for Yes.
+Inserted genre of hard rock for Yes.
+Inserted genre of jazz fusion for Yes.
+Inserted genre of progressive rock for Yes.
+Inserted genre of psychedelic rock for Yes.
+Inserted genre of rock for Yes.
+Inserted genre of symphonic rock for Yes.
+Queen has 2 genres:
+glam rock
+rock
+Yay! We are connected to the database!
+Inserted genre of glam rock for Queen.
+Inserted genre of rock for Queen.
+The Clash has 7 genres:
+alternative rock
+classic rock
+dance rock
+new wave
+permanent wave
+punk
+rock
+Yay! We are connected to the database!
+Inserted genre of alternative rock for The Clash.
+Inserted genre of classic rock for The Clash.
+Inserted genre of dance rock for The Clash.
+Inserted genre of new wave for The Clash.
+Inserted genre of permanent wave for The Clash.
+Inserted genre of punk for The Clash.
+Inserted genre of rock for The Clash.
+R.E.M. has 4 genres:
+alternative rock
+permanent wave
+pop rock
+rock
+Yay! We are connected to the database!
+Inserted genre of alternative rock for R.E.M..
+Inserted genre of permanent wave for R.E.M..
+Inserted genre of pop rock for R.E.M..
+Inserted genre of rock for R.E.M..
+XTC has 15 genres:
+alternative rock
+art pop
+art rock
+dance rock
+jangle pop
+neo-psychedelic
+new romantic
+new wave
+new wave pop
+post-punk
+power pop
+pub rock
+rock
+uk post-punk
+zolo
+Yay! We are connected to the database!
+Inserted genre of alternative rock for XTC.
+Inserted genre of art pop for XTC.
+Inserted genre of art rock for XTC.
+Inserted genre of dance rock for XTC.
+Inserted genre of jangle pop for XTC.
+Inserted genre of neo-psychedelic for XTC.
+Inserted genre of new romantic for XTC.
+Inserted genre of new wave for XTC.
+Inserted genre of new wave pop for XTC.
+Inserted genre of post-punk for XTC.
+Inserted genre of power pop for XTC.
+Inserted genre of pub rock for XTC.
+Inserted genre of rock for XTC.
+Inserted genre of uk post-punk for XTC.
+Inserted genre of zolo for XTC.
+The B-52's has 10 genres:
+art rock
+dance rock
+new romantic
+new wave
+new wave pop
+permanent wave
+pop rock
+post-punk
+rock
+zolo
+Yay! We are connected to the database!
+Inserted genre of art rock for The B-52's.
+Inserted genre of dance rock for The B-52's.
+Inserted genre of new romantic for The B-52's.
+Inserted genre of new wave for The B-52's.
+Inserted genre of new wave pop for The B-52's.
+Inserted genre of permanent wave for The B-52's.
+Inserted genre of pop rock for The B-52's.
+Inserted genre of post-punk for The B-52's.
+Inserted genre of rock for The B-52's.
+Inserted genre of zolo for The B-52's.
+John Lee Hooker has 8 genres:
+blues
+blues-rock
+classic rock
+delta blues
+electric blues
+memphis blues
+soul
+traditional blues
+Yay! We are connected to the database!
+Inserted genre of blues for John Lee Hooker.
+Inserted genre of blues-rock for John Lee Hooker.
+Inserted genre of classic rock for John Lee Hooker.
+Inserted genre of delta blues for John Lee Hooker.
+Inserted genre of electric blues for John Lee Hooker.
+Inserted genre of memphis blues for John Lee Hooker.
+Inserted genre of soul for John Lee Hooker.
+Inserted genre of traditional blues for John Lee Hooker.
+B.B. King has 7 genres:
+blues
+blues-rock
+classic rock
+electric blues
+jazz blues
+soul blues
+traditional blues
+Yay! We are connected to the database!
+Inserted genre of blues for B.B. King.
+Inserted genre of blues-rock for B.B. King.
+Inserted genre of classic rock for B.B. King.
+Inserted genre of electric blues for B.B. King.
+Inserted genre of jazz blues for B.B. King.
+Inserted genre of soul blues for B.B. King.
+Inserted genre of traditional blues for B.B. King.
+Robert Johnson has 6 genres:
+acoustic blues
+blues
+blues-rock
+classic rock
+delta blues
+traditional blues
+Yay! We are connected to the database!
+Inserted genre of acoustic blues for Robert Johnson.
+Inserted genre of blues for Robert Johnson.
+Inserted genre of blues-rock for Robert Johnson.
+Inserted genre of classic rock for Robert Johnson.
+Inserted genre of delta blues for Robert Johnson.
+Inserted genre of traditional blues for Robert Johnson.
+Rev. Gary Davis has 7 genres:
+acoustic blues
+blues
+country blues
+gospel blues
+piedmont blues
+traditional blues
+traditional folk
+Yay! We are connected to the database!
+Inserted genre of acoustic blues for Rev. Gary Davis.
+Inserted genre of blues for Rev. Gary Davis.
+Inserted genre of country blues for Rev. Gary Davis.
+Inserted genre of gospel blues for Rev. Gary Davis.
+Inserted genre of piedmont blues for Rev. Gary Davis.
+Inserted genre of traditional blues for Rev. Gary Davis.
+Inserted genre of traditional folk for Rev. Gary Davis.
+Blind Willie Johnson has 8 genres:
+acoustic blues
+appalachian folk
+blues
+country blues
+gospel blues
+texas blues
+traditional blues
+traditional folk
+Yay! We are connected to the database!
+Inserted genre of acoustic blues for Blind Willie Johnson.
+Inserted genre of appalachian folk for Blind Willie Johnson.
+Inserted genre of blues for Blind Willie Johnson.
+Inserted genre of country blues for Blind Willie Johnson.
+Inserted genre of gospel blues for Blind Willie Johnson.
+Inserted genre of texas blues for Blind Willie Johnson.
+Inserted genre of traditional blues for Blind Willie Johnson.
+Inserted genre of traditional folk for Blind Willie Johnson.
+Bill Cosby has 0 genres:
+Yay! We are connected to the database!
+Richard Pryor has 2 genres:
+comedy
+comic
+Yay! We are connected to the database!
+Inserted genre of comedy for Richard Pryor.
+Inserted genre of comic for Richard Pryor.
+Steve Martin has 3 genres:
+comedy
+comic
+progressive bluegrass
+Yay! We are connected to the database!
+Inserted genre of comedy for Steve Martin.
+Inserted genre of comic for Steve Martin.
+Inserted genre of progressive bluegrass for Steve Martin.
+Cheech & Chong has 2 genres:
+comedy
+comic
+Yay! We are connected to the database!
+Inserted genre of comedy for Cheech & Chong.
+Inserted genre of comic for Cheech & Chong.
+Eddie Murphy has 1 genres:
+comedy
+Yay! We are connected to the database!
+Inserted genre of comedy for Eddie Murphy.
+Ted Nugent has 8 genres:
+album rock
+blues-rock
+classic rock
+glam metal
+hard rock
+metal
+rock
+southern rock
+Yay! We are connected to the database!
+Inserted genre of album rock for Ted Nugent.
+Inserted genre of blues-rock for Ted Nugent.
+Inserted genre of classic rock for Ted Nugent.
+Inserted genre of glam metal for Ted Nugent.
+Inserted genre of hard rock for Ted Nugent.
+Inserted genre of metal for Ted Nugent.
+Inserted genre of rock for Ted Nugent.
+Inserted genre of southern rock for Ted Nugent.
+The Amboy Dukes has 6 genres:
+blues-rock
+classic garage rock
+classic rock
+freakbeat
+protopunk
+psychedelic rock
+Yay! We are connected to the database!
+Inserted genre of blues-rock for The Amboy Dukes.
+Inserted genre of classic garage rock for The Amboy Dukes.
+Inserted genre of classic rock for The Amboy Dukes.
+Inserted genre of freakbeat for The Amboy Dukes.
+Inserted genre of protopunk for The Amboy Dukes.
+Inserted genre of psychedelic rock for The Amboy Dukes.
+Janet Jackson has 6 genres:
+dance pop
+hip pop
+neo soul
+pop
+r&b
+urban contemporary
+Yay! We are connected to the database!
+Inserted genre of dance pop for Janet Jackson.
+Inserted genre of hip pop for Janet Jackson.
+Inserted genre of neo soul for Janet Jackson.
+Inserted genre of pop for Janet Jackson.
+Inserted genre of r&b for Janet Jackson.
+Inserted genre of urban contemporary for Janet Jackson.
+John Prine has 14 genres:
+alternative country
+country rock
+folk
+folk rock
+folk-pop
+mellow gold
+new americana
+outlaw country
+rock
+roots rock
+singer-songwriter
+texas country
+traditional country
+traditional folk
+Yay! We are connected to the database!
+Inserted genre of alternative country for John Prine.
+Inserted genre of country rock for John Prine.
+Inserted genre of folk for John Prine.
+Inserted genre of folk rock for John Prine.
+Inserted genre of folk-pop for John Prine.
+Inserted genre of mellow gold for John Prine.
+Inserted genre of new americana for John Prine.
+Inserted genre of outlaw country for John Prine.
+Inserted genre of rock for John Prine.
+Inserted genre of roots rock for John Prine.
+Inserted genre of singer-songwriter for John Prine.
+Inserted genre of texas country for John Prine.
+Inserted genre of traditional country for John Prine.
+Inserted genre of traditional folk for John Prine.
+Roxy Music has 16 genres:
+album rock
+art pop
+art rock
+classic rock
+dance rock
+glam rock
+melancholia
+mellow gold
+new romantic
+new wave
+new wave pop
+post-punk
+protopunk
+rock
+soft rock
+uk post-punk
+Yay! We are connected to the database!
+Inserted genre of album rock for Roxy Music.
+Inserted genre of art pop for Roxy Music.
+Inserted genre of art rock for Roxy Music.
+Inserted genre of classic rock for Roxy Music.
+Inserted genre of dance rock for Roxy Music.
+Inserted genre of glam rock for Roxy Music.
+Inserted genre of melancholia for Roxy Music.
+Inserted genre of mellow gold for Roxy Music.
+Inserted genre of new romantic for Roxy Music.
+Inserted genre of new wave for Roxy Music.
+Inserted genre of new wave pop for Roxy Music.
+Inserted genre of post-punk for Roxy Music.
+Inserted genre of protopunk for Roxy Music.
+Inserted genre of rock for Roxy Music.
+Inserted genre of soft rock for Roxy Music.
+Inserted genre of uk post-punk for Roxy Music.
+Stevie Nicks has 4 genres:
+album rock
+heartland rock
+mellow gold
+rock
+Yay! We are connected to the database!
+Inserted genre of album rock for Stevie Nicks.
+Inserted genre of heartland rock for Stevie Nicks.
+Inserted genre of mellow gold for Stevie Nicks.
+Inserted genre of rock for Stevie Nicks.
+Todd Rundgren has 14 genres:
+album rock
+art rock
+classic rock
+folk
+folk rock
+mellow gold
+power pop
+psychedelic rock
+rock
+roots rock
+singer-songwriter
+soft rock
+symphonic rock
+zolo
+Yay! We are connected to the database!
+Inserted genre of album rock for Todd Rundgren.
+Inserted genre of art rock for Todd Rundgren.
+Inserted genre of classic rock for Todd Rundgren.
+Inserted genre of folk for Todd Rundgren.
+Inserted genre of folk rock for Todd Rundgren.
+Inserted genre of mellow gold for Todd Rundgren.
+Inserted genre of power pop for Todd Rundgren.
+Inserted genre of psychedelic rock for Todd Rundgren.
+Inserted genre of rock for Todd Rundgren.
+Inserted genre of roots rock for Todd Rundgren.
+Inserted genre of singer-songwriter for Todd Rundgren.
+Inserted genre of soft rock for Todd Rundgren.
+Inserted genre of symphonic rock for Todd Rundgren.
+Inserted genre of zolo for Todd Rundgren.
+New York Dolls has 9 genres:
+dance rock
+garage rock
+glam rock
+post-punk
+protopunk
+pub rock
+punk
+punk blues
+uk post-punk
+Yay! We are connected to the database!
+Inserted genre of dance rock for New York Dolls.
+Inserted genre of garage rock for New York Dolls.
+Inserted genre of glam rock for New York Dolls.
+Inserted genre of post-punk for New York Dolls.
+Inserted genre of protopunk for New York Dolls.
+Inserted genre of pub rock for New York Dolls.
+Inserted genre of punk for New York Dolls.
+Inserted genre of punk blues for New York Dolls.
+Inserted genre of uk post-punk for New York Dolls.

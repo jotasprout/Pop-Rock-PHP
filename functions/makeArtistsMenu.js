@@ -1,5 +1,28 @@
 let artists;
 
+/* Fetch all artists and set artist menu HTML */
+function makeArtistsMenu () {
+  fetchMyArtists((error, artists) => {
+    if (error) { // Got an error
+      console.error(error);
+    } else {
+      const menu = document.getElementById('artistMenu');
+      artists.forEach(artist => {
+        console.log(artist);
+        const option = document.createElement('option');
+        option.innerHTML = artist.artistName;
+        option.value = artist.artistID;
+        select.append(option);
+        /*
+
+      option.setAttribute('role','option');
+      
+      */
+      });
+    }
+  });
+};
+
 /* Fetch artists as soon as the page is loaded. */
 document.addEventListener('DOMContentLoaded', (event) => {
   makeArtistMenu();
@@ -40,28 +63,9 @@ function fetchMyArtists () {
   });
 } // end of fetchMyArtists
 
-/* Fetch all artists and set artist menu HTML */
-const makeArtistsMenu = () => {
-  fetchMyArtists((error, artists) => {
-    if (error) { // Got an error
-      console.error(error);
-    } else {
-      const menu = document.getElementById('artistMenu');
-      artists.forEach(artist => {
-        console.log(artist);
-        const option = document.createElement('option');
-        option.innerHTML = artist.artistName;
-        option.value = artist.artistID;
-        select.append(option);
-        /*
 
-      option.setAttribute('role','option');
-      
-      */
-      });
-    }
-  });
-};
+
+// makeArtistsMenu ();
 
 /*
 function sendArtistToServer (artist) {

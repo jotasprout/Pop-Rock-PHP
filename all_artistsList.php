@@ -80,12 +80,12 @@ if(!$getit){ echo 'Cursed-Crap. Did not run the query.'; }
 					<tbody>
 
 					<?php
-					while ( $row = mysqli_fetch_array( $getit ) ) {
-						$artistName = $row[ "artistName" ];
-						$artistPop = $row[ "pop" ];
-						$artistArt = $row[ "artistArt" ];
-						$popDate = $row[ "date" ];
-						?>
+						while ( $row = mysqli_fetch_array( $getit ) ) {
+							$artistName = $row[ "artistName" ];
+							$artistPop = $row[ "pop" ];
+							$artistArt = $row[ "artistArt" ];
+							$popDate = $row[ "date" ];
+					?>
 
 					<tr>
 						<td><img src='<?php echo $artistArt ?>' height='64' width='64'></td>	
