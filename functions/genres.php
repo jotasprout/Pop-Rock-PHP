@@ -14,12 +14,55 @@ $_SESSION['accessToken'] = $accessToken;
 $accessToken = $_SESSION['accessToken'];
 $GLOBALS['api'] = new SpotifyWebAPI\SpotifyWebAPI();
 $GLOBALS['api']->setAccessToken($accessToken);
+// Do I need this next line?
 $baseURL = "https://api.spotify.com/v1/artists/";
 
+$thisArtist = '5a2EaR3hamoenG9rDuVn8j';
 
-$thisArtist = '3D4qYDvoPn5cQxtBm4oseo';
+function getAndStoreSpotifyGenres ($thisArtist) {
+    $artist = $GLOBALS['api']->getArtist($thisArtist);
+    $artistID = $artist->id;
+    $artistNameYucky = $artist->name;
+    $artistName = mysqli_real_escape_string($connekt,$artistNameYucky);
+    $jsonArtistGenres = $artist->genres;
+    $howmany = (count($jsonArtistGenres));
+    echo $artistNameYucky . ' has ' . $howmany . ' genres:<br>';
+    for ($i=0; $i<(count($jsonArtistGenres)); ++$i) {
+        echo $jsonArtistGenres[$i] . '<br>'; 
+    };  
+    addGenres ($artistID, $jsonArtistGenres, $artistNameYucky);
+}
 
-function addGenres ($thisArtist) {
+function addGenres ($artistID, $jsonArtistGenres, $artistNameYucky) {
+
+    $connekt = new mysqli($GLOBALS['host'], $GLOBALS['un'], $GLOBALS['magicword'], $GLOBALS['db']);
+
+    if(!$connekt){
+        echo 'Fiddlesticks! Could not connect to database.<br>';
+    } else {
+        echo 'Yay! We are connected to the database!<br>';
+
+        for ($i=0; $i<(count($jsonArtistGenres)); ++$i) {
+            $insertArtistGenres = "INSERT INTO genres (artistID,genre) VALUES('$artistID','$jsonArtistGenres[$i]')";
+
+            $rockout = $connekt->query($insertArtistGenres);
+
+            if(!$rockout){
+                echo 'Cursed-Crap. Could not insert genre.<br>';
+            } else {
+                echo  'Inserted genre of ' . $jsonArtistGenres[$i] . ' for ' . $artistNameYucky . '<br>';
+            }
+        }  
+    }
+}
+
+getAndStoreSpotifyGenres ($thisArtist);
+
+die();
+
+
+
+function gaddGenresOriginal ($thisArtist) {
 
     // echo $thisArtist . '<br>';
 
@@ -43,10 +86,13 @@ function addGenres ($thisArtist) {
     $jsonArtistGenres = $artist->genres;
     $phpArtistGenres = json_decode($jsonArtistGenres, true);
     // print_r($phpArtistGenres);
-    
 
-    for ($i=0; $i<(count($phpArtistGenres)); ++$i {
-        echo $jsonArtistGenres[$i]; 
+    // echo 'First JSON genre is ' . $jsonArtistGenres[0] . '<br>';
+    $howmany = (count($jsonArtistGenres));
+    echo $artistName . ' has ' . $howmany . ' genres:<br>';
+
+    for ($i=0; $i<(count($jsonArtistGenres)); ++$i) {
+        echo $jsonArtistGenres[$i] . '<br>'; 
     }
 /*
     foreach ($phpArtistGenres->genres as $genre) {
@@ -67,10 +113,5 @@ function addGenres ($thisArtist) {
  */   
 
 }
-
-
-addGenres ($thisArtist);
-
-die();
 
 ?>
