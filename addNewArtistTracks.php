@@ -23,7 +23,7 @@ if(!$getit){ echo 'Cursed-Crap. Did not run the query.'; }
 <!doctype html>
 <html>
 <head>
-    <title>Adding A New Orphan Artist's Albums</title>
+    <title>Adding A New Orphan Artist's Tracks</title>
     <meta charset='UTF-8'> 
     <?php echo $stylesAndSuch; ?>
 </head>
@@ -44,10 +44,9 @@ if(!$getit){ echo 'Cursed-Crap. Did not run the query.'; }
                             while ( $row = mysqli_fetch_array( $getit ) ) {
                                 $artistID = $row[ "artistID" ];
                                 $artistName = $row[ "artistName" ];
-                        ?>
-                            <option value="<?php echo $artistID ?>"><?php echo $artistName ?></option>
 
-                        <?php 
+                                echo "<option value='" . $artistID . "'>" . $artistName . "</option>";
+
                             } // end of while
                         ?>
                     

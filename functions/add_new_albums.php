@@ -5,7 +5,7 @@ require '../secrets/auth.php';
 require_once '../rockdb.php';
 require_once '../functions/albums.php';
 require '../functions/artists.php';
-require '../data_text/artists_arrays_objects.php';
+require '../data_text/artists_arrays.php';
 
 $session = new SpotifyWebAPI\Session($myClientID, $myClientSecret);
 
@@ -67,7 +67,7 @@ function divideCombineArtistsForAlbums ($theseArtists) {
 	};	
 }
 
-divideCombineArtistsForAlbums ($nominees2018);
+divideCombineArtistsForAlbums ($orphans);
 
 die();
 
