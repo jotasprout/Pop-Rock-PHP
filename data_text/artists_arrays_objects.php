@@ -219,6 +219,12 @@ $stevieNicks = new artist ("7crPfGd2k81ekOoSqQKWWz", "Stevie Nicks");
 $toddRundgren = new artist ("0Lpr5wXzWLtDWm1SjNbpPb", "Todd Rundgren");
 $newYorkDolls = new artist ("0WhGV9lzljq2QKJ8ipw6jx", "New York Dolls");
 
+
+$jj = array ("1Fmb52lZ6Jv7FMWXXTPO3K","5eTq3PxbOh5vgeRXKNqPyV");
+
+$detroit = array ("7dOBabd5O4CvKrg4iriHTM", "7dGJo4pcD2V6oG8kP0tJRR","0vYkHhJ48Bs3jWcvZXvOrP","4xtWjIlVuZwTCeqVAsgEXy","7Jmod60ZpPG0tckhY0Ls0p","4F84IBURUo98rz4r61KF70","4DToQR3aKrHQSSRzSz8Nzt","4FZ3j1oH43e7cukCALsCwf", "6vdSr6XwvJkFUO9wnPKbAz", "5AqTcUQNVb8Mzwkg9Fjdkp", "2xIJg09fPM9z97qcEzF1Do", "2eQPDhVoSa5aeWROa5wfxZ","485uL27bPomh29R4JmQehQ","33EUXrFKGjpUSGacqEHhU4","3EhbVgyfGd7HkpsagwL9GS","21ysNsPzHdqYN2fQ75ZswG","7dnB1wSxbYa8CejeVg98hz","4BFMTELQyWJU1SwqcXMBm3","4WquJweZPIK9qcfVFhTKvf","3k4YA0uPsWc2PuOQlJNpdH","5cVLuEqb7aOHuzwssXHzWI","1l8grPt6eiOS4YlzjIs0LF");
+
+
 $nominees2018 = array (
     "4qwGe91Bz9K2T8jXTZ815W", "0nJUwPwC9Ti4vvuJ0q3MfT", "3fhOTtm0LBJ3Ojn4hIljLo", "7crPfGd2k81ekOoSqQKWWz", "0Lpr5wXzWLtDWm1SjNbpPb", "0WhGV9lzljq2QKJ8ipw6jx"
     ); 

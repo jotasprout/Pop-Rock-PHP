@@ -1,12 +1,12 @@
 <?php
 
 session_start();
-require '../auth.php';
+require '../secrets/auth.php';
 require_once '../rockdb.php';
 require '../functions/tracks.php';
 require_once '../functions/albums.php';
 require '../functions/artists.php';
-require '../data_text/artists_arrays_objects.php';
+require '../data_text/artists_arrays.php';
 
 $session = new SpotifyWebAPI\Session($myClientID, $myClientSecret);
 
@@ -67,7 +67,7 @@ function divideCombineArtistsForAlbums ($theseArtists) {
 	};	
 }
 
-divideCombineArtistsForAlbums ($artists06);
+divideCombineArtistsForAlbums ($jj);
 
 die();
 

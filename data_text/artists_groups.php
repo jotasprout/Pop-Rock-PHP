@@ -1,5 +1,8 @@
 <?php
 
+#Joan Jett, Runaways, Evil Stig
+$group_jj = array ("1Fmb52lZ6Jv7FMWXXTPO3K","5eTq3PxbOh5vgeRXKNqPyV", "5NhjPre67qjeeQP4KHDHpe");
+
 # Generation X and Billy Idol
 $group_idol = array ("1inWec2E2UgfzMAhwjgTXe", "7lzordPuZEXxwt9aoVZYmG");
 
