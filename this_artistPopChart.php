@@ -22,10 +22,9 @@
 </head>
 
 <body>
-<?php echo $navbar ?>
 
 <div class="container">
-	
+	<?php echo $navbar ?>
 	<div id="forChart">
 
 	<script>
