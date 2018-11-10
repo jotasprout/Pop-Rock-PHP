@@ -40,7 +40,7 @@ if(!$getit){
 
 ?>
 
-<!DOCTYPE html>
+<!doctype html>
 <html>
 	
 <head>
@@ -132,7 +132,7 @@ if(!$getit){
     </div> <!-- closing container -->
 	
 <?php echo $scriptsAndSuch; ?>
-<script src="https://www.roxorsoxor.com/poprock/functions/sortTheseAlbums2.js"></script>
+<script src="https://www.roxorsoxor.com/poprock/functions/sortTheseAlbums.js"></script>
 </body>
 	
 </html>

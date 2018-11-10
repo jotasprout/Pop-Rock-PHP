@@ -1,5 +1,10 @@
 <?php
 $artistID = $_COOKIE['artistID'];
+//	include 'page_pieces/sesh.php';
+//	echo $_SESSION['artist'];
+//	$artistID = $_SESSION['artist'];
+//	echo $artistID;
+//	$_SESSION['artist'] = $artistID;
 	require "functions/class.artist.php";
     require_once 'page_pieces/stylesAndScripts.php';
     require_once 'page_pieces/navbar_rock.php';
@@ -15,25 +20,16 @@ $artistID = $_COOKIE['artistID'];
 </head>
 
 <body>
-
+<?php echo $navbar ?> <!-- /navbar -->
 
  <div class="container">
-    <?php echo $navbar ?> 
-
-	<div class="panel panel-primary">
-		<div class="panel-heading">
-			<h3 class="panel-title">This Artist's Albums Popularity</h3>
-		</div>
-
-		<div class="panel-body"></div> <!-- panel body -->
-
-	</div> <!-- close Panel Primary -->
-
+    <!--  -->
     <div id="forChart"></div> <!-- /for chart -->
-</div> <!-- /container -->		 
+</div> <!-- /container -->
+		 	<!--  -->			 
 
 <script type="text/javascript">
-    d3.json("functions/createAlbumsD3.php", function(dataset) {
+    d3.json("functions/createD3b.php", function(dataset) {
         console.log(dataset);
         // Width and height
         var w = 2400;

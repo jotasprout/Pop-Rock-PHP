@@ -25,67 +25,75 @@
 
 <div class="container">
 	<?php echo $navbar ?>
-	<div id="forChart">
 
-	<script>
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<h3 class="panel-title">This Artist's Popularity Over Time</h3>
+		</div>
 
-		var w = 800;
-		var h = 300;
-		var padding = 40;
+		<div class="panel-body">
+			<!-- Moved below from below primary panel as experiment -->
+		<div id="forChart"></div> <!-- close forChart -->
+		</div> <!-- panel body -->
 
-		var dataset, xScale, yScale, xAxis, yAxis, line;
+	</div> <!-- close Panel Primary -->
 
-		d3.json("functions/createD3c.php", function(data) {
-			
-			console.log(data);
-			
-			var dataset = data;
-
-			var parseTime = d3.timeParse("%y-%m-%d");
-
-			dataset.forEach(function(d) {
-				// date = parseTime(d.date);
-				d.date = new Date(d.date);
-				d.pop = +d.pop;
-			});
-
-			xScale = d3.scaleTime()
-						.domain([
-							d3.min(dataset, function(d) { return d.date; }),
-							d3.max(dataset, function(d) { return d.date; })
-						])
-						.range([0,w]);
-
-			yScale = d3.scaleLinear()
-						.domain([0,100])
-						.range([h, 0]);
-
-			var line = d3.line()
-						.x(function(d) { return xScale(d.date); })
-						.y(function(d) { return yScale(d.pop); });
-
-			var svg = d3.select("#forChart")
-							.append("svg")
-							.attr("width", w)
-							.attr("height", h);
-
-			svg.append("path")
-				.datum(dataset)
-				.attr("class", "line")
-				.attr("d", line);
-
-		});
-		
-	</script>
-
-	</div> <!-- close forChart -->
+	
 
 </div> <!-- close container -->
 
+<script>
+
+var w = 800;
+var h = 300;
+var padding = 40;
+
+var dataset, xScale, yScale, xAxis, yAxis, line;
+
+d3.json("functions/createArtistD3.php", function(data) {
+    
+    console.log(data);
+    
+    var dataset = data;
+
+    var parseTime = d3.timeParse("%y-%m-%d");
+
+    dataset.forEach(function(d) {
+        // date = parseTime(d.date);
+        d.date = new Date(d.date);
+        d.pop = +d.pop;
+    });
+
+    xScale = d3.scaleTime()
+                .domain([
+                    d3.min(dataset, function(d) { return d.date; }),
+                    d3.max(dataset, function(d) { return d.date; })
+                ])
+                .range([0,w]);
+
+    yScale = d3.scaleLinear()
+                .domain([0,100])
+                .range([h, 0]);
+
+    var line = d3.line()
+                .x(function(d) { return xScale(d.date); })
+                .y(function(d) { return yScale(d.pop); });
+
+    var svg = d3.select("#forChart")
+                    .append("svg")
+                    .attr("width", w)
+                    .attr("height", h);
+
+    svg.append("path")
+        .datum(dataset)
+        .attr("class", "line")
+        .attr("d", line);
+
+});
+
+</script>
+
 <?php echo $scriptsAndSuch; ?>
-<!--
-<script src="https://www.roxorsoxor.com/poprock/functions/sortThisArtist.js"></script>
--->
 
 </body>
 

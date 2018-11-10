@@ -49,7 +49,7 @@ function addGenres ($artistID, $jsonArtistGenres, $artistNameYucky) {
         echo 'Yay! We are connected to the database!<br>';
 
         for ($i=0; $i<(count($jsonArtistGenres)); ++$i) {
-            $insertArtistGenres = "INSERT INTO genres (artistID,genre) VALUES('$artistID','$jsonArtistGenres[$i]')";
+            $insertArtistGenres = "INSERT INTO genres2 (artistID,genre) VALUES('$artistID','$jsonArtistGenres[$i]')";
 
             $rockout = $connekt->query($insertArtistGenres);
 
