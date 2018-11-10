@@ -1,6 +1,6 @@
 <?php
-$artistID = $_COOKIE['artistID'];
-	require "functions/class.artist.php";
+    $artistID = $_COOKIE['artistID'];
+    require "functions/class.artist.php";
     require_once 'page_pieces/stylesAndScripts.php';
     require_once 'page_pieces/navbar_rock.php';
 ?>

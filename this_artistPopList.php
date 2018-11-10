@@ -5,6 +5,17 @@ $artistID = $_POST['artist'];
 $cookieExpiration = time() + 3600;
 setcookie ('artistID', $artistID, $cookieExpiration, '/', 'roxorsoxor.com');
 
+/*
+if (!isset($_COOKIE['artistID'])) {	
+	// create new cookie
+	$artistID = $_POST['artist'];
+	$cookieExpiration = time() + 3600;
+	setcookie ('artistID', $artistID, $cookieExpiration, '/', 'roxorsoxor.com');
+} else {
+	$artistID = $_COOKIE['artistID'];
+};
+*/
+
 require_once 'rockdb.php';
 require_once 'page_pieces/stylesAndScripts.php';
 require_once 'page_pieces/navbar_rock.php';

@@ -11,6 +11,7 @@ if (!$connekt) {
 	echo 'Darn. Did not connect.';
 };
 
+// Could I remove artistID from the select statement below as long as artistID is in the WHERE clause?
 $artistInfoAll = "SELECT a.artistID, a.artistName, b.pop, b.date 
 	FROM artists a
 		INNER JOIN popArtists b ON a.artistID = b.artistID

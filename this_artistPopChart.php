@@ -1,11 +1,15 @@
 <?php 
-	$artistID = $_COOKIE['artistID'];
+    if (!isset($_COOKIE['artistID'])) {
+        $artistID = $_COOKIE['artistID'];
+    } else {
+        // below doesn't work ... worry about it later
+       // header('location: https://www.roxorsoxor.com/poprock/choose_artist.php');
+    };
 	require_once 'page_pieces/stylesAndScripts.php';
 	require_once 'page_pieces/navbar_rock.php';
 ?>
 
 <!DOCTYPE html>
-
 <html>
 
 <head>
@@ -32,13 +36,11 @@
 		</div>
 
 		<div class="panel-body">
-			<!-- Moved below from below primary panel as experiment -->
+		<div id="forArt"></div> <!-- close forChart -->
 		<div id="forChart"></div> <!-- close forChart -->
 		</div> <!-- panel body -->
 
 	</div> <!-- close Panel Primary -->
-
-	
 
 </div> <!-- close container -->
 
