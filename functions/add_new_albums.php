@@ -66,8 +66,9 @@ function divideCombineArtistsForAlbums ($theseArtists) {
 		}
 	};	
 }
+$betty = array ("0HdS9FxnRaiyuBjHBDo4vW");
 
-divideCombineArtistsForAlbums ($newKnott);
+divideCombineArtistsForAlbums ($betty);
 
 die();
 
