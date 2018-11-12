@@ -5,7 +5,7 @@ require '../secrets/spotifySecrets.php';
 require '../vendor/autoload.php';
 require_once '../rockdb.php';
 require_once '../functions/artists.php';
-require_once '../data_text/artists_arrays_objects.php';
+require_once '../data_text/artists_arrays.php';
 
 $session = new SpotifyWebAPI\Session($myClientID, $myClientSecret);
 
