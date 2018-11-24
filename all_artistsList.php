@@ -82,6 +82,7 @@ if(!$getit){ echo 'Cursed-Crap. Did not run the query.'; }
 					<?php
 						while ( $row = mysqli_fetch_array( $getit ) ) {
 							$artistName = $row[ "artistName" ];
+							$artistID = $row[ "artistID" ];
 							$artistPop = $row[ "pop" ];
 							$artistArt = $row[ "artistArt" ];
 							$popDate = $row[ "date" ];
@@ -89,7 +90,7 @@ if(!$getit){ echo 'Cursed-Crap. Did not run the query.'; }
 
 					<tr>
 						<td><img src='<?php echo $artistArt ?>' height='64' width='64'></td>	
-						<td><?php echo $artistName ?></td>
+						<td><a href='https://www.roxorsoxor.com/poprock/js/artist.html?id=<?php echo $artistID ?>'><?php echo $artistName ?></a></td>
 						<td><?php echo $artistPop ?></td>
 						<td><?php echo $popDate ?></td>
 						<td>*</td>

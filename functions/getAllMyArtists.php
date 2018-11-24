@@ -24,9 +24,6 @@ while ( $row = mysqli_fetch_array( $getThem ) ) {
     array_push($returnables, $rowstuff);
 };
 
-/*
-*/
-
 echo json_encode($returnables);
 
 ?>
