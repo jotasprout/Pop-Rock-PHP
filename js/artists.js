@@ -1,4 +1,4 @@
-// Black Sabbath, Bowie, Eminem, Led Zeppelin, Queen
+// Black Sabbath, Bowie, Led Zeppelin, Queen
 const supergroup = array ["5M52tdBnJaKSvOpJGz8mfZ","0oSGxfWSnnOXhD2fKuz2Gy","7dGJo4pcD2V6oG8kP0tJRR","36QJpDe2go2KgaRleHCDTp"];
 
 function getAllArtists () {
@@ -11,41 +11,55 @@ function getAllArtists () {
     });
 } // end of 
 
-/* Get current artist from page URL. */
-fetchArtistFromURL = (callback) => {
-  if (self.artist) { // artist already fetched!
-    callback(null, self.artist)
-    return;
-  }
-  const id = getParameterByName('id');
-  if (!id) { // no id found in URL
-    error = 'No artist id in URL'
-    callback(error, null);
-  } else {
-    Artist.fetchArtistById(id, (error, artist) => {
-      self.artist = artist;
-      if (!artist) {
-        console.error(error);
-        return;
-      }
-      console.log(artist);
-      
-      createArtistHTML();
-      callback(null, artist)
-    });
-  }
-}
 
 /* Create artist HTML and add it to the webpage */
-const createArtistHTML = (artists = self.artists) => {
-  const ul = document.getElementById('artists-list');
-  artists.forEach(artist => {
-    ul.append(fillArtistHTML(artist));
-  });
+function createArtistHTML (artist) {
+  const cr = document.getElementById('artist-container');
+  // cr.append(fillArtistHTML(artist));
 };
 
 /* Fill artist HTML */
 const fillArtistHTML = (artist) => {
+  cr.className = 'artist-container';
+  const image = document.createElement('img');
+  image.className = 'artist-img';
+  image.src = Artist.imageUrlForArtist(artist);
+  image.alt = Artist.altTextForArtistImage(artist);
+  cr.append(image);
+
+  const name = document.createElement('h2');
+  name.innerHTML = artist.name;
+  cr.append(name);
+
+  const neighborhood = document.createElement('p');
+  neighborhood.innerHTML = artist.neighborhood;
+  cr.append(neighborhood);
+
+  const address = document.createElement('p');
+  address.innerHTML = artist.address;
+  cr.append(address);
+
+  // Maybe use the following for albums
+  /*
+  const more = document.createElement('a');
+  more.innerHTML = 'More Info';
+  more.href = Artist.urlForArtist(artist);
+  cr.append(more);
+  */
+ 
+  return cr;
+};
+
+/* Create artist HTML and add it to the webpage */
+const createArtistGallery = (artists = self.artists) => {
+  const ul = document.getElementById('artists-list');
+  artists.forEach(artist => {
+    ul.append(fillGalleryHTML(artist));
+  });
+};
+
+/* Fill artist HTML */
+const fillGalleryHTML = (artist) => {
   const li = document.createElement('li');
   li.className = 'artist-container';
   const image = document.createElement('img');
@@ -95,6 +109,31 @@ class Artist {
   static altTextForArtistImage(artist) {
     return (`${artist.artistName}`);
   }
+
+  
+/* Get current artist from page URL. */
+fetchArtistFromURL = (callback) => {
+  if (self.artist) { // artist already fetched!
+    callback(null, self.artist)
+    return;
+  }
+  const id = getParameterByName('id');
+  if (!id) { // no id found in URL
+    error = 'No artist id in URL'
+    callback(error, null);
+  } else {
+    Artist.fetchArtistById(id, (error, artist) => {
+      self.artist = artist;
+      if (!artist) {
+        console.error(error);
+        return;
+      }
+      console.log(artist);
+      // createArtistHTML();
+      // callback(null, artist)
+    });
+  }
+}
 
   /* Fetch an artist by its ID */
   static fetchArtistById(id, callback) {
