@@ -30,7 +30,7 @@ fetchArtistFromURL = (callback) => {
       }
       console.log(artist);
       
-      fillArtistHTML();
+      createArtistHTML();
       callback(null, artist)
     });
   }
@@ -98,19 +98,13 @@ class Artist {
 
   /* Fetch an artist by its ID */
   static fetchArtistById(id, callback) {
-    // fetch all artists with proper error handling.
-    Artist.fetchArtists((error, artists) => {
-      if (error) {
-        callback(error, null);
-      } else {
-        const artist = artists.find(r => r.id == id);
-        if (artist) { // Got the artist
-          callback(null, artist);
-        } else { // artist does not exist in the database
-          callback('artist does not exist', null);
-        }
-      }
-    });
-  }   
+    const artistID = id;
+    if (artistID) { // Got the artist
+      callback(null, artist);
+    } else { // artist does not exist in the database
+      callback('artist does not exist', null);
+    }
+  }
+ 
   
 }
