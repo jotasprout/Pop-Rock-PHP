@@ -1,4 +1,4 @@
-# Pop-PHP
+# Pop Rock (PHP)
 Gets popularity data via Spotify API for artists, albums, and songs to store in a MySQL database and track popularity over time as well as comparing popularity data across artists, albums, songs. Building interactive data visualization using **D3.js** and **jQuery**.
 
 ## Recent Examples
