@@ -1,41 +1,72 @@
 <!doctype html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <title>D3 samples</title>
-        <meta name='viewport' content='user-scalable=no, width=device-width, initial-scale=1' />
-        <meta name='apple-mobile-web-app-capable' content='yes'>
-        <meta name='mobile-web-app-capable' content='yes'> 
+<head>
+    <meta charset="utf-8">
+    <title>FCC Data Viz Project #1: Bar Chart </title>
+    <meta name='viewport' content='user-scalable=no, width=device-width, initial-scale=1' />
+    <meta name='apple-mobile-web-app-capable' content='yes'>
+    <meta name='mobile-web-app-capable' content='yes'> 
 
-        <script src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
-        <script src='https://d3js.org/d3.v4.min.js'></script>
+    <script src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
+    <script src='https://d3js.org/d3.v4.min.js'></script>
 
-        <style>
-            .bar {
-                width: 25px;
-                height: 100px;
-                margin: 2px;
-                display: inline-block;
-                background-color: blue;
-            }
+    <style>
+        .bar {
+            width: 25px;
+            height: 100px;
+            margin: 2px;
+            display: inline-block;
+            background-color: blue;
+        }
 
-            .bar:hover {
-                fill: pink;
-            }
-        </style>
+        .bar:hover {
+            fill: pink;
+        }
+    </style>
 
-    </head>
+</head>
 
-    <body>
+<body>
 
-        <div id="divcolumns"></div>
-        <div id="svgcolumns"></div>
-        <div id="flexi"></div>
+<div id="title"></div>
 
 <script>
-d3.json("https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/master/GDP-data.json", function(dataset) {
-    console.log(dataset);
+
+const gdpfile = 'https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/master/GDP-data.json';
+
+document.addEventListener("DOMContentLoaded", function(event) {
+    fetch(gdpfile)
+    .then(function(response) {return response.json(); })
+    .then(function(data) {
+        console.log(data);
+    });
 });
+
+
+
+		
+		document.addEventListener("DOMContentLoaded", function(event) {
+			fetch(api)
+				.then(function(response) { return response.json(); })
+				.then(function(data) { 
+					var parsedData = parseData(data);
+					drawChart (parsedData);
+				})
+			
+				function parseData(data) {
+				   var arr = [];
+				   for (var i in data.bpi) {
+					  arr.push(
+						 {
+							date: new Date(i), //date
+							value: +data.bpi[i] //convert string to number
+						 });
+				   }
+				   return arr;
+				}
+
+
+
             const dataset = [12, 31, 22, 17, 25, 18, 29, 14, 9];
             
             d3.select("body").selectAll("h2")
@@ -119,8 +150,8 @@ d3.json("https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/mas
         
             const svg2 = d3.select("flexi")
                             .append("svg")
-                            .attr("width", w)
-                            .attr("height", h);
+                            .attr("width", w2)
+                            .attr("height", h2);
     
             svg2.selectAll("circle")
                 .data(dataset)
@@ -143,7 +174,7 @@ d3.json("https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/mas
             const yAxis = d3.axisLeft(yScale);
             
             svg2.append("g")
-            .attr("transform", "translate(0," + (h - padding) + ")")
+            .attr("transform", "translate(0," + (h2 - padding) + ")")
             .call(xAxis);
             
             svg2.append("g")
