@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>D3 samples</title>
+        <meta name='viewport' content='user-scalable=no, width=device-width, initial-scale=1' />
+        <meta name='apple-mobile-web-app-capable' content='yes'>
+        <meta name='mobile-web-app-capable' content='yes'> 
+
+        <script src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
+        <script src='https://d3js.org/d3.v4.min.js'></script>
+
+        <style>
+            .bar {
+                width: 25px;
+                height: 100px;
+                display: inline-block;
+                background-color: blue;
+            }
+
+            .bar:hover {
+                fill: pink;
+            }
+        </style>
+
+    </head>
+
+    <body>
+
+        <div id="divcolumns"></div>
+        <div id="svgcolumns"></div>
+        <script>
+
+            const dataset = [12, 31, 22, 17, 25, 18, 29, 14, 9];
+            
+            d3.select("body").selectAll("h2")
+              .data(dataset)
+              .enter()
+              .append("h2")
+              .text((d) => d + " USD");
+
+            d3.select("#divcolumns").selectAll("div")
+              .data(dataset)
+              .enter()
+              .append("div")
+              .attr("class", "bar")
+              .style("height", (d) => d);
+            
+            const w = 500;
+            const h = 150;
+            
+            const svg = d3.select("#svgcolumns")
+                          .append("svg")
+                          .attr("width", w)
+                          .attr("height", h);
+            
+            svg.selectAll("rect")
+               .data(dataset)
+               .enter()
+               .append("rect")
+               .attr("x", (d, i) => i * 30)
+               .attr("y", (d, i) => h - 3 * d)
+               .attr("width", 25)
+                .attr("height", (d, i) => 3 * d)
+                .attr("fill", "navy")
+                // tooltip of data value for svg rect
+                .append("title")
+                .text((d) => d)     
+
+            // text label above rects
+            svg.selectAll("text")
+            .data(dataset)
+            .enter()
+            .append("text")
+            .attr("x", (d, i) => i * 30)
+            .attr("y", (d, i) => h - 3 * d - 3)
+            .text((d) => d)
+            .style("font-size", 14)
+            .style("fill", "red")
+ 
+        </script>
+    </body>
+</html>
