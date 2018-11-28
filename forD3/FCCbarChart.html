@@ -31,8 +31,11 @@
         <div id="divcolumns"></div>
         <div id="svgcolumns"></div>
         <div id="flexi"></div>
-        <script>
 
+<script>
+d3.json("https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/master/GDP-data.json", function(dataset) {
+    console.log(dataset);
+});
             const dataset = [12, 31, 22, 17, 25, 18, 29, 14, 9];
             
             d3.select("body").selectAll("h2")
@@ -114,12 +117,12 @@
                             // larger number goes first for height Y coordinates
                             .range([h2 - padding, padding]);
         
-            const svg = d3.select("flexi")
+            const svg2 = d3.select("flexi")
                             .append("svg")
                             .attr("width", w)
                             .attr("height", h);
     
-            svg.selectAll("circle")
+            svg2.selectAll("circle")
                 .data(dataset)
                 .enter()
                 .append("circle")
@@ -127,7 +130,7 @@
                 .attr("cy", (d) => yScale(d[1]))
                 .attr("r", 5)
             
-            svg.selectAll("text")
+            svg2.selectAll("text")
                 .data(dataset)
                 .enter()
                 .append("text")
@@ -139,11 +142,11 @@
             const xAxis = d3.axisBottom(xScale);
             const yAxis = d3.axisLeft(yScale);
             
-            svg.append("g")
+            svg2.append("g")
             .attr("transform", "translate(0," + (h - padding) + ")")
             .call(xAxis);
             
-            svg.append("g")
+            svg2.append("g")
             .attr("transform", "translate(" + padding + ",0)")
             .call(yAxis)
             
