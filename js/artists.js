@@ -1,6 +1,8 @@
 // Black Sabbath, Bowie, Led Zeppelin, Queen
 const supergroup = array ["5M52tdBnJaKSvOpJGz8mfZ","0oSGxfWSnnOXhD2fKuz2Gy","7dGJo4pcD2V6oG8kP0tJRR","36QJpDe2go2KgaRleHCDTp"];
 
+"GET" "https://api.spotify.com/v1/artists?ids=5M52tdBnJaKSvOpJGz8mfZ%2C0oSGxfWSnnOXhD2fKuz2Gy%2C7dGJo4pcD2V6oG8kP0tJRR%2C36QJpDe2go2KgaRleHCDTp" -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Bearer BQC2mN3jG5wpGMgukx8pyOWA_TbRTExZoR5BgFp8-IOc59ZGxdFW_JAUBE2WA7MoFygR5EOYZEBD7vwoIXSPN8-1xkQaVlePUHkA0HSJGS6xQdiro3tpRyqX4VREzEy-isZ7_pPbQgyZLw"
+
 function getAllArtists () {
     fetch("everyone.php").then(function(response){          
         return response.json();
