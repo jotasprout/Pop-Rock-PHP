@@ -19,6 +19,7 @@
             display: inline-block;
             background-color: blue;
         }
+
         .bar:hover {
             fill: pink;
         }
@@ -27,29 +28,41 @@
 
 <body>
 
-<div id="title"></div>
+<div id="graphtitle"></div>
 
 <script>
+
 const gdpfile = 'https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/master/GDP-data.json';
+
+const margin = {top: 10, right: 10, bottom: 10, left: 10};
+const w = 1000 - margin.left - margin.right;
+const h = 500 - margin.top - margin.bottom;
+
+const parseDate = d3.time.format("%Y-%m-%d").parse;
+
+const x = d3.time.scale().range([0, w]);
+const y = d3.scale.linear().range([h, 0]);
+
+const xAxis = d3.svg.axis().scale(x)
+    .orient("left").ticks(5);
+const yAxis = d3.svg.axis().scale(y)
+    .orient("bottom").ticks(5);
+
+const svg = d3.select("body")
+                .append("svg")
+                .attr("width", w)
+                .attr("height", h);
+
+
 d3.json(gdpfile, function(dataset) {
+
     console.log(dataset);
-    const w = 1000;
-    const h = 700;
-    const padding = 5;
-    const svg = d3.select("body")
-                    .append("svg")
-                    .attr("width", w)
-                    .attr("height", h);
-    const xScale = d3.scaleLinear()
-                    // input data from 0 or min to max value of dataset
-                    .domain([d3.min(dataset, (d) => d[0]), d3.max(dataset, (d) => d[0])])
-                    // output size of actual size we must fit into
-                    .range([padding, w - padding]);
-    
-    const yScale = d3.scaleLinear()
-                    .domain([d3.max(dataset, (d) => d[1]), d3.min(dataset, (d) => d[1])])
-                    // larger number goes first for height Y coordinates
-                    .range([h, 0]);
+    const title = dataset.name;
+    console.log(`title will be ${title}`);
+    // d3.select("graphtitle")
+     // .append("title")
+     // .text(`${title}`);
+
     svg.selectAll("rect")
         .data(dataset.data)
         .enter()
@@ -60,10 +73,9 @@ d3.json(gdpfile, function(dataset) {
         // give rects a reasonable visual size
         .attr("height", (d, i) => d[1])
         .attr("fill", "navy")
-    const xAxis = d3.axisBottom(xScale)
-        .ticks(5);
-    const yAxis = d3.axisLeft(yScale)
-        .ticks(5);
+
+    const xAxis = d3.axisBottom(xScale);
+    const yAxis = d3.axisLeft(yScale);
     
     svg.append("g")
     .attr("id", "x-axis")
@@ -75,6 +87,7 @@ d3.json(gdpfile, function(dataset) {
     .attr("transform", "translate(" + padding + ",0)")
     .call(yAxis)
 });
+
 /*		
     function parseData(data) {
         var arr = [];
@@ -103,6 +116,7 @@ d3.json(gdpfile, function(dataset) {
         // tooltip of data value for svg rect
         .append("title")
         .text((d) => d);  
+
     // text label above rects
     svg.selectAll("text")
     .data(dataset)
@@ -113,6 +127,8 @@ d3.json(gdpfile, function(dataset) {
     .text((d) => d)
     .style("font-size", 14)
     .style("fill", "red");
+
+
 */            
         </script>
     </body>
