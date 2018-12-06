@@ -67,7 +67,7 @@ function divideCombineArtistsForAlbums ($theseArtists) {
 	};	
 }
 
-divideCombineArtistsForAlbums ($newKnott);
+divideCombineArtistsForAlbums ($handful);
 
 die();
 

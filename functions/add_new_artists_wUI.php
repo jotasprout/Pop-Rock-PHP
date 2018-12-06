@@ -6,7 +6,7 @@ require_once '../rockdb.php';
 require_once '../page_pieces/navbar_rock.php';
 require_once '../page_pieces/stylesAndScripts.php';
 require_once '../functions/artists.php';
-require_once '../data_text/artists_arrays_objects.php';
+require_once '../data_text/artists_arrays.php';
 
 $session = new SpotifyWebAPI\Session($myClientID, $myClientSecret);
 
@@ -33,7 +33,7 @@ $GLOBALS['api']->setAccessToken($accessToken);
     <tr><th>Pretty Picture</th><th>Artist Name</th><th>Artist Popularity</th></tr>
 
         <?php 
-            divideCombineArtists ($nominees2018);
+            divideCombineArtists ($handful);
         ?>
     </table>
 
