@@ -30,25 +30,30 @@ const svg = d3.select("body")
               .attr("width", w)
               .attr("height", h);
 
+const parseTime = d3.timeParse("%Y-%m-%d");
+
+const rowConversion = function (d) {
+    return {
+        date: parseTime(d[0]),
+        gdp: d[1]
+    }
+}
+
 d3.json(gdpfile, function (dataset) {
 
     //console.log(dataset);
 
     const data = dataset.data;
 
+    data.forEach(function(d) {
+        d.date = parseTime(d[0]);
+        d.gdp = +d[1];
+    });
+
     console.log(data);
 
-    const parseTime = d3.timeParse("%Y-%m-%d");
-
-    const rowConversion = function (d) {
-        return {
-            date: parseTime(d[0]),
-            gdp: d[1]
-        }
-    }
-
     const timeScale = d3.scaleTime()
-                        .domain(d3.extent(data, (d) => (d[0])))
+                        .domain(d3.extent(data, (d) => (d.date)))
                         .range([padding, w - padding]);
 
     const xScale = d3.scaleBand()
@@ -57,7 +62,7 @@ d3.json(gdpfile, function (dataset) {
            .paddingInner(0.05);
 
     const yScale = d3.scaleLinear()
-           .domain([0, d3.max(data, (d) => (d[1]))])
+           .domain([0, d3.max(data, (d) => (d.gdp))])
            .range([padding, h - padding]);
 
     const xAxis = d3.axisBottom()
@@ -81,9 +86,9 @@ d3.json(gdpfile, function (dataset) {
       .append("rect")
       .attr("class", "bar")
       .attr("x", (d, i) => xScale(i))
-      .attr("y", (d) => h - yScale(d[1]))
+      .attr("y", (d) => h - yScale(d.gdp))
       .attr("width", xScale.bandwidth())
-      .attr("height", (d) => yScale(d[1]) - padding);
+      .attr("height", (d) => yScale(d.gdp) - padding);
 
 });
 
