@@ -45,6 +45,8 @@ d3.json(gdpfile, function (dataset) {
 
     const data = dataset.data;
 
+    const title = dataset.source_name;
+
     data.forEach(function(d) {
         d.date = parseTime(d[0]);
         d.gdp = +d[1];
@@ -65,17 +67,23 @@ d3.json(gdpfile, function (dataset) {
            .domain([0, d3.max(data, (d) => (d.gdp))])
            .range([padding, h - padding]);
 
+    const yScale2 = d3.scaleLinear()
+           .domain([0, d3.max(data, (d) => (d.gdp))])
+           .range([h - padding, padding]);
+
     const xAxis = d3.axisBottom()
                     .scale(timeScale);
 
     const yAxis = d3.axisLeft()
-                    .scale(yScale);
+                    .scale(yScale2);
 
     svg.append("g")
+       .attr("id", "x-axis")
        .call(xAxis)
        .attr("transform", "translate(0," + (h - padding) + ")");
 
     svg.append("g")
+       .attr("id", "y-axis")
        .call(yAxis)
        .attr("transform", "translate(" + padding + ",0)");
 
@@ -84,10 +92,19 @@ d3.json(gdpfile, function (dataset) {
       .enter()
       .append("rect")
       .attr("class", "bar")
+      .attr("data-date", (d) => (d.date))
+      .attr("data-gdp", (d) => (d.gdp))
       .attr("x", (d, i) => xScale(i))
       .attr("y", (d) => h - yScale(d.gdp))
       .attr("width", xScale.bandwidth())
       .attr("height", (d) => yScale(d.gdp) - padding);
+
+    svg.append("text")
+       .style("text-anchor", "middle")
+       .attr("id", "title")
+       .attr("x", w/2)
+       .attr("y", 50)
+       .text(`${title}`);
 
 });
 
