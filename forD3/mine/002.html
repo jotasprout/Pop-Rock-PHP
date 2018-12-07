@@ -41,7 +41,7 @@ const rowConversion = function (d) {
 
 d3.json(gdpfile, function (dataset) {
 
-    //console.log(dataset);
+    console.log(dataset);
 
     const data = dataset.data;
 
@@ -66,8 +66,7 @@ d3.json(gdpfile, function (dataset) {
            .range([padding, h - padding]);
 
     const xAxis = d3.axisBottom()
-                    .scale(xScale)
-                    .ticks(15);
+                    .scale(timeScale);
 
     const yAxis = d3.axisLeft()
                     .scale(yScale);
