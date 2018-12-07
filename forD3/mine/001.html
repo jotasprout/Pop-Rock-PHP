@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>My Step at a time with patience chart</title>
+		<script type="text/javascript" src="https://d3js.org/d3.v4.min.js"></script>
+		<style type="text/css">
+			.bar {
+                fill: black;
+            }		
+            .bar:hover {
+                fill: blue;
+            }
+		</style>
+	</head>
+
+<body>
+
+<script type="text/javascript">
+
+const gdpfile = 'https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/master/GDP-data.json';
+
+const w = 1000;
+const h = 500;
+
+const barPadding = 1; 
+
+const svg = d3.select("body")
+              .append("svg")
+              .attr("width", w)
+              .attr("height", h);
+
+d3.json(gdpfile, function (dataset) {
+
+    //console.log(dataset);
+
+    const data = dataset.data;
+
+    console.log(data);
+
+    const xScale = d3.scaleBand()
+           .domain(d3.range(data.length))
+           .rangeRound([0, w])
+           .paddingInner(0.05);
+
+    const yScale = d3.scaleLinear()
+           .domain([0, d3.max(data, (d) => (d[1]))])
+           .range([0, h]);
+
+    svg.selectAll("rect")
+      .data(data)
+      .enter()
+      .append("rect")
+      .attr("class", "bar")
+      .attr("x", (d, i) => xScale(i))
+      .attr("y", (d) => h - yScale(d[1]))
+      .attr("width", xScale.bandwidth())
+      .attr("height", (d) => yScale(d[1]));
+
+});
+
+</script>
+</body>
+</html>
