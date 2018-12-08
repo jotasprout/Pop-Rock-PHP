@@ -11,6 +11,12 @@
             .bar:hover {
                 fill: blue;
             }
+            #tooltip {
+                position: absolute;
+                background-color: yellow;
+                padding: 10px;
+                pointer-events: none;
+            }
             #tooltip.hidden {
                 display: none;
             }
@@ -22,6 +28,11 @@
 	</head>
 
 <body>
+
+<div id="tooltip" class="hidden">
+    <p id="timePeriod">Q</p>
+    <p>$ <span id="gdp">M</span> Billion</p>
+</div>
 
 <script type="text/javascript">
 
@@ -38,6 +49,8 @@ const svg = d3.select("body")
               .attr("height", h);
 
 const parseTime = d3.timeParse("%Y-%m-%d");
+
+//const myTime = 
 
 const rowConversion = function (d) {
     return {
@@ -106,20 +119,34 @@ d3.json(gdpfile, function (dataset) {
       .attr("width", xScale.bandwidth())
       .attr("height", (d) => yScale(d.gdp) - padding)
       .on("mouseover", function(d) {
-          const xPos = parseFloat(d3.select(this).attr("x")) + xScale.bandwidth()/2;
-          const yPos = parseFloat(d3.select(this).attr("y"))/2 + h/2;
+          const xPos = parseFloat(d3.select(this).attr("x")) + xScale.bandwidth() / 2;
+          const yPos = parseFloat(d3.select(this).attr("y")) / 2 + h / 2;
+          const tipDate = d.date;
+          const tipGDP = d.gdp;
+          d3.select("#tooltip")
+            //.style("left", "100px")
+            //.style("top", "100px")
+            .style("left", xPos + "px")
+            .style("top", yPos + "px")
+            .select("#timePeriod")
+            .text(tipDate);
+          d3.select("#gdp")
+            .text(tipGDP);
+          d3.select("#tooltip").classed("hidden", false);
+          /*
           svg.append("text")
             .attr("id", "tooltip")
             .attr("x", 100)
             .attr("y", 100)
+            .text("Date: " + tipDate)
             .attr("data-date", (d) => (d.date))
-            .text(d)
+          */
+
       })
       .on("mouseout", function(){
-          d3.select("#tooltip").remove()
+          //d3.select("#tooltip").remove()
+          d3.select("#tooltip").classed("hidden", true);
       });
-
- 
 
     svg.append("text")
        .style("text-anchor", "middle")
