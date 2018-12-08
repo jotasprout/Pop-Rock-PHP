@@ -11,6 +11,13 @@
             .bar:hover {
                 fill: blue;
             }
+            #tooltip.hidden {
+                display: none;
+            }
+            #tooltip p {
+                font-family: sans-serif;
+                font-size: 16px;
+            }
 		</style>
 	</head>
 
@@ -97,7 +104,18 @@ d3.json(gdpfile, function (dataset) {
       .attr("x", (d, i) => xScale(i))
       .attr("y", (d) => h - yScale(d.gdp))
       .attr("width", xScale.bandwidth())
-      .attr("height", (d) => yScale(d.gdp) - padding);
+      .attr("height", (d) => yScale(d.gdp) - padding)
+      .on("mouseover", function(d) {
+          const xPos = parseFloat(d3.select(this).attr("x")) + xScale.bandwidth()/2;
+          const yPos = parseFloat(d3.select(this).attr("y"))/2 + h/2;
+          svg.append("text")
+            .attr("id", "tooltip")
+            .attr("x", 100)
+            .attr("y", 100)
+            .text(d)
+      });
+
+ 
 
     svg.append("text")
        .style("text-anchor", "middle")
