@@ -113,6 +113,9 @@ d3.json(gdpfile, function (dataset) {
             .attr("x", 100)
             .attr("y", 100)
             .text(d)
+      })
+      .on("mouseout", function(){
+          d3.select("#tooltip").remove()
       });
 
  
