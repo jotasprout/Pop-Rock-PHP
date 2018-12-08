@@ -112,6 +112,7 @@ d3.json(gdpfile, function (dataset) {
             .attr("id", "tooltip")
             .attr("x", 100)
             .attr("y", 100)
+            .attr("data-date", (d) => (d.date))
             .text(d)
       })
       .on("mouseout", function(){
