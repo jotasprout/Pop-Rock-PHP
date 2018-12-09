@@ -16,6 +16,7 @@
                 background-color: yellow;
                 padding: 10px;
                 pointer-events: none;
+                height: auto;
             }
             #tooltip.hidden {
                 display: none;
@@ -23,6 +24,7 @@
             #tooltip p {
                 font-family: sans-serif;
                 font-size: 16px;
+                margin: 0;
             }
 		</style>
 	</head>
@@ -50,7 +52,7 @@ const svg = d3.select("body")
 
 const parseTime = d3.timeParse("%Y-%m-%d");
 
-//const myTime = 
+const myTime = d3.timeFormat("%Y-%m-%d");
 
 const rowConversion = function (d) {
     return {
@@ -112,7 +114,7 @@ d3.json(gdpfile, function (dataset) {
       .enter()
       .append("rect")
       .attr("class", "bar")
-      .attr("data-date", (d) => (d.date))
+      .attr("data-date", (d) => myTime((d.date)))
       .attr("data-gdp", (d) => (d.gdp))
       .attr("x", (d, i) => xScale(i))
       .attr("y", (d) => h - yScale(d.gdp))
@@ -120,31 +122,20 @@ d3.json(gdpfile, function (dataset) {
       .attr("height", (d) => yScale(d.gdp) - padding)
       .on("mouseover", function(d) {
           const xPos = parseFloat(d3.select(this).attr("x")) + xScale.bandwidth() / 2;
-          const yPos = parseFloat(d3.select(this).attr("y")) / 2 + h / 2;
-          const tipDate = d.date;
+          const yPos = h / 2;
+          const tipDate = myTime(d.date);
           const tipGDP = d.gdp;
           d3.select("#tooltip")
-            //.style("left", "100px")
-            //.style("top", "100px")
             .style("left", xPos + "px")
             .style("top", yPos + "px")
+            .attr("data-date", tipDate)
             .select("#timePeriod")
             .text(tipDate);
           d3.select("#gdp")
             .text(tipGDP);
           d3.select("#tooltip").classed("hidden", false);
-          /*
-          svg.append("text")
-            .attr("id", "tooltip")
-            .attr("x", 100)
-            .attr("y", 100)
-            .text("Date: " + tipDate)
-            .attr("data-date", (d) => (d.date))
-          */
-
       })
       .on("mouseout", function(){
-          //d3.select("#tooltip").remove()
           d3.select("#tooltip").classed("hidden", true);
       });
 
