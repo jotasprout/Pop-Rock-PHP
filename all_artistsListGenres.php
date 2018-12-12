@@ -14,7 +14,7 @@ if ( !$connekt ) {
 $artistInfoWithArtAndGenres = "SELECT a.artistID, a.artistArt, a.artistName, g.genre
     FROM artists a
     JOIN genres2 g ON a.artistID = g.artistID
-	ORDER BY a.artistName DESC";
+	ORDER BY a.artistName ASC";
 
 $getit = $connekt->query( $artistInfoWithArtAndGenres );
 
@@ -57,8 +57,8 @@ if(!$getit){ echo 'Cursed-Crap. Did not run the query.'; }
 						<!--
 					<th>Pretty Face</th>	
 						-->
-					<th onClick="sortColumn('artistName', 'ASC')"><div class="pointyHead">Artist Name</div></th>
-					<th onClick="sortColumn('genre', 'DESC')"><div class="pointyHead">Genre</div></th>
+					<th onClick="sortColumn('artistName', 'DESC')"><div class="pointyHead">Artist Name</div></th>
+					<th onClick="sortColumn('genre', 'ASC')"><div class="pointyHead">Genre</div></th>
 					</tr>
 				</thead>
 
