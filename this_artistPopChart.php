@@ -19,9 +19,25 @@
 	<style type="text/css">
 		.line {
 			fill: none;
-			stroke: yellow;
-			stroke-width: 1;
+			stroke: #00BFFF;
+			stroke-width: 2;
 		}
+
+        .axis {
+            font-size: 14px;
+        }
+
+        .axis line {
+            stroke: yellow;
+        }
+
+        .axis path {
+            stroke: yellow;
+        }
+
+        .axis text {
+            fill: yellow;
+        }
 	</style>
 </head>
 
@@ -46,8 +62,8 @@
 
 <script>
 
-var w = 800;
-var h = 300;
+var w = 1100;
+var h = 400;
 var padding = 40;
 
 var dataset, xScale, yScale, xAxis, yAxis, line;
@@ -71,11 +87,23 @@ d3.json("functions/createArtistD3.php", function(data) {
                     d3.min(dataset, function(d) { return d.date; }),
                     d3.max(dataset, function(d) { return d.date; })
                 ])
-                .range([0,w]);
+                .range([padding, w - padding]);
 
+
+    yScale = d3.scaleLinear()
+               .domain(d3.extent(data, function(d) { return d.pop; }))
+               .range([h - padding, padding]);
+               
+/*
     yScale = d3.scaleLinear()
                 .domain([0,100])
                 .range([h, 0]);
+*/
+    const xAxis = d3.axisBottom()
+                    .scale(xScale);
+
+    const yAxis = d3.axisLeft()
+                    .scale(yScale);
 
     var line = d3.line()
                 .x(function(d) { return xScale(d.date); })
@@ -90,6 +118,16 @@ d3.json("functions/createArtistD3.php", function(data) {
         .datum(dataset)
         .attr("class", "line")
         .attr("d", line);
+
+    svg.append("g")
+       .call(xAxis)
+       .attr("transform", "translate(0," + (h - padding) + ")")
+       .attr("class", "axis");
+
+    svg.append("g")
+       .call(yAxis)
+       .attr("transform", "translate(" + padding + ",0)")
+       .attr("class", "axis");
 
 });
 
