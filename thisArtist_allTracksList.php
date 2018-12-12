@@ -62,6 +62,7 @@ if ( !$getit ) {
 					<thead>
 						<tr>
 							<th onClick="sortColumn('albumName', 'ASC')"><div class="pointyHead">Album Name</div></th>
+							<th>trackID</th>
 							<th onClick="sortColumn('trackName', 'DESC')"><div class="pointyHead">Track</div></th>
 							<th onClick="sortColumn('pop', 'ASC')"><div class="pointyHead">Track Popularity</div></th>
 						</tr>
@@ -72,11 +73,13 @@ if ( !$getit ) {
 						while ( $row = mysqli_fetch_array( $getit ) ) {
 							$albumName = $row[ "albumName" ];
 							$trackName = $row[ "trackName" ];
+							$trackID = $row[ "trackID" ];
 							$trackPop = $row[ "pop" ];
 							$popDate = $row[ "date" ];
 					?>
 							<tr>
 								<td><?php echo $albumName ?></td>
+								<td><?php echo $trackID ?></td>
 								<td><?php echo $trackName ?></td>
 								<td><?php echo $trackPop ?></td>
 							</tr>
