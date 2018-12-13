@@ -23,6 +23,12 @@
 			stroke-width: 2;
 		}
 
+        #title {
+            font-size: 24px;
+            font-weight: bold;
+            fill: white;
+        }
+
         .axis {
             font-size: 14px;
         }
@@ -76,6 +82,10 @@ d3.json("functions/createArtistD3.php", function(data) {
 
     var parseTime = d3.timeParse("%y-%m-%d");
 
+    console.log("Artist name is " + data[0].artistName)
+
+    const title = data[0].artistName;
+
     dataset.forEach(function(d) {
         // date = parseTime(d.date);
         d.date = new Date(d.date);
@@ -94,11 +104,6 @@ d3.json("functions/createArtistD3.php", function(data) {
                .domain(d3.extent(data, function(d) { return d.pop; }))
                .range([h - padding, padding]);
                
-/*
-    yScale = d3.scaleLinear()
-                .domain([0,100])
-                .range([h, 0]);
-*/
     const xAxis = d3.axisBottom()
                     .scale(xScale);
 
@@ -129,6 +134,12 @@ d3.json("functions/createArtistD3.php", function(data) {
        .attr("transform", "translate(" + padding + ",0)")
        .attr("class", "axis");
 
+    svg.append("text")
+       .style("text-anchor", "middle")
+       .attr("id", "title")
+       .attr("x", w/2)
+       .attr("y", 25)
+       .text(`${title}`);
 });
 
 </script>
