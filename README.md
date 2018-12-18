@@ -17,13 +17,15 @@ I think this needs to be a vertical, rather than horizontal, bar chart because s
 
 ### Line Graphs for visualizing popularity over time
 
-![Line chart created with D3 showing Alice Cooper's popularity score over approximately six months.](https://jotascript.files.wordpress.com/2018/07/alicegraph.png)
+![Line chart created with D3 showing Queen's popularity score over approximately six months.](https://jotascript.files.wordpress.com/2018/12/queen_01.png)
 
-At present, this is the only type of line graph available. Purpose is to compare artists' popularity scores using album release dates as "years." Above is a line graph for **Alice Cooper** for an indeterminate amount of time. Below is popularity for **Rufus featuring Chaka Khan** approximately from their nomination for induction to the **Rock and Roll Hall of Fame** in 2017 to their nomination in 2018.
+At present, this is the only type of line graph available. Purpose is to compare artists' popularity scores using album release dates as "years." Above is a line graph showing **Queen**'s popularity increase due to the film *Bohemian Rhapsody*. Below is a multiline graph comparing this year's inductees into the **Rock and Roll Hall of Fame** showing the lack of influence their nominations and inductions had on their popularity.
 
-<img src="https://jotascript.files.wordpress.com/2018/10/rufusline.png">
+<img src="https://jotascript.files.wordpress.com/2018/12/bohemian_01.png">
 
-In the near future, users can compare artists, albums and tracks with multiple lines in a single graph.
+Below is a line graph showing the increase in popularity of the song "Bohemian Rhapsody" due to the film *Bohemian Rhapsody*.
+
+![Line chart created with D3 showing Bohemian Rhapsody's popularity score over approximately six months.](https://jotascript.files.wordpress.com/2018/12/queen_01.png)
 
 ### Tracks List
 
