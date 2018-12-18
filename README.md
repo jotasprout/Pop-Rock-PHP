@@ -21,11 +21,11 @@ I think this needs to be a vertical, rather than horizontal, bar chart because s
 
 At present, this is the only type of line graph available. Purpose is to compare artists' popularity scores using album release dates as "years." Above is a line graph showing **Queen**'s popularity increase due to the film *Bohemian Rhapsody*. Below is a multiline graph comparing this year's inductees into the **Rock and Roll Hall of Fame** showing the lack of influence their nominations and inductions had on their popularity.
 
-<img src="https://jotascript.files.wordpress.com/2018/12/bohemian_01.png">
+<img src="https://github.com/jotasprout/Pop-Rock-PHP/blob/master/imgs/induct-2018-12-18.png">
 
 Below is a line graph showing the increase in popularity of the song "Bohemian Rhapsody" due to the film *Bohemian Rhapsody*.
 
-![Line chart created with D3 showing Bohemian Rhapsody's popularity score over approximately six months.](https://jotascript.files.wordpress.com/2018/12/queen_01.png)
+![Line chart created with D3 showing Bohemian Rhapsody's popularity score over approximately six months.](<img src="https://jotascript.files.wordpress.com/2018/12/bohemian_01.png">)
 
 ### Tracks List
 
