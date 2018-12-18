@@ -62,7 +62,7 @@ function addGenres ($artistID, $jsonArtistGenres, $artistNameYucky) {
     }
 }
 
-// getAndStoreSpotifyGenresForAllArtists ($detroitjj);
+getAndStoreSpotifyGenresForAllArtists ($handfuldec);
 
 die();
 

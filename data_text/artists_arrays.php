@@ -1,6 +1,10 @@
 <?php
 
-$dec = array ("6KO6G41BBLTDNYOLefWTMU", "2NzvxoOoIshAvoQ2wYbZhj", "5v6wlK6GCKVovWMbPqSHNy", "42Z3cFOXOgpuh4aO6WHsI1", "2sIbWxtRGVx5q7xl9YfeZc", "4xoIelaiAMNEuZO7WNqWXR", "31LBSeuapFzeec1JCDDMZS", "6PPjceUrDXPcpwACEEAotV", "2IIRfan7YtrHcldR6G8EmM", "3hOydetQYGHP2Meyw90QHV", "2hjEGPXpN1BGpNjODQ4ImL", "5sOG2IubIMJjkqMZDsSehY", "5g4wwfnp6312mcPlNd83aX", "4YO2spr6BIQ3z4qs9yTisd", "1cYxOrlz9gqY51sO5XBDKD", "2jklKjIZQlCTsyXwdnnZrc", "4MBpWWuUXjLlxaMRNCv6RX", "30zSNmbL733Dx1GB7buRc0", "6e2NWj3S7Sm5Fh10KwqjF8");
+$dec = array ("6KO6G41BBLTDNYOLefWTMU", "2NzvxoOoIshAvoQ2wYbZhj", "5v6wlK6GCKVovWMbPqSHNy", "42Z3cFOXOgpuh4aO6WHsI1", "2sIbWxtRGVx5q7xl9YfeZc", "4xoIelaiAMNEuZO7WNqWXR", "6PPjceUrDXPcpwACEEAotV", "3hOydetQYGHP2Meyw90QHV", "5sOG2IubIMJjkqMZDsSehY", "5g4wwfnp6312mcPlNd83aX", "4YO2spr6BIQ3z4qs9yTisd", "1cYxOrlz9gqY51sO5XBDKD", "2jklKjIZQlCTsyXwdnnZrc", "4MBpWWuUXjLlxaMRNCv6RX", "30zSNmbL733Dx1GB7buRc0", "6e2NWj3S7Sm5Fh10KwqjF8");
+
+$handfuldec = array ("3mY9Ii0cL5SQxpOTAm8SHx", "1DFr97A9HnbV3SKTJFu62M", "2mG8HHQ9S9kcbjcrb5N1FE", "14pVkFUHDL207LzLHtSA18", "1LB8qB5BPb3MHQrfkvifXU", "34jw2BbxjoYalTp8cJFCPv", "7M1FPw29m5FbicYzS2xdpi", "6KO6G41BBLTDNYOLefWTMU", "2NzvxoOoIshAvoQ2wYbZhj", "5v6wlK6GCKVovWMbPqSHNy", "42Z3cFOXOgpuh4aO6WHsI1", "2sIbWxtRGVx5q7xl9YfeZc", "4xoIelaiAMNEuZO7WNqWXR", "6PPjceUrDXPcpwACEEAotV", "3hOydetQYGHP2Meyw90QHV", "5sOG2IubIMJjkqMZDsSehY", "5g4wwfnp6312mcPlNd83aX", "4YO2spr6BIQ3z4qs9yTisd", "1cYxOrlz9gqY51sO5XBDKD", "2jklKjIZQlCTsyXwdnnZrc", "4MBpWWuUXjLlxaMRNCv6RX", "30zSNmbL733Dx1GB7buRc0", "6e2NWj3S7Sm5Fh10KwqjF8");
+
+$handful = array ("3mY9Ii0cL5SQxpOTAm8SHx", "1DFr97A9HnbV3SKTJFu62M", "2mG8HHQ9S9kcbjcrb5N1FE", "14pVkFUHDL207LzLHtSA18", "1LB8qB5BPb3MHQrfkvifXU", "34jw2BbxjoYalTp8cJFCPv", "7M1FPw29m5FbicYzS2xdpi");
 
 $newKnott = array ("6sYiiBcFhVF76DR2BlRfcd", "0yOXtSWTf2JZEbeBXD4wZa", "0HdS9FxnRaiyuBjHBDo4vW");
 
