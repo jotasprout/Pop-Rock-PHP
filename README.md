@@ -25,7 +25,7 @@ At present, this is the only type of line graph available. Purpose is to compare
 
 Below is a line graph showing the increase in popularity of the song "Bohemian Rhapsody" due to the film *Bohemian Rhapsody*.
 
-![Line chart created with D3 showing Bohemian Rhapsody's popularity score over approximately six months.](<img src="https://jotascript.files.wordpress.com/2018/12/bohemian_01.png">)
+![Line chart created with D3 showing Bohemian Rhapsody's popularity score over approximately six months.](https://jotascript.files.wordpress.com/2018/12/bohemian_01.png)
 
 ### Tracks List
 
