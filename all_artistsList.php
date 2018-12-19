@@ -49,7 +49,7 @@ if(!$getit){ echo 'Cursed-Crap. Did not run the query.'; }
 		<div class="panel panel-primary">
 
 			<div class="panel-heading">
-				<h3 class="panel-title">Most Recent Artist Popularity in My DB</h3>
+				<h3 class="panel-title">Current Artist Popularity from Spotify</h3>
 			</div>
 
 			<div class="panel-body">
@@ -90,7 +90,7 @@ if(!$getit){ echo 'Cursed-Crap. Did not run the query.'; }
 
 					<tr>
 						<td><img src='<?php echo $artistArt ?>' height='64' width='64'></td>	
-						<td><a href='https://www.roxorsoxor.com/poprock/js/artist.html?id=<?php echo $artistID ?>'><?php echo $artistName ?></a></td>
+						<td><a href='https://www.roxorsoxor.com/poprock/this_artistPopChart.php?artistID=<?php echo $artistID ?>'><?php echo $artistName ?></a></td>
 						<td><?php echo $artistPop ?></td>
 						<td><?php echo $popDate ?></td>
 						<td>*</td>

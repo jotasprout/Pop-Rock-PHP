@@ -98,6 +98,8 @@ function divideCombineArtists ($theseArtists) {
 			$artistName = mysqli_real_escape_string($connekt,$artistNameYucky);
 			$artistArt = $artist->images[0]->url;
 			$artistPop = $artist->popularity;
+			$jsonArtistGenres = $artist->genres;
+
 			$insertArtistsInfo = "INSERT INTO artists (artistID,artistName, artistArt) VALUES('$artistID','$artistName', '$artistArt')";
 			$rockout = $connekt->query($insertArtistsInfo);
 			if(!$rockout){
@@ -111,8 +113,20 @@ function divideCombineArtists ($theseArtists) {
 			}
 	
 			else {
-				echo '<tr><td>' . $artistArt . '</td><td>' . $artistName . '</td><td>' . $artistPop . '</td></tr>';
+				echo '<tr><td><img src="' . $artistArt . '"></td><td>' . $artistName . '</td><td>' . $artistPop . '</td></tr>';
 			}
+
+			for ($i=0; $i<(count($jsonArtistGenres)); ++$i) {
+				$insertArtistGenres = "INSERT INTO genres2 (artistID,genre) VALUES('$artistID','$jsonArtistGenres[$i]')";
+	
+				$rockicon = $connekt->query($insertArtistGenres);
+	
+				if(!$rockicon){
+					echo 'Cursed-Crap! Could NOT insert genre of ' . $jsonArtistGenres[$i] . ' for <b>' . $artistNameYucky . '</b>.<br>';
+				} else {
+					echo  'Inserted genre of ' . $jsonArtistGenres[$i] . ' for <b>' . $artistNameYucky . '</b>.<br>';
+				}
+			}  
 			
 		}
 	};	

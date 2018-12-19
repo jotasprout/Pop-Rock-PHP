@@ -12,6 +12,7 @@ $navbar = "
 				<li><a href='https://roxorsoxor.com/poprock/thisArtist_allTracksList.php'>All Tracks</a></li>
 				<li><a href='https://roxorsoxor.com/poprock/all_artistsList.php'>All Artists</a></li>	
 				<li><a href='https://roxorsoxor.com/poprock/all_artistsListGenres.php'>All Artists Genres</a></li>	
+				<li><a href='https://roxorsoxor.com/poprock/aboutme.php'>About Me</a></li>	
 			</ul>
 		</div> <!-- /container-fluid -->   
 	</nav> <!-- /navbar -->

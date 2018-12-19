@@ -23,7 +23,7 @@ if(!$getit){ echo 'Cursed-Crap. Did not run the query.'; }
 <!doctype html>
 <html>
 <head>
-    <title>Choose a Dynamic Artist</title>
+    <title>Choose an Artist</title>
     <meta charset='UTF-8'> 
     <?php echo $stylesAndSuch; ?>
 </head>
@@ -34,7 +34,7 @@ if(!$getit){ echo 'Cursed-Crap. Did not run the query.'; }
 
     <form class="form-horizontal" id="addalbums" action="this_artistPopList.php" method="post">
         <fieldset>
-                <legend>Dynamic Select An Artist Menu 2000</legend>
+                <legend>Select An Artist</legend>
             <div class="form-group">
 
                 <div class="col-lg-4">

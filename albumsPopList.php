@@ -45,7 +45,7 @@ if(!$getit){
 	
 <head>
 	<meta charset="UTF-8">
-	<title>Album Info from My DB</title>
+	<title>This Artist's Albums</title>
 	<?php echo $stylesAndSuch; ?>
 </head>
 	
@@ -60,7 +60,8 @@ if(!$getit){
 <div class="panel panel-primary">
 
 	<div class="panel-heading">
-		<h3 class="panel-title">Album Info from My DB</h3>
+		<h3 class="panel-title">This Artist's Albums</h3>
+		<p>If this page is empty, <a href='https://www.roxorsoxor.com/poprock/choose_artist.php'>choose an artist</a> first.</p>
 	</div>
 
 	<div class="panel-body"> 

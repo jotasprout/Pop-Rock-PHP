@@ -1,10 +1,13 @@
 <?php 
+/*
     if (!isset($_COOKIE['artistID'])) {
         $artistID = $_COOKIE['artistID'];
     } else {
         // below doesn't work ... worry about it later
        // header('location: https://www.roxorsoxor.com/poprock/choose_artist.php');
     };
+    */
+    $artistID = $_GET['artistID'];
 	require_once 'page_pieces/stylesAndScripts.php';
 	require_once 'page_pieces/navbar_rock.php';
 ?>
@@ -74,7 +77,7 @@ var padding = 40;
 
 var dataset, xScale, yScale, xAxis, yAxis, line;
 
-d3.json("functions/createArtistD3.php", function(data) {
+d3.json("functions/createArtistD3.php?artistID=<?php echo $artistID; ?>", function(data) {
     
     console.log(data);
     

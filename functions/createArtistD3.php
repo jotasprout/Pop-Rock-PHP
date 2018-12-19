@@ -1,6 +1,7 @@
 <?php
 
-$artistID = $_COOKIE['artistID'];
+//$artistID = $_COOKIE['artistID'];
+$artistID = $_GET['artistID'];
 
 require_once '../rockdb.php';
 require( "class.artist.php" );
