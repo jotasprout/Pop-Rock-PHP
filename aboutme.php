@@ -26,6 +26,13 @@ require_once 'page_pieces/stylesAndScripts.php';
 
 	<div class="panel-heading">
 		<h3 class="panel-title">Learn All About Me</h3>
+
+
+	</div>
+
+	<div class="panel-body"> 
+		
+        <!-- Panel Content --> 
         <ul>
             <li><a href='https://github.com/jotasprout'>GitHub</a></li>
             <li><a href='https://www.linkedin.com/in/jotasprout/'>LinkedIn</a></li>
@@ -39,12 +46,6 @@ require_once 'page_pieces/stylesAndScripts.php';
             <li><a href='https://www.reddit.com/user/jaysprout'>Reddit</a></li>
             <li><a href='https://www.facebook.com/jay.sprout.5'>Facebook</a></li>
         </ul>
-
-	</div>
-
-	<div class="panel-body"> 
-		
-		<!-- Panel Content --> 
 
 	</div> <!-- panel body -->
 

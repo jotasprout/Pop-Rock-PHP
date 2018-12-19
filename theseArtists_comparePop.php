@@ -1,6 +1,9 @@
 <?php 
 	require_once 'page_pieces/stylesAndScripts.php';
-	require_once 'page_pieces/navbar_rock.php';
+    require_once 'page_pieces/navbar_rock.php';
+    require_once 'data_text/artists_groups.php';
+    $groupParam = $_POST['group'];
+ 
 ?>
 
 <!DOCTYPE html>

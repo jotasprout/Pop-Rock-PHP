@@ -17,7 +17,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>This D3 Artist</title>
+    <title>This Artist</title>
 	<?php echo $stylesAndSuch; ?>
 	<style type="text/css">
 		.line {
@@ -57,12 +57,12 @@
 
 	<div class="panel panel-primary">
 		<div class="panel-heading">
-			<h3 class="panel-title">This Artist's Popularity Over Time</h3>
+			<h3 class="panel-title">This Artist's Popularity On Spotify Over Time</h3>
 		</div>
 
 		<div class="panel-body">
-		<div id="forArt"></div> <!-- close forChart -->
-		<div id="forChart"></div> <!-- close forChart -->
+		<div id="forArt"></div> <!-- close forArt -->
+		<div id="forArtistChart"></div> <!-- close forChart -->
 		</div> <!-- panel body -->
 
 	</div> <!-- close Panel Primary -->
@@ -117,7 +117,7 @@ d3.json("functions/createArtistD3.php?artistID=<?php echo $artistID; ?>", functi
                 .x(function(d) { return xScale(d.date); })
                 .y(function(d) { return yScale(d.pop); });
 
-    var svg = d3.select("#forChart")
+    var svg = d3.select("#forArtistChart")
                     .append("svg")
                     .attr("width", w)
                     .attr("height", h);

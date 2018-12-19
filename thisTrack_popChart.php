@@ -1,4 +1,5 @@
 <?php 
+    $trackID = $_GET['trackID'];
 	require_once 'page_pieces/stylesAndScripts.php';
 	require_once 'page_pieces/navbar_rock.php';
 ?>
@@ -67,7 +68,7 @@ var padding = 40;
 
 var dataset, xScale, yScale, xAxis, yAxis, line;
 
-d3.json("functions/createTrackD3.php", function(data) {
+d3.json("functions/createTrackD3.php?trackID=<?php echo $trackID ?>", function(data) {
     
     console.log(data);
     

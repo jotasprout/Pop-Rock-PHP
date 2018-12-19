@@ -1,12 +1,27 @@
 <?php
 
-$nominations = array ('0UKfenbZb15sqhfPC6zbt3', '4WquJweZPIK9qcfVFhTKvf', '0nJUwPwC9Ti4vvuJ0q3MfT', '1P8IfcNKwrkQP5xJWuhaOC', '2d0hyoQ5ynDBnkvAbJKORj', '0dmPX6ovclgOy8WWJaFEUU', '0Lpr5wXzWLtDWm1SjNbpPb', '1YLsqPcFg1rj7VvhfwnDWm');
-
-$inductees = array ('7bu3H8JO7d0UbMoVzbo70s', '6H1RjVyNruCmrBEWRbD0VZ', '7crPfGd2k81ekOoSqQKWWz', '4qwGe91Bz9K2T8jXTZ815W', '4Z8W4fKeB5YxbusRsdQVPb', '3fhOTtm0LBJ3Ojn4hIljLo', '2jgPkn6LuUazBoBk6vvjh5');
-
 require_once '../rockdb.php';
 require( "class.artist.php" );
+require_once 'data_text/artists_groups.php';
 
+$thrashetc = array ('2ye2Wgw4gimLv2eAKyk1NB', '14pVkFUHDL207LzLHtSA18', '1Yox196W7bzVNZI7RBaPnf', '1IQ2e1buppatiN1bxUVkrk', '3JysSUOyfVs1UQ0UaESheP', '0yLwGBQiBqhXOvmTfH2A7n', '28hJdGN1Awf7u3ifk2lVkg', '3BM0EaYmkKWuPmmHFUTQHv', '76S65NHJHrNy4JTrXHP2BH', '5fwaejlOHVBAw1KhIPPaQe', '6SYbLA9utoNsllunR1TnkM', '0NmYchKQ8JIR9QHYJA0FRe', '3dnH7fdVm2X07MK6Fkbhbt', '6KVc8Llznru8n9LVCYe9dz', '4ZISAmHmQUDCpv8xydqeKG', '0nxo4nAEYNbNpA8wwNvqXY', '0AA0qugrTsIv7JFMEnhaqu', '06T4NL0adq4kfYAr2nZv5t', '3lgxzeCbj6oMQMmaUhH2H6', '4YO2spr6BIQ3z4qs9yTisd');
+/*
+echo $rap;
+
+$groupParam = $_GET['group'];
+
+$group = switch($groupParam) {
+	case 'christian':
+	echo $christian;
+	break;
+	case 'rap':
+	echo $rap;
+	break;
+	case 'thrashetc':
+	echo $thrashetc;
+	break;
+};
+*/
 $connekt = new mysqli($GLOBALS['host'], $GLOBALS['un'], $GLOBALS['magicword'], $GLOBALS['db']);
 
 if (!$connekt) {
@@ -16,7 +31,7 @@ if (!$connekt) {
 $multiArtistPop = "SELECT a.artistID, a.artistArt , a.artistName, p.pop, p.date
     FROM artists a
     JOIN popArtists p ON p.artistID = a.artistID
-	WHERE a.artistID IN ('7bu3H8JO7d0UbMoVzbo70s', '6H1RjVyNruCmrBEWRbD0VZ', '7crPfGd2k81ekOoSqQKWWz', '4qwGe91Bz9K2T8jXTZ815W', '4Z8W4fKeB5YxbusRsdQVPb', '3fhOTtm0LBJ3Ojn4hIljLo', '2jgPkn6LuUazBoBk6vvjh5')
+	WHERE a.artistID IN ('2ye2Wgw4gimLv2eAKyk1NB', '14pVkFUHDL207LzLHtSA18', '1Yox196W7bzVNZI7RBaPnf', '1IQ2e1buppatiN1bxUVkrk', '3JysSUOyfVs1UQ0UaESheP', '0yLwGBQiBqhXOvmTfH2A7n', '28hJdGN1Awf7u3ifk2lVkg', '3BM0EaYmkKWuPmmHFUTQHv', '76S65NHJHrNy4JTrXHP2BH', '5fwaejlOHVBAw1KhIPPaQe', '6SYbLA9utoNsllunR1TnkM', '0NmYchKQ8JIR9QHYJA0FRe', '3dnH7fdVm2X07MK6Fkbhbt', '6KVc8Llznru8n9LVCYe9dz', '4ZISAmHmQUDCpv8xydqeKG', '0nxo4nAEYNbNpA8wwNvqXY', '0AA0qugrTsIv7JFMEnhaqu', '06T4NL0adq4kfYAr2nZv5t', '3lgxzeCbj6oMQMmaUhH2H6', '4YO2spr6BIQ3z4qs9yTisd')
 	ORDER BY a.artistID ASC";
 
 $getit = mysqli_query($connekt, $multiArtistPop);

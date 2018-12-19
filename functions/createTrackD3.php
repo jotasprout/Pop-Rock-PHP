@@ -1,7 +1,6 @@
 <?php
 
-//$trackID = $_COOKIE['artistID'];
-$trackID = '7tFiyTwD0nx5a1eklYtX2J';
+$trackID = $_GET['trackID'];
 
 require_once '../rockdb.php';
 //require( "class.artist.php" );
