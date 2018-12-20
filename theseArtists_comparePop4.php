@@ -77,8 +77,8 @@ var h = 400;
 
 margin = {
     top: 50,
-    right: 10,
-    bottom: 300,
+    right: 30,
+    bottom: 350,
     left: 50
 };
 
@@ -105,7 +105,7 @@ d3.json("functions/multiArtistsPop2.php", function(data) {
                         d3.min(dataset, function(d) { return d.date; }),
                         d3.max(dataset, function(d) { return d.date; })
                     ])
-                    .range([margin.left, w - margin.right]);
+                    .range([margin.left, w + margin.left]);
 
 
         yScale = d3.scaleLinear()
@@ -158,17 +158,17 @@ d3.json("functions/multiArtistsPop2.php", function(data) {
         svg.append("text")
         .style("text-anchor", "middle")
         .attr("id", "title")
-        .attr("x", w/2)
-        .attr("y", 25)
+        .attr("x", (w + margin.left + margin.right)/2)
+        .attr("y", 50)
         .text(`${title}`);
 
-        const legendtop = h + margin.top;
+        const legendtop = h + margin.top + 40;
 
         const legend = svg.selectAll(".legend").data(dataNest).enter().append("g")
                           .attr("class", "legend")
                           .attr("transform", function (d,i){
                               xOff = ((i%8)+1) * 110
-                              yOff = Math.floor(i/8) * 100 + legendtop
+                              yOff = Math.floor(i/8) * 105 + legendtop
                               return "translate(" + xOff + "," + yOff + ")"
                           });
                           /**/
@@ -193,6 +193,8 @@ d3.json("functions/multiArtistsPop2.php", function(data) {
         legend.append("text")
             .style("text-anchor", "middle")
             .attr("class", "artistName")
+            .attr("dx", +32)
+            .attr("dy", +84)
             .text(function(d) {
                 return d.values[0].artistName
             })
