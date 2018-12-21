@@ -128,8 +128,6 @@ d3.json("functions/multiArtistsPop2.php", function(data) {
                         .attr("width", w + margin.left + margin.right)
                         .attr("height", h + margin.top + margin.bottom);
 
-
-
         const dataNest = d3.nest()
                         .key(function(d) { return d.artistID;})
                         .entries(data);
@@ -179,8 +177,7 @@ d3.json("functions/multiArtistsPop2.php", function(data) {
                 return d.values[0].artistArt;
             })
             .attr("width", 64)
-            .attr("height", 64);
-            
+            .attr("height", 64);            
 
         legend.append("rect")
             .attr("width", 64)
@@ -210,9 +207,9 @@ d3.json("functions/multiArtistsPop2.php", function(data) {
               .transition().duration(100)
               .style("opacity", newOpacity);
             d.active = active;
-        }).text(d.key);
+        });
 
- /*       
+/*       
         dataNest.forEach(function(d, i) {
 
             svg.append("svg:image")
@@ -243,7 +240,7 @@ d3.json("functions/multiArtistsPop2.php", function(data) {
                    return d.color = color(d.key);
                });
         })
-      */  
+*/  
         
 
     })

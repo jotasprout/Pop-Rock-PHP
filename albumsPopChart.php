@@ -45,7 +45,6 @@
             .append("svg")
             .attr("width", w)
             .attr("height", h);
-
         // Rectangles
         svg.selectAll("rect")
             .data(dataset)
@@ -61,7 +60,6 @@
             .attr("height", function(d) {
                 return (d[4] * 2);
             });
-
         // Images
         svg.selectAll("image")
             .data(dataset)
@@ -79,7 +77,6 @@
             })
             .attr("width", 64)
             .attr("height", 64);			   
-        
         
         // Labels
         svg.selectAll("text")

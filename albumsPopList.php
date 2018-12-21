@@ -78,15 +78,7 @@ if(!$getit){
 						<th onClick="sortColumn('albumName', 'ASC')"><div class="pointyHead">Album Name</div></th>
 						<th onClick="sortColumn('year', 'DESC')"><div class="pointyHead">Released</div></th>
 						<th onClick="sortColumn('pop', 'ASC')"><div class="pointyHead">Popularity</div></th>
-		<!--				
-						<th>1 day</th>
-						<th>7 days</th>
-						<th>30 days</th>
-						<th>90 days</th>
-						<th>180 days</th>
-		
-			<th>Date</th>
-		--> 
+
 					</tr>
 				</thead>
 				<tbody>
@@ -108,16 +100,7 @@ if(!$getit){
 						<td><a href='https://www.roxorsoxor.com/poprock/thisAlbum_TracksList.php?albumID=<?php echo $albumID ?>'><?php echo $albumName ?></a></td>
 						<td><?php echo $albumReleased ?></td>
 						<td><?php echo $albumPop ?></td>
-						<!--
-						<td>*</td>
-						<td>*</td>
-						<td>*</td>
-						<td>*</td>
-						<td>*</td>
-						
-						
-							<td><?php //echo $date ?></td>	
-						-->
+
 					</tr>
 					
 					<?php 
