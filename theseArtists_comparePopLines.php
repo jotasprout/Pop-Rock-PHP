@@ -62,8 +62,7 @@
 		</div>
 
 		<div class="panel-body">
-		<div id="forArt"></div> <!-- close forChart -->
-		<div id="forChart"></div> <!-- close forChart -->
+		    <div id="forChart"></div> <!-- close forChart -->
 		</div> <!-- panel body -->
 
 	</div> <!-- close Panel Primary -->

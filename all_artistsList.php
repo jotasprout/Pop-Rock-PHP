@@ -63,17 +63,10 @@ if(!$getit){ echo 'Cursed-Crap. Did not run the query.'; }
 						<tr>
 						<th>Pretty Face</th>	
 						<th onClick="sortColumn('artistName', 'ASC')"><div class="pointyHead">Artist Name</div></th>
+						<th>artistID</th>
 						<th onClick="sortColumn('pop', 'DESC')"><div class="pointyHead">Popularity</div></th>
 						<th>Date</th>
-						<th>1 day</th>
-						<th>7 days</th>
-						<th>30 days</th>
-						<th>90 days</th>
-						<th>180 days</th>
-							
-							<!--
-								
-							--> 
+						
 						</tr>
 					</thead>
 
@@ -91,16 +84,10 @@ if(!$getit){ echo 'Cursed-Crap. Did not run the query.'; }
 					<tr>
 						<td><img src='<?php echo $artistArt ?>' height='64' width='64'></td>	
 						<td><a href='https://www.roxorsoxor.com/poprock/this_artistPopChart.php?artistID=<?php echo $artistID ?>'><?php echo $artistName ?></a></td>
+						<td><?php echo $artistID ?></td>
 						<td><?php echo $artistPop ?></td>
 						<td><?php echo $popDate ?></td>
-						<td>*</td>
-						<td>*</td>
-						<td>*</td>
-						<td>*</td>
-						<td>*</td>
-						<!--
-							
-						-->
+						
 					</tr>
 
 					<?php 
