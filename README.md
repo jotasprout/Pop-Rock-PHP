@@ -38,7 +38,7 @@ At present, tracks are listed all together. Eventually, they'll be viewable by a
 - Also, the UI will be more interactive
 
 ## Back End
-* Eventually, all PHP will be strictly back-end
+* Eventually, all PHP will be strictly back-end with none affecting UI
 * Cron jobs collect Spotify Web API data regularly and store it in my database
 
 ## Status

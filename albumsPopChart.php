@@ -20,16 +20,20 @@
  <div class="container">
     <?php echo $navbar ?> 
 
+    <p>If this page is empty, or the wrong discography displays, <a href='https://www.roxorsoxor.com/poprock/choose_artist.php'>choose an artist</a> first.</p>
+
 	<div class="panel panel-primary">
 		<div class="panel-heading">
 			<h3 class="panel-title">This Artist's Albums Popularity</h3>
 		</div>
 
-		<div class="panel-body"></div> <!-- panel body -->
+		<div class="panel-body">
+            <div id="forChart"></div> <!-- /for chart -->
+        </div> <!-- panel body -->
 
 	</div> <!-- close Panel Primary -->
 
-    <div id="forChart"></div> <!-- /for chart -->
+    
 </div> <!-- /container -->		 
 
 <script type="text/javascript">
@@ -76,7 +80,11 @@
                 return h - 64
             })
             .attr("width", 64)
-            .attr("height", 64);			   
+            .attr("height", 64)
+            .append("title")
+            .text(function(d){
+                return d.albumName;
+            });			   
         
         // Labels
         svg.selectAll("text")

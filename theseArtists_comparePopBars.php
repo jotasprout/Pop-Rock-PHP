@@ -61,9 +61,6 @@ require_once 'page_pieces/stylesAndScripts.php';
             .attr("height", function(d) {
                 return (d.pop * 2);
             });
-        // Adapt bootstrap panel
-        d3.select(".panel")
-          .attr("width", 2400);
           
         // Images
         svg.selectAll("image")
@@ -72,7 +69,6 @@ require_once 'page_pieces/stylesAndScripts.php';
             .append("svg:image")
             .attr("xlink:href", function (d){
                 return d.artistArt;
-                // console.log(d.artistArt);
             })
             .attr("x", function (d,i) {
                 return i * 65;
