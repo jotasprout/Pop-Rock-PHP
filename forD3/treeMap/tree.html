@@ -73,9 +73,20 @@ const svg = d3.select("body")
 d3.json(datafile, function (dataset) {
 
     console.log(dataset);
+    //const data = dataset.data;
+    //console.log(data);
 
-    const data = dataset.data;
-    console.log(data);
+    const root = d3.hierarchy (dataset);
+
+    console.log(root);
+
+    root.sum(function(d){
+        return d.value;
+    });
+
+    const treemapLayout = d3.treemap();
+
+    treemapLayout(root);
 
     const title = dataset.source_name;
 
