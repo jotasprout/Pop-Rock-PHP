@@ -2,14 +2,16 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
-		<title>My Step at a time with patience chart</title>
+		<title>My FCC treeMap Layout Chart</title>
 		<script type="text/javascript" src="https://d3js.org/d3.v4.min.js"></script>
 		<style type="text/css">
-			.bar {
-                fill: black;
-            }		
-            .bar:hover {
+			.tile {
                 fill: blue;
+                opacity: 0.5;
+            }		
+            .tile:hover {
+                fill: violet;
+                opacity: 0.5;
             }
             #tooltip {
                 position: absolute;
@@ -33,20 +35,20 @@
             }
 
             .legend {
+                font-size: 18px;
+            }
+
+            .legend-item {
                 font-size: 12px;
             }
 
-            .artistName {
-                font-size: 14px;
-            }
 		</style>
 	</head>
 
 <body>
 
 <div id="tooltip" class="hidden">
-    <p id="timePeriod">Q</p>
-    <p>$ <span id="gdp">M</span> Billion</p>
+    <p></p>
 </div>
 
 <script type="text/javascript">
@@ -56,25 +58,33 @@ const datafile = 'FCC/data/movie-data.json';
 const w = 800;
 const h = 800;
 
+/*
 margin = {
     top: 50,
     right: 50,
     bottom: 50,
     left: 50
 };
-
-var dataset, xScale, yScale, xAxis, yAxis, line;
+*/
 
 const svg = d3.select("body")
               .append("svg")
               .attr("width", w)
-              .attr("height", h);
+              .attr("height", h)
+              .append("g");
 
 d3.json(datafile, function (dataset) {
 
+    const color = d3.scaleOrdinal(d3.schemeCategory20);
+
     console.log(dataset);
-    //const data = dataset.data;
-    //console.log(data);
+    // const data = dataset.data;
+    // console.log(data);
+
+    const treemapLayout = d3.treemap();
+
+    treemapLayout.size([600, 600])
+                 .attr("id", "");
 
     const root = d3.hierarchy (dataset);
 
@@ -82,69 +92,39 @@ d3.json(datafile, function (dataset) {
 
     root.sum(function(d){
         return d.value;
-    });
-
-    const treemapLayout = d3.treemap();
+    });    
 
     treemapLayout(root);
 
-    const title = dataset.source_name;
-
-    const xScale = d3.scaleLinear()
-           .domain([0,w])
-           .range([0,w]);
-
-    const yScale = d3.scaleLinear()
-           .domain([0, h - margin.top - margin.bottom])
-           .range([0, h - margin.top - margin.bottom]);
-
-    const xAxis = d3.axisBottom()
-                    .scale(timeScale);
-
-    const yAxis = d3.axisLeft()
-                    .scale(yScale2);
-
-    const color = d3.scaleOrdinal(d3.schemeCategory20);
-
-    svg.append("g")
-       .attr("id", "x-axis")
-       .call(xAxis)
-       .attr("transform", "translate(0," + (h - padding) + ")");
-
-    svg.append("g")
-       .attr("id", "y-axis")
-       .call(yAxis)
-       .attr("transform", "translate(" + padding + ",0)");
-
-    svg.selectAll("rect")
-      .data(data)
+    svg.select("svg g")
+       .selectAll("rect")
+      .data(root.descendants())
       .enter()
       .append("rect")
-      .attr("class", "bar")
-      .attr("data-date", (d) => myTime((d.date)))
-      .attr("data-gdp", (d) => (d.gdp))
-      .attr("x", (d, i) => xScale(i))
-      .attr("y", (d) => h - yScale(d.gdp))
-      .attr("width", xScale.bandwidth())
-      .attr("height", (d) => yScale(d.gdp) - padding)
+      .attr("class", "tile")
+      .attr("data-name", (d) => (d.name))
+      .attr("data-category", (d) => (d.category))
+      .attr("data-value", (d) => (d.value))
+      .attr("x", (d) => (d.x0))
+      .attr("y", (d) => (d.y0))
+      .attr("width", (d) => (d.x1 - d.x0))
+      .attr("height", (d) => (d.y1 - d.y0))
+      // after confirming it all works, try refactoring next as ES6
       .on("mouseover", function(d) {
           const xPos = parseFloat(d3.select(this).attr("x")) + xScale.bandwidth() / 2;
           const yPos = h / 2;
-          const tipDate = myTime(d.date);
-          const tipGDP = d.gdp;
+          const tipValue;
           d3.select("#tooltip")
             .style("left", xPos + "px")
             .style("top", yPos + "px")
-            .attr("data-date", tipDate)
-            .select("#timePeriod")
-            .text(tipDate);
-          d3.select("#gdp")
-            .text(tipGDP);
+            .attr("data-value", tipValue)
           d3.select("#tooltip").classed("hidden", false);
       })
       .on("mouseout", function(){
           d3.select("#tooltip").classed("hidden", true);
       });
+
+    const title = "Giving Tree";
 
     svg.append("text")
        .style("text-anchor", "middle")
@@ -152,6 +132,24 @@ d3.json(datafile, function (dataset) {
        .attr("x", w/2)
        .attr("y", 50)
        .text(`${title}`);
+
+    const description = "Co-Dependent Tree without boundaries";
+
+    svg.append("text")
+       .style("text-anchor", "middle")
+       .attr("id", "description")
+       .attr("x", w/2)
+       .attr("y", 150)
+       .text(`${description}`);
+    
+    const legend = svg.selectAll(".legend").data(dataNest).enter().append("g")
+                        .attr("class", "legend")
+                        .attr("id", "legend")
+                        .attr("transform", function (d,i){
+                            xOff = ((i%8)+1) * 110
+                            yOff = Math.floor(i/8) * 105 + legendtop
+                            return "translate(" + xOff + "," + yOff + ")"
+                        });
 
 });
 
