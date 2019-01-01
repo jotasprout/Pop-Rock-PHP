@@ -7,10 +7,12 @@
 		<style type="text/css">
 			.tile {
                 fill: blue;
+                stroke: white;
                 opacity: 0.5;
             }		
             .tile:hover {
                 fill: violet;
+                stroke: white;
                 opacity: 0.5;
             }
             #tooltip {
@@ -83,8 +85,7 @@ d3.json(datafile, function (dataset) {
 
     const treemapLayout = d3.treemap();
 
-    treemapLayout.size([600, 600])
-                 .attr("id", "");
+    treemapLayout.size([600, 600]);
 
     const root = d3.hierarchy (dataset);
 
@@ -95,8 +96,8 @@ d3.json(datafile, function (dataset) {
     });    
 
     treemapLayout(root);
-
-    svg.select("svg g")
+/*
+    d3.select("svg g")
        .selectAll("rect")
       .data(root.descendants())
       .enter()
@@ -108,8 +109,40 @@ d3.json(datafile, function (dataset) {
       .attr("x", (d) => (d.x0))
       .attr("y", (d) => (d.y0))
       .attr("width", (d) => (d.x1 - d.x0))
-      .attr("height", (d) => (d.y1 - d.y0))
+      .attr("height", (d) => (d.y1 - d.y0));
+*/
+
+    const nodes = d3.select('svg g')
+      .selectAll('g')
+      .data(root.descendants())
+      .enter()
+      .append('g')
+      .attr('transform', (d) => ('translate(' + [d.x0, d.y0] + ')'));
+
+    nodes
+      .append('rect')
+         .attr("class", "tile")
+         .attr("data-name", (d) => (d.name))
+         .attr("data-category", (d) => (d.category))
+         .attr("data-value", (d) => (d.value))
+         //.attr("x", (d) => (d.x0))
+         //.attr("y", (d) => (d.y0))
+         .attr('width', (d) => (d.x1 - d.x0))
+         .attr('height', (d) => (d.y1 - d.y0));
+
+    nodes
+         .append("text")
+         .text((d) => (d.data.name))
+         .attr("dx", 10)
+         .attr("dy", 20);
+
+    //nodes.append('text')
+         //.attr('dx', 4)
+         //.attr('dy', 14)
+         //.text((d) => (d.name));
+
       // after confirming it all works, try refactoring next as ES6
+      /*
       .on("mouseover", function(d) {
           const xPos = parseFloat(d3.select(this).attr("x")) + xScale.bandwidth() / 2;
           const yPos = h / 2;
@@ -123,14 +156,14 @@ d3.json(datafile, function (dataset) {
       .on("mouseout", function(){
           d3.select("#tooltip").classed("hidden", true);
       });
-
+*/
     const title = "Giving Tree";
 
     svg.append("text")
        .style("text-anchor", "middle")
        .attr("id", "title")
        .attr("x", w/2)
-       .attr("y", 50)
+       .attr("y", 100)
        .text(`${title}`);
 
     const description = "Co-Dependent Tree without boundaries";
@@ -142,7 +175,9 @@ d3.json(datafile, function (dataset) {
        .attr("y", 150)
        .text(`${description}`);
     
-    const legend = svg.selectAll(".legend").data(dataNest).enter().append("g")
+    // next should use root instead of dataset?
+    /*
+    const legend = svg.selectAll(".legend").data(dataset).enter().append("g")
                         .attr("class", "legend")
                         .attr("id", "legend")
                         .attr("transform", function (d,i){
@@ -150,7 +185,7 @@ d3.json(datafile, function (dataset) {
                             yOff = Math.floor(i/8) * 105 + legendtop
                             return "translate(" + xOff + "," + yOff + ")"
                         });
-
+*/
 });
 
 </script>
