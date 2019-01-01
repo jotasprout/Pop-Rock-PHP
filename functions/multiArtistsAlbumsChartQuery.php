@@ -26,7 +26,7 @@ $happyScabies2 = "SELECT a.albumName, a.artistID, a.year, a.albumArt, z.artistNa
 			ON p.albumID = groupedp.albumID
 			AND p.date = groupedp.MaxDate) p1 
 	ON a.albumID = p1.albumID
-    WHERE a.artistID IN ('1Fmb52lZ6Jv7FMWXXTPO3K','5eTq3PxbOh5vgeRXKNqPyV', '5NhjPre67qjeeQP4KHDHpe')
+    WHERE a.artistID IN ('0p9uD4WGPHqMicwXm3Kavk', '0t1uzfQspxLvAifZLdmFe2', '5MQsxr7sbsewUTIEEYxauR', '0PGxNwykt4KgnvSnNHVUSZ')
 	ORDER BY year ASC;";						
 
 $result = mysqli_query($connekt, $happyScabies2);
