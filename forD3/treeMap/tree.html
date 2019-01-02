@@ -6,12 +6,12 @@
 		<script type="text/javascript" src="https://d3js.org/d3.v4.min.js"></script>
 		<style type="text/css">
 			.tile {
-                fill: blue;
+                //fill: blue;
                 stroke: white;
                 opacity: 0.5;
             }		
             .tile:hover {
-                fill: violet;
+                //fill: violet;
                 stroke: white;
                 opacity: 0.5;
             }
@@ -110,6 +110,10 @@ d3.json(datafile, function (dataset) {
     nodes
       .append('rect')
          .attr("class", "tile")
+         .attr("fill", (d) => {
+             while (d.depth > 1) d = d.parent; 
+             return color (d.data.name);
+         })
          .attr("data-name", (d) => (d.name))
          .attr("data-category", (d) => (d.category))
          .attr("data-value", (d) => (d.value))
