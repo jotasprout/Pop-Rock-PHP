@@ -50,7 +50,7 @@
 <body>
 
 <div id="tooltip" class="hidden">
-    <p></p>
+    <p id="tipValue"></p>
 </div>
 
 <script type="text/javascript">
@@ -58,7 +58,7 @@
 const datafile = 'FCC/data/movie-data.json';
 
 const w = 1500;
-const h = 1500;
+const h = 1000;
 
 /*
 margin = {
@@ -123,21 +123,23 @@ d3.json(datafile, function (dataset) {
          .attr("dy", 20);
 
       // after confirming it all works, try refactoring next as ES6
-      /*
-      .on("mouseover", function(d) {
-          const xPos = parseFloat(d3.select(this).attr("x")) + xScale.bandwidth() / 2;
+      
+    nodes.on("mouseover", function(d) {
+          const xPos = w / 2;
           const yPos = h / 2;
-          const tipValue;
+          const tipValue = d.value;
           d3.select("#tooltip")
             .style("left", xPos + "px")
             .style("top", yPos + "px")
             .attr("data-value", tipValue)
+          d3.select("#tipValue")
+            .text(tipValue);
           d3.select("#tooltip").classed("hidden", false);
       })
       .on("mouseout", function(){
           d3.select("#tooltip").classed("hidden", true);
       });
-*/
+/**/
     const title = "Giving Tree";
 
     svg.append("text")
