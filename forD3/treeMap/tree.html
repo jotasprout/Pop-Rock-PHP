@@ -57,8 +57,8 @@
 
 const datafile = 'FCC/data/movie-data.json';
 
-const w = 800;
-const h = 800;
+const w = 1500;
+const h = 1500;
 
 /*
 margin = {
@@ -85,7 +85,10 @@ d3.json(datafile, function (dataset) {
 
     const treemapLayout = d3.treemap();
 
-    treemapLayout.size([600, 600]);
+    treemapLayout
+        .size([w, h])
+        .paddingOuter(30);
+
 
     const root = d3.hierarchy (dataset);
 
@@ -96,21 +99,6 @@ d3.json(datafile, function (dataset) {
     });    
 
     treemapLayout(root);
-/*
-    d3.select("svg g")
-       .selectAll("rect")
-      .data(root.descendants())
-      .enter()
-      .append("rect")
-      .attr("class", "tile")
-      .attr("data-name", (d) => (d.name))
-      .attr("data-category", (d) => (d.category))
-      .attr("data-value", (d) => (d.value))
-      .attr("x", (d) => (d.x0))
-      .attr("y", (d) => (d.y0))
-      .attr("width", (d) => (d.x1 - d.x0))
-      .attr("height", (d) => (d.y1 - d.y0));
-*/
 
     const nodes = d3.select('svg g')
       .selectAll('g')
@@ -125,8 +113,6 @@ d3.json(datafile, function (dataset) {
          .attr("data-name", (d) => (d.name))
          .attr("data-category", (d) => (d.category))
          .attr("data-value", (d) => (d.value))
-         //.attr("x", (d) => (d.x0))
-         //.attr("y", (d) => (d.y0))
          .attr('width', (d) => (d.x1 - d.x0))
          .attr('height', (d) => (d.y1 - d.y0));
 
@@ -135,11 +121,6 @@ d3.json(datafile, function (dataset) {
          .text((d) => (d.data.name))
          .attr("dx", 10)
          .attr("dy", 20);
-
-    //nodes.append('text')
-         //.attr('dx', 4)
-         //.attr('dy', 14)
-         //.text((d) => (d.name));
 
       // after confirming it all works, try refactoring next as ES6
       /*
