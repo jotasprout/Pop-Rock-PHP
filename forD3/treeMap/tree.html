@@ -60,14 +60,12 @@ const datafile = 'FCC/data/movie-data.json';
 const w = 1500;
 const h = 1000;
 
-/*
 margin = {
-    top: 50,
+    top: 100,
     right: 50,
-    bottom: 50,
+    bottom: 150,
     left: 50
 };
-*/
 
 const svg = d3.select("body")
               .append("svg")
@@ -80,15 +78,12 @@ d3.json(datafile, function (dataset) {
     const color = d3.scaleOrdinal(d3.schemeCategory20);
 
     console.log(dataset);
-    // const data = dataset.data;
-    // console.log(data);
 
     const treemapLayout = d3.treemap();
 
     treemapLayout
-        .size([w, h])
+        .size([w - margin.right - margin.left, h - margin.top - margin.bottom])
         .paddingOuter(30);
-
 
     const root = d3.hierarchy (dataset);
 
@@ -144,7 +139,7 @@ d3.json(datafile, function (dataset) {
           d3.select("#tooltip").classed("hidden", true);
       });
 /**/
-    const title = "Giving Tree";
+    const title = "Movie Data";
 
     svg.append("text")
        .style("text-anchor", "middle")
@@ -153,7 +148,7 @@ d3.json(datafile, function (dataset) {
        .attr("y", 100)
        .text(`${title}`);
 
-    const description = "Co-Dependent Tree without boundaries";
+    const description = "For Movie Nerds";
 
     svg.append("text")
        .style("text-anchor", "middle")
@@ -162,9 +157,8 @@ d3.json(datafile, function (dataset) {
        .attr("y", 150)
        .text(`${description}`);
     
-    // next should use root instead of dataset?
-    /*
-    const legend = svg.selectAll(".legend").data(dataset).enter().append("g")
+    // need to wake up margins and adapt below
+    const legend = svg.select(".legend").data(root).enter().append("g")
                         .attr("class", "legend")
                         .attr("id", "legend")
                         .attr("transform", function (d,i){
@@ -172,7 +166,7 @@ d3.json(datafile, function (dataset) {
                             yOff = Math.floor(i/8) * 105 + legendtop
                             return "translate(" + xOff + "," + yOff + ")"
                         });
-*/
+
 });
 
 </script>
