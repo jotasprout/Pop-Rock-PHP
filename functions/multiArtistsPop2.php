@@ -1,5 +1,6 @@
 <?php
-$thrashetc = array ('2ye2Wgw4gimLv2eAKyk1NB', '14pVkFUHDL207LzLHtSA18', '1Yox196W7bzVNZI7RBaPnf', '1IQ2e1buppatiN1bxUVkrk', '3JysSUOyfVs1UQ0UaESheP', '0yLwGBQiBqhXOvmTfH2A7n', '28hJdGN1Awf7u3ifk2lVkg', '3BM0EaYmkKWuPmmHFUTQHv', '76S65NHJHrNy4JTrXHP2BH', '5fwaejlOHVBAw1KhIPPaQe', '6SYbLA9utoNsllunR1TnkM', '0NmYchKQ8JIR9QHYJA0FRe', '3dnH7fdVm2X07MK6Fkbhbt', '6KVc8Llznru8n9LVCYe9dz', '4ZISAmHmQUDCpv8xydqeKG', '0nxo4nAEYNbNpA8wwNvqXY', '0AA0qugrTsIv7JFMEnhaqu', '06T4NL0adq4kfYAr2nZv5t', '3lgxzeCbj6oMQMmaUhH2H6', '4YO2spr6BIQ3z4qs9yTisd');
+$latin = array ('7CJiKj8TrQSms0WSCKbHm4', '4PtVXWSOmF4Tox1jj6ctSq', '3MqjsWDLhq8SyY6N3PE8yW', '3oNy8cjBtJzLC07I70sklp', '5XsWrYhwadPBjW20qYbdZg', '2mSHY8JOR0nRi3mtHqVa04', '3qAPxVwIQRBuz5ImPUxpZT', '27Owkm4TGlMqb0BqaEt3PW', '2QWIScpFDNxmS6ZEMIUvgm', '60uh2KYYSCqAgJNxcU4DA0', '4U7lXyKdSf1JbM1aXvsodC', '6IdtcAwaNVAggwd6sCKgTI');
+
 require_once '../rockdb.php';
 require( "class.artist.php" );
 $connekt = new mysqli($GLOBALS['host'], $GLOBALS['un'], $GLOBALS['magicword'], $GLOBALS['db']);
@@ -9,7 +10,7 @@ if (!$connekt) {
 $multiArtistPop = "SELECT a.artistID, a.artistArt , a.artistName, p.pop, p.date
     FROM artists a
     JOIN popArtists p ON p.artistID = a.artistID
-	WHERE a.artistID IN ('2ye2Wgw4gimLv2eAKyk1NB', '14pVkFUHDL207LzLHtSA18', '1Yox196W7bzVNZI7RBaPnf', '1IQ2e1buppatiN1bxUVkrk', '3JysSUOyfVs1UQ0UaESheP', '0yLwGBQiBqhXOvmTfH2A7n', '28hJdGN1Awf7u3ifk2lVkg', '3BM0EaYmkKWuPmmHFUTQHv', '76S65NHJHrNy4JTrXHP2BH', '5fwaejlOHVBAw1KhIPPaQe', '6SYbLA9utoNsllunR1TnkM', '0NmYchKQ8JIR9QHYJA0FRe', '3dnH7fdVm2X07MK6Fkbhbt', '6KVc8Llznru8n9LVCYe9dz', '4ZISAmHmQUDCpv8xydqeKG', '0nxo4nAEYNbNpA8wwNvqXY', '0AA0qugrTsIv7JFMEnhaqu', '06T4NL0adq4kfYAr2nZv5t', '3lgxzeCbj6oMQMmaUhH2H6', '4YO2spr6BIQ3z4qs9yTisd')
+	WHERE a.artistID IN ('7CJiKj8TrQSms0WSCKbHm4', '4PtVXWSOmF4Tox1jj6ctSq', '3MqjsWDLhq8SyY6N3PE8yW', '3oNy8cjBtJzLC07I70sklp', '5XsWrYhwadPBjW20qYbdZg', '2mSHY8JOR0nRi3mtHqVa04', '3qAPxVwIQRBuz5ImPUxpZT', '27Owkm4TGlMqb0BqaEt3PW', '2QWIScpFDNxmS6ZEMIUvgm', '60uh2KYYSCqAgJNxcU4DA0', '4U7lXyKdSf1JbM1aXvsodC', '6IdtcAwaNVAggwd6sCKgTI')
 	ORDER BY a.artistID ASC";
 $getit = mysqli_query($connekt, $multiArtistPop);
 if(!$getit){

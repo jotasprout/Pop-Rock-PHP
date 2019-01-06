@@ -57,4 +57,6 @@ $christianPunk = array ('6PPjceUrDXPcpwACEEAotV', '1cYxOrlz9gqY51sO5XBDKD', '1FF
 
 $ChristianElectric = array ('1lhoWboIGHmazhnBQ8eVF3', '3yZKOUXaZEUIuezZBsDQ62', '2V27BrLW9marAftTzfW8WN', '2IIRfan7YtrHcldR6G8EmM', '0ReWwVR3RCZtXLP8CZFCrb', '60GtR6PIcDY1pikPgKHNk9');
 
+$latin = array ('7CJiKj8TrQSms0WSCKbHm4', '4PtVXWSOmF4Tox1jj6ctSq', '3MqjsWDLhq8SyY6N3PE8yW', '3oNy8cjBtJzLC07I70sklp', '5XsWrYhwadPBjW20qYbdZg', '2mSHY8JOR0nRi3mtHqVa04', '3qAPxVwIQRBuz5ImPUxpZT', '27Owkm4TGlMqb0BqaEt3PW', '2QWIScpFDNxmS6ZEMIUvgm', '60uh2KYYSCqAgJNxcU4DA0', '4U7lXyKdSf1JbM1aXvsodC', '6IdtcAwaNVAggwd6sCKgTI');
+
 ?>
