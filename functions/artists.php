@@ -113,7 +113,7 @@ function divideCombineArtists ($theseArtists) {
 			}
 	
 			else {
-				echo '<tr><td><img src="' . $artistArt . '"></td><td>' . $artistName . '</td><td>' . $artistPop . '</td></tr>';
+				echo '<img src="' . $artistArt . '"><br>' . $artistName . '<br>' . $artistPop . '<br>';
 			}
 
 			for ($i=0; $i<(count($jsonArtistGenres)); ++$i) {
