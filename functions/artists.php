@@ -114,19 +114,7 @@ function divideCombineArtists ($theseArtists) {
 	
 			else {
 				echo '<img src="' . $artistArt . '"><br>' . $artistName . '<br>' . $artistPop . '<br>';
-			}
-
-			for ($i=0; $i<(count($jsonArtistGenres)); ++$i) {
-				$insertArtistGenres = "INSERT INTO genres2 (artistID,genre) VALUES('$artistID','$jsonArtistGenres[$i]')";
-	
-				$rockicon = $connekt->query($insertArtistGenres);
-	
-				if(!$rockicon){
-					echo 'Cursed-Crap! Could NOT insert genre of ' . $jsonArtistGenres[$i] . ' for <b>' . $artistNameYucky . '</b>.<br>';
-				} else {
-					echo  'Inserted genre of ' . $jsonArtistGenres[$i] . ' for <b>' . $artistNameYucky . '</b>.<br>';
-				}
-			}  
+			} 
 			
 		}
 	};	
