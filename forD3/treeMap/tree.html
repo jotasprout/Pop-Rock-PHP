@@ -160,9 +160,12 @@ d3.json(datafile, function (dataset) {
        .attr("x", w/2)
        .attr("y", 150)
        .text(`${description}`);
-    
-    // need to wake up margins and adapt below
-    const legend = svg.select(".legend").data(root).enter().append("g")
+
+    const legend = svg.append("g").attr("id", "legend");
+
+    legend.attr("width", 1000).attr("height", 200);
+
+    const legenditem = svg.select("#legend").data(root).enter().append("g")
                         .attr("class", "legend")
                         .attr("id", "legend")
                         .attr("transform", function (d,i){

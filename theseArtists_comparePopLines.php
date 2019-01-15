@@ -169,8 +169,7 @@ d3.json("functions/multiArtistsPop2.php", function(data) {
                               yOff = Math.floor(i/8) * 105 + legendtop
                               return "translate(" + xOff + "," + yOff + ")"
                           });
-                          /**/
-
+                          
         legend.append("svg:image")
             .attr("xlink:href", function(d){
                 return d.values[0].artistArt;
@@ -207,8 +206,7 @@ d3.json("functions/multiArtistsPop2.php", function(data) {
               .style("opacity", newOpacity);
             d.active = active;
         });
-
-/*       
+     
         dataNest.forEach(function(d, i) {
 
             svg.append("svg:image")
@@ -238,9 +236,7 @@ d3.json("functions/multiArtistsPop2.php", function(data) {
                 .attr("fill", function(){
                    return d.color = color(d.key);
                });
-        })
-*/  
-        
+        })   
 
     })
 </script>
