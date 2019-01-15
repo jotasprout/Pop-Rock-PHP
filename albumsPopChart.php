@@ -19,21 +19,8 @@
 
  <div class="container">
     <?php echo $navbar ?> 
-
-    <p>If this page is empty, or the wrong discography displays, <a href='https://www.roxorsoxor.com/poprock/choose_artist.php'>choose an artist</a> first.</p>
-
-	<div class="panel panel-primary">
-		<div class="panel-heading">
-			<h3 class="panel-title">This Artist's Albums Popularity</h3>
-		</div>
-
-		<div class="panel-body">
-            <div id="forChart"></div> <!-- /for chart -->
-        </div> <!-- panel body -->
-
-	</div> <!-- close Panel Primary -->
-
-    
+    <h1>This Artist's Albums Current Popularity</h1>
+    <div id="forChart"></div> <!-- /for chart -->
 </div> <!-- /container -->		 
 
 <script type="text/javascript">
@@ -43,6 +30,14 @@
         var w = 2400;
         var h = 265;
         var barPadding = 1;
+
+        const artistName = dataset[0].artistName;
+        console.log(artistName);
+
+        const artistTitle = d3.select("h1")
+            .data(dataset)
+            .append("text")
+            .text(artistName);
         
         // Create SVG element
         var svg = d3.select("#forChart")

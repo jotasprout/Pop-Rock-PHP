@@ -1,12 +1,4 @@
 <?php 
-/*
-    if (!isset($_COOKIE['artistID'])) {
-        $artistID = $_COOKIE['artistID'];
-    } else {
-        // below doesn't work ... worry about it later
-       // header('location: https://www.roxorsoxor.com/poprock/choose_artist.php');
-    };
-    */
     $artistID = $_GET['artistID'];
 	require_once 'page_pieces/stylesAndScripts.php';
 	require_once 'page_pieces/navbar_rock.php';
@@ -63,6 +55,37 @@
 		<div class="panel-body">
 		<div id="forArt"></div> <!-- close forArt -->
 		<div id="forArtistChart"></div> <!-- close forChart -->
+		</div> <!-- panel body -->
+
+    </div> <!-- close Panel Primary -->
+    
+    <div class="panel panel-primary">
+		<div class="panel-heading">
+			<h3 class="panel-title">This Artist's Albums Current Popularity</h3>
+		</div>
+
+		<div class="panel-body">
+		<table class="table" id="recordCollection">
+            <thead>
+                <tr>
+                    <th>Album Art</th>
+                    <th onClick="sortColumn('albumName', 'ASC')"><div class="pointyHead">Album Name</div></th>
+                    <th onClick="sortColumn('year', 'DESC')"><div class="pointyHead">Released</div></th>
+                    <th onClick="sortColumn('pop', 'ASC')"><div class="pointyHead">Popularity</div></th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><img src='<?php echo $albumArt ?>' height='64' width='64'></td>
+                    <!-- NEED TO CREATE FUNCTION IN NEXT LINE -->
+                    <td><a href='https://www.roxorsoxor.com/poprock/thisAlbum_TracksList.php?albumID=<?php echo $albumID ?>'><?php echo $albumName ?></a></td>
+                    <td><?php echo $albumReleased ?></td>
+                    <td><?php echo $albumPop ?></td>
+
+                </tr>
+            </tbody>
+			</table>
 		</div> <!-- panel body -->
 
 	</div> <!-- close Panel Primary -->
