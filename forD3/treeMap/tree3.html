@@ -37,9 +37,13 @@
             #title {
                 font-size: 24px;
                 font-weight: bold;
-                fill: white;
+                fill: rgb(0, 0, 0);
             }
-
+            #description {
+                font-size: 18px;
+                font-weight: bold;
+                fill: rgb(0, 0, 0);
+            }
             .legend {
                 font-size: 18px;
             }
@@ -65,7 +69,7 @@ const w = 1500;
 const h = 1500;
 
 margin = {
-    top: 100,
+    top: 50,
     right: 50,
     bottom: 150,
     left: 50
@@ -104,7 +108,7 @@ d3.json(datafile, function (dataset) {
       .data(root.descendants())
       .enter()
       .append('g')
-      .attr('transform', (d) => ('translate(' + [d.x0, d.y0] + ')'));
+      .attr('transform', (d) => ('translate(' + [(d.x0 + margin.left), (d.y0 + margin.top)] + ')'));
 
     nodes
       .append('rect')
@@ -149,7 +153,7 @@ d3.json(datafile, function (dataset) {
        .style("text-anchor", "middle")
        .attr("id", "title")
        .attr("x", w/2)
-       .attr("y", 100)
+       .attr("y", 20)
        .text(`${title}`);
 
     const description = "For Movie Nerds";
@@ -158,21 +162,18 @@ d3.json(datafile, function (dataset) {
        .style("text-anchor", "middle")
        .attr("id", "description")
        .attr("x", w/2)
-       .attr("y", 150)
+       .attr("y", 40)
        .text(`${description}`);
 
-    const legend = svg.append("g").attr("id", "legend");
+    const legend = svg.append("g").attr("id", "legend").attr("width", 1000).attr("height", 200);
 
-    legend.attr("width", 1000).attr("height", 200);
-
-    const legenditem = svg.select("#legend").data(root).enter().append("g")
-                        .attr("class", "legend")
-                        .attr("id", "legend")
-                        .attr("transform", function (d,i){
-                            xOff = ((i%8)+1) * 110
-                            yOff = Math.floor(i/8) * 105 + legendtop
-                            return "translate(" + xOff + "," + yOff + ")"
-                        });
+    legend.append("rect")
+            .attr("width", 64)
+            .attr("height", 64)
+            .attr("fill", (d) => {
+                while (d.depth > 1) d = d.parent; 
+                return color (d.data.name);
+            });
 
 });
 
