@@ -108,7 +108,7 @@ d3.json(datafile, function (dataset) {
       .data(root.descendants())
       .enter()
       .append('g')
-      .attr('transform', (d) => ('translate(' + [(d.x0 + margin.left), (d.y0 + margin.top)] + ')'));
+      .attr('transform', (d) => ('translate(' + [d.x0, (d.y0 + margin.top)] + ')'));
 
     nodes
       .append('rect')
