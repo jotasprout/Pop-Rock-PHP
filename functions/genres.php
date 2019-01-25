@@ -14,30 +14,6 @@ $_SESSION['accessToken'] = $accessToken;
 $accessToken = $_SESSION['accessToken'];
 $GLOBALS['api'] = new SpotifyWebAPI\SpotifyWebAPI();
 $GLOBALS['api']->setAccessToken($accessToken);
-// Do I need this next line?
-$baseURL = "https://api.spotify.com/v1/artists/";
-
-// $thisArtist = '5a2EaR3hamoenG9rDuVn8j';
-
-function getAndStoreSpotifyGenres ($thisArtist) {
-    $artist = $GLOBALS['api']->getArtist($thisArtist);
-    $artistID = $artist->id;
-    $artistNameYucky = $artist->name;
-    $artistName = mysqli_real_escape_string($connekt,$artistNameYucky);
-    $jsonArtistGenres = $artist->genres;
-    $howmany = (count($jsonArtistGenres));
-    echo $artistNameYucky . ' has ' . $howmany . ' genres:<br>';
-    for ($i=0; $i<(count($jsonArtistGenres)); ++$i) {
-        echo $jsonArtistGenres[$i] . '<br>'; 
-    };  
-    addGenres ($artistID, $jsonArtistGenres, $artistNameYucky);
-}
-
-function getAndStoreSpotifyGenresForAllArtists ($alltheseArtists) {
-    for ($i=0; $i<(count($alltheseArtists)); ++$i) {
-        getAndStoreSpotifyGenres ($alltheseArtists[$i]);
-    };  
-}
 
 function addGenres ($artistID, $jsonArtistGenres, $artistNameYucky) {
 
@@ -62,7 +38,27 @@ function addGenres ($artistID, $jsonArtistGenres, $artistNameYucky) {
     }
 }
 
-getAndStoreSpotifyGenresForAllArtists ($handfuldec);
+function getAndStoreSpotifyGenres ($thisArtist) {
+    $artist = $GLOBALS['api']->getArtist($thisArtist);
+    $artistID = $artist->id;
+    $artistNameYucky = $artist->name;
+    $artistName = mysqli_real_escape_string($connekt,$artistNameYucky);
+    $jsonArtistGenres = $artist->genres;
+    $howmany = (count($jsonArtistGenres));
+    echo $artistNameYucky . ' has ' . $howmany . ' genres:<br>';
+    for ($i=0; $i<(count($jsonArtistGenres)); ++$i) {
+        echo $jsonArtistGenres[$i] . '<br>'; 
+    };  
+    addGenres ($artistID, $jsonArtistGenres, $artistNameYucky);
+}
+
+function getAndStoreSpotifyGenresForAllArtists ($allArtists) {
+    for ($i=0; $i<(count($allArtists)); ++$i) {
+        getAndStoreSpotifyGenres ($allArtists[$i]);
+    };  
+}
+
+getAndStoreSpotifyGenresForAllArtists ($allArtists);
 
 die();
 
