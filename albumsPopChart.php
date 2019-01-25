@@ -10,7 +10,7 @@
 
 <head>
 	<meta charset="utf-8">
-	<title>Album Info from My DB in D3</title>
+	<title>Album Stats from My DB</title>
 	<?php echo $stylesAndSuch; ?>
 </head>
 
@@ -20,6 +20,7 @@
  <div class="container">
     <?php echo $navbar ?> 
     <h1>This Artist's Albums Current Popularity</h1>
+    <p>If this page is empty, or the wrong discography displays, <a href='https://www.roxorsoxor.com/poprock/index.php'>choose an artist</a> first.</p>
     <div id="forChart"></div> <!-- /for chart -->
 </div> <!-- /container -->		 
 

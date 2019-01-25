@@ -64,10 +64,11 @@ if (!empty($sortit)) { ?>
 			<tr>
 			<th>Pretty Face</th>
 				<th onClick="sortColumn('artistName', '<?php echo $artistNameNextOrder; ?>')"><div class="pointyHead">Artist Name</div></th>
-				<th onClick="sortColumn('pop', '<?php echo $popNextOrder; ?>')"><div class="pointyHead">Popularity</div></th>
-				<th>Date</th>
+				<th onClick="sortColumn('pop', '<?php echo $popNextOrder; ?>')"><div class="pointyHead popScore">Popularity</div></th>
+				
 				
 				<!--
+					<th>Date</th>
 			<th>1 day</th>
 						<th>7 days</th>
 						<th>30 days</th>
@@ -90,10 +91,11 @@ if (!empty($sortit)) { ?>
 		<tr>
 		<td><img src='<?php echo $artistArt ?>' height='64' width='64'></td>
 			<td><?php echo $artistName ?></td>
-			<td><?php echo $artistPop ?></td>
-			<td><?php echo $popDate ?></td>
+			<td class="popScore"><?php echo $artistPop ?></td>
+			
 			
 			<!--
+				<td><?php echo $popDate ?></td>
 				<td>*</td>
 						<td>*</td>
 						<td>*</td>

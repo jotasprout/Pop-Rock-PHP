@@ -49,10 +49,11 @@ if ( !$getit ) {
 		<?php echo $navbar ?>
 
 		<!-- main -->
+		<p>If this page is empty, or the wrong discography displays, <a href='https://www.roxorsoxor.com/poprock/index.php'>choose an artist</a> first.</p>
 
 		<div class="panel panel-primary">
 			<div class="panel-heading">
-				<h3 class="panel-title">Latest Tracks Info from My Database</h3>
+				<h3 class="panel-title">Latest Tracks Stats from My Database</h3>
 			</div>
 			<div class="panel-body">
 

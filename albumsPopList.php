@@ -56,7 +56,7 @@ if(!$getit){
 	<?php echo $navbar ?>
 	
 	<!-- main -->
-	<p>If this page is empty, or the wrong discography displays, <a href='https://www.roxorsoxor.com/poprock/choose_artist.php'>choose an artist</a> first.</p>
+	<p>If this page is empty, or the wrong discography displays, <a href='https://www.roxorsoxor.com/poprock/index.php'>choose an artist</a> first.</p>
 	
 <div class="panel panel-primary">
 

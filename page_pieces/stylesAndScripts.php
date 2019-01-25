@@ -6,7 +6,7 @@ $stylesAndSuch = "
     <script src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
     <script src='https://code.jquery.com/ui/1.12.1/jquery-ui.js'></script>
     <link rel='stylesheet' href='https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css'>
-    <link rel='stylesheet' href='https://www.roxorsoxor.com/poprock/css/pointy_head.css'>
+    <link rel='stylesheet' href='https://www.roxorsoxor.com/poprock/css/popstyles.css'>
 
     <link rel='icon' type='image/png' href='/imgs/app-icon-128' sizes='128x128'>
     <link rel='shortcut icon' href='favicon.ico'>
