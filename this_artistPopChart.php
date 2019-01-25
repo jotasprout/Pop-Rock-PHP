@@ -65,6 +65,9 @@
 		</div>
 
 		<div class="panel-body">
+			<div id="recordCollection">
+			</div>
+			<!--
 		<table class="table" id="recordCollection">
             <thead>
                 <tr>
@@ -72,20 +75,20 @@
                     <th onClick="sortColumn('albumName', 'ASC')"><div class="pointyHead">Album Name</div></th>
                     <th onClick="sortColumn('year', 'DESC')"><div class="pointyHead">Released</div></th>
                     <th onClick="sortColumn('pop', 'ASC')"><div class="pointyHead">Popularity</div></th>
-
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td><img src='<?php echo $albumArt ?>' height='64' width='64'></td>
-                    <!-- NEED TO CREATE FUNCTION IN NEXT LINE -->
-                    <td><a href='https://www.roxorsoxor.com/poprock/thisAlbum_TracksList.php?albumID=<?php echo $albumID ?>'><?php echo $albumName ?></a></td>
-                    <td><?php echo $albumReleased ?></td>
-                    <td><?php echo $albumPop ?></td>
+                    <td><img src='<?php //echo $albumArt ?>' height='64' width='64'></td>
+                      
+                    <td><a href='https://www.roxorsoxor.com/poprock/thisAlbum_TracksList.php?albumID=<?php //echo $albumID ?>'><?php //echo $albumName ?></a></td>
+                    <td><?php //echo $albumReleased ?></td>
+                    <td><?php //echo $albumPop ?></td>
 
                 </tr>
             </tbody>
 			</table>
+			-->
 		</div> <!-- panel body -->
 
 	</div> <!-- close Panel Primary -->
@@ -169,6 +172,87 @@ d3.json("functions/createArtistD3.php?artistID=<?php echo $artistID; ?>", functi
 });
 
 </script>
+	
+<script type="text/javascript">
+    d3.json("functions/createAlbumsD3.php?artistID=<?php echo $artistID ?>", function(dataset) {
+        console.log(dataset);
+        // Width and height
+        var w = 2400;
+        var h = 265;
+        var barPadding = 1;
+
+        const artistName = dataset[0].artistName;
+        console.log(artistName);
+
+		/*
+        const artistTitle = d3.select("h1")
+            .data(dataset)
+            .append("text")
+            .text(artistName);
+		*/
+        
+        // Create SVG element
+        var svg = d3.select("#recordCollection")
+            .append("svg")
+            .attr("width", w)
+            .attr("height", h);
+        // Rectangles
+        svg.selectAll("rect")
+            .data(dataset)
+            .enter()
+            .append("rect")
+            .attr("x", function (d,i) {
+                return i * 65;
+            })
+            .attr("y", function(d) {
+                return h - 64 - (d[4] * 2)
+            })
+            .attr("width", 64)
+            .attr("height", function(d) {
+                return (d[4] * 2);
+            });
+        // Images
+        svg.selectAll("image")
+            .data(dataset)
+            .enter()
+            .append("svg:image")
+            .attr("xlink:href", function (d){
+                return d.albumArt;
+                console.log(d.albumArt);
+            })
+            .attr("x", function (d,i) {
+                return i * 65;
+            })
+            .attr("y", function(d) {
+                return h - 64
+            })
+            .attr("width", 64)
+            .attr("height", 64)
+            .append("title")
+            .text(function(d){
+                return d.albumName;
+            });			   
+        
+        // Labels
+        svg.selectAll("text")
+            .data(dataset)
+            .enter()
+            .append("text")
+            .text(function(d){
+                return d[4];
+            })
+            .attr("text-anchor", "middle")
+            .attr("x", function (d, i){
+                return i * 65 + 65 / 2;
+            })
+            .attr("y", function(d){
+                return h - 64 - (d[4] * 2) - 5;
+            })
+            .attr("font-family", "sans-serif")
+            .attr("font-size", "11px")
+            .attr("fill", "white");
+    });		
+</script>	
 
 <?php echo $scriptsAndSuch; ?>
 

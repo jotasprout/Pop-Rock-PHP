@@ -1,7 +1,7 @@
 <?php
 
-$artistID = $_COOKIE['artistID'];
-
+//$artistID = $_COOKIE['artistID'];
+$artistID = $_GET['artistID'];
 require_once 'rockdb.php';
 require_once 'page_pieces/navbar_rock.php';
 require_once 'page_pieces/stylesAndScripts.php';

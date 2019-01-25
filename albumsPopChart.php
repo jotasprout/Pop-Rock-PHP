@@ -1,5 +1,6 @@
 <?php
-    $artistID = $_COOKIE['artistID'];
+    // $artistID = $_COOKIE['artistID'];
+	$artistID = $_GET['artistID'];
     require "functions/class.artist.php";
     require_once 'page_pieces/stylesAndScripts.php';
     require_once 'page_pieces/navbar_rock.php';
@@ -25,7 +26,7 @@
 </div> <!-- /container -->		 
 
 <script type="text/javascript">
-    d3.json("functions/createAlbumsD3.php", function(dataset) {
+    d3.json("functions/createAlbumsD3.php?artistID=<?php echo $artistID ?>", function(dataset) {
         console.log(dataset);
         // Width and height
         var w = 2400;
