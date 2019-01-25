@@ -83,6 +83,7 @@ if (!empty($sortit)) { ?>
 		<?php
 			while ($row = mysqli_fetch_array($sortit)) {
 				$artistName = $row["artistName"];
+				$artistID = $row[ "artistID" ];
 				$artistPop = $row["pop"];
 				$artistArt = $row[ "artistArt" ];
 				$popDate = $row["date"];
@@ -90,7 +91,7 @@ if (!empty($sortit)) { ?>
 
 		<tr>
 		<td><img src='<?php echo $artistArt ?>' height='64' width='64'></td>
-			<td><?php echo $artistName ?></td>
+			<td><a href='https://www.roxorsoxor.com/poprock/this_artistPopChart.php?artistID=<?php echo $artistID ?>'><?php echo $artistName ?></a></td>
 			<td class="popScore"><?php echo $artistPop ?></td>
 			
 			

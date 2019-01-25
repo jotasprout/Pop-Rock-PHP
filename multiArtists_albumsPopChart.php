@@ -1,5 +1,4 @@
 <?php
-    $artistID = $_COOKIE['artistID'];
     require "functions/class.artist.php";
     require_once 'page_pieces/stylesAndScripts.php';
     require_once 'page_pieces/navbar_rock.php';
@@ -19,6 +18,22 @@
 
  <div class="container">
     <?php echo $navbar ?> 
+
+<!--
+    Buttons below will use code based on prezPlayPro index line 464
+-->
+
+<div class="btn-group btn-group-toggle" data-toggle="buttons">
+  <label class="btn btn-primary">
+    <input type="radio" name="options" id="steveTaylor" autocomplete="off" checked=""> Steve Taylor
+  </label>
+  <label class="btn btn-primary">
+    <input type="radio" name="options" id="joanJett" autocomplete="off"> Joan Jett
+  </label>
+  <label class="btn btn-primary active">
+    <input type="radio" name="options" id="mikeKnott" autocomplete="off"> Mike Knott
+  </label>
+</div>
 
 	<div class="panel panel-primary">
 		<div class="panel-heading">
