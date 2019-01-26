@@ -165,15 +165,28 @@ d3.json(datafile, function (dataset) {
        .attr("y", 40)
        .text(`${description}`);
 
-    const legend = svg.append("g").attr("id", "legend").attr("width", 1000).attr("height", 200);
+    const legend = svg.append("g")
+                      .attr("id", "legend")
+                      .attr("transform", "translate(" + [margin.left , (h - margin.bottom + 20)] + ")");
 
-    legend.append("rect")
-            .attr("width", 64)
-            .attr("height", 64)
-            .attr("fill", (d) => {
-                while (d.depth > 1) d = d.parent; 
-                return color (d.data.name);
-            });
+    legend.selectAll("rect")
+          .data(root.children)
+          .enter()
+          .append("rect")
+          .attr("class", "legend-item")
+          .attr("x", (d,i) => i * 100)
+          .attr("width", 30)
+          .attr("height", 30)
+          .style("fill", (d) => color (d.data.name));
+
+    legend.selectAll("text")
+          .data(root.children)
+          .enter()
+          .append("text")
+          .style("text-anchor", "middle")
+          .attr("x", (d,i) => i * 100 + 15)
+          .attr("y", 50)
+          .text(d => d.data.name);
 
 });
 
