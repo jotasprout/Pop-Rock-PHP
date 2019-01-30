@@ -67,7 +67,7 @@ function divideCombineArtistsForAlbums ($theseArtists) {
 	};	
 }
 
-divideCombineArtistsForAlbums ($dec19);
+divideCombineArtistsForAlbums ($saxon);
 
 die();
 

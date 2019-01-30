@@ -33,7 +33,7 @@ $GLOBALS['api']->setAccessToken($accessToken);
     <tr><th>Pretty Picture</th><th>Artist Name</th><th>Artist Popularity</th></tr>
 
         <?php 
-            divideCombineArtists ($dec19);
+            divideCombineArtists ($saxon);
         ?>
     </table>
 
