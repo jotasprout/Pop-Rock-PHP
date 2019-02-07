@@ -137,12 +137,19 @@ d3.json(datafile, function (dataset) {
           const xPos = w / 2;
           const yPos = h / 2;
           const tipValue = d.value;
+          const tipName = d.data.name;
+          const tipCategory = d.data.category;
+          console.log(tipName);
           d3.select("#tooltip")
             .style("left", xPos + "px")
             .style("top", yPos + "px")
             .attr("data-value", tipValue);
           d3.select("#tipValue")
             .text(tipValue);
+          d3.select("#tipName")
+            .text(tipName);
+          d3.select("#tipCategory")
+            .text(tipCategory);            
           d3.select("#tooltip").classed("hidden", false);
       })
       .on("mouseout", function(){
