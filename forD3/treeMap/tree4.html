@@ -44,6 +44,14 @@
                 font-weight: bold;
                 fill: rgb(0, 0, 0);
             }
+            .foreignText {
+                text-overflow: ellipsis;
+                word-wrap: break-word;
+            }
+            .foreignLabel {
+                overflow: hidden;
+                margin: 2px;
+            }
             .legend {
                 font-size: 18px;
             }
@@ -107,13 +115,27 @@ d3.json(datafile, function (dataset) {
          .attr("data-value", (d) => (d.value))
          .attr('width', (d) => (d.x1 - d.x0))
          .attr('height', (d) => (d.y1 - d.y0));
+
+    nodes
+         .append("foreignObject")
+         .attr("class", "foreignText")
+         .attr("width", (d) => (d.x1 - d.x0))
+         .attr("height", (d) => (d.y1 - d.y0))
+         .append("xhtml:div")
+         .attr("class", "foreignLabel")
+         .attr("width", (d) => (d.x1 - d.x0))
+         .attr("height", (d) => (d.y1 - d.y0))
+         .text((d) => (d.data.name));
+
+    /*
     nodes
          .append("text")
          .text((d) => (d.data.name))
          .attr("dx", 10)
          .attr("dy", 20);
       // after confirming it all works, try refactoring next as ES6
-      
+    */
+
     nodes.on("mouseover", function(d) {
           const xPos = w / 2;
           const yPos = h / 2;
