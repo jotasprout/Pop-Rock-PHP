@@ -127,15 +127,6 @@ d3.json(datafile, function (dataset) {
          .attr("height", (d) => (d.y1 - d.y0))
          .text((d) => (d.data.name));
 
-    /*
-    nodes
-         .append("text")
-         .text((d) => (d.data.name))
-         .attr("dx", 10)
-         .attr("dy", 20);
-      // after confirming it all works, try refactoring next as ES6
-    */
-
     nodes.on("mouseover", function(d) {
           const xPos = w / 2;
           const yPos = h / 2;
@@ -149,6 +140,7 @@ d3.json(datafile, function (dataset) {
             .attr("data-value", tipValue);
           d3.select("#tipValue")
             .text(tipValue);
+            // Create algorithm using pop and push for formatting the value as money 
           d3.select("#tipName")
             .text(tipName);
           d3.select("#tipCategory")
@@ -158,7 +150,6 @@ d3.json(datafile, function (dataset) {
       .on("mouseout", function(){
           d3.select("#tooltip").classed("hidden", true);
       });
-/**/
     const title = "Movie Data";
     svg.append("text")
        .style("text-anchor", "middle")
@@ -173,6 +164,7 @@ d3.json(datafile, function (dataset) {
        .attr("x", w/2)
        .attr("y", 40)
        .text(`${description}`);
+    // How do I format the categories differently?
     const legend = svg.append("g")
                       .attr("id", "legend")
                       .attr("transform", "translate(" + [margin.left , (h - margin.bottom + 20)] + ")");
