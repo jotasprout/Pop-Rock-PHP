@@ -47,11 +47,9 @@
             .legend {
                 font-size: 18px;
             }
-
             .legend-item {
                 font-size: 12px;
             }
-
 		</style>
 	</head>
 
@@ -64,54 +62,39 @@
 </div>
 
 <script type="text/javascript">
-
 const datafile = 'FCC/data/movie-data.json';
-
 const w = 1500;
 const h = 1500;
-
 margin = {
     top: 50,
     right: 50,
     bottom: 150,
     left: 50
 };
-
 const svg = d3.select("body")
               .append("svg")
               .attr("width", w)
               .attr("height", h)
               .append("g");
-
 d3.json(datafile, function (dataset) {
-
     const color = d3.scaleOrdinal(d3.schemeCategory20);
-
     console.log(dataset);
-
     const treemapLayout = d3.treemap();
-
     treemapLayout
         .size([w - margin.right - margin.left, h - margin.top - margin.bottom])
         .paddingOuter(30);
-
     const root = d3.hierarchy (dataset);
-
     console.log(root);
-
     root.sum(function(d){
         return d.value;
     });    
-
     treemapLayout(root);
-
     const nodes = d3.select('svg g')
       .selectAll('g')
       .data(root.descendants())
       .enter()
       .append('g')
       .attr('transform', (d) => ('translate(' + [d.x0, (d.y0 + margin.top)] + ')'));
-
     nodes
       .append('rect')
          .attr("class", "tile")
@@ -124,13 +107,11 @@ d3.json(datafile, function (dataset) {
          .attr("data-value", (d) => (d.value))
          .attr('width', (d) => (d.x1 - d.x0))
          .attr('height', (d) => (d.y1 - d.y0));
-
     nodes
          .append("text")
          .text((d) => (d.data.name))
          .attr("dx", 10)
          .attr("dy", 20);
-
       // after confirming it all works, try refactoring next as ES6
       
     nodes.on("mouseover", function(d) {
@@ -157,27 +138,22 @@ d3.json(datafile, function (dataset) {
       });
 /**/
     const title = "Movie Data";
-
     svg.append("text")
        .style("text-anchor", "middle")
        .attr("id", "title")
        .attr("x", w/2)
        .attr("y", 20)
        .text(`${title}`);
-
     const description = "For Movie Nerds";
-
     svg.append("text")
        .style("text-anchor", "middle")
        .attr("id", "description")
        .attr("x", w/2)
        .attr("y", 40)
        .text(`${description}`);
-
     const legend = svg.append("g")
                       .attr("id", "legend")
                       .attr("transform", "translate(" + [margin.left , (h - margin.bottom + 20)] + ")");
-
     legend.selectAll("rect")
           .data(root.children)
           .enter()
@@ -187,7 +163,6 @@ d3.json(datafile, function (dataset) {
           .attr("width", 30)
           .attr("height", 30)
           .style("fill", (d) => color (d.data.name));
-
     legend.selectAll("text")
           .data(root.children)
           .enter()
@@ -196,9 +171,7 @@ d3.json(datafile, function (dataset) {
           .attr("x", (d,i) => i * 100 + 15)
           .attr("y", 50)
           .text(d => d.data.name);
-
 });
-
 </script>
 </body>
 </html>
