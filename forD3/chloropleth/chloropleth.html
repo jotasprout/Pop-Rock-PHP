@@ -388,7 +388,7 @@ function makeToolTip (d) {
 }
 
 function getGeoJSON () {
-    d3.json("myPrezData/us-states.json", function(json) {
+    d3.json("data/counties.json", function(json) {
         $.when(attachWinnersToMap(json))
         .then(colorStates(json))
         .then(attachCandidatesToMap(json));
