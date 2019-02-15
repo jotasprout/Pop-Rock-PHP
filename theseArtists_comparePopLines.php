@@ -206,7 +206,7 @@ d3.json("functions/multiArtistsPop2.php", function(data) {
               .style("opacity", newOpacity);
             d.active = active;
         });
-     
+   /*  
         dataNest.forEach(function(d, i) {
 
             svg.append("svg:image")
@@ -237,7 +237,7 @@ d3.json("functions/multiArtistsPop2.php", function(data) {
                    return d.color = color(d.key);
                });
         })   
-
+*/
     })
 </script>
 
