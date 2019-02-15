@@ -70,7 +70,10 @@ if (!empty($sortit)) { ?>
 		<td><img src='<?php // echo $artistArt ?>' height='64' width='64'></td>	
 		-->
 			<td><?php echo $artistName ?></td>
-			<td><?php echo $genre ?></td>
+			<td><a href='https://www.roxorsoxor.com/poprock/genreArtists_comparePopBars.php?artistGenre=<?php echo $genre ?>'><?php echo $genre ?></a></td>
+			<!--
+			<td><?php //echo $genre ?></td>
+			-->
 		</tr>
 
 		<?php 
