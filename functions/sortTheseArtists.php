@@ -32,13 +32,6 @@ if ( $sortBy == "pop" and $order == "ASC" ) {
 	$popNextOrder = "DESC";
 }
 
-$artistInfoRecent = "SELECT a.artistID, a.artistArt, a.artistName, b.pop, b.date 
-	FROM artists a
-		INNER JOIN popArtists b ON a.artistID = b.artistID
-			WHERE b.date = (select max(b2.date)
-							FROM popArtists b2)
-	ORDER BY " . $sortBy . " " . $order . ";";
-
 $artistInfoRecentWithArt = "SELECT a.artistID AS artistID, a.artistArt AS artistArt, a.artistName AS artistName, p1.pop AS pop, p1.date AS date
     FROM artists a
     JOIN (SELECT p.*
@@ -90,10 +83,9 @@ if (!empty($sortit)) { ?>
 		?>
 
 		<tr>
-		<td><img src='<?php echo $artistArt ?>' height='64' width='64'></td>
+		<td><img src='<?php echo $artistArt ?>' class="indexArtistArt"></td>
 			<td><a href='https://www.roxorsoxor.com/poprock/this_artistPopChart.php?artistID=<?php echo $artistID ?>'><?php echo $artistName ?></a></td>
 			<td class="popScore"><?php echo $artistPop ?></td>
-			
 			
 			<!--
 				<td><?php echo $popDate ?></td>
