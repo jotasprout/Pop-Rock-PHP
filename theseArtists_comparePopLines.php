@@ -206,38 +206,7 @@ d3.json("functions/multiArtistsPop2.php", function(data) {
               .style("opacity", newOpacity);
             d.active = active;
         });
-   /*  
-        dataNest.forEach(function(d, i) {
 
-            svg.append("svg:image")
-               .attr("xlink:href", d.values[0].artistArt)
-               .attr("x", (i) * 110)
-               .attr("y", h + 50)
-               .attr("width", 64)
-               .attr("height", 64);
-
-            svg.append("rect")
-               .attr("x", (i) * 110)
-               .attr("y", h + 50)
-               .attr("width", 64)
-               .attr("height", 64)
-               .style("stroke", function(){
-                   return d.color = color(d.key);
-               })
-               .style("stroke-width", 4)
-               .style("fill-opacity", 0);
-
-            svg.append("text")
-                .style("text-anchor", "middle")
-                .attr("class", "artistName")
-                .attr("x", (i) * 110 + 32)
-               .attr("y", h + paddingBottom)
-                .text(d.values[0].artistName)
-                .attr("fill", function(){
-                   return d.color = color(d.key);
-               });
-        })   
-*/
     })
 </script>
 

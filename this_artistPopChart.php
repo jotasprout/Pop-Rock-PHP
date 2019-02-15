@@ -49,7 +49,7 @@
 
 	<div class="panel panel-primary">
 		<div class="panel-heading">
-			<h3 class="panel-title">This Artist's Popularity On Spotify Over Time</h3>
+			<h3 id="artistPop" class="panel-title">This Artist's Popularity On Spotify Over Time</h3>
 		</div>
 
 		<div class="panel-body">
@@ -61,34 +61,11 @@
     
     <div class="panel panel-primary">
 		<div class="panel-heading">
-			<h3 class="panel-title">This Artist's Albums Current Popularity</h3>
+			<h3 id="albumPop" class="panel-title">This Artist's Albums Current Popularity</h3>
 		</div>
 
 		<div class="panel-body">
-			<div id="recordCollection">
-			</div>
-			<!--
-		<table class="table" id="recordCollection">
-            <thead>
-                <tr>
-                    <th>Album Art</th>
-                    <th onClick="sortColumn('albumName', 'ASC')"><div class="pointyHead">Album Name</div></th>
-                    <th onClick="sortColumn('year', 'DESC')"><div class="pointyHead">Released</div></th>
-                    <th onClick="sortColumn('pop', 'ASC')"><div class="pointyHead">Popularity</div></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><img src='<?php //echo $albumArt ?>' height='64' width='64'></td>
-                      
-                    <td><a href='https://www.roxorsoxor.com/poprock/thisAlbum_TracksList.php?albumID=<?php //echo $albumID ?>'><?php //echo $albumName ?></a></td>
-                    <td><?php //echo $albumReleased ?></td>
-                    <td><?php //echo $albumPop ?></td>
-
-                </tr>
-            </tbody>
-			</table>
-			-->
+			<div id="recordCollection"></div>
 		</div> <!-- panel body -->
 
 	</div> <!-- close Panel Primary -->
@@ -111,9 +88,15 @@ d3.json("functions/createArtistD3.php?artistID=<?php echo $artistID; ?>", functi
 
     var parseTime = d3.timeParse("%y-%m-%d");
 
-    console.log("Artist name is " + data[0].artistName)
+    //const title = data[0].artistName;
+    // No longer need above because of below
 
-    const title = data[0].artistName;
+    const artistName = dataset[0].artistName;
+
+    const artistTitle = d3.select("#artistPop")
+            //.data(dataset)
+            //.append("text")
+            .text(artistName + "'s popularity over time");
 
     dataset.forEach(function(d) {
         // date = parseTime(d.date);
@@ -163,12 +146,15 @@ d3.json("functions/createArtistD3.php?artistID=<?php echo $artistID; ?>", functi
        .attr("transform", "translate(" + padding + ",0)")
        .attr("class", "axis");
 
+    // No longer below because h3's now have artistName
+    /*
     svg.append("text")
        .style("text-anchor", "middle")
        .attr("id", "title")
        .attr("x", w/2)
        .attr("y", 25)
        .text(`${title}`);
+       */
 });
 
 </script>
@@ -182,14 +168,12 @@ d3.json("functions/createArtistD3.php?artistID=<?php echo $artistID; ?>", functi
         var barPadding = 1;
 
         const artistName = dataset[0].artistName;
-        console.log(artistName);
 
-		/*
-        const artistTitle = d3.select("h1")
-            .data(dataset)
-            .append("text")
-            .text(artistName);
-		*/
+        const artistTitle = d3.select("#albumPop")
+            //.data(dataset)
+            //.append("text")
+            .text(artistName + "'s Albums' Current Popularity");
+
         
         // Create SVG element
         var svg = d3.select("#recordCollection")
