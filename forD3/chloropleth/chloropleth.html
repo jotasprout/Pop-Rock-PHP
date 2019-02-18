@@ -89,9 +89,7 @@ d3.json('for_user_education.json', function (edu) {
         d3.max(edu, function (d) {return d.value;})
     ]);
 
-    const geometries = 'objects[counties][geometries]';
-
-    d3.json ('counties.json', function (countyData) {
+    d3.json ('counties.json', function (data) {
         for (var i=0; i < edu.length; i++) {
             const countyName = edu[i].area_name;
             const stateName = edu[i].state;
@@ -99,20 +97,21 @@ d3.json('for_user_education.json', function (edu) {
             const countyFips = edu[i].fips;
             const bachelors = parseFloat(edu[i].bachelorsOrHigher);
 
-            for (var j=0; j < geometries.length; j++) {
-                const countyID = geometries[j].id;
+            for (var j=0; j < data.objects.counties.GeometryCollection.geometries.length; j++) {
+                const countyID = data.objects.counties.GeometryCollection.geometries[j].id;
+                console.log(data.objects.counties.GeometryCollection.geometries.length);
                 if (countyID == countyFips) {
-                    geometries[j].properties.countyID = countyFips;
-                    geometries[j].properties.countyName = countyName;
-                    geometries[j].properties.stateName = stateName;
-                    geometries[j].properties.bachelors = bachelors;
+                    data.objects.counties.GeometryCollection.geometries[j].properties.countyName = countyName;
+                    console.log(GeometryCollection.geometries[j].properties.countyName)
+                    data.objects.counties.GeometryCollection.geometries[j].properties.stateName = stateName;
+                    data.objects.counties.GeometryCollection.geometries[j].properties.bachelors = bachelors;
                     break;
                 } /* End of If */
             } /* End of Inner For */
         } /* End of Outer For */
 
         svg.selectAll('path')
-           .data(countyData.objects.counties.geometries)
+           .data(data.objects.counties.GeometryCollection.geometries)
            .enter()
            .append('path')
            .style("stroke", "#e0e0e0")
@@ -192,9 +191,11 @@ legend.selectAll("text")
         .attr("y", 50)
         .text(d => d.bachelors);
 
+/* */
+
 </script>
 
-/* */
+
 
 </body>
 </html>
