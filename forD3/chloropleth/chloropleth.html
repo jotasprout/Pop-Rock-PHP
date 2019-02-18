@@ -5,14 +5,65 @@
         <title>Chloropleth project for FCC cert</title>
         <script src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
         <script src='https://d3js.org/d3.v4.min.js'></script>
+
+        <style type="text/css">
+            #tooltip {
+                position: absolute;
+                background-color: yellow;
+                padding: 10px;
+                pointer-events: none;
+                height: auto;
+            }
+            #tooltip.hidden {
+                display: none;
+            }
+            #tooltip p {
+                font-family: sans-serif;
+                font-size: 16px;
+                margin: 0;
+            }
+            #title {
+                font-size: 24px;
+                font-weight: bold;
+                fill: rgb(0, 0, 0);
+            }
+            #description {
+                font-size: 18px;
+                font-weight: bold;
+                fill: rgb(0, 0, 0);
+            }
+            .county {
+                background-color: #ccc;
+            }
+            .legend {
+                font-size: 18px;
+            }
+            .legend-item {
+                font-size: 12px;
+            }
+		</style>
     </head>
 <body>
+
+    <div id="tooltip" class="hidden">
+        <p><span id="countyName"></span>, <span id="stateName"></span></p>
+        <p id="bachelorValue"></p>
+    </div>
+
+    <div id="legend"></div>
 
 <script>
 
 // Width and Height
 const w = 800;
 const h = 600;
+
+margin = {
+    top: 50,
+    right: 50,
+    bottom: 150,
+    left: 50
+};
 
 // Map projection
 const projection = d3.geoAlbersUsa()
@@ -31,157 +82,122 @@ const svg = d3.select("body")
               .attr("width", w)
               .attr("height", h);
 
+
+const title = "United States Educational Attainment";
+svg.append("text")
+    .style("text-anchor", "middle")
+    .attr("id", "title")
+    .attr("x", w/2)
+    .attr("y", 20)
+    .text(`${title}`);
+
+const description = "Percentage of adults age 25 and older with a bachelor's degree or higher (2010-2014)";
+svg.append("text")
+    .style("text-anchor", "middle")
+    .attr("id", "description")
+    .attr("x", w/2)
+    .attr("y", 40)
+    .text(`${description}`);
+
 d3.json('for_user_education.json', function (edu) {
     color.domain([
         d3.min(edu, function (d) {return d.value;}),
         d3.max(edu, function (d) {return d.value;})
     ]);
 
-    d3.json ('counties.json', function (counties) {
+    const geometries = 'objects[counties][geometries]';
+
+    d3.json ('counties.json', function (countyData) {
         for (var i=0; i < edu.length; i++) {
             const countyName = edu[i].area_name;
             const stateName = edu[i].state;
             const countyFips = edu[i].fips;
             const bachelors = parseFloat(edu[i].bachelorsOrHigher);
 
-            for (var j=0; j < counties.geometries.length; j++) {
-                const countyID = counties.geometries[j].properties.id;
+            for (var j=0; j < geometries.length; j++) {
+                const countyID = geometries[j].id;
                 if (countyID == countyFips) {
-                    counties.geometries[j].properties.countyName = countyName;
-                    counties.geometries[j].properties.stateName = stateName;
-                    counties.geometries[j].properties.bachelors = bachelors;
+                    geometries[j].properties.countyID = countyFips;
+                    geometries[j].properties.countyName = countyName;
+                    geometries[j].properties.stateName = stateName;
+                    geometries[j].properties.bachelors = bachelors;
                     break;
-                }
-            }
-        }
+                } /* End of If */
+            } /* End of Inner For */
+        } /* End of Outer For */
 
         svg.selectAll('path')
-           .data(json.geometries)
+           .data(countyData)
            .enter()
            .append('path')
+           .style("stroke", "#e0e0e0")
            .style('fill', function(d) {
-               const value = d.geometries.bachelors;
+               let value = d.bachelors;
                if (value) {
                    return color(value);
                } else {
                    return '#ccc';
                }
-           });
-    });
-});
+           }) /* End of Style */
+           .attr("class", "county")
+           .attr("data-fips", (d) => d.countyID)
+           .attr("data-education", (d) => d.bachelors)
+           .on("mouseover", function(d) {
+                const xPos = w / 2;
+                const yPos = h / 2;
+                const tipValue = d.value;
+                const tipName = d.data.name;
+                const tipCategory = d.data.category;
+                console.log(tipName);
+                d3.select("#tooltip")
+                    .style("left", xPos + "px")
+                    .style("top", yPos + "px")
+                    .attr("data-value", tipValue);
+                d3.select("#tipValue")
+                    .text(tipValue);
+                    // Create algorithm using pop and push for formatting the value as money 
+                d3.select("#tipName")
+                    .text(tipName);
+                d3.select("#tipCategory")
+                    .text(tipCategory);            
+                d3.select("#tooltip").classed("hidden", false);
+            })
+            .on("mouseout", function(){
+                d3.select("#tooltip").classed("hidden", true);
+            }); /* End of MouseOut */
+    }); /* End of Counties JSON */
+}); /* End of Education */
 
-
-
-
-
-
-
-
-// Colors map based on winning candidates
-function colorStates (usasvg) {
-    // resets svg map so it updates when changing sets of candidates
-    d3.select('svg').html('');
-    
-    svg.selectAll("path")
-        .edu(usasvg.features)
+const legend = svg.append("g")
+                    .attr("id", "legend")
+                    .attr("transform", "translate(" + [margin.left , (h - margin.bottom + 20)] + ")");
+legend.selectAll("rect")
+        .data('for_user_education.json')
         .enter()
-        .append("path")
-        .attr("d", path)
-        .style("stroke", "#e0e0e0")
-        .attr("class", function(d) {
-            let value = d.properties.winner;
-            switch (value) {
-                case 1:
-                    return "frank-atwood"; // frank-atwood
-                    break; 				
-                default:
-                    return "nope";
-                    break;  
-            }
-        })
-        .on("mouseover", function(d) {
-            
-            const stateCandi = d3.select("#stateCandidates");
+        .append("rect")
+        .attr("class", "legend-item")
+        .attr("x", (d,i) => i * 100)
+        .attr("width", 30)
+        .attr("height", 30)
+        .style("fill", (d) => color (d.bachelors));
+legend.selectAll("text")
+        .data('for_user_education.json')
+        .enter()
+        .append("text")
+        .style("text-anchor", "middle")
+        .attr("x", (d,i) => i * 100 + 15)
+        .attr("y", 50)
+        .text(d => d.bachelors);
 
-            stateCandi.classed("hidden", false);
-                        
-            for (var c = 0; c < d.properties.candidates.length; c++) {
-                const candiID = d.properties.candidates[c].candidateID;
-                const candiName = d.properties.candidates[c].candidateName;
-                const popVotes = d.properties.candidates[c].popVotes;
-                const candiParty = d.properties.candidates[c].partyAbbr;
-      
-                stateCandi.append("div").attr("class", "candiRow").text(`${candiName} (${candiParty}), ${popVotes}`);
 
-        }
-    })
 
-        .on("mouseout", function(){
-            d3.selectAll(".candiRow").remove();
-            d3.select("#stateCandidates").classed("hidden", true);
-        })
-        .append("title")
-        .text(function(d){
-            return d.properties.name;
-        });
-       /* */
-         
-} // end of colorStates 
+/* */
+        
 
-function makeToolTip (d) {
-    
-    svg.select("#stateCandidates")
-       .text(`${candiName} (${candiParty}) got ${popVotes} votes`);
-    console.log(`${candiName} (${candiParty}) got ${popVotes} votes`);
-}
 
-function getGeoJSON () {
-    d3.json("edu/counties.json", function(json) {
-        $.when(attachWinnersToMap(json))
-        .then(colorStates(json))
-        .then(attachCandidatesToMap(json));
-        console.log(json);
-    });
-}; // end of getGeoJSON
-
-function allThisStuff (myFilter) {
-	//console.log("allThisStuff has started and myFilter = " + myFilter);
-    fetch("everyone.php").then(function(response){   
-        //console.log("RESPONSE at start of allThisStuff = " + response);        
-        return response.json();
-    }).then(function(response){ 
-        filteredCandidates = filterCandidates(response, myFilter);
-        wrangleWinners (filteredCandidates);
-        getGeoJSON();    
-    });
-    console.log(states);
-} // end of allThisStuff
-
-//let opponentsArray = allSocialists;
-// is making everyone the default this easy?
-let opponentsArray = everyone;
-
-allThisStuff (opponentsArray);  	
-
-// Updates map via AJAX when radio button selection changes
 
 </script>
 
-<div id="legend">
-    <div class="row">
-        <div class="candi-legend col" id="alyson-kennedy">
-            <div class="candi-box alyson-kennedy"></div>
-            <div class="candi-name">Alyson Kennedy</div>
-        </div>
-        <div class="candi-legend col" id="bradford-lyttle">
-            <div class="candi-box bradford-lyttle"></div>
-            <div class="candi-name">Bradford Lyttle</div>
-        </div>    
-    </div> <!-- End of Row -->
-	
-</div> <!-- End of Legend -->
-	
-</div> <!-- End of Container -->
 
 </body>
 </html>
