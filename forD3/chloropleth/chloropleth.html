@@ -68,7 +68,7 @@ margin = {
 // Map projection
 const projection = d3.geoAlbersUsa()
                      .translate([w/2, h/2])
-                     .scale([1000]);
+                     .scale([800]);
 
 // Path Generator
 const path = d3.geoPath()
@@ -82,24 +82,8 @@ const svg = d3.select("body")
               .attr("width", w)
               .attr("height", h);
 
-
-const title = "United States Educational Attainment";
-svg.append("text")
-    .style("text-anchor", "middle")
-    .attr("id", "title")
-    .attr("x", w/2)
-    .attr("y", 20)
-    .text(`${title}`);
-
-const description = "Percentage of adults age 25 and older with a bachelor's degree or higher (2010-2014)";
-svg.append("text")
-    .style("text-anchor", "middle")
-    .attr("id", "description")
-    .attr("x", w/2)
-    .attr("y", 40)
-    .text(`${description}`);
-
 d3.json('for_user_education.json', function (edu) {
+
     color.domain([
         d3.min(edu, function (d) {return d.value;}),
         d3.max(edu, function (d) {return d.value;})
@@ -111,6 +95,7 @@ d3.json('for_user_education.json', function (edu) {
         for (var i=0; i < edu.length; i++) {
             const countyName = edu[i].area_name;
             const stateName = edu[i].state;
+            console.log(countyName + ', ' + stateName)
             const countyFips = edu[i].fips;
             const bachelors = parseFloat(edu[i].bachelorsOrHigher);
 
@@ -127,7 +112,7 @@ d3.json('for_user_education.json', function (edu) {
         } /* End of Outer For */
 
         svg.selectAll('path')
-           .data(countyData)
+           .data(countyData.objects.counties.geometries)
            .enter()
            .append('path')
            .style("stroke", "#e0e0e0")
@@ -145,21 +130,20 @@ d3.json('for_user_education.json', function (edu) {
            .on("mouseover", function(d) {
                 const xPos = w / 2;
                 const yPos = h / 2;
-                const tipValue = d.value;
-                const tipName = d.data.name;
-                const tipCategory = d.data.category;
-                console.log(tipName);
+                const tipBachelors = d.value;
+                const tipCounty = d.data.name;
+                const tipState = d.data.category;
+                console.log(tipCounty);
                 d3.select("#tooltip")
                     .style("left", xPos + "px")
                     .style("top", yPos + "px")
-                    .attr("data-value", tipValue);
-                d3.select("#tipValue")
-                    .text(tipValue);
-                    // Create algorithm using pop and push for formatting the value as money 
-                d3.select("#tipName")
-                    .text(tipName);
-                d3.select("#tipCategory")
-                    .text(tipCategory);            
+                    .attr("data-education", tipBachelors);
+                d3.select("#bachelorValue")
+                    .text(tipBachelors);
+                d3.select("#countyName")
+                    .text(tipCounty);
+                d3.select("#stateName")
+                    .text(tipState);            
                 d3.select("#tooltip").classed("hidden", false);
             })
             .on("mouseout", function(){
@@ -168,9 +152,28 @@ d3.json('for_user_education.json', function (edu) {
     }); /* End of Counties JSON */
 }); /* End of Education */
 
+const title = "United States Educational Attainment";
+
+svg.append("text")
+    .style("text-anchor", "middle")
+    .attr("id", "title")
+    .attr("x", w/2)
+    .attr("y", 20)
+    .text(`${title}`);
+
+const description = "Percentage of adults age 25 and older with a bachelor's degree or higher (2010-2014)";
+
+svg.append("text")
+    .style("text-anchor", "middle")
+    .attr("id", "description")
+    .attr("x", w/2)
+    .attr("y", 40)
+    .text(`${description}`);
+
 const legend = svg.append("g")
                     .attr("id", "legend")
                     .attr("transform", "translate(" + [margin.left , (h - margin.bottom + 20)] + ")");
+
 legend.selectAll("rect")
         .data('for_user_education.json')
         .enter()
@@ -189,15 +192,9 @@ legend.selectAll("text")
         .attr("y", 50)
         .text(d => d.bachelors);
 
-
-
-/* */
-        
-
-
-
 </script>
 
+/* */
 
 </body>
 </html>
