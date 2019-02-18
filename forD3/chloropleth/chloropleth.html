@@ -2,235 +2,80 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <title>2016 Presidential Election Insights</title>
-        <meta name='viewport' content='user-scalable=no, width=device-width, initial-scale=1' />
-        <meta name='apple-mobile-web-app-capable' content='yes'>
-        <meta name='mobile-web-app-capable' content='yes'> 
-
+        <title>Chloropleth project for FCC cert</title>
         <script src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
         <script src='https://d3js.org/d3.v4.min.js'></script>
-
-        <script src='states2.js'></script>
-        
-        <link rel='stylesheet' type='text/css' href='prezStyle.css'>
-        <link rel='stylesheet' type='text/css' href='https://www.roxorsoxor.com/bootstrap4/css/bootswatch-slate.min.css'>
-
-        <link rel="icon" type="image/png" href="/imgs/app-icon-128" sizes="128x128">
-        <link rel="shortcut icon" href="favicon.ico">
-
-        <script src='https://www.roxorsoxor.com/bootstrap4/js/bootstrap.min.js'></script>
-
     </head>
 <body>
-<div class="container">
-
-    <div id="stateCandidates" class="hidden"></div>
-
-    <div id="mappymap"></div>
 
 <script>
 
 // Width and Height
-const w = 1110;
-const h = 650;
+const w = 800;
+const h = 600;
 
 // Map projection
 const projection = d3.geoAlbersUsa()
-                        .translate([w/2, h/2])
-                        .scale([1000]);
+                     .translate([w/2, h/2])
+                     .scale([1000]);
 
 // Path Generator
 const path = d3.geoPath()
-                .projection(projection);
+               .projection(projection);
+
+const color = d3.scaleOrdinal(d3.schemeCategory20);
 
 // Create SVG
-const svg = d3.select("#mappymap")
-                .append("svg")
-                .attr("width", w)
-                .attr("height", h);
+const svg = d3.select("body")
+              .append("svg")
+              .attr("width", w)
+              .attr("height", h);
 
-let winners = [];
-let candiStates = [];
-let themResults = [];
-let filteredCandidates = [];
-let themID = 0;
-let themName = '';
-	
-// Gets only the array of candidates I want to compare out of all 2016 results (the response)
-function filterCandidates (response, myFilter) {
-	let themCount = myFilter.length;
-	if (themCount == 10) {
-		themID = 33;
-		themName = 'All Right';
-	} else {
-		themID = 32;
-		themName = 'All Left';
-	}
-	
-    filteredCandidates = response.filter((candidateResult) => {
-        // console.log(candidateResult);
-        if(myFilter.indexOf(candidateResult.candidateID) >= 0) {
-            return candidateResult;
-        };
-    });
-    //console.log("These are the filteredCandidates at end of filterCandidates " + filteredCandidates);
-	// do I need this next return?
-    return filteredCandidates;
-}
+d3.json('for_user_education.json', function (edu) {
+    color.domain([
+        d3.min(edu, function (d) {return d.value;}),
+        d3.max(edu, function (d) {return d.value;})
+    ]);
 
-// Combine a group of candidates into a single candidate
-function combineThem (filteredCandidates) {
-	themResults = [];
-    
-    // states are from array in separate js file
-    states.forEach(function (state){
-		
-        let stateCandidates = filteredCandidates.filter(function (candidateResult){
-            return candidateResult.stateAbbr === state.abbr;
-        });
-		
-		let theirVotes = stateCandidates.reduce((totalVotes, candidateResult, index, stateCandidates) => {
-			return totalVotes += candidateResult.popVotes
-		}, 0);
-            
-		let themThisState = {
-			'stateName': state.name,
-			'popVotes': theirVotes,
-			'candidateName': themName,
-			'candidateID': themID,
-			'candidateParty': '',
-			'candidatePartyAbbr': '',
-			'stateAbbr': state.abbr
-		};			
-		
-		themResults.push(themThisState);
+    d3.json ('counties.json', function (counties) {
+        for (var i=0; i < edu.length; i++) {
+            const countyName = edu[i].area_name;
+            const stateName = edu[i].state;
+            const countyFips = edu[i].fips;
+            const bachelors = parseFloat(edu[i].bachelorsOrHigher);
 
-    });
-	
-	return themResults;
-	
-	// console.log(themResults);
-} // end of combineThem
-	
-// Gets candidate with highest popVotes from each state  
-function wrangleWinners (filteredCandidates) {
-	winners = [];
-    candiStates = [];
-    // console.log(filteredCandidates);
-    // states are from array in separate js file
-    states.forEach(function (state){
-		
-        let stateCandidates = filteredCandidates.filter(function (candidateResult){
-            return candidateResult.stateAbbr === state.abbr;
-        });
-
-        //console.log(stateCandidates);
-        
-        // What if there are no stateCandidates?
-        if (stateCandidates.length > 0) {	
-            let stateWinner = stateCandidates.reduce((max, candidate) => max && max.popVotes > candidate.popVotes ? max : candidate, null);
-            
-            if (stateWinner.popVotes == 0) {
-                stateWinner = {
-                    'stateName': stateWinner.stateName,
-                    'popVotes': 0,
-                    'candidateName': 'None',
-                    'candidateID': 0,
-                    'candidateParty': 'None',
-                    'candidatePartyAbbr': 'None',
-                    'stateAbbr': stateWinner.stateAbbr
-                };
-            };                        
-            
-            winners.push(stateWinner);	
-            candiStates.push(stateCandidates);					
-            
-        } else {
-            
-            let stateWinner = {
-                'stateName': state.name,
-                'popVotes': 0,
-                'candidateName': 'None',
-                'candidateID': 0,
-                'candidateParty': 'None',
-                'candidatePartyAbbr': 'None',
-                // next line breaks styling because CSS needs stateName
-                'stateAbbr': state.abbr
-            };
-            
-            // console.log (state.name + " has no votes or candidates");
-
-            winners.push(stateWinner);	
-            stateCandidates.push(stateWinner);					
-            candiStates.push(stateCandidates);
-        };
-    });
-	
-	console.log(winners);
-    console.log (candiStates);
-
-} // end of wrangleWinners  
-
-// Adds winning candidate info to each state object
-function attachWinnersToMap (json) {
-    //Merge results data with GeoJSON
-    //Loop through once for each result data value
-    for (var i = 0; i < winners.length; i++) {
-        // Get the state name
-        let dataState = winners[i].stateName;
-        // Get winning candidate
-        let dataWinner = winners[i].candidateID;
-        let winnerName = winners[i].candidateName;
-        let winnerParty = winners[i].partyName;
-        let winnerPartyAbbr = winners[i].partyAbbr;
-        // console.log(dataWinner + " won " + dataState);
-        //Find the corresponding state inside the GeoJSON
-        for (var j = 0; j < json.features.length; j++) {
-            let jsonState = json.features[j].properties.name;
-            if (dataState == jsonState) {
-            // console.log(dataState + " equals " + jsonState);
-                json.features[j].properties.winner = dataWinner;
-                json.features[j].properties.winnerName = winnerName;
-                json.features[j].properties.partyName = winnerParty;
-                json.features[j].properties.partyAbbr = winnerPartyAbbr;
+            for (var j=0; j < counties.geometries.length; j++) {
+                const countyID = counties.geometries[j].properties.id;
+                if (countyID == countyFips) {
+                    counties.geometries[j].properties.countyName = countyName;
+                    counties.geometries[j].properties.stateName = stateName;
+                    counties.geometries[j].properties.bachelors = bachelors;
+                    break;
+                }
             }
-            else {
-            // console.log(dataState + " does not equal " + jsonState);
-            };
-        };
-        
-    };
-    // console.log(json);
-    return json;
-} // end of attachWinnersToMap  
+        }
 
-// Adds all state's candidates info to each state object
-function attachCandidatesToMap (json) {
-    //Merge candidate results data with GeoJSON
-    //Loop through once for each state
-    for (var i = 0; i < winners.length; i++) {
-        // Get the state name
-        let candiState = candiStates[i][0].stateName;
-        
-        // Get winning candidate
-        let theseCandidates = candiStates[i];
-        
-        //Find the corresponding state inside the GeoJSON
-        for (var j = 0; j < json.features.length; j++) {
-            let jsonState = json.features[j].properties.name;
-            if (candiState == jsonState) {
-            // console.log(dataState + " equals " + jsonState);
-                json.features[j].properties.candidates = theseCandidates;
-            }
-            else {
-            // console.log(dataState + " does not equal " + jsonState);
-            };
-        };
-        
-    };
-    // console.log(json);
-    return json;
-} // end of attachCandidatesToMap  
+        svg.selectAll('path')
+           .data(json.geometries)
+           .enter()
+           .append('path')
+           .style('fill', function(d) {
+               const value = d.geometries.bachelors;
+               if (value) {
+                   return color(value);
+               } else {
+                   return '#ccc';
+               }
+           });
+    });
+});
+
+
+
+
+
+
+
 
 // Colors map based on winning candidates
 function colorStates (usasvg) {
@@ -238,7 +83,7 @@ function colorStates (usasvg) {
     d3.select('svg').html('');
     
     svg.selectAll("path")
-        .data(usasvg.features)
+        .edu(usasvg.features)
         .enter()
         .append("path")
         .attr("d", path)
@@ -248,103 +93,7 @@ function colorStates (usasvg) {
             switch (value) {
                 case 1:
                     return "frank-atwood"; // frank-atwood
-                    break;
-                case 2:
-                    return "darrell-castle"; // darrell-castle
-                    break;
-                case 3:
-                    return "hillary-clinton"; // hillary-clinton
-                    break;
-                case 4:
-                    return "scott-copeland"; // scott-copeland
-                    break;   
-                case 5:
-                    return "roque-delafuente"; // roque-delafuente
-                    break;   
-                case 6:
-                    return "richard-duncan"; // richard-duncan
-                    break; 
-                case 7:
-                    return "rocky-giordani"; // rocky-giordani
-                    break;      
-                case 8:
-                    return "james-hedges"; // james-hedges
-                    break;
-                case 9:
-                    return "tom-hoefling"; // tom-hoefling
-                    break; 
-                case 10:
-                    return "princess-jacob"; // princess-jacob
-                    break;  
-                case 11:
-                    return "gary-johnson"; // gary-johnson
-                    break;                                
-                case 12:
-                    return "lynn-kahn"; // Lynn S. Kahn
-                    break;
-                case 13:
-                    return "chris-keniston"; // Chris Keniston
-                    break;
-                case 14:
-                    return "alyson-kennedy"; // Alyson Kennedy
-                    break;
-                case 15:
-                    return "kyle-kopitke"; // kyle-kopitke
-                    break;   
-                case 16:
-                    return "laurence-kotlikoff"; // laurence-kotlikoff
-                    break;   
-                case 17:
-                    return "gloria-estelalariva"; // Gloria Estela La Riva
-                    break;   
-                case 18:
-                    return "bradford-lyttle"; // Bradford Lyttle
-                    break; 
-                case 19:
-                    return "joseph-maldonado"; // joseph-maldonado
-                    break;   
-                case 20:
-                    return "michael-maturen"; // Michael A. Maturen
-                    break;   
-                case 21:
-                    return "evan-mcmullin"; // evan-mcmullin
-                    break;
-                case 22:
-                    return "monica-moorehead"; // Monica Moorehead
-                    break;
-                case 23:
-                    return "ryan-scott"; // ryan-scott
-                    break;       
-                case 24:
-                    return "rod-silva"; // rod-silva
-                    break;
-                case 25:
-                    return "peter-skewes"; // peter-skewes
-                    break;  
-                case 26:
-                    return "mike-smith"; // mike-smith
-                    break;
-                case 27:
-                    return "emidio-soltysik"; // Emidio Soltysik
-                    break;       
-                case 28:
-                    return "jill-stein"; // Jill Stein
-                    break;
-                case 29:
-                    return "donald-trump"; // Donald Trump
-                    break;
-                case 30:
-                    return "dan-r-vacek"; // Dan R. Vacek
-                    break;  
-                case 31:
-                    return "jerry-white"; // Jerry White 
-                    break;
-                case 32:
-                    return "all-left"; // All Left
-                    break;  
-                case 33:
-                    return "all-right"; // All Right 
-                    break;					
+                    break; 				
                 default:
                     return "nope";
                     break;  
@@ -367,14 +116,13 @@ function colorStates (usasvg) {
         }
     })
 
-        
         .on("mouseout", function(){
             d3.selectAll(".candiRow").remove();
             d3.select("#stateCandidates").classed("hidden", true);
         })
         .append("title")
         .text(function(d){
-            return d.properties.name + ": " + d.properties.winnerName + ", " + d.properties.partyName + ", (" + d.properties.partyAbbr + ")";
+            return d.properties.name;
         });
        /* */
          
@@ -388,7 +136,7 @@ function makeToolTip (d) {
 }
 
 function getGeoJSON () {
-    d3.json("data/counties.json", function(json) {
+    d3.json("edu/counties.json", function(json) {
         $.when(attachWinnersToMap(json))
         .then(colorStates(json))
         .then(attachCandidatesToMap(json));
@@ -413,142 +161,11 @@ function allThisStuff (myFilter) {
 // is making everyone the default this easy?
 let opponentsArray = everyone;
 
-allThisStuff (opponentsArray);  
-	
-function battlefield (them, person) {
-    fetch("everyone.php").then(function(response){  
-        //console.log("RESPONSE at start of BATTLEFIELD = " + response);          
-        return response.json();
-    }).then(function(response){ 
-        filteredCandidates = [];
-        let filteredThem = filterCandidates(response, them);
-        //console.log("filteredThem before combining are " + filteredCandidates);
-        combineThem (filteredThem);
-        //console.log("filteredThem after combining are " + filteredCandidates);
-        let filteredPerson = filterCandidates(response, person);
-        //console.log("themResults are " + themResults);
-        // Changing next line from themResults to filteredThem BUT NOT YET
-        filteredCandidates = [...themResults,...filteredPerson];
-        //console.log("filteredCandidates after concatenating are " + filteredCandidates);
-        wrangleWinners (filteredCandidates);
-        getGeoJSON();    
-    });    
-}	
-	
-function battlefield3 (left, right) {
-    fetch("everyone.php").then(function(response){           
-        return response.json();
-    }).then(function(response){ 
-		filteredCandidates = [];
-		// let finalLeft = [];
-		// let finalRight = [];
-        let filteredLeft = filterCandidates(response, left);
-		let finalLeft = combineThem (filteredLeft);
-        let filteredRight = filterCandidates(response, right);
-		let finalRight = combineThem (filteredRight);
-        filteredCandidates = [...finalLeft,...finalRight];
-		//console.log(filteredCandidates);
-        wrangleWinners (filteredCandidates);
-        getGeoJSON();    
-    });    
-}		
+allThisStuff (opponentsArray);  	
 
 // Updates map via AJAX when radio button selection changes
-$(document).ready(function(){
-    $('input[type=radio]').click(function(){
-        let buttonvalue = this.value;
-		//console.log(buttonvalue);
-        switch (buttonvalue) {
-            case 'socialists-all':
-                allThisStuff(allSocialists);
-                break;
-            case 'socialists-nogreen':
-                allThisStuff(noGreen); 
-                break;
-            case 'everyone':
-                allThisStuff(everyone); 
-                break;                 
-            case 'left-all-vs-trump':
-				battlefield(allLeft, trump);
-                break;
-            case 'right-all-notrump':
-                allThisStuff(allRightNoTrump); 
-                break;
-            case 'right-all-notrumpnorjohnson':
-                allThisStuff(allRightNoTrumpNorJohnson); 
-                break;            
-            case 'right-all-vs-clinton':
-                battlefield(allRight, clinton);
-                break;
-            case 'right-all-vs-left-all':
-                battlefield3(allLeft, allRight); 
-                break;                                
-            default:
-                allThisStuff(allSocialists);
-                break;  
-        }
-    });
-});
 
 </script>
-
-<form id="selectCandidates" action="" method="post">
-
-    <fieldset class="form-group">
-        <legend>Opponents</legend>
-
-        <div class="form-check">
-            <label class="form-check-label">
-                <input type="radio" class="form-check-input" name="opponents" id="socialists-all" value="socialists-all">
-                All Socialists
-            </label>
-        </div>
-        <div class="form-check">
-            <label class="form-check-label">
-                <input type="radio" class="form-check-input" name="opponents" id="socialists-nogreen" value="socialists-nogreen">
-                All Socialists Except Jill Stein (Green)
-            </label>
-        </div>            
-        <div class="form-check">
-            <label class="form-check-label">
-                <input type="radio" class="form-check-input" name="opponents" id="left-all-vs-trump" value="left-all-vs-trump">
-                All "Left" vs Trump (Republican)
-            </label>
-        </div>
-        <div class="form-check">
-            <label class="form-check-label">
-                <input type="radio" class="form-check-input" name="opponents" id="right-all-notrump" value="right-all-notrump">
-                All "Right" Except Donald Trump (Republican)
-            </label>
-        </div>
-        <div class="form-check">
-            <label class="form-check-label">
-                <input type="radio" class="form-check-input" name="opponents" id="right-all-notrumpnorjohnson" value="right-all-notrumpnorjohnson">
-                All "Right" Except Donald Trump (Republican) and Gary Johnson (Libertarian)
-            </label>
-        </div>          
-        <div class="form-check">
-            <label class="form-check-label">
-                <input type="radio" class="form-check-input" name="opponents" id="right-all-vs-clinton" value="right-all-vs-clinton">
-                All "Right" vs Clinton (Democratic)
-            </label>
-        </div>
-        <div class="form-check">
-            <label class="form-check-label">
-                <input type="radio" class="form-check-input" name="opponents" id="right-all-vs-left-all" value="right-all-vs-left-all"> 
-                All Left vs All Right
-            </label>
-        </div>  
-        <div class="form-check">
-            <label class="form-check-label">
-                <input type="radio" class="form-check-input" name="opponents" id="everyone" value="everyone" checked=""> 
-                Everyone
-            </label>
-        </div>          
-
-    </fieldset>
-
-</form>
 
 <div id="legend">
     <div class="row">
@@ -556,180 +173,11 @@ $(document).ready(function(){
             <div class="candi-box alyson-kennedy"></div>
             <div class="candi-name">Alyson Kennedy</div>
         </div>
-
         <div class="candi-legend col" id="bradford-lyttle">
             <div class="candi-box bradford-lyttle"></div>
             <div class="candi-name">Bradford Lyttle</div>
         </div>    
-        
-        <div class="candi-legend col" id="chris-keniston">
-            <div class="candi-box chris-keniston"></div>
-            <div class="candi-name">Chris Keniston</div>
-        </div>
-
-        <div class="candi-legend col" id="rdan-r-vacek">
-            <div class="candi-box dan-r-vacek"></div>
-            <div class="candi-name">Dan R. Vacek</div>
-        </div> 
-        <div class="candi-legend col" id="darrell-castle">
-            <div class="candi-box darrell-castle"></div>
-            <div class="candi-name">Darrell Castle</div>
-        </div>
     </div> <!-- End of Row -->
-    <div class="row">
-            <div class="candi-legend col" id="donald-trump">
-                <div class="candi-box donald-trump"></div>
-                <div class="candi-name">Donald Trump</div>
-            </div>   
-        <div class="candi-legend col" id="emidio-soltysik">
-            <div class="candi-box emidio-soltysik"></div>
-            <div class="candi-name">Emidio Soltysik</div>
-        </div>
-
-        <div class="candi-legend col" id="evan-mcmullin">
-            <div class="candi-box evan-mcmullin"></div>
-            <div class="candi-name">Evan McMullin</div>
-        </div>     
-        
-        <div class="candi-legend col" id="frank-atwood">
-            <div class="candi-box frank-atwood"></div>
-            <div class="candi-name">Frank Atwood</div>
-        </div>
-
-        <div class="candi-legend col" id="gary-johnson">
-            <div class="candi-box gary-johnson"></div>
-            <div class="candi-name">Gary Johnson</div>
-        </div>    
-        </div> <!-- End of Row -->    
-    <div class="row">
-
-        <div class="candi-legend col" id="gloria-estelalariva ">
-            <div class="candi-box gloria-estelalariva "></div>
-            <div class="candi-name">Gloria Estela La Riva</div>
-        </div>
-
-        <div class="candi-legend col" id="hillary-clinton">
-            <div class="candi-box hillary-clinton"></div>
-            <div class="candi-name">Hillary Clinton</div>
-        </div>     
-        <div class="candi-legend col" id="james-hedges">
-            <div class="candi-box james-hedges"></div>
-            <div class="candi-name">James Hedges</div>
-        </div>
-
-        <div class="candi-legend col" id="jerry-white">
-            <div class="candi-box jerry-white"></div>
-            <div class="candi-name">Jerry White</div>
-        </div>
-
-        <div class="candi-legend col" id="jill-stein">
-            <div class="candi-box jill-stein"></div>
-            <div class="candi-name">Jill Stein</div>
-        </div>    
-    </div> <!-- End of Row -->
-    <div class="row">
-
-        <div class="candi-legend col" id="joseph-maldonado">
-            <div class="candi-box joseph-maldonado"></div>
-            <div class="candi-name">Joseph Maldonado</div>
-        </div>
-
-        <div class="candi-legend col" id="kyle-kopitke">
-            <div class="candi-box kyle-kopitke"></div>
-            <div class="candi-name">Kyle Kopitke</div>
-        </div>      
-
-        <div class="candi-legend col" id="laurence-kotlikoff">
-            <div class="candi-box laurence-kotlikoff"></div>
-            <div class="candi-name">Laurence Kotlikoff</div>
-        </div>    
-        <div class="candi-legend col" id="lynn-kahn">
-            <div class="candi-box lynn-kahn"></div>
-            <div class="candi-name">Lynn Kahn</div>
-        </div>
-
-        <div class="candi-legend col" id="michael-maturen">
-            <div class="candi-box michael-maturen"></div>
-            <div class="candi-name">Michael Maturen</div>
-        </div>      
-    </div> <!-- End of Row -->
-    <div class="row">
-
-        <div class="candi-legend col" id="mike-smith">
-            <div class="candi-box mike-smith"></div>
-            <div class="candi-name">Mike Smith</div>
-        </div>
-
-        <div class="candi-legend col" id="monica-moorehead">
-            <div class="candi-box monica-moorehead"></div>
-            <div class="candi-name">Monica Moorehead</div>
-        </div>
-
-        <div class="candi-legend col" id="peter-skewes">
-            <div class="candi-box peter-skewes"></div>
-            <div class="candi-name">Peter Skewes</div>
-        </div>
-
-        <div class="candi-legend col" id="princess-jacob">
-            <div class="candi-box princess-jacob"></div>
-            <div class="candi-name">Princess Jacob</div>
-        </div>     
-        <div class="candi-legend col" id="richard-duncan">
-            <div class="candi-box richard-duncan"></div>
-            <div class="candi-name">Richard Duncan</div>
-        </div>     
-    </div> <!-- End of Row -->
-    <div class="row">
-
- 
-        <div class="candi-legend col" id="rocky-giordani">
-            <div class="candi-box rocky-giordani"></div>
-            <div class="candi-name">Rocky Giordani</div>
-        </div>  
-
-        <div class="candi-legend col" id="rod-silva">
-            <div class="candi-box rod-silva"></div>
-            <div class="candi-name">Rod Silva</div>
-        </div>  
-
-        <div class="candi-legend col" id="roque-delafuente">
-            <div class="candi-box roque-delafuente"></div>
-            <div class="candi-name">Roque De La Fuente</div>
-        </div>  
-
-        <div class="candi-legend col" id="ryan-scott">
-            <div class="candi-box ryan-scott"></div>
-            <div class="candi-name">Ryan Scott</div>
-        </div>  
-
-        <div class="candi-legend col" id="scott-copeland">
-            <div class="candi-box scott-copeland"></div>
-            <div class="candi-name">Scott Copeland</div>
-        </div>      
-    
-    </div> <!-- End of Row -->
-
-    <div class="row">
-
-		<div class="candi-legend col" id="tom-hoefling">
-            <div class="candi-box tom-hoefling"></div>
-            <div class="candi-name">Tom Hoefling</div>
-        </div>	
-		
-        <div class="candi-legend col" id="all-left">
-            <div class="candi-box all-left"></div>
-            <div class="candi-name">All Left</div>
-        </div>  
-
-        <div class="candi-legend col" id="all-right">
-            <div class="candi-box all-right"></div>
-            <div class="candi-name">All Right</div>
-        </div>
-		
-        <div class="candi-legend col"></div>  
-        <div class="candi-legend col"></div>        
-        
-    </div><!-- End of Row -->
 	
 </div> <!-- End of Legend -->
 	
