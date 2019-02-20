@@ -1,5 +1,7 @@
 <?php
 
+$dragDrop = array ($blackSabbath, $davidBowie, $johnnyCash, $aliceCooper, $deepPurple, $bobDylan, $fleetwoodMac, $ironMaiden, $JudasPriest, $journey, $jethroTull, $eltonJohn, $kiss, $meatLoaf, $johnMellencamp, $metallica, $garyNuman, $tednugent, $ozzyOsbourne, $rollingStones, $rush, $bruceSpringsteen, $rodStewart, $neilYoung);
+
 #Joan Jett, Runaways, Evil Stig
 $group_jj = array ('1Fmb52lZ6Jv7FMWXXTPO3K','5eTq3PxbOh5vgeRXKNqPyV', '5NhjPre67qjeeQP4KHDHpe');
 

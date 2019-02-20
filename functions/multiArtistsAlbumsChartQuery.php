@@ -2,6 +2,7 @@
 
 require_once '../rockdb.php';
 require( "class.artist.php" );
+require_once '../data_text/artists_groups.php';
 
 $connekt = new mysqli( $GLOBALS[ 'host' ], $GLOBALS[ 'un' ], $GLOBALS[ 'magicword' ], $GLOBALS[ 'db' ] );
 
@@ -9,7 +10,7 @@ if ( !$connekt ) {
 	echo 'Darn. Did not connect.';
 };
 
-$happyScabies2 = "SELECT a.albumName, a.artistID, a.year, a.albumArt, z.artistName, p1.pop, p1.date
+$happyScabies2 = 'SELECT a.albumName, a.artistID, a.year, a.albumArt, z.artistName, p1.pop, p1.date
 	FROM (SELECT
 				y.albumID AS albumID,
 				y.albumName AS albumName,
@@ -26,8 +27,11 @@ $happyScabies2 = "SELECT a.albumName, a.artistID, a.year, a.albumArt, z.artistNa
 			ON p.albumID = groupedp.albumID
 			AND p.date = groupedp.MaxDate) p1 
 	ON a.albumID = p1.albumID
-    WHERE a.artistID IN ('0p9uD4WGPHqMicwXm3Kavk', '0t1uzfQspxLvAifZLdmFe2', '5MQsxr7sbsewUTIEEYxauR', '0PGxNwykt4KgnvSnNHVUSZ')
-	ORDER BY year ASC;";						
+	WHERE a.artistID IN ("' . implode('", "', $group_steveTaylor) . '")
+	ORDER BY year ASC';						
+
+
+	
 
 $result = mysqli_query($connekt, $happyScabies2);
 
