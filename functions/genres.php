@@ -58,7 +58,7 @@ function getAndStoreSpotifyGenresForAllArtists ($allArtists) {
     };  
 }
 
-getAndStoreSpotifyGenresForAllArtists ($hairglam);
+getAndStoreSpotifyGenresForAllArtists ($allArtists);
 
 die();
 

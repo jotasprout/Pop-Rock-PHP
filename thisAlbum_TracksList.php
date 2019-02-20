@@ -49,7 +49,7 @@ if ( !$getit ) {
 		<?php echo $navbar ?>
 
 		<!-- main -->
-
+		<p>Please be patient while data loads.</p>
 		<div class="panel panel-primary">
 			<div class="panel-heading">
 				<h3 class="panel-title">This Album's Tracks Popularity On Spotify</h3>

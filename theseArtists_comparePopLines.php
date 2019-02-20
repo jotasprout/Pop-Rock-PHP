@@ -55,7 +55,7 @@
 
 <div class="container">
 	<?php echo $navbar ?>
-
+    <p>Please be patient while data loads.</p>
 	<div class="panel panel-primary">
 		<div class="panel-heading">
 			<h3 class="panel-title">These Artists Popularity Over Time</h3>
