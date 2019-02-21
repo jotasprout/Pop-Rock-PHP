@@ -1,6 +1,8 @@
 <?php 
+    require "functions/class.artist.php";
 	require_once 'page_pieces/stylesAndScripts.php';
     require_once 'page_pieces/navbar_rock.php'; 
+    require_once 'data_text/artists_groups.php';
 ?>
 
 <!DOCTYPE html>
@@ -24,7 +26,9 @@
 	<div class="panel panel-primary">
 
 		<div class="panel-body">
-		    <div id="dragFrom"></div> <!-- close forChart -->
+		    <div id="dragFrom">
+
+            </div> <!-- close dragFrom -->
 		</div> <!-- panel body -->
 
 	</div> <!-- close Panel Primary -->
@@ -58,7 +62,7 @@ margin = {
 
 var dataset, xScale, yScale, xAxis, yAxis, line;
 
-d3.json("functions/multiArtistsPop2.php", function(data) {
+d3.json("functions/dragDropCompare.php", function(data) {
 
         console.log(data);
     

@@ -1,6 +1,7 @@
 <?php 
 	require_once 'page_pieces/stylesAndScripts.php';
     require_once 'page_pieces/navbar_rock.php'; 
+
 ?>
 
 <!DOCTYPE html>

@@ -30,9 +30,6 @@ $happyScabies2 = 'SELECT a.albumName, a.artistID, a.year, a.albumArt, z.artistNa
 	WHERE a.artistID IN ("' . implode('", "', $group_steveTaylor) . '")
 	ORDER BY year ASC';						
 
-
-	
-
 $result = mysqli_query($connekt, $happyScabies2);
 
 if (mysqli_num_rows($result) > 0) {
