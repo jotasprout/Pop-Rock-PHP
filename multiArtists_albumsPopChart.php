@@ -49,6 +49,10 @@
 </div> <!-- /container -->		 
 
 <script type="text/javascript">
+
+
+
+function artistsAssemble (group) {
     d3.json("functions/multiArtistsAlbumsChartQuery.php", function(dataset) {
         console.log(dataset);
         // Width and height
@@ -117,10 +121,29 @@
             .attr("font-size", "11px")
             .attr("fill", "white");
     });		
+}
+
+
+
+/*
+$(document).ready(function(){
+    $('input[type=radio]').click(function() {
+        let buttonvalue = this.id;
+        switch (buttonvalue){
+            case '':
+            allThisStuff(allSocialists);
+            break;
+
+        }
+    })
+})
+*/
+
 </script>				
 
 
-		<?php echo $scriptsAndSuch; ?>	
+<?php echo $scriptsAndSuch; ?>	
+
 </body>
 
 </html>
