@@ -1,6 +1,20 @@
 <?php
+/*
+$longTerm = array ($blackSabbath, $davidBowie, $johnnyCash, $aliceCooper, $deepPurple, $bobDylan, $fleetwoodMac, $ironMaiden, $JudasPriest, $journey, $jethroTull, $eltonJohn, $kiss, $meatLoaf, $johnMellencamp, $metallica, $garyNuman, $tednugent, $ozzyOsbourne, $rollingStones, $rush, $bruceSpringsteen, $rodStewart, $neilYoung);
 
-$dragDrop = array ($blackSabbath, $davidBowie, $johnnyCash, $aliceCooper, $deepPurple, $bobDylan, $fleetwoodMac, $ironMaiden, $JudasPriest, $journey, $jethroTull, $eltonJohn, $kiss, $meatLoaf, $johnMellencamp, $metallica, $garyNuman, $tednugent, $ozzyOsbourne, $rollingStones, $rush, $bruceSpringsteen, $rodStewart, $neilYoung);
+//$longTerm = array ('$blackSabbath', '$davidBowie', '$johnnyCash', '$aliceCooper', '$deepPurple', '$bobDylan', '$fleetwoodMac', '$ironMaiden', '$JudasPriest', '$journey', '$jethroTull', '$eltonJohn', '$kiss', '$meatLoaf', '$johnMellencamp', '$metallica', '$garyNuman', '$tednugent', '$ozzyOsbourne', '$rollingStones', '$rush', '$bruceSpringsteen', '$rodStewart', '$neilYoung');
+
+function elderRockers() {
+    $elderStatesmen = array();
+    foreach ($longTerm->elders as $elder) {
+        $elderID = "'" . $elder->get_artistID() . "'";
+        array_push($elderStatesmen, $elderID);
+    }
+    echo $elderStatesmen;
+} 
+*/
+
+$longTerm = array ('5M52tdBnJaKSvOpJGz8mfZ', '0oSGxfWSnnOXhD2fKuz2Gy', '$6kACVPfCOnqzgfEF5ryl0x', '3EhbVgyfGd7HkpsagwL9GS', '568ZhdwyaiCyOGJRtNYhWf', '74ASZWbe4lXaubB36ztrGX', '08GQAI4eElDnROBrJRGE0X', '6mdiAmATAx73kdxrNrnlao', '2tRsMl4eGxwoNabM08Dm4I', '0rvjqX7ttXeg3mTy8Xscbt', '6w6z8m4WXX7Tub4Rb6Lu7R', '3PhoLpVuITZKcymswpck5b', '07XSN3sPlIlB2L2XNcTwJw', '7dnB1wSxbYa8CejeVg98hz', '3lPQ2Fk5JOwGWAF3ORFCqH', '2ye2Wgw4gimLv2eAKyk1NB', '5KQMtyPE8DCQNUzoNqlEsE', '21ysNsPzHdqYN2fQ75ZswG', '6ZLTlhejhndI4Rh53vYhrY', '22bE4uQ6baNwSHPVcDxLCe', '2Hkut4rAAyrQxRdof7FVJq', '3eqjTLE0HfPfh78zjh6TqT', '2y8Jo9CKhJvtfeKOsYzRdT', '6v8FB84lnmJs434UJf2Mrm');
 
 #Joan Jett, Runaways, Evil Stig
 $group_jj = array ('1Fmb52lZ6Jv7FMWXXTPO3K','5eTq3PxbOh5vgeRXKNqPyV', '5NhjPre67qjeeQP4KHDHpe');

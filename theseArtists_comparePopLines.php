@@ -1,7 +1,8 @@
 <?php 
 	require_once 'page_pieces/stylesAndScripts.php';
     require_once 'page_pieces/navbar_rock.php'; 
-
+    require_once 'data_text/artists_groups.php';
+    require_once 'functions/class.artist.php';
 ?>
 
 <!DOCTYPE html>
@@ -84,6 +85,13 @@ margin = {
 
 var dataset, xScale, yScale, xAxis, yAxis, line;
 
+const $thrashEtc = "Thrash and Black Metal";
+const $longTerm = "Elder Artists with History";
+const $allRappers = "All Rappers";
+const $xianPunk = "Christian Punk & Alternative";
+const $detroitRockers = "Detroit Rock Citizens";
+const $latinos = "Alternativo y Rock en Espanol";
+
 d3.json("functions/multiArtistsPop2.php", function(data) {
 
         console.log(data);
@@ -92,7 +100,7 @@ d3.json("functions/multiArtistsPop2.php", function(data) {
 
         var parseTime = d3.timeParse("%y-%m-%d");
 
-        const title = "Thrash and Black Metal";
+        const title = $longTerm;
 
         dataset.forEach(function(d) {
             // date = parseTime(d.date);

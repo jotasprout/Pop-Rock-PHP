@@ -2,7 +2,7 @@
 
 require_once '../rockdb.php';
 require_once '../data_text/artists_groups.php';
-require( "class.artist.php" );
+require_once 'class.artist.php';
 
 $connekt = new mysqli($GLOBALS['host'], $GLOBALS['un'], $GLOBALS['magicword'], $GLOBALS['db']);
 if (!$connekt) {
@@ -12,7 +12,7 @@ if (!$connekt) {
 $multiArtistPop = 'SELECT a.artistID, a.artistArt , a.artistName, p.pop, p.date
     FROM artists a
     JOIN popArtists p ON p.artistID = a.artistID
-	WHERE a.artistID IN ("' . implode('", "', $thrashetc) . '")
+	WHERE a.artistID IN ("' . implode('", "', $longTerm) . '")
 	ORDER BY a.artistID ASC';
 
 $getit = mysqli_query($connekt, $multiArtistPop);
