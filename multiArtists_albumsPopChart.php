@@ -52,7 +52,7 @@
 
 
 
-function artistsAssemble (group) {
+function artistsAssemble () {
     d3.json("functions/multiArtistsAlbumsChartQuery.php", function(dataset) {
         console.log(dataset);
         // Width and height
@@ -123,7 +123,7 @@ function artistsAssemble (group) {
     });		
 }
 
-
+artistsAssemble ();
 
 /*
 $(document).ready(function(){
