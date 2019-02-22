@@ -22,19 +22,40 @@
 <!--
     Buttons below will use code based on prezPlayPro index line 464
 -->
+<form id="selectGroup" action="" method="post">
 
-<div class="btn-group btn-group-toggle" data-toggle="buttons">
-  <label class="btn btn-primary">
-    <input type="radio" name="options" id="steveTaylor" autocomplete="off" checked=""> Steve Taylor
-  </label>
-  <label class="btn btn-primary">
-    <input type="radio" name="options" id="joanJett" autocomplete="off"> Joan Jett
-  </label>
-  <label class="btn btn-primary active">
-    <input type="radio" name="options" id="mikeKnott" autocomplete="off"> Mike Knott
-  </label>
-</div>
+    <fieldset class="form-group">
+        <legend>Groups of Related Artists</legend>
+		
+		<div class="form-check">
+		  <label class="form-check-label">
+			<input type="radio" name="options" id="steveTaylor" value="steveTaylor" autocomplete="off" checked=""> Steve Taylor
+            </label>
+        </div>
+        <div class="form-check">
+            <label class="form-check-label">
+			<input type="radio" name="options" id="joanJett" value="joanJett" autocomplete="off"> Joan Jett
+            </label>
+        </div>
+        <div class="form-check">
+            <label class="form-check-label">
+			<input type="radio" name="options" id="mikeKnott" value="mikeKnott" autocomplete="off"> Mike Knott
+            </label>
+        </div>
+        <div class="form-check">
+            <label class="form-check-label">
+			<input type="radio" name="options" id="tomPetty" value="tomPetty" autocomplete="off"> Tom Petty
+            </label>
+        </div>
+        <div class="form-check">
+            <label class="form-check-label">
+			<input type="radio" name="options" id="iggyPop" value="iggyPop" autocomplete="off"> Iggy Pop
+		  </label>
+		</div>
+    </fieldset>
 
+</form>
+	 
 	<div class="panel panel-primary">
 		<div class="panel-heading">
 			<h3 class="panel-title">Related Artists' Albums Popularity</h3>
@@ -52,9 +73,18 @@
 
 
 
-function artistsAssemble () {
-    d3.json("functions/multiArtistsAlbumsChartQuery.php", function(dataset) {
-        console.log(dataset);
+function artistsAssemble (relatives) {
+	
+	let groupURL = 'functions/multiArtistsAlbumsChartQuery.php?group=';
+	
+	console.log(relatives + " is inside the artistsAssemble function");
+	
+	groupURL += relatives;
+	
+	console.log("the URL is " + groupURL)
+	
+    d3.json(groupURL, function(dataset) {
+        
         // Width and height
         var w = 2400;
         var h = 265;
@@ -123,21 +153,42 @@ function artistsAssemble () {
     });		
 }
 
-artistsAssemble ();
+let relatives = 'steveTaylor';
+	
+artistsAssemble (relatives);
 
-/*
+
 $(document).ready(function(){
+	console.log('Inside document ready');
+	
     $('input[type=radio]').click(function() {
-        let buttonvalue = this.id;
-        switch (buttonvalue){
-            case '':
-            allThisStuff(allSocialists);
-            break;
-
+		console.log('button clicked');
+        let buttonvalue = this.value;
+        switch (buttonvalue) {
+            case 'steveTaylor':
+				console.log('you clicked steveTaylor');
+				artistsAssemble('steveTaylor');
+				break;
+            case 'joanJett':
+				console.log('you clicked joanJett');
+				artistsAssemble('joanJett');
+				break;
+            case 'mikeKnott':
+				console.log('you clicked mikeKnott');
+				artistsAssemble('mikeKnott');
+				break;
+            case 'tomPetty':
+				console.log('you clicked tomPetty');
+				artistsAssemble('tomPetty');
+				break;	
+            case 'iggyPop':
+				console.log('you clicked iggyPop');
+				artistsAssemble('iggyPop');
+				break;				
         }
-    })
-})
-*/
+    });
+});
+/**/
 
 </script>				
 
