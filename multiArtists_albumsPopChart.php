@@ -157,32 +157,24 @@ let relatives = 'steveTaylor';
 	
 artistsAssemble (relatives);
 
-
 $(document).ready(function(){
-	console.log('Inside document ready');
 	
     $('input[type=radio]').click(function() {
-		console.log('button clicked');
         let buttonvalue = this.value;
         switch (buttonvalue) {
             case 'steveTaylor':
-				console.log('you clicked steveTaylor');
 				artistsAssemble('steveTaylor');
 				break;
             case 'joanJett':
-				console.log('you clicked joanJett');
 				artistsAssemble('joanJett');
 				break;
             case 'mikeKnott':
-				console.log('you clicked mikeKnott');
 				artistsAssemble('mikeKnott');
 				break;
             case 'tomPetty':
-				console.log('you clicked tomPetty');
 				artistsAssemble('tomPetty');
 				break;	
             case 'iggyPop':
-				console.log('you clicked iggyPop');
 				artistsAssemble('iggyPop');
 				break;				
         }
@@ -191,7 +183,6 @@ $(document).ready(function(){
 /**/
 
 </script>				
-
 
 <?php echo $scriptsAndSuch; ?>	
 
