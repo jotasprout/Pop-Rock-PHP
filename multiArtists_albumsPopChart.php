@@ -90,11 +90,15 @@ function artistsAssemble (relatives) {
         var h = 265;
         var barPadding = 1;
         
+        // Maybe this next line will clear old graph before creating new graph
+        d3.select('#forChart').html('');
+
         // Create SVG element
         var svg = d3.select("#forChart")
             .append("svg")
             .attr("width", w)
             .attr("height", h);
+        
         // Rectangles
         svg.selectAll("rect")
             .data(dataset)
