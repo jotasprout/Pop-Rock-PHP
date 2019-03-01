@@ -1,9 +1,11 @@
 <?php
 
 require ("class.artist.php");
+// Shouldn't content of this file BE in the artist class file?
 
 // put new function in here based on divideCombineArtists that will just insert one new artist to be used with a button
 
+/*
 function getArtistsPopCron2 ($theseArtists) {
 	echo 'all these artists are ' . $theseArtists . '<br>';
 	
@@ -55,7 +57,7 @@ function getArtistsPopCron2 ($theseArtists) {
 		}
 	};	
 }
-
+*/
 
 function divideCombineArtists ($theseArtists) {
 	echo 'all these artists are ' . $theseArtists . '<br>';
@@ -113,7 +115,7 @@ function divideCombineArtists ($theseArtists) {
 			}
 	
 			else {
-				echo '<img src="' . $artistArt . '"><br>' . $artistName . '<br>' . $artistPop . '<br>';
+				echo '<tr><td><img src="' . $artistArt . '"></td><td>' . $artistName . '</td><td>' . $artistPop . '</td></tr>';
 			} 
 			
 		}

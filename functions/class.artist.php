@@ -1,6 +1,9 @@
 <?php
 
-// this needs to access a database by requiring a config file of some sort
+// this needs methods for storing:
+//     artistPop
+//     artistListeners
+//     artistPlaycount
 
     class artist {
 
