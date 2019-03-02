@@ -2,7 +2,7 @@
 
 <html>
 <head>
-    <title>Adding Stuff</title>
+    <title>Adding LastFM Stats</title>
     <meta charset='UTF-8'> 
     <link rel='stylesheet' type='text/css' href='https://www.roxorsoxor.com/bootstrap/css/bootstrap.min.css'>
     <!--
@@ -27,19 +27,19 @@
 <div class = "container">
 
 
-    <form class="form-horizontal" id="addartist" action="" method="post">
+    <form class="form-horizontal" id="addstats" action="functions/fromJSONtoMyDB.php" method="post">
         <fieldset>
-                <legend>Ye Olde Add An Artist Form</legend>
+                <legend>Add LastFM stats</legend>
             <div class="form-group">
-                <label for="artist">Add An Artist</label>
-                <input type="text" name="artist" class="form-control" id="artist">
+                <label for="filename">Enter filename:</label>
+                <input type="text" name="filename" class="form-control" id="filename">
             </div>     
 
             <button type="submit" class="btn btn-primary">Submit</button>
         </fieldset>
     </form>
 
-    <table id="artistInfo">
+    <table id="artistStats">
 
     </table>
     <!--
@@ -49,7 +49,10 @@
 
 </div> <!-- end of Container -->
 
-<script src="functions/add_new_artist4.js"></script>
+<!-- 
+   <script src="functions/add_new_artist4.js"></script> 
+ -->
+
 
 </body>
 
