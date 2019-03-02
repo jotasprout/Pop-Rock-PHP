@@ -151,8 +151,6 @@ def makeGetRecordings_totalURL(MusicBrainz_releaseMBID):
     getRecordings_totalURL = MusicBrainz_baseURL + MusicBrainz_releaseMethod + MusicBrainz_releaseMBID + MusicBrainz_recordings + MusicBrainz_jsonFormat
     return getRecordings_totalURL
 
-
-
 # LastFM variables
 LastFM_baseURL = 'http://ws.audioscrobbler.com/2.0/?method='
 
