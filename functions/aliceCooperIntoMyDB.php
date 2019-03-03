@@ -4,38 +4,11 @@ require_once '../rockdb.php';
 require_once '../page_pieces/navbar_rock.php';
 require_once '../page_pieces/stylesAndScripts.php';
 
-/*
-$artistsMatchSpotifyMBID_Lookup = 'artistsMatchSpotifyMBID';
-$artistListenersPlaycount = 'artistListenersPlaycount';
-$albumListenersPlaycount = 'albumListenersPlaycount';
-$trackListenersPlaycount = 'trackListenersPlaycount';
-$relatedAlbums = 'relatedAlbums';
-$relatedArtists = 'relatedArtists';
-*/
-
 $filenames = array (
-    '../data_text/AliceCooper_Combined_03-03-19.json',
-    '../data_text/Anvil_Group_03-03-19.json',
-    '../data_text/BlackSabbath_Group_03-03-19.json',
-    '../data_text/Dio_Group_03-03-19.json', 
-    '../data_text/Elf_Group_03-03-19.json', 
-    '../data_text/EvilStig_Group_03-03-19.json', 
-    '../data_text/Heaven&Hell_Group_03-03-19.json', 
-    '../data_text/JoanJett_Combined_03-03-19.json', 
-    '../data_text/MeatLoaf_Person_03-03-19.json', 
-    '../data_text/MötleyCrüe_Group_03-03-19.json', 
-    '../data_text/OzzyOsbourne_Person_03-03-19.json', 
-    '../data_text/Queen_Group_03-03-19.json', 
-    '../data_text/QuietRiot_Group_03-03-19.json', 
-    '../data_text/Rainbow_Group_03-03-19.json', 
-    '../data_text/RonnieDioandtheProphets_Group_03-03-19.json', 
-    '../data_text/RonnieDioandtheRedCaps_Group_03-03-19.json', 
-    '../data_text/Saxon_Group_03-03-19.json', 
-    '../data_text/Stoney&Meatloaf_Group_03-03-19.json',
-    '../data_text/TedNugent_Person_03-03-19.json', 
-    '../data_text/TheAmboyDukes_Group_03-03-19.json',
-    '../data_text/TheElectricElves_Group_03-03-19.json', 
-    '../data_text/TheRunaways_Group_03-03-19.json'
+    '../data_text/Stoney&Meatloaf_02-17-19.json',
+    '../data_text/Stoney&Meatloaf_02-27-19.json',
+    '../data_text/Stoney&Meatloaf_02-28-19.json',
+    '../data_text/Stoney&Meatloaf_Group_03-01-19.json'
 );
 
 $x = ceil((count($filenames)));
