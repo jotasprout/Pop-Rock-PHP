@@ -32,10 +32,10 @@ $jsonFile="../data_text/Anvil_Group_03-01-19.json";
 */
 
 $filenames = array (
-    '../data_text/Stoney&MeatLoaf_02-17-19.json',
-    '../data_text/Stoney&MeatLoaf_02-27-19.json',
-    '../data_text/Stoney&MeatLoaf_02-28-19.json',
-    '../data_text/Stoney&MeatLoaf_Group_03-01-19.json'
+    '../data_text/Stoney&Meatloaf_02-17-19.json',
+    '../data_text/Stoney&Meatloaf_02-27-19.json',
+    '../data_text/Stoney&Meatloaf_02-28-19.json',
+    '../data_text/Stoney&Meatloaf_Group_03-01-19.json'
 );
 
 $x = ceil((count($filenames)));
