@@ -49,9 +49,36 @@ for ($i=0; $i<$x; ++$i) {
     $artistName = $artistData['name'];
     
     $dataDate = $artistData['date'];
+
+    $albums = $artistData['albums'];
+    $albumsNum = ceil((count($albums)));
+
+    for ($j=0; $j<$albumsNum; ++$j) {
+        $album = $albums[$j];
+        $albumMBID = $album['mbid'];
+        $albumName = $album['name'];
+
+        $releases = $albums['releases'];
+        $releasesNum = ceil((count($releases)));
+
+        for ($k=0; $k<$releasesNum; ++$k){
+            $release = $releases[$k];
+            $releaseMBID = $release['mbid'];
+            $releaseName = $release['name'];
+
+            $tracks = $release['tracks'];
+            $tracksNum = ceil((count($tracks)));   
+            
+            for ($m=0; $m<$tracksNum; ++$m) {
+                $track = $tracks[$m];
+                $trackMBID = $track['mbid'];
+                $trackName = $track['name'];
+                $trackListeners = $track['stats']['listeners'];
+                $trackPlaycount = $track['stats']['playcount'];
+            };
+        };
+    };
     
-    $artistListeners = $artistData['stats']['listeners'];
-    $artistPlaycount = $artistData['stats']['playcount'];
     
     echo $artistName . ' had ' . $artistListeners . ' listeners and ' . $artistPlaycount . ' plays on ' . $dataDate . '.<br>';
     

@@ -40,26 +40,7 @@ $filenames = array (
 */
 
 $filenames = array (
-    '../data_text/jsonLastFM/BlackSabbath_02-14-19.json',
-    '../data_text/jsonLastFM/Dio_02-14-19.json', 
-    '../data_text/jsonLastFM/MeatLoaf_02-14-19.json', 
-    '../data_text/jsonLastFM/QuietRiot_02-14-19.json', 
-    '../data_text/jsonLastFM/Rainbow_02-14-19.json', 
-    '../data_text/jsonLastFM/RonnieDioandtheProphets_02-28-19.json', 
-    '../data_text/jsonLastFM/RonnieDioandtheProphets_Group_03-01-19.json', 
-    '../data_text/jsonLastFM/RonnieDioandtheProphets_Group_03-03-19.json', 
-    '../data_text/jsonLastFM/RonnieDioandtheRedCaps_02-17-19.json', 
-    '../data_text/jsonLastFM/RonnieDioandtheRedCaps_02-21-19.json', 
-    '../data_text/jsonLastFM/RonnieDioandtheRedCaps_02-22-19.json', 
-    '../data_text/jsonLastFM/RonnieDioandtheRedCaps_02-24-19.json', 
-    '../data_text/jsonLastFM/RonnieDioandtheRedCaps_02-25-19.json', 
-    '../data_text/jsonLastFM/RonnieDioandtheRedCaps_02-27-19.json', 
-    '../data_text/jsonLastFM/RonnieDioandtheRedCaps_02-28-19.json', 
-    '../data_text/jsonLastFM/RonnieDioandtheRedCaps_Group_03-01-19.json', 
-    '../data_text/jsonLastFM/RonnieDioandtheRedCaps_Group_03-03-19.json', 
-    '../data_text/jsonLastFM/Saxon_Group_02-15-19.json', 
-    '../data_text/jsonLastFM/TedNugent_02-15-19.json',
-    '../data_text/jsonLastFM/TheAmboyDukes_02-15-19.json'
+    '../data_text/jsonLastFM/Saxon_02-15-19.json', 
 );
 
 $x = ceil((count($filenames)));
