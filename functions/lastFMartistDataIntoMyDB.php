@@ -11,31 +11,55 @@ $albumListenersPlaycount = 'albumListenersPlaycount';
 $trackListenersPlaycount = 'trackListenersPlaycount';
 $relatedAlbums = 'relatedAlbums';
 $relatedArtists = 'relatedArtists';
+
+$filenames = array (
+    '../data_text/jsonLastFM/AliceCooper_Combined_03-03-19.json',
+    '../data_text/jsonLastFM/Anvil_Group_03-03-19.json',
+    '../data_text/jsonLastFM/BlackSabbath_Group_03-03-19.json',
+    '../data_text/jsonLastFM/Dio_Group_03-03-19.json', 
+    '../data_text/jsonLastFM/Elf_Group_03-03-19.json', 
+    '../data_text/jsonLastFM/EvilStig_Group_03-03-19.json', 
+    '../data_text/jsonLastFM/Heaven&Hell_Group_03-03-19.json', 
+    '../data_text/jsonLastFM/JoanJett_Combined_03-03-19.json', 
+    '../data_text/jsonLastFM/MeatLoaf_Person_03-03-19.json', 
+    '../data_text/jsonLastFM/MötleyCrüe_Group_03-03-19.json', 
+    '../data_text/jsonLastFM/OzzyOsbourne_Person_03-03-19.json', 
+    '../data_text/jsonLastFM/Queen_Group_03-03-19.json', 
+    '../data_text/jsonLastFM/QuietRiot_Group_03-03-19.json', 
+    '../data_text/jsonLastFM/Rainbow_Group_03-03-19.json', 
+    '../data_text/jsonLastFM/RonnieDioandtheProphets_Group_03-03-19.json', 
+    '../data_text/jsonLastFM/RonnieDioandtheRedCaps_Group_03-03-19.json', 
+    '../data_text/jsonLastFM/Saxon_Group_03-03-19.json', 
+    '../data_text/jsonLastFM/Stoney&Meatloaf_Group_03-03-19.json',
+    '../data_text/jsonLastFM/TedNugent_Person_03-03-19.json', 
+    '../data_text/jsonLastFM/TheAmboyDukes_Group_03-03-19.json',
+    '../data_text/jsonLastFM/TheElectricElves_Group_03-03-19.json', 
+    '../data_text/jsonLastFM/TheRunaways_Group_03-03-19.json'
+);
+
 */
 
 $filenames = array (
-    '../data_text/AliceCooper_Combined_03-03-19.json',
-    '../data_text/Anvil_Group_03-03-19.json',
-    '../data_text/BlackSabbath_Group_03-03-19.json',
-    '../data_text/Dio_Group_03-03-19.json', 
-    '../data_text/Elf_Group_03-03-19.json', 
-    '../data_text/EvilStig_Group_03-03-19.json', 
-    '../data_text/Heaven&Hell_Group_03-03-19.json', 
-    '../data_text/JoanJett_Combined_03-03-19.json', 
-    '../data_text/MeatLoaf_Person_03-03-19.json', 
-    '../data_text/MötleyCrüe_Group_03-03-19.json', 
-    '../data_text/OzzyOsbourne_Person_03-03-19.json', 
-    '../data_text/Queen_Group_03-03-19.json', 
-    '../data_text/QuietRiot_Group_03-03-19.json', 
-    '../data_text/Rainbow_Group_03-03-19.json', 
-    '../data_text/RonnieDioandtheProphets_Group_03-03-19.json', 
-    '../data_text/RonnieDioandtheRedCaps_Group_03-03-19.json', 
-    '../data_text/Saxon_Group_03-03-19.json', 
-    '../data_text/Stoney&Meatloaf_Group_03-03-19.json',
-    '../data_text/TedNugent_Person_03-03-19.json', 
-    '../data_text/TheAmboyDukes_Group_03-03-19.json',
-    '../data_text/TheElectricElves_Group_03-03-19.json', 
-    '../data_text/TheRunaways_Group_03-03-19.json'
+    '../data_text/jsonLastFM/BlackSabbath_02-14-19.json',
+    '../data_text/jsonLastFM/Dio_02-14-19.json', 
+    '../data_text/jsonLastFM/MeatLoaf_02-14-19.json', 
+    '../data_text/jsonLastFM/QuietRiot_02-14-19.json', 
+    '../data_text/jsonLastFM/Rainbow_02-14-19.json', 
+    '../data_text/jsonLastFM/RonnieDioandtheProphets_02-28-19.json', 
+    '../data_text/jsonLastFM/RonnieDioandtheProphets_Group_03-01-19.json', 
+    '../data_text/jsonLastFM/RonnieDioandtheProphets_Group_03-03-19.json', 
+    '../data_text/jsonLastFM/RonnieDioandtheRedCaps_02-17-19.json', 
+    '../data_text/jsonLastFM/RonnieDioandtheRedCaps_02-21-19.json', 
+    '../data_text/jsonLastFM/RonnieDioandtheRedCaps_02-22-19.json', 
+    '../data_text/jsonLastFM/RonnieDioandtheRedCaps_02-24-19.json', 
+    '../data_text/jsonLastFM/RonnieDioandtheRedCaps_02-25-19.json', 
+    '../data_text/jsonLastFM/RonnieDioandtheRedCaps_02-27-19.json', 
+    '../data_text/jsonLastFM/RonnieDioandtheRedCaps_02-28-19.json', 
+    '../data_text/jsonLastFM/RonnieDioandtheRedCaps_Group_03-01-19.json', 
+    '../data_text/jsonLastFM/RonnieDioandtheRedCaps_Group_03-03-19.json', 
+    '../data_text/jsonLastFM/Saxon_Group_02-15-19.json', 
+    '../data_text/jsonLastFM/TedNugent_02-15-19.json',
+    '../data_text/jsonLastFM/TheAmboyDukes_02-15-19.json'
 );
 
 $x = ceil((count($filenames)));
