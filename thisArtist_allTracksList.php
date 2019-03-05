@@ -58,15 +58,15 @@ if ( !$getit ) {
 
 				<?php if(!empty($getit)) { ?>
 				
-				<table class="table" id="tableotracks">
-		<thead>
-			<tr>
-				<th onClick="sortColumn('albumName', 'ASC', '<?php echo $artistID ?>')"><div class="pointyHead">Album Name</div></th>
-				<th>trackID</th>
-				<th onClick="sortColumn('trackName', 'DESC', '<?php echo $artistID ?>')"><div class="pointyHead">Track</div></th>
-				<th onClick="sortColumn('pop', 'ASC', '<?php echo $artistID ?>')"><div class="pointyHead">Track Popularity</div></th>
-			</tr>
-		</thead>
+<table class="table" id="tableotracks">
+	<thead>
+		<tr>
+			<th onClick="sortColumn('albumName', 'ASC', '<?php echo $artistID ?>')"><div class="pointyHead">Album Name</div></th>
+			<th>trackID</th>
+			<th onClick="sortColumn('trackName', 'DESC', '<?php echo $artistID ?>')"><div class="pointyHead">Track</div></th>
+			<th onClick="sortColumn('pop', 'ASC', '<?php echo $artistID ?>')"><div class="pointyHead">Track Popularity</div></th>
+		</tr>
+	</thead>
 					
 					<tbody>
 					<?php

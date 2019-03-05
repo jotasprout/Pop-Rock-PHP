@@ -10,6 +10,7 @@ if ( !$connekt ) {
 	echo 'Darn. Did not connect.';
 };
 
+// if any of these did not come through, the defaults are the basic starting sort from the sql query
 $artistID = "artistID";
 $sortBy = "trackName";
 $order = "DESC";
@@ -66,14 +67,14 @@ if ( !$sortit ) {
 if(!empty($sortit)) { ?>
 
 <table class="table" id="tableotracks">
-	<thead>
-		<tr>
-			<th onClick="sortColumn('albumName', '<?php echo $albumNameNextOrder; ?>', '<?php echo $artistID ?>')"><div class="pointyHead">Album Name</div></th>
-			<th>trackID</th>
-			<th onClick="sortColumn('trackName', '<?php echo $trackNameNextOrder; ?>', '<?php echo $artistID ?>')"><div class="pointyHead">Track</div></th>
-			<th onClick="sortColumn('pop', '<?php echo $popNextOrder; ?>', '<?php echo $artistID ?>')"><div class="pointyHead">Track Popularity</div></th>
-		</tr>
-	</thead>
+<thead>
+<tr>
+<th onClick="sortColumn('albumName', '<?php echo $albumNameNextOrder; ?>', '<?php echo $artistID ?>')"><div class="pointyHead">Album Name</div></th>
+<th>trackID</th>
+<th onClick="sortColumn('trackName', '<?php echo $trackNameNextOrder; ?>', '<?php echo $artistID ?>')"><div class="pointyHead">Track</div></th>
+<th onClick="sortColumn('pop', '<?php echo $popNextOrder; ?>', '<?php echo $artistID ?>')"><div class="pointyHead">Track Popularity</div></th>
+</tr>
+</thead>
 
 	<tbody>
 	<?php

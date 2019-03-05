@@ -9,7 +9,7 @@ if ( !$connekt ) {
 	echo 'Darn. Did not connect.';
 };
 
-// if either of these did not come through, the defaults are the basic starting sort from the sql query
+// if any of these did not come through, the defaults are the basic starting sort from the sql query
 $artistID = "artistID";
 $sortThisColumn = "year";
 $currentOrder = "ASC";
@@ -17,8 +17,6 @@ $currentOrder = "ASC";
 if ( !empty( $_POST[ "artistID" ] ) ) {
 	$artistID = $_POST[ "artistID" ];
 }
-
-echo "<script>console.log('Inside the sort PHP file for "<?php echo $artistID ?>")</script>";
 
 if ( !empty( $_POST[ "sortThisColumn" ] ) ) {
     // if the column name came through, use it
@@ -61,7 +59,7 @@ if ( $sortThisColumn == "pop" and $currentOrder == "ASC" ) {
 	$popNewOrder = "DESC";
 }
 
-$sortScabies = "SELECT a.albumName, a.year, a.albumArt, z.artistName, p1.pop, p1.date
+$sortScabies = "SELECT a.albumName, a.albumID, a.year, a.albumArt, z.artistName, p1.pop, p1.date
 				FROM (SELECT
 							y.albumID AS albumID,
 							y.albumName AS albumName,
@@ -118,6 +116,7 @@ while ( $row = mysqli_fetch_array( $sortit ) ) {
 	// $artistID = $row["artistID"];
 	$artistName = $row[ 'artistName' ];
 	$albumArt = $row[ 'albumArt' ];
+	$albumID = $row[ 'albumID' ];
 	$albumName = $row[ 'albumName' ];
 	$albumReleased = $row[ 'year' ];
 	$albumPop = $row[ 'pop' ];
@@ -127,14 +126,17 @@ while ( $row = mysqli_fetch_array( $sortit ) ) {
 
 	<tr>
 		<td><img src='<?php echo $albumArt; ?>' height='64' width='64'></td>
+		<td><?php echo $albumID; ?></td>
 		<td><?php echo $albumName; ?></td>
 		<td><?php echo $albumReleased; ?></td>
 		<td><?php echo $albumPop; ?></td>
+		<!--
 		<td>*</td>
 		<td>*</td>
 		<td>*</td>
 		<td>*</td>
 		<td>*</td>
+		-->
 	</tr>
 
 <?php

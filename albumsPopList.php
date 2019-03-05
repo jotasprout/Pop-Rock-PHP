@@ -71,16 +71,16 @@ if(!$getit){
 
 		<?php if(!empty($getit)) { ?>
 		
-			<table class="table" id="recordCollection">
-				<thead>
-			<tr>
-				<th>Album Art</th>
-				<th>Album Spotify ID</th>
-				<th onClick="sortColumn('albumName', 'ASC', '<?php echo $artistID; ?>')"><div class="pointyHead">Album Name</div></th>
-				<th onClick="sortColumn('year', 'DESC', '<?php echo $artistID; ?>')"><div class="pointyHead">Released</div></th>
-				<th onClick="sortColumn('pop', 'ASC', '<?php echo $artistID; ?>')"><div class="pointyHead">Popularity</div></th>
-			</tr>
-		</thead>
+<table class="table" id="recordCollection">
+	<thead>
+		<tr>
+			<th>Album Art</th>
+			<th>Album Spotify ID</th>
+			<th onClick="sortColumn('albumName', 'ASC', '<?php echo $artistID; ?>')"><div class="pointyHead">Album Name</div></th>
+			<th onClick="sortColumn('year', 'DESC', '<?php echo $artistID; ?>')"><div class="pointyHead">Released</div></th>
+			<th onClick="sortColumn('pop', 'ASC', '<?php echo $artistID; ?>')"><div class="pointyHead">Popularity</div></th>
+		</tr>
+	</thead>
 				<tbody>
 					
 					<?php
@@ -94,15 +94,15 @@ if(!$getit){
 							$date = $row['date'];
 					?>
 					
-					<tr>
-						<td><img src='<?php echo $albumArt ?>' height='64' width='64'></td>
-						<td><?php echo $albumID ?></td>
-						<!-- NEED TO CREATE FUNCTION IN NEXT LINE -->
-						<td><a href='https://www.roxorsoxor.com/poprock/thisAlbum_TracksList.php?albumID=<?php echo $albumID ?>'><?php echo $albumName ?></a></td>
-						<td><?php echo $albumReleased ?></td>
-						<td><?php echo $albumPop ?></td>
+<tr>
+<td><img src='<?php echo $albumArt ?>' height='64' width='64'></td>
+<td><?php echo $albumID ?></td>
+<!-- NEED TO CREATE FUNCTION IN NEXT LINE -->
+<td><a href='https://www.roxorsoxor.com/poprock/thisAlbum_TracksList.php?albumID=<?php echo $albumID ?>'><?php echo $albumName ?></a></td>
+<td><?php echo $albumReleased ?></td>
+<td><?php echo $albumPop ?></td>
 
-					</tr>
+</tr>
 					
 					<?php 
 						} // end of while
@@ -122,7 +122,7 @@ if(!$getit){
 <?php echo $scriptsAndSuch; ?>
 
 <script>
-	//let artistID = '<?php //echo $artistID ?>';
+	let artistID = '<?php echo $artistID ?>';
 </script>
 
 <script src="https://www.roxorsoxor.com/poprock/functions/sortTheseAlbums.js"></script>
