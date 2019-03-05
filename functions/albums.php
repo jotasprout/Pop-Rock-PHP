@@ -95,7 +95,6 @@ function divideCombineAlbums ($artistAlbums) {
 			$albumID = $album->id;	
 			$albumNameYucky = $album->name;
 			$albumName = mysqli_real_escape_string($connekt,$albumNameYucky);
-			// $albumName = mysqli_real_escape_string($connekt, htmlspecialchars($albumNameYucky));
 			$albumReleasedWhole = $album->release_date;
 			$albumReleased = substr($albumReleasedWhole, 0, 4);
 			$thisArtistID = $album->artists[0]->id;
@@ -112,7 +111,7 @@ function divideCombineAlbums ($artistAlbums) {
 			$rockout = $connekt->query($insertAlbums);
 
 			if(!$rockout){
-				echo 'Crap de General Tsao! Could not insert album.<br>';
+				echo 'Crap de General Tsao! Could not insert '<?php echo $albumName ?>'.<br>';
 			}
 
 			$insertAlbumsPop = "INSERT INTO popAlbums (albumID,pop) VALUES('$albumID','$albumPop')";

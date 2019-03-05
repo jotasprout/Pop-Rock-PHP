@@ -95,7 +95,7 @@ if(!empty($sortit))	 { ?>
 		  <th>Album Spotify ID</th>
 		<th onClick="sortColumn('albumName', '<?php echo $albumNameNewOrder; ?>', '<?php echo $artistID; ?>')"><div class="pointyHead">Album Name</div></th>
 		<th onClick="sortColumn('year', '<?php echo $yearNewOrder; ?>', '<?php echo $artistID; ?>')"><div id="pointyHead">Released</div></th>
-		<th onClick="sortColumn('pop', '<?php echo $popNewOrder; ?>', '<?php echo $artistID; ?>')">Popularity</th>
+		<th onClick="sortColumn('pop', '<?php echo $popNewOrder; ?>', '<?php echo $artistID; ?>')"><div id="pointyHead">Popularity</div></th>
 
 		<!--
 		<th>1 day</th>
@@ -127,7 +127,7 @@ while ( $row = mysqli_fetch_array( $sortit ) ) {
 	<tr>
 		<td><img src='<?php echo $albumArt; ?>' height='64' width='64'></td>
 		<td><?php echo $albumID; ?></td>
-		<td><?php echo $albumName; ?></td>
+		<td><a href='https://www.roxorsoxor.com/poprock/thisAlbum_TracksList.php?albumID=<?php echo $albumID ?>'><?php echo $albumName ?></a></td>
 		<td><?php echo $albumReleased; ?></td>
 		<td><?php echo $albumPop; ?></td>
 		<!--

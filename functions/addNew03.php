@@ -67,7 +67,9 @@ function divideCombineArtistsForAlbums ($theseArtists) {
 	};	
 }
 
-divideCombineArtistsForAlbums ($feb28);
+$alice = array ("3EhbVgyfGd7HkpsagwL9GS");
+
+divideCombineArtistsForAlbums ($alice);
 
 die();
 
