@@ -1,6 +1,5 @@
 <?php
 
-//$artistID = $_COOKIE['artistID'];
 $artistID = $_GET['artistID'];
 require_once 'rockdb.php';
 require_once 'page_pieces/navbar_rock.php';
@@ -74,15 +73,14 @@ if(!$getit){
 		
 			<table class="table" id="recordCollection">
 				<thead>
-					<tr>
-						<th>Album Art</th>
-						<th><div>Album Spotify ID</div></th>
-						<th onClick="sortColumn('albumName', 'ASC')"><div class="pointyHead">Album Name</div></th>
-						<th onClick="sortColumn('year', 'DESC')"><div class="pointyHead">Released</div></th>
-						<th onClick="sortColumn('pop', 'ASC')"><div class="pointyHead">Popularity</div></th>
-
-					</tr>
-				</thead>
+			<tr>
+				<th>Album Art</th>
+				<th>Album Spotify ID</th>
+				<th onClick="sortColumn('albumName', 'ASC', '<?php echo $artistID; ?>')"><div class="pointyHead">Album Name</div></th>
+				<th onClick="sortColumn('year', 'DESC', '<?php echo $artistID; ?>')"><div class="pointyHead">Released</div></th>
+				<th onClick="sortColumn('pop', 'ASC', '<?php echo $artistID; ?>')"><div class="pointyHead">Popularity</div></th>
+			</tr>
+		</thead>
 				<tbody>
 					
 					<?php
@@ -122,7 +120,13 @@ if(!$getit){
     </div> <!-- closing container -->
 	
 <?php echo $scriptsAndSuch; ?>
+
+<script>
+	//let artistID = '<?php //echo $artistID ?>';
+</script>
+
 <script src="https://www.roxorsoxor.com/poprock/functions/sortTheseAlbums.js"></script>
+
 </body>
 	
 </html>

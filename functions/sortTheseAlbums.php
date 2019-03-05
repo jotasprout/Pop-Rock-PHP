@@ -1,7 +1,5 @@
 <?php
 
-$artistID = $_COOKIE['artistID'];
-
 require_once '../rockdb.php';
 require( "class.artist.php" );
 
@@ -12,8 +10,15 @@ if ( !$connekt ) {
 };
 
 // if either of these did not come through, the defaults are the basic starting sort from the sql query
+$artistID = "artistID";
 $sortThisColumn = "year";
 $currentOrder = "ASC";
+
+if ( !empty( $_POST[ "artistID" ] ) ) {
+	$artistID = $_POST[ "artistID" ];
+}
+
+echo "<script>console.log('Inside the sort PHP file for "<?php echo $artistID ?>")</script>";
 
 if ( !empty( $_POST[ "sortThisColumn" ] ) ) {
     // if the column name came through, use it
@@ -79,7 +84,7 @@ $sortScabies = "SELECT a.albumName, a.year, a.albumArt, z.artistName, p1.pop, p1
 $sortit = $connekt->query( $sortScabies );
 
 if ( !$sortit ) {
-	echo 'Cursed-Crap. Did not run the query.';
+	echo ('Cursed-Crap. Did not run the query.');
 }
 
 if(!empty($sortit))	 { ?>
@@ -88,16 +93,18 @@ if(!empty($sortit))	 { ?>
 	
 <thead>
 	<tr>
-	  	<th>Album Art</th>
-		<th onClick="sortColumn('albumName', '<?php echo $albumNameNewOrder; ?>')"><div class="pointyHead">Album Name</div></th>
-		<th onClick="sortColumn('year', '<?php echo $yearNewOrder; ?>')"><div id="pointyHead">Released</div></th>
-		<th onClick="sortColumn('pop', '<?php echo $popNewOrder; ?>')">Popularity</th>
+		  <th>Album Art</th>
+		  <th>Album Spotify ID</th>
+		<th onClick="sortColumn('albumName', '<?php echo $albumNameNewOrder; ?>', '<?php echo $artistID; ?>')"><div class="pointyHead">Album Name</div></th>
+		<th onClick="sortColumn('year', '<?php echo $yearNewOrder; ?>', '<?php echo $artistID; ?>')"><div id="pointyHead">Released</div></th>
+		<th onClick="sortColumn('pop', '<?php echo $popNewOrder; ?>', '<?php echo $artistID; ?>')">Popularity</th>
+
+		<!--
 		<th>1 day</th>
 		<th>7 days</th>
 		<th>30 days</th>
 		<th>90 days</th>
 		<th>180 days</th>
-		<!--
 		<th>Date</th>	
 		--> 
 	</tr>

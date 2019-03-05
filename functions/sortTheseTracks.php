@@ -1,7 +1,5 @@
 <?php
 
-$artistID = $_COOKIE['artistID'];
-
 require_once '../rockdb.php';
 require_once '../page_pieces/navbar_rock.php';
 require_once '../page_pieces/stylesAndScripts.php';
@@ -12,8 +10,13 @@ if ( !$connekt ) {
 	echo 'Darn. Did not connect.';
 };
 
+$artistID = "artistID";
 $sortBy = "trackName";
 $order = "DESC";
+
+if ( !empty( $_POST[ "artistID" ] ) ) {
+	$artistID = $_POST[ "artistID" ];
+}
 
 if ( !empty( $_POST[ "sortBy" ] ) ) {
 	// echo $_POST[ "sortBy" ] . "<br>";
@@ -65,10 +68,10 @@ if(!empty($sortit)) { ?>
 <table class="table" id="tableotracks">
 	<thead>
 		<tr>
-			<th onClick="sortColumn('albumName', '<?php echo $albumNameNextOrder; ?>')"><div class="pointyHead">Album Name</div></th>
+			<th onClick="sortColumn('albumName', '<?php echo $albumNameNextOrder; ?>', '<?php echo $artistID ?>')"><div class="pointyHead">Album Name</div></th>
 			<th>trackID</th>
-			<th onClick="sortColumn('trackName', '<?php echo $trackNameNextOrder; ?>')"><div class="pointyHead">Track</div></th>
-			<th onClick="sortColumn('pop', '<?php echo $popNextOrder; ?>')"><div class="pointyHead">Track Popularity</div></th>
+			<th onClick="sortColumn('trackName', '<?php echo $trackNameNextOrder; ?>', '<?php echo $artistID ?>')"><div class="pointyHead">Track</div></th>
+			<th onClick="sortColumn('pop', '<?php echo $popNextOrder; ?>', '<?php echo $artistID ?>')"><div class="pointyHead">Track Popularity</div></th>
 		</tr>
 	</thead>
 

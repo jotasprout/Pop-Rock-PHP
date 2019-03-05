@@ -1,10 +1,10 @@
-console.log ("I am in the javascript sorting file")
+console.log ("I am in the sorting Tracks JS file")
 
-function sortColumn (columnName, columnOrder) {
-	console.log("I am inside the function");
+function sortColumn (columnName, columnOrder, artistID) {
+	console.log("I am in the sorting Tracks JS function");
 	$.ajax ({
 		url: "functions/sortTheseTracks.php",
-		data: "sortBy=" + columnName + "&order=" + columnOrder,
+		data: "sortBy=" + columnName + "&order=" + columnOrder + "&artistID=" + artistID,
 		type: "POST",
 		success: function (data) {
 			$("#tableotracks").html(data);
