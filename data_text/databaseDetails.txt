@@ -1,0 +1,18 @@
+albumListenersPlaycount
+albums
+artistListenersPlaycount
+artists
+artistsOneSpotifymultiMBID
+genres2
+popAlbums
+popArtists
+popTracks
+relatedAlbums
+relatedArtists
+trackListenersPlaycount
+
+tracks
+  |__ trackID
+  |__ trackID  
+  |__ trackID
+  |__ trackID  
