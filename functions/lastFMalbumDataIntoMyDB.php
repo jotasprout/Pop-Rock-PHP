@@ -32,7 +32,9 @@ if(!$connekt){
         $releaseMBID = $release['mbid'];
         $releaseName = $release['name'];
 
-        $selectCurrentAlbums = "INSERT INTO artistListenersPlaycount (
+        $selectCurrentAlbums = "INSERT SELECT * 
+        FROM albums 
+        WHERE artistID = '3EhbVgyfGd7HkpsagwL9GS' (
             artistMBID, 
             dataDate, 
             artistListeners, 

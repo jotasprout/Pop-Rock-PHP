@@ -71,6 +71,7 @@ if(!empty($sortit)) { ?>
 <tr>
 <th onClick="sortColumn('albumName', '<?php echo $albumNameNextOrder; ?>', '<?php echo $artistID ?>')"><div class="pointyHead">Album Name</div></th>
 <th>trackID</th>
+<th>Date</th>
 <th onClick="sortColumn('trackName', '<?php echo $trackNameNextOrder; ?>', '<?php echo $artistID ?>')"><div class="pointyHead">Track</div></th>
 <th onClick="sortColumn('pop', '<?php echo $popNextOrder; ?>', '<?php echo $artistID ?>')"><div class="pointyHead">Track Popularity</div></th>
 </tr>
@@ -88,6 +89,7 @@ if(!empty($sortit)) { ?>
 			<tr>
 				<td><?php echo $albumName ?></td>
 				<td><?php echo $trackID ?></td>
+				<td><?php echo $popDate ?></td>
 				<td><?php echo $trackName ?></td>
 				<td><?php echo $trackPop ?></td>
 			</tr>
