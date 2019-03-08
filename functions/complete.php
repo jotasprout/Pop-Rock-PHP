@@ -9,38 +9,36 @@ $jsonFile = '../data_text/studioComplete.json';
 $fileContents = file_get_contents($jsonFile);
 $artistData = json_decode($fileContents,true);
 
+$albumID = $artistData['albumID'];
 
-$x = ceil((count($filenames)));
+$tracks = $artistData['tracks'];
 
-for ($i=0; $i<$x; ++$i) {
-    
-    $artistMBID = $artistData['mbid'];
-    $artistName = $artistData['name'];
-    
-    $dataDate = $artistData['date'];
-    
-    $artistListeners = $artistData['stats']['listeners'];
-    $artistPlaycount = $artistData['stats']['playcount'];
-    
-    echo $artistName . ' had ' . $artistListeners . ' listeners and ' . $artistPlaycount . ' plays on ' . $dataDate . '.<br>';
-    
-    $insertArtistStats = "INSERT INTO artistListenersPlaycount (artistMBID, dataDate, artistListeners, artistPlaycount) VALUES('$artistMBID','$dataDate','$artistListeners', '$artistPlaycount')";
-    
-    $connekt = new mysqli($GLOBALS['host'], $GLOBALS['un'], $GLOBALS['magicword'], $GLOBALS['db']);
-    
-    if(!$connekt){
-        echo 'Fiddlesticks! Could not connect to database.<br>';
-    }
-    
-    $rockout = $connekt->query($insertArtistStats);
-    
-    if(!$rockout){
-    echo 'Shickety Brickety! Could not insert stats for ' . $artistName . '.<br>';
-    }
-    else {
-        echo ' Inserted ' . $artistListeners . ' listeners and ' . $artistPlaycount . ' plays for ' . $artistName . '.<br>';
-    } 
-    
+$x = ceil((count($tracks)));
+
+$connekt = new mysqli($GLOBALS['host'], $GLOBALS['un'], $GLOBALS['magicword'], $GLOBALS['db']);
+
+if(!$connekt){
+    echo 'Fiddlesticks! Could not connect to database.<br>';
+} else {
+    for ($i=0; $i<$x; ++$i) {
+
+        $trackID = $tracks[$i]['id'];
+        $trackNameYucky = $tracks[$i]['name'];
+        $trackName = mysqli_real_escape_string($connekt,$trackNameYucky);
+        $insertCompleteStudioTracks = "INSERT INTO tracks (trackID, trackName, albumID) VALUES('$trackID','$trackName','$albumID')";
+        $rockout = $connekt->query($insertCompleteStudioTracks);
+        if(!$rockout){
+        echo 'Shickety Brickety! Could not insert data for ' . $trackName . '.<br>';
+        }
+        else {
+            echo '<p>Inserted track: ' . $trackName . ' \(' . $trackID . '\)</p>';
+        }; 
+    };
 };
+
+/*
+$artistListeners = $artistData['stats']['listeners'];
+$artistPlaycount = $artistData['stats']['playcount'];
+*/
 
 ?>
