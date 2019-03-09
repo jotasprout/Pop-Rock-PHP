@@ -1,0 +1,13 @@
+<?php
+
+$hairglam = array ("71vVmHeNgCVSa5SVmfvscU", "0maNhqGx60ucjS4UaAH6cP", "1FwGBBwUviGVIeDIByO7u7", "22TEmHXBBLjTec2LOAuMdS", "7HL4id2U7FSDJtfKQHMgQx", "45KpBChrKYWhTlU6N57ofu", "1VaIDrxow5xfLmB9R26JVZ", "1xo5zONg7VWkVmR0I0YO4d", "5CW2x4YosugZJZZCWA0kBI", "5Ul6r5lUSOraWUidNnsILZ", "1fBCIkoPOPCDLUxGuWNvyo", "7JF6mRd5N8LzsKugg4rcSG", "1EgGVV9cmmlLEsFlunjmvv", "4YveAIZNQZBiWbt7iWsvCa", "09hNSPPOxDop4FRdr6UEnq", "27T030eWyCQRmDyuvr1kxY", "1dLWg6m8RRhizsdqJbhyj3", "7eD005d7pGOEYD3eWVRecb", "3tufWJzpCiAGleBt5TkmTn", "2OgUPVlWYgGBGMefZgGvCO", "3UbyYnvNIT5DFXU4WgiGpP", "6ZPbX2Lxd40e2UVkXpyxvI", "363VbwpX9anvrThJ2qDwBy", "0d49iRrp4iVZggKbcpxnqI", "1cXi8ALPQCBHZbf0EgP4Ey", "34c4iQ5tkaZKu6Sv28BTde", "1DXylZlWbVvlckNqwvjTEt", "5JEhWD9S2znCiQRiGj2OUk", "4lYtGx5NZQJHsMyhHc5iz3", "5Mu0EMEsUIVE132pNMywns", "4RjtLUZNqLtMpRKIOaVokc", "5NGO30tJxFlKixkPSgXcFE", "2VYQTNDsvvKN9wmU5W7xpj", "62olK5zZHSgFUXGDykgBL8", "3CSQtK60sg2jNNxnpThSN1", "6om12Ev5ppgoMy3OYSoech", "6dyv4jhyhXwKrknUjMRlMD", "2TRtXTjjmyzK5oUGec1Gv8", "2R57sY41L9XvGPiIgHOaYq", "5hW7RukGK6ErG26zM3Sfzl", "1n65zfwYIj5kKEtNgxUlWb", "3JDIAtVrJdQ7GFOX26LYpv", "77tBvvyd6SD4Y9Um1xcbxP", "630wzNP2OL7fl4Xl0GnMWq", "4kf4d3tN0MZGpEP6BacY8j", "6othYuSBXua4Mx2EW0S67p", "3Y10boYzeuFCJ4Qgp53w6o");
+
+$dec19 = array ("1KA3WXYMPLxomNuoE22LYd","3yY2gUcIsjMr8hjo51PoJ8", "40Yq4vzPs9VNUrIBG5Jr2i","1bDWGdIC2hardyt55nlQgG", "3SAg5R531rAPJIWWwabo7o","4salDzkGmfycRqNUbyBphh", "0ZdLFpb5MhkSrsHef7A3Bb","1SQRv42e4PjEYfPhS0Tk9E", "6ysQi6NI88X627t2srsWz6", "6KO6G41BBLTDNYOLefWTMU", "2NzvxoOoIshAvoQ2wYbZhj", "5v6wlK6GCKVovWMbPqSHNy", "42Z3cFOXOgpuh4aO6WHsI1", "2sIbWxtRGVx5q7xl9YfeZc", "4xoIelaiAMNEuZO7WNqWXR", "6PPjceUrDXPcpwACEEAotV", "3hOydetQYGHP2Meyw90QHV", "5sOG2IubIMJjkqMZDsSehY", "5g4wwfnp6312mcPlNd83aX", "4YO2spr6BIQ3z4qs9yTisd", "1cYxOrlz9gqY51sO5XBDKD", "2jklKjIZQlCTsyXwdnnZrc", "4MBpWWuUXjLlxaMRNCv6RX", "30zSNmbL733Dx1GB7buRc0", "6e2NWj3S7Sm5Fh10KwqjF8");
+
+$nominees2018 = array ("4qwGe91Bz9K2T8jXTZ815W", "0nJUwPwC9Ti4vvuJ0q3MfT", "3fhOTtm0LBJ3Ojn4hIljLo", "7crPfGd2k81ekOoSqQKWWz", "0Lpr5wXzWLtDWm1SjNbpPb", "0WhGV9lzljq2QKJ8ipw6jx"); 
+
+$nominees2017 = array ("58lV9VcRSjABbAbfWS6skp", "1aSxMhuvixZ8h9dK9jIDwL", "6DCIj8jNaNpBz8e5oKFPtp", "762310PdDnwsDxAQxzQkfX", "0WwSkZ7LtFUFjGjMZBMt6T", "0NKDgy9j66h3DLnN8qu1bB", "69Mj3u4FTUrpyeGNSIaU6F", "2tRsMl4eGxwoNabM08Dm4I", "1P8IfcNKwrkQP5xJWuhaOC", "4WquJweZPIK9qcfVFhTKvf", "2JRvXPGWiINrnJljNJhG5s", "5BcZ22XONcRoLhTbZRuME1", "4Z8W4fKeB5YxbusRsdQVPb", "2d0hyoQ5ynDBnkvAbJKORj", "1YLsqPcFg1rj7VvhfwnDWm", "7G1GBhoKtEPnP86X2PvEYO", "2dXf5lu5iilcaTQJZodce7", "2vQavlZtDA660mnZotYIto", "2jgPkn6LuUazBoBk6vvjh5", "2hO4YtXUFJiUYS2uYFvHNK", "6mQfAAqZGBzIfrmlZCeaYT");
+
+$feb28 = array ("3RYdggbT5C9r4BsljokJ1Q", "6GLYG6CiVx1P5D8Qa6Ulyo", "5LXEAEGrpKQtpyCu2sZuWu");
+
+?>

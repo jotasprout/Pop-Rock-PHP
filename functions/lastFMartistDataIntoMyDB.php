@@ -37,7 +37,6 @@ $filenames = array (
     '../data_text/jsonLastFM/TheRunaways_Group_03-08-19.json'
 );
 
-
 $x = ceil((count($filenames)));
 
 for ($i=0; $i<$x; ++$i) {

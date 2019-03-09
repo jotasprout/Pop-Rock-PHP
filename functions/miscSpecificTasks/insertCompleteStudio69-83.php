@@ -4,7 +4,6 @@ require_once '../rockdb.php';
 require_once '../page_pieces/navbar_rock.php';
 require_once '../page_pieces/stylesAndScripts.php';
 
-
 $jsonFile = '../data_text/studioComplete.json';
 $fileContents = file_get_contents($jsonFile);
 $artistData = json_decode($fileContents,true);

@@ -111,7 +111,7 @@ function divideCombineAlbums ($artistAlbums) {
 			$rockout = $connekt->query($insertAlbums);
 
 			if(!$rockout){
-				echo 'Crap de General Tsao! Could not insert '<?php echo $albumName ?>'.<br>';
+				echo 'Crap de General Tsao! Could not insert ' . $albumName . '.<br>';
 			}
 
 			$insertAlbumsPop = "INSERT INTO popAlbums (albumID,pop) VALUES('$albumID','$albumPop')";
