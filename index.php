@@ -1,6 +1,6 @@
 <?php
 
-include 'page_pieces/sesh.php';
+//include 'page_pieces/sesh.php';
 require_once 'rockdb.php';
 require_once 'page_pieces/navbar_rock.php';
 require_once 'page_pieces/stylesAndScripts.php';
