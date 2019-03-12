@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-require '../secrets/spotifySecrets.php';
+require '../secrets/auth.php';
 require '../vendor/autoload.php';
 require_once '../rockdb.php';
 require_once '../functions/artists.php';

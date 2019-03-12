@@ -78,6 +78,7 @@ if(!$getit){
 			<th>Album Spotify ID</th>
 			<th onClick="sortColumn('albumName', 'ASC', '<?php echo $artistID; ?>')"><div class="pointyHead">Album Name</div></th>
 			<th onClick="sortColumn('year', 'DESC', '<?php echo $artistID; ?>')"><div class="pointyHead">Released</div></th>
+			<th>Date</th>
 			<th onClick="sortColumn('pop', 'ASC', '<?php echo $artistID; ?>')"><div class="pointyHead">Popularity</div></th>
 		</tr>
 	</thead>
@@ -100,6 +101,7 @@ if(!$getit){
 <!-- NEED TO CREATE FUNCTION IN NEXT LINE -->
 <td><a href='https://www.roxorsoxor.com/poprock/thisAlbum_TracksList.php?albumID=<?php echo $albumID ?>'><?php echo $albumName ?></a></td>
 <td><?php echo $albumReleased ?></td>
+<th><?php echo $date ?></th>
 <td><?php echo $albumPop ?></td>
 
 </tr>

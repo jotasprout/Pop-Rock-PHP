@@ -1,20 +1,6 @@
 <?php 
 
-// create new cookie
-$artistID = $_POST['artist'];
-$cookieExpiration = time() + 3600;
-setcookie ('artistID', $artistID, $cookieExpiration, '/', 'roxorsoxor.com');
-
-/*
-if (!isset($_COOKIE['artistID'])) {	
-	// create new cookie
-	$artistID = $_POST['artist'];
-	$cookieExpiration = time() + 3600;
-	setcookie ('artistID', $artistID, $cookieExpiration, '/', 'roxorsoxor.com');
-} else {
-	$artistID = $_COOKIE['artistID'];
-};
-*/
+$artistID = $_GET['artistID'];
 
 require_once 'rockdb.php';
 require_once 'page_pieces/stylesAndScripts.php';
@@ -86,8 +72,8 @@ if(!$getit){
 			<tr>
 				<td><?php echo $artistName ?></td>
 				<td><?php echo $artistPop ?></td>
-				<!--
-				<td><?php // echo $popDate ?></td>
+				<td><?php echo $popDate ?></td>
+			<!--
 			-->
 				<td><?php echo $popDateShort ?></td>
 			</tr>
