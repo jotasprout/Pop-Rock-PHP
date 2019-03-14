@@ -119,7 +119,7 @@ function divideCombineAlbums ($artistAlbums) {
 				echo 'Crap de General Tsao! Could not insert ' . $albumName . '.<br>';
 			}
 
-			$insertAlbumsPop = "INSERT INTO popAlbums (albumID,pop) VALUES('$albumID','$albumPop')";
+			$insertAlbumsPop = "INSERT INTO popAlbums (albumID,pop,date) VALUES('$albumID','$albumPop',curdate())";
 
 			$rockin = $connekt->query($insertAlbumsPop);
 			

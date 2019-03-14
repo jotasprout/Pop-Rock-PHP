@@ -58,7 +58,7 @@ function divideCombineInsertTracksAndPop ($AlbumsTracks) {
 				echo 'Cursed-Crap. Could not insert "' . $trackName . '" from <i>' . $trackAlbumName . '</i>.<br>';
 			}
 	
-			$insertTrackPop = "INSERT INTO popTracks (trackID,pop) VALUES('$trackID','$trackPop')";
+			$insertTrackPop = "INSERT INTO popTracks (trackID,pop,date) VALUES('$trackID','$trackPop', curdate())";
 	
 			$rockpop = $connekt->query($insertTrackPop);
 			
@@ -116,7 +116,7 @@ function divideCombineTracksAndInsertPop ($allArtistTracks) {
 			$trackName = $track->name;
 			$trackPop = $track->popularity;
 	
-			$insertTrackPop = "INSERT INTO popTracks (trackID,pop) VALUES('$trackID','$trackPop')";
+			$insertTrackPop = "INSERT INTO popTracks (trackID,pop,date) VALUES('$trackID','$trackPop',curdate())";
 	
 			$rockpop = $connekt->query($insertTrackPop);
 			
