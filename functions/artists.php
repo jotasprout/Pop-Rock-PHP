@@ -108,7 +108,7 @@ function divideCombineArtists ($theseArtists) {
 			echo 'Cursed-Crap. Could not insert artist ' . $artistName . '.<br>';
 			}
 	
-			$insertArtistsPop = "INSERT INTO popArtists (artistID,pop) VALUES('$artistID','$artistPop')";
+			$insertArtistsPop = "INSERT INTO popArtists (artistID,pop,date) VALUES('$artistID','$artistPop',curdate())";
 			$rockpop = $connekt->query($insertArtistsPop);
 			if(!$rockpop){
 				echo 'Cursed-Crap. Could not insert artists popularity.';
