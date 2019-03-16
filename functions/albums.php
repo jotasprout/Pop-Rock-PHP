@@ -98,10 +98,6 @@ function divideCombineAlbums ($artistAlbums) {
 			$albumReleasedWhole = $album->release_date;
 			$albumReleased = substr($albumReleasedWhole, 0, 4);
 			$albumTotalTracks = $album->total_tracks;
-			// 'https://api.spotify.com/v1/albums/{id}/tracks'
-			// 'https://api.spotify.com/v1/albums/{id}'
-			// 'total_tracks' endpoint appears in 'small' albums in 'Get an artist's albums' -- Woo hoo!
-			// "total_tracks": 148
 			$thisArtistID = $album->artists[0]->id;
 			$thisArtistName = $album->artists[0]->name;
 			$albumPop = $album->popularity;

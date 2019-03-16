@@ -3,7 +3,6 @@
 session_start();
 require '../secrets/auth.php';
 require_once '../rockdb.php';
-require_once '../rockdb.php';
 require_once 'tracks.php';
 
 $connekt = new mysqli( $GLOBALS[ 'host' ], $GLOBALS[ 'un' ], $GLOBALS[ 'magicword' ], $GLOBALS[ 'db' ] );

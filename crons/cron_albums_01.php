@@ -20,7 +20,6 @@ $accessToken = $_SESSION['accessToken'];
 $GLOBALS['api'] = new SpotifyWebAPI\SpotifyWebAPI();
 $GLOBALS['api']->setAccessToken($accessToken);
 
-
 function divideCombineArtistsForAlbums ($theseArtists) {
 
 	// Divide all artists into chunks of 50
@@ -38,7 +37,6 @@ function divideCombineArtistsForAlbums ($theseArtists) {
 	};
 
 	for ($i=0; $i<(count($artistsArraysArray)); ++$i) {
-		// echo '<br> $artistsArrays[$i] is ' . $artistsArrays[$i];
 		$artistsIds = implode(',', $artistsArraysArray[$i]);
 		echo '<br>these are the artist IDs ' . $artistsIds;
 		$artistsArray = $artistsArraysArray[$i];
@@ -49,8 +47,6 @@ function divideCombineArtistsForAlbums ($theseArtists) {
 			echo '<br>this is a single artist ID ' . $artistID . '<br>';
 
 			$discography = $GLOBALS['api']->getArtistAlbums($artistID, [
-				'market' => 'us',
-				'album_type' => 'album',
 				'limit' => '50'
 			]);
 			

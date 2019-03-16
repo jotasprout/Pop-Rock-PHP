@@ -11,11 +11,12 @@ if (!$connekt) {
 	echo 'Darn. Did not connect.';
 };
 
-$happyScabies2 = "SELECT a.albumName, a.year, a.albumArt, z.artistName, p1.pop, p1.date, a.albumID
+$happyScabies2 = "SELECT a.albumName, a.year, a.albumArt, a.albumTotalTracks, z.artistName, p1.pop, p1.date, a.albumID
 	FROM (SELECT
 				y.albumID AS albumID,
 				y.albumName AS albumName,
 				y.artistID AS artistID,
+				y.albumTotalTracks AS albumTotalTracks,
 				y.albumArt AS albumArt,
 				y.year AS year
 			FROM albums y 
@@ -78,6 +79,7 @@ if(!$getit){
 			<th>Album Spotify ID</th>
 			<th onClick="sortColumn('albumName', 'ASC', '<?php echo $artistID; ?>')"><div class="pointyHead">Album Name</div></th>
 			<th onClick="sortColumn('year', 'DESC', '<?php echo $artistID; ?>')"><div class="pointyHead">Released</div></th>
+			<th onClick="sortColumn('albumTotalTracks', 'DESC', '<?php echo $albumTotalTracks; ?>')"><div class="pointyHead">Total Tracks</div></th>
 			<th>Date</th>
 			<th onClick="sortColumn('pop', 'ASC', '<?php echo $artistID; ?>')"><div class="pointyHead">Popularity</div></th>
 		</tr>
@@ -90,6 +92,7 @@ if(!$getit){
 							$albumArt = $row['albumArt'];
 							$albumID = $row['albumID'];
 							$albumName = $row['albumName'];
+							$albumTotalTracks = $row['albumTotalTracks'];
 							$albumReleased = $row['year'];
 							$albumPop = $row['pop'];
 							$date = $row['date'];
@@ -101,6 +104,7 @@ if(!$getit){
 <!-- NEED TO CREATE FUNCTION IN NEXT LINE -->
 <td><a href='https://www.roxorsoxor.com/poprock/thisAlbum_TracksList.php?albumID=<?php echo $albumID ?>'><?php echo $albumName ?></a></td>
 <td><?php echo $albumReleased ?></td>
+<td><?php echo $albumTotalTracks; ?></td>
 <th><?php echo $date ?></th>
 <td><?php echo $albumPop ?></td>
 
