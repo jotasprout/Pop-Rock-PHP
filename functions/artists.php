@@ -59,6 +59,24 @@ function getArtistsPopCron2 ($theseArtists) {
 }
 */
 
+updateArtistAlbumsTotal(artistID, artistAlbumsTotal){
+
+	$artistID = artistID;
+	$artistAlbumsTotal = artistAlbumsTotal;
+
+	$updateArtistsTableAlbumsTotal = "UPDATE popArtists (artistID,artistAlbumsTotal) VALUES('$artistID','$artistAlbumsTotal')";
+
+	$rockpop = $connekt->query($updateArtistsTableAlbumsTotal);
+	
+	if(!$rockpop){
+		echo 'Cursed-Crap. Could not insert albums total.';
+	}
+
+	else {
+		echo '<tr><td><td>' . $artistName . '</td><td>' . $artistAlbumsTotal . '</td></tr>';
+	} 
+};
+
 function divideCombineArtists ($theseArtists) {
 	//echo 'all these artists are ' . $theseArtists . '<br>';
 	

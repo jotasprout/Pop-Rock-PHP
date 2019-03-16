@@ -50,6 +50,10 @@ function divideCombineArtistsForAlbums ($theseArtists) {
 				'limit' => '50'
 			]);
 			
+			$updateArtistAlbumsTotal = $discography->total;
+
+			updateArtistAlbumsTotal(artistID);
+
 			foreach ($discography->items as $album) {
 				$albumID = $album->id;
 				$artistAlbums [] = $albumID;
