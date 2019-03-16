@@ -48,13 +48,20 @@
     <?php echo $navbar ?>
     <p>Please be patient while data loads.</p>
     <p>If, after the page loads, it is empty, or the wrong discography displays, <a href='https://www.roxorsoxor.com/poprock/index.php'>choose an artist</a> from the <a href='https://www.roxorsoxor.com/poprock/index.php'>Artists List</a> first.</p>
+
+
+
+
+
 	<div class="panel panel-primary">
 		<div class="panel-heading">
 			<h3 id="artistPop" class="panel-title">This Artist's Popularity On Spotify Over Time</h3>
-		</div>
+		</div> <!-- close panel-heading -->
 
 		<div class="panel-body">
-		<div id="forArt"></div> <!-- close forArt -->
+		<div id="forArt"><img src='<?php echo $artistArt ?>'></div> <!-- close forArt -->
+        <div id="forCurrentPopularity">Current Popularity goes here</div> <!-- close forCurrentPopularity -->
+        <div id="forCurrentFollowers">Current Followers go here</div> <!-- close forCurrentFollowers -->
 		<div id="forArtistChart"></div> <!-- close forChart -->
 		</div> <!-- panel body -->
 

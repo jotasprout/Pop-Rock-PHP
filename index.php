@@ -68,6 +68,7 @@ if(!$getit){ echo 'Cursed-Crap. Did not run the query.'; }
 							-->
 							<th>Date</th>
 							<th onClick="sortColumn('pop', 'DESC')"><div class="pointyHead popScore">Popularity</div></th>
+							<th>Followers</th>
 						</tr>
 					</thead>
 
@@ -78,6 +79,7 @@ if(!$getit){ echo 'Cursed-Crap. Did not run the query.'; }
 							$artistName = $row[ "artistName" ];
 							$artistID = $row[ "artistID" ];
 							$artistPop = $row[ "pop" ];
+							$artistFollowers = $row[ "followers"];
 							$artistArt = $row[ "artistArt" ];
 							$popDate = $row[ "date" ];
 					?>
@@ -90,6 +92,7 @@ if(!$getit){ echo 'Cursed-Crap. Did not run the query.'; }
 						-->
 						<td><?php echo $popDate ?></td>
 						<td class="popScore"><?php echo $artistPop ?></td>
+						<td class="currentFollowers"><?php echo $artistFollowers ?></td>
 					</tr>
 
 					<?php 

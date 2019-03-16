@@ -38,13 +38,13 @@ function divideCombineArtistsForAlbums ($theseArtists) {
 
 	for ($i=0; $i<(count($artistsArraysArray)); ++$i) {
 		$artistsIds = implode(',', $artistsArraysArray[$i]);
-		echo '<br>these are the artist IDs ' . $artistsIds;
+		// echo '<br>these are the artist IDs ' . $artistsIds;
 		$artistsArray = $artistsArraysArray[$i];
 			
 		for ($j=0; $j<(count($artistsArray)); ++$j) {
 
 			$artistID = $artistsArray[$j];
-			echo '<br>this is a single artist ID ' . $artistID . '<br>';
+			// echo '<br>this is a single artist ID ' . $artistID . '<br>';
 
 			$discography = $GLOBALS['api']->getArtistAlbums($artistID, [
 				'limit' => '50'

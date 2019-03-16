@@ -13,7 +13,7 @@ if (!$connekt) {
 	echo 'Darn. Did not connect.';
 };
 
-$artistInfoAll = "SELECT a.artistID, a.artistName, b.pop, b.date 
+$artistInfoAll = "SELECT a.artistID, a.artistName, b.pop, b.followers, b.date 
 	FROM artists a
 		INNER JOIN popArtists b ON a.artistID = b.artistID
 			WHERE a.artistID = '$artistID'
@@ -51,10 +51,11 @@ if(!$getit){
 				<tr>
 					<th>Artist Name</th>
 					<th>Popularity</th>
-					<!--
+					<th>Followers</th>
 					<th onClick="sortColumn('date', 'DESC')"><div class="pointyHead">Date</div></th>
+					<!--
 					-->
-					<th>Date</th>
+					
 				</tr>	
 			</thead>
 			<tbody>
@@ -65,6 +66,7 @@ if(!$getit){
 				// $artistID = $row["artistID"];
 				$artistName = $row["artistName"];
 				$artistPop = $row["pop"];
+				$artistFollowers = $row["followers"];
 				$popDate = $row["date"];
 				$popDateShort = substr($popDate, 0, 10);
 			?>
@@ -72,8 +74,9 @@ if(!$getit){
 			<tr>
 				<td><?php echo $artistName ?></td>
 				<td><?php echo $artistPop ?></td>
-				<td><?php echo $popDate ?></td>
+				<td><?php echo $artistFollowers ?></td>
 			<!--
+				<td><?php //echo $popDate ?></td>
 			-->
 				<td><?php echo $popDateShort ?></td>
 			</tr>

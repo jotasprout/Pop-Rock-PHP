@@ -60,15 +60,15 @@ function getArtistsPopCron2 ($theseArtists) {
 */
 
 function divideCombineArtists ($theseArtists) {
-	echo 'all these artists are ' . $theseArtists . '<br>';
+	//echo 'all these artists are ' . $theseArtists . '<br>';
 	
 	$totalArtists = count($theseArtists);
-	echo 'there are ' . $totalArtists . ' total artists<br>';
+	//echo 'there are ' . $totalArtists . ' total artists<br>';
 
 	// Divide all artists into chunks of 50
 	$artistsChunk = array ();
 	$x = ceil((count($theseArtists))/50);
-	echo $totalArtists . ' divided by 50 is ' . $x . '<br>';
+	//echo $totalArtists . ' divided by 50 is ' . $x . '<br>';
 
 	$firstArtist = 0;
 
@@ -83,7 +83,7 @@ function divideCombineArtists ($theseArtists) {
 	for ($i=0; $i<(count($artistsArrays)); ++$i) {
 				
 		$artistsThisTime = count($artistsArrays[$i]);
-		echo 'there are ' . $artistsThisTime . ' artists this time<br>';
+		//echo 'there are ' . $artistsThisTime . ' artists this time<br>';
 
 		$artistIds = implode(',', $artistsArrays[$i]);
 
@@ -100,6 +100,7 @@ function divideCombineArtists ($theseArtists) {
 			$artistName = mysqli_real_escape_string($connekt,$artistNameYucky);
 			$artistArt = $artist->images[0]->url;
 			$artistPop = $artist->popularity;
+			$artistFollowers = $artist->followers->total;
 			$jsonArtistGenres = $artist->genres;
 
 			$insertArtistsInfo = "INSERT INTO artists (artistID,artistName, artistArt) VALUES('$artistID','$artistName', '$artistArt')";
@@ -108,14 +109,14 @@ function divideCombineArtists ($theseArtists) {
 			echo 'Cursed-Crap. Could not insert artist ' . $artistName . '.<br>';
 			}
 	
-			$insertArtistsPop = "INSERT INTO popArtists (artistID,pop,date) VALUES('$artistID','$artistPop',curdate())";
+			$insertArtistsPop = "INSERT INTO popArtists (artistID,pop,followers,date) VALUES('$artistID','$artistPop','$artistFollowers',curdate())";
 			$rockpop = $connekt->query($insertArtistsPop);
 			if(!$rockpop){
 				echo 'Cursed-Crap. Could not insert artists popularity.';
 			}
 	
 			else {
-				echo '<tr><td><img src="' . $artistArt . '"></td><td>' . $artistName . '</td><td>' . $artistPop . '</td></tr>';
+				echo '<tr><td><img src="' . $artistArt . '"></td><td>' . $artistName . '</td><td>' . $artistPop . '</td><td>' . $artistFollowers . '</td></tr>';
 			} 
 			
 		}
