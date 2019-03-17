@@ -1,9 +1,8 @@
 <?php
 
 $artistAlbums = array ();
-require_once '../rockdb.php';
 
-// create function to add a single album at a time to be used with a button
+require_once '../rockdb.php';
 
 function divideCombineAlbumsForTracks ($artistAlbums) {
 
@@ -50,7 +49,7 @@ function divideCombineAlbumsForTracks ($artistAlbums) {
 			}
 
 			divideCombineInsertTracksAndPop ($AlbumsTracks);
-			// divideCombineInsertPopTracks ($AlbumsTracks);
+
 			unset($AlbumsTracks);
 			
 		}
@@ -68,20 +67,12 @@ function divideCombineAlbums ($artistAlbums) {
     for ($i=0; $i<$x; ++$i) {
 	  $lastAlbum = 19;
 	  $artistAlbumsChunk = array_slice($artistAlbums, $firstAlbum, $lastAlbum);
-	  // $howmanytotal = count($artistAlbumsChunk);
-	  // echo $howmanytotal . '<br>';
 	  // put chunks of 20 into an array
       $albumsArrays [] = $artistAlbumsChunk;
       $firstAlbum += 20;
 	};
 
-	// $howmany = count($albumsArrays);
-	// echo $howmany . '<br>';
-
 	for ($i=0; $i<(count($albumsArrays)); ++$i) {
-
-		// $howmanyhere = count($albumsArrays[$i]);
-		// echo $howmanyhere . '<br>';
 				
 		$albumIds = implode(',', $albumsArrays[$i]);
 	
@@ -112,7 +103,7 @@ function divideCombineAlbums ($artistAlbums) {
 			$rockout = $connekt->query($insertAlbums);
 
 			if(!$rockout){
-				echo 'Crap de General Tsao! Could not insert ' . $albumName . '.<br>';
+				echo '<p>Crap de General Tsao! Could not insert ' . $albumName . '.</p>';
 			}
 
 			$insertAlbumsPop = "INSERT INTO popAlbums (albumID,pop,date) VALUES('$albumID','$albumPop',curdate())";
@@ -123,12 +114,11 @@ function divideCombineAlbums ($artistAlbums) {
 				echo 'Sweet & Sour Crap! Could not insert albums popularity.';
 			}
 		
-            echo '<p><img src="' . $albumArt . '" height="64" width="64"><br>' . $albumName . '<br>' . $albumReleased . '<br>Pop is ' . $albumPop . '</p>';
+            echo '<p><img src="' . $albumArt . '" height="64" width="64"><br>' . $albumName . '<br>' . $albumReleased . '<br>Pop is ' . $albumPop . '<br>Total tracks: ' . $albumTotalTracks . '</p>';
 
 		}
 	};
   
 }
-
 
 ?>

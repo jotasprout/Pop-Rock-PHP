@@ -20,8 +20,6 @@ $accessToken = $_SESSION['accessToken'];
 $GLOBALS['api'] = new SpotifyWebAPI\SpotifyWebAPI();
 $GLOBALS['api']->setAccessToken($accessToken);
 
-// getArtistsPopCron2 ($allArtists);
-
 divideCombineArtists ($allArtists);
 
 die();

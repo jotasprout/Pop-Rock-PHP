@@ -11,7 +11,7 @@ if ( !$connekt ) {
 	echo 'Darn. Did not connect.';
 };
 
-$artistInfoRecentWithArt = "SELECT a.artistID AS artistID, a.artistArt AS artistArt, a.artistName AS artistName, p1.pop AS pop, p1.date AS date
+$artistInfoRecentWithArt = "SELECT a.artistID AS artistID, a.artistArt AS artistArt, a.artistName AS artistName, p1.pop AS pop, p1.followers AS followers, p1.date AS date
     FROM artists a
     JOIN (SELECT p.*
 			FROM popArtists p

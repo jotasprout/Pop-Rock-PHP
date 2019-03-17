@@ -1,6 +1,6 @@
 <?php
 
-session_start();
+//session_start();
 require '../auth.php';
 require_once '../rockdb.php';
 require '../functions/tracks.php';
@@ -38,21 +38,18 @@ function divideCombineArtistsForAlbums ($theseArtists) {
 	};
 
 	for ($i=0; $i<(count($artistsArraysArray)); ++$i) {
-		// echo '<br> $artistsArrays[$i] is ' . $artistsArrays[$i];
 		$artistsIds = implode(',', $artistsArraysArray[$i]);
-		echo '<br>these are the artist IDs ' . $artistsIds;
 		$artistsArray = $artistsArraysArray[$i];
 			
 		for ($j=0; $j<(count($artistsArray)); ++$j) {
 
 			$artistID = $artistsArray[$j];
-			echo '<br>this is a single artist ID ' . $artistID . '<br>';
 
 			$discography = $GLOBALS['api']->getArtistAlbums($artistID, [
-				'market' => 'us',
-				'album_type' => 'album',
 				'limit' => '50'
 			]);
+
+			// FUNCTION FOR UPDATE INSERT TOTAL ALBUMS FOR ARTIST
 			
 			foreach ($discography->items as $album) {
 				$albumID = $album->id;

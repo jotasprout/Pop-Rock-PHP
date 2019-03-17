@@ -49,10 +49,10 @@ function divideCombineArtistsForAlbums ($theseArtists) {
 			echo '<br>this is a single artist ID ' . $artistID . '<br>';
 
 			$discography = $GLOBALS['api']->getArtistAlbums($artistID, [
-				'market' => 'us',
-				'album_type' => 'album',
 				'limit' => '50'
 			]);
+			
+			// PUT FUNCTION HERE TO ADD ALBUMS TOTAL
 			
 			foreach ($discography->items as $album) {
 				$albumID = $album->id;
