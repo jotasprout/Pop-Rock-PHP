@@ -2,26 +2,6 @@
 
 require ("class.artist.php");
 
-function updateArtistAlbumsTotal($artistID, $artistAlbumsTotal){
-
-	$connekt = new mysqli($GLOBALS['host'], $GLOBALS['un'], $GLOBALS['magicword'], $GLOBALS['db']);
-
-	$artistID = $artistID;
-	$artistAlbumsTotal = $artistAlbumsTotal;
-
-	$updateArtistsTableAlbumsTotal = "UPDATE artists SET artistAlbumsTotal $artistAlbumsTotal WHERE artistID = $artistID";
-
-	$albumsTote = $connekt->query($updateArtistsTableAlbumsTotal);
-	
-	if(!$albumsTote){
-		echo 'Cursed-Crap. Could not insert albums total.';
-	}
-
-	else {
-		echo '<tr><td>' . $artistName . ' has </td><td>' . $artistAlbumsTotal . ' total albums</td></tr>';
-	} 
-};
-
 
 function divideCombineArtists ($theseArtists) {
 	

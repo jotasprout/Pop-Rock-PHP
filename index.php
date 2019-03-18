@@ -69,7 +69,7 @@ if(!$getit){ echo 'Cursed-Crap. Did not run the query.'; }
 							<th>Date</th>
 							<th onClick="sortColumn('pop', 'DESC')"><div class="pointyHead popScore">Popularity</div></th>
 							<th>Followers</th>
-							<th>Total Albums</th>
+							<th>albumsTotal</th>
 						</tr>
 					</thead>
 

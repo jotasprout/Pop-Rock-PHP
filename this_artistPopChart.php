@@ -50,17 +50,16 @@
     <p>If, after the page loads, it is empty, or the wrong discography displays, <a href='https://www.roxorsoxor.com/poprock/index.php'>choose an artist</a> from the <a href='https://www.roxorsoxor.com/poprock/index.php'>Artists List</a> first.</p>
 
 
+    <p><img id="forArt"></p> <!-- close forArt -->
+    <p id="forCurrentPopularity">Current Popularity goes here</p> <!-- close forCurrentPopularity -->
+    <p id="forCurrentFollowers">Current Followers go here</p> <!-- close forCurrentFollowers -->
+
 	<div class="panel panel-primary">
 		<div class="panel-heading">
 			<h3 id="artistPop" class="panel-title">This Artist's Popularity On Spotify Over Time</h3>
 		</div> <!-- close panel-heading -->
 
 		<div class="panel-body">
-            <div>
-                <img id="forArt">
-            </div> <!-- close forArt -->
-            <div id="forCurrentPopularity">Current Popularity goes here</div> <!-- close forCurrentPopularity -->
-            <div id="forCurrentFollowers">Current Followers go here</div> <!-- close forCurrentFollowers -->
             <div id="forArtistChart"></div> <!-- close forChart -->
 		</div> <!-- panel body -->
     </div> <!-- close Panel Primary -->
@@ -105,7 +104,9 @@ d3.json("functions/createArtistD3.php?artistID=<?php echo $artistID; ?>", functi
     const currentPop = d3.select("#forCurrentPopularity")
             .text("Current Popularity on Spotify: " + currentPopArtist);               
 
-    const followers = dataset[0].followers;
+    const dataFollowers = dataset[0].followers;
+    // Ugh. I hate copying and pasting stuff I have no idea how it works, but ...
+    let followers = String(dataFollowers).replace(/(.)(?=(\d{3})+$)/g,'$1,');
 
     const artistFollowers = d3.select("#forCurrentFollowers")
             .text("Current Followers on Spotify: " + followers);  
