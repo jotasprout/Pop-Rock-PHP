@@ -11,7 +11,7 @@ if ( !$connekt ) {
 	echo 'Darn. Did not connect.';
 };
 
-$artistInfoRecentWithArt = "SELECT a.artistID AS artistID, a.artistArt AS artistArt, a.artistName AS artistName, p1.pop AS pop, p1.followers AS followers, p1.date AS date
+$artistInfoRecentWithArt = "SELECT a.artistID AS artistID, a.artistArt AS artistArt, a.artistName AS artistName, a.albumsTotal AS albumsTotal, p1.pop AS pop, p1.followers AS followers, p1.date AS date
     FROM artists a
     JOIN (SELECT p.*
 			FROM popArtists p
@@ -69,6 +69,7 @@ if(!$getit){ echo 'Cursed-Crap. Did not run the query.'; }
 							<th>Date</th>
 							<th onClick="sortColumn('pop', 'DESC')"><div class="pointyHead popScore">Popularity</div></th>
 							<th>Followers</th>
+							<th>Total Albums</th>
 						</tr>
 					</thead>
 
@@ -82,6 +83,7 @@ if(!$getit){ echo 'Cursed-Crap. Did not run the query.'; }
 							$artistFollowers = $row[ "followers"];
 							$artistArt = $row[ "artistArt" ];
 							$popDate = $row[ "date" ];
+							$albumsTotal = $row[ "albumsTotal" ];
 					?>
 
 					<tr>
@@ -91,8 +93,9 @@ if(!$getit){ echo 'Cursed-Crap. Did not run the query.'; }
 						<!--
 						-->
 						<td><?php echo $popDate ?></td>
-						<td class="popScore"><?php echo $artistPop ?></td>
-						<td class="currentFollowers"><?php echo $artistFollowers ?></td>
+						<td class="popStyle"><?php echo $artistPop ?></td>
+						<td class="rightNum"><?php echo $artistFollowers ?></td>
+						<td class="popStyle"><?php echo $albumsTotal ?></td>
 					</tr>
 
 					<?php 

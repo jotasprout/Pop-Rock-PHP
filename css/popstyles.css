@@ -3,6 +3,7 @@
 /*
 #pointyHead { cursor: pointer; }
 */
+
 .container {
     margin-right: 0;
     margin-left: 0;
@@ -16,6 +17,10 @@
 
 .popStyle {
     text-align: center;
+}
+
+.rightNum {
+    text-align: right;
 }
 
 .indexArtistArt {

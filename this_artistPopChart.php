@@ -50,21 +50,19 @@
     <p>If, after the page loads, it is empty, or the wrong discography displays, <a href='https://www.roxorsoxor.com/poprock/index.php'>choose an artist</a> from the <a href='https://www.roxorsoxor.com/poprock/index.php'>Artists List</a> first.</p>
 
 
-
-
-
 	<div class="panel panel-primary">
 		<div class="panel-heading">
 			<h3 id="artistPop" class="panel-title">This Artist's Popularity On Spotify Over Time</h3>
 		</div> <!-- close panel-heading -->
 
 		<div class="panel-body">
-		<div id="forArt"><img src='<?php echo $artistArt ?>'></div> <!-- close forArt -->
-        <div id="forCurrentPopularity">Current Popularity goes here</div> <!-- close forCurrentPopularity -->
-        <div id="forCurrentFollowers">Current Followers go here</div> <!-- close forCurrentFollowers -->
-		<div id="forArtistChart"></div> <!-- close forChart -->
+            <div>
+                <img id="forArt">
+            </div> <!-- close forArt -->
+            <div id="forCurrentPopularity">Current Popularity goes here</div> <!-- close forCurrentPopularity -->
+            <div id="forCurrentFollowers">Current Followers go here</div> <!-- close forCurrentFollowers -->
+            <div id="forArtistChart"></div> <!-- close forChart -->
 		</div> <!-- panel body -->
-
     </div> <!-- close Panel Primary -->
     
     <div class="panel panel-primary">
@@ -94,17 +92,31 @@ d3.json("functions/createArtistD3.php?artistID=<?php echo $artistID; ?>", functi
     
     var dataset = data;
 
-    var parseTime = d3.timeParse("%y-%m-%d");
-
-    //const title = data[0].artistName;
-    // No longer need above because of below
+    // Commenting out next because looks related to line 102. If everything still works, delete both
+    // var parseTime = d3.timeParse("%y-%m-%d");
 
     const artistName = dataset[0].artistName;
 
     const artistTitle = d3.select("#artistPop")
-            //.data(dataset)
-            //.append("text")
-            .text(artistName + "'s popularity over time");
+            .text(artistName + "'s popularity over time");   
+
+    const currentPopArtist = dataset[0].pop;
+
+    const currentPop = d3.select("#forCurrentPopularity")
+            .text("Current Popularity on Spotify: " + currentPopArtist);               
+
+    const followers = dataset[0].followers;
+
+    const artistFollowers = d3.select("#forCurrentFollowers")
+            .text("Current Followers on Spotify: " + followers);  
+
+    const artistArt = dataset[0].artistArt;
+
+    d3.select("#forArt")
+            .data(dataset)
+            .attr("src", artistArt)
+            .attr("height", 128);
+            //.attr("width", auto)
 
     dataset.forEach(function(d) {
         // date = parseTime(d.date);
@@ -154,15 +166,6 @@ d3.json("functions/createArtistD3.php?artistID=<?php echo $artistID; ?>", functi
        .attr("transform", "translate(" + padding + ",0)")
        .attr("class", "axis");
 
-    // No longer below because h3's now have artistName
-    /*
-    svg.append("text")
-       .style("text-anchor", "middle")
-       .attr("id", "title")
-       .attr("x", w/2)
-       .attr("y", 25)
-       .text(`${title}`);
-       */
 });
 
 </script>
@@ -178,8 +181,6 @@ d3.json("functions/createArtistD3.php?artistID=<?php echo $artistID; ?>", functi
         const artistName = dataset[0].artistName;
 
         const artistTitle = d3.select("#albumPop")
-            //.data(dataset)
-            //.append("text")
             .text(artistName + "'s Albums' Current Popularity");
 
         

@@ -1,6 +1,5 @@
 <?php
 
-//$artistID = $_COOKIE['artistID'];
 $artistID = $_GET['artistID'];
 
 require_once '../rockdb.php';
@@ -13,7 +12,7 @@ if (!$connekt) {
 };
 
 // Could I remove artistID from the select statement below as long as artistID is in the WHERE clause?
-$artistInfoAll = "SELECT a.artistID, a.artistName, b.pop, b.date 
+$artistInfoAll = "SELECT a.artistID, a.artistName, a.artistArt, b.pop, b.date, b.followers
 	FROM artists a
 		INNER JOIN popArtists b ON a.artistID = b.artistID
 			WHERE a.artistID = '$artistID'

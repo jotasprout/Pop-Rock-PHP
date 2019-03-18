@@ -1,7 +1,7 @@
 <?php
 
 //session_start();
-require '../auth.php';
+require '../secrets/auth.php';
 require_once '../rockdb.php';
 require '../functions/tracks.php';
 require_once '../functions/albums.php';

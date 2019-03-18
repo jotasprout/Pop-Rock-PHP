@@ -42,7 +42,11 @@ At present, tracks are listed all together. Eventually, they'll be viewable by a
 * Cron jobs collect Spotify Web API data regularly and store it in my database
 
 ## Status
-Active.
+Building in columns (both in database and UI) for:
+- album country
+- artist Spotify followers
+- LastFM listeners and playcount for Artists, Albums, Tracks
+- Related artists & albums (eg Dio, Rainbow, Black Sabbath, etc.)
 
 ## Background
 PHP-based version of [rockinJS](https://github.com/jotasprout/rockinJS) which replaced [myRockinApp](https://github.com/jotasprout/myRockinApp) (Python). Moved on to using PHP and MySQL with Pop-PHP because I couldn't get the objects to build as completely as I wanted in either Python to Javascript. 
