@@ -62,13 +62,13 @@ if(!$getit){ echo 'Cursed-Crap. Did not run the query.'; }
 					<tr>
 						<th>Pretty Face</th>	
 						<th onClick="sortColumn('artistName', 'ASC')"><div class="pointyHead">Artist Name</div></th>
-						<th>artistID</th>
+						<th>Spotify ID</th>
 						<!--
 						-->
-						<th>Date</th>
+						<th>Spotify Data Date</th>
 						<th onClick="sortColumn('pop', 'DESC')"><div class="pointyHead popScore">Popularity</div></th>
-						<th>Followers</th>
-						<th>albumsTotal</th>
+						<th>Spotify Followers</th>
+						<th>Total Spotify Albums</th>
 					</tr>
 				</thead>
 
