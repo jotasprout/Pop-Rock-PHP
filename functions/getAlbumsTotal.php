@@ -35,7 +35,6 @@ function insertTotalAlbums ($theseArtists) {
 			]);
 			
             $artistAlbumsTotal = $discography->total;
-            //$artistAlbumsTotalInt = intval($artistAlbumsTotalString);
             
             echo ("<p>Artist " . $artistID . " has " . $artistAlbumsTotal . " total albums.</p>");
 

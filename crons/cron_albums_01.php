@@ -52,6 +52,8 @@ function divideCombineArtistsForAlbums ($theseArtists) {
 
 			updateArtistAlbumsTotal($artistID, $artistAlbumsTotal);
 
+			// Somewhere about here is future home of algorithm for using offset and ...
+
 			foreach ($discography->items as $album) {
 				$albumID = $album->id;
 				$artistAlbums [] = $albumID;

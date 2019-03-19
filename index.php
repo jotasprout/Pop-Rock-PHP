@@ -1,6 +1,5 @@
 <?php
 
-//include 'page_pieces/sesh.php';
 require_once 'rockdb.php';
 require_once 'page_pieces/navbar_rock.php';
 require_once 'page_pieces/stylesAndScripts.php';
@@ -44,85 +43,82 @@ if(!$getit){ echo 'Cursed-Crap. Did not run the query.'; }
 	<div class="container">
 		<?php echo $navbar ?>
 
-		<!-- main -->
+	<!-- main -->
 
-		<div class="panel panel-primary">
+	<div class="panel panel-primary">
 
-			<div class="panel-heading">
-				<h3 class="panel-title">Current Popularity from Spotify</h3>
-			</div>
+		<div class="panel-heading">
+			<h3 class="panel-title">Current Popularity from Spotify</h3>
+		</div>
 
-			<div class="panel-body">
+		<div class="panel-body">
 
-				<!-- Panel Content -->
-				<!-- D3 chart goes here -->
-				<?php if (!empty($getit)) { ?>
+			<!-- Panel Content -->
+			<!-- D3 chart goes here -->
+			<?php if (!empty($getit)) { ?>
 
-				<table class="table" id="tableoartists">
-					<thead>
-						<tr>
-							<th>Pretty Face</th>	
-							<th onClick="sortColumn('artistName', 'ASC')"><div class="pointyHead">Artist Name</div></th>
-							<th>artistID</th>
-							<!--
-							-->
-							<th>Date</th>
-							<th onClick="sortColumn('pop', 'DESC')"><div class="pointyHead popScore">Popularity</div></th>
-							<th>Followers</th>
-							<th>albumsTotal</th>
-						</tr>
-					</thead>
-
-					<tbody>
-
-					<?php
-						while ( $row = mysqli_fetch_array( $getit ) ) {
-							$artistName = $row[ "artistName" ];
-							$artistID = $row[ "artistID" ];
-							$artistPop = $row[ "pop" ];
-							$artistFollowers = $row[ "followers"];
-							$artistArt = $row[ "artistArt" ];
-							$popDate = $row[ "date" ];
-							$albumsTotal = $row[ "albumsTotal" ];
-					?>
-
+			<table class="table" id="tableoartists">
+				<thead>
 					<tr>
-						<td><img src='<?php echo $artistArt ?>' class="indexArtistArt"></td>	
-						<td><a href='https://www.roxorsoxor.com/poprock/this_artistPopChart.php?artistID=<?php echo $artistID ?>'><?php echo $artistName ?></a></td>
-						<td><?php echo $artistID ?></td>
+						<th>Pretty Face</th>	
+						<th onClick="sortColumn('artistName', 'ASC')"><div class="pointyHead">Artist Name</div></th>
+						<th>artistID</th>
 						<!--
 						-->
-						<td><?php echo $popDate ?></td>
-						<td class="popStyle"><?php echo $artistPop ?></td>
-						<td class="rightNum"><?php echo $artistFollowers ?></td>
-						<td class="popStyle"><?php echo $albumsTotal ?></td>
+						<th>Date</th>
+						<th onClick="sortColumn('pop', 'DESC')"><div class="pointyHead popScore">Popularity</div></th>
+						<th>Followers</th>
+						<th>albumsTotal</th>
 					</tr>
+				</thead>
 
-					<?php 
-						} // end of while
-					?>
+				<tbody>
 
-					</tbody>
-				</table>
-				<?php 
-					} // end of if
+				<?php
+					while ( $row = mysqli_fetch_array( $getit ) ) {
+						$artistName = $row[ "artistName" ];
+						$artistID = $row[ "artistID" ];
+						$artistPop = $row[ "pop" ];
+						$artistFollowersNum = $row[ "followers"];
+						$artistFollowers = number_format ($artistFollowersNum);
+						$artistArt = $row[ "artistArt" ];
+						$popDate = $row[ "date" ];
+						$albumsTotal = $row[ "albumsTotal" ];
 				?>
 
-			</div>
-			<!-- panel body -->
+				<tr>
+					<td><img src='<?php echo $artistArt ?>' class="indexArtistArt"></td>	
+					<td><a href='https://www.roxorsoxor.com/poprock/this_artistPopChart.php?artistID=<?php echo $artistID ?>'><?php echo $artistName ?></a></td>
+					<td><?php echo $artistID ?></td>
+					<!--
+					-->
+					<td><?php echo $popDate ?></td>
+					<td class="popStyle"><?php echo $artistPop ?></td>
+					<td id="followers" class="rightNum"><?php echo $artistFollowers ?></td>
+					<td class="popStyle"><?php echo $albumsTotal ?></td>
+				</tr>
+
+				<?php 
+					} // end of while
+				?>
+
+				</tbody>
+			</table>
+			<?php 
+				} // end of if
+			?>
 
 		</div>
-		<!-- panel panel-primary -->
+		<!-- panel body -->
+
+	</div>
+	<!-- panel panel-primary -->
 
 	</div>
 	<!-- close container -->
 
 	<?php echo $scriptsAndSuch; ?>
 	<script src="https://www.roxorsoxor.com/poprock/functions/sortTheseArtists.js"></script>
-
-	<script>
-	
-	</script>
 
 </body>
 

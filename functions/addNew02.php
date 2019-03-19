@@ -52,7 +52,27 @@ function divideCombineArtistsForAlbums ($theseArtists) {
 				'limit' => '50'
 			]);
 			
-			// PUT FUNCTION HERE TO ADD ALBUMS TOTAL
+			$artistAlbumsTotal = $discography->total;
+
+            $connekt = new mysqli($GLOBALS['host'], $GLOBALS['un'], $GLOBALS['magicword'], $GLOBALS['db']);
+    
+            if(!$connekt){
+                echo '<p>Dangit! No connektion!</p>';
+            } else { 
+                echo '<p>Yay! I am connekted.';
+        
+                $update = "UPDATE artists SET albumsTotal = '$artistAlbumsTotal' WHERE artistID = '$artistID'";
+            
+                $albumsTote = $connekt->query($update);
+                
+                if(!$albumsTote){
+                    echo '<p>Cursed-Crap. Could not insert albums total.</p>';
+                }
+            
+                else {
+                    echo '<p>Inserted ' . $artistAlbumsTotal . ' total albums for ' . $artistID . '.</p>';
+                } 
+            };			
 			
 			foreach ($discography->items as $album) {
 				$albumID = $album->id;
