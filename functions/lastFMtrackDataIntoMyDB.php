@@ -55,33 +55,45 @@ for ($i=0; $i<$x; ++$i) {
             $releases = $album['releases'];
             $releasesNum = ceil((count($releases)));
             if ($releasesNum > 0){
+                $release = $releases[0];
                 $releaseMBID = $album['releases'][0]['mbid'];
-                $releaseNameYucky = $album['releases'][0]['name'];
-                $releaseName = mysqli_real_escape_string($connekt,$releaseNameYucky);
-                //albumListeners = album['releases'][0]['listeners']
-                //albumPlaycount = album['releases'][0]['playcount']
-    
-                $insertReleaseMBID = "INSERT INTO albumsMB (
-                    albumMBID,
-                    albumName,
-                    artistMBID
-                    ) 
-                    VALUES (
-                        '$releaseMBID',
-                        '$releaseName',
-                        '$artistMBID'
-                    )";
-    
-                $pushRelease = $connekt->query($insertReleaseMBID);
-    
-                if(!$pushRelease){
-                    echo 'Shickety Brickety! Could not insert ' . $releaseName . '.<br>';
-                } else {
-                    echo '<p>Inserted ' . $releaseName . ' by ' . $artistName . '.</p>';
-                } 
-            }
+                $releaseName = $album['releases'][0]['name'];
+
+                $tracks = $release['tracks'];
+                $tracksNum = ceil((count($tracks)));   
+
+                for ($m=0; $m<$tracksNum; ++$m) {
+                    $track = $tracks[$m];
+                    $trackMBID = $track['mbid'];
+                    $trackNameYucky = $track['title'];
+                    $trackName = mysqli_real_escape_string($connekt,$trackNameYucky);
+                    //$trackListeners = $track['stats']['listeners'];
+                    //$trackPlaycount = $track['stats']['playcount'];
+
+                    $insertMBIDtrack = "INSERT INTO tracksMB (
+                        trackName,
+                        trackMBID, 
+                        albumMBID 
+                        ) 
+                        VALUES(
+                            '$trackName',
+                            '$trackMBID',
+                            '$releaseMBID'
+                        )";
+
+                    $pushTrack = $connekt->query($insertMBIDtrack);
+
+                    if(!$pushTrack){
+                        echo '<p>Shickety Brickety! Could not insert ' . $trackName . '</p>';
+                    } else {
+                        echo '<p>Inserted ' . $trackName . ' from <strong>' . $releaseName . '</strong> by ' . $artistName . '.</p>';
+                    }       
+                };
+            }  
         };
     };
 };
+
+/**/          
 
 ?>
