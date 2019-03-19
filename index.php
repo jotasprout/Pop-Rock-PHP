@@ -34,14 +34,14 @@ if(!$getit){ echo 'Cursed-Crap. Did not run the query.'; }
 
 <head>
 	<meta charset="UTF-8">
-	<title>Artists Popularity</title>
+	<title>All Artists</title>
 	<?php echo $stylesAndSuch; ?>
 </head>
 
 <body>
 
 	<div class="container">
-		<?php echo $navbar ?>
+		<?php echo $navbarIndex ?>
 
 	<!-- main -->
 
@@ -62,13 +62,13 @@ if(!$getit){ echo 'Cursed-Crap. Did not run the query.'; }
 					<tr>
 						<th>Pretty Face</th>	
 						<th onClick="sortColumn('artistName', 'ASC')"><div class="pointyHead">Artist Name</div></th>
-						<th>Spotify ID</th>
+						<th class="popStyle">Spotify ID</th>
 						<!--
 						-->
-						<th>Spotify Data Date</th>
+						<th class="popStyle">Spotify<br>Data Date</th>
 						<th onClick="sortColumn('pop', 'DESC')"><div class="pointyHead popScore">Popularity</div></th>
-						<th>Spotify Followers</th>
-						<th>Total Spotify Albums</th>
+						<th class="popStyle">Spotify<br>Followers</th>
+						<th class="popStyle">Spotify<br>Total Albums</th>
 					</tr>
 				</thead>
 

@@ -50,9 +50,9 @@
     <p>If, after the page loads, it is empty, or the wrong discography displays, <a href='https://www.roxorsoxor.com/poprock/index.php'>choose an artist</a> from the <a href='https://www.roxorsoxor.com/poprock/index.php'>Artists List</a> first.</p>
 
 
-    <p><img id="forArt"></p> <!-- close forArt -->
-    <p id="forCurrentPopularity">Current Popularity goes here</p> <!-- close forCurrentPopularity -->
-    <p id="forCurrentFollowers">Current Followers go here</p> <!-- close forCurrentFollowers -->
+    <p><img id="forArt"></p>
+    <p><strong>Current Popularity on Spotify:</strong> <span id="forCurrentPopularity"></span></p> 
+    <p><strong>Current Followers on Spotify:</strong>  <span id="forCurrentFollowers"></span></p> 
 
 	<div class="panel panel-primary">
 		<div class="panel-heading">
@@ -91,9 +91,6 @@ d3.json("functions/createArtistD3.php?artistID=<?php echo $artistID; ?>", functi
     
     var dataset = data;
 
-    // Commenting out next because looks related to line 102. If everything still works, delete both
-    // var parseTime = d3.timeParse("%y-%m-%d");
-
     const artistName = dataset[0].artistName;
 
     const artistTitle = d3.select("#artistPop")
@@ -102,14 +99,20 @@ d3.json("functions/createArtistD3.php?artistID=<?php echo $artistID; ?>", functi
     const currentPopArtist = dataset[0].pop;
 
     const currentPop = d3.select("#forCurrentPopularity")
-            .text("Current Popularity on Spotify: " + currentPopArtist);               
+            .text(currentPopArtist);               
 
     const dataFollowers = dataset[0].followers;
-    // Ugh. I hate copying and pasting stuff I have no idea how it works, but ...
     let followers = String(dataFollowers).replace(/(.)(?=(\d{3})+$)/g,'$1,');
 
     const artistFollowers = d3.select("#forCurrentFollowers")
-            .text("Current Followers on Spotify: " + followers);  
+            .text(followers);  
+
+
+            <div id="tooltip" class="hidden">
+                <p id="timePeriod">Q</p>
+                <p>$ <span id="gdp">M</span> Billion</p>
+            </div>
+
 
     const artistArt = dataset[0].artistArt;
 
@@ -120,7 +123,6 @@ d3.json("functions/createArtistD3.php?artistID=<?php echo $artistID; ?>", functi
             //.attr("width", auto)
 
     dataset.forEach(function(d) {
-        // date = parseTime(d.date);
         d.date = new Date(d.date);
         d.pop = +d.pop;
     });
