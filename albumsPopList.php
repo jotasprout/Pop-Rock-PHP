@@ -11,12 +11,12 @@ if (!$connekt) {
 	echo 'Darn. Did not connect.';
 };
 
-$happyScabies2 = "SELECT a.albumName, a.year, a.albumArt, a.albumTotalTracks, z.artistName, p1.pop, p1.date, a.albumID
+$happyScabies2 = "SELECT a.albumName, a.year, a.albumArt, a.tracksTotal, z.artistName, p1.pop, p1.date, a.albumID
 	FROM (SELECT
 				y.albumID AS albumID,
 				y.albumName AS albumName,
 				y.artistID AS artistID,
-				y.albumTotalTracks AS albumTotalTracks,
+				y.tracksTotal AS tracksTotal,
 				y.albumArt AS albumArt,
 				y.year AS year
 			FROM albums y 
@@ -78,10 +78,10 @@ if(!$getit){
 			<th>Album Art</th>
 			<th>Album Spotify ID</th>
 			<th onClick="sortColumn('albumName', 'ASC', '<?php echo $artistID; ?>')"><div class="pointyHead">Album Name</div></th>
-			<th onClick="sortColumn('year', 'DESC', '<?php echo $artistID; ?>')"><div class="pointyHead">Released</div></th>
-			<th onClick="sortColumn('albumTotalTracks', 'DESC', '<?php echo $albumTotalTracks; ?>')"><div class="pointyHead">Total Tracks</div></th>
-			<th>Date</th>
-			<th onClick="sortColumn('pop', 'ASC', '<?php echo $artistID; ?>')"><div class="pointyHead">Popularity</div></th>
+			<th onClick="sortColumn('year', 'DESC', '<?php echo $artistID; ?>')"><div class="pointyHead popStyle">Released</div></th>
+			<th onClick="sortColumn('tracksTotal', 'DESC', '<?php echo $tracksTotal; ?>')"><div class="pointyHead popStyle">Total Tracks</div></th>
+			<th class="popStyle">Date</th>
+			<th onClick="sortColumn('pop', 'ASC', '<?php echo $artistID; ?>')"><div class="pointyHead popStyle">Popularity</div></th>
 		</tr>
 	</thead>
 				<tbody>
@@ -92,7 +92,7 @@ if(!$getit){
 							$albumArt = $row['albumArt'];
 							$albumID = $row['albumID'];
 							$albumName = $row['albumName'];
-							$albumTotalTracks = $row['albumTotalTracks'];
+							$tracksTotal = $row['tracksTotal'];
 							$albumReleased = $row['year'];
 							$albumPop = $row['pop'];
 							$date = $row['date'];
@@ -103,10 +103,10 @@ if(!$getit){
 <td><?php echo $albumID ?></td>
 <!-- NEED TO CREATE FUNCTION IN NEXT LINE -->
 <td><a href='https://www.roxorsoxor.com/poprock/thisAlbum_TracksList.php?albumID=<?php echo $albumID ?>'><?php echo $albumName ?></a></td>
-<td><?php echo $albumReleased ?></td>
-<td><?php echo $albumTotalTracks; ?></td>
-<th><?php echo $date ?></th>
-<td><?php echo $albumPop ?></td>
+<td class="popStyle"><?php echo $albumReleased ?></td>
+<td class="popStyle"><?php echo $tracksTotal ?></td>
+<th class="popStyle"><?php echo $date ?></th>
+<td class="popStyle"><?php echo $albumPop ?></td>
 
 </tr>
 					

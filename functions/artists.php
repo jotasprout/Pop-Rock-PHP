@@ -59,7 +59,7 @@ function divideCombineArtists ($theseArtists) {
 			}
 	
 			else {
-				echo '<p><img src="' . $artistArt . '"><br>' . $artistName . '<br><b>Population:</b> ' . $artistPop . '<br><b>Followers:</b> ' . $artistFollowers . '</p>';
+				echo '<p><img src="' . $artistArt . '"><br>' . $artistName . '<br><b>Popularity:</b> ' . $artistPop . '<br><b>Followers:</b> ' . $artistFollowers . '</p>';
 			} 
 			
 		}

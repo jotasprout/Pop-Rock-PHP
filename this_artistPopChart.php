@@ -107,13 +107,6 @@ d3.json("functions/createArtistD3.php?artistID=<?php echo $artistID; ?>", functi
     const artistFollowers = d3.select("#forCurrentFollowers")
             .text(followers);  
 
-
-            <div id="tooltip" class="hidden">
-                <p id="timePeriod">Q</p>
-                <p>$ <span id="gdp">M</span> Billion</p>
-            </div>
-
-
     const artistArt = dataset[0].artistArt;
 
     d3.select("#forArt")
@@ -185,7 +178,6 @@ d3.json("functions/createArtistD3.php?artistID=<?php echo $artistID; ?>", functi
 
         const artistTitle = d3.select("#albumPop")
             .text(artistName + "'s Albums' Current Popularity");
-
         
         // Create SVG element
         var svg = d3.select("#recordCollection")
