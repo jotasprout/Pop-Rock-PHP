@@ -47,6 +47,10 @@ function divideCombineAlbums ($artistAlbums) {
   
 }
 
+function gatherArtistAlbums () {
+	
+}
+
 $artistID = "3EhbVgyfGd7HkpsagwL9GS";
 
 $discogOffset = 0;

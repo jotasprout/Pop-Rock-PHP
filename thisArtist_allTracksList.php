@@ -63,9 +63,11 @@ if ( !$getit ) {
 		<tr>
 			<th onClick="sortColumn('albumName', 'ASC', '<?php echo $artistID ?>')"><div class="pointyHead">Album Name</div></th>
 			<th>trackID</th>
-			<th>Date</th>
-			<th onClick="sortColumn('trackName', 'DESC', '<?php echo $artistID ?>')"><div class="pointyHead">Track</div></th>
-			<th onClick="sortColumn('pop', 'ASC', '<?php echo $artistID ?>')"><div class="pointyHead">Track Popularity</div></th>
+			<th>As of</th>
+			<th onClick="sortColumn('trackName', 'DESC', '<?php echo $artistID ?>')"><div class="pointyHead">Track Name</div></th>
+			<th class="popStyle" onClick="sortColumn('pop', 'ASC', '<?php echo $artistID ?>')"><div class="pointyHead">Spotify<br>Popularity</div></th>
+			<th>LastFM<br>Listeners</th>
+			<th>LastFM<br>Playcount</th>
 		</tr>
 	</thead>
 					
@@ -83,7 +85,9 @@ if ( !$getit ) {
 								<td><?php echo $trackID ?></td>
 								<td><?php echo $popDate ?></td>
 								<td><?php echo $trackName ?></td>
-								<td><?php echo $trackPop ?></td>
+								<td class="popStyle"><?php echo $trackPop ?></td>
+								<td>--</td>
+								<td>--</td>
 							</tr>
 					<?php 
 						} // end of while

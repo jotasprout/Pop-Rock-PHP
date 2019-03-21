@@ -1,6 +1,7 @@
 <?php
 
 require '../secrets/auth.php';
+require '../data_text/artists_arrays.php';
 require '../functions/tracks.php';
 require_once '../rockdb.php';
 
@@ -78,7 +79,7 @@ function divideCombineAlbums ($artistAlbums) {
 			};
 			
 			// divideCombineInsertTracksAndPop ($AlbumsTracks);
-			echo "<p>" . $albumName . " has " . count($AlbumsTracks) . " tracks.</p>";
+			//echo "<p>" . $albumName . " has " . count($AlbumsTracks) . " tracks.</p>";
 
 			unset($AlbumsTracks);
 
@@ -87,56 +88,91 @@ function divideCombineAlbums ($artistAlbums) {
   
 }
 
-$artistID = "3EhbVgyfGd7HkpsagwL9GS";
+function gatherArtistAlbums ($artistID) {
 
-$discogOffset = 0;
-
-$discography = $GLOBALS['api']->getArtistAlbums($artistID, [
-	'limit' => '50',
-	'offset' => $discogOffset
-]);
-
-$artistAlbumsTotal = intval($discography->total);
-
-echo "<p>Alice has " . $artistAlbumsTotal . " total albums.</p>";
-
-$a = ceil($artistAlbumsTotal/50);
-
-echo "<p>Total albums divided by 50 = " . $a;
-
-$allAlbumsThisArtist = array ();
-
-
-for ($p=0; $p<$a; $p++) {
-	
-	$discogChunk = array ();
-	
-	echo "<p>Discog Offset = " . $discogOffset . ".</p>";
-	
-	echo "<p>Here is chunk #" . $p . ".</p>";
+	$discogOffset = 0;
 
 	$discography = $GLOBALS['api']->getArtistAlbums($artistID, [
 		'limit' => '50',
-		'offset' => $discogOffset,
-		'album_type' => ['album', 'compilation']//,
-		//'market' => 'US'
+		'offset' => $discogOffset
 	]);
 
-	foreach ($discography->items as $album) {
-		$albumID = $album->id;
-		$discogChunk [] = $albumID;
+	$artistAlbumsTotal = intval($discography->total);
+
+	echo "<p>Alice has " . $artistAlbumsTotal . " total albums.</p>";
+
+	$a = ceil($artistAlbumsTotal/50);
+
+	echo "<p>Total albums divided by 50 = " . $a;
+
+	$allAlbumsThisArtist = array ();
+
+
+	for ($p=0; $p<$a; $p++) {
+		
+		$discogChunk = array ();
+		
+		echo "<p>Discog Offset = " . $discogOffset . ".</p>";
+		
+		echo "<p>Here is chunk #" . $p . ".</p>";
+
+		$discography = $GLOBALS['api']->getArtistAlbums($artistID, [
+			'limit' => '50',
+			'offset' => $discogOffset,
+			'album_type' => ['album', 'compilation']//,
+			//'market' => 'US'
+		]);
+
+		foreach ($discography->items as $album) {
+			$albumID = $album->id;
+			$discogChunk [] = $albumID;
+		};
+
+		$allAlbumsThisArtist = array_merge($allAlbumsThisArtist, $discogChunk);
+		
+		$discogOffset += 50;
+
+		unset($discogChunk);
 	};
 
-	$allAlbumsThisArtist = array_merge($allAlbumsThisArtist, $discogChunk);
-	
-	$discogOffset += 50;
+	divideCombineAlbums ($allAlbumsThisArtist);
 
-	unset($discogChunk);
-};
+	unset($allAlbumsThisArtist);
 
-divideCombineAlbums ($allAlbumsThisArtist);
+}
 
 
+function divideCombineArtistsForAlbums ($theseArtists) {
 
+	// Divide all artists into chunks of 50
+	$artistsChunk = array ();
+	$x = ceil((count($theseArtists))/50);
+
+	$firstArtist = 0;
+
+	for ($i=0; $i<$x; ++$i) {
+		$lastArtist = 49;
+		$artistsChunk = array_slice($theseArtists, $firstArtist, $lastArtist);
+		// put chunks of 50 into an array
+		$artistsArraysArray [] = $artistsChunk;
+		$firstArtist += 50;
+	};
+
+	for ($i=0; $i<(count($artistsArraysArray)); ++$i) {
+		$artistsIds = implode(',', $artistsArraysArray[$i]);
+		echo '<br>these are the artist IDs ' . $artistsIds;
+		$artistsArray = $artistsArraysArray[$i];
+			
+		for ($j=0; $j<(count($artistsArray)); ++$j) {
+
+			$artistID = $artistsArray[$j];
+
+			gatherArtistAlbums ($artistID);
+			
+		}
+	};	
+}
+
+divideCombineArtistsForAlbums ($artists01);
 
 ?>

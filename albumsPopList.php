@@ -81,7 +81,9 @@ if(!$getit){
 			<th onClick="sortColumn('year', 'DESC', '<?php echo $artistID; ?>')"><div class="pointyHead popStyle">Released</div></th>
 			<th onClick="sortColumn('tracksTotal', 'DESC', '<?php echo $tracksTotal; ?>')"><div class="pointyHead popStyle">Total Tracks</div></th>
 			<th class="popStyle">Date</th>
-			<th onClick="sortColumn('pop', 'ASC', '<?php echo $artistID; ?>')"><div class="pointyHead popStyle">Popularity</div></th>
+			<th onClick="sortColumn('pop', 'ASC', '<?php echo $artistID; ?>')"><div class="pointyHead popStyle">Spotify<br>Popularity</div></th>
+			<th>LastFM<br>Listeners</th>
+			<th>LastFM<br>Playcount</th>
 		</tr>
 	</thead>
 				<tbody>
@@ -107,7 +109,8 @@ if(!$getit){
 <td class="popStyle"><?php echo $tracksTotal ?></td>
 <th class="popStyle"><?php echo $date ?></th>
 <td class="popStyle"><?php echo $albumPop ?></td>
-
+<td>--</td>
+<td>--</td>
 </tr>
 					
 					<?php 

@@ -67,8 +67,8 @@ if ( !$getit ) {
 
 				-->
 			<th onClick="sortColumn('trackName', 'DESC')"><div class="pointyHead">Track</div></th>
-			<th>Date</th>
-			<th onClick="sortColumn('pop', 'ASC')"><div class="pointyHead">Track Popularity</div></th>
+			<th class="popStyle">Date</th>
+			<th class="popStyle" onClick="sortColumn('pop', 'ASC')"><div class="pointyHead">Track<br>Popularity</div></th>
 		</tr>
 	</thead>
 	
@@ -88,8 +88,8 @@ if ( !$getit ) {
 
 -->
 <td><a href='https://www.roxorsoxor.com/poprock/thisTrack_popChart.php?trackID=<?php echo $trackID ?>'><?php echo $trackName ?></a></td>
-<td><?php echo $popDate ?></td>
-<td><?php echo $trackPop ?></td>
+<td class="popStyle"><?php echo $popDate ?></td>
+<td class="popStyle"><?php echo $trackPop ?></td>
 </tr>
 	<?php 
 		} // end of while

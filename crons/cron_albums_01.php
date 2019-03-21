@@ -48,9 +48,7 @@ function divideCombineArtistsForAlbums ($theseArtists) {
 				'limit' => '50'
 			]);
 			
-			$artistAlbumsTotal = $discography->total;
 
-			updateArtistAlbumsTotal($artistID, $artistAlbumsTotal);
 
 			// Somewhere about here is future home of algorithm for using offset and ...
 

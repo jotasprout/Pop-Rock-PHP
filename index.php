@@ -66,8 +66,10 @@ if(!$getit){ echo 'Cursed-Crap. Did not run the query.'; }
 						<!--
 						-->
 						<th class="popStyle">Spotify<br>Data Date</th>
-						<th onClick="sortColumn('pop', 'DESC')"><div class="pointyHead popScore">Popularity</div></th>
+						<th onClick="sortColumn('pop', 'DESC')"><div class="pointyHead popScore">Spotify<br>Popularity</div></th>
 						<th class="popStyle">Spotify<br>Followers</th>
+						<th>LastFM<br>Listeners</th>
+						<th>LastFM<br>Playcount</th>
 						<th class="popStyle">Spotify<br>Total Albums</th>
 					</tr>
 				</thead>
@@ -95,6 +97,8 @@ if(!$getit){ echo 'Cursed-Crap. Did not run the query.'; }
 					<td><?php echo $popDate ?></td>
 					<td class="popStyle"><?php echo $artistPop ?></td>
 					<td id="followers" class="rightNum"><?php echo $artistFollowers ?></td>
+					<td>--</td>
+					<td>--</td>
 					<td class="popStyle"><?php echo $albumsTotal ?></td>
 				</tr>
 
