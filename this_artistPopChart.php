@@ -244,6 +244,30 @@ d3.json("functions/createArtistD3.php?artistID=<?php echo $artistID; ?>", functi
     });		
 </script>	
 
+<script>
+
+    d3.json("functions/getCurrentLastFM.php?artistID=<?php echo $artistID; ?>", function(dataset) {
+        
+        console.log(dataset);
+        
+        var data = dataset;
+
+        const dataListeners = data.artistListeners;
+        let listeners = String(dataListeners).replace(/(.)(?=(\d{3})+$)/g,'$1,');
+
+        const listen = d3.select("#forCurrentListeners")
+               .text(listeners);   
+
+        const dataPlaycount = data.artistPlaycount;
+        let playcount = String(dataPlaycount).replace(/(.)(?=(\d{3})+$)/g,'$1,');
+
+        const play = d3.select("#forCurrentPlaycount")
+               .text(playcount); 
+
+    });   
+     
+</script>
+
 <?php echo $scriptsAndSuch; ?>
 
 </body>
