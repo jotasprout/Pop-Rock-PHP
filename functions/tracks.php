@@ -117,11 +117,11 @@ function divideCombineTracksAndInsertPop ($allArtistTracks) {
 			$rockpop = $connekt->query($insertTrackPop);
 			
 			if(!$rockpop){
-				echo 'Confounded-Crap. Could not insert POPULARITY for "' . $trackName . '" from <i>' . $trackAlbumName . '</i>.<br>';
+				echo '<p>Confounded-Crap. Could not insert POPULARITY for "' . $trackName . '" from <i>' . $trackAlbumName . '</i>.</p>';
 			}
 	
 			else {
-				echo $trackName . " from <i>" . $trackAlbumName . "</i>" . " has pop " . $trackPop . "<br>";
+				echo "<p>" . $trackName . " from <i>" . $trackAlbumName . "</i>" . " has pop " . $trackPop . "</p>";
 			}
 		}
 	};

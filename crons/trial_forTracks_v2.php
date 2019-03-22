@@ -41,7 +41,27 @@ function divideCombineAlbums ($artistAlbums) {
 			$thisArtistName = $album->artists[0]->name;
 			$albumPop = $album->popularity;
 			$albumArt = $album->images[0]->url;
+
+			$insertAlbum = "INSERT INTO albums (albumID,albumName,artistID,year,albumArt) VALUES('$albumID','$albumName','$thisArtistID','$albumReleased','$albumTotalTracks','$albumArt')";
+			
+			if (!$connekt) {
+				echo 'Darn. Did not connect.<br>';
+			};
+			
+			$rockout = $connekt->query($insertAlbum);
 		
+			if(!$rockout){
+				echo '<p>Crap de General Tsao! Could not insert ' . $albumName . '.</p>';
+			}
+		
+			$insertAlbumsPop = "INSERT INTO popAlbums (albumID,pop,date) VALUES('$albumID','$albumPop',curdate())";
+		
+			$rockin = $connekt->query($insertAlbumsPop);
+			
+			if(!$rockin){
+				echo 'Sweet & Sour Crap! Could not insert albums popularity.';
+			}
+
             echo '<p><img src="' . $albumArt . '" height="64" width="64"><br>' . $albumName . '<br>' . $albumReleased . '<br><strong>Popularity:</strong> ' . $albumPop . '<br><strong>Total tracks:</strong> ' . $albumTotalTracks . '</p>';
 			
 			$AlbumsTracks = array ();
@@ -62,14 +82,14 @@ function divideCombineAlbums ($artistAlbums) {
 				
 				$thisAlbumTracks = $GLOBALS['api']->getAlbumTracks($albumID, [
 					'limit' => '50',
-					'offset' => $trackListOffset//,
-					//'market' => 'US'
+					'offset' => $trackListOffset,
+					'market' => 'US'
 				]);
 
 				foreach ($thisAlbumTracks->items as $track) {
 					$trackID = $track->id;
 					$trackName = $track->name;
-					echo "<p>" . $trackName . " from " . $albumName . "</p>";
+					//echo "<p>" . $trackName . " from " . $albumName . "</p>";
 					$AlbumsTracks [] = $trackID;
 				};
 
@@ -78,8 +98,7 @@ function divideCombineAlbums ($artistAlbums) {
 				unset($tracksChunk);
 			};
 			
-			// divideCombineInsertTracksAndPop ($AlbumsTracks);
-			//echo "<p>" . $albumName . " has " . count($AlbumsTracks) . " tracks.</p>";
+			divideCombineTracksAndInsertPop ($AlbumsTracks);
 
 			unset($AlbumsTracks);
 
@@ -99,14 +118,13 @@ function gatherArtistAlbums ($artistID) {
 
 	$artistAlbumsTotal = intval($discography->total);
 
-	echo "<p>Alice has " . $artistAlbumsTotal . " total albums.</p>";
+	echo "<p>" . $artistID . " has " . $artistAlbumsTotal . " total albums.</p>";
 
 	$a = ceil($artistAlbumsTotal/50);
 
 	echo "<p>Total albums divided by 50 = " . $a;
 
 	$allAlbumsThisArtist = array ();
-
 
 	for ($p=0; $p<$a; $p++) {
 		
@@ -160,7 +178,7 @@ function divideCombineArtistsForAlbums ($theseArtists) {
 
 	for ($i=0; $i<(count($artistsArraysArray)); ++$i) {
 		$artistsIds = implode(',', $artistsArraysArray[$i]);
-		echo '<br>these are the artist IDs ' . $artistsIds;
+		//echo '<br>these are the artist IDs ' . $artistsIds;
 		$artistsArray = $artistsArraysArray[$i];
 			
 		for ($j=0; $j<(count($artistsArray)); ++$j) {
@@ -171,8 +189,11 @@ function divideCombineArtistsForAlbums ($theseArtists) {
 			
 		}
 	};	
+
+	unset($artistsChunk);
+
 }
 
-divideCombineArtistsForAlbums ($artists01);
+divideCombineArtistsForAlbums ($artists07);
 
 ?>
