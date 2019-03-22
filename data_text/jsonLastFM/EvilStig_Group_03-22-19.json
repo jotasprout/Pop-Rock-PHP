@@ -1,11 +1,11 @@
 {
-    "date": "2019-03-06",
+    "date": "2019-03-22",
     "name": "Evil Stig",
     "type": "Group",
     "mbid": "66bf7876-3898-47fa-8bdd-dc200f946cec",
     "stats": {
-        "listeners": "1394",
-        "playcount": "21221"
+        "listeners": "1399",
+        "playcount": "21266"
     },
     "birthday": "1995",
     "genres": [
@@ -29,7 +29,7 @@
                     "name": "Evil Stig",
                     "mbid": "a1a7eb43-96b6-4b6a-9908-e07e0c21d71a",
                     "listeners": "1140",
-                    "playcount": "18742",
+                    "playcount": "18746",
                     "date": "",
                     "country": "",
                     "disambiguation": "",
@@ -102,7 +102,7 @@
                             "title": "Whirlwind",
                             "stats": {
                                 "listeners": "478",
-                                "playcount": "1641"
+                                "playcount": "1642"
                             },
                             "artistName": "Evil Stig",
                             "artistMBID": "66bf7876-3898-47fa-8bdd-dc200f946cec"
@@ -152,7 +152,7 @@
                             "title": "Crimson & Clover",
                             "stats": {
                                 "listeners": "494",
-                                "playcount": "1461"
+                                "playcount": "1462"
                             },
                             "artistName": "Evil Stig",
                             "artistMBID": "66bf7876-3898-47fa-8bdd-dc200f946cec"
@@ -183,7 +183,7 @@
                     "name": "Evil Stig",
                     "mbid": "a1a7eb43-96b6-4b6a-9908-e07e0c21d71a",
                     "listeners": "1140",
-                    "playcount": "18742",
+                    "playcount": "18746",
                     "date": "1995",
                     "country": "AU",
                     "disambiguation": "",
@@ -256,7 +256,7 @@
                             "title": "Whirlwind",
                             "stats": {
                                 "listeners": "478",
-                                "playcount": "1641"
+                                "playcount": "1642"
                             },
                             "artistName": "Evil Stig",
                             "artistMBID": "66bf7876-3898-47fa-8bdd-dc200f946cec"
@@ -306,7 +306,7 @@
                             "title": "Crimson & Clover",
                             "stats": {
                                 "listeners": "494",
-                                "playcount": "1461"
+                                "playcount": "1462"
                             },
                             "artistName": "Evil Stig",
                             "artistMBID": "66bf7876-3898-47fa-8bdd-dc200f946cec"

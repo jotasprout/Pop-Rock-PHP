@@ -1,11 +1,11 @@
 {
-    "date": "2019-03-06",
+    "date": "2019-03-22",
     "name": "Quiet Riot",
     "type": "Group",
     "mbid": "5c6acb91-4b9b-4245-b92f-e817295c4ed0",
     "stats": {
-        "listeners": "511514",
-        "playcount": "4230632"
+        "listeners": "512736",
+        "playcount": "4242755"
     },
     "birthday": "1973",
     "genres": [
@@ -23,8 +23,8 @@
                 {
                     "name": "QR III",
                     "mbid": "675419fd-f621-4fe0-b6df-3e6351d2a5a2",
-                    "listeners": "28267",
-                    "playcount": "130786",
+                    "listeners": "28331",
+                    "playcount": "131189",
                     "date": "1986",
                     "country": "US",
                     "disambiguation": "",
@@ -36,8 +36,8 @@
                             "mbid": "48a135ae-196e-4d0e-bc49-52e50fe77c0c",
                             "title": "Main Attraction",
                             "stats": {
-                                "listeners": "5335",
-                                "playcount": "12860"
+                                "listeners": "5344",
+                                "playcount": "12886"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -46,8 +46,8 @@
                             "mbid": "edd2bb12-95f1-40c8-afdf-49d44f2dc144",
                             "title": "The Wild and the Young",
                             "stats": {
-                                "listeners": "30189",
-                                "playcount": "95978"
+                                "listeners": "30243",
+                                "playcount": "96181"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -56,8 +56,8 @@
                             "mbid": "6dc781e9-a994-4854-bce5-bf06fae8ef81",
                             "title": "Twilight Hotel",
                             "stats": {
-                                "listeners": "6787",
-                                "playcount": "19225"
+                                "listeners": "6801",
+                                "playcount": "19275"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -66,8 +66,8 @@
                             "mbid": "5a7d4701-9efc-40e9-b459-9fc69bf83716",
                             "title": "Rise or Fall",
                             "stats": {
-                                "listeners": "4162",
-                                "playcount": "9012"
+                                "listeners": "4170",
+                                "playcount": "9031"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -76,8 +76,8 @@
                             "mbid": "60d5122e-ad39-4bc8-b9be-da0b1d4b8c22",
                             "title": "Put Up or Shut Up",
                             "stats": {
-                                "listeners": "5656",
-                                "playcount": "11758"
+                                "listeners": "5683",
+                                "playcount": "11805"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -86,8 +86,8 @@
                             "mbid": "795bc330-e192-4eb8-9bae-12575314d132",
                             "title": "Still of the Night",
                             "stats": {
-                                "listeners": "4145",
-                                "playcount": "10526"
+                                "listeners": "4155",
+                                "playcount": "10550"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -96,8 +96,8 @@
                             "mbid": "4fc2d2e4-f54d-427c-89de-1b0fc7f9a9ac",
                             "title": "Bass Case",
                             "stats": {
-                                "listeners": "4022",
-                                "playcount": "8085"
+                                "listeners": "4029",
+                                "playcount": "8103"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -106,8 +106,8 @@
                             "mbid": "f50aac49-91c0-40ba-964b-07aed0dedcc5",
                             "title": "The Pump",
                             "stats": {
-                                "listeners": "3980",
-                                "playcount": "8025"
+                                "listeners": "3989",
+                                "playcount": "8042"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -116,8 +116,8 @@
                             "mbid": "d9b43244-c06f-4a2b-be13-e2e774511ff8",
                             "title": "Slave to Love",
                             "stats": {
-                                "listeners": "4683",
-                                "playcount": "11306"
+                                "listeners": "4693",
+                                "playcount": "11331"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -126,8 +126,8 @@
                             "mbid": "e14efec8-2df5-4d91-ae3e-741821075781",
                             "title": "Helping Hands",
                             "stats": {
-                                "listeners": "3778",
-                                "playcount": "7847"
+                                "listeners": "3785",
+                                "playcount": "7859"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -143,8 +143,8 @@
                 {
                     "name": "Quiet Riot",
                     "mbid": "0a7fefee-604c-4f68-91ad-17e3d4ebfda8",
-                    "listeners": "8395",
-                    "playcount": "88809",
+                    "listeners": "8418",
+                    "playcount": "88969",
                     "date": "1988-10",
                     "country": "US",
                     "disambiguation": "",
@@ -156,8 +156,8 @@
                             "mbid": "ae0bba31-5be4-41a8-b81e-36b96c51f5a2",
                             "title": "It's Not So Funny",
                             "stats": {
-                                "listeners": "3268",
-                                "playcount": "10310"
+                                "listeners": "3269",
+                                "playcount": "10320"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -166,8 +166,8 @@
                             "mbid": "1dc5654d-bb1f-4ddc-b9d0-b942bf1fab3f",
                             "title": "Look in Any Window",
                             "stats": {
-                                "listeners": "2822",
-                                "playcount": "9100"
+                                "listeners": "2823",
+                                "playcount": "9105"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -183,8 +183,8 @@
                 {
                     "name": "Metal Health",
                     "mbid": "3e29cdde-aa86-43cd-9521-d96f286957c6",
-                    "listeners": "246292",
-                    "playcount": "1405854",
+                    "listeners": "247115",
+                    "playcount": "1411247",
                     "date": "2001",
                     "country": "XE",
                     "disambiguation": "",
@@ -196,8 +196,8 @@
                             "mbid": "98d66de4-ab8e-4c23-bc0f-8cf2abd02584",
                             "title": "Metal Health",
                             "stats": {
-                                "listeners": "43624",
-                                "playcount": "183712"
+                                "listeners": "43634",
+                                "playcount": "183820"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -206,8 +206,8 @@
                             "mbid": "d3b22f15-102c-4f73-968d-eb70df8a4e7c",
                             "title": "Cum On Feel the Noize",
                             "stats": {
-                                "listeners": "23212",
-                                "playcount": "90732"
+                                "listeners": "23222",
+                                "playcount": "90779"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -216,8 +216,8 @@
                             "mbid": "55e9ccc3-bad6-43bd-a41e-2800b1b30713",
                             "title": "Don\u2019t Wanna Let You Go",
                             "stats": {
-                                "listeners": "35398",
-                                "playcount": "102424"
+                                "listeners": "35438",
+                                "playcount": "102573"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -226,8 +226,8 @@
                             "mbid": "948f3359-f239-41dc-9cce-60e38d8c6263",
                             "title": "Love\u2019s a Bitch",
                             "stats": {
-                                "listeners": "31197",
-                                "playcount": "83373"
+                                "listeners": "31244",
+                                "playcount": "83514"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -236,8 +236,8 @@
                             "mbid": "5e8d549c-ec20-4d80-a182-19e7104a81c7",
                             "title": "Breathless",
                             "stats": {
-                                "listeners": "25243",
-                                "playcount": "67372"
+                                "listeners": "25275",
+                                "playcount": "67462"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -246,8 +246,8 @@
                             "mbid": "876d875b-f54f-474b-9fd0-f0b13f2ff796",
                             "title": "Run for Cover",
                             "stats": {
-                                "listeners": "24365",
-                                "playcount": "62843"
+                                "listeners": "24400",
+                                "playcount": "62961"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -256,8 +256,8 @@
                             "mbid": "d21154ec-2030-4fc0-ba41-328c38309515",
                             "title": "Battle Axe",
                             "stats": {
-                                "listeners": "25180",
-                                "playcount": "60218"
+                                "listeners": "25214",
+                                "playcount": "60298"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -266,8 +266,8 @@
                             "mbid": "0c646840-2d62-488c-b62b-a0a87e502f85",
                             "title": "Let\u2019s Get Crazy",
                             "stats": {
-                                "listeners": "23609",
-                                "playcount": "60003"
+                                "listeners": "23643",
+                                "playcount": "60096"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -276,8 +276,8 @@
                             "mbid": "390a23c7-2fe2-4ac2-83fb-df9a45ae0473",
                             "title": "Thunderbird",
                             "stats": {
-                                "listeners": "23592",
-                                "playcount": "67536"
+                                "listeners": "23631",
+                                "playcount": "67643"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -286,8 +286,8 @@
                             "mbid": "d1fdf7f0-b506-498c-940f-1e0eea8edd4d",
                             "title": "Danger Zone",
                             "stats": {
-                                "listeners": "4531",
-                                "playcount": "11589"
+                                "listeners": "4539",
+                                "playcount": "11623"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -297,8 +297,8 @@
                 {
                     "name": "Metal Health",
                     "mbid": "3e29cdde-aa86-43cd-9521-d96f286957c6",
-                    "listeners": "246292",
-                    "playcount": "1405854",
+                    "listeners": "247115",
+                    "playcount": "1411247",
                     "date": "1983-03-11",
                     "country": "US",
                     "disambiguation": "",
@@ -310,8 +310,8 @@
                             "mbid": "98d66de4-ab8e-4c23-bc0f-8cf2abd02584",
                             "title": "Metal Health",
                             "stats": {
-                                "listeners": "43624",
-                                "playcount": "183712"
+                                "listeners": "43634",
+                                "playcount": "183820"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -320,8 +320,8 @@
                             "mbid": "d3b22f15-102c-4f73-968d-eb70df8a4e7c",
                             "title": "Cum On Feel the Noize",
                             "stats": {
-                                "listeners": "23212",
-                                "playcount": "90732"
+                                "listeners": "23222",
+                                "playcount": "90779"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -330,8 +330,8 @@
                             "mbid": "55e9ccc3-bad6-43bd-a41e-2800b1b30713",
                             "title": "Don\u2019t Wanna Let You Go",
                             "stats": {
-                                "listeners": "35398",
-                                "playcount": "102424"
+                                "listeners": "35438",
+                                "playcount": "102573"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -340,8 +340,8 @@
                             "mbid": "948f3359-f239-41dc-9cce-60e38d8c6263",
                             "title": "Love\u2019s a Bitch",
                             "stats": {
-                                "listeners": "31197",
-                                "playcount": "83373"
+                                "listeners": "31244",
+                                "playcount": "83514"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -350,8 +350,8 @@
                             "mbid": "5e8d549c-ec20-4d80-a182-19e7104a81c7",
                             "title": "Breathless",
                             "stats": {
-                                "listeners": "25243",
-                                "playcount": "67372"
+                                "listeners": "25275",
+                                "playcount": "67462"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -360,8 +360,8 @@
                             "mbid": "876d875b-f54f-474b-9fd0-f0b13f2ff796",
                             "title": "Run for Cover",
                             "stats": {
-                                "listeners": "24365",
-                                "playcount": "62843"
+                                "listeners": "24400",
+                                "playcount": "62961"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -370,8 +370,8 @@
                             "mbid": "d21154ec-2030-4fc0-ba41-328c38309515",
                             "title": "Battle Axe",
                             "stats": {
-                                "listeners": "25180",
-                                "playcount": "60218"
+                                "listeners": "25214",
+                                "playcount": "60298"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -380,8 +380,8 @@
                             "mbid": "0c646840-2d62-488c-b62b-a0a87e502f85",
                             "title": "Let\u2019s Get Crazy",
                             "stats": {
-                                "listeners": "23609",
-                                "playcount": "60003"
+                                "listeners": "23643",
+                                "playcount": "60096"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -390,8 +390,8 @@
                             "mbid": "390a23c7-2fe2-4ac2-83fb-df9a45ae0473",
                             "title": "Thunderbird",
                             "stats": {
-                                "listeners": "23592",
-                                "playcount": "67536"
+                                "listeners": "23631",
+                                "playcount": "67643"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -400,8 +400,8 @@
                             "mbid": "d1fdf7f0-b506-498c-940f-1e0eea8edd4d",
                             "title": "Danger Zone",
                             "stats": {
-                                "listeners": "4531",
-                                "playcount": "11589"
+                                "listeners": "4539",
+                                "playcount": "11623"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -411,8 +411,8 @@
                 {
                     "name": "Metal Health",
                     "mbid": "3e29cdde-aa86-43cd-9521-d96f286957c6",
-                    "listeners": "246292",
-                    "playcount": "1405854",
+                    "listeners": "247115",
+                    "playcount": "1411247",
                     "date": "1983-03-11",
                     "country": "US",
                     "disambiguation": "",
@@ -424,8 +424,8 @@
                             "mbid": "98d66de4-ab8e-4c23-bc0f-8cf2abd02584",
                             "title": "Metal Health",
                             "stats": {
-                                "listeners": "43624",
-                                "playcount": "183712"
+                                "listeners": "43634",
+                                "playcount": "183820"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -434,8 +434,8 @@
                             "mbid": "d3b22f15-102c-4f73-968d-eb70df8a4e7c",
                             "title": "Cum On Feel the Noize",
                             "stats": {
-                                "listeners": "23212",
-                                "playcount": "90732"
+                                "listeners": "23222",
+                                "playcount": "90779"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -444,8 +444,8 @@
                             "mbid": "55e9ccc3-bad6-43bd-a41e-2800b1b30713",
                             "title": "Don\u2019t Wanna Let You Go",
                             "stats": {
-                                "listeners": "35398",
-                                "playcount": "102424"
+                                "listeners": "35438",
+                                "playcount": "102573"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -454,8 +454,8 @@
                             "mbid": "948f3359-f239-41dc-9cce-60e38d8c6263",
                             "title": "Love\u2019s a Bitch",
                             "stats": {
-                                "listeners": "31197",
-                                "playcount": "83373"
+                                "listeners": "31244",
+                                "playcount": "83514"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -464,8 +464,8 @@
                             "mbid": "5e8d549c-ec20-4d80-a182-19e7104a81c7",
                             "title": "Breathless",
                             "stats": {
-                                "listeners": "25243",
-                                "playcount": "67372"
+                                "listeners": "25275",
+                                "playcount": "67462"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -474,8 +474,8 @@
                             "mbid": "876d875b-f54f-474b-9fd0-f0b13f2ff796",
                             "title": "Run for Cover",
                             "stats": {
-                                "listeners": "24365",
-                                "playcount": "62843"
+                                "listeners": "24400",
+                                "playcount": "62961"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -484,8 +484,8 @@
                             "mbid": "d21154ec-2030-4fc0-ba41-328c38309515",
                             "title": "Battle Axe",
                             "stats": {
-                                "listeners": "25180",
-                                "playcount": "60218"
+                                "listeners": "25214",
+                                "playcount": "60298"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -494,8 +494,8 @@
                             "mbid": "0c646840-2d62-488c-b62b-a0a87e502f85",
                             "title": "Let\u2019s Get Crazy",
                             "stats": {
-                                "listeners": "23609",
-                                "playcount": "60003"
+                                "listeners": "23643",
+                                "playcount": "60096"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -504,8 +504,8 @@
                             "mbid": "390a23c7-2fe2-4ac2-83fb-df9a45ae0473",
                             "title": "Thunderbird",
                             "stats": {
-                                "listeners": "23592",
-                                "playcount": "67536"
+                                "listeners": "23631",
+                                "playcount": "67643"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -514,8 +514,8 @@
                             "mbid": "d1fdf7f0-b506-498c-940f-1e0eea8edd4d",
                             "title": "Danger Zone",
                             "stats": {
-                                "listeners": "4531",
-                                "playcount": "11589"
+                                "listeners": "4539",
+                                "playcount": "11623"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -525,8 +525,8 @@
                 {
                     "name": "Metal Health",
                     "mbid": "3e29cdde-aa86-43cd-9521-d96f286957c6",
-                    "listeners": "246292",
-                    "playcount": "1405854",
+                    "listeners": "247115",
+                    "playcount": "1411247",
                     "date": "1988-09-30",
                     "country": "JP",
                     "disambiguation": "",
@@ -538,8 +538,8 @@
                             "mbid": "98d66de4-ab8e-4c23-bc0f-8cf2abd02584",
                             "title": "Metal Health",
                             "stats": {
-                                "listeners": "43624",
-                                "playcount": "183712"
+                                "listeners": "43634",
+                                "playcount": "183820"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -548,8 +548,8 @@
                             "mbid": "d3b22f15-102c-4f73-968d-eb70df8a4e7c",
                             "title": "Cum On Feel the Noize",
                             "stats": {
-                                "listeners": "23212",
-                                "playcount": "90732"
+                                "listeners": "23222",
+                                "playcount": "90779"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -558,8 +558,8 @@
                             "mbid": "55e9ccc3-bad6-43bd-a41e-2800b1b30713",
                             "title": "Don\u2019t Wanna Let You Go",
                             "stats": {
-                                "listeners": "35398",
-                                "playcount": "102424"
+                                "listeners": "35438",
+                                "playcount": "102573"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -568,8 +568,8 @@
                             "mbid": "948f3359-f239-41dc-9cce-60e38d8c6263",
                             "title": "Love\u2019s a Bitch",
                             "stats": {
-                                "listeners": "31197",
-                                "playcount": "83373"
+                                "listeners": "31244",
+                                "playcount": "83514"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -578,8 +578,8 @@
                             "mbid": "5e8d549c-ec20-4d80-a182-19e7104a81c7",
                             "title": "Breathless",
                             "stats": {
-                                "listeners": "25243",
-                                "playcount": "67372"
+                                "listeners": "25275",
+                                "playcount": "67462"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -588,8 +588,8 @@
                             "mbid": "876d875b-f54f-474b-9fd0-f0b13f2ff796",
                             "title": "Run for Cover",
                             "stats": {
-                                "listeners": "24365",
-                                "playcount": "62843"
+                                "listeners": "24400",
+                                "playcount": "62961"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -598,8 +598,8 @@
                             "mbid": "d21154ec-2030-4fc0-ba41-328c38309515",
                             "title": "Battle Axe",
                             "stats": {
-                                "listeners": "25180",
-                                "playcount": "60218"
+                                "listeners": "25214",
+                                "playcount": "60298"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -608,8 +608,8 @@
                             "mbid": "0c646840-2d62-488c-b62b-a0a87e502f85",
                             "title": "Let\u2019s Get Crazy",
                             "stats": {
-                                "listeners": "23609",
-                                "playcount": "60003"
+                                "listeners": "23643",
+                                "playcount": "60096"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -618,8 +618,8 @@
                             "mbid": "390a23c7-2fe2-4ac2-83fb-df9a45ae0473",
                             "title": "Thunderbird",
                             "stats": {
-                                "listeners": "23592",
-                                "playcount": "67536"
+                                "listeners": "23631",
+                                "playcount": "67643"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -628,8 +628,8 @@
                             "mbid": "d1fdf7f0-b506-498c-940f-1e0eea8edd4d",
                             "title": "Danger Zone",
                             "stats": {
-                                "listeners": "4531",
-                                "playcount": "11589"
+                                "listeners": "4539",
+                                "playcount": "11623"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -639,8 +639,8 @@
                 {
                     "name": "Metal Health",
                     "mbid": "3e29cdde-aa86-43cd-9521-d96f286957c6",
-                    "listeners": "246292",
-                    "playcount": "1405854",
+                    "listeners": "247115",
+                    "playcount": "1411247",
                     "date": "2001-08-28",
                     "country": "US",
                     "disambiguation": "",
@@ -652,8 +652,8 @@
                             "mbid": "98d66de4-ab8e-4c23-bc0f-8cf2abd02584",
                             "title": "Metal Health",
                             "stats": {
-                                "listeners": "43624",
-                                "playcount": "183712"
+                                "listeners": "43634",
+                                "playcount": "183820"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -662,8 +662,8 @@
                             "mbid": "d3b22f15-102c-4f73-968d-eb70df8a4e7c",
                             "title": "Cum On Feel the Noize",
                             "stats": {
-                                "listeners": "23212",
-                                "playcount": "90732"
+                                "listeners": "23222",
+                                "playcount": "90779"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -672,8 +672,8 @@
                             "mbid": "55e9ccc3-bad6-43bd-a41e-2800b1b30713",
                             "title": "Don\u2019t Wanna Let You Go",
                             "stats": {
-                                "listeners": "35398",
-                                "playcount": "102424"
+                                "listeners": "35438",
+                                "playcount": "102573"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -682,8 +682,8 @@
                             "mbid": "948f3359-f239-41dc-9cce-60e38d8c6263",
                             "title": "Love\u2019s a Bitch",
                             "stats": {
-                                "listeners": "31197",
-                                "playcount": "83373"
+                                "listeners": "31244",
+                                "playcount": "83514"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -692,8 +692,8 @@
                             "mbid": "5e8d549c-ec20-4d80-a182-19e7104a81c7",
                             "title": "Breathless",
                             "stats": {
-                                "listeners": "25243",
-                                "playcount": "67372"
+                                "listeners": "25275",
+                                "playcount": "67462"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -702,8 +702,8 @@
                             "mbid": "876d875b-f54f-474b-9fd0-f0b13f2ff796",
                             "title": "Run for Cover",
                             "stats": {
-                                "listeners": "24365",
-                                "playcount": "62843"
+                                "listeners": "24400",
+                                "playcount": "62961"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -712,8 +712,8 @@
                             "mbid": "d21154ec-2030-4fc0-ba41-328c38309515",
                             "title": "Battle Axe",
                             "stats": {
-                                "listeners": "25180",
-                                "playcount": "60218"
+                                "listeners": "25214",
+                                "playcount": "60298"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -722,8 +722,8 @@
                             "mbid": "0c646840-2d62-488c-b62b-a0a87e502f85",
                             "title": "Let\u2019s Get Crazy",
                             "stats": {
-                                "listeners": "23609",
-                                "playcount": "60003"
+                                "listeners": "23643",
+                                "playcount": "60096"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -732,8 +732,8 @@
                             "mbid": "390a23c7-2fe2-4ac2-83fb-df9a45ae0473",
                             "title": "Thunderbird",
                             "stats": {
-                                "listeners": "23592",
-                                "playcount": "67536"
+                                "listeners": "23631",
+                                "playcount": "67643"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -742,8 +742,8 @@
                             "mbid": "d1fdf7f0-b506-498c-940f-1e0eea8edd4d",
                             "title": "Danger Zone",
                             "stats": {
-                                "listeners": "4531",
-                                "playcount": "11589"
+                                "listeners": "4539",
+                                "playcount": "11623"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -753,8 +753,8 @@
                 {
                     "name": "Metal Health",
                     "mbid": "3e29cdde-aa86-43cd-9521-d96f286957c6",
-                    "listeners": "246292",
-                    "playcount": "1405854",
+                    "listeners": "247115",
+                    "playcount": "1411247",
                     "date": "2008",
                     "country": "US",
                     "disambiguation": "",
@@ -766,8 +766,8 @@
                             "mbid": "98d66de4-ab8e-4c23-bc0f-8cf2abd02584",
                             "title": "Metal Health",
                             "stats": {
-                                "listeners": "43624",
-                                "playcount": "183712"
+                                "listeners": "43634",
+                                "playcount": "183820"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -776,8 +776,8 @@
                             "mbid": "d3b22f15-102c-4f73-968d-eb70df8a4e7c",
                             "title": "Cum On Feel the Noize",
                             "stats": {
-                                "listeners": "23212",
-                                "playcount": "90732"
+                                "listeners": "23222",
+                                "playcount": "90779"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -786,8 +786,8 @@
                             "mbid": "55e9ccc3-bad6-43bd-a41e-2800b1b30713",
                             "title": "Don\u2019t Wanna Let You Go",
                             "stats": {
-                                "listeners": "35398",
-                                "playcount": "102424"
+                                "listeners": "35438",
+                                "playcount": "102573"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -796,8 +796,8 @@
                             "mbid": "948f3359-f239-41dc-9cce-60e38d8c6263",
                             "title": "Love\u2019s a Bitch",
                             "stats": {
-                                "listeners": "31197",
-                                "playcount": "83373"
+                                "listeners": "31244",
+                                "playcount": "83514"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -806,8 +806,8 @@
                             "mbid": "5e8d549c-ec20-4d80-a182-19e7104a81c7",
                             "title": "Breathless",
                             "stats": {
-                                "listeners": "25243",
-                                "playcount": "67372"
+                                "listeners": "25275",
+                                "playcount": "67462"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -816,8 +816,8 @@
                             "mbid": "876d875b-f54f-474b-9fd0-f0b13f2ff796",
                             "title": "Run for Cover",
                             "stats": {
-                                "listeners": "24365",
-                                "playcount": "62843"
+                                "listeners": "24400",
+                                "playcount": "62961"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -826,8 +826,8 @@
                             "mbid": "d21154ec-2030-4fc0-ba41-328c38309515",
                             "title": "Battle Axe",
                             "stats": {
-                                "listeners": "25180",
-                                "playcount": "60218"
+                                "listeners": "25214",
+                                "playcount": "60298"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -836,8 +836,8 @@
                             "mbid": "0c646840-2d62-488c-b62b-a0a87e502f85",
                             "title": "Let\u2019s Get Crazy",
                             "stats": {
-                                "listeners": "23609",
-                                "playcount": "60003"
+                                "listeners": "23643",
+                                "playcount": "60096"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -846,8 +846,8 @@
                             "mbid": "390a23c7-2fe2-4ac2-83fb-df9a45ae0473",
                             "title": "Thunderbird",
                             "stats": {
-                                "listeners": "23592",
-                                "playcount": "67536"
+                                "listeners": "23631",
+                                "playcount": "67643"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -856,8 +856,8 @@
                             "mbid": "d1fdf7f0-b506-498c-940f-1e0eea8edd4d",
                             "title": "Danger Zone",
                             "stats": {
-                                "listeners": "4531",
-                                "playcount": "11589"
+                                "listeners": "4539",
+                                "playcount": "11623"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -873,8 +873,8 @@
                 {
                     "name": "Quiet Riot 10",
                     "mbid": "be260da8-ce32-4e44-a3ae-d4fab8da6a26",
-                    "listeners": "456",
-                    "playcount": "5605",
+                    "listeners": "457",
+                    "playcount": "5633",
                     "date": "2014-06-27",
                     "country": "US",
                     "disambiguation": "",
@@ -886,8 +886,8 @@
                             "mbid": "d9416d7b-d047-446b-b7d0-4fb5215e560b",
                             "title": "Rock in Peace",
                             "stats": {
-                                "listeners": "409",
-                                "playcount": "975"
+                                "listeners": "410",
+                                "playcount": "979"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -896,8 +896,8 @@
                             "mbid": "e836c5ad-c583-4564-bf39-65152c61c60c",
                             "title": "Bang for Your Buck",
                             "stats": {
-                                "listeners": "374",
-                                "playcount": "772"
+                                "listeners": "375",
+                                "playcount": "776"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -906,8 +906,8 @@
                             "mbid": "fd5dcb35-0dce-4478-ab47-4b42a9013e7e",
                             "title": "Backside of Water",
                             "stats": {
-                                "listeners": "379",
-                                "playcount": "820"
+                                "listeners": "380",
+                                "playcount": "825"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -916,8 +916,8 @@
                             "mbid": "aab66327-54e9-4d36-94db-633b61c6bd3b",
                             "title": "Back on You",
                             "stats": {
-                                "listeners": "363",
-                                "playcount": "778"
+                                "listeners": "365",
+                                "playcount": "783"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -926,8 +926,8 @@
                             "mbid": "7eb0eb9b-7cf7-476b-bf39-a813429b1260",
                             "title": "Band Down",
                             "stats": {
-                                "listeners": "345",
-                                "playcount": "687"
+                                "listeners": "346",
+                                "playcount": "692"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -936,8 +936,8 @@
                             "mbid": "5fbcfcee-17d7-453a-9d17-6f1afb421776",
                             "title": "Dogbone Alley",
                             "stats": {
-                                "listeners": "321",
-                                "playcount": "639"
+                                "listeners": "322",
+                                "playcount": "641"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -957,7 +957,7 @@
                             "title": "Free (live)",
                             "stats": {
                                 "listeners": "19",
-                                "playcount": "27"
+                                "playcount": "28"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -993,8 +993,8 @@
                 {
                     "name": "Down to the Bone",
                     "mbid": "df144665-3fe3-4361-b847-942029d4dd53",
-                    "listeners": "3007",
-                    "playcount": "38396",
+                    "listeners": "3009",
+                    "playcount": "38445",
                     "date": "1995",
                     "country": "US",
                     "disambiguation": "",
@@ -1006,8 +1006,8 @@
                             "mbid": "5b5224be-9445-42f9-8b99-ee5c00871e6e",
                             "title": "Dig",
                             "stats": {
-                                "listeners": "1198",
-                                "playcount": "3077"
+                                "listeners": "1201",
+                                "playcount": "3081"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -1016,8 +1016,8 @@
                             "mbid": "b7543b0d-23dc-44bf-8ce0-25837e303595",
                             "title": "Pretty Pack o' Lies",
                             "stats": {
-                                "listeners": "1140",
-                                "playcount": "2744"
+                                "listeners": "1142",
+                                "playcount": "2747"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -1026,8 +1026,8 @@
                             "mbid": "80e12308-ab09-4d41-bda9-efd77dd7836a",
                             "title": "All Day and All of the Night",
                             "stats": {
-                                "listeners": "1493",
-                                "playcount": "3809"
+                                "listeners": "1496",
+                                "playcount": "3815"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -1036,8 +1036,8 @@
                             "mbid": "2808f7f1-993c-46e8-ba63-b64f464c39f9",
                             "title": "Whatever It Takes",
                             "stats": {
-                                "listeners": "1152",
-                                "playcount": "2786"
+                                "listeners": "1157",
+                                "playcount": "2794"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -1046,8 +1046,8 @@
                             "mbid": "b117a71d-8488-4229-ace6-f9a0d738573a",
                             "title": "Wings of a Cloud",
                             "stats": {
-                                "listeners": "1101",
-                                "playcount": "2696"
+                                "listeners": "1102",
+                                "playcount": "2698"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -1056,8 +1056,8 @@
                             "mbid": "f796c6be-b591-4336-948e-2ff4219dc952",
                             "title": "Trouble Again",
                             "stats": {
-                                "listeners": "1064",
-                                "playcount": "2747"
+                                "listeners": "1065",
+                                "playcount": "2752"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -1066,8 +1066,8 @@
                             "mbid": "5a33b0f6-5788-47da-9ae8-5cab2761e552",
                             "title": "Down to the Bone",
                             "stats": {
-                                "listeners": "1137",
-                                "playcount": "2759"
+                                "listeners": "1138",
+                                "playcount": "2762"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -1076,8 +1076,8 @@
                             "mbid": "07322a5e-8206-4896-aba2-450fcb237f4f",
                             "title": "Voodoo Brew",
                             "stats": {
-                                "listeners": "999",
-                                "playcount": "2485"
+                                "listeners": "1000",
+                                "playcount": "2488"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -1086,8 +1086,8 @@
                             "mbid": "1883d925-68e9-4c41-b0c3-738659ee6727",
                             "title": "Monday Morning Breakdown",
                             "stats": {
-                                "listeners": "1029",
-                                "playcount": "2686"
+                                "listeners": "1031",
+                                "playcount": "2689"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -1096,8 +1096,8 @@
                             "mbid": "30b925e4-a91e-4470-8e16-06954a465a6c",
                             "title": "Live Til It Hurts",
                             "stats": {
-                                "listeners": "992",
-                                "playcount": "2424"
+                                "listeners": "994",
+                                "playcount": "2427"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -1106,8 +1106,8 @@
                             "mbid": "60f2106f-875b-4068-a525-a96f850b3d5f",
                             "title": "Twisted",
                             "stats": {
-                                "listeners": "1036",
-                                "playcount": "2662"
+                                "listeners": "1037",
+                                "playcount": "2666"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -1116,8 +1116,8 @@
                             "mbid": "d05e5b50-a049-4044-b6d2-3497c065ac60",
                             "title": "All Wound Up",
                             "stats": {
-                                "listeners": "1028",
-                                "playcount": "2360"
+                                "listeners": "1029",
+                                "playcount": "2362"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -1126,8 +1126,8 @@
                             "mbid": "835737c1-baa7-475c-a658-61b7cce58f0f",
                             "title": "Hell or High Water",
                             "stats": {
-                                "listeners": "1022",
-                                "playcount": "2495"
+                                "listeners": "1023",
+                                "playcount": "2497"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -1136,8 +1136,8 @@
                             "mbid": "09ff0bb1-cd06-477c-bbef-efb551689883",
                             "title": "Wings of a Cloud (Revisited)",
                             "stats": {
-                                "listeners": "889",
-                                "playcount": "2162"
+                                "listeners": "890",
+                                "playcount": "2165"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -1147,8 +1147,8 @@
                 {
                     "name": "Down to the Bone",
                     "mbid": "df144665-3fe3-4361-b847-942029d4dd53",
-                    "listeners": "3007",
-                    "playcount": "38396",
+                    "listeners": "3009",
+                    "playcount": "38445",
                     "date": "",
                     "country": "",
                     "disambiguation": "",
@@ -1160,8 +1160,8 @@
                             "mbid": "5b5224be-9445-42f9-8b99-ee5c00871e6e",
                             "title": "Dig",
                             "stats": {
-                                "listeners": "1198",
-                                "playcount": "3077"
+                                "listeners": "1201",
+                                "playcount": "3081"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -1170,8 +1170,8 @@
                             "mbid": "b7543b0d-23dc-44bf-8ce0-25837e303595",
                             "title": "Pretty Pack o' Lies",
                             "stats": {
-                                "listeners": "1140",
-                                "playcount": "2744"
+                                "listeners": "1142",
+                                "playcount": "2747"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -1180,8 +1180,8 @@
                             "mbid": "80e12308-ab09-4d41-bda9-efd77dd7836a",
                             "title": "All Day and All of the Night",
                             "stats": {
-                                "listeners": "1493",
-                                "playcount": "3809"
+                                "listeners": "1496",
+                                "playcount": "3815"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -1190,8 +1190,8 @@
                             "mbid": "2808f7f1-993c-46e8-ba63-b64f464c39f9",
                             "title": "Whatever It Takes",
                             "stats": {
-                                "listeners": "1152",
-                                "playcount": "2786"
+                                "listeners": "1157",
+                                "playcount": "2794"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -1200,8 +1200,8 @@
                             "mbid": "b117a71d-8488-4229-ace6-f9a0d738573a",
                             "title": "Wings of a Cloud",
                             "stats": {
-                                "listeners": "1101",
-                                "playcount": "2696"
+                                "listeners": "1102",
+                                "playcount": "2698"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -1210,8 +1210,8 @@
                             "mbid": "f796c6be-b591-4336-948e-2ff4219dc952",
                             "title": "Trouble Again",
                             "stats": {
-                                "listeners": "1064",
-                                "playcount": "2747"
+                                "listeners": "1065",
+                                "playcount": "2752"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -1220,8 +1220,8 @@
                             "mbid": "5a33b0f6-5788-47da-9ae8-5cab2761e552",
                             "title": "Down to the Bone",
                             "stats": {
-                                "listeners": "1137",
-                                "playcount": "2759"
+                                "listeners": "1138",
+                                "playcount": "2762"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -1230,8 +1230,8 @@
                             "mbid": "07322a5e-8206-4896-aba2-450fcb237f4f",
                             "title": "Voodoo Brew",
                             "stats": {
-                                "listeners": "999",
-                                "playcount": "2485"
+                                "listeners": "1000",
+                                "playcount": "2488"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -1240,8 +1240,8 @@
                             "mbid": "1883d925-68e9-4c41-b0c3-738659ee6727",
                             "title": "Monday Morning Breakdown",
                             "stats": {
-                                "listeners": "1029",
-                                "playcount": "2686"
+                                "listeners": "1031",
+                                "playcount": "2689"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -1250,8 +1250,8 @@
                             "mbid": "30b925e4-a91e-4470-8e16-06954a465a6c",
                             "title": "Live Til It Hurts",
                             "stats": {
-                                "listeners": "992",
-                                "playcount": "2424"
+                                "listeners": "994",
+                                "playcount": "2427"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -1260,8 +1260,8 @@
                             "mbid": "60f2106f-875b-4068-a525-a96f850b3d5f",
                             "title": "Twisted",
                             "stats": {
-                                "listeners": "1036",
-                                "playcount": "2662"
+                                "listeners": "1037",
+                                "playcount": "2666"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -1270,8 +1270,8 @@
                             "mbid": "d05e5b50-a049-4044-b6d2-3497c065ac60",
                             "title": "All Wound Up",
                             "stats": {
-                                "listeners": "1028",
-                                "playcount": "2360"
+                                "listeners": "1029",
+                                "playcount": "2362"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -1280,8 +1280,8 @@
                             "mbid": "835737c1-baa7-475c-a658-61b7cce58f0f",
                             "title": "Hell or High Water",
                             "stats": {
-                                "listeners": "1022",
-                                "playcount": "2495"
+                                "listeners": "1023",
+                                "playcount": "2497"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -1290,8 +1290,8 @@
                             "mbid": "09ff0bb1-cd06-477c-bbef-efb551689883",
                             "title": "Wings of a Cloud (Revisited)",
                             "stats": {
-                                "listeners": "889",
-                                "playcount": "2162"
+                                "listeners": "890",
+                                "playcount": "2165"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -1307,8 +1307,8 @@
                 {
                     "name": "Guilty Pleasures",
                     "mbid": "d423a686-a3fd-491a-812e-367f346b5660",
-                    "listeners": "2531",
-                    "playcount": "25840",
+                    "listeners": "2532",
+                    "playcount": "25897",
                     "date": "2001",
                     "country": "US",
                     "disambiguation": "",
@@ -1320,8 +1320,8 @@
                             "mbid": "004a72cd-d825-41ee-8708-da79d9466887",
                             "title": "Vicious Circle",
                             "stats": {
-                                "listeners": "1166",
-                                "playcount": "2853"
+                                "listeners": "1167",
+                                "playcount": "2857"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -1330,8 +1330,8 @@
                             "mbid": "6f065557-8dea-4ca4-b978-3e0b88e7a33d",
                             "title": "Feel the Pain",
                             "stats": {
-                                "listeners": "1062",
-                                "playcount": "2540"
+                                "listeners": "1063",
+                                "playcount": "2546"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -1340,8 +1340,8 @@
                             "mbid": "9e90b47d-0351-438c-b16d-9e1f96139206",
                             "title": "Rock the House",
                             "stats": {
-                                "listeners": "1199",
-                                "playcount": "3772"
+                                "listeners": "1200",
+                                "playcount": "3776"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -1350,8 +1350,8 @@
                             "mbid": "469130fc-5321-4b25-931b-06d524694bc9",
                             "title": "Shadow of Love",
                             "stats": {
-                                "listeners": "1007",
-                                "playcount": "2415"
+                                "listeners": "1008",
+                                "playcount": "2421"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -1360,8 +1360,8 @@
                             "mbid": "49359666-6eaf-44a4-b4a5-daa796129057",
                             "title": "I Can't Make You Love Me",
                             "stats": {
-                                "listeners": "1035",
-                                "playcount": "2464"
+                                "listeners": "1036",
+                                "playcount": "2469"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -1370,8 +1370,8 @@
                             "mbid": "bc762f72-58e1-49d2-b75b-83c89d7863c1",
                             "title": "Feed the Machine",
                             "stats": {
-                                "listeners": "1061",
-                                "playcount": "2386"
+                                "listeners": "1062",
+                                "playcount": "2391"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -1380,8 +1380,8 @@
                             "mbid": "8dd2dc71-0742-418a-81b9-1a12b9b36fd3",
                             "title": "Guilty Pleasures",
                             "stats": {
-                                "listeners": "1010",
-                                "playcount": "2147"
+                                "listeners": "1011",
+                                "playcount": "2151"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -1390,8 +1390,8 @@
                             "mbid": "cc6ee475-a500-4684-a6db-57fb4057a2ce",
                             "title": "Blast From the Past",
                             "stats": {
-                                "listeners": "1051",
-                                "playcount": "2357"
+                                "listeners": "1052",
+                                "playcount": "2361"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -1400,8 +1400,8 @@
                             "mbid": "7e09d712-cd2d-477d-a43c-0685a427e21c",
                             "title": "Let Me Be the One",
                             "stats": {
-                                "listeners": "975",
-                                "playcount": "2439"
+                                "listeners": "976",
+                                "playcount": "2443"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -1410,8 +1410,8 @@
                             "mbid": "89377b79-d6b6-4bbd-9fdf-f3f888589b57",
                             "title": "Street Fighter",
                             "stats": {
-                                "listeners": "982",
-                                "playcount": "2113"
+                                "listeners": "983",
+                                "playcount": "2125"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -1420,8 +1420,8 @@
                             "mbid": "bfc0b674-d3fd-4920-b096-08610f7c61c2",
                             "title": "Fly Too High",
                             "stats": {
-                                "listeners": "935",
-                                "playcount": "2076"
+                                "listeners": "937",
+                                "playcount": "2080"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -1438,7 +1438,7 @@
                     "name": "Winners Take All",
                     "mbid": "618fd342-82be-4b32-9c0e-d9327b743ab0",
                     "listeners": "1370",
-                    "playcount": "11891",
+                    "playcount": "11897",
                     "date": "1992-07-07",
                     "country": "US",
                     "disambiguation": "",
@@ -1450,8 +1450,8 @@
                             "mbid": "d3b22f15-102c-4f73-968d-eb70df8a4e7c",
                             "title": "Cum On Feel the Noize",
                             "stats": {
-                                "listeners": "23212",
-                                "playcount": "90732"
+                                "listeners": "23222",
+                                "playcount": "90779"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -1460,8 +1460,8 @@
                             "mbid": "fe3ff7d0-18d9-4450-b8e5-b65c2d5f71ee",
                             "title": "Party All Night",
                             "stats": {
-                                "listeners": "19025",
-                                "playcount": "51929"
+                                "listeners": "19043",
+                                "playcount": "51991"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -1470,8 +1470,8 @@
                             "mbid": "edd2bb12-95f1-40c8-afdf-49d44f2dc144",
                             "title": "The Wild and the Young",
                             "stats": {
-                                "listeners": "30189",
-                                "playcount": "95978"
+                                "listeners": "30243",
+                                "playcount": "96181"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -1480,8 +1480,8 @@
                             "mbid": "11c5dc9c-3c29-4924-8dd5-00add72c2d6b",
                             "title": "Winners Take All",
                             "stats": {
-                                "listeners": "9459",
-                                "playcount": "25758"
+                                "listeners": "9466",
+                                "playcount": "25784"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -1490,8 +1490,8 @@
                             "mbid": "98d66de4-ab8e-4c23-bc0f-8cf2abd02584",
                             "title": "Metal Health",
                             "stats": {
-                                "listeners": "43624",
-                                "playcount": "183712"
+                                "listeners": "43634",
+                                "playcount": "183820"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -1500,8 +1500,8 @@
                             "mbid": "f0b8326f-fdb3-4ef2-a2bb-5e15f0c98965",
                             "title": "Scream and Shout",
                             "stats": {
-                                "listeners": "6370",
-                                "playcount": "14417"
+                                "listeners": "6375",
+                                "playcount": "14436"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -1510,8 +1510,8 @@
                             "mbid": "60d5122e-ad39-4bc8-b9be-da0b1d4b8c22",
                             "title": "Put Up or Shut Up",
                             "stats": {
-                                "listeners": "5656",
-                                "playcount": "11758"
+                                "listeners": "5683",
+                                "playcount": "11805"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -1520,8 +1520,8 @@
                             "mbid": "506bb8b9-c728-437a-8274-5fed18139957",
                             "title": "Mama Weer All Crazee Now",
                             "stats": {
-                                "listeners": "30910",
-                                "playcount": "85720"
+                                "listeners": "30987",
+                                "playcount": "85962"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -1530,8 +1530,8 @@
                             "mbid": "859f7d50-ee7e-43a7-85ab-5eb57e83a76a",
                             "title": "King of the Hill",
                             "stats": {
-                                "listeners": "3015",
-                                "playcount": "7556"
+                                "listeners": "3020",
+                                "playcount": "7568"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -1540,8 +1540,8 @@
                             "mbid": "c933b5fd-21e1-4e0d-97a1-d490928db937",
                             "title": "Let's Get Crazy",
                             "stats": {
-                                "listeners": "23609",
-                                "playcount": "60003"
+                                "listeners": "23643",
+                                "playcount": "60096"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -1557,8 +1557,8 @@
                 {
                     "name": "Rehab",
                     "mbid": "ffb86317-ec5e-4f94-8c89-76bcc6194365",
-                    "listeners": "3592",
-                    "playcount": "36320",
+                    "listeners": "3598",
+                    "playcount": "36383",
                     "date": "2006-10-06",
                     "country": "US",
                     "disambiguation": "",
@@ -1570,8 +1570,8 @@
                             "mbid": "4700cb6b-4fce-4f2a-9950-dce2bb8b4e00",
                             "title": "Free",
                             "stats": {
-                                "listeners": "2084",
-                                "playcount": "5406"
+                                "listeners": "2086",
+                                "playcount": "5414"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -1580,8 +1580,8 @@
                             "mbid": "289918d7-1bca-4785-9ed1-837a7706b4ba",
                             "title": "Blind Faith",
                             "stats": {
-                                "listeners": "1724",
-                                "playcount": "4539"
+                                "listeners": "1727",
+                                "playcount": "4546"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -1590,8 +1590,8 @@
                             "mbid": "8ee006c6-06ee-4388-8d85-bf5ff35874aa",
                             "title": "South of Heaven",
                             "stats": {
-                                "listeners": "1815",
-                                "playcount": "4654"
+                                "listeners": "1818",
+                                "playcount": "4660"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -1600,8 +1600,8 @@
                             "mbid": "645d22cb-555a-45f4-b275-2d9ca681ae68",
                             "title": "Black Reign",
                             "stats": {
-                                "listeners": "1530",
-                                "playcount": "3734"
+                                "listeners": "1534",
+                                "playcount": "3741"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -1610,8 +1610,8 @@
                             "mbid": "4c06ee9d-1abc-4cd5-b317-e15a53019a18",
                             "title": "Old Habits Die Hard",
                             "stats": {
-                                "listeners": "1471",
-                                "playcount": "3787"
+                                "listeners": "1473",
+                                "playcount": "3792"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -1620,8 +1620,8 @@
                             "mbid": "7863e4a2-177d-4cbc-99ff-43dd9bce3541",
                             "title": "Strange Daze",
                             "stats": {
-                                "listeners": "1452",
-                                "playcount": "3569"
+                                "listeners": "1455",
+                                "playcount": "3574"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -1630,8 +1630,8 @@
                             "mbid": "ae3a7062-17ed-48b1-b64a-9137224b1eda",
                             "title": "Beggars and Thieves",
                             "stats": {
-                                "listeners": "1347",
-                                "playcount": "3468"
+                                "listeners": "1349",
+                                "playcount": "3475"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -1640,8 +1640,8 @@
                             "mbid": "1d22968c-f854-4c65-9534-b4e4d564f557",
                             "title": "Don't Think",
                             "stats": {
-                                "listeners": "1369",
-                                "playcount": "3323"
+                                "listeners": "1370",
+                                "playcount": "3327"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -1650,8 +1650,8 @@
                             "mbid": "909e22b0-8dba-4a62-97fb-2af5f3f0477d",
                             "title": "It Sucks to Be You",
                             "stats": {
-                                "listeners": "1632",
-                                "playcount": "4492"
+                                "listeners": "1633",
+                                "playcount": "4497"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -1660,8 +1660,8 @@
                             "mbid": "b2f413a0-4487-4047-a92c-4b1772f3841e",
                             "title": "Evil Woman",
                             "stats": {
-                                "listeners": "1326",
-                                "playcount": "3481"
+                                "listeners": "1328",
+                                "playcount": "3486"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -1682,8 +1682,8 @@
                 {
                     "name": "The Collection",
                     "mbid": "6a627dac-6aef-4121-8bd4-5d52810e0438",
-                    "listeners": "1404",
-                    "playcount": "19805",
+                    "listeners": "1405",
+                    "playcount": "19807",
                     "date": "2000",
                     "country": "US",
                     "disambiguation": "",
@@ -1695,8 +1695,8 @@
                             "mbid": "98d66de4-ab8e-4c23-bc0f-8cf2abd02584",
                             "title": "Metal Health",
                             "stats": {
-                                "listeners": "43624",
-                                "playcount": "183712"
+                                "listeners": "43634",
+                                "playcount": "183820"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -1705,8 +1705,8 @@
                             "mbid": "d3b22f15-102c-4f73-968d-eb70df8a4e7c",
                             "title": "Cum On Feel the Noize",
                             "stats": {
-                                "listeners": "23212",
-                                "playcount": "90732"
+                                "listeners": "23222",
+                                "playcount": "90779"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -1715,8 +1715,8 @@
                             "mbid": "f112d9cc-de44-4b26-8412-d8de0bde6bad",
                             "title": "Slick Black Cadillac",
                             "stats": {
-                                "listeners": "42884",
-                                "playcount": "123815"
+                                "listeners": "42951",
+                                "playcount": "124028"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -1725,8 +1725,8 @@
                             "mbid": "208934ca-668e-4598-8de6-95be2f3f4f7f",
                             "title": "Let's Get Crazy (live)",
                             "stats": {
-                                "listeners": "587",
-                                "playcount": "1784"
+                                "listeners": "589",
+                                "playcount": "1788"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -1735,8 +1735,8 @@
                             "mbid": "47f9bc54-8875-4674-b7b2-7244dfcbdb71",
                             "title": "Thunderbird",
                             "stats": {
-                                "listeners": "23592",
-                                "playcount": "67536"
+                                "listeners": "23631",
+                                "playcount": "67643"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -1745,8 +1745,8 @@
                             "mbid": "04220a5e-0416-4030-8caa-b272adca8648",
                             "title": "Love's a Bitch (live)",
                             "stats": {
-                                "listeners": "460",
-                                "playcount": "1087"
+                                "listeners": "462",
+                                "playcount": "1090"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -1755,8 +1755,8 @@
                             "mbid": "f9216070-81b5-479e-b0b9-d1abd8b26c5b",
                             "title": "Sign of the Times",
                             "stats": {
-                                "listeners": "12154",
-                                "playcount": "31211"
+                                "listeners": "12165",
+                                "playcount": "31259"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -1765,8 +1765,8 @@
                             "mbid": "506bb8b9-c728-437a-8274-5fed18139957",
                             "title": "Mama Weer All Crazee Now",
                             "stats": {
-                                "listeners": "30910",
-                                "playcount": "85720"
+                                "listeners": "30987",
+                                "playcount": "85962"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -1775,8 +1775,8 @@
                             "mbid": "7de7e438-e391-48a1-9ddf-be4f144ac842",
                             "title": "Stomp Your Hands, Clap Your Feet",
                             "stats": {
-                                "listeners": "6322",
-                                "playcount": "15383"
+                                "listeners": "6333",
+                                "playcount": "15408"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -1785,8 +1785,8 @@
                             "mbid": "6c458e7f-5dc6-4bd3-a96c-d4d1e1cc1838",
                             "title": "Condition Critical",
                             "stats": {
-                                "listeners": "12400",
-                                "playcount": "33088"
+                                "listeners": "12417",
+                                "playcount": "33139"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -1795,8 +1795,8 @@
                             "mbid": "37b05e3e-0808-40ec-9fee-ccdea4fe4897",
                             "title": "(We Were) Born to Rock",
                             "stats": {
-                                "listeners": "6115",
-                                "playcount": "14219"
+                                "listeners": "6120",
+                                "playcount": "14235"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -1805,8 +1805,8 @@
                             "mbid": "9ed7be53-eb12-41bd-8e2f-ba76d5dd2d3c",
                             "title": "Stay With Me Tonight",
                             "stats": {
-                                "listeners": "13950",
-                                "playcount": "37092"
+                                "listeners": "13955",
+                                "playcount": "37114"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -1815,8 +1815,8 @@
                             "mbid": "dc97d68f-528c-4a4d-95a2-fc6cc01c91ab",
                             "title": "Callin' the Shots",
                             "stats": {
-                                "listeners": "9590",
-                                "playcount": "21761"
+                                "listeners": "9607",
+                                "playcount": "21792"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -1825,8 +1825,8 @@
                             "mbid": "775dc408-345a-4b63-a5da-658551f06aae",
                             "title": "King of the Hill",
                             "stats": {
-                                "listeners": "3015",
-                                "playcount": "7556"
+                                "listeners": "3020",
+                                "playcount": "7568"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -1835,8 +1835,8 @@
                             "mbid": "b56eedde-851f-4721-bafc-21f80e091745",
                             "title": "Don't Wanna Be Your Fool",
                             "stats": {
-                                "listeners": "6935",
-                                "playcount": "18580"
+                                "listeners": "6955",
+                                "playcount": "18644"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -1845,8 +1845,8 @@
                             "mbid": "a24907e5-0a7b-4087-ae09-45fab1322b5a",
                             "title": "Coppin' a Feel",
                             "stats": {
-                                "listeners": "2207",
-                                "playcount": "5627"
+                                "listeners": "2211",
+                                "playcount": "5633"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -1862,8 +1862,8 @@
                 {
                     "name": "Greatest Hits",
                     "mbid": "54cf22b8-63c6-4ddb-a353-d352cd207b41",
-                    "listeners": "64398",
-                    "playcount": "242005",
+                    "listeners": "64448",
+                    "playcount": "242214",
                     "date": "1996-02-20",
                     "country": "US",
                     "disambiguation": "",
@@ -1875,8 +1875,8 @@
                             "mbid": "d3b22f15-102c-4f73-968d-eb70df8a4e7c",
                             "title": "Cum On Feel the Noize",
                             "stats": {
-                                "listeners": "23212",
-                                "playcount": "90732"
+                                "listeners": "23222",
+                                "playcount": "90779"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -1885,8 +1885,8 @@
                             "mbid": "98d66de4-ab8e-4c23-bc0f-8cf2abd02584",
                             "title": "Metal Health",
                             "stats": {
-                                "listeners": "43624",
-                                "playcount": "183712"
+                                "listeners": "43634",
+                                "playcount": "183820"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -1895,8 +1895,8 @@
                             "mbid": "4808f428-5c97-41b7-aba7-22be54082454",
                             "title": "Slick Black Cadillac",
                             "stats": {
-                                "listeners": "42884",
-                                "playcount": "123815"
+                                "listeners": "42951",
+                                "playcount": "124028"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -1905,8 +1905,8 @@
                             "mbid": "506bb8b9-c728-437a-8274-5fed18139957",
                             "title": "Mama Weer All Crazee Now",
                             "stats": {
-                                "listeners": "30910",
-                                "playcount": "85720"
+                                "listeners": "30987",
+                                "playcount": "85962"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -1915,8 +1915,8 @@
                             "mbid": "1917a46d-d081-4f5b-8f98-3f8493a2b8b3",
                             "title": "Party All Night",
                             "stats": {
-                                "listeners": "19025",
-                                "playcount": "51929"
+                                "listeners": "19043",
+                                "playcount": "51991"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -1925,8 +1925,8 @@
                             "mbid": "ffbfe091-0dc3-4fea-9ef9-271c126101c5",
                             "title": "The Joker",
                             "stats": {
-                                "listeners": "11049",
-                                "playcount": "25186"
+                                "listeners": "11062",
+                                "playcount": "25214"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -1935,8 +1935,8 @@
                             "mbid": "4292be1d-339e-4b2e-9bb6-cfd7896424e0",
                             "title": "Stay With Me Tonight",
                             "stats": {
-                                "listeners": "13950",
-                                "playcount": "37092"
+                                "listeners": "13955",
+                                "playcount": "37114"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -1945,8 +1945,8 @@
                             "mbid": "f3df6e84-e4c4-40e4-9e45-f69583d1dea4",
                             "title": "Callin\u2019 the Shots",
                             "stats": {
-                                "listeners": "9590",
-                                "playcount": "21761"
+                                "listeners": "9607",
+                                "playcount": "21792"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -1955,8 +1955,8 @@
                             "mbid": "8158157c-0b6d-43da-a355-b4f105d9ff42",
                             "title": "Let's Go Crazy (live)",
                             "stats": {
-                                "listeners": "3494",
-                                "playcount": "10768"
+                                "listeners": "3495",
+                                "playcount": "10772"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -1972,8 +1972,8 @@
                 {
                     "name": "The Randy Rhoads Years",
                     "mbid": "b847363d-e5f1-4338-b835-b9bcdadda966",
-                    "listeners": "2772",
-                    "playcount": "42460",
+                    "listeners": "2774",
+                    "playcount": "42505",
                     "date": "1993-10-26",
                     "country": "US",
                     "disambiguation": "",
@@ -1985,8 +1985,8 @@
                             "mbid": "1ffe2228-f2f3-4e05-ad6e-13b92aa04ab6",
                             "title": "Trouble",
                             "stats": {
-                                "listeners": "3123",
-                                "playcount": "10935"
+                                "listeners": "3125",
+                                "playcount": "10946"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -1996,7 +1996,7 @@
                             "title": "Laughing Gas (Randy Rhoads Guitar Solo)",
                             "stats": {
                                 "listeners": "471",
-                                "playcount": "1810"
+                                "playcount": "1813"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -2005,8 +2005,8 @@
                             "mbid": "8e8c80aa-bb56-4c40-88fe-08a2bb201d89",
                             "title": "Afterglow (Of Your Love)",
                             "stats": {
-                                "listeners": "2856",
-                                "playcount": "9413"
+                                "listeners": "2858",
+                                "playcount": "9424"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -2015,8 +2015,8 @@
                             "mbid": "7fa44c0a-9908-44c0-9ea1-09d65c46b93f",
                             "title": "Killer Girls",
                             "stats": {
-                                "listeners": "2930",
-                                "playcount": "9370"
+                                "listeners": "2933",
+                                "playcount": "9382"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -2025,8 +2025,8 @@
                             "mbid": "0c7b69a4-6229-4892-b7b9-85a1b02604e5",
                             "title": "Picking Up the Pieces",
                             "stats": {
-                                "listeners": "1381",
-                                "playcount": "6690"
+                                "listeners": "1382",
+                                "playcount": "6694"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -2035,8 +2035,8 @@
                             "mbid": "4ec8c832-ba23-4a12-940f-4a73bb190948",
                             "title": "Last Call For Rock 'N' Roll",
                             "stats": {
-                                "listeners": "413",
-                                "playcount": "1353"
+                                "listeners": "414",
+                                "playcount": "1356"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -2045,8 +2045,8 @@
                             "mbid": "7737daef-c879-45d3-992c-e153a8f954ed",
                             "title": "Breaking Up Is a Heartache",
                             "stats": {
-                                "listeners": "1199",
-                                "playcount": "4375"
+                                "listeners": "1200",
+                                "playcount": "4379"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -2055,8 +2055,8 @@
                             "mbid": "deb3227a-328a-4242-b5a9-82294a39ae6b",
                             "title": "Force of Habit",
                             "stats": {
-                                "listeners": "1157",
-                                "playcount": "3738"
+                                "listeners": "1158",
+                                "playcount": "3742"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -2065,8 +2065,8 @@
                             "mbid": "ba69d9f6-cb69-4ce8-999f-1d7bc8fa39fa",
                             "title": "It's Not So Funny",
                             "stats": {
-                                "listeners": "3268",
-                                "playcount": "10310"
+                                "listeners": "3269",
+                                "playcount": "10320"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -2075,8 +2075,8 @@
                             "mbid": "94cf0ce6-2700-42a2-b207-9dd4fde1f9ef",
                             "title": "Look in Any Window",
                             "stats": {
-                                "listeners": "2822",
-                                "playcount": "9100"
+                                "listeners": "2823",
+                                "playcount": "9105"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -2097,8 +2097,8 @@
                 {
                     "name": "Condition Critical",
                     "mbid": "5ab66c9b-8a60-3232-be37-85fc9a07ea1f",
-                    "listeners": "38719",
-                    "playcount": "185513",
+                    "listeners": "38802",
+                    "playcount": "185942",
                     "date": "2008",
                     "country": "US",
                     "disambiguation": "",
@@ -2110,8 +2110,8 @@
                             "mbid": "bf2de29e-d8da-4b3f-a46c-cd84cdb819c3",
                             "title": "Sign of the Times",
                             "stats": {
-                                "listeners": "12154",
-                                "playcount": "31211"
+                                "listeners": "12165",
+                                "playcount": "31259"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -2120,8 +2120,8 @@
                             "mbid": "506bb8b9-c728-437a-8274-5fed18139957",
                             "title": "Mama Weer All Crazee Now",
                             "stats": {
-                                "listeners": "30910",
-                                "playcount": "85720"
+                                "listeners": "30987",
+                                "playcount": "85962"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -2130,8 +2130,8 @@
                             "mbid": "fe3ff7d0-18d9-4450-b8e5-b65c2d5f71ee",
                             "title": "Party All Night",
                             "stats": {
-                                "listeners": "19025",
-                                "playcount": "51929"
+                                "listeners": "19043",
+                                "playcount": "51991"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -2140,8 +2140,8 @@
                             "mbid": "11be2f8f-dc93-45e8-b0c0-448864de3873",
                             "title": "Stomp Your Hands, Clap Your Feet",
                             "stats": {
-                                "listeners": "6322",
-                                "playcount": "15383"
+                                "listeners": "6333",
+                                "playcount": "15408"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -2150,8 +2150,8 @@
                             "mbid": "1e7f2493-012b-4cf0-aca3-78196619aae1",
                             "title": "Winners Take All",
                             "stats": {
-                                "listeners": "9459",
-                                "playcount": "25758"
+                                "listeners": "9466",
+                                "playcount": "25784"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -2160,8 +2160,8 @@
                             "mbid": "6c458e7f-5dc6-4bd3-a96c-d4d1e1cc1838",
                             "title": "Condition Critical",
                             "stats": {
-                                "listeners": "12400",
-                                "playcount": "33088"
+                                "listeners": "12417",
+                                "playcount": "33139"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -2170,8 +2170,8 @@
                             "mbid": "f0b8326f-fdb3-4ef2-a2bb-5e15f0c98965",
                             "title": "Scream and Shout",
                             "stats": {
-                                "listeners": "6370",
-                                "playcount": "14417"
+                                "listeners": "6375",
+                                "playcount": "14436"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -2180,8 +2180,8 @@
                             "mbid": "f9827e3b-7647-451f-afcd-c3b58e796357",
                             "title": "Red Alert",
                             "stats": {
-                                "listeners": "6042",
-                                "playcount": "13402"
+                                "listeners": "6046",
+                                "playcount": "13414"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -2190,8 +2190,8 @@
                             "mbid": "97974330-cf4c-47d8-a1af-151a04b74897",
                             "title": "Bad Boy",
                             "stats": {
-                                "listeners": "6941",
-                                "playcount": "16616"
+                                "listeners": "6948",
+                                "playcount": "16637"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -2200,8 +2200,8 @@
                             "mbid": "0ba38bc1-807b-4be7-816b-0326a3998ac5",
                             "title": "(We Were) Born to Rock",
                             "stats": {
-                                "listeners": "6115",
-                                "playcount": "14219"
+                                "listeners": "6120",
+                                "playcount": "14235"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -2211,8 +2211,8 @@
                 {
                     "name": "Condition Critical",
                     "mbid": "5ab66c9b-8a60-3232-be37-85fc9a07ea1f",
-                    "listeners": "38719",
-                    "playcount": "185513",
+                    "listeners": "38802",
+                    "playcount": "185942",
                     "date": "1984-07-07",
                     "country": "US",
                     "disambiguation": "",
@@ -2224,8 +2224,8 @@
                             "mbid": "bf2de29e-d8da-4b3f-a46c-cd84cdb819c3",
                             "title": "Sign of the Times",
                             "stats": {
-                                "listeners": "12154",
-                                "playcount": "31211"
+                                "listeners": "12165",
+                                "playcount": "31259"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -2234,8 +2234,8 @@
                             "mbid": "506bb8b9-c728-437a-8274-5fed18139957",
                             "title": "Mama Weer All Crazee Now",
                             "stats": {
-                                "listeners": "30910",
-                                "playcount": "85720"
+                                "listeners": "30987",
+                                "playcount": "85962"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -2244,8 +2244,8 @@
                             "mbid": "fe3ff7d0-18d9-4450-b8e5-b65c2d5f71ee",
                             "title": "Party All Night",
                             "stats": {
-                                "listeners": "19025",
-                                "playcount": "51929"
+                                "listeners": "19043",
+                                "playcount": "51991"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -2254,8 +2254,8 @@
                             "mbid": "11be2f8f-dc93-45e8-b0c0-448864de3873",
                             "title": "Stomp Your Hands, Clap Your Feet",
                             "stats": {
-                                "listeners": "6322",
-                                "playcount": "15383"
+                                "listeners": "6333",
+                                "playcount": "15408"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -2264,8 +2264,8 @@
                             "mbid": "1e7f2493-012b-4cf0-aca3-78196619aae1",
                             "title": "Winners Take All",
                             "stats": {
-                                "listeners": "9459",
-                                "playcount": "25758"
+                                "listeners": "9466",
+                                "playcount": "25784"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -2274,8 +2274,8 @@
                             "mbid": "6c458e7f-5dc6-4bd3-a96c-d4d1e1cc1838",
                             "title": "Condition Critical",
                             "stats": {
-                                "listeners": "12400",
-                                "playcount": "33088"
+                                "listeners": "12417",
+                                "playcount": "33139"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -2284,8 +2284,8 @@
                             "mbid": "f0b8326f-fdb3-4ef2-a2bb-5e15f0c98965",
                             "title": "Scream and Shout",
                             "stats": {
-                                "listeners": "6370",
-                                "playcount": "14417"
+                                "listeners": "6375",
+                                "playcount": "14436"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -2294,8 +2294,8 @@
                             "mbid": "f9827e3b-7647-451f-afcd-c3b58e796357",
                             "title": "Red Alert",
                             "stats": {
-                                "listeners": "6042",
-                                "playcount": "13402"
+                                "listeners": "6046",
+                                "playcount": "13414"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -2304,8 +2304,8 @@
                             "mbid": "97974330-cf4c-47d8-a1af-151a04b74897",
                             "title": "Bad Boy",
                             "stats": {
-                                "listeners": "6941",
-                                "playcount": "16616"
+                                "listeners": "6948",
+                                "playcount": "16637"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -2314,8 +2314,8 @@
                             "mbid": "0ba38bc1-807b-4be7-816b-0326a3998ac5",
                             "title": "(We Were) Born to Rock",
                             "stats": {
-                                "listeners": "6115",
-                                "playcount": "14219"
+                                "listeners": "6120",
+                                "playcount": "14235"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -2331,8 +2331,8 @@
                 {
                     "name": "Live & Rare",
                     "mbid": "50bacc6a-7250-4d71-9fcd-86cf5a97fb4b",
-                    "listeners": "1089",
-                    "playcount": "5659",
+                    "listeners": "1090",
+                    "playcount": "5661",
                     "date": "2005-03-23",
                     "country": "US",
                     "disambiguation": "",
@@ -2344,8 +2344,8 @@
                             "mbid": "bc108c38-02da-4750-8dc7-63d29af59d40",
                             "title": "Let's Get Crazy",
                             "stats": {
-                                "listeners": "23609",
-                                "playcount": "60003"
+                                "listeners": "23643",
+                                "playcount": "60096"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -2354,8 +2354,8 @@
                             "mbid": "189372d7-41d7-4583-89bf-125eee8c9c64",
                             "title": "Condition Critical",
                             "stats": {
-                                "listeners": "12400",
-                                "playcount": "33088"
+                                "listeners": "12417",
+                                "playcount": "33139"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -2364,8 +2364,8 @@
                             "mbid": "89db962b-8fdb-465e-8520-697177d6665c",
                             "title": "Run For Cover",
                             "stats": {
-                                "listeners": "24365",
-                                "playcount": "62843"
+                                "listeners": "24400",
+                                "playcount": "62961"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -2375,7 +2375,7 @@
                             "title": "Swinging Lumber",
                             "stats": {
                                 "listeners": "679",
-                                "playcount": "1310"
+                                "playcount": "1311"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -2384,8 +2384,8 @@
                             "mbid": "5695ae20-5189-4d93-a420-aac89ef5c552",
                             "title": "Winners Take All",
                             "stats": {
-                                "listeners": "9459",
-                                "playcount": "25758"
+                                "listeners": "9466",
+                                "playcount": "25784"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -2394,8 +2394,8 @@
                             "mbid": "aefc427b-3f11-49dd-97d0-0d2f749de727",
                             "title": "Cum On Feel The Noize",
                             "stats": {
-                                "listeners": "304881",
-                                "playcount": "1290189"
+                                "listeners": "305964",
+                                "playcount": "1296657"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -2404,8 +2404,8 @@
                             "mbid": "b2951c44-eea5-4ef9-96a8-73af1a7239da",
                             "title": "Metal Health",
                             "stats": {
-                                "listeners": "43624",
-                                "playcount": "183712"
+                                "listeners": "43634",
+                                "playcount": "183820"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -2414,8 +2414,8 @@
                             "mbid": "abe713b8-2adf-4694-9a67-11081471787b",
                             "title": "Danger Zone",
                             "stats": {
-                                "listeners": "4531",
-                                "playcount": "11589"
+                                "listeners": "4539",
+                                "playcount": "11623"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -2424,8 +2424,8 @@
                             "mbid": "0c26f230-eab3-47a2-82c5-1ddb5f8420c2",
                             "title": "Gonna Have A Riot",
                             "stats": {
-                                "listeners": "772",
-                                "playcount": "1582"
+                                "listeners": "774",
+                                "playcount": "1586"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -2434,8 +2434,8 @@
                             "mbid": "390a23c7-2fe2-4ac2-83fb-df9a45ae0473",
                             "title": "Thunderbird",
                             "stats": {
-                                "listeners": "23592",
-                                "playcount": "67536"
+                                "listeners": "23631",
+                                "playcount": "67643"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -2444,8 +2444,8 @@
                             "mbid": "9dcd0c12-de7b-4246-91b5-9bbbb65f75cc",
                             "title": "Love's A Bitch",
                             "stats": {
-                                "listeners": "31197",
-                                "playcount": "83373"
+                                "listeners": "31244",
+                                "playcount": "83514"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -2454,8 +2454,8 @@
                             "mbid": "5edc9028-fca1-48d5-bdb0-726d68b3559d",
                             "title": "Let's Get Crazy",
                             "stats": {
-                                "listeners": "23609",
-                                "playcount": "60003"
+                                "listeners": "23643",
+                                "playcount": "60096"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -2476,8 +2476,8 @@
                 {
                     "name": "Quiet Riot II",
                     "mbid": "d9223682-9db0-4617-84f3-d1d9ebcd766c",
-                    "listeners": "3699",
-                    "playcount": "41041",
+                    "listeners": "3700",
+                    "playcount": "41085",
                     "date": "1978",
                     "country": "JP",
                     "disambiguation": "",
@@ -2495,8 +2495,8 @@
                 {
                     "name": "Super Hits",
                     "mbid": "0a128b7f-5f22-4d12-a270-660fe073b108",
-                    "listeners": "31359",
-                    "playcount": "92849",
+                    "listeners": "31429",
+                    "playcount": "93125",
                     "date": "1999-05-04",
                     "country": "US",
                     "disambiguation": "",
@@ -2508,8 +2508,8 @@
                             "mbid": "d3b22f15-102c-4f73-968d-eb70df8a4e7c",
                             "title": "Cum On Feel the Noize",
                             "stats": {
-                                "listeners": "23212",
-                                "playcount": "90732"
+                                "listeners": "23222",
+                                "playcount": "90779"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -2518,8 +2518,8 @@
                             "mbid": "98d66de4-ab8e-4c23-bc0f-8cf2abd02584",
                             "title": "Metal Health",
                             "stats": {
-                                "listeners": "43624",
-                                "playcount": "183712"
+                                "listeners": "43634",
+                                "playcount": "183820"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -2528,8 +2528,8 @@
                             "mbid": "506bb8b9-c728-437a-8274-5fed18139957",
                             "title": "Mama Weer All Crazee Now",
                             "stats": {
-                                "listeners": "30910",
-                                "playcount": "85720"
+                                "listeners": "30987",
+                                "playcount": "85962"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -2538,8 +2538,8 @@
                             "mbid": "406619c6-4af7-4f7c-aafa-0a34b4778f35",
                             "title": "Don't Wanna Let You Go",
                             "stats": {
-                                "listeners": "35398",
-                                "playcount": "102424"
+                                "listeners": "35438",
+                                "playcount": "102573"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -2548,8 +2548,8 @@
                             "mbid": "6c458e7f-5dc6-4bd3-a96c-d4d1e1cc1838",
                             "title": "Condition Critical",
                             "stats": {
-                                "listeners": "12400",
-                                "playcount": "33088"
+                                "listeners": "12417",
+                                "playcount": "33139"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -2558,8 +2558,8 @@
                             "mbid": "de987329-eb48-434b-ae1f-cb8efb16721a",
                             "title": "I\u2019m Fallin\u2019",
                             "stats": {
-                                "listeners": "4850",
-                                "playcount": "10426"
+                                "listeners": "4854",
+                                "playcount": "10436"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -2568,8 +2568,8 @@
                             "mbid": "999ca840-19c4-4aec-a2c4-8d52792266ba",
                             "title": "Empty Promises",
                             "stats": {
-                                "listeners": "4552",
-                                "playcount": "9568"
+                                "listeners": "4556",
+                                "playcount": "9579"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -2578,8 +2578,8 @@
                             "mbid": "3d54ba9a-1533-4f8a-9284-025a3a42ad46",
                             "title": "Don't Wanna Be Your Fool",
                             "stats": {
-                                "listeners": "6935",
-                                "playcount": "18580"
+                                "listeners": "6955",
+                                "playcount": "18644"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -2588,8 +2588,8 @@
                             "mbid": "9cfd8bd6-d8ac-4cfb-a62c-e439044ef5c8",
                             "title": "Sign of the Times",
                             "stats": {
-                                "listeners": "12154",
-                                "playcount": "31211"
+                                "listeners": "12165",
+                                "playcount": "31259"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -2605,8 +2605,8 @@
                 {
                     "name": "Playlist: The Very Best Of Quiet Riot",
                     "mbid": "f0e6196b-f457-45e4-a07e-8ca64d43c198",
-                    "listeners": "43570",
-                    "playcount": "173212",
+                    "listeners": "43630",
+                    "playcount": "173479",
                     "date": "2008",
                     "country": "US",
                     "disambiguation": "",
@@ -2618,8 +2618,8 @@
                             "mbid": "98d66de4-ab8e-4c23-bc0f-8cf2abd02584",
                             "title": "Metal Health",
                             "stats": {
-                                "listeners": "43624",
-                                "playcount": "183712"
+                                "listeners": "43634",
+                                "playcount": "183820"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -2628,8 +2628,8 @@
                             "mbid": "d3b22f15-102c-4f73-968d-eb70df8a4e7c",
                             "title": "Cum On Feel the Noize",
                             "stats": {
-                                "listeners": "23212",
-                                "playcount": "90732"
+                                "listeners": "23222",
+                                "playcount": "90779"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -2638,8 +2638,8 @@
                             "mbid": "506bb8b9-c728-437a-8274-5fed18139957",
                             "title": "Mama Weer All Crazee Now",
                             "stats": {
-                                "listeners": "30910",
-                                "playcount": "85720"
+                                "listeners": "30987",
+                                "playcount": "85962"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -2648,8 +2648,8 @@
                             "mbid": "6c458e7f-5dc6-4bd3-a96c-d4d1e1cc1838",
                             "title": "Condition Critical",
                             "stats": {
-                                "listeners": "12400",
-                                "playcount": "33088"
+                                "listeners": "12417",
+                                "playcount": "33139"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -2658,8 +2658,8 @@
                             "mbid": "aaca21b5-690e-48c1-a1a7-3732278ecce0",
                             "title": "The Wild and the Young",
                             "stats": {
-                                "listeners": "30189",
-                                "playcount": "95978"
+                                "listeners": "30243",
+                                "playcount": "96181"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -2668,8 +2668,8 @@
                             "mbid": "fe3ff7d0-18d9-4450-b8e5-b65c2d5f71ee",
                             "title": "Party All Night",
                             "stats": {
-                                "listeners": "19025",
-                                "playcount": "51929"
+                                "listeners": "19043",
+                                "playcount": "51991"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -2678,8 +2678,8 @@
                             "mbid": "102a640e-87c4-4f18-95ce-b5ac50be995c",
                             "title": "Let's Get Crazy",
                             "stats": {
-                                "listeners": "23609",
-                                "playcount": "60003"
+                                "listeners": "23643",
+                                "playcount": "60096"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -2688,8 +2688,8 @@
                             "mbid": "bf2de29e-d8da-4b3f-a46c-cd84cdb819c3",
                             "title": "Sign of the Times",
                             "stats": {
-                                "listeners": "12154",
-                                "playcount": "31211"
+                                "listeners": "12165",
+                                "playcount": "31259"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -2698,8 +2698,8 @@
                             "mbid": "406619c6-4af7-4f7c-aafa-0a34b4778f35",
                             "title": "Don't Wanna Let You Go",
                             "stats": {
-                                "listeners": "35398",
-                                "playcount": "102424"
+                                "listeners": "35438",
+                                "playcount": "102573"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -2708,8 +2708,8 @@
                             "mbid": "5e8d549c-ec20-4d80-a182-19e7104a81c7",
                             "title": "Breathless",
                             "stats": {
-                                "listeners": "25243",
-                                "playcount": "67372"
+                                "listeners": "25275",
+                                "playcount": "67462"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -2718,8 +2718,8 @@
                             "mbid": "97974330-cf4c-47d8-a1af-151a04b74897",
                             "title": "Bad Boy",
                             "stats": {
-                                "listeners": "6941",
-                                "playcount": "16616"
+                                "listeners": "6948",
+                                "playcount": "16637"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -2728,8 +2728,8 @@
                             "mbid": "7a7ba9d3-e947-42f2-adfb-70e325451fbd",
                             "title": "Twilight Hotel",
                             "stats": {
-                                "listeners": "6787",
-                                "playcount": "19225"
+                                "listeners": "6801",
+                                "playcount": "19275"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -2738,8 +2738,8 @@
                             "mbid": "1e7f2493-012b-4cf0-aca3-78196619aae1",
                             "title": "Winners Take All",
                             "stats": {
-                                "listeners": "9459",
-                                "playcount": "25758"
+                                "listeners": "9466",
+                                "playcount": "25784"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -2760,8 +2760,8 @@
                 {
                     "name": "Terrified",
                     "mbid": "230c2f14-7abb-45fb-b0d5-c3f156c0bd09",
-                    "listeners": "2860",
-                    "playcount": "28669",
+                    "listeners": "2861",
+                    "playcount": "28715",
                     "date": "1993-07-19",
                     "country": "US",
                     "disambiguation": "",
@@ -2773,8 +2773,8 @@
                             "mbid": "f7f8c026-1c2a-4ce6-9a94-b777926312f4",
                             "title": "Cold Day in Hell",
                             "stats": {
-                                "listeners": "1438",
-                                "playcount": "3570"
+                                "listeners": "1440",
+                                "playcount": "3576"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -2783,8 +2783,8 @@
                             "mbid": "b37031b9-010d-4655-9743-2d6b9f75990e",
                             "title": "Loaded Gun",
                             "stats": {
-                                "listeners": "1334",
-                                "playcount": "3050"
+                                "listeners": "1335",
+                                "playcount": "3055"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -2793,8 +2793,8 @@
                             "mbid": "cb770cce-4640-4c30-8730-9273ad39d2f4",
                             "title": "Itchycoo Park",
                             "stats": {
-                                "listeners": "1328",
-                                "playcount": "3414"
+                                "listeners": "1329",
+                                "playcount": "3417"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -2803,8 +2803,8 @@
                             "mbid": "5ffc4584-a8da-4761-a752-7aa249e75788",
                             "title": "Terrified",
                             "stats": {
-                                "listeners": "1572",
-                                "playcount": "4321"
+                                "listeners": "1576",
+                                "playcount": "4335"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -2813,8 +2813,8 @@
                             "mbid": "f7f2f06e-df94-4db7-a846-1ee298f69140",
                             "title": "Rude Boy",
                             "stats": {
-                                "listeners": "1281",
-                                "playcount": "3007"
+                                "listeners": "1282",
+                                "playcount": "3012"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -2823,8 +2823,8 @@
                             "mbid": "be4b2aec-8cea-4aea-8909-a58c73cb75d4",
                             "title": "Dirty Lover",
                             "stats": {
-                                "listeners": "1279",
-                                "playcount": "3063"
+                                "listeners": "1281",
+                                "playcount": "3068"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -2833,8 +2833,8 @@
                             "mbid": "927dea38-9a69-49d8-835b-07b2a0bd3692",
                             "title": "Psycho City",
                             "stats": {
-                                "listeners": "1303",
-                                "playcount": "3153"
+                                "listeners": "1304",
+                                "playcount": "3158"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -2843,8 +2843,8 @@
                             "mbid": "6349f170-ec9f-4ec8-a824-27c876239368",
                             "title": "Rude, Crude Mood",
                             "stats": {
-                                "listeners": "1170",
-                                "playcount": "2667"
+                                "listeners": "1171",
+                                "playcount": "2670"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -2853,8 +2853,8 @@
                             "mbid": "ab4a04e8-4182-4b30-a225-b01de1d8f276",
                             "title": "Little Angel",
                             "stats": {
-                                "listeners": "1270",
-                                "playcount": "3147"
+                                "listeners": "1271",
+                                "playcount": "3152"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -2863,8 +2863,8 @@
                             "mbid": "90536565-f19e-4b4e-a80a-0431b5329516",
                             "title": "Resurrection",
                             "stats": {
-                                "listeners": "1153",
-                                "playcount": "2978"
+                                "listeners": "1154",
+                                "playcount": "2983"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -2880,8 +2880,8 @@
                 {
                     "name": "Alive And Well",
                     "mbid": "47b78eeb-6e39-403e-b352-513210dca602",
-                    "listeners": "20384",
-                    "playcount": "84573",
+                    "listeners": "20444",
+                    "playcount": "84848",
                     "date": "1999-03-23",
                     "country": "US",
                     "disambiguation": "",
@@ -2893,8 +2893,8 @@
                             "mbid": "ac3a3492-1200-47fc-9bdf-62cbfba34dd3",
                             "title": "Don\u2019t Know What I Want",
                             "stats": {
-                                "listeners": "3137",
-                                "playcount": "6019"
+                                "listeners": "3148",
+                                "playcount": "6043"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -2903,8 +2903,8 @@
                             "mbid": "9bb2256f-b019-442c-84e7-e0dd5614e99d",
                             "title": "Angry",
                             "stats": {
-                                "listeners": "3017",
-                                "playcount": "5800"
+                                "listeners": "3020",
+                                "playcount": "5808"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -2913,8 +2913,8 @@
                             "mbid": "4f17c5fc-a7e0-4b67-a2f6-60d8e7a0048b",
                             "title": "Alive and Well",
                             "stats": {
-                                "listeners": "2716",
-                                "playcount": "5369"
+                                "listeners": "2725",
+                                "playcount": "5383"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -2923,8 +2923,8 @@
                             "mbid": "2f19fb0e-b410-41ec-9da6-25fcf3daefbe",
                             "title": "The Ritual",
                             "stats": {
-                                "listeners": "2273",
-                                "playcount": "4325"
+                                "listeners": "2292",
+                                "playcount": "4355"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -2933,8 +2933,8 @@
                             "mbid": "5a90c274-ea06-4051-9de2-b537050c10a4",
                             "title": "Overworked and Underpaid",
                             "stats": {
-                                "listeners": "2666",
-                                "playcount": "5060"
+                                "listeners": "2682",
+                                "playcount": "5086"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -2943,8 +2943,8 @@
                             "mbid": "789c0c0d-3b10-482d-a009-7974d25519d5",
                             "title": "Slam Dunk (Way to Go!)",
                             "stats": {
-                                "listeners": "3289",
-                                "playcount": "7079"
+                                "listeners": "3302",
+                                "playcount": "7100"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -2953,8 +2953,8 @@
                             "mbid": "a2d12e2b-5a3d-4b68-9641-cf1400a5c7ad",
                             "title": "Too Much Information",
                             "stats": {
-                                "listeners": "2495",
-                                "playcount": "4615"
+                                "listeners": "2499",
+                                "playcount": "4623"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -2963,8 +2963,8 @@
                             "mbid": "76654d4c-5e48-43c2-9184-1a44d5266eba",
                             "title": "Against the Wall",
                             "stats": {
-                                "listeners": "2877",
-                                "playcount": "5610"
+                                "listeners": "2886",
+                                "playcount": "5626"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -2973,8 +2973,8 @@
                             "mbid": "2e3754de-d05a-4bef-8f89-b0ba795f3b1c",
                             "title": "Highway to Hell",
                             "stats": {
-                                "listeners": "30770",
-                                "playcount": "71326"
+                                "listeners": "30796",
+                                "playcount": "71413"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -2983,8 +2983,8 @@
                             "mbid": "81b4e4e8-1e2e-471c-90db-b72e5f55eea1",
                             "title": "Sign of the Times",
                             "stats": {
-                                "listeners": "12154",
-                                "playcount": "31211"
+                                "listeners": "12165",
+                                "playcount": "31259"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -3003,8 +3003,8 @@
                             "mbid": "aed4c6c0-d2b2-4450-892d-d893a2090708",
                             "title": "The Wild and the Young",
                             "stats": {
-                                "listeners": "30189",
-                                "playcount": "95978"
+                                "listeners": "30243",
+                                "playcount": "96181"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -3013,8 +3013,8 @@
                             "mbid": "56ba84e9-3d38-4e1a-85a6-b5f7753f312f",
                             "title": "Mama Weer All Crazee Now",
                             "stats": {
-                                "listeners": "30910",
-                                "playcount": "85720"
+                                "listeners": "30987",
+                                "playcount": "85962"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -3023,8 +3023,8 @@
                             "mbid": "64208ee1-4a48-4c4b-9924-c84c8991d99c",
                             "title": "Cum On Feel the Noize",
                             "stats": {
-                                "listeners": "304881",
-                                "playcount": "1290189"
+                                "listeners": "305964",
+                                "playcount": "1296657"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -3033,8 +3033,8 @@
                             "mbid": "bcafbfdc-db75-4fe7-a0cf-00d673e13366",
                             "title": "Metal Health (Bang Your Head)",
                             "stats": {
-                                "listeners": "69687",
-                                "playcount": "208906"
+                                "listeners": "70033",
+                                "playcount": "210418"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -3050,8 +3050,8 @@
                 {
                     "name": "Extended Versions",
                     "mbid": "213d0422-a735-4439-8aab-aeae32f79e08",
-                    "listeners": "463",
-                    "playcount": "2044",
+                    "listeners": "468",
+                    "playcount": "2062",
                     "date": "2007",
                     "country": "US",
                     "disambiguation": "",
@@ -3063,8 +3063,8 @@
                             "mbid": "33868fb9-076e-4fce-a599-c65ab96c3ff6",
                             "title": "Danger Zone",
                             "stats": {
-                                "listeners": "4531",
-                                "playcount": "11589"
+                                "listeners": "4539",
+                                "playcount": "11623"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -3073,8 +3073,8 @@
                             "mbid": "4dba6d4d-b3ab-4309-aaa7-2a580f40fec7",
                             "title": "Run for Cover",
                             "stats": {
-                                "listeners": "24365",
-                                "playcount": "62843"
+                                "listeners": "24400",
+                                "playcount": "62961"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -3083,8 +3083,8 @@
                             "mbid": "8540bf40-1b17-40f2-83a3-2b97df65bacd",
                             "title": "Love's a Bitch",
                             "stats": {
-                                "listeners": "31197",
-                                "playcount": "83373"
+                                "listeners": "31244",
+                                "playcount": "83514"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -3093,8 +3093,8 @@
                             "mbid": "4ef8fff4-fc09-49d0-ac9f-99b25cb12680",
                             "title": "Anytime You Want Me",
                             "stats": {
-                                "listeners": "69",
-                                "playcount": "145"
+                                "listeners": "71",
+                                "playcount": "148"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -3103,8 +3103,8 @@
                             "mbid": "5ebc6a30-f653-41c0-831d-3c5b76859fdc",
                             "title": "Cum on Feel the Noize",
                             "stats": {
-                                "listeners": "304881",
-                                "playcount": "1290189"
+                                "listeners": "305964",
+                                "playcount": "1296657"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -3113,8 +3113,8 @@
                             "mbid": "8060e7db-7a32-4b3d-b497-e8740721f156",
                             "title": "Slick Black Cadillac",
                             "stats": {
-                                "listeners": "42884",
-                                "playcount": "123815"
+                                "listeners": "42951",
+                                "playcount": "124028"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -3123,8 +3123,8 @@
                             "mbid": "7704ce20-a9be-47ff-9c6d-751330a4af61",
                             "title": "Gonna Have a Riot",
                             "stats": {
-                                "listeners": "772",
-                                "playcount": "1582"
+                                "listeners": "774",
+                                "playcount": "1586"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -3133,8 +3133,8 @@
                             "mbid": "a81e72cf-09e0-415b-af6a-05f5a0e571fc",
                             "title": "Breathless",
                             "stats": {
-                                "listeners": "25243",
-                                "playcount": "67372"
+                                "listeners": "25275",
+                                "playcount": "67462"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -3143,8 +3143,8 @@
                             "mbid": "0b90df41-7560-4535-900f-d2dca5fc0668",
                             "title": "Let's Get Crazy",
                             "stats": {
-                                "listeners": "23609",
-                                "playcount": "60003"
+                                "listeners": "23643",
+                                "playcount": "60096"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -3153,8 +3153,8 @@
                             "mbid": "45fb3368-e2c7-42f5-952c-29606ea7586e",
                             "title": "Bang Your Head (Metal Health)",
                             "stats": {
-                                "listeners": "78048",
-                                "playcount": "241306"
+                                "listeners": "78171",
+                                "playcount": "241659"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -3175,8 +3175,8 @@
                 {
                     "name": "Quiet Riot",
                     "mbid": "0a7fefee-604c-4f68-91ad-17e3d4ebfda8",
-                    "listeners": "8395",
-                    "playcount": "88809",
+                    "listeners": "8418",
+                    "playcount": "88969",
                     "date": "1977",
                     "country": "JP",
                     "disambiguation": "",
@@ -3188,8 +3188,8 @@
                             "mbid": "ae0bba31-5be4-41a8-b81e-36b96c51f5a2",
                             "title": "It's Not So Funny",
                             "stats": {
-                                "listeners": "3268",
-                                "playcount": "10310"
+                                "listeners": "3269",
+                                "playcount": "10320"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -3198,8 +3198,8 @@
                             "mbid": "1dc5654d-bb1f-4ddc-b9d0-b942bf1fab3f",
                             "title": "Look in Any Window",
                             "stats": {
-                                "listeners": "2822",
-                                "playcount": "9100"
+                                "listeners": "2823",
+                                "playcount": "9105"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -3209,8 +3209,8 @@
                 {
                     "name": "Quiet Riot",
                     "mbid": "0a7fefee-604c-4f68-91ad-17e3d4ebfda8",
-                    "listeners": "8395",
-                    "playcount": "88809",
+                    "listeners": "8418",
+                    "playcount": "88969",
                     "date": "",
                     "country": "JP",
                     "disambiguation": "",
@@ -3222,8 +3222,8 @@
                             "mbid": "ae0bba31-5be4-41a8-b81e-36b96c51f5a2",
                             "title": "It's Not So Funny",
                             "stats": {
-                                "listeners": "3268",
-                                "playcount": "10310"
+                                "listeners": "3269",
+                                "playcount": "10320"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"
@@ -3232,8 +3232,8 @@
                             "mbid": "1dc5654d-bb1f-4ddc-b9d0-b942bf1fab3f",
                             "title": "Look in Any Window",
                             "stats": {
-                                "listeners": "2822",
-                                "playcount": "9100"
+                                "listeners": "2823",
+                                "playcount": "9105"
                             },
                             "artistName": "Quiet Riot",
                             "artistMBID": "5c6acb91-4b9b-4245-b92f-e817295c4ed0"

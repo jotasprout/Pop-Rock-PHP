@@ -40,15 +40,20 @@ if(!$getit){ echo 'Cursed-Crap. Did not run the query.'; }
 
 <body>
 
+	<div class='container-fluid'>
+	<!--
 	<div class="container">
-		<?php echo $navbarIndex ?>
+	-->
+		<?php 
+			echo $navbarIndex;
+		?>
 
 	<!-- main -->
 
 	<div class="panel panel-primary">
 
 		<div class="panel-heading">
-			<h3 class="panel-title">Current Popularity from Spotify</h3>
+			<h3 class="panel-title">Data for All Artists</h3>
 		</div>
 
 		<div class="panel-body">
@@ -66,10 +71,10 @@ if(!$getit){ echo 'Cursed-Crap. Did not run the query.'; }
 						<!--
 						-->
 						<th class="popStyle">Spotify<br>Data Date</th>
-						<th onClick="sortColumn('pop', 'DESC')"><div class="pointyHead popScore">Spotify<br>Popularity</div></th>
+						<th onClick="sortColumn('pop', 'DESC')"><div class="pointyHead popStyle">Spotify<br>Popularity</div></th>
 						<th class="popStyle">Spotify<br>Followers</th>
-						<th>LastFM<br>Listeners</th>
-						<th>LastFM<br>Playcount</th>
+						<th class="popStyle">LastFM<br>Listeners</th>
+						<th class="popStyle">LastFM<br>Playcount</th>
 						<th class="popStyle">Spotify<br>Total Albums</th>
 					</tr>
 				</thead>
@@ -91,14 +96,14 @@ if(!$getit){ echo 'Cursed-Crap. Did not run the query.'; }
 				<tr>
 					<td><img src='<?php echo $artistArt ?>' class="indexArtistArt"></td>	
 					<td><a href='https://www.roxorsoxor.com/poprock/this_artistPopChart.php?artistID=<?php echo $artistID ?>'><?php echo $artistName ?></a></td>
-					<td><?php echo $artistID ?></td>
+					<td class="popStyle"><?php echo $artistID ?></td>
 					<!--
 					-->
-					<td><?php echo $popDate ?></td>
+					<td class="popStyle"><?php echo $popDate ?></td>
 					<td class="popStyle"><?php echo $artistPop ?></td>
 					<td id="followers" class="rightNum"><?php echo $artistFollowers ?></td>
-					<td>--</td>
-					<td>--</td>
+					<td class="popStyle">--</td>
+					<td class="popStyle">--</td>
 					<td class="popStyle"><?php echo $albumsTotal ?></td>
 				</tr>
 

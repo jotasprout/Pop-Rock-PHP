@@ -9,7 +9,7 @@ $navbarIndex = "
 			<li><a href='https://roxorsoxor.com/poprock/multiArtists_albumsPopChart.php'>Group Chart</a></li>
 			<li><a href='https://roxorsoxor.com/poprock/theseArtists_comparePopLines.php'>Compare Time</a></li>
 			<li><a href='https://roxorsoxor.com/poprock/theseArtists_comparePopBars.php'>Compare Current</a></li>	
-			<li><a href='https://roxorsoxor.com/poprock/all_artistsListGenres.php'>Genres</a></li>	
+			<li><a href='https://roxorsoxor.com/poprock/genres.php'>Genres</a></li>	
 
 		</ul>
 	</div> <!-- /container-fluid -->   
@@ -27,7 +27,7 @@ $navbar = "
 			<li><a href='https://roxorsoxor.com/poprock/multiArtists_albumsPopChart.php'>Group Chart</a></li>
 			<li><a href='https://roxorsoxor.com/poprock/theseArtists_comparePopLines.php'>Compare Time</a></li>
 			<li><a href='https://roxorsoxor.com/poprock/theseArtists_comparePopBars.php'>Compare Current</a></li>	
-			<li><a href='https://roxorsoxor.com/poprock/all_artistsListGenres.php'>Genres</a></li>	
+			<li><a href='https://roxorsoxor.com/poprock/genres.php'>Genres</a></li>	
 
 		</ul>
 	</div> <!-- /container-fluid -->   

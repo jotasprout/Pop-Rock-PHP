@@ -10,7 +10,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>These Artists Popularity</title>
+    <title>Artists Compare Line Chart</title>
     
     <?php echo $stylesAndSuch; ?>
     

@@ -9,7 +9,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>This Artist</title>
+    <title>Artist Data | PopRock</title>
 	<?php echo $stylesAndSuch; ?>
 	<style type="text/css">
 		.line {
@@ -44,19 +44,21 @@
 
 <body>
 
-<div class="container">
+<div class="container-fluid">
     <?php echo $navbar ?>
     <p>Please be patient while data loads.</p>
     <p>If, after the page loads, it is empty, or the wrong discography displays, <a href='https://www.roxorsoxor.com/poprock/index.php'>choose an artist</a> from the <a href='https://www.roxorsoxor.com/poprock/index.php'>Artists List</a> first.</p>
 
 
     <p><img id="forArt"></p>
-    <p><strong>Current Popularity on Spotify:</strong> <span id="forCurrentPopularity"></span></p> 
-    <p><strong>Current Followers on Spotify:</strong>  <span id="forCurrentFollowers"></span></p> 
+    <p><strong>Popularity</strong> on <strong>Spotify</strong>: <span id="forCurrentPopularity"></span></p> 
+    <p><strong>Followers</strong> on <strong>Spotify</strong>:  <span id="forCurrentFollowers"></span></p> 
+	<p><strong>Listeners</strong> on <strong>LastFM</strong>: <span id="forCurrentListeners">No data yet</span></p> 
+    <p><strong>Playcount</strong> on <strong>LastFM</strong>:  <span id="forCurrentPlaycount">No data yet</span></p> 
 
 	<div class="panel panel-primary">
 		<div class="panel-heading">
-			<h3 id="artistPop" class="panel-title">This Artist's Popularity On Spotify Over Time</h3>
+			<h3 id="artistPop" class="panel-title">This artist's popularity on Spotify over time</h3>
 		</div> <!-- close panel-heading -->
 
 		<div class="panel-body">
@@ -94,7 +96,7 @@ d3.json("functions/createArtistD3.php?artistID=<?php echo $artistID; ?>", functi
     const artistName = dataset[0].artistName;
 
     const artistTitle = d3.select("#artistPop")
-            .text(artistName + "'s popularity over time");   
+            .text(artistName + "'s popularity on Spotify over time");   
 
     const currentPopArtist = dataset[0].pop;
 
@@ -177,7 +179,7 @@ d3.json("functions/createArtistD3.php?artistID=<?php echo $artistID; ?>", functi
         const artistName = dataset[0].artistName;
 
         const artistTitle = d3.select("#albumPop")
-            .text(artistName + "'s Albums' Current Popularity");
+            .text(artistName + "'s albums' current popularity");
         
         // Create SVG element
         var svg = d3.select("#recordCollection")
