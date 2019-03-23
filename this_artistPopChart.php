@@ -251,18 +251,18 @@ d3.json("functions/createArtistD3.php?artistID=<?php echo $artistID; ?>", functi
         console.log(dataset);
         
         var data = dataset;
+       
 
-        const dataListeners = data.artistListeners;
+        const dataListeners = data[0].artistListeners;
         let listeners = String(dataListeners).replace(/(.)(?=(\d{3})+$)/g,'$1,');
+        const artistListeners = d3.select("#forCurrentListeners")
+            .text(listeners);   
 
-        const listen = d3.select("#forCurrentListeners")
-               .text(listeners);   
 
-        const dataPlaycount = data.artistPlaycount;
+        const dataPlaycount = data[0].artistPlaycount;
         let playcount = String(dataPlaycount).replace(/(.)(?=(\d{3})+$)/g,'$1,');
-
-        const play = d3.select("#forCurrentPlaycount")
-               .text(playcount); 
+        const artistPlaycount = d3.select("#forCurrentPlaycount")
+            .text(playcount); 
 
     });   
      
