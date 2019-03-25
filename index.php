@@ -78,10 +78,8 @@ if(!$getit){ echo 'Cursed-Crap. Did not run the query.'; }
 						<!---->
 						<th class="popStyle">Spotify ID</th>
 						<th class="popStyle">Spotify<br>Data Date</th>
-						<th class="rightNum">Spotify<br>Total Albums</th>
-						
-						
 						<th onClick="sortColumn('pop', 'DESC')"><div class="pointyHead popStyle">Spotify<br>Popularity</div></th>
+						<th class="popStyle">Spotify<br>Total Albums</th>
 						<th class="rightNum">Spotify<br>Followers</th>
 						<th class="rightNum">LastFM<br>Listeners</th>
 						<th class="rightNum">LastFM<br>Playcount</th>
@@ -118,12 +116,10 @@ if(!$getit){ echo 'Cursed-Crap. Did not run the query.'; }
 					<td><a href='https://www.roxorsoxor.com/poprock/this_artistPopChart.php?artistID=<?php echo $artistID ?>'><?php echo $artistName ?></a></td>
 					
 					<!---->
-						<td class="popStyle"><?php //echo $artistID ?></td>
-						<td class="popStyle"><?php //echo $popDate ?></td>
-						<td class="rightNum"><?php //echo $albumsTotal ?></td>
-					
-					
+					<td class="popStyle"><?php echo $artistID ?></td>
+					<td class="popStyle"><?php echo $popDate ?></td>
 					<td class="popStyle"><?php echo $artistPop ?></td>
+					<td class="popStyle"><?php echo $albumsTotal ?></td>
 					<td id="followers" class="rightNum"><?php echo $artistFollowers ?></td>
 					<td class="rightNum"><?php echo $artistListeners ?></td>
 					<td class="rightNum"><?php echo $artistPlaycount ?></td>
