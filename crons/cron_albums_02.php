@@ -1,6 +1,5 @@
 <?php
 
-//session_start();
 require '../secrets/auth.php';
 require_once '../rockdb.php';
 require_once '../functions/albums.php';

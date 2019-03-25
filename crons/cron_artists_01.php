@@ -1,6 +1,5 @@
 <?php
 
-session_start();
 require '../secrets/auth.php';
 require '../vendor/autoload.php';
 require_once '../rockdb.php';

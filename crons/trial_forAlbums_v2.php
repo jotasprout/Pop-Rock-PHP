@@ -66,14 +66,15 @@ function gatherArtistAlbums ($artistID) {
 
     $allAlbumsThisArtist = array ();
 
+    echo "<p>allAlbumsThisArtist array has = " . count($allAlbumsThisArtist);
 
     for ($p=0; $p<$a; $p++) {
         
         $discogChunk = array ();
         
         echo "<p>Discog Offset = " . $discogOffset . ".</p>";
-        
-        echo "<p>Here is chunk #" . $p . ".</p>";
+
+        echo "<p>discogChunk # " . $p . "has = " . count($discogChunk) . " albums.</p>";
 
         $discography = $GLOBALS['api']->getArtistAlbums($artistID, [
             'limit' => '50',
@@ -88,15 +89,19 @@ function gatherArtistAlbums ($artistID) {
         };
 
         $allAlbumsThisArtist = array_merge($allAlbumsThisArtist, $discogChunk);
+        echo "<p>allAlbumsThisArtist array NOW has = " . count($allAlbumsThisArtist) . " albums.</p>";
         
         $discogOffset += 50;
 
         unset($discogChunk);
+        echo "<p>discogChunk # " . $p . " NOW has = " . count($discogChunk) . " albums.</p>";
     };
 
     divideCombineAlbums ($allAlbumsThisArtist);
+    echo "<p>allAlbumsThisArtist array has = " . count($allAlbumsThisArtist);
 
     unset($allAlbumsThisArtist);
+    echo "<p>At the END, allAlbumsThisArtist array NOW has = " . count($allAlbumsThisArtist) . " albums.</p>";
 
 }
 
