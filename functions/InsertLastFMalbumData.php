@@ -28,29 +28,42 @@ if(!$connekt){
     echo 'Fiddlesticks! Could not connect to database.<br>';
 } else {
 
+	$rockout = $connekt->query($insertArtistLastFM);
+
+    if(!$rockout){
+        echo '<p>Shickety Brickety! Could not insert stats for ' . $artistName . '.</p>';
+    } else {
+        echo '<p>Inserted ' . $artistListeners . ' listeners and ' . $artistPlaycount . ' plays for ' . $artistName . '.</p>';
+    }
+
     for ($j=0; $j<$albumsNum; ++$j) {
         $album = $albums[$j];
         $releases = $album['releases'];
         $release = $releases[$k];
         $releaseMBID = $release['mbid'];
-        $releaseName = $release['name'];
+		$releaseName = $release['name'];
+		$albumListeners = $album['listeners'];
+		$albumPlaycount = $album['playcount'];
 
-		$insertMBIDalbums = "INSERT INTO albumsMB (
+		$insertAlbumMBinfo = "INSERT INTO albumsMB (
 			albumName,
 			artistMBID, 
-			artistSpotID,
 			albumMBID
 		) 
 		VALUES(
 			'$releaseName',
 			'$artistMBID',
-			'$artistSpotifyID',
 			'$releaseMBID'
 		)";
 		
-		$albumListeners = $album['listeners'];
-		$albumPlaycount = $album['playcount'];
-		
+		$rockon = $connekt->query($insertAlbumMBinfo);
+
+		if(!$rockon){
+			echo '<p>Shickety Brickety! Could not insert MB info for ' . $releaseName . '.</p>';
+		} else {
+			echo '<p>Inserted MB info for ' . $releaseName . '.</p>';
+		}
+
 		$insertLastFMalbumData = "INSERT INTO albumListenersPlaycount (
 			albumMBID, 
 			dataDate,
@@ -58,7 +71,7 @@ if(!$connekt){
 			albumPlaycount
 			) 
 			VALUES(
-				'$$releaseMBID',
+				'$releaseMBID',
 				'$dataDate',
 				'$albumListeners',
 				'$albumPlaycount'
@@ -66,24 +79,14 @@ if(!$connekt){
 	};
 };
 
+    $rockin = $connekt->query($insertLastFMalbumData);
 
-    $rockout = $connekt->query($insertMBIDalbums);
-
-
-    if(!$rockout){
-        echo 'Shickety Brickety! Could not insert albums for ' . $artistName . '.<br>';
+    if(!$rockin){
+        echo '<p>Shickety Brickety! Could not insert data for ' . $releaseName . '.</p>';
     } else {
-        echo ' Inserted ' . $artistListeners . ' listeners and ' . $artistPlaycount . ' plays for ' . $artistName . '.<br>';
+		'$albumPlaycount'
+		echo '<p>Inserted ' . $albumListeners . ' listeners and ' . $artistPlaycount . ' plays for ' . $releaseName . '.</p>';
     }
-
-
-    
-    echo $artistName . ' had ' . $artistListeners . ' listeners and ' . $artistPlaycount . ' plays on ' . $dataDate . '.<br>';
-    
-
-    
- 
-    
 };
 
 ?>
