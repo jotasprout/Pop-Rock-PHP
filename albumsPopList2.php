@@ -11,10 +11,9 @@ if (!$connekt) {
 	echo 'Darn. Did not connect.';
 };
 
-$happyScabies2 = "SELECT a.albumName, a.year, a.albumArt, a.tracksTotal, z.artistName, p1.pop, p1.date, a.albumID, f1.albumListeners, f1.albumPlaycount
+$happyScabies2 = "SELECT a.albumName, a.year, a.albumArt, a.tracksTotal, z.artistName, p1.pop, p1.date, f1.albumListeners, f1.albumPlaycount, a.albumID
 	FROM (SELECT
 				y.albumID AS albumID,
-				y.albumMBID AS albumMBID,
 				y.albumName AS albumName,
 				y.artistID AS artistID,
 				y.tracksTotal AS tracksTotal,
@@ -32,12 +31,12 @@ $happyScabies2 = "SELECT a.albumName, a.year, a.albumArt, a.tracksTotal, z.artis
 			AND p.date = groupedp.MaxDate) p1 
 	ON a.albumID = p1.albumID
 	LEFT JOIN (SELECT f.*
-			FROM albumsLastFM f
-			INNER JOIN (SELECT albumMBID, albumListeners, albumPlaycount, max(dataDate) AS MaxDataDate
-			FROM albumsLastFM
-			GROUP BY albumMBID) groupedf
-			ON f.albumMBID = groupedf.albumMBID
-			AND f.dataDate = groupedf.MaxDataDate) f1
+		FROM albumsLastFM f
+		INNER JOIN (SELECT albumMBID, albumListeners, albumPlaycount, max(dataDate) AS MaxDataDate
+					FROM albumsLastFM  
+					GROUP BY albumMBID) groupedf
+		ON f.albumMBID = groupedf.albumMBID
+		AND f.dataDate = groupedf.MaxDataDate) f1
 	ON a.albumMBID = f1.albumMBID
 	ORDER BY year ASC;";
 
@@ -119,18 +118,18 @@ if(!$getit){
 							};
 					?>
 					
-<tr>
-<td><img src='<?php echo $albumArt ?>' height='64' width='64'></td>
-<td><?php echo $albumID ?></td>
-<!-- NEED TO CREATE FUNCTION IN NEXT LINE -->
-<td><a href='https://www.roxorsoxor.com/poprock/thisAlbum_TracksList.php?albumID=<?php echo $albumID ?>'><?php echo $albumName ?></a></td>
-<td class="popStyle"><?php echo $albumReleased ?></td>
-<td class="popStyle"><?php echo $tracksTotal ?></td>
-<th class="popStyle"><?php echo $date ?></th>
-<td class="popStyle"><?php echo $albumPop ?></td>
-<td class="rightNum"><?php echo $albumListeners ?></td>
-<td class="rightNum"><?php echo $albumPlaycount ?></td>
-</tr>
+						<tr>
+							<td><img src='<?php echo $albumArt ?>' height='64' width='64'></td>
+							<td><?php echo $albumID ?></td>
+							<!-- NEED TO CREATE FUNCTION IN NEXT LINE -->
+							<td><a href='https://www.roxorsoxor.com/poprock/thisAlbum_TracksList.php?albumID=<?php echo $albumID ?>'><?php echo $albumName ?></a></td>
+							<td class="popStyle"><?php echo $albumReleased ?></td>
+							<td class="popStyle"><?php echo $tracksTotal ?></td>
+							<th class="popStyle"><?php echo $date ?></th>
+							<td class="popStyle"><?php echo $albumPop ?></td>
+							<td class="rightNum"><?php echo $albumListeners ?></td>
+							<td class="rightNum"><?php echo $albumPlaycount ?></td>
+						</tr>
 					
 					<?php 
 						} // end of while
