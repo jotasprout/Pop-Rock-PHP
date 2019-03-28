@@ -1,8 +1,8 @@
 <?php
 
 require '../secrets/auth.php';
-require '../data_text/artists_arrays.php';
-require '../functions/tracks.php';
+//require '../data_text/artists_arrays.php';
+//require '../functions/tracks.php';
 require_once '../rockdb.php';
 
 function divideCombineAlbums ($artistAlbums) {
@@ -194,6 +194,8 @@ function divideCombineArtistsForAlbums ($theseArtists) {
 
 }
 
-divideCombineArtistsForAlbums ($artists07);
+$bs = array ("5M52tdBnJaKSvOpJGz8mfZ");
+
+divideCombineArtistsForAlbums ($bs);
 
 ?>
