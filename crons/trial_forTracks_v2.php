@@ -153,12 +153,15 @@ function gatherArtistAlbums ($artistID) {
 		unset($discogChunk);
 	};
 
+	$thisMany = ceil(count($allAlbumsThisArtist));
+
+	echo "I have gathered " . $thisMany . " albums total.";
+
 	divideCombineAlbums ($allAlbumsThisArtist);
 
 	unset($allAlbumsThisArtist);
 
 }
-
 
 function divideCombineArtistsForAlbums ($theseArtists) {
 
@@ -194,8 +197,8 @@ function divideCombineArtistsForAlbums ($theseArtists) {
 
 }
 
-$bs = array ("5M52tdBnJaKSvOpJGz8mfZ");
-
-divideCombineArtistsForAlbums ($bs);
+$artistID = "5M52tdBnJaKSvOpJGz8mfZ";
+gatherArtistAlbums ($artistID);
+//divideCombineArtistsForAlbums ($bs);
 
 ?>
