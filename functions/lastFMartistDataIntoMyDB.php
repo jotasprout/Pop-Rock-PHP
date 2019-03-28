@@ -46,7 +46,24 @@ $filenames0 = array (
     '../data_text/jsonLastFM/TheZombies_Group_03-27-19.json'
 );
 
-$filenames = $filenames0;
+$filenames1 = array (
+    '../data_text/jsonLastFM/AliceCooper_Combined_03-26-19.json',
+    '../data_text/jsonLastFM/Anvil_Group_03-26-19.json',
+    '../data_text/jsonLastFM/BlackSabbath_Group_03-26-19.json',
+    '../data_text/jsonLastFM/Dio_Group_03-26-19.json', 
+    '../data_text/jsonLastFM/Elf_Group_03-26-19.json', 
+    '../data_text/jsonLastFM/EvilStig_Group_03-26-19.json', 
+    '../data_text/jsonLastFM/Heaven&Hell_Group_03-26-19.json', 
+    '../data_text/jsonLastFM/JoanJett_Combined_03-26-19.json', 
+    '../data_text/jsonLastFM/MeatLoaf_Person_03-26-19.json', 
+    '../data_text/jsonLastFM/RonnieDioandtheProphets_Group_03-26-19.json', 
+    '../data_text/jsonLastFM/RonnieDioandtheRedCaps_Group_03-26-19.json', 
+    '../data_text/jsonLastFM/Stoney&Meatloaf_Group_03-26-19.json',
+    '../data_text/jsonLastFM/TheAmboyDukes_Group_03-26-19.json',
+    '../data_text/jsonLastFM/TheElectricElves_Group_03-26-19.json'
+);
+
+$filenames = $filenames1;
 
 $x = ceil((count($filenames)));
 

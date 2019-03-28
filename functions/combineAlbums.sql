@@ -36,7 +36,7 @@ FROM tracksMB
 JOIN albums ON tracksMB.albumMBID = albums.albumMBID) tmb ON tmb.trackName = tracks.trackName AND tmb.albumID = tracks.albumID
 SET tracks.trackMBID = tmb.trackMBID
 WHERE tmb.trackName = tracks.trackName AND tmb.albumID = tracks.albumID
-# Above 1649 rows affected. I sure do hope they're correct.
+# Above 1649 rows affected. I sure do hope they are correct.
 
 
 ####################################
