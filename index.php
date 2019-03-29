@@ -78,7 +78,7 @@ if(!$getit){ echo 'Cursed-Crap. Did not run the query.'; }
 						<!---->
 						<th class="popStyle">Spotify ID</th>
 						<th class="popStyle">Spotify<br>Data Date</th>
-						<th onClick="sortColumn('pop', 'DESC')"><div class="pointyHead popStyle">Spotify<br>Popularity</div></th>
+						<th onClick="sortColumn('pop', 'ASC')"><div class="pointyHead popStyle">Spotify<br>Popularity</div></th>
 						<th class="popStyle">Spotify<br>Total Albums</th>
 						<th class="rightNum">Spotify<br>Followers</th>
 						<th class="rightNum">LastFM<br>Listeners</th>

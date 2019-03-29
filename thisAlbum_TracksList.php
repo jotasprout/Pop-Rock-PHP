@@ -77,8 +77,8 @@ if ( !$getit ) {
 			<th onClick="sortColumn('trackName', 'DESC')"><div class="pointyHead">Track</div></th>
 			<th class="popStyle">Date</th>
 			<th class="popStyle" onClick="sortColumn('pop', 'ASC')"><div class="pointyHead">Track<br>Popularity</div></th>
-			<th class="rightNum">LastFM<br>Listeners</th>
-			<th class="rightNum">LastFM<br>Playcount</th>
+			<th class="rightNum pointyHead">LastFM<br>Listeners</th>
+			<th class="rightNum pointyHead">LastFM<br>Playcount</th>
 		</tr>
 	</thead>
 	

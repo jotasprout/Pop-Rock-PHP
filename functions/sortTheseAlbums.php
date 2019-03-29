@@ -11,30 +11,29 @@ if ( !$connekt ) {
 
 // if any of these did not come through, the defaults are the basic starting sort from the sql query
 $artistID = "artistID";
-$sortThisColumn = "year";
+$columnName = "year";
 $currentOrder = "ASC";
 
 if ( !empty( $_POST[ "artistID" ] ) ) {
 	$artistID = $_POST[ "artistID" ];
 }
 
-if ( !empty( $_POST[ "sortThisColumn" ] ) ) {
+if ( !empty( $_POST[ "columnName" ] ) ) {
     // if the column name came through, use it
-    // echo $_POST[ "sortThisColumn" ] . "<br>";
-	$sortThisColumn = $_POST[ "sortThisColumn" ];
+	$columnName = $_POST[ "columnName" ];
 }
 
 if ( !empty( $_POST[ "currentOrder" ] ) ) {
     // if the current order came through, use it
-    // echo $_POST[ "currentOrder" ] . "<br>";
 	$currentOrder = $_POST[ "currentOrder" ];
 }
 
-// These next two statements are only for the SQL query
-$usingThisOrder = "ASC";
+if ( $currentOrder == "DESC" ) {
+	$newOrder = "ASC";
+}
 
 if ($currentOrder == "ASC") {
-    $usingThisOrder = "DESC";
+    $newOrder = "DESC";
 }
 
 // These next three variables are for building the TH table headers. 
@@ -47,37 +46,47 @@ $albumNameNewOrder = "ASC";
 $popNewOrder = "ASC";
 
 // For the clicked column
-if ( $sortThisColumn == "albumName" and $currentOrder == "ASC" ) {
+if ( $columnName == "albumName" and $currentOrder == "ASC" ) {
 	$albumNameNewOrder = "DESC";
 }
 
-if ( $sortThisColumn == "year" and $currentOrder == "ASC" ) {
+if ( $columnName == "year" and $currentOrder == "ASC" ) {
 	$yearNewOrder = "DESC";
 }
 
-if ( $sortThisColumn == "pop" and $currentOrder == "ASC" ) {
+if ( $columnName == "pop" and $currentOrder == "ASC" ) {
 	$popNewOrder = "DESC";
 }
 
-$sortScabies = "SELECT a.albumName, a.albumID, a.year, a.albumArt, z.artistName, p1.pop, p1.date
-				FROM (SELECT
-							y.albumID AS albumID,
-							y.albumName AS albumName,
-							y.artistID AS artistID,
-							y.albumArt AS albumArt,
-							y.year AS year
-						FROM albums y 
-						WHERE y.artistID = '$artistID') a
-				JOIN artists z ON z.artistID = '$artistID'
-				JOIN (SELECT p.*
-						FROM popAlbums p
-						INNER JOIN (SELECT albumID, pop, max(date) AS MaxDate
-									FROM popAlbums  
-									GROUP BY albumID) groupedp
-						ON p.albumID = groupedp.albumID
-						AND p.date = groupedp.MaxDate) p1 
-				ON a.albumID = p1.albumID
-				ORDER BY " . $sortThisColumn . " " . $usingThisOrder . ";";
+$sortScabies = "SELECT a.albumName, a.year, a.albumArt, a.tracksTotal, z.artistName, p1.pop, p1.date, a.albumID, f1.albumListeners, f1.albumPlaycount
+	FROM (SELECT
+				y.albumID AS albumID,
+				y.albumMBID AS albumMBID,
+				y.albumName AS albumName,
+				y.artistID AS artistID,
+				y.tracksTotal AS tracksTotal,
+				y.albumArt AS albumArt,
+				y.year AS year
+			FROM albums y 
+			WHERE y.artistID = '$artistID') a
+	JOIN artists z ON z.artistID = '$artistID'
+	JOIN (SELECT p.*
+			FROM popAlbums p
+			INNER JOIN (SELECT albumID, pop, max(date) AS MaxDate
+						FROM popAlbums  
+						GROUP BY albumID) groupedp
+			ON p.albumID = groupedp.albumID
+			AND p.date = groupedp.MaxDate) p1 
+	ON a.albumID = p1.albumID
+	LEFT JOIN (SELECT f.*
+			FROM albumsLastFM f
+			INNER JOIN (SELECT albumMBID, albumListeners, albumPlaycount, max(dataDate) AS MaxDataDate
+			FROM albumsLastFM
+			GROUP BY albumMBID) groupedf
+			ON f.albumMBID = groupedf.albumMBID
+			AND f.dataDate = groupedf.MaxDataDate) f1
+	ON a.albumMBID = f1.albumMBID
+				ORDER BY " . $columnName . " " . $newOrder . ";";
 
 $sortit = $connekt->query( $sortScabies );
 
@@ -90,22 +99,18 @@ if(!empty($sortit))	 { ?>
 <table class="table-content" id="recordCollection">
 	
 <thead>
-	<tr>
-		  <th>Album Art</th>
-		  <th>Album Spotify ID</th>
-		<th onClick="sortColumn('albumName', '<?php echo $albumNameNewOrder; ?>', '<?php echo $artistID; ?>')"><div class="pointyHead">Album Name</div></th>
-		<th onClick="sortColumn('year', '<?php echo $yearNewOrder; ?>', '<?php echo $artistID; ?>')"><div id="pointyHead">Released</div></th>
-		<th onClick="sortColumn('pop', '<?php echo $popNewOrder; ?>', '<?php echo $artistID; ?>')"><div id="pointyHead">Popularity</div></th>
-
-		<!--
-		<th>1 day</th>
-		<th>7 days</th>
-		<th>30 days</th>
-		<th>90 days</th>
-		<th>180 days</th>
-		<th>Date</th>	
-		--> 
-	</tr>
+<tr>
+	<th onClick="sortColumn('pop', '', '<?php echo $artistID; ?>')"><div id="pointyHead">Popularity</div></th>
+	<th>Album Art</th>
+	<th>Album Spotify ID</th>
+	<th onClick="sortColumn('albumName', '<?php echo $albumNameNewOrder; ?>', '<?php echo $artistID; ?>')"><div class="pointyHead">Album Name</div></th>
+	<th onClick="sortColumn('year', '<?php echo $yearNewOrder; ?>', '<?php echo $artistID; ?>')"><div class="pointyHead popStyle">Released</div></th>
+	<th onClick="sortColumn('tracksTotal', 'DESC', '<?php echo $tracksTotal; ?>')"><div class="pointyHead popStyle">Total Tracks</div></th>
+	<th class="popStyle">Date</th>
+	<th onClick="sortColumn('pop', '<?php echo $popNewOrder; ?>', '<?php echo $artistID; ?>')"><div class="pointyHead popStyle">Spotify<br>Popularity</div></th>
+	<th class="rightNum pointyHead">LastFM<br>Listeners</th>
+	<th class="rightNum pointyHead">LastFM<br>Playcount</th>
+</tr>
 </thead>
 	
 <tbody>
@@ -113,30 +118,38 @@ if(!empty($sortit))	 { ?>
 <?php
 							  
 while ( $row = mysqli_fetch_array( $sortit ) ) {
-	// $artistID = $row["artistID"];
-	$artistName = $row[ 'artistName' ];
-	$albumArt = $row[ 'albumArt' ];
-	$albumID = $row[ 'albumID' ];
-	$albumName = $row[ 'albumName' ];
-	$albumReleased = $row[ 'year' ];
-	$albumPop = $row[ 'pop' ];
-	$date = $row[ 'date' ];
+	$artistName = $row['artistName'];
+	$albumArt = $row['albumArt'];
+	$albumID = $row['albumID'];
+	$albumName = $row['albumName'];
+	$tracksTotal = $row['tracksTotal'];
+	$albumReleased = $row['year'];
+	$albumPop = $row['pop'];
+	$date = $row['date'];
+	$albumListenersNum = $row[ "albumListeners"];
+	$albumListeners = number_format ($albumListenersNum);
+	if (!$albumListeners > 0) {
+		$albumListeners = "n/a";
+	};
+	$albumPlaycountNum = $row[ "albumPlaycount"];
+	$albumPlaycount = number_format ($albumPlaycountNum);
+	if (!$albumPlaycount > 0) {
+		$albumPlaycount = "n/a";
+	};
 
 ?>
 
 	<tr>
-		<td><img src='<?php echo $albumArt; ?>' height='64' width='64'></td>
-		<td><?php echo $albumID; ?></td>
+		<td><img src='<?php echo $albumArt ?>' height='64' width='64'></td>
+		<td><?php echo $albumID ?></td>
+		<!-- NEED TO CREATE FUNCTION IN NEXT LINE -->
 		<td><a href='https://www.roxorsoxor.com/poprock/thisAlbum_TracksList.php?albumID=<?php echo $albumID ?>'><?php echo $albumName ?></a></td>
-		<td><?php echo $albumReleased; ?></td>
-		<td><?php echo $albumPop; ?></td>
-		<!--
-		<td>*</td>
-		<td>*</td>
-		<td>*</td>
-		<td>*</td>
-		<td>*</td>
-		-->
+		<td class="popStyle"><?php echo $albumReleased ?></td>
+		<td class="popStyle"><?php echo $tracksTotal ?></td>
+		<th class="popStyle"><?php echo $date ?></th>
+		<td class="popStyle"><?php echo $albumPop ?></td>
+		<td class="rightNum"><?php echo $albumListeners ?></td>
+		<td class="rightNum"><?php echo $albumPlaycount ?></td>
 	</tr>
 
 <?php

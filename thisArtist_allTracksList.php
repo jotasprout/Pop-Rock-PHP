@@ -30,7 +30,7 @@ $gatherTrackInfo = "SELECT t.trackID, t.trackName, a.albumName, a.artistID, p1.p
 								AND f.dataDate = groupedf.MaxDataDate) f1
 						ON t.trackMBID = f1.trackMBID
 						WHERE a.artistID = '$artistID'
-						ORDER BY p1.pop DESC";
+						ORDER BY t.trackName ASC";
 
 $getit = $connekt->query( $gatherTrackInfo );
 
@@ -69,13 +69,13 @@ if ( !$getit ) {
 <table class="table" id="tableotracks">
 	<thead>
 		<tr>
-			<th onClick="sortColumn('albumName', 'ASC', '<?php echo $artistID ?>')"><div class="pointyHead">Album Name</div></th>
+			<th onClick="sortColumn('albumName', 'DESC', '<?php echo $artistID ?>')"><div class="pointyHead">Album Name</div></th>
 			<th>trackID</th>
 			<th>As of</th>
-			<th onClick="sortColumn('trackName', 'DESC', '<?php echo $artistID ?>')"><div class="pointyHead">Track Name</div></th>
+			<th onClick="sortColumn('trackName', 'ASC', '<?php echo $artistID ?>')"><div class="pointyHead">Track Name</div></th>
 			<th class="popStyle" onClick="sortColumn('pop', 'ASC', '<?php echo $artistID ?>')"><div class="pointyHead">Spotify<br>Popularity</div></th>
-			<th class="rightNum">LastFM<br>Listeners</th>
-			<th class="rightNum">LastFM<br>Playcount</th>
+			<th class="rightNum pointyHead">LastFM<br>Listeners</th>
+			<th class="rightNum pointyHead">LastFM<br>Playcount</th>
 		</tr>
 	</thead>
 					

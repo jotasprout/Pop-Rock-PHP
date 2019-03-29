@@ -51,8 +51,11 @@ if(!$getit){
 				<tr>
 					<th>Artist Name</th>
 					<th>Popularity</th>
-					<th>Followers</th>
+					<th class="rightNum">Spotify<br>Followers</th>
 					<th onClick="sortColumn('date', 'DESC')"><div class="pointyHead">Date</div></th>
+					
+					<th class="rightNum">LastFM<br>Listeners</th>
+					<th class="rightNum">LastFM<br>Playcount</th>
 					<!--
 					-->
 					
@@ -75,10 +78,11 @@ if(!$getit){
 				<td><?php echo $artistName ?></td>
 				<td><?php echo $artistPop ?></td>
 				<td><?php echo $artistFollowers ?></td>
-			<!--
-				<td><?php //echo $popDate ?></td>
-			-->
+			<!-- -->
+				<td><?php echo $popDate ?></td>
 				<td><?php echo $popDateShort ?></td>
+				<td class="rightNum"><?php echo $artistListeners ?></td>
+				<td class="rightNum"><?php echo $artistPlaycount ?></td>
 			</tr>
 
 			<?php 

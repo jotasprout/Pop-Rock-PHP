@@ -39,7 +39,7 @@ $happyScabies2 = "SELECT a.albumName, a.year, a.albumArt, a.tracksTotal, z.artis
 			ON f.albumMBID = groupedf.albumMBID
 			AND f.dataDate = groupedf.MaxDataDate) f1
 	ON a.albumMBID = f1.albumMBID
-	ORDER BY year ASC;";
+	ORDER BY albumName ASC;";
 
 $getit = $connekt->query($happyScabies2);
 
@@ -91,8 +91,8 @@ if(!$getit){
 			<th onClick="sortColumn('tracksTotal', 'DESC', '<?php echo $tracksTotal; ?>')"><div class="pointyHead popStyle">Total Tracks</div></th>
 			<th class="popStyle">Date</th>
 			<th onClick="sortColumn('pop', 'ASC', '<?php echo $artistID; ?>')"><div class="pointyHead popStyle">Spotify<br>Popularity</div></th>
-			<th class="rightNum">LastFM<br>Listeners</th>
-			<th class="rightNum">LastFM<br>Playcount</th>
+			<th class="rightNum pointyHead">LastFM<br>Listeners</th>
+			<th class="rightNum pointyHead">LastFM<br>Playcount</th>
 		</tr>
 	</thead>
 				<tbody>

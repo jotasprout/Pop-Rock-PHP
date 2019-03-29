@@ -12,40 +12,44 @@ if ( !$connekt ) {
 
 // if any of these did not come through, the defaults are the basic starting sort from the sql query
 $artistID = "artistID";
-$sortBy = "trackName";
-$order = "DESC";
+$columnName = "trackName";
+$currentOrder = "ASC";
 
 if ( !empty( $_POST[ "artistID" ] ) ) {
 	$artistID = $_POST[ "artistID" ];
 }
 
-if ( !empty( $_POST[ "sortBy" ] ) ) {
-	// echo $_POST[ "sortBy" ] . "<br>";
-	$sortBy = $_POST[ "sortBy" ];
+if ( !empty( $_POST[ "columnName" ] ) ) {
+	$columnName = $_POST[ "columnName" ];
 }
 
-if ( !empty( $_POST[ "order" ] ) ) {
-	// echo $order = $_POST[ "order" ] . "<br>";
-	$order = $_POST[ "order" ];
+if ( !empty( $_POST[ "currentOrder" ] ) ) {
+	$currentOrder = $_POST[ "currentOrder" ];
 }
 
-$albumNameNextOrder = "ASC";
-$trackNameNextOrder = "DESC";
-$popNextOrder = "ASC";
-
-if ( $sortBy == "albumName" and $order == "ASC" ) {
-	$albumNameNextOrder = "DESC";
+if ( $currentOrder == "DESC" ) {
+	$newOrder = "ASC";
 }
 
-if ( $sortBy == "trackName" and $order == "DESC" ) {
-	$trackNameNextOrder = "ASC";
+$albumNameNewOrder = "DESC";
+
+if ( $columnName == "albumName" and $currentOrder == "DESC" ) {
+	$albumNameNewOrder = "ASC";
 }
 
-if ( $sortBy == "pop" and $order == "ASC" ) {
-	$popNextOrder = "DESC";
+$trackNameNewOrder = "DESC";
+
+if ( $columnName == "trackName" and $currentOrder == "DESC" ) {
+	$trackNameNewOrder = "ASC";
 }
 
-$gatherTrackInfo = "SELECT t.trackID, t.trackName, a.albumName, a.artistID, p1.pop, p1.date
+$popNewOrder = "ASC";
+
+if ( $columnName == "pop" and $currentOrder == "ASC" ) {
+	$popNewOrder = "DESC";
+}
+
+$gatherTrackInfo = "SELECT t.trackID, t.trackName, a.albumName, a.artistID, p1.pop, p1.date, f1.trackListeners, f1.trackPlaycount
 						FROM tracks t
 						INNER JOIN albums a ON a.albumID = t.albumID
 						JOIN (SELECT p.* FROM popTracks p
@@ -55,8 +59,16 @@ $gatherTrackInfo = "SELECT t.trackID, t.trackName, a.albumName, a.artistID, p1.p
 								ON p.trackID = groupedp.trackID
 								AND p.date = groupedp.MaxDate) p1 
 						ON t.trackID = p1.trackID
+							LEFT JOIN (SELECT f.*
+								FROM tracksLastFM f
+								INNER JOIN (SELECT trackMBID, trackListeners, trackPlaycount, max(dataDate) AS MaxDataDate
+											FROM tracksLastFM  
+											GROUP BY trackMBID) groupedf
+								ON f.trackMBID = groupedf.trackMBID
+								AND f.dataDate = groupedf.MaxDataDate) f1
+						ON t.trackMBID = f1.trackMBID
 						WHERE a.artistID = '$artistID'
-						ORDER BY " . $sortBy . " " . $order . ";";
+						ORDER BY " . $columnName . " " . $newOrder . ";";
 
 $sortit = $connekt->query( $gatherTrackInfo );
 
@@ -69,11 +81,13 @@ if(!empty($sortit)) { ?>
 <table class="table" id="tableotracks">
 <thead>
 <tr>
-<th onClick="sortColumn('albumName', '<?php echo $albumNameNextOrder; ?>', '<?php echo $artistID ?>')"><div class="pointyHead">Album Name</div></th>
-<th>trackID</th>
-<th>Date</th>
-<th onClick="sortColumn('trackName', '<?php echo $trackNameNextOrder; ?>', '<?php echo $artistID ?>')"><div class="pointyHead">Track</div></th>
-<th onClick="sortColumn('pop', '<?php echo $popNextOrder; ?>', '<?php echo $artistID ?>')"><div class="pointyHead">Track Popularity</div></th>
+	<th onClick="sortColumn('albumName', '<?php echo $albumNameNewOrder; ?>', '<?php echo $artistID ?>')"><div class="pointyHead">Album Name</div></th>
+	<th>trackID</th>
+	<th>As of</th>
+	<th onClick="sortColumn('trackName', '<?php echo $trackNameNewOrder; ?>', '<?php echo $artistID ?>')"><div class="pointyHead">Track Name</div></th>
+	<th class="popStyle" onClick="sortColumn('pop', '<?php echo $popNewOrder; ?>', '<?php echo $artistID ?>')"><div class="pointyHead">Spotify<br>Popularity</div></th>
+	<th class="rightNum pointyHead">LastFM<br>Listeners</th>
+	<th class="rightNum pointyHead">LastFM<br>Playcount</th>
 </tr>
 </thead>
 
@@ -81,17 +95,29 @@ if(!empty($sortit)) { ?>
 	<?php
 		while ( $row = mysqli_fetch_array( $sortit ) ) {
 			$albumName = $row[ "albumName" ];
-			$trackID = $row[ "trackID" ];
 			$trackName = $row[ "trackName" ];
+			$trackID = $row[ "trackID" ];
 			$trackPop = $row[ "pop" ];
 			$popDate = $row[ "date" ];
+			$trackListenersNum = $row["trackListeners"];
+			$trackListeners = number_format ($trackListenersNum);
+			if (!$trackListeners > 0) {
+				$trackListeners = "n/a";
+			};
+			$trackPlaycountNum = $row["trackPlaycount"];
+			$trackPlaycount = number_format ($trackPlaycountNum);
+			if (!$trackPlaycount > 0) {
+				$trackPlaycount = "n/a";
+			};
 	?>
 			<tr>
 				<td><?php echo $albumName ?></td>
 				<td><?php echo $trackID ?></td>
 				<td><?php echo $popDate ?></td>
 				<td><?php echo $trackName ?></td>
-				<td><?php echo $trackPop ?></td>
+				<td class="popStyle"><?php echo $trackPop ?></td>
+				<td class="rightNum"><?php echo $trackListeners ?></td>
+				<td class="rightNum"><?php echo $trackPlaycount ?></td>
 			</tr>
 	<?php 
 		} // end of while
