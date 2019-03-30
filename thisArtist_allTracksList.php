@@ -51,7 +51,7 @@ if ( !$getit ) {
 
 <body>
 
-	<div class="container">
+	<div class="container-fluid">
 
 		<?php echo $navbar ?>
 
@@ -69,10 +69,10 @@ if ( !$getit ) {
 <table class="table" id="tableotracks">
 	<thead>
 		<tr>
-			<th onClick="sortColumn('albumName', 'DESC', '<?php echo $artistID ?>')"><div class="pointyHead">Album Name</div></th>
-			<th>trackID</th>
-			<th>As of</th>
-			<th onClick="sortColumn('trackName', 'ASC', '<?php echo $artistID ?>')"><div class="pointyHead">Track Name</div></th>
+			<th onClick="sortColumn('albumName', 'DESC', '<?php echo $artistID ?>')"><div class="pointyHead">Album Title</div></th>
+			<th>Spotify<br>trackID</th>
+			<th>Spotify<br>Data Date</th>
+			<th onClick="sortColumn('trackName', 'ASC', '<?php echo $artistID ?>')"><div class="pointyHead">Track Title</div></th>
 			<th class="popStyle" onClick="sortColumn('pop', 'ASC', '<?php echo $artistID ?>')"><div class="pointyHead">Spotify<br>Popularity</div></th>
 			<th class="rightNum pointyHead">LastFM<br>Listeners</th>
 			<th class="rightNum pointyHead">LastFM<br>Playcount</th>

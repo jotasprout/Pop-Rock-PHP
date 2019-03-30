@@ -64,7 +64,7 @@ $filenamesJJ = array (
     '../data_text/jsonLastFM/JoanJett_Combined_03-29-19.json'
 );
 
-$filenames = $filenamesJJ;
+$filenames = $filenames;
 
 $x = ceil((count($filenames)));
 
