@@ -96,7 +96,7 @@ if ( !$sortit ) {
 
 if(!empty($sortit))	 { ?>
 
-<table class="table-content" id="recordCollection">
+<table class="table" id="recordCollection">
 	
 <thead>
 <tr>
@@ -104,8 +104,8 @@ if(!empty($sortit))	 { ?>
 	<th>Album Spotify ID</th>
 	<th onClick="sortColumn('albumName', '<?php echo $albumNameNewOrder; ?>', '<?php echo $artistID; ?>')"><div class="pointyHead">Album Name</div></th>
 	<th onClick="sortColumn('year', '<?php echo $yearNewOrder; ?>', '<?php echo $artistID; ?>')"><div class="pointyHead popStyle">Released</div></th>
-	<th onClick="sortColumn('tracksTotal', 'DESC', '<?php echo $tracksTotal; ?>')"><div class="pointyHead popStyle">Total Tracks</div></th>
-	<th class="popStyle">Date</th>
+	<th><div class="pointyHead popStyle">Total Tracks</div></th>
+	<th class="popStyle">Spotify<br>Data Date</th>
 	<th onClick="sortColumn('pop', '<?php echo $popNewOrder; ?>', '<?php echo $artistID; ?>')"><div class="pointyHead popStyle">Spotify<br>Popularity</div></th>
 	<th class="rightNum pointyHead">LastFM<br>Listeners</th>
 	<th class="rightNum pointyHead">LastFM<br>Playcount</th>

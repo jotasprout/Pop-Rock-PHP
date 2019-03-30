@@ -82,20 +82,20 @@ if(!$getit){
 		<?php if(!empty($getit)) { ?>
 		
 <table class="table" id="recordCollection">
-	<thead>
-		<tr>
-			<th>Album Art</th>
-			<th>Album Spotify ID</th>
-			<th onClick="sortColumn('albumName', 'ASC', '<?php echo $artistID; ?>')"><div class="pointyHead">Album Name</div></th>
-			<th onClick="sortColumn('year', 'DESC', '<?php echo $artistID; ?>')"><div class="pointyHead popStyle">Released</div></th>
-			<th onClick="sortColumn('tracksTotal', 'DESC', '<?php echo $tracksTotal; ?>')"><div class="pointyHead popStyle">Total Tracks</div></th>
-			<th class="popStyle">Date</th>
-			<th onClick="sortColumn('pop', 'ASC', '<?php echo $artistID; ?>')"><div class="pointyHead popStyle">Spotify<br>Popularity</div></th>
-			<th class="rightNum pointyHead">LastFM<br>Listeners</th>
-			<th class="rightNum pointyHead">LastFM<br>Playcount</th>
-		</tr>
-	</thead>
-				<tbody>
+<thead>
+	<tr>
+		<th>Album Art</th>
+		<th>Album Spotify ID</th>
+		<th onClick="sortColumn('albumName', 'ASC', '<?php echo $artistID; ?>')"><div class="pointyHead">Album Name</div></th>
+		<th onClick="sortColumn('year', 'DESC', '<?php echo $artistID; ?>')"><div class="pointyHead popStyle">Released</div></th>
+		<th><div class="pointyHead popStyle">Total<br>Tracks</div></th>
+		<th class="popStyle">Spotify<br>Data Date</th>
+		<th onClick="sortColumn('pop', 'ASC', '<?php echo $artistID; ?>')"><div class="pointyHead popStyle">Spotify<br>Popularity</div></th>
+		<th class="rightNum pointyHead">LastFM<br>Listeners</th>
+		<th class="rightNum pointyHead">LastFM<br>Playcount</th>
+	</tr>
+</thead>
+<tbody>
 					
 					<?php
 						while ($row = mysqli_fetch_array($getit)) {
@@ -122,7 +122,6 @@ if(!$getit){
 <tr>
 <td><img src='<?php echo $albumArt ?>' height='64' width='64'></td>
 <td><?php echo $albumID ?></td>
-<!-- NEED TO CREATE FUNCTION IN NEXT LINE -->
 <td><a href='https://www.roxorsoxor.com/poprock/thisAlbum_TracksList.php?albumID=<?php echo $albumID ?>'><?php echo $albumName ?></a></td>
 <td class="popStyle"><?php echo $albumReleased ?></td>
 <td class="popStyle"><?php echo $tracksTotal ?></td>

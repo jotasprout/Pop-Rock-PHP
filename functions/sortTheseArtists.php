@@ -2,41 +2,48 @@
 
 require_once '../rockdb.php';
 
+
 $connekt = new mysqli($GLOBALS['host'], $GLOBALS['un'], $GLOBALS['magicword'], $GLOBALS['db']);
 
 if (!$connekt) {
     echo 'Darn. Did not connect.';
 };
 
-$columnName = "";
-$currentOrder = "";
-$newOrder = "";
+$postedColumnName = $_POST[ "columnName" ];
+$postedCurrentOrder = $_POST[ "currentOrder" ];
 
-$columnName = $_POST[ "columnName" ];
+// if any POSTed variables did not come through, these defaults were basic starting sort from original sql query
+$columnName = "artistName";
+$currentOrder = "ASC";
 
 if ( !empty( $_POST[ "columnName" ] ) ) {
+    // if the column name came through, use it
 	$columnName = $_POST[ "columnName" ];
 }
 
 if ( !empty( $_POST[ "currentOrder" ] ) ) {
+    // if the current order came through, use it
 	$currentOrder = $_POST[ "currentOrder" ];
 }
-
-echo "<p>Current order of " . $columnName . " is " . $currentOrder . "</p>";
 
 if ( $currentOrder == "DESC" ) {
 	$newOrder = "ASC";
 }
 
+if ($currentOrder == "ASC") {
+    $newOrder = "DESC";
+}
+
+// These next three variables are for building the TH table headers. 
 $artistNameNewOrder = "DESC";
-$popNewOrder = "DESC";
+$popNewOrder = "ASC";
 
 if ( $columnName == "artistName" and $currentOrder == "DESC" ) {
 	$artistNameNewOrder = "ASC";
 }
 
-if ( $columnName == "pop" and $currentOrder == "DESC" ) {
-	$popNewOrder = "ASC";
+if ( $columnName == "pop" and $currentOrder == "ASC" ) {
+	$popNewOrder = "DESC";
 }
 
 $allthatAndLastFM = "SELECT a.artistID AS artistID, a.artistArt AS artistArt, a.artistName AS artistName, a.albumsTotal AS albumsTotal, p1.pop AS pop, p1.followers AS followers, f1.artistListeners AS artistListeners, f1.artistPlaycount AS artistPlaycount, p1.date AS date

@@ -70,24 +70,23 @@ if(!$getit){ echo 'Cursed-Crap. Did not run the query.'; }
 			<!-- D3 chart goes here -->
 			<?php if (!empty($getit)) { ?>
 
-			<table class="table" id="tableoartists">
-				<thead>
-					<tr>
-						<th>Pretty Face</th>	
-						<th onClick="sortColumn('artistName', 'ASC')"><div class="pointyHead">Artist Name</div></th>
-						<!---->
-						<th class="popStyle">Spotify ID</th>
-						<th class="popStyle">Spotify<br>Data Date</th>
-						<th onClick="sortColumn('pop', 'DESC')"><div class="pointyHead popStyle">Spotify<br>Popularity</div></th>
-						<th class="popStyle">Spotify<br>Total Albums</th>
-						<th class="rightNum">Spotify<br>Followers</th>
-						<th class="rightNum">LastFM<br>Listeners</th>
-						<th class="rightNum">LastFM<br>Playcount</th>
-						
-					</tr>
-				</thead>
+<table class="table" id="tableoartists">
+	<thead>
+		<tr>
+			<th>Pretty Face</th>	
+			<th onClick="sortColumn('artistName', 'ASC')"><div class="pointyHead">Artist Name</div></th>
+			<!---->
+			<th class="popStyle">Spotify ID</th>
+			<th class="popStyle">Spotify<br>Data Date</th>
+			<th onClick="sortColumn('pop', 'ASC')"><div class="pointyHead popStyle">Spotify<br>Popularity</div></th>
+			<th class="popStyle">Spotify<br>Total Albums</th>
+			<th class="rightNum">Spotify<br>Followers</th>
+			<th class="rightNum">LastFM<br>Listeners</th>
+			<th class="rightNum">LastFM<br>Playcount</th>
+		</tr>
+	</thead>
 
-				<tbody>
+	<tbody>
 
 				<?php
 					while ( $row = mysqli_fetch_array( $getit ) ) {
