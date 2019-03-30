@@ -10,6 +10,7 @@ if (!$connekt) {
 
 $columnName = "pop";
 $currentOrder = "ASC";
+$newOrder = "DESC";
 
 if ( !empty( $_POST[ "columnName" ] ) ) {
 	$columnName = $_POST[ "columnName" ];
@@ -18,6 +19,10 @@ if ( !empty( $_POST[ "columnName" ] ) ) {
 if ( !empty( $_POST[ "currentOrder" ] ) ) {
 	$currentOrder = $_POST[ "currentOrder" ];
 }
+
+echo "Current order of " . $columnName . " is " . $currentOrder;
+
+
 
 if ( $currentOrder == "DESC" ) {
 	$newOrder = "ASC";
@@ -67,7 +72,6 @@ if (!empty($sortit)) { ?>
 	<tr>
 	<th>Pretty Face</th>	
 	<th onClick="sortColumn('artistName', '<?php echo $artistNameNewOrder; ?>')"><div class="pointyHead">Artist Name</div></th>
-	<!---->
 	<th class="popStyle">Spotify ID</th>
 	<th class="popStyle">Spotify<br>Data Date</th>
 	<th onClick="sortColumn('pop', '<?php echo $popNewOrder; ?>')"><div class="pointyHead popStyle">Spotify<br>Popularity</div></th>
@@ -82,17 +86,29 @@ if (!empty($sortit)) { ?>
 
 		<?php
 			while ($row = mysqli_fetch_array($sortit)) {
-				$artistName = $row["artistName"];
+				$artistName = $row[ "artistName" ];
 				$artistID = $row[ "artistID" ];
-				$artistPop = $row["pop"];
+				$artistPop = $row[ "pop" ];
+				$artistFollowersNum = $row[ "followers"];
+				$artistFollowers = number_format ($artistFollowersNum);
 				$artistArt = $row[ "artistArt" ];
-				$popDate = $row["date"];
+				$popDate = $row[ "date" ];
+				$albumsTotal = $row[ "albumsTotal" ];
+				$artistListenersNum = $row[ "artistListeners"];
+				$artistListeners = number_format ($artistListenersNum);
+				if (!$artistListeners > 0) {
+					$artistListeners = "n/a";
+				};
+				$artistPlaycountNum = $row[ "artistPlaycount"];
+				$artistPlaycount = number_format ($artistPlaycountNum);
+				if (!$artistPlaycount > 0) {
+					$artistPlaycount = "n/a";
+				};
 		?>
 
 <tr>
 	<td><img src='<?php echo $artistArt ?>' class="indexArtistArt"></td>	
 	<td><a href='https://www.roxorsoxor.com/poprock/this_artistPopChart.php?artistID=<?php echo $artistID ?>'><?php echo $artistName ?></a></td>
-	<!---->
 	<td class="popStyle"><?php echo $artistID ?></td>
 	<td class="popStyle"><?php echo $popDate ?></td>
 	<td class="popStyle"><?php echo $artistPop ?></td>

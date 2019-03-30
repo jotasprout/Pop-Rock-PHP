@@ -10,6 +10,8 @@ if ( !$connekt ) {
 	echo 'Darn. Did not connect.';
 };
 
+$currentOrder = 'ASC';
+
 $allthatAndLastFM = "SELECT a.artistID AS artistID, a.artistArt AS artistArt, a.artistName AS artistName, a.albumsTotal AS albumsTotal, p1.pop AS pop, p1.followers AS followers, f1.artistListeners AS artistListeners, f1.artistPlaycount AS artistPlaycount, p1.date AS date
     FROM artists a
     JOIN (SELECT p.*
@@ -28,7 +30,7 @@ $allthatAndLastFM = "SELECT a.artistID AS artistID, a.artistArt AS artistArt, a.
 			ON f.artistMBID = groupedf.artistMBID
 			AND f.dataDate = groupedf.MaxDataDate) f1
 	ON a.artistMBID = f1.artistMBID
-	ORDER BY a.artistName ASC";
+	ORDER BY a.artistName " . "$currentOrder" . ";";
 
 $getit = $connekt->query( $allthatAndLastFM );
 
@@ -74,11 +76,11 @@ if(!$getit){ echo 'Cursed-Crap. Did not run the query.'; }
 				<thead>
 					<tr>
 						<th>Pretty Face</th>	
-						<th onClick="sortColumn('artistName', 'ASC')"><div class="pointyHead">Artist Name</div></th>
+						<th onClick="sortColumn('artistName', '<?php echo $currentOrder ?>')"><div class="pointyHead">Artist Name</div></th>
 						<!---->
 						<th class="popStyle">Spotify ID</th>
 						<th class="popStyle">Spotify<br>Data Date</th>
-						<th onClick="sortColumn('pop', 'ASC')"><div class="pointyHead popStyle">Spotify<br>Popularity</div></th>
+						<th onClick="sortColumn('pop', 'DESC')"><div class="pointyHead popStyle">Spotify<br>Popularity</div></th>
 						<th class="popStyle">Spotify<br>Total Albums</th>
 						<th class="rightNum">Spotify<br>Followers</th>
 						<th class="rightNum">LastFM<br>Listeners</th>
@@ -114,8 +116,6 @@ if(!$getit){ echo 'Cursed-Crap. Did not run the query.'; }
 				<tr>
 					<td><img src='<?php echo $artistArt ?>' class="indexArtistArt"></td>	
 					<td><a href='https://www.roxorsoxor.com/poprock/this_artistPopChart.php?artistID=<?php echo $artistID ?>'><?php echo $artistName ?></a></td>
-					
-					<!---->
 					<td class="popStyle"><?php echo $artistID ?></td>
 					<td class="popStyle"><?php echo $popDate ?></td>
 					<td class="popStyle"><?php echo $artistPop ?></td>
@@ -123,7 +123,6 @@ if(!$getit){ echo 'Cursed-Crap. Did not run the query.'; }
 					<td id="followers" class="rightNum"><?php echo $artistFollowers ?></td>
 					<td class="rightNum"><?php echo $artistListeners ?></td>
 					<td class="rightNum"><?php echo $artistPlaycount ?></td>
-					
 				</tr>
 
 				<?php 
