@@ -100,7 +100,6 @@ if(!empty($sortit))	 { ?>
 	
 <thead>
 <tr>
-	<th onClick="sortColumn('pop', '', '<?php echo $artistID; ?>')"><div id="pointyHead">Popularity</div></th>
 	<th>Album Art</th>
 	<th>Album Spotify ID</th>
 	<th onClick="sortColumn('albumName', '<?php echo $albumNameNewOrder; ?>', '<?php echo $artistID; ?>')"><div class="pointyHead">Album Name</div></th>

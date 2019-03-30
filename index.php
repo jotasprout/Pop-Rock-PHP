@@ -10,8 +10,6 @@ if ( !$connekt ) {
 	echo 'Darn. Did not connect.';
 };
 
-$currentOrder = 'ASC';
-
 $allthatAndLastFM = "SELECT a.artistID AS artistID, a.artistArt AS artistArt, a.artistName AS artistName, a.albumsTotal AS albumsTotal, p1.pop AS pop, p1.followers AS followers, f1.artistListeners AS artistListeners, f1.artistPlaycount AS artistPlaycount, p1.date AS date
     FROM artists a
     JOIN (SELECT p.*
@@ -30,7 +28,7 @@ $allthatAndLastFM = "SELECT a.artistID AS artistID, a.artistArt AS artistArt, a.
 			ON f.artistMBID = groupedf.artistMBID
 			AND f.dataDate = groupedf.MaxDataDate) f1
 	ON a.artistMBID = f1.artistMBID
-	ORDER BY a.artistName " . "$currentOrder" . ";";
+	ORDER BY a.artistName ASC;";
 
 $getit = $connekt->query( $allthatAndLastFM );
 
@@ -76,7 +74,7 @@ if(!$getit){ echo 'Cursed-Crap. Did not run the query.'; }
 				<thead>
 					<tr>
 						<th>Pretty Face</th>	
-						<th onClick="sortColumn('artistName', '<?php echo $currentOrder ?>')"><div class="pointyHead">Artist Name</div></th>
+						<th onClick="sortColumn('artistName', 'ASC')"><div class="pointyHead">Artist Name</div></th>
 						<!---->
 						<th class="popStyle">Spotify ID</th>
 						<th class="popStyle">Spotify<br>Data Date</th>

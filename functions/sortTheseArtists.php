@@ -8,9 +8,11 @@ if (!$connekt) {
     echo 'Darn. Did not connect.';
 };
 
-$columnName = "pop";
-$currentOrder = "ASC";
-$newOrder = "DESC";
+$columnName = "";
+$currentOrder = "";
+$newOrder = "";
+
+$columnName = $_POST[ "columnName" ];
 
 if ( !empty( $_POST[ "columnName" ] ) ) {
 	$columnName = $_POST[ "columnName" ];
@@ -20,9 +22,7 @@ if ( !empty( $_POST[ "currentOrder" ] ) ) {
 	$currentOrder = $_POST[ "currentOrder" ];
 }
 
-echo "Current order of " . $columnName . " is " . $currentOrder;
-
-
+echo "<p>Current order of " . $columnName . " is " . $currentOrder . "</p>";
 
 if ( $currentOrder == "DESC" ) {
 	$newOrder = "ASC";
