@@ -7,8 +7,8 @@
 
         <script src="https://d3js.org/d3-queue.v2.min.js"></script>
 
-        <script src="http://d3js.org/d3.v4.min.js" charset="utf-8"></script>
-	    <script src="http://d3js.org/topojson.v1.min.js"></script>
+        <script src="https://d3js.org/d3.v4.min.js" charset="utf-8"></script>
+	    <script src="https://d3js.org/topojson.v1.min.js"></script>
 
         <style type="text/css">
             #tooltip {
@@ -86,12 +86,15 @@ const svg = d3.select("body")
               .attr("width", w)
               .attr("height", h);
 
+
 d3.queue()
     .defer(d3.json, "counties.json") // Load all USA Counties
     .defer(d3.json, "for_user_education.json")
     .await(kickit); // Kick it when all JSON data is fully loaded
 
+
 function kickit (error, us) {
+
     if (error) throw error;
 
     d3.json('for_user_education.json', function (edu) {
@@ -119,8 +122,11 @@ function kickit (error, us) {
             } /* End of Inner For */
         } /* End of Outer For */
 
+        topojsonObject = topojson.feature(county, data.objects.counties.geometries);
+        topojsonDataSet = topojsonObject.features;
+
         svg.selectAll('path')
-        .data(data.objects.counties.geometries)
+        .data(topojsonDataSet) 
         .enter()
         .append('path')
         .style("stroke", "#e0e0e0")
