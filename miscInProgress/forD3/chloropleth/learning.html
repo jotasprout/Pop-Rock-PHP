@@ -31,14 +31,15 @@
       if (error) throw error;
 
       svg.append("g")
-          .attr("class", "counties")
+        .attr("class", "counties")
         .selectAll("path")
-          .data(topojson.feature(us, us.objects.counties).features) // Bind TopoJSON data elements
+        .data(topojson.feature(us, us.objects.counties).features) // Bind TopoJSON data elements
         .enter().append("path")
-          .attr("d", path)
-          .style("fill", "white")
-          .style("stroke", "black");
+        .attr("d", path)
+        .style("fill", "white")
+        .style("stroke", "black");
     }
+    
 	</script>	
 </body>
 </html>

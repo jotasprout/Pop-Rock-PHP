@@ -91,11 +91,9 @@ d3.queue()
     .defer(d3.json, "for_user_education.json")  // Load education data
     .await(kickit);                             // Kick it when all JSON data is fully loaded
 
-
 function kickit (error, us) {
-
     if (error) throw error;
-
+/**/
     d3.json('for_user_education.json', function (edu) {
 
         color.domain([
@@ -121,11 +119,8 @@ function kickit (error, us) {
                 } /* End of Inner For */
             } /* End of Outer For */
 
-            topojsonObject = topojson.feature(data, data.objects.counties.geometries);
-            topojsonDataSet = topojsonObject.features;
-
             svg.selectAll('path')
-            .data(topojsonObject) 
+            .data(data.objects.counties.geometries)
             .enter()
             .append('path')
             .style("stroke", "#e0e0e0")
@@ -164,10 +159,10 @@ function kickit (error, us) {
                 .on("mouseout", function(){
                     d3.select("#tooltip").classed("hidden", true);
                 }); /* End of MouseOut */
-        }); /* End of Counties JSON */
+            }); /* End of Counties JSON */
     }); /* End of Education */
 
-} /* End of kickit */
+}  /* End of kickit */
 
 const title = "United States Educational Attainment";
 

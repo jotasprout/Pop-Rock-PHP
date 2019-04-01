@@ -91,11 +91,9 @@ d3.queue()
     .defer(d3.json, "for_user_education.json")  // Load education data
     .await(kickit);                             // Kick it when all JSON data is fully loaded
 
-
 function kickit (error, us) {
-
     if (error) throw error;
-
+/**/
     d3.json('for_user_education.json', function (edu) {
 
         color.domain([
@@ -105,27 +103,31 @@ function kickit (error, us) {
 
         d3.json ('counties.json', function (data) {
 
+            const countiesObj = topojson.feature(data, data.objects.counties);
+            console.log(countiesObj);
+
             for (var i=0; i < edu.length; i++) {
                 const countyName = edu[i].area_name;
                 const stateName = edu[i].state;
                 const countyFips = edu[i].fips;
                 const bachelors = parseFloat(edu[i].bachelorsOrHigher);
-                for (var j=0; j < data.objects.counties.geometries.length; j++) {
-                    const countyID = data.objects.counties.geometries[j].id;
+                console.log (countyName + " in " + stateName + " has " + bachelors + " smartypants.");
+
+                for (var j=0; j < countiesObj.length; j++) {
+                    const geometryObj = countiesObj[j];
+                    const countyID = geometryObj.id;
                     if (countyID == countyFips) {
-                        data.objects.counties.geometries[j].countyName = countyName;
-                        data.objects.counties.geometries[j].stateName = stateName;
-                        data.objects.counties.geometries[j].bachelors = bachelors;
+                        geometryObj.countyName = countyName;
+                        geometryObj.stateName = stateName;
+                        geometryObj.bachelors = bachelors;
                         break;
                     } /* End of If */
+                    
                 } /* End of Inner For */
             } /* End of Outer For */
 
-            topojsonObject = topojson.feature(data, data.objects.counties.geometries);
-            topojsonDataSet = topojsonObject.features;
-
             svg.selectAll('path')
-            .data(topojsonObject) 
+            .data(data.objects.counties.geometries)
             .enter()
             .append('path')
             .style("stroke", "#e0e0e0")
@@ -164,10 +166,10 @@ function kickit (error, us) {
                 .on("mouseout", function(){
                     d3.select("#tooltip").classed("hidden", true);
                 }); /* End of MouseOut */
-        }); /* End of Counties JSON */
+            }); /* End of Counties JSON */
     }); /* End of Education */
 
-} /* End of kickit */
+}  /* End of kickit */
 
 const title = "United States Educational Attainment";
 

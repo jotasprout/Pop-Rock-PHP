@@ -7,8 +7,8 @@
 
         <script src="https://d3js.org/d3-queue.v2.min.js"></script>
 
-        <script src="http://d3js.org/d3.v4.min.js" charset="utf-8"></script>
-	    <script src="http://d3js.org/topojson.v1.min.js"></script>
+        <script src="https://d3js.org/d3.v4.min.js" charset="utf-8"></script>
+	    <script src="https://d3js.org/topojson.v1.min.js"></script>
 
         <style type="text/css">
             #tooltip {
@@ -87,82 +87,85 @@ const svg = d3.select("body")
               .attr("height", h);
 
 d3.queue()
-    .defer(d3.json, "counties.json") // Load all USA Counties
-    .defer(d3.json, "for_user_education.json")
-    .await(kickit); // Kick it when all JSON data is fully loaded
+    .defer(d3.json, "counties.json")            // Load all USA Counties
+    .defer(d3.json, "for_user_education.json")  // Load education data
+    .await(kickit);                             // Kick it when all JSON data is fully loaded
 
 function kickit (error, us) {
     if (error) throw error;
-
+/**/
     d3.json('for_user_education.json', function (edu) {
 
-    color.domain([
-        d3.min(edu, function (d) {return d.value;}),
-        d3.max(edu, function (d) {return d.value;})
-    ]);
+        color.domain([
+            d3.min(edu, function (d) {return d.value;}),
+            d3.max(edu, function (d) {return d.value;})
+        ]);
 
-    d3.json ('counties.json', function (data) {
+        d3.json ('counties.json', function (data) {
 
-        for (var i=0; i < edu.length; i++) {
-            const countyName = edu[i].area_name;
-            const stateName = edu[i].state;
-            const countyFips = edu[i].fips;
-            const bachelors = parseFloat(edu[i].bachelorsOrHigher);
-            for (var j=0; j < data.objects.counties.geometries.length; j++) {
-                const countyID = data.objects.counties.geometries[j].id;
-                if (countyID == countyFips) {
-                    data.objects.counties.geometries[j].countyName = countyName;
-                    data.objects.counties.geometries[j].stateName = stateName;
-                    data.objects.counties.geometries[j].bachelors = bachelors;
-                    break;
-                } /* End of If */
-            } /* End of Inner For */
-        } /* End of Outer For */
+            for (var i=0; i < edu.length; i++) {
+                const countyName = edu[i].area_name;
+                const stateName = edu[i].state;
+                const countyFips = edu[i].fips;
+                const bachelors = parseFloat(edu[i].bachelorsOrHigher);
+                for (var j=0; j < data.objects.counties.geometries.length; j++) {
+                    const countyID = data.objects.counties.geometries[j].id;
+                    if (countyID == countyFips) {
+                        data.objects.counties.geometries[j].countyName = countyName;
+                        data.objects.counties.geometries[j].stateName = stateName;
+                        data.objects.counties.geometries[j].bachelors = bachelors;
+                        break;
+                    } /* End of If */
+                } /* End of Inner For */
+            } /* End of Outer For */
 
-        svg.selectAll('path')
-        .data(data.objects.counties.geometries)
-        .enter()
-        .append('path')
-        .style("stroke", "#e0e0e0")
-        .style('fill', function(d) {
-            let value = d.bachelors;
-            if (value) {
-                return color(value);
-            } else {
-                return '#ccc';
-            }
-        }) /* End of Style */
-        .attr("class", "county")
-        .attr("data-fips", (d) => d.countyID)
-        .attr("data-countyName", (d) => d.countyName)
-        .attr("data-stateName", (d) => d.stateName)
-        .attr("data-education", (d) => d.bachelors)
-        .on("mouseover", function(d) {
-                const xPos = w / 2;
-                const yPos = h / 2;
-                const tipBachelors = d.value;
-                const tipCounty = d.data.name;
-                const tipState = d.data.category;
-                console.log(tipCounty);
-                d3.select("#tooltip")
-                    .style("left", xPos + "px")
-                    .style("top", yPos + "px")
-                    .attr("data-education", tipBachelors);
-                d3.select("#bachelorValue")
-                    .text(tipBachelors);
-                d3.select("#countyName")
-                    .text(tipCounty);
-                d3.select("#stateName")
-                    .text(tipState);            
-                d3.select("#tooltip").classed("hidden", false);
-            })
-            .on("mouseout", function(){
-                d3.select("#tooltip").classed("hidden", true);
-            }); /* End of MouseOut */
-        }); /* End of Counties JSON */
+            const dataCounties = topojson.feature(data, data.objects.counties.geometries);
+
+            svg.selectAll('path')
+            .data(dataCounties)
+            //.data(data.objects.counties.geometries)
+            .enter()
+            .append('path')
+            .style("stroke", "#e0e0e0")
+            .style('fill', function(d) {
+                let value = d.bachelors;
+                if (value) {
+                    return color(value);
+                } else {
+                    return '#ccc';
+                }
+            }) /* End of Style */
+            .attr("class", "county")
+            .attr("data-fips", (d) => d.countyID)
+            .attr("data-countyName", (d) => d.countyName)
+            .attr("data-stateName", (d) => d.stateName)
+            .attr("data-education", (d) => d.bachelors)
+            .on("mouseover", function(d) {
+                    const xPos = w / 2;
+                    const yPos = h / 2;
+                    const tipBachelors = d.value;
+                    const tipCounty = d.data.name;
+                    const tipState = d.data.category;
+                    console.log(tipCounty);
+                    d3.select("#tooltip")
+                        .style("left", xPos + "px")
+                        .style("top", yPos + "px")
+                        .attr("data-education", tipBachelors);
+                    d3.select("#bachelorValue")
+                        .text(tipBachelors);
+                    d3.select("#countyName")
+                        .text(tipCounty);
+                    d3.select("#stateName")
+                        .text(tipState);            
+                    d3.select("#tooltip").classed("hidden", false);
+                })
+                .on("mouseout", function(){
+                    d3.select("#tooltip").classed("hidden", true);
+                }); /* End of MouseOut */
+            }); /* End of Counties JSON */
     }); /* End of Education */
 
-} /* End of kickit */
+}  /* End of kickit */
 
 const title = "United States Educational Attainment";
 

@@ -103,29 +103,28 @@ function kickit (error, us) {
             d3.max(edu, function (d) {return d.value;})
         ]);
 
-        d3.json ('counties.json', function (data) {
+        d3.json ('counties.json', function (error, us) {
+
+            //counties = topojson.feature(us, us.objects.counties);
 
             for (var i=0; i < edu.length; i++) {
                 const countyName = edu[i].area_name;
                 const stateName = edu[i].state;
                 const countyFips = edu[i].fips;
                 const bachelors = parseFloat(edu[i].bachelorsOrHigher);
-                for (var j=0; j < data.objects.counties.geometries.length; j++) {
-                    const countyID = data.objects.counties.geometries[j].id;
+                for (var j=0; j < counties.geometries.length; j++) {
+                    const countyID = counties.geometries[j].id;
                     if (countyID == countyFips) {
-                        data.objects.counties.geometries[j].countyName = countyName;
-                        data.objects.counties.geometries[j].stateName = stateName;
-                        data.objects.counties.geometries[j].bachelors = bachelors;
+                        counties.geometries[j].countyName = countyName;
+                        counties.geometries[j].stateName = stateName;
+                        counties.geometries[j].bachelors = bachelors;
                         break;
                     } /* End of If */
                 } /* End of Inner For */
             } /* End of Outer For */
 
-            topojsonObject = topojson.feature(data, data.objects.counties.geometries);
-            topojsonDataSet = topojsonObject.features;
-
             svg.selectAll('path')
-            .data(topojsonObject) 
+            .data(counties.geometries)
             .enter()
             .append('path')
             .style("stroke", "#e0e0e0")

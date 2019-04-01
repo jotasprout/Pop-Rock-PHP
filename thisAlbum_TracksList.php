@@ -70,12 +70,12 @@ if ( !$getit ) {
 					<thead>
 						<tr>
 							<th onClick="sortColumn('albumName', 'ASC')"><div class="pointyHead">Album Name</div></th>
-							<th>trackID</th>
+							<th>Spotify<br>trackID</th>
 				<!--
 
 				-->
-			<th onClick="sortColumn('trackName', 'DESC')"><div class="pointyHead">Track</div></th>
-			<th class="popStyle">Date</th>
+			<th onClick="sortColumn('trackName', 'DESC')"><div class="pointyHead">Track Title</div></th>
+			<th class="popStyle">Spotify<br>Data Date</th>
 			<th class="popStyle" onClick="sortColumn('pop', 'ASC')"><div class="pointyHead">Track<br>Popularity</div></th>
 			<th class="rightNum pointyHead">LastFM<br>Listeners</th>
 			<th class="rightNum pointyHead">LastFM<br>Playcount</th>

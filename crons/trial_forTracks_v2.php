@@ -89,7 +89,7 @@ function divideCombineAlbums ($artistAlbums) {
 				foreach ($thisAlbumTracks->items as $track) {
 					$trackID = $track->id;
 					$trackName = $track->name;
-					//echo "<p>" . $trackName . " from " . $albumName . "</p>";
+					echo "<p>" . $trackName . " from " . $albumName . "</p>";
 					$AlbumsTracks [] = $trackID;
 				};
 
@@ -183,6 +183,37 @@ function divideCombineArtistsForAlbums ($theseArtists) {
 		$artistsIds = implode(',', $artistsArraysArray[$i]);
 		//echo '<br>these are the artist IDs ' . $artistsIds;
 		$artistsArray = $artistsArraysArray[$i];
+
+		// this next section experimental
+
+		$bunchofartists = $GLOBALS['api']->getArtists($artistsArray);
+			
+		foreach ($bunchofartists->artists as $artist) {
+			$connekt = new mysqli($GLOBALS['host'], $GLOBALS['un'], $GLOBALS['magicword'], $GLOBALS['db']);
+			if(!$connekt){
+				echo 'Fiddlesticks! Could not connect to database.<br>';
+			}
+			$artistID = $artist->id;
+			$artistNameYucky = $artist->name;
+			$artistName = mysqli_real_escape_string($connekt,$artistNameYucky);
+			$artistArt = $artist->images[0]->url;
+			$artistPop = $artist->popularity;
+			$artistFollowers = $artist->followers->total;
+	
+			$insertArtistsPop = "INSERT INTO popArtists (artistID,pop,followers,date) VALUES('$artistID','$artistPop','$artistFollowers',curdate())";
+
+			$rockpop = $connekt->query($insertArtistsPop);
+			if(!$rockpop){
+				echo '<p>Cursed-Crap. Could not insert artists popularity & followers.</p>';
+			}
+	
+			else {
+				echo '<p><img src="' . $artistArt . '"><br>' . $artistName . '<br><b>Popularity:</b> ' . $artistPop . '<br><b>Followers:</b> ' . $artistFollowers . '</p>';
+			} 
+			
+		}
+
+		// previous section experimental
 			
 		for ($j=0; $j<(count($artistsArray)); ++$j) {
 
@@ -196,9 +227,9 @@ function divideCombineArtistsForAlbums ($theseArtists) {
 	unset($artistsChunk);
 
 }
-
-$artistID = "5M52tdBnJaKSvOpJGz8mfZ";
-gatherArtistAlbums ($artistID);
-//divideCombineArtistsForAlbums ($bs);
+$bs = array ('5M52tdBnJaKSvOpJGz8mfZ');
+//$artistID = "5M52tdBnJaKSvOpJGz8mfZ";
+//gatherArtistAlbums ($artistID);
+divideCombineArtistsForAlbums ($bs);
 
 ?>
