@@ -51,7 +51,7 @@ function divideCombineInsertTracksAndPop ($AlbumsTracks) {
 			$rockout = $connekt->query($insertTrackInfo);
 	
 			if(!$rockout){
-				echo 'Cursed-Crap. Could not insert "' . $trackName . '" from <i>' . $trackAlbumName . '</i>.<br>';
+				echo '<p>Cursed-Crap. Could not insert "' . $trackName . '" from <i>' . $trackAlbumName . '</i>.</p>';
 			}
 	
 			$insertTrackPop = "INSERT INTO popTracks (trackID,pop,date) VALUES('$trackID','$trackPop', curdate())";
@@ -59,19 +59,15 @@ function divideCombineInsertTracksAndPop ($AlbumsTracks) {
 			$rockpop = $connekt->query($insertTrackPop);
 			
 			if(!$rockpop){
-				echo 'Confounded-Crap. Could not insert POPULARITY for "' . $trackName . '" from <i>' . $trackAlbumName . '</i>.<br>';
+				echo '<p>Confounded-Crap. Could not insert POPULARITY for "' . $trackName . '" from <i>' . $trackAlbumName . '</i>.</p>';
 			}
 	
 			else {
-				echo $thisArtistName . "'s album <i>" . $trackAlbumName . "</i>, track " . $trackName . " has pop " . $trackPop . "<br>";
+				echo "<p>" . $thisArtistName . "'s album <i>" . $trackAlbumName . "</i>, track " . $trackName . " has pop " . $trackPop . "</p>";
 			}
 		}
 	};
 }
-
-
-
-
 
 function divideCombineTracksAndInsertPop ($allArtistTracks) {
 

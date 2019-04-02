@@ -2,7 +2,7 @@
 
 require '../secrets/auth.php';
 //require '../data_text/artists_arrays.php';
-//require '../functions/tracks.php';
+require '../functions/tracks.php';
 require_once '../rockdb.php';
 
 function divideCombineAlbums ($artistAlbums) {
@@ -45,7 +45,7 @@ function divideCombineAlbums ($artistAlbums) {
 			$insertAlbum = "INSERT INTO albums (albumID,albumName,artistID,year,albumArt) VALUES('$albumID','$albumName','$thisArtistID','$albumReleased','$albumTotalTracks','$albumArt')";
 			
 			if (!$connekt) {
-				echo 'Darn. Did not connect.<br>';
+				echo '<p>Darn. Did not connect.</p>';
 			};
 			
 			$rockout = $connekt->query($insertAlbum);
@@ -59,7 +59,7 @@ function divideCombineAlbums ($artistAlbums) {
 			$rockin = $connekt->query($insertAlbumsPop);
 			
 			if(!$rockin){
-				echo 'Sweet & Sour Crap! Could not insert albums popularity.';
+				echo '<p>Sweet & Sour Crap! Could not insert albums popularity.</p>';
 			}
 
             echo '<p><img src="' . $albumArt . '" height="64" width="64"><br>' . $albumName . '<br>' . $albumReleased . '<br><strong>Popularity:</strong> ' . $albumPop . '<br><strong>Total tracks:</strong> ' . $albumTotalTracks . '</p>';
@@ -89,7 +89,6 @@ function divideCombineAlbums ($artistAlbums) {
 				foreach ($thisAlbumTracks->items as $track) {
 					$trackID = $track->id;
 					$trackName = $track->name;
-					echo "<p>" . $trackName . " from " . $albumName . "</p>";
 					$AlbumsTracks [] = $trackID;
 				};
 
@@ -191,7 +190,7 @@ function divideCombineArtistsForAlbums ($theseArtists) {
 		foreach ($bunchofartists->artists as $artist) {
 			$connekt = new mysqli($GLOBALS['host'], $GLOBALS['un'], $GLOBALS['magicword'], $GLOBALS['db']);
 			if(!$connekt){
-				echo 'Fiddlesticks! Could not connect to database.<br>';
+				echo '<p>Fiddlesticks! Could not connect to database.</p>';
 			}
 			$artistID = $artist->id;
 			$artistNameYucky = $artist->name;
@@ -208,7 +207,7 @@ function divideCombineArtistsForAlbums ($theseArtists) {
 			}
 	
 			else {
-				echo '<p><img src="' . $artistArt . '"><br>' . $artistName . '<br><b>Popularity:</b> ' . $artistPop . '<br><b>Followers:</b> ' . $artistFollowers . '</p>';
+				echo '<p><img src="' . $artistArt . '"></p><p>' . $artistName . '</p><p><b>Popularity:</b> ' . $artistPop . '</p><p><b>Followers:</b> ' . $artistFollowers . '</p>';
 			} 
 			
 		}
@@ -227,9 +226,9 @@ function divideCombineArtistsForAlbums ($theseArtists) {
 	unset($artistsChunk);
 
 }
-$bs = array ('5M52tdBnJaKSvOpJGz8mfZ');
+$ac = array ('3EhbVgyfGd7HkpsagwL9GS');
 //$artistID = "5M52tdBnJaKSvOpJGz8mfZ";
 //gatherArtistAlbums ($artistID);
-divideCombineArtistsForAlbums ($bs);
+divideCombineArtistsForAlbums ($ac);
 
 ?>
