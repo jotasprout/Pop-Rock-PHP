@@ -2,7 +2,7 @@
 
 require '../secrets/auth.php';
 //require '../data_text/artists_arrays.php';
-require '../functions/tracks.php';
+//require '../functions/tracks.php';
 require_once '../rockdb.php';
 
 function divideCombineAlbums ($artistAlbums) {
@@ -45,7 +45,7 @@ function divideCombineAlbums ($artistAlbums) {
 			$insertAlbum = "INSERT INTO albums (albumID,albumName,artistID,year,albumArt) VALUES('$albumID','$albumName','$thisArtistID','$albumReleased','$albumTotalTracks','$albumArt')";
 			
 			if (!$connekt) {
-				echo '<p>Darn. Did not connect.</p>';
+				echo 'Darn. Did not connect.<br>';
 			};
 			
 			$rockout = $connekt->query($insertAlbum);
@@ -59,7 +59,7 @@ function divideCombineAlbums ($artistAlbums) {
 			$rockin = $connekt->query($insertAlbumsPop);
 			
 			if(!$rockin){
-				echo '<p>Sweet & Sour Crap! Could not insert albums popularity.</p>';
+				echo 'Sweet & Sour Crap! Could not insert albums popularity.';
 			}
 
             echo '<p><img src="' . $albumArt . '" height="64" width="64"><br>' . $albumName . '<br>' . $albumReleased . '<br><strong>Popularity:</strong> ' . $albumPop . '<br><strong>Total tracks:</strong> ' . $albumTotalTracks . '</p>';
@@ -89,6 +89,7 @@ function divideCombineAlbums ($artistAlbums) {
 				foreach ($thisAlbumTracks->items as $track) {
 					$trackID = $track->id;
 					$trackName = $track->name;
+					//echo "<p>" . $trackName . " from " . $albumName . "</p>";
 					$AlbumsTracks [] = $trackID;
 				};
 
@@ -182,37 +183,6 @@ function divideCombineArtistsForAlbums ($theseArtists) {
 		$artistsIds = implode(',', $artistsArraysArray[$i]);
 		//echo '<br>these are the artist IDs ' . $artistsIds;
 		$artistsArray = $artistsArraysArray[$i];
-
-		// this next section experimental
-
-		$bunchofartists = $GLOBALS['api']->getArtists($artistsArray);
-			
-		foreach ($bunchofartists->artists as $artist) {
-			$connekt = new mysqli($GLOBALS['host'], $GLOBALS['un'], $GLOBALS['magicword'], $GLOBALS['db']);
-			if(!$connekt){
-				echo '<p>Fiddlesticks! Could not connect to database.</p>';
-			}
-			$artistID = $artist->id;
-			$artistNameYucky = $artist->name;
-			$artistName = mysqli_real_escape_string($connekt,$artistNameYucky);
-			$artistArt = $artist->images[0]->url;
-			$artistPop = $artist->popularity;
-			$artistFollowers = $artist->followers->total;
-	
-			$insertArtistsPop = "INSERT INTO popArtists (artistID,pop,followers,date) VALUES('$artistID','$artistPop','$artistFollowers',curdate())";
-
-			$rockpop = $connekt->query($insertArtistsPop);
-			if(!$rockpop){
-				echo '<p>Cursed-Crap. Could not insert artists popularity & followers.</p>';
-			}
-	
-			else {
-				echo '<p><img src="' . $artistArt . '"></p><p>' . $artistName . '</p><p><b>Popularity:</b> ' . $artistPop . '</p><p><b>Followers:</b> ' . $artistFollowers . '</p>';
-			} 
-			
-		}
-
-		// previous section experimental
 			
 		for ($j=0; $j<(count($artistsArray)); ++$j) {
 
@@ -226,9 +196,9 @@ function divideCombineArtistsForAlbums ($theseArtists) {
 	unset($artistsChunk);
 
 }
-$ac = array ('3EhbVgyfGd7HkpsagwL9GS');
-//$artistID = "5M52tdBnJaKSvOpJGz8mfZ";
-//gatherArtistAlbums ($artistID);
-divideCombineArtistsForAlbums ($ac);
+
+$artistID = "5M52tdBnJaKSvOpJGz8mfZ";
+gatherArtistAlbums ($artistID);
+//divideCombineArtistsForAlbums ($bs);
 
 ?>

@@ -16,14 +16,14 @@ $artists06 = array ("0maNhqGx60ucjS4UaAH6cP", "1FwGBBwUviGVIeDIByO7u7", "22TEmHX
 
 $artists07 = array ("2ycnb8Er79LoH2AsR5ldjh", "2ye2Wgw4gimLv2eAKyk1NB", "2zyz0VJqrDXeFDIyrfVXSo", "30U8fYtiNpeA5KH6H87QUV", "31LBSeuapFzeec1JCDDMZS", "33EUXrFKGjpUSGacqEHhU4", "36Bu1OZV6yxvXaOMDVJ9NQ", "36QJpDe2go2KgaRleHCDTp", "38G8E1MViuxPZPd5qIgbic", "3BM0EaYmkKWuPmmHFUTQHv", "3D4qYDvoPn5cQxtBm4oseo", "3dBVyJ7JuOMt4GE9607Qin", "3dnH7fdVm2X07MK6Fkbhbt", "3Dzj993UEz8Z5ovxuirzFO", "3EhbVgyfGd7HkpsagwL9GS", "3eqjTLE0HfPfh78zjh6TqT", "3fhOTtm0LBJ3Ojn4hIljLo", "1Fmb52lZ6Jv7FMWXXTPO3K","5eTq3PxbOh5vgeRXKNqPyV", "5NhjPre67qjeeQP4KHDHpe", "6sYiiBcFhVF76DR2BlRfcd", "0yOXtSWTf2JZEbeBXD4wZa", "3RYdggbT5C9r4BsljokJ1Q", "6GLYG6CiVx1P5D8Qa6Ulyo", "5LXEAEGrpKQtpyCu2sZuWu", "2qT62DYO8Ajb276vUJmvhz", "2QWIScpFDNxmS6ZEMIUvgm", "2S0M8fVXCom9z4JjV8UoXO", "2tRsMl4eGxwoNabM08Dm4I", "2UBTfUoLI07iRqGeUrwhZh", "2UZMlIwnkgAEDBsw1Rejkn", "2V27BrLW9marAftTzfW8WN", "2vQavlZtDA660mnZotYIto", "6PAt558ZEZl0DmdXlnjMgD", "1OwarW4LEHnoep20ixRA0y", "2x9SpqnPi8rlE9pjHBwmSC", "6e2NWj3S7Sm5Fh10KwqjF8");
 
-mbid_array1 = (  
+$mbid_array1 = array (  
     'ee58c59f-8e7f-4430-b8ca-236c4d3745ae', # Alice Cooper person   
     '4d7928cd-7ed2-4282-8c29-c0c9f966f1bd', # Alice Cooper band
 	'1a03f20c-26dd-4c26-bbe8-426e05ea46d5', # Amboy Dukes
     '07a85e96-bb72-4930-b41d-24853f4a4ede' # Anvil
     );     
 
-mbid_array2 = (  
+$mbid_array2 = array (  
     '5182c1d9-c7d2-4dad-afa0-ccfeada921a8', # Black Sabbath
     '4b1bf05d-0e3c-44a3-9fc8-ad088fc25797', # buckinghamNicks
     '5d12875c-a197-43b2-8f29-41dc0ad895c3', # lindseyBuckingham
@@ -31,7 +31,7 @@ mbid_array2 = (
     '7249b899-8db8-43e7-9e6e-22f1e736024e' # defLeppard
     ); 
 
-mbid_array3 = (  
+$mbid_array3 = array (  
     'c55193fb-f5d2-4839-a263-4c044fca1456', # Dio
     '9f6c4063-ce0a-4b71-a7b7-a32c91997260', # Dio and the Prophets
     '883871a1-f154-4df8-a7f7-558ea456dd0a', # Dio and the Redcaps    
@@ -40,7 +40,7 @@ mbid_array3 = (
     '66bf7876-3898-47fa-8bdd-dc200f946cec' # Evil Stig 
     );     
 
-mbid_array4 = (  
+$mbid_array4 = array (  
 
     'bd13909f-1c29-4c27-a874-d4aaf27c5b1a', # fleetwoodMac
     '484a1d40-0fb9-4768-acff-b570cedaacb4', # Heaven and Hell
@@ -49,7 +49,7 @@ mbid_array4 = (
     '46e63d3b-d91b-4791-bb73-e9f638a45ea0' # Joan Jett and the Blackhearts 
     ); 
 
-mbid_array5 = (  
+$mbid_array5 = array (  
     'abd506e1-6f2b-4d6f-b937-92c267f6f88b', # journey
     'b134d1bf-c7c7-4427-93ac-9fdbc2b59ef1', # Meat Loaf
     '2cb3b264-277f-4d8f-bc86-1923ff8abdc0', # Stoney and Meat Loaf
@@ -57,7 +57,7 @@ mbid_array5 = (
     'b7f2cca2-72c6-41fb-ae33-53370fc62fe7' # stevieNicks 
     );     
 
-mbid_array6 = (  
+$mbid_array6 = array (  
     'e491fae8-3a5a-438e-8368-925753fb41a1', # Ted Nugent
     '8aa5b65a-5b3c-4029-92bf-47a544356934', # Ozzy Osbourne    
     '0383dadf-2a4e-4d10-a46a-e9e041da8eb3', # Queen
@@ -65,7 +65,7 @@ mbid_array6 = (
     'a74b1b7f-71a5-4011-9441-d0b5e4122711' # radiohead
     ); 
 
-mbid_array7 = (  
+$mbid_array7 = array (  
 
     'e3cb4543-210f-499a-b0d1-3882c312dfb9', # Rainbow
     '331ce348-1b08-40b9-8ed7-0763b92bd003', # roxyMusic
