@@ -37,7 +37,15 @@ $filenames1 = array (
     '../data_text/jsonLastFM/TheZombies_Group_04-03-19.json'
 );
 
-$filenames = $filenames1;
+$filenames2 = array (
+    '../data_text/jsonLastFM/AliceCooper_Combined_04-02-19.json',
+    '../data_text/jsonLastFM/Anvil_Group_04-02-19.json',
+    '../data_text/jsonLastFM/BlackSabbath_Group_04-02-19.json',
+    '../data_text/jsonLastFM/LindseyBuckingham_Person_04-02-19.json',
+    '../data_text/jsonLastFM/TheAmboyDukes_Group_04-02-19.json'
+);
+
+$filenames = $filenames2;
 
 $x = ceil((count($filenames)));
 
