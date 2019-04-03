@@ -12,7 +12,7 @@ if ( !$connekt ) {
 	echo 'Darn. Did not connect.';
 };
 
-$gatherTrackInfo = "SELECT t.trackID, t.trackName, a.albumName, a.artistID, p1.pop, p1.date, f1.trackListeners, f1.trackPlaycount
+$gatherTrackInfo = "SELECT t.trackID, t.trackName, a.albumName, a.artistID, p1.pop, p1.date, f1.dataDate, f1.trackListeners, f1.trackPlaycount
 						FROM tracks t
 						INNER JOIN albums a ON a.albumID = t.albumID
 						JOIN (SELECT p.* FROM popTracks p
@@ -77,6 +77,7 @@ if ( !$getit ) {
 			<th onClick="sortColumn('trackName', 'DESC')"><div class="pointyHead">Track Title</div></th>
 			<th class="popStyle">Spotify<br>Data Date</th>
 			<th class="popStyle" onClick="sortColumn('pop', 'ASC')"><div class="pointyHead">Track<br>Popularity</div></th>
+			<th>LastFM<br>Data Date</th>
 			<th class="rightNum pointyHead">LastFM<br>Listeners</th>
 			<th class="rightNum pointyHead">LastFM<br>Playcount</th>
 		</tr>
@@ -90,6 +91,7 @@ if ( !$getit ) {
 			$trackID = $row[ "trackID" ];
 			$trackPop = $row[ "pop" ];
 			$popDate = $row[ "date" ];
+			$lastFMDate = $row[ "dataDate" ];
 			$trackListenersNum = $row[ "trackListeners"];
 			$trackListeners = number_format ($trackListenersNum);
 			if (!$trackListeners > 0) {
@@ -110,6 +112,7 @@ if ( !$getit ) {
 <td><a href='https://www.roxorsoxor.com/poprock/thisTrack_popChart.php?trackID=<?php echo $trackID ?>'><?php echo $trackName ?></a></td>
 <td class="popStyle"><?php echo $popDate ?></td>
 <td class="popStyle"><?php echo $trackPop ?></td>
+<td class="popStyle"><?php echo $lastFMDate ?></td>
 <td class="rightNum"><?php echo $trackListeners ?></td>
 <td class="rightNum"><?php echo $trackPlaycount ?></td>
 </tr>

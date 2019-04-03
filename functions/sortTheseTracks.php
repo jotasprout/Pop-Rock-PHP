@@ -56,7 +56,7 @@ if ( $columnName == "pop" and $currentOrder == "ASC" ) {
 	$popNewOrder = "DESC";
 }
 
-$gatherTrackInfo = "SELECT t.trackID, t.trackName, a.albumName, a.artistID, p1.pop, p1.date, f1.trackListeners, f1.trackPlaycount
+$gatherTrackInfo = "SELECT t.trackID, t.trackName, a.albumName, a.artistID, p1.pop, p1.date, f1.dataDate, f1.trackListeners, f1.trackPlaycount
 						FROM tracks t
 						INNER JOIN albums a ON a.albumID = t.albumID
 						JOIN (SELECT p.* FROM popTracks p
@@ -93,6 +93,7 @@ if(!empty($sortit)) { ?>
 	<th>Spotify<br>Data Date</th>
 	<th onClick="sortColumn('trackName', '<?php echo $trackNameNewOrder; ?>', '<?php echo $artistID ?>')"><div class="pointyHead">Track Title</div></th>
 	<th class="popStyle" onClick="sortColumn('pop', '<?php echo $popNewOrder; ?>', '<?php echo $artistID ?>')"><div class="pointyHead">Spotify<br>Popularity</div></th>
+	<th>LastFM<br>Data Date</th>
 	<th class="rightNum pointyHead">LastFM<br>Listeners</th>
 	<th class="rightNum pointyHead">LastFM<br>Playcount</th>
 </tr>
@@ -106,6 +107,7 @@ if(!empty($sortit)) { ?>
 			$trackID = $row[ "trackID" ];
 			$trackPop = $row[ "pop" ];
 			$popDate = $row[ "date" ];
+			$lastFMDate = $row[ "dataDate" ];
 			$trackListenersNum = $row["trackListeners"];
 			$trackListeners = number_format ($trackListenersNum);
 			if (!$trackListeners > 0) {
@@ -123,6 +125,7 @@ if(!empty($sortit)) { ?>
 				<td><?php echo $popDate ?></td>
 				<td><?php echo $trackName ?></td>
 				<td class="popStyle"><?php echo $trackPop ?></td>
+				<td class="popStyle"><?php echo $lastFMDate ?></td>
 				<td class="rightNum"><?php echo $trackListeners ?></td>
 				<td class="rightNum"><?php echo $trackPlaycount ?></td>
 			</tr>

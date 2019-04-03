@@ -13,7 +13,7 @@ if (!$connekt) {
 	echo 'Darn. Did not connect.';
 };
 
-$artistInfoAll = "SELECT a.artistID, a.artistName, b.pop, b.followers, b.date 
+$artistInfoAll = "SELECT a.artistID, a.artistName, b.pop, b.followers, b.date, f1.dataDate,  
 	FROM artists a
 		INNER JOIN popArtists b ON a.artistID = b.artistID
 			WHERE a.artistID = '$artistID'
@@ -52,8 +52,8 @@ if(!$getit){
 					<th>Artist Name</th>
 					<th>Popularity</th>
 					<th class="rightNum">Spotify<br>Followers</th>
-					<th onClick="sortColumn('date', 'DESC')"><div class="pointyHead">Date</div></th>
-					
+					<th onClick="sortColumn('date', 'DESC')"><div class="pointyHead">Spotify<br>Date</div></th>
+					<th>LastFM<br>Data Date</th>
 					<th class="rightNum">LastFM<br>Listeners</th>
 					<th class="rightNum">LastFM<br>Playcount</th>
 					<!--
@@ -69,6 +69,7 @@ if(!$getit){
 				// $artistID = $row["artistID"];
 				$artistName = $row["artistName"];
 				$artistPop = $row["pop"];
+				$lastFMDate = $row[ "dataDate" ];
 				$artistFollowers = $row["followers"];
 				$popDate = $row["date"];
 				$popDateShort = substr($popDate, 0, 10);
@@ -80,7 +81,7 @@ if(!$getit){
 				<td><?php echo $artistFollowers ?></td>
 			<!-- -->
 				<td><?php echo $popDate ?></td>
-				<td><?php echo $popDateShort ?></td>
+				<td class="popStyle"><?php echo $lastFMDate ?></td>
 				<td class="rightNum"><?php echo $artistListeners ?></td>
 				<td class="rightNum"><?php echo $artistPlaycount ?></td>
 			</tr>

@@ -11,7 +11,7 @@ if (!$connekt) {
 	echo 'Darn. Did not connect.';
 };
 
-$happyScabies2 = "SELECT a.albumName, a.year, a.albumArt, a.tracksTotal, z.artistName, p1.pop, p1.date, a.albumID, f1.albumListeners, f1.albumPlaycount
+$happyScabies2 = "SELECT a.albumName, a.year, a.albumArt, a.tracksTotal, z.artistName, p1.pop, p1.date, a.albumID, f1.dataDate, f1.albumListeners, f1.albumPlaycount
 	FROM (SELECT
 				y.albumID AS albumID,
 				y.albumMBID AS albumMBID,
@@ -91,6 +91,7 @@ if(!$getit){
 		<th><div class="pointyHead popStyle">Total<br>Tracks</div></th>
 		<th class="popStyle">Spotify<br>Data Date</th>
 		<th onClick="sortColumn('pop', 'ASC', '<?php echo $artistID; ?>')"><div class="pointyHead popStyle">Spotify<br>Popularity</div></th>
+		<th>LastFM<br>Data Date</th>
 		<th class="rightNum pointyHead">LastFM<br>Listeners</th>
 		<th class="rightNum pointyHead">LastFM<br>Playcount</th>
 	</tr>
@@ -107,6 +108,7 @@ if(!$getit){
 							$albumReleased = $row['year'];
 							$albumPop = $row['pop'];
 							$date = $row['date'];
+							$lastFMDate = $row[ "dataDate" ];
 							$albumListenersNum = $row[ "albumListeners"];
 							$albumListeners = number_format ($albumListenersNum);
 							if (!$albumListeners > 0) {
@@ -127,6 +129,7 @@ if(!$getit){
 <td class="popStyle"><?php echo $tracksTotal ?></td>
 <th class="popStyle"><?php echo $date ?></th>
 <td class="popStyle"><?php echo $albumPop ?></td>
+<td class="popStyle"><?php echo $lastFMDate ?></td>
 <td class="rightNum"><?php echo $albumListeners ?></td>
 <td class="rightNum"><?php echo $albumPlaycount ?></td>
 </tr>

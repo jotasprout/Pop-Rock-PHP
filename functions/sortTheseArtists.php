@@ -46,7 +46,7 @@ if ( $columnName == "pop" and $currentOrder == "ASC" ) {
 	$popNewOrder = "DESC";
 }
 
-$allthatAndLastFM = "SELECT a.artistID AS artistID, a.artistArt AS artistArt, a.artistName AS artistName, a.albumsTotal AS albumsTotal, p1.pop AS pop, p1.followers AS followers, f1.artistListeners AS artistListeners, f1.artistPlaycount AS artistPlaycount, p1.date AS date
+$allthatAndLastFM = "SELECT a.artistID AS artistID, a.artistArt AS artistArt, a.artistName AS artistName, a.albumsTotal AS albumsTotal, p1.pop AS pop, p1.followers AS followers, f1.dataDate AS dataDate, f1.artistListeners AS artistListeners, f1.artistPlaycount AS artistPlaycount, p1.date AS date
     FROM artists a
     JOIN (SELECT p.*
 			FROM popArtists p
@@ -84,6 +84,7 @@ if (!empty($sortit)) { ?>
 	<th onClick="sortColumn('pop', '<?php echo $popNewOrder; ?>')"><div class="pointyHead popStyle">Spotify<br>Popularity</div></th>
 	<th class="popStyle">Spotify<br>Total Albums</th>
 	<th class="rightNum">Spotify<br>Followers</th>
+	<th>LastFM<br>Data Date</th>
 	<th class="rightNum">LastFM<br>Listeners</th>
 	<th class="rightNum">LastFM<br>Playcount</th>
 	</tr>
@@ -101,6 +102,7 @@ if (!empty($sortit)) { ?>
 				$artistArt = $row[ "artistArt" ];
 				$popDate = $row[ "date" ];
 				$albumsTotal = $row[ "albumsTotal" ];
+				$lastFMDate = $row[ "dataDate" ];
 				$artistListenersNum = $row[ "artistListeners"];
 				$artistListeners = number_format ($artistListenersNum);
 				if (!$artistListeners > 0) {
@@ -121,6 +123,7 @@ if (!empty($sortit)) { ?>
 	<td class="popStyle"><?php echo $artistPop ?></td>
 	<td class="popStyle"><?php echo $albumsTotal ?></td>
 	<td id="followers" class="rightNum"><?php echo $artistFollowers ?></td>
+	<td class="popStyle"><?php echo $lastFMDate ?></td>
 	<td class="rightNum"><?php echo $artistListeners ?></td>
 	<td class="rightNum"><?php echo $artistPlaycount ?></td>
 </tr>
