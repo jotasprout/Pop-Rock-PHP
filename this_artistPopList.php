@@ -40,7 +40,7 @@ if(!$getit){
 
 <body>
 
-    <div class="container">
+    <div class="container-fluid">
         <?php echo $navbar ?>
 
         <!-- D3 chart goes here -->
@@ -50,9 +50,10 @@ if(!$getit){
 			<thead>
 				<tr>
 					<th>Artist Name</th>
+					<th onClick="sortColumn('date', 'DESC')"><div class="pointyHead">Spotify<br>Date</div></th>
 					<th>Popularity</th>
 					<th class="rightNum">Spotify<br>Followers</th>
-					<th onClick="sortColumn('date', 'DESC')"><div class="pointyHead">Spotify<br>Date</div></th>
+					
 					<th>LastFM<br>Data Date</th>
 					<th class="rightNum">LastFM<br>Listeners</th>
 					<th class="rightNum">LastFM<br>Playcount</th>
@@ -77,10 +78,11 @@ if(!$getit){
 							
 			<tr>
 				<td><?php echo $artistName ?></td>
+				<td><?php echo $popDate ?></td>
 				<td><?php echo $artistPop ?></td>
 				<td><?php echo $artistFollowers ?></td>
 			<!-- -->
-				<td><?php echo $popDate ?></td>
+				
 				<td class="popStyle"><?php echo $lastFMDate ?></td>
 				<td class="rightNum"><?php echo $artistListeners ?></td>
 				<td class="rightNum"><?php echo $artistPlaycount ?></td>
