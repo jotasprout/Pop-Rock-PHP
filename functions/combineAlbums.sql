@@ -41,8 +41,8 @@ WHERE tmb.trackName = tracks.trackName AND tmb.albumID = tracks.albumID
 
 ####################################
 
-DELETE a FROM popAlbums2 a
-INNER JOIN popAlbums2 b
+DELETE a FROM popAlbums a
+INNER JOIN popAlbums b
 WHERE a.albumID = b.albumID AND a.date = b.date AND a.id < b.id;
 
 ###############################
@@ -53,6 +53,12 @@ WHERE a.trackID = b.trackID AND a.date = b.date) pops;
 
 ##############################
 
-SELECT count(*) FROM (SELECT a.trackID FROM popTracks a
+DELETE a FROM popArtists a
+INNER JOIN popArtists b
+WHERE a.artistID = b.artistID AND a.date = b.date AND a.id < b.id;
+
+###############
+
+DELETE a FROM popTracks a
 INNER JOIN popTracks b
-WHERE a.trackID = b.trackID AND a.date = b.date) pops;
+WHERE a.trackID = b.trackID AND a.date = b.date AND a.id < b.id;

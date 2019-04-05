@@ -58,7 +58,7 @@ if ( $columnName == "pop" and $currentOrder == "ASC" ) {
 	$popNewOrder = "DESC";
 }
 
-$sortScabies = "SELECT a.albumName, a.year, a.albumArt, a.tracksTotal, z.artistName, p1.pop, p1.date, a.albumID, f1.dataDate, f1.albumListeners, f1.albumPlaycount
+$sortScabies = "SELECT a.albumName, a.year, a.albumArt, a.tracksTotal, z.artistName, p1.pop, p1.date, a.albumID, f1.albumMBID, f1.dataDate, f1.albumListeners, f1.albumPlaycount
 	FROM (SELECT
 				y.albumID AS albumID,
 				y.albumMBID AS albumMBID,
@@ -102,6 +102,7 @@ if(!empty($sortit))	 { ?>
 <tr>
 	<th>Album Art</th>
 	<th>Album Spotify ID</th>
+	<th>albumMBID</th>
 	<th onClick="sortColumn('albumName', '<?php echo $albumNameNewOrder; ?>', '<?php echo $artistID; ?>')"><div class="pointyHead">Album Name</div></th>
 	<th onClick="sortColumn('year', '<?php echo $yearNewOrder; ?>', '<?php echo $artistID; ?>')"><div class="pointyHead popStyle">Released</div></th>
 	<th><div class="pointyHead popStyle">Total Tracks</div></th>
@@ -121,6 +122,7 @@ while ( $row = mysqli_fetch_array( $sortit ) ) {
 	$artistName = $row['artistName'];
 	$albumArt = $row['albumArt'];
 	$albumID = $row['albumID'];
+	$albumMBID = $row['albumMBID'];
 	$albumName = $row['albumName'];
 	$tracksTotal = $row['tracksTotal'];
 	$albumReleased = $row['year'];
@@ -143,7 +145,7 @@ while ( $row = mysqli_fetch_array( $sortit ) ) {
 	<tr>
 		<td><img src='<?php echo $albumArt ?>' height='64' width='64'></td>
 		<td><?php echo $albumID ?></td>
-		<!-- NEED TO CREATE FUNCTION IN NEXT LINE -->
+		<td><?php echo $albumMBID ?></td>
 		<td><a href='https://www.roxorsoxor.com/poprock/thisAlbum_TracksList.php?albumID=<?php echo $albumID ?>'><?php echo $albumName ?></a></td>
 		<td class="popStyle"><?php echo $albumReleased ?></td>
 		<td class="popStyle"><?php echo $tracksTotal ?></td>

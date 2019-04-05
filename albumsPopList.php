@@ -11,7 +11,7 @@ if (!$connekt) {
 	echo 'Darn. Did not connect.';
 };
 
-$happyScabies2 = "SELECT a.albumName, a.year, a.albumArt, a.tracksTotal, z.artistName, p1.pop, p1.date, a.albumID, f1.dataDate, f1.albumListeners, f1.albumPlaycount
+$happyScabies2 = "SELECT a.albumName, a.year, a.albumArt, a.tracksTotal, z.artistName, p1.pop, p1.date, a.albumID, f1.albumMBID, f1.dataDate, f1.albumListeners, f1.albumPlaycount
 	FROM (SELECT
 				y.albumID AS albumID,
 				y.albumMBID AS albumMBID,
@@ -86,6 +86,7 @@ if(!$getit){
 	<tr>
 		<th>Album Art</th>
 		<th>Album Spotify ID</th>
+		<th>albumMBID</th>
 		<th onClick="sortColumn('albumName', 'ASC', '<?php echo $artistID; ?>')"><div class="pointyHead">Album Name</div></th>
 		<th onClick="sortColumn('year', 'DESC', '<?php echo $artistID; ?>')"><div class="pointyHead popStyle">Released</div></th>
 		<th><div class="pointyHead popStyle">Total<br>Tracks</div></th>
@@ -103,6 +104,7 @@ if(!$getit){
 							$artistName = $row['artistName'];
 							$albumArt = $row['albumArt'];
 							$albumID = $row['albumID'];
+							$albumMBID = $row['albumMBID'];
 							$albumName = $row['albumName'];
 							$tracksTotal = $row['tracksTotal'];
 							$albumReleased = $row['year'];
@@ -124,6 +126,7 @@ if(!$getit){
 <tr>
 <td><img src='<?php echo $albumArt ?>' height='64' width='64'></td>
 <td><?php echo $albumID ?></td>
+<td><?php echo $albumMBID ?></td>
 <td><a href='https://www.roxorsoxor.com/poprock/thisAlbum_TracksList.php?albumID=<?php echo $albumID ?>'><?php echo $albumName ?></a></td>
 <td class="popStyle"><?php echo $albumReleased ?></td>
 <td class="popStyle"><?php echo $tracksTotal ?></td>
