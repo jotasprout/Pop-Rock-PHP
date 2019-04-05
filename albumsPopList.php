@@ -41,6 +41,7 @@ $happyScabies2 = "SELECT a.albumName, a.year, a.albumArt, a.tracksTotal, z.artis
 	ON a.albumMBID = f1.albumMBID
 	ORDER BY albumName ASC;";
 
+
 $getit = $connekt->query($happyScabies2);
 
 if(!$getit){
@@ -99,29 +100,29 @@ if(!$getit){
 </thead>
 <tbody>
 					
-					<?php
-						while ($row = mysqli_fetch_array($getit)) {
-							$artistName = $row['artistName'];
-							$albumArt = $row['albumArt'];
-							$albumID = $row['albumID'];
-							$albumMBID = $row['albumMBID'];
-							$albumName = $row['albumName'];
-							$tracksTotal = $row['tracksTotal'];
-							$albumReleased = $row['year'];
-							$albumPop = $row['pop'];
-							$date = $row['date'];
-							$lastFMDate = $row[ "dataDate" ];
-							$albumListenersNum = $row[ "albumListeners"];
-							$albumListeners = number_format ($albumListenersNum);
-							if (!$albumListeners > 0) {
-								$albumListeners = "n/a";
-							};
-							$albumPlaycountNum = $row[ "albumPlaycount"];
-							$albumPlaycount = number_format ($albumPlaycountNum);
-							if (!$albumPlaycount > 0) {
-								$albumPlaycount = "n/a";
-							};
-					?>
+<?php
+	while ($row = mysqli_fetch_array($getit)) {
+		$artistName = $row['artistName'];
+		$albumArt = $row['albumArt'];
+		$albumID = $row['albumID'];
+		$albumMBID = $row['albumMBID'];
+		$albumName = $row['albumName'];
+		$tracksTotal = $row['tracksTotal'];
+		$albumReleased = $row['year'];
+		$albumPop = $row['pop'];
+		$date = $row['date'];
+		$lastFMDate = $row[ "dataDate" ];
+		$albumListenersNum = $row[ "albumListeners"];
+		$albumListeners = number_format ($albumListenersNum);
+		if (!$albumListeners > 0) {
+			$albumListeners = "n/a";
+		};
+		$albumPlaycountNum = $row[ "albumPlaycount"];
+		$albumPlaycount = number_format ($albumPlaycountNum);
+		if (!$albumPlaycount > 0) {
+			$albumPlaycount = "n/a";
+		};
+?>
 					
 <tr>
 <td><img src='<?php echo $albumArt ?>' height='64' width='64'></td>
