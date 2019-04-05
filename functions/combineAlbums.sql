@@ -74,3 +74,29 @@ WHERE a.artistMBID = b.artistMBID AND a.dataDate = b.dataDate AND a.id < b.id;
 DELETE a FROM tracksLastFM2 a
 INNER JOIN tracksLastFM2 b
 WHERE a.trackMBID = b.trackMBID AND a.dataDate = b.dataDate AND a.id < b.id;
+
+##################
+
+SELECT * FROM `albumsMB` WHERE artistSpotID='5M52tdBnJaKSvOpJGz8mfZ' ORDER BY albumName ASC;
+
+#####################
+
+SELECT sp.albumName, sp.albumMBID, sp.albumID, sp.artistID 
+FROM albums sp
+WHERE sp.artistID='5M52tdBnJaKSvOpJGz8mfZ' 
+UNION
+SELECT mb.albumName, mb.albumMBID, mb.albumSpotID, mb.artistSpotID
+FROM albumsMB mb 
+WHERE mb.artistSpotID='5M52tdBnJaKSvOpJGz8mfZ' AND mb.albumMBID NOT IN (SELECT al.albumMBID FROM albums al)
+ORDER BY albumName ASC;
+
+################
+
+SELECT sp.albumName, sp.albumMBID, sp.albumID, sp.artistID 
+FROM albums sp
+WHERE sp.artistID='5M52tdBnJaKSvOpJGz8mfZ'
+UNION
+SELECT mb.albumName, mb.albumMBID, mb.albumSpotID, mb.artistSpotID
+FROM albumsMB mb 
+WHERE mb.artistSpotID='5M52tdBnJaKSvOpJGz8mfZ' 
+ORDER BY albumName ASC;
