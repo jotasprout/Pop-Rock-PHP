@@ -9,19 +9,19 @@ if ( !$connekt ) {
 	echo 'Darn. Did not connect.';
 };
 
-// Rock en Espanol
+// Class of 2019
 
-$artistInfoRecentWithArt = "SELECT a.artistID AS artistID, a.artistArt AS artistArt, a.artistName AS artistName, p1.pop AS pop, p1.date AS date
+$artistInfoRecentWithArt = "SELECT a.artistID AS artistID, a.artistArt AS artistArt, a.artistName AS artistName, p1.followers AS followers, p1.date AS date
     FROM artists a
     JOIN (SELECT p.*
 			FROM popArtists p
-			INNER JOIN (SELECT artistID, pop, max(date) AS MaxDate
+			INNER JOIN (SELECT artistID, followers, max(date) AS MaxDate
 						FROM popArtists  
 						GROUP BY artistID) groupedp
 			ON p.artistID = groupedp.artistID
 			AND p.date = groupedp.MaxDate) p1
 	ON a.artistID = p1.artistID
-	WHERE a.artistID IN ('0UKfenbZb15sqhfPC6zbt3', '4WquJweZPIK9qcfVFhTKvf', '0nJUwPwC9Ti4vvuJ0q3MfT', '1P8IfcNKwrkQP5xJWuhaOC', '2d0hyoQ5ynDBnkvAbJKORj', '0dmPX6ovclgOy8WWJaFEUU', '0Lpr5wXzWLtDWm1SjNbpPb', '1YLsqPcFg1rj7VvhfwnDWm')    
+	WHERE a.artistID IN ('0UKfenbZb15sqhfPC6zbt3', '4WquJweZPIK9qcfVFhTKvf', '0nJUwPwC9Ti4vvuJ0q3MfT', '1P8IfcNKwrkQP5xJWuhaOC', '2d0hyoQ5ynDBnkvAbJKORj', '0dmPX6ovclgOy8WWJaFEUU', '0Lpr5wXzWLtDWm1SjNbpPb', '1YLsqPcFg1rj7VvhfwnDWm', '7bu3H8JO7d0UbMoVzbo70s', '6H1RjVyNruCmrBEWRbD0VZ', '7crPfGd2k81ekOoSqQKWWz', '4qwGe91Bz9K2T8jXTZ815W', '4Z8W4fKeB5YxbusRsdQVPb', '3fhOTtm0LBJ3Ojn4hIljLo', '2jgPkn6LuUazBoBk6vvjh5')    
     ORDER BY a.artistName ASC";
     
 

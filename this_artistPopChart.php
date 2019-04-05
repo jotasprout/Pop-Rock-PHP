@@ -50,11 +50,49 @@
     <p>If, after the page loads, it is empty, or the wrong discography displays, <a href='https://www.roxorsoxor.com/poprock/index.php'>choose an artist</a> from the <a href='https://www.roxorsoxor.com/poprock/index.php'>Artists List</a> first.</p>
 
 
-    <p><img id="forArt"></p>
-    <p><strong>Popularity</strong> on <strong>Spotify</strong>: <span id="forCurrentPopularity"></span></p> 
-    <p><strong>Followers</strong> on <strong>Spotify</strong>:  <span id="forCurrentFollowers"></span></p> 
-	<p><strong>Listeners</strong> on <strong>LastFM</strong>: <span id="forCurrentListeners">No data yet</span></p> 
-    <p><strong>Playcount</strong> on <strong>LastFM</strong>:  <span id="forCurrentPlaycount">No data yet</span></p> 
+<div class="panel panel-primary">
+
+    <div class="panel-heading">
+        <h3 class="panel-title" id="topHead">Current Stats for </h3>
+    </div> <!-- close panel-heading -->
+        
+  <div class="panel-body">
+      <!-- 
+       -->
+       <div class="row">
+
+            <div class="col-md-2 popStyle">
+                <img id="forArt">
+            </div> <!-- End of Column 1 -->
+
+            <div class="col-md-3">
+                <ul class="list-group">
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Popularity on Spotify
+                        <span class="badge badge-primary badge-pill" id="forCurrentPopularity"></span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Followers on Spotify
+                        <span class="badge badge-primary badge-pill" id="forCurrentFollowers"></span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Listeners on LastFM
+                        <span class="badge badge-primary badge-pill" id="forCurrentListeners">No data yet</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Playcount on LastFM
+                        <span class="badge badge-primary badge-pill" id="forCurrentPlaycount">No data yet</span>
+                    </li>
+                </ul>
+            </div> <!-- End of Column 2 -->
+
+            <div class="col-md-7"></div>
+
+        </div> <!-- End of row -->
+
+        
+  </div> <!-- End of Card Body -->
+</div> <!-- End of Card -->
 
 	<div class="panel panel-primary">
 		<div class="panel-heading">
@@ -95,6 +133,9 @@ d3.json("functions/createArtistD3.php?artistID=<?php echo $artistID; ?>", functi
 
     const artistName = dataset[0].artistName;
 
+    const topHeading = d3.select("#topHead")
+            .text(artistName + "'s current stats on Spotify and LastFM"); 
+
     const artistTitle = d3.select("#artistPop")
             .text(artistName + "'s popularity on Spotify over time");   
 
@@ -114,7 +155,7 @@ d3.json("functions/createArtistD3.php?artistID=<?php echo $artistID; ?>", functi
     d3.select("#forArt")
             .data(dataset)
             .attr("src", artistArt)
-            .attr("height", 128);
+            .attr("height", 166);
             //.attr("width", auto)
 
     dataset.forEach(function(d) {

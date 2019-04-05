@@ -91,6 +91,8 @@ const $allRappers = "All Rappers";
 const $xianPunk = "Christian Punk & Alternative";
 const $detroitRockers = "Detroit Rock Citizens";
 const $latinos = "Alternativo y Rock en Espanol";
+const $2019Noms = "2019 Rock and Roll Hall of Fame Nominees";
+const $2019Inductees = "2019 Rock and Roll Hall of Fame Inductees";
 
 d3.json("functions/multiArtistsPop2.php", function(data) {
 
@@ -100,7 +102,7 @@ d3.json("functions/multiArtistsPop2.php", function(data) {
 
         var parseTime = d3.timeParse("%y-%m-%d");
 
-        const title = $longTerm;
+        const title = $2019Noms;
 
         dataset.forEach(function(d) {
             // date = parseTime(d.date);
