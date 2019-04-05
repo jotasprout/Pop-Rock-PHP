@@ -220,7 +220,7 @@ d3.json("functions/createArtistD3.php?artistID=<?php echo $artistID; ?>", functi
         const artistName = dataset[0].artistName;
 
         const artistTitle = d3.select("#albumPop")
-            .text(artistName + "'s albums' current popularity");
+            .text(artistName + "'s albums' current popularity on Spotify");
         
         // Create SVG element
         var svg = d3.select("#recordCollection")

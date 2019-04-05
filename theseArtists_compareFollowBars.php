@@ -36,7 +36,7 @@ require_once 'page_pieces/stylesAndScripts.php';
         console.log(dataset);
         // Width and height
         var w = 2400;
-        var h = 265;
+        var h = 1000;
         var barPadding = 1;
         const widen = dataset.length;
         console.log(widen);
@@ -95,13 +95,13 @@ require_once 'page_pieces/stylesAndScripts.php';
                 if (f < 1000000) {
                     followNum = f/1000;
                     followNum = followNum.toFixed(0);
-                    followTip = followNum + "k";
+                    followTip = followNum + " k";
                     console.log(followTip);
                     return followTip;
                 } else {
                     followNum = f/1000000;
                     followNum = followNum.toFixed(1);
-                    followTip = followNum + "M";
+                    followTip = followNum + " M";
                     console.log(followTip);
                     return followTip;                    
                 };
@@ -114,7 +114,7 @@ require_once 'page_pieces/stylesAndScripts.php';
                 return h - 64 - (d.followers / 5000) - 5;
             })
             .attr("font-family", "sans-serif")
-            .attr("font-size", "11px")
+            .attr("font-size", "12px")
             .attr("fill", "white");
     });		
 </script>				
