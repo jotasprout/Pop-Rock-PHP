@@ -41,6 +41,8 @@ $happyScabies2 = "SELECT a.albumName, a.year, a.albumArt, a.tracksTotal, z.artis
 	ON a.albumMBID = f1.albumMBID
 	ORDER BY albumName ASC;";
 
+// First, try adding a few more columns (from line 14) into this one
+// Then try replacing 16-22 with below
 $blackScabies = "SELECT sp.albumName, sp.albumMBID, sp.albumID, sp.artistID 
 FROM albums sp
 WHERE sp.artistID='5M52tdBnJaKSvOpJGz8mfZ'
