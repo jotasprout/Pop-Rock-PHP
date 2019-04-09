@@ -16,11 +16,11 @@ $blackSabbath = "5M52tdBnJaKSvOpJGz8mfZ";
 $blackScabies = "SELECT b.albumName, b.albumMBID, b.albumID, b.artistID, a.year, a.albumArt, a.tracksTotal, z.artistName, p1.pop, p1.date, f1.dataDate, f1.albumListeners, f1.albumPlaycount
 FROM (SELECT sp.albumName, sp.albumMBID, sp.albumID, sp.artistID
 	FROM albums sp
-	WHERE sp.artistID='$blackSabbath'
+	WHERE sp.artistID='5M52tdBnJaKSvOpJGz8mfZ'
 UNION
 SELECT mb.albumName, mb.albumMBID, mb.albumSpotID, mb.artistSpotID
 	FROM albumsMB mb 
-	WHERE mb.artistSpotID='$blackSabbath') b 
+	WHERE mb.artistSpotID='5M52tdBnJaKSvOpJGz8mfZ') b 
 LEFT JOIN albums a ON b.albumID = a.albumID	
 JOIN artists z ON z.artistID = b.artistID
 LEFT JOIN (SELECT p.*
@@ -38,7 +38,7 @@ LEFT JOIN (SELECT f.*
 		GROUP BY albumMBID) groupedf
 		ON f.albumMBID = groupedf.albumMBID
 		AND f.dataDate = groupedf.MaxDataDate) f1
-ON a.albumMBID = f1.albumMBID
+ON b.albumMBID = f1.albumMBID	
 ORDER BY b.albumName ASC;";
 
 $getit = $connekt->query($blackScabies);
