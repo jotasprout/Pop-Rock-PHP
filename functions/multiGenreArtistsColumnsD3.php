@@ -21,7 +21,7 @@ $genreArtistsRecentWithArt = "SELECT a.artistID AS artistID, a.artistArt AS arti
 			ON p.artistID = groupedp.artistID
 			AND p.date = groupedp.MaxDate) p1
 	ON a.artistID = p1.artistID
-	JOIN genres2 g ON a.artistID = g.artistID WHERE g.genre = '$artistGenre'   
+	JOIN genres g ON a.artistID = g.artistID WHERE g.genre = '$artistGenre'   
     ORDER BY a.artistName ASC";
     
 $result = mysqli_query($connekt, $genreArtistsRecentWithArt);

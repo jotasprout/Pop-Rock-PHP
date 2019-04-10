@@ -81,7 +81,7 @@ if(!$getit){ echo 'Cursed-Crap. Did not run the query.'; }
 			<th onClick="sortColumn('pop', 'ASC')"><div class="pointyHead popStyle">Spotify<br>Popularity</div></th>
 			<th class="popStyle">Spotify<br>Total Albums</th>
 			<th class="rightNum">Spotify<br>Followers</th>
-			<th>LastFM<br>Data Date</th>
+			<th class="popStyle">LastFM<br>Data Date</th>
 			<th class="rightNum">LastFM<br>Listeners</th>
 			<th class="rightNum">LastFM<br>Playcount</th>
 		</tr>
@@ -113,8 +113,8 @@ if(!$getit){ echo 'Cursed-Crap. Did not run the query.'; }
 				?>
 
 				<tr>
-					<td><img src='<?php echo $artistArt ?>' class="indexArtistArt"></td>	
-					<td><a href='https://www.roxorsoxor.com/poprock/this_artistPopChart.php?artistID=<?php echo $artistID ?>'><?php echo $artistName ?></a></td>
+					<td><a href='https://www.roxorsoxor.com/poprock/artist_Chart.php?artistID=<?php echo $artistID ?>'><img src='<?php echo $artistArt ?>' class="indexArtistArt"></a></td>	
+					<td><a href='https://www.roxorsoxor.com/poprock/artist_Chart.php?artistID=<?php echo $artistID ?>'><?php echo $artistName ?></a></td>
 					<td class="popStyle"><?php echo $artistID ?></td>
 					<td class="popStyle"><?php echo $popDate ?></td>
 					<td class="popStyle"><?php echo $artistPop ?></td>
@@ -145,7 +145,7 @@ if(!$getit){ echo 'Cursed-Crap. Did not run the query.'; }
 	<!-- close container -->
 
 	<?php echo $scriptsAndSuch; ?>
-	<script src="https://www.roxorsoxor.com/poprock/functions/sortTheseArtists.js"></script>
+	<script src="https://www.roxorsoxor.com/poprock/functions/sort_Artists.js"></script>
 
 </body>
 

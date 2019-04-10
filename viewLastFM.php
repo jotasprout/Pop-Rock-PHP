@@ -86,7 +86,7 @@ if(!$getit){ echo 'Cursed-Crap. Did not run the query.'; }
 
 					<tr>
 						<td><img src='<?php echo $artistArt ?>' class="indexArtistArt"></td>	
-						<td><a href='https://www.roxorsoxor.com/poprock/this_artistPopChart.php?artistID=<?php echo $artistID ?>'><?php echo $artistName ?></a></td>
+						<td><a href='https://www.roxorsoxor.com/poprock/artist_Chart.php?artistID=<?php echo $artistID ?>'><?php echo $artistName ?></a></td>
 						<!--
 						<td><?php //echo $artistID ?></td>
 						<td><?php // echo $popDate ?></td>
