@@ -13,7 +13,7 @@ if ( !$connekt ) {
 
 $artistInfoWithArtAndGenres = "SELECT a.artistID, a.artistArt, a.artistName, g.genre
     FROM artists a
-    JOIN genres2 g ON a.artistID = g.artistID
+    JOIN genres g ON a.artistID = g.artistID
 	ORDER BY a.artistName ASC";
 
 $getit = $connekt->query( $artistInfoWithArtAndGenres );
