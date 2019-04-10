@@ -2,6 +2,74 @@
 
 require_once '../rockdb.php';
 
+class Blackalbum {
+	
+	public $albummbid;
+	
+	public function setAlbummbid ($albummbid){
+		$this -> albummbid = $albummbid;
+	};
+	public function getAlbummbid (){
+		return $this -> albummbid;
+	};
+		
+}
+
+class Blackrelease {
+	
+	public $releasembid;
+	public $datadate;
+	public $listeners;
+	public $playcount;
+	
+	public function setReleasembid ($releasembid){
+		$this -> releasembid = $releasembid;
+	};
+	public function getReleasembid (){
+		return $this -> releasembid;
+	};
+	
+	public function setDatadate ($datadate){
+		$this -> datadate = $datadate;
+	};
+	public function getDatadate (){
+		return $this -> datadate;
+	};
+	
+	public function setListeners ($listeners){
+		$this -> listeners = $listeners;
+	};
+	public function getListeners (){
+		return $this -> listeners;
+	};	
+	
+	public function setPlaycount ($playcount){
+		$this -> playcount = $playcount;
+	};
+	public function getPlaycount (){
+		return $this -> playcount;
+	};
+		
+}
+
+$vol4 = new Blackalbum ();
+$ba = new Blackalbum ();
+
+$vol4 -> setAlbummbid ('8c292627-3459-3852-8ebc-226c12db175d');
+$ba -> setAlbummbid ('de7de788-0f31-338a-9d82-8a09108e429f');
+
+$bad = new Blackrelease ();
+$bagbdeluxe = new Blackrelease ();
+$vol4usa = new Blackrelease ();
+$vol4xe = new Blackrelease ();
+$cog = new Blackrelease ();
+
+$bad -> setReleasembid ('0a3342f6-59a4-4ee0-a81c-6d5d4900f118');
+$bagbdeluxe -> setReleasembid ('52c37691-e97e-3959-98c8-8b9a533eaeda');
+$vol4usa -> setReleasembid ('257c6df7-26b8-4283-908a-3e625e41cdbe');
+$vol4xe -> setReleasembid ('41e41680-3652-432f-8225-fb033c4fdae0');
+$cog -> setReleasembid ('19772a1c-ea39-4104-bc99-ffc2203ea2ae');
+
 $filenamesBS = array (
     '../data_text/jsonLastFM/BlackSabbath_Group_02-16-19.json', 
     '../data_text/jsonLastFM/BlackSabbath_Group_02-27-19.json', 
@@ -25,7 +93,7 @@ $filenamesBS = array (
     '../data_text/jsonLastFM/BlackSabbath_Group_04-06-19.json' 
 );
 
-$filenames = $filenames1;
+$filenames = $filenamesBS;
 
 $x = ceil((count($filenames)));
 
