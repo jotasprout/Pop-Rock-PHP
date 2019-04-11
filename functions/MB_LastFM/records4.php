@@ -168,7 +168,6 @@ function packAndShip ($foundRelease, $targetRelease) {
 	//$targetRelease -> releasembid = $foundRelease['mbid'];
 	$targetRelease->listeners = $foundRelease['listeners'];
 	$targetRelease->playcount = $foundRelease['playcount'];
-	$recordCollection[] = $targetRelease;
 }
 
 function findRelease ($targetRelease, $releases) {
@@ -254,102 +253,15 @@ for ($i=0; $i<$x; ++$i) {
     $albums = $artistData['albums'];
 	
 	findAlbum2($vol4, $albums);
-/*
-	foreach ($albums as $album){
-		
-		$releases = $album['releases'];
-		
-		$bad_mbid = $bad -> releasembid;
-		$bagbdeluxe_mbid = $bagbdeluxe -> releasembid;
-		$vol4usa_mbid = $vol4usa -> releasembid;
-		$vol4xe_mbid = $vol4xe -> releasembid;
-		$cog_mbid = $cog -> releasembid;
-		
-		$bad_Country = $bad -> country;
-		$bagbdeluxe_Country = $bagbdeluxe -> country;
-		$vol4usa_Country = $vol4usa -> country;
-		$vol4xe_Country = $vol4xe -> country;
-		$cog_Country = $cog -> country;
-		
-		$bagbdeluxe_Disambiguation = $bagbdeluxe -> disambiguation;
-		
-		if ($album['mbid'] == $vol4 -> albummbid) {
-			
-			foreach ($releases as $release) {
-				
-				$releaseMBID = $release['mbid'];
-				$releaseCountry = $release['country'];
-				
-				switch ($releaseMBID) {
-						
-					case $cog_mbid:
-						if ($releaseCountry == $cog_Country) {
-							$cog->name = $release['name'];
-							$cog->listeners = $release['listeners'];
-							$cog->playcount = $release['playcount'];
-							$recordCollection [] = $cog;					
-						};
-						break;						
-						
-					case $vol4usa_mbid:
-						if ($releaseCountry == $vol4usa_Country) {
-							$vol4usa->name = $release['name'];
-							$vol4usa->listeners = $release['listeners'];
-							$vol4usa->playcount = $release['playcount'];
-							$recordCollection [] = $vol4usa;					
-						};
-						break;
-						
-					case $vol4xe_mbid:
-						if ($releaseCountry == $vol4xe_Country) {
-							$vol4xe->name = $release['name'];
-							$vol4xe->listeners = $release['listeners'];
-							$vol4xe->playcount = $release['playcount'];
-							$recordCollection [] = $vol4xe;						
-						};	
-						break;
-						
+	findAlbum2($ba, $albums);
 
-						
-				};
-
-			}
-
-		};
-		
-		if ($album['mbid'] == $ba -> albummbid) {
-			
-			foreach ($releases as $release) {
-				
-				$releaseMBID = $release['mbid'];
-				
-				switch ($releaseMBID) {
-						
-					case $bagbdeluxe_mbid:
-						$bagbdeluxe->name = $release['name'];
-						$bagbdeluxe->listeners = $release['listeners'];
-						$bagbdeluxe->playcount = $release['playcount'];
-						$recordCollection [] = $bagbdeluxe;
-						break;
-						
-					case $bad_mbid:
-						$bad->name = $release['name'];
-						$bad->listeners = $release['listeners'];
-						$bad->playcount = $release['playcount'];
-						$recordCollection [] = $bad;
-						break;
-						
-				};				
-			
-			}
-
-		};	
-		
-	};
-    */
 };
 
-
+$recordCollection [] = $bad;
+$recordCollection [] = $bagbdeluxe;
+$recordCollection [] = $cog;
+$recordCollection [] = $vol4usa;
+$recordCollection [] = $vol4xe;
 
 $boogie = json_encode($recordCollection);
 
