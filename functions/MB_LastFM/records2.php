@@ -1,6 +1,6 @@
 <?php
 
-require_once '../rockdb.php';
+require_once '../../rockdb.php';
 
 class Blackalbum {
 	
@@ -24,12 +24,21 @@ class Blackalbum {
 
 class Blackrelease {
 	
-	public $releasembid;
+    public $name;
+    public $releasembid;
 	public $datadate;
 	public $listeners;
 	public $playcount;
 	
-	public function setReleasembid ($releasembid){
+	public function setName ($name){
+		$this -> name = $name;
+	}
+
+	public function getName (){
+		return $this -> name;
+    }
+        
+    public function setReleasembid ($releasembid){
 		$this -> releasembid = $releasembid;
 	}
 
@@ -83,26 +92,32 @@ $albumsToFind = array ($vol4, $ba);
 $recordCollection = array ();
 
 $filenamesBS = array (
-    '../data_text/jsonLastFM/BlackSabbath_Group_02-16-19.json', 
-    '../data_text/jsonLastFM/BlackSabbath_Group_02-27-19.json', 
-    '../data_text/jsonLastFM/BlackSabbath_Group_02-28-19.json', 
-    '../data_text/jsonLastFM/BlackSabbath_Group_03-01-19.json', 
-    '../data_text/jsonLastFM/BlackSabbath_Group_03-03-19.json', 
-    '../data_text/jsonLastFM/BlackSabbath_Group_03-08-19.json', 
-    '../data_text/jsonLastFM/BlackSabbath_Group_03-14-19.json', 
-    '../data_text/jsonLastFM/BlackSabbath_Group_03-17-19.json', 
-    '../data_text/jsonLastFM/BlackSabbath_Group_03-20-19.json', 
-    '../data_text/jsonLastFM/BlackSabbath_Group_03-21-19.json', 
-    '../data_text/jsonLastFM/BlackSabbath_Group_03-22-19.json', 
-    '../data_text/jsonLastFM/BlackSabbath_Group_03-25-19.json', 
-    '../data_text/jsonLastFM/BlackSabbath_Group_03-27-19.json', 
-    '../data_text/jsonLastFM/BlackSabbath_Group_03-28-19.json', 
-    '../data_text/jsonLastFM/BlackSabbath_Group_03-29-19.json',
-    '../data_text/jsonLastFM/BlackSabbath_Group_04-02-19.json',
-    '../data_text/jsonLastFM/BlackSabbath_Group_04-03-19.json',
-    '../data_text/jsonLastFM/BlackSabbath_Group_04-04-19.json',
-    '../data_text/jsonLastFM/BlackSabbath_Group_04-05-19.json',
-    '../data_text/jsonLastFM/BlackSabbath_Group_04-06-19.json' 
+    '../../data_text/jsonLastFM/BlackSabbath_Group_02-14-19.json', 
+    '../../data_text/jsonLastFM/BlackSabbath_Group_02-17-19.json', 
+    '../../data_text/jsonLastFM/BlackSabbath_Group_02-21-19.json', 
+    '../../data_text/jsonLastFM/BlackSabbath_Group_02-22-19.json', 
+    '../../data_text/jsonLastFM/BlackSabbath_Group_02-24-19.json', 
+    '../../data_text/jsonLastFM/BlackSabbath_Group_02-25-19.json',
+    '../../data_text/jsonLastFM/BlackSabbath_Group_02-27-19.json', 
+    '../../data_text/jsonLastFM/BlackSabbath_Group_02-28-19.json',        
+    '../../data_text/jsonLastFM/BlackSabbath_Group_03-01-19.json', 
+    '../../data_text/jsonLastFM/BlackSabbath_Group_03-03-19.json', 
+    '../../data_text/jsonLastFM/BlackSabbath_Group_03-06-19.json', 
+    '../../data_text/jsonLastFM/BlackSabbath_Group_03-08-19.json', 
+    '../../data_text/jsonLastFM/BlackSabbath_Group_03-14-19.json', 
+    '../../data_text/jsonLastFM/BlackSabbath_Group_03-16-19.json',
+    '../../data_text/jsonLastFM/BlackSabbath_Group_03-17-19.json', 
+    '../../data_text/jsonLastFM/BlackSabbath_Group_03-20-19.json', 
+    '../../data_text/jsonLastFM/BlackSabbath_Group_03-21-19.json', 
+    '../../data_text/jsonLastFM/BlackSabbath_Group_03-22-19.json', 
+    '../../data_text/jsonLastFM/BlackSabbath_Group_03-25-19.json', 
+    '../../data_text/jsonLastFM/BlackSabbath_Group_03-27-19.json', 
+    '../../data_text/jsonLastFM/BlackSabbath_Group_03-29-19.json',
+    '../../data_text/jsonLastFM/BlackSabbath_Group_04-02-19.json',
+    '../../data_text/jsonLastFM/BlackSabbath_Group_04-03-19.json',
+    '../../data_text/jsonLastFM/BlackSabbath_Group_04-04-19.json',
+    '../../data_text/jsonLastFM/BlackSabbath_Group_04-05-19.json',
+    '../../data_text/jsonLastFM/BlackSabbath_Group_04-06-19.json' 
 );
 
 $filenames = $filenamesBS;
@@ -148,7 +163,8 @@ for ($i=0; $i<$x; ++$i) {
 				switch ($releaseMBID) {
 						
 					case $vol4usa_mbid:
-						$vol4usa->listeners = $release['listeners'];
+                        $vol4usa->name = $release['name'];
+                        $vol4usa->listeners = $release['listeners'];
 						$vol4usa->playcount = $release['playcount'];
 						$recordCollection [] = $vol4usa;
 						
@@ -163,28 +179,7 @@ for ($i=0; $i<$x; ++$i) {
 						$recordCollection [] = $cog;						
 						
 				};
-				
-				/*
-				if ($releaseMBID = $vol4usa->releasembid) {
-					$vol4usa->listeners = $release['listeners'];
-					$vol4usa->playcount = $release['playcount'];
-					$recordCollection [] = $vol4usa;
-					break;
-				}
-				elseif ($releaseMBID = $vol4xe->releasembid) {
-					$vol4xe->listeners = $release['listeners'];
-					$vol4xe->playcount = $release['playcount'];
-					$recordCollection [] = $vol4xe;
-					break;
-				}
-				elseif ($releaseMBID = $cog->releasembid) {
-					$cog->listeners = $release['listeners'];
-					$cog->playcount = $release['playcount'];
-					$recordCollection [] = $cog;
-					break;
-				}	
-				
-				*/
+
 			}
 
 		};
@@ -208,39 +203,26 @@ for ($i=0; $i<$x; ++$i) {
 						$recordCollection [] = $bad;							
 						
 				};				
-				
-				/*
-				if ($releaseMBID = $bad->releasembid) {
-					$bad->listeners = $release['listeners'];
-					$bad->playcount = $release['playcount'];
-					$recordCollection [] = $bad;
-					break;
-				}
-				elseif ($releaseMBID = $bagbdeluxe->releasembid) {
-					$bagbdeluxe->listeners = $release['listeners'];
-					$bagbdeluxe->playcount = $release['playcount'];
-					$recordCollection [] = $bagbdeluxe;
-					break;
-				}
-				*/
 			
 			}
-			
-			break;
 
 		};		
 	};
-	
+    
+};
+
+$boogie = json_encode($recordCollection);
+
+echo '<script> console.log(' . $boogie . ')</script>;';
 
     $connekt = new mysqli($GLOBALS['host'], $GLOBALS['un'], $GLOBALS['magicword'], $GLOBALS['db']);
 
     if(!$connekt){
         echo 'Fiddlesticks! Could not connect to database.<br>';
     } else {
-		
-		
-		
-		
+
+        echo "whatevs";
+
 		/*
 
         $baAlbum = $albums['mbid']['de7de788-0f31-338a-9d82-8a09108e429f'];
@@ -273,6 +255,8 @@ for ($i=0; $i<$x; ++$i) {
 		
 		*/
 
+
+
         /* for ($j=0; $j<$albumsNum; ++$j) {
             $album = $albums[$j];
             $releases = $album['releases'];
@@ -283,7 +267,9 @@ for ($i=0; $i<$x; ++$i) {
                 $releaseName = mysqli_real_escape_string($connekt,$releaseNameYucky);
                 $albumListeners = $album['releases'][0]['listeners'];
                 $albumPlaycount = $album['releases'][0]['playcount'];
-		*/		
+        */		
+        
+        /*
 				$insertLastFMalbumData = "INSERT INTO albumsLastFM (
 					albumMBID, 
 					dataDate,
@@ -306,8 +292,10 @@ for ($i=0; $i<$x; ++$i) {
                 }
 				
             }
+
+        */
+
        // };
     };
-};
 
 ?>
