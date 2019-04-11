@@ -163,6 +163,60 @@ echo "<script>console.log(" . json_encode($bagbdeluxe) . ");</script>";
 
 $x = ceil((count($filenames)));
 
+function packAndShip ($foundRelease, $targetRelease) {
+	$targetRelease->name = $foundRelease['name'];
+	//$targetRelease -> releasembid = $foundRelease['mbid'];
+	$targetRelease->listeners = $foundRelease['listeners'];
+	$targetRelease->playcount = $foundRelease['playcount'];
+	$recordCollection[] = $targetRelease;
+}
+
+function findRelease ($targetRelease, $releases) {
+	
+	$targetMBID = $targetRelease -> releasembid;
+	$targetCountry = $targetRelease -> country;
+	$targetDis = $targetRelease -> disambiguation;
+	
+	//$releases = $album['releases'];
+	
+	foreach ($releases as $release) {
+		
+		$releaseMBID = $release['mbid'];
+		$releaseCountry = $release['country'];
+		$releaseDis = $release['disambiguation'];
+		
+		if ($releaseMBID == $targetMBID) {
+			
+			if ($releaseCountry == $targetCountry) {
+				
+				if ($releaseDis == $targetDis) {
+					packAndShip ($release, $targetRelease);
+					break;
+				} // end of Dis
+			} // end of country
+		} // end of MBID
+	} // end of foreach
+} // end of findRelease
+
+
+function findAlbum2 ($targetAlbum, $albums) {
+	
+
+	$targetAlbumMBID = $targetAlbum -> albummbid;
+
+	foreach ($albums as $album) {
+		$releases = $album['releases'];
+
+		if ($album['mbid'] == $targetAlbumMBID) {
+			$targetReleases = $targetAlbum -> records;
+			foreach($targetReleases as $targetRelease){
+				findRelease ($targetRelease, $releases);
+			} // end of foreach release
+		} // end of mbid
+	} // end of foreach album
+} // end of findAlbum	
+
+
 function findAlbum ($targetAlbum, $albums) {
 
 	$targetAlbumMBID = $targetAlbum -> albummbid;
@@ -172,8 +226,8 @@ function findAlbum ($targetAlbum, $albums) {
 		if ($album['mbid'] == $targetAlbumMBID) {
 			$targetReleases = $targetAlbum -> records;
 			foreach($targetReleases as $targetRelease){
-				//findRelease ($targetRelease);
-				echo json_encode($targetRelease);
+				findRelease ($targetRelease);
+				//echo json_encode($targetRelease);
 			} // end of foreach release
 		} // end of mbid
 	} // end of foreach album
@@ -199,10 +253,8 @@ for ($i=0; $i<$x; ++$i) {
 
     $albums = $artistData['albums'];
 	
-	findAlbum($vol4, $albums);
-	
-
-
+	findAlbum2($vol4, $albums);
+/*
 	foreach ($albums as $album){
 		
 		$releases = $album['releases'];
@@ -291,23 +343,35 @@ for ($i=0; $i<$x; ++$i) {
 			
 			}
 
-		};		
+		};	
+		
 	};
-    
+    */
 };
+
+
 
 $boogie = json_encode($recordCollection);
 
 echo '<script> console.log(' . $boogie . ')</script>;';
 
-    $connekt = new mysqli($GLOBALS['host'], $GLOBALS['un'], $GLOBALS['magicword'], $GLOBALS['db']);
+echo "<script>console.log(" . json_encode($ba) . ");</script>";
+echo "<script>console.log(" . json_encode($vol4) . ");</script>";
+echo "<script>console.log(" . json_encode($bad) . ");</script>";
+echo "<script>console.log(" . json_encode($cog) . ");</script>";
+echo "<script>console.log(" . json_encode($vol4usa) . ");</script>";
+echo "<script>console.log(" . json_encode($vol4xe) . ");</script>";
+echo "<script>console.log(" . json_encode($bagbdeluxe) . ");</script>";
 
-    if(!$connekt){
-        echo 'Fiddlesticks! Could not connect to database.<br>';
-    } else {
+/*
+$connekt = new mysqli($GLOBALS['host'], $GLOBALS['un'], $GLOBALS['magicword'], $GLOBALS['db']);
 
-        echo "whatevs";
+if(!$connekt){
+	echo 'Fiddlesticks! Could not connect to database.<br>';
+} else {
 
-    };
+	echo "whatevs";
 
+};
+*/
 ?>
