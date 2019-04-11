@@ -152,20 +152,10 @@ $ba -> addRecord ($bad);
 
 $recordCollection = array ();
 
-echo "<script>console.log(" . json_encode($ba) . ");</script>";
-echo "<script>console.log(" . json_encode($vol4) . ");</script>";
-
-echo "<script>console.log(" . json_encode($bad) . ");</script>";
-echo "<script>console.log(" . json_encode($cog) . ");</script>";
-echo "<script>console.log(" . json_encode($vol4usa) . ");</script>";
-echo "<script>console.log(" . json_encode($vol4xe) . ");</script>";
-echo "<script>console.log(" . json_encode($bagbdeluxe) . ");</script>";
-
 $x = ceil((count($filenames)));
 
 function packAndShip ($foundRelease, $targetRelease) {
 	$targetRelease->name = $foundRelease['name'];
-	//$targetRelease -> releasembid = $foundRelease['mbid'];
 	$targetRelease->listeners = $foundRelease['listeners'];
 	$targetRelease->playcount = $foundRelease['playcount'];
 }
@@ -175,8 +165,6 @@ function findRelease ($targetRelease, $releases) {
 	$targetMBID = $targetRelease -> releasembid;
 	$targetCountry = $targetRelease -> country;
 	$targetDis = $targetRelease -> disambiguation;
-	
-	//$releases = $album['releases'];
 	
 	foreach ($releases as $release) {
 		
@@ -198,8 +186,7 @@ function findRelease ($targetRelease, $releases) {
 } // end of findRelease
 
 
-function findAlbum2 ($targetAlbum, $albums) {
-	
+function findAlbum ($targetAlbum, $albums) {
 
 	$targetAlbumMBID = $targetAlbum -> albummbid;
 
@@ -214,23 +201,6 @@ function findAlbum2 ($targetAlbum, $albums) {
 		} // end of mbid
 	} // end of foreach album
 } // end of findAlbum	
-
-
-function findAlbum ($targetAlbum, $albums) {
-
-	$targetAlbumMBID = $targetAlbum -> albummbid;
-
-	foreach ($albums as $album) {
-
-		if ($album['mbid'] == $targetAlbumMBID) {
-			$targetReleases = $targetAlbum -> records;
-			foreach($targetReleases as $targetRelease){
-				findRelease ($targetRelease);
-				//echo json_encode($targetRelease);
-			} // end of foreach release
-		} // end of mbid
-	} // end of foreach album
-} // end of findAlbum
 
 for ($i=0; $i<$x; ++$i) {
 
@@ -252,38 +222,56 @@ for ($i=0; $i<$x; ++$i) {
 
     $albums = $artistData['albums'];
 	
-	findAlbum2($vol4, $albums);
-	findAlbum2($ba, $albums);
+	findAlbum ($vol4, $albums);
+	findAlbum ($ba, $albums);
+	
+	$recordCollection [] = $bad;
+	$recordCollection [] = $bagbdeluxe;
+	$recordCollection [] = $cog;
+	$recordCollection [] = $vol4usa;
+	$recordCollection [] = $vol4xe;
 
 };
 
-$recordCollection [] = $bad;
-$recordCollection [] = $bagbdeluxe;
-$recordCollection [] = $cog;
-$recordCollection [] = $vol4usa;
-$recordCollection [] = $vol4xe;
+echo '<script> console.log(' . json_encode($recordCollection) . ')</script>;';
 
-$boogie = json_encode($recordCollection);
-
-echo '<script> console.log(' . $boogie . ')</script>;';
-
-echo "<script>console.log(" . json_encode($ba) . ");</script>";
-echo "<script>console.log(" . json_encode($vol4) . ");</script>";
-echo "<script>console.log(" . json_encode($bad) . ");</script>";
-echo "<script>console.log(" . json_encode($cog) . ");</script>";
-echo "<script>console.log(" . json_encode($vol4usa) . ");</script>";
-echo "<script>console.log(" . json_encode($vol4xe) . ");</script>";
-echo "<script>console.log(" . json_encode($bagbdeluxe) . ");</script>";
-
-/*
 $connekt = new mysqli($GLOBALS['host'], $GLOBALS['un'], $GLOBALS['magicword'], $GLOBALS['db']);
 
 if(!$connekt){
-	echo 'Fiddlesticks! Could not connect to database.<br>';
+	echo '<p>Fiddlesticks! Could not connect to database.</p>';
 } else {
+	
+	$grails = $recordCollection;
+	
+	foreach ($grails as $grail) {
 
-	echo "whatevs";
+		$releaseName = $grail->name;
+		$releaseMBID = $grail->releasembid;
+		$albumListeners = $grail->listeners;
+		$albumPlaycount = $grail->playcount;
+		$dataDate = $grail->datadate;		
 
-};
-*/
+		$insertBSData = "INSERT INTO albumsLastFM (
+			albumMBID, 
+			dataDate,
+			albumListeners,
+			albumPlaycount
+			) 
+			VALUES(
+				'$releaseMBID',
+				'$dataDate',
+				'$albumListeners',
+				'$albumPlaycount'
+			)";	
+
+		$rockin = $connekt->query($insertBSData);
+
+		if(!$rockin){
+			echo '<p>Rats! Could not insert ' . $releaseName . ' stats.</p>';
+		} else {
+			echo '<p>Inserted ' . $albumListeners . ' listeners and ' . $albumPlaycount . ' plays from ' . $dataDate . ' for ' . $releaseName . '.</p>';
+		}
+	}
+}	
+
 ?>
