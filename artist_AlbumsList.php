@@ -11,38 +11,39 @@ if (!$connekt) {
 	echo 'Darn. Did not connect.';
 };
 
-$happyScabies2 = "SELECT a.albumName, a.year, a.albumArt, a.tracksTotal, z.artistName, p1.pop, p1.date, a.albumID, f1.albumMBID, f1.dataDate, f1.albumListeners, f1.albumPlaycount
-	FROM (SELECT
-				y.albumID AS albumID,
-				y.albumMBID AS albumMBID,
-				y.albumName AS albumName,
-				y.artistID AS artistID,
-				y.tracksTotal AS tracksTotal,
-				y.albumArt AS albumArt,
-				y.year AS year
-			FROM albums y 
-			WHERE y.artistID = '$artistID') a
-	JOIN artists z ON z.artistID = '$artistID'
-	JOIN (SELECT p.*
-			FROM popAlbums p
-			INNER JOIN (SELECT albumID, pop, max(date) AS MaxDate
-						FROM popAlbums  
-						GROUP BY albumID) groupedp
-			ON p.albumID = groupedp.albumID
-			AND p.date = groupedp.MaxDate) p1 
-	ON a.albumID = p1.albumID
-	LEFT JOIN (SELECT f.*
-			FROM albumsLastFM f
-			INNER JOIN (SELECT albumMBID, albumListeners, albumPlaycount, max(dataDate) AS MaxDataDate
-			FROM albumsLastFM
-			GROUP BY albumMBID) groupedf
-			ON f.albumMBID = groupedf.albumMBID
-			AND f.dataDate = groupedf.MaxDataDate) f1
-	ON a.albumMBID = f1.albumMBID
-	ORDER BY albumName ASC;";
+$blackSabbath = "5M52tdBnJaKSvOpJGz8mfZ";
 
+//$artistID = $blackSabbath;
 
-$getit = $connekt->query($happyScabies2);
+$blackScabies = "SELECT b.albumName, b.albumMBID, b.albumID, b.artistID, a.year, a.albumArt, a.tracksTotal, z.artistName, p1.pop, p1.date, f1.dataDate, f1.albumListeners, f1.albumPlaycount
+FROM (SELECT sp.albumName, sp.albumMBID, sp.albumID, sp.artistID
+	FROM albums sp
+	WHERE sp.artistID='$artistID'
+UNION
+SELECT mb.albumName, mb.albumMBID, mb.albumSpotID, mb.artistSpotID
+	FROM albumsMB mb 
+	WHERE mb.artistSpotID='$artistID') b 
+LEFT JOIN albums a ON b.albumID = a.albumID	
+JOIN artists z ON z.artistID = b.artistID
+LEFT JOIN (SELECT p.*
+		FROM popAlbums p
+		INNER JOIN (SELECT albumID, pop, max(date) AS MaxDate
+					FROM popAlbums  
+					GROUP BY albumID) groupedp
+		ON p.albumID = groupedp.albumID
+		AND p.date = groupedp.MaxDate) p1 
+ON a.albumID = p1.albumID
+LEFT JOIN (SELECT f.*
+		FROM albumsLastFM f
+		INNER JOIN (SELECT albumMBID, albumListeners, albumPlaycount, max(dataDate) AS MaxDataDate
+		FROM albumsLastFM
+		GROUP BY albumMBID) groupedf
+		ON f.albumMBID = groupedf.albumMBID
+		AND f.dataDate = groupedf.MaxDataDate) f1
+ON b.albumMBID = f1.albumMBID	
+ORDER BY b.albumName ASC;";
+
+$getit = $connekt->query($blackScabies);
 
 if(!$getit){
 	echo 'Cursed-Crap. Did not run the query.';
@@ -85,7 +86,7 @@ if(!$getit){
 <table class="table" id="recordCollection">
 <thead>
 	<tr>
-		<th>Cover Art</th>
+		<th>Album Art</th>
 		<th>Album Spotify ID</th>
 		<th>albumMBID</th>
 		<th onClick="sortColumn('albumName', 'ASC', '<?php echo $artistID; ?>')"><div class="pointyHead">Album Name</div></th>
@@ -93,7 +94,7 @@ if(!$getit){
 		<th><div class="pointyHead popStyle">Total<br>Tracks</div></th>
 		<th class="popStyle">Spotify<br>Data Date</th>
 		<th onClick="sortColumn('pop', 'ASC', '<?php echo $artistID; ?>')"><div class="pointyHead popStyle">Spotify<br>Popularity</div></th>
-		<th class="popStyle">LastFM<br>Data Date</th>
+		<th>LastFM<br>Data Date</th>
 		<th class="rightNum pointyHead">LastFM<br>Listeners</th>
 		<th class="rightNum pointyHead">LastFM<br>Playcount</th>
 	</tr>
@@ -125,7 +126,7 @@ if(!$getit){
 ?>
 					
 <tr>
-<td><a href='https://www.roxorsoxor.com/poprock/thisAlbum_TracksList.php?albumID=<?php echo $albumID ?>'><img src='<?php echo $albumArt ?>' height='64' width='64'></a></td>
+<td><img src='<?php echo $albumArt ?>' height='64' width='64'></td>
 <td><?php echo $albumID ?></td>
 <td><?php echo $albumMBID ?></td>
 <td><a href='https://www.roxorsoxor.com/poprock/thisAlbum_TracksList.php?albumID=<?php echo $albumID ?>'><?php echo $albumName ?></a></td>

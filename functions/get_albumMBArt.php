@@ -44,13 +44,13 @@ if (!$connekt) {
             $imageData = json_decode($fileContents, true);
             $imageURL = $imageData['images'][0]['image'];
 
-            $insertCoverArt = "INSERT INTO albumsMB (albumArtMB) VALUES ('$imageURL')";
-            $insertit = $connekt->query($insertCoverArt);
-            if(!$insertit){
-                echo '<p>Shoot. Could not do the inserty thing with <i>' . $albumName . '</i>.</p>';
-            } else {
-                echo '<p>Look at the pretty picture we got!</p><p><img src="' . $imageURL . '"></p>';
-            }
+            //$insertCoverArt = "INSERT INTO albumsMB (albumArtMB) VALUES ('$imageURL')";
+            //$insertit = $connekt->query($insertCoverArt);
+            //if(!$insertit){
+            //    echo '<p>Shoot. Could not do the inserty thing with <i>' . $albumName . '</i>.</p>';
+            //} else {
+                echo '<p>Cover art for <i>' . $albumName . '</i>.</p><p><img src="' . $imageURL . '"></p>';
+            //}
 
         };
     
