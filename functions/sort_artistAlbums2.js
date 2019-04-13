@@ -1,6 +1,6 @@
 function sortColumn (columnName, currentOrder, artistID) {
 	$.ajax ({
-		url: "functions/sortTheseAlbums.php",
+		url: "functions/sort_artistAlbums2.php",
 		data: "columnName=" + columnName + "&currentOrder=" + currentOrder + "&artistID=" + artistID,
 		type: "POST",
 		success: function (data) {

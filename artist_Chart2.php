@@ -1,7 +1,7 @@
 <?php 
     $artistID = $_GET['artistID'];
 	require_once 'page_pieces/stylesAndScripts.php';
-	require_once 'page_pieces/navbar_rock.php';
+	require_once 'page_pieces/navbar_rock2.php';
 ?>
 
 <!DOCTYPE html>

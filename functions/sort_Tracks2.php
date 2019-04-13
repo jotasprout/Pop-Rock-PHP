@@ -1,7 +1,7 @@
 <?php
 
 require_once '../rockdb.php';
-require_once '../page_pieces/navbar_rock.php';
+require_once '../page_pieces/navbar_rock2.php';
 require_once '../page_pieces/stylesAndScripts.php';
 
 $connekt = new mysqli( $GLOBALS[ 'host' ], $GLOBALS[ 'un' ], $GLOBALS[ 'magicword' ], $GLOBALS[ 'db' ] );

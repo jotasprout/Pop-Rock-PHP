@@ -84,7 +84,7 @@ if (!empty($sortit)) { ?>
 	<th onClick="sortColumn('pop', '<?php echo $popNewOrder; ?>')"><div class="pointyHead popStyle">Spotify<br>Popularity</div></th>
 	<th class="popStyle">Spotify<br>Total Albums</th>
 	<th class="rightNum">Spotify<br>Followers</th>
-	<th>LastFM<br>Data Date</th>
+	<th class="popStyle">LastFM<br>Data Date</th>
 	<th class="rightNum">LastFM<br>Listeners</th>
 	<th class="rightNum">LastFM<br>Playcount</th>
 	</tr>
@@ -117,7 +117,7 @@ if (!empty($sortit)) { ?>
 
 <tr>
 	<td><img src='<?php echo $artistArt ?>' class="indexArtistArt"></td>	
-	<td><a href='https://www.roxorsoxor.com/poprock/this_artistPopChart.php?artistID=<?php echo $artistID ?>'><?php echo $artistName ?></a></td>
+	<td><a href='https://www.roxorsoxor.com/poprock/artist_Chart2.php?artistID=<?php echo $artistID ?>'><?php echo $artistName ?></a></td>
 	<td class="popStyle"><?php echo $artistID ?></td>
 	<td class="popStyle"><?php echo $popDate ?></td>
 	<td class="popStyle"><?php echo $artistPop ?></td>

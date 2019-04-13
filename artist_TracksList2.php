@@ -2,7 +2,7 @@
 
 $artistID = $_GET['artistID'];
 require_once 'rockdb.php';
-require_once 'page_pieces/navbar_rock.php';
+require_once 'page_pieces/navbar_rock2.php';
 require_once 'page_pieces/stylesAndScripts.php';
 
 $connekt = new mysqli( $GLOBALS[ 'host' ], $GLOBALS[ 'un' ], $GLOBALS[ 'magicword' ], $GLOBALS[ 'db' ] );
@@ -75,7 +75,7 @@ if ( !$getit ) {
 			<th onClick="sortColumn('trackName', 'ASC', '<?php echo $artistID ?>')"><div class="pointyHead">Track Title</div></th>
 			<th>Spotify<br>Data Date</th>
 			<th class="popStyle" onClick="sortColumn('pop', 'ASC', '<?php echo $artistID ?>')"><div class="pointyHead">Spotify<br>Popularity</div></th>
-			<th>LastFM<br>Data Date</th>
+			<th class="popStyle">LastFM<br>Data Date</th>
 			<th class="rightNum pointyHead">LastFM<br>Listeners</th>
 			<th class="rightNum pointyHead">LastFM<br>Playcount</th>
 		</tr>
@@ -131,7 +131,7 @@ if ( !$getit ) {
 	let artistID = '<?php echo $artistID ?>';
 </script>
 
-<script src="https://www.roxorsoxor.com/poprock/functions/sortTheseTracks.js"></script>
+<script src="https://www.roxorsoxor.com/poprock/functions/sort_Tracks.js"></script>
 
 </body>
 	
