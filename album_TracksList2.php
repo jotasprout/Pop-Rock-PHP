@@ -3,7 +3,7 @@
 $albumID = $_GET['albumID'];
 
 require_once 'rockdb.php';
-require_once 'page_pieces/navbar_rock.php';
+require_once 'page_pieces/navbar_rock2.php';
 require_once 'page_pieces/stylesAndScripts.php';
 
 $connekt = new mysqli( $GLOBALS[ 'host' ], $GLOBALS[ 'un' ], $GLOBALS[ 'magicword' ], $GLOBALS[ 'db' ] );
@@ -130,7 +130,7 @@ if ( !$getit ) {
 	</div> <!-- closing container -->
 	
 <?php echo $scriptsAndSuch; ?>
-<script src="https://www.roxorsoxor.com/poprock/functions/sort_albumTracks.js"></script>
+<script src="https://www.roxorsoxor.com/poprock/functions/sortTheseTracks.js"></script>
 </body>
 	
 </html>

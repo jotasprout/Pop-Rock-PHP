@@ -59,6 +59,12 @@ WHERE a.artistID = b.artistID AND a.date = b.date AND a.id < b.id;
 
 ###############
 
+DELETE a FROM popTracks a
+INNER JOIN popTracks b
+WHERE a.trackID = b.trackID AND a.date = b.date AND a.id < b.id;
+
+###############
+
 DELETE a FROM albumsLastFM2 a
 INNER JOIN albumsLastFM2 b
 WHERE a.albumMBID = b.albumMBID AND a.dataDate = b.dataDate AND a.id < b.id;

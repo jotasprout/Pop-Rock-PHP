@@ -2,7 +2,7 @@
 
 $artistID = $_GET['artistID'];
 require_once 'rockdb.php';
-require_once 'page_pieces/navbar_rock.php';
+require_once 'page_pieces/navbar_rock2.php';
 require_once 'page_pieces/stylesAndScripts.php';
 
 $connekt = new mysqli($GLOBALS['host'], $GLOBALS['un'], $GLOBALS['magicword'], $GLOBALS['db']);
@@ -87,10 +87,11 @@ if(!$getit){
 <thead>
 	<tr>
 		<th>Album Art</th>
-	
+		<th>Album Spotify ID</th>
+		<th>albumMBID</th>
 		<th onClick="sortColumn('albumName', 'ASC', '<?php echo $artistID; ?>')"><div class="pointyHead">Album Name</div></th>
 		<th onClick="sortColumn('year', 'DESC', '<?php echo $artistID; ?>')"><div class="pointyHead popStyle">Released</div></th>
-		
+		<th><div class="pointyHead popStyle">Total<br>Tracks</div></th>
 		<th class="popStyle">Spotify<br>Data Date</th>
 		<th onClick="sortColumn('pop', 'ASC', '<?php echo $artistID; ?>')"><div class="pointyHead popStyle">Spotify<br>Popularity</div></th>
 		<th>LastFM<br>Data Date</th>
@@ -126,11 +127,11 @@ if(!$getit){
 					
 <tr>
 <td><img src='<?php echo $albumArt ?>' height='64' width='64'></td>
-
-
+<td><?php echo $albumID ?></td>
+<td><?php echo $albumMBID ?></td>
 <td><a href='https://www.roxorsoxor.com/poprock/thisAlbum_TracksList.php?albumID=<?php echo $albumID ?>'><?php echo $albumName ?></a></td>
 <td class="popStyle"><?php echo $albumReleased ?></td>
-
+<td class="popStyle"><?php echo $tracksTotal ?></td>
 <th class="popStyle"><?php echo $date ?></th>
 <td class="popStyle"><?php echo $albumPop ?></td>
 <td class="popStyle"><?php echo $lastFMDate ?></td>
@@ -159,7 +160,7 @@ if(!$getit){
 	let artistID = '<?php echo $artistID ?>';
 </script>
 
-<script src="https://www.roxorsoxor.com/poprock/functions/sort_artistAlbums.js"></script>
+<script src="https://www.roxorsoxor.com/poprock/functions/sortTheseAlbums.js"></script>
 
 </body>
 	

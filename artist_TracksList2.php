@@ -2,7 +2,7 @@
 
 $artistID = $_GET['artistID'];
 require_once 'rockdb.php';
-require_once 'page_pieces/navbar_rock.php';
+require_once 'page_pieces/navbar_rock2.php';
 require_once 'page_pieces/stylesAndScripts.php';
 
 $connekt = new mysqli( $GLOBALS[ 'host' ], $GLOBALS[ 'un' ], $GLOBALS[ 'magicword' ], $GLOBALS[ 'db' ] );
@@ -70,7 +70,7 @@ if ( !$getit ) {
 	<thead>
 		<tr>
 			<th onClick="sortColumn('albumName', 'DESC', '<?php echo $artistID ?>')"><div class="pointyHead">Album Title</div></th>
-			
+			<th>Spotify<br>trackID</th>
 			
 			<th onClick="sortColumn('trackName', 'ASC', '<?php echo $artistID ?>')"><div class="pointyHead">Track Title</div></th>
 			<th>Spotify<br>Data Date</th>
@@ -103,7 +103,7 @@ if ( !$getit ) {
 					?>
 							<tr>
 								<td><?php echo $albumName ?></td>
-								
+								<td><?php echo $trackID ?></td>
 								
 								<td><?php echo $trackName ?></td>
 								<td><?php echo $popDate ?></td>
