@@ -60,7 +60,7 @@
     <p>Please be patient while data loads.</p>
 	<div class="panel panel-primary">
 		<div class="panel-heading">
-			<h3 class="panel-title">These Artists Popularity Over Time</h3>
+			<h3 class="panel-title">These Artists Followers Over Time</h3>
 		</div>
 
 		<div class="panel-body">
@@ -80,7 +80,7 @@ margin = {
     top: 50,
     right: 30,
     bottom: 350,
-    left: 50
+    left: 100
 };
 
 var dataset, xScale, yScale, xAxis, yAxis, line;
@@ -93,8 +93,9 @@ const $detroitRockers = "Detroit Rock Citizens";
 const $latinos = "Alternativo y Rock en Espanol";
 const $2019Noms = "2019 Rock and Roll Hall of Fame Nominees";
 const $2019Inductees = "2019 Rock and Roll Hall of Fame Inductees";
+const $crue = "Motley Crue and Friends";
 
-d3.json("functions/multiArtists_pop2.php", function(data) {
+d3.json("functions/multiArtists_follow2.php", function(data) {
 
         console.log(data);
     
@@ -107,7 +108,7 @@ d3.json("functions/multiArtists_pop2.php", function(data) {
         dataset.forEach(function(d) {
             // date = parseTime(d.date);
             d.date = new Date(d.date);
-            d.pop = +d.pop;
+            d.followers = +d.followers;
         });
 
         xScale = d3.scaleTime()
@@ -119,7 +120,7 @@ d3.json("functions/multiArtists_pop2.php", function(data) {
 
 
         yScale = d3.scaleLinear()
-                .domain([0, 100])
+                .domain([1000000, 30000000])
                 .range([h + margin.top, margin.top]);
                 
         const xAxis = d3.axisBottom()
@@ -129,8 +130,8 @@ d3.json("functions/multiArtists_pop2.php", function(data) {
                         .scale(yScale);
 
         var line = d3.line()
-                    .x(function(d) { return xScale(d.date); })
-                    .y(function(d) { return yScale(d.pop); });
+                     .x(function(d) { return xScale(d.date); })
+                     .y(function(d) { return yScale(d.followers); });
 
         var svg = d3.select("#forChart")
                         .append("svg")

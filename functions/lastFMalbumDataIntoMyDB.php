@@ -72,7 +72,7 @@ $filenames16 = array (
     '../data_text/jsonLastFM/TheZombies_Group_04-16-19.json'
 );
 
-$filenames = $filenames15;
+$filenames = $filenames16;
 
 $x = ceil((count($filenames)));
 
