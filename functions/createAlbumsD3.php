@@ -30,7 +30,21 @@ $happyScabies2 = "SELECT a.albumName, a.year, a.albumArt, z.artistName, p1.pop, 
 			ON p.albumID = groupedp.albumID
 			AND p.date = groupedp.MaxDate) p1 
 	ON a.albumID = p1.albumID
-	ORDER BY year ASC;";						
+	ORDER BY year ASC;";	
+	
+	$happyScabies3 = "SELECT a.albumName, a.year, a.albumArt, z.artistName, p.pop, p.date
+	FROM (SELECT
+				y.albumID AS albumID,
+				y.albumName AS albumName,
+				y.artistID AS artistID,
+				y.albumArt AS albumArt,
+				y.year AS year
+			FROM albums y 
+			WHERE y.artistID = '0cc6vw3VN8YlIcvr1v7tBL') a
+	JOIN artists z ON z.artistID = a.artistID
+	JOIN popAlbums p ON a.albumID = p.albumID
+		WHERE p.date = '2019-03-17'
+	ORDER BY a.year ASC;";
 
 $result = mysqli_query($connekt, $happyScabies2);
 

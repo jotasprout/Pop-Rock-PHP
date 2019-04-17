@@ -12,7 +12,7 @@ if (!$connekt) {
 $multiArtistFollowers = 'SELECT a.artistID, a.artistArt , a.artistName, p.followers, p.date
     FROM artists a
     JOIN popArtists p ON p.artistID = a.artistID
-	WHERE a.artistID IN ("' . implode('", "', $crueFollowers) . '")
+	WHERE a.artistID IN ("' . implode('", "', $crueFriends) . '")
 		AND p.followers IS NOT NULL
 	ORDER BY p.date DESC';
 

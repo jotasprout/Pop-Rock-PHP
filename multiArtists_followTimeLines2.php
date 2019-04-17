@@ -120,7 +120,10 @@ d3.json("functions/multiArtists_follow2.php", function(data) {
 
 
         yScale = d3.scaleLinear()
-                .domain([1000000, 30000000])
+                .domain([
+                        d3.min(dataset, function(d) { return d.followers; }),
+                        d3.max(dataset, function(d) { return d.followers; })
+                    ])
                 .range([h + margin.top, margin.top]);
                 
         const xAxis = d3.axisBottom()

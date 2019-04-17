@@ -120,8 +120,8 @@
 <script>
 
 var w = 1100;
-var h = 400;
-var padding = 40;
+var h = 500;
+var padding = 50;
 
 var dataset, xScale, yScale, xAxis, yAxis, line;
 
@@ -137,7 +137,7 @@ d3.json("functions/createArtist_followersD3.php?artistID=<?php echo $artistID; ?
             .text(artistName + "'s current stats on Spotify and LastFM"); 
 
     const artistTitle = d3.select("#artistPop")
-            .text(artistName + "'s popularity on Spotify over time");   
+            .text(artistName + "'s followers on Spotify over time");   
 
     const currentPopArtist = dataset[0].followers;
 
@@ -170,20 +170,25 @@ d3.json("functions/createArtist_followersD3.php?artistID=<?php echo $artistID; ?
                 ])
                 .range([padding, w - padding]);
 
-
     yScale = d3.scaleLinear()
-               .domain(d3.extent(data, function(d) { return d.followers; }))
+               .domain(d3.extent(data, function(d) { return (d.followers); }))
                .range([h - padding, padding]);
-               
+
     const xAxis = d3.axisBottom()
                     .scale(xScale);
 
+    formatMillions = d3.format(".3s");
+
+    const p = d3.precisionRound(0.01, 1.01),
+          f = d3.format("." + p + "r");
+
     const yAxis = d3.axisLeft()
-                    .scale(yScale);
+                    .scale(yScale)
+                    .tickFormat(function(d) { return formatMillions(d)});
 
     var line = d3.line()
                 .x(function(d) { return xScale(d.date); })
-                .y(function(d) { return yScale(d.followers); });
+                .y(function(d) { return yScale((d.followers)); });
 
     var svg = d3.select("#forArtistChart")
                     .append("svg")

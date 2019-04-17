@@ -18,7 +18,8 @@ $artistInfoAll = "SELECT a.artistID, a.artistName, a.artistArt, b.followers, b.d
 	FROM artists a
 		INNER JOIN popArtists b ON a.artistID = b.artistID
 			WHERE a.artistID = '$artistID'
-				ORDER BY b.date DESC";
+				AND b.followers IS NOT NULL
+	ORDER BY b.date DESC";
 
 $getit = mysqli_query($connekt, $artistInfoAll);
 
