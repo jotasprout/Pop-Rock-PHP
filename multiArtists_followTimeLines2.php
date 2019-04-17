@@ -103,7 +103,7 @@ d3.json("functions/multiArtists_follow2.php", function(data) {
 
         var parseTime = d3.timeParse("%y-%m-%d");
 
-        const title = $2019Noms;
+        const title = $crue;
 
         dataset.forEach(function(d) {
             // date = parseTime(d.date);
