@@ -1,7 +1,7 @@
 <?php
 $crueFriends = array ('4qwGe91Bz9K2T8jXTZ815W', '7bu3H8JO7d0UbMoVzbo70s', '2cnMpRsOVqtPMfq7YiFE6K', '3PhoLpVuITZKcymswpck5b', '08GQAI4eElDnROBrJRGE0X', '6H1RjVyNruCmrBEWRbD0VZ', '0cc6vw3VN8YlIcvr1v7tBL');
 
-$crueFollowers = array ('22bE4uQ6baNwSHPVcDxLCe', '3qm84nBOXUEQ2vnTfUTTFC', '4qwGe91Bz9K2T8jXTZ815W', '7bu3H8JO7d0UbMoVzbo70s', '6ZLTlhejhndI4Rh53vYhrY', '2cnMpRsOVqtPMfq7YiFE6K', '3PhoLpVuITZKcymswpck5b', '08GQAI4eElDnROBrJRGE0X', '6H1RjVyNruCmrBEWRbD0VZ', '0cc6vw3VN8YlIcvr1v7tBL');
+$crueFollowers = array ('22bE4uQ6baNwSHPVcDxLCe', '3qm84nBOXUEQ2vnTfUTTFC', '4qwGe91Bz9K2T8jXTZ815W', '7bu3H8JO7d0UbMoVzbo70s', '6ZLTlhejhndI4Rh53vYhrY', '2cnMpRsOVqtPMfq7YiFE6K', '3PhoLpVuITZKcymswpck5b', '08GQAI4eElDnROBrJRGE0X', '6H1RjVyNruCmrBEWRbD0VZ', '0cc6vw3VN8YlIcvr1v7tBL', '6mdiAmATAx73kdxrNrnlao','1dfeR4HaWDbWqFHLkxsg1d', '3EhbVgyfGd7HkpsagwL9GS', '07XSN3sPlIlB2L2XNcTwJw');
 
 $longTerm = array ('5M52tdBnJaKSvOpJGz8mfZ', '0oSGxfWSnnOXhD2fKuz2Gy', '$6kACVPfCOnqzgfEF5ryl0x', '3EhbVgyfGd7HkpsagwL9GS', '568ZhdwyaiCyOGJRtNYhWf', '74ASZWbe4lXaubB36ztrGX', '08GQAI4eElDnROBrJRGE0X', '6mdiAmATAx73kdxrNrnlao', '2tRsMl4eGxwoNabM08Dm4I', '0rvjqX7ttXeg3mTy8Xscbt', '6w6z8m4WXX7Tub4Rb6Lu7R', '3PhoLpVuITZKcymswpck5b', '07XSN3sPlIlB2L2XNcTwJw', '7dnB1wSxbYa8CejeVg98hz', '3lPQ2Fk5JOwGWAF3ORFCqH', '2ye2Wgw4gimLv2eAKyk1NB', '5KQMtyPE8DCQNUzoNqlEsE', '21ysNsPzHdqYN2fQ75ZswG', '6ZLTlhejhndI4Rh53vYhrY', '22bE4uQ6baNwSHPVcDxLCe', '2Hkut4rAAyrQxRdof7FVJq', '3eqjTLE0HfPfh78zjh6TqT', '2y8Jo9CKhJvtfeKOsYzRdT', '6v8FB84lnmJs434UJf2Mrm');
 

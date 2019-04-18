@@ -1,8 +1,8 @@
 <?php
 
 require '../secrets/auth.php';
-//require '../data_text/artists_arrays.php';
-//require '../functions/tracks.php';
+require '../data_text/artists_arrays.php';
+require '../functions/tracks.php';
 require_once '../rockdb.php';
 
 function divideCombineAlbums ($artistAlbums) {
@@ -74,7 +74,7 @@ function divideCombineAlbums ($artistAlbums) {
 			
 			for ($q=0; $q<$d; $q++) {
 	
-				$tracksChunk = array ();
+				//$tracksChunk = array ();
 
 				echo "<p>Tracklist Offset = " . $trackListOffset . ".</p>";
 
@@ -89,16 +89,20 @@ function divideCombineAlbums ($artistAlbums) {
 				foreach ($thisAlbumTracks->items as $track) {
 					$trackID = $track->id;
 					$trackName = $track->name;
-					//echo "<p>" . $trackName . " from " . $albumName . "</p>";
+					echo "<p>" . $trackName . " from " . $albumName . "</p>";
 					$AlbumsTracks [] = $trackID;
 				};
 
 				$trackListOffset += 50;
 
-				unset($tracksChunk);
+				//unset($tracksChunk);
 			};
 			
 			divideCombineTracksAndInsertPop ($AlbumsTracks);
+			
+			$thisMany3 = ceil(count($AlbumsTracks));
+
+			echo "I have gathered " . $thisMany3 . " tracks for this album.";
 
 			unset($AlbumsTracks);
 
@@ -147,6 +151,10 @@ function gatherArtistAlbums ($artistID) {
 		};
 
 		$allAlbumsThisArtist = array_merge($allAlbumsThisArtist, $discogChunk);
+		
+		$thisMany2 = ceil(count($discogChunk));
+
+		echo "I have gathered " . $thisMany2 . " albums in this chunk.";
 		
 		$discogOffset += 50;
 

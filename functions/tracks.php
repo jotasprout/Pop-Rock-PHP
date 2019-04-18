@@ -4,6 +4,9 @@ $albumsTracksArrays = array ();
 
 // create function that just grabs a single track to be used with a button
 
+// I don't think the first one gets used so I'm commenting it out until either something breaks or I delete it
+
+/*
 function divideCombineInsertTracksAndPop ($AlbumsTracks) {
 
 	// Divide all artist's tracks into chunks of 50
@@ -68,9 +71,14 @@ function divideCombineInsertTracksAndPop ($AlbumsTracks) {
 		}
 	};
 }
+*/
 
 function divideCombineTracksAndInsertPop ($allArtistTracks) {
 
+	$thisMany4 = ceil(count($allArtistTracks));
+
+	echo "I have gathered " . $thisMany4 . " tracks from this artist.";
+	
 	// Divide all artist's tracks into chunks of 50
 	$tracksChunk = array ();
 	$x = ceil((count($allArtistTracks))/50);
