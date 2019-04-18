@@ -1,6 +1,6 @@
 <?php
 
-$filenames = $_GET['filenames'];
+//$filenames = $_GET['filenames'];
 
 require_once '../rockdb.php';
 
@@ -83,7 +83,7 @@ $filenames18 = array (
     '../data_text/jsonLastFM/TheZombies_Group_04-18-19.json'
 );
 
-//$filenames = $filenames16;
+$filenames = $filenames18;
 
 $x = ceil((count($filenames)));
 

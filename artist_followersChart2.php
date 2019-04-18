@@ -139,10 +139,10 @@ d3.json("functions/createArtist_followersD3.php?artistID=<?php echo $artistID; ?
     const artistTitle = d3.select("#artistPop")
             .text(artistName + "'s followers on Spotify over time");   
 
-    const currentPopArtist = dataset[0].followers;
+    const currentArtistFollowers = dataset[0].followers;
 
     const currentPop = d3.select("#forCurrentPopularity")
-            .text(currentPopArtist);               
+            .text(currentArtistFollowers);               
 
     const dataFollowers = dataset[0].followers;
     let followers = String(dataFollowers).replace(/(.)(?=(\d{3})+$)/g,'$1,');

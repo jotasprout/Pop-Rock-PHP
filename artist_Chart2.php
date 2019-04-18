@@ -119,7 +119,7 @@
 
 <script>
 
-var w = 1100;
+var w = 740;
 var h = 400;
 var padding = 40;
 
@@ -170,13 +170,13 @@ d3.json("functions/createArtistD3.php?artistID=<?php echo $artistID; ?>", functi
                 ])
                 .range([padding, w - padding]);
 
-
     yScale = d3.scaleLinear()
                .domain(d3.extent(data, function(d) { return d.pop; }))
                .range([h - padding, padding]);
-               
+
     const xAxis = d3.axisBottom()
-                    .scale(xScale);
+                    .scale(xScale)
+                    .tickFormat(d3.timeFormat("%b"));
 
     const yAxis = d3.axisLeft()
                     .scale(yScale);
