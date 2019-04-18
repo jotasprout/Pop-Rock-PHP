@@ -89,22 +89,23 @@
             <div class="col-md-7"></div>
 
         </div> <!-- End of row -->
-
         
   </div> <!-- End of Card Body -->
 </div> <!-- End of Card -->
-
-
-
-
-
-
-<div class="row">
-<!-- Start column 1 -->
-<div class="col-md-6">
+	
+	
+	
+	
+	
+<!-- START OF ROW #2 WITH POPULARITY LINE GRAPH AND FOLLOWERS LINE GRAPH -->	
+	
+	
+<div class="row"> <!-- Start of Row 2 -->	
+	
+<div class="col-md-6"> <!-- Start of Column 1 -->
 	<div class="panel panel-primary">
 		<div class="panel-heading">
-			<h3 id="artistFollow" class="panel-title">This artist's followers on Spotify over time</h3>
+			<h3 id="artistPop" class="panel-title">This artist's popularity on Spotify over time</h3>
 		</div> <!-- close panel-heading -->
 
 		<div class="panel-body">
@@ -112,18 +113,30 @@
 		</div> <!-- panel body -->
     </div> <!-- close Panel Primary -->
 </div> <!-- End of Column 1 -->
+	
+	
+<div class="col-md-6"> <!-- Start of Column 2 -->
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<h3 id="artistFollow" class="panel-title">This artist's followers on Spotify over time</h3>
+		</div> <!-- close panel-heading -->
 
-<!-- Start column 2 -->
-<div class="col-md-6">
-
-
-<!-- Followers chart goes here -->
-
-
+		<div class="panel-body">
+            <div id="forFollowersChart"></div> <!-- close forChart -->
+		</div> <!-- panel body -->
+    </div> <!-- close Panel Primary -->
 </div> <!-- End of Column 2 -->
-</div> <!-- End of row -->
-
-<div class="panel panel-primary">
+	
+</div> <!-- End of row 2 -->	
+	
+	
+	
+	
+	
+	
+	<!-- START OF ROW #3 WITH ALBUMS COLUMNS -->
+	
+    <div class="panel panel-primary">
 		<div class="panel-heading">
 			<h3 id="albumPop" class="panel-title">This Artist's Albums Current Popularity</h3>
 		</div>
@@ -227,111 +240,15 @@ d3.json("functions/createArtistD3.php?artistID=<?php echo $artistID; ?>", functi
 });
 
 </script>
-
-
-
-
-
-
-
-<script>
-
-var w = 1100;
-var h = 500;
-var padding = 50;
-
-var dataset, xScale, yScale, xAxis, yAxis, line;
-
-d3.json("functions/createArtist_followersD3.php?artistID=<?php echo $artistID; ?>", function(data) {
-    
-    console.log(data);
-    
-    var dataset = data;
-
-    const artistName = dataset[0].artistName;
-
-    const topHeading = d3.select("#topHead")
-            .text(artistName + "'s current stats on Spotify and LastFM"); 
-
-    const artistTitle = d3.select("#artistPop")
-            .text(artistName + "'s followers on Spotify over time");   
-
-    const currentArtistFollowers = dataset[0].followers;
-
-    const currentPop = d3.select("#forCurrentPopularity")
-            .text(currentArtistFollowers);               
-
-    const dataFollowers = dataset[0].followers;
-    let followers = String(dataFollowers).replace(/(.)(?=(\d{3})+$)/g,'$1,');
-
-    const artistFollowers = d3.select("#forCurrentFollowers")
-            .text(followers);  
-
-    const artistArt = dataset[0].artistArt;
-
-    d3.select("#forArt")
-            .data(dataset)
-            .attr("src", artistArt)
-            .attr("height", 166);
-            //.attr("width", auto)
-
-    dataset.forEach(function(d) {
-        d.date = new Date(d.date);
-        d.followers = +d.followers;
-    });
-
-    xScale = d3.scaleTime()
-                .domain([
-                    d3.min(dataset, function(d) { return d.date; }),
-                    d3.max(dataset, function(d) { return d.date; })
-                ])
-                .range([padding, w - padding]);
-
-    yScale = d3.scaleLinear()
-               .domain(d3.extent(data, function(d) { return (d.followers); }))
-               .range([h - padding, padding]);
-
-    const xAxis = d3.axisBottom()
-                    .scale(xScale);
-
-    formatMillions = d3.format(".3s");
-
-    const p = d3.precisionRound(0.01, 1.01),
-          f = d3.format("." + p + "r");
-
-    const yAxis = d3.axisLeft()
-                    .scale(yScale)
-                    .tickFormat(function(d) { return formatMillions(d)});
-
-    var line = d3.line()
-                .x(function(d) { return xScale(d.date); })
-                .y(function(d) { return yScale((d.followers)); });
-
-    var svg = d3.select("#forArtistChart")
-                    .append("svg")
-                    .attr("width", w)
-                    .attr("height", h);
-
-    svg.append("path")
-        .datum(dataset)
-        .attr("class", "line")
-        .attr("d", line);
-
-    svg.append("g")
-       .call(xAxis)
-       .attr("transform", "translate(0," + (h - padding) + ")")
-       .attr("class", "axis");
-
-    svg.append("g")
-       .call(yAxis)
-       .attr("transform", "translate(" + padding + ",0)")
-       .attr("class", "axis");
-
-});
-
-</script>
-
-
+	
+	
+	
+	
+	
+	
+	
+	
+	
 <script>
 
 var w = 740;
@@ -368,7 +285,8 @@ d3.json("functions/createArtist_followersD3.php?artistID=<?php echo $artistID; ?
                .range([h - padding, padding]);
 
     const xAxis = d3.axisBottom()
-                    .scale(xScale);
+                    .scale(xScale)
+                    .tickFormat(d3.timeFormat("%b"));
 
     formatMillions = d3.format(".3s");
 
@@ -383,7 +301,7 @@ d3.json("functions/createArtist_followersD3.php?artistID=<?php echo $artistID; ?
                 .x(function(d) { return xScale(d.date); })
                 .y(function(d) { return yScale((d.followers)); });
 
-    var svg = d3.select("#forArtistChart")
+    var svg = d3.select("#forFollowersChart")
                     .append("svg")
                     .attr("width", w)
                     .attr("height", h);
@@ -405,9 +323,18 @@ d3.json("functions/createArtist_followersD3.php?artistID=<?php echo $artistID; ?
 
 });
 
-</script>
-
-
+</script>	
+	
+	
+	
+	
+	
+		
+	
+	
+	
+	
+	
 	
 <script type="text/javascript">
     d3.json("functions/createAlbumsD3.php?artistID=<?php echo $artistID ?>", function(dataset) {

@@ -113,8 +113,8 @@ if(!$getit){ echo 'Cursed-Crap. Did not run the query.'; }
 				?>
 
 				<tr>
-					<td><a href='https://www.roxorsoxor.com/poprock/artist_Chart2.php?artistID=<?php echo $artistID ?>'><img src='<?php echo $artistArt ?>' class="indexArtistArt"></a></td>	
-					<td><a href='https://www.roxorsoxor.com/poprock/artist_Chart2.php?artistID=<?php echo $artistID ?>'><?php echo $artistName ?></a></td>
+					<td><a href='https://www.roxorsoxor.com/poprock/artist_Chart3.php?artistID=<?php echo $artistID ?>'><img src='<?php echo $artistArt ?>' class="indexArtistArt"></a></td>	
+					<td><a href='https://www.roxorsoxor.com/poprock/artist_Chart3.php?artistID=<?php echo $artistID ?>'><?php echo $artistName ?></a></td>
 					<td class="popStyle"><?php echo $artistID ?></td>
 					<td class="popStyle"><?php echo $popDate ?></td>
 					<td class="popStyle"><?php echo $artistPop ?></td>
