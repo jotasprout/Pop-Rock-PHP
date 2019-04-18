@@ -6,3 +6,5 @@ rockdb.php
 old_archive
 vendor
 spotifyAuthorization.txt
+data_text/jsonLastFM
+data_text/JSON_BS_Samples
