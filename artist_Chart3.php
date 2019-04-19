@@ -414,7 +414,7 @@ d3.json("functions/createArtist_followersD3.php?artistID=<?php echo $artistID; ?
 
 <script>
 
-    d3.json("functions/getCurrentLastFM.php?artistID=<?php echo $artistID; ?>", function(dataset) {
+    d3.json("functions/get_artist_LastFM.php?artistID=<?php echo $artistID; ?>", function(dataset) {
         
         console.log(dataset);
         

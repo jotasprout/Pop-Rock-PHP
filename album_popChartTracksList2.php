@@ -12,7 +12,7 @@ if ( !$connekt ) {
 	echo 'Darn. Did not connect.';
 };
 
-$gatherTrackInfo = "SELECT t.trackID, t.trackName, a.albumName, a.artistID, p1.pop, p1.date, f1.dataDate, f1.trackListeners, f1.trackPlaycount
+$gatherTrackInfo = "SELECT t.trackID, t.trackName, a.albumName, a.albumID, p1.pop, p1.date, f1.dataDate, f1.trackListeners, f1.trackPlaycount
 						FROM tracks t
 						INNER JOIN albums a ON a.albumID = t.albumID
 						JOIN (SELECT p.* FROM popTracks p
@@ -128,7 +128,135 @@ if ( !$getit ) {
 			</div> <!-- panel body -->
 		</div> <!-- panel panel-primary -->
 	</div> <!-- closing container -->
-	
+
+
+
+
+
+
+
+
+
+<script>
+
+var w = 740;
+var h = 400;
+var padding = 40;
+
+var dataset, xScale, yScale, xAxis, yAxis, line;
+
+d3.json("functions/create_album_popLine.php?albumID=<?php echo $albumID; ?>", function(data) {
+    
+    console.log(data);
+    
+    var dataset = data;
+
+    const albumName = dataset[0].albumName;
+
+    const topHeading = d3.select("#topHead")
+            .text(albumName + " -- current stats on Spotify and LastFM"); 
+
+    const albumTitle = d3.select("#albumPop")
+            .text(albumName + " -- popularity on Spotify over time");   
+
+    const currentPopAlbum = dataset[0].pop;
+
+    const currentPop = d3.select("#forCurrentPopularity")
+            .text(currentPopAlbum);               
+
+    const dataFollowers = dataset[0].followers;
+    let followers = String(dataFollowers).replace(/(.)(?=(\d{3})+$)/g,'$1,');
+
+    const albumFollowers = d3.select("#forCurrentFollowers")
+            .text(followers);  
+
+    const albumArt = dataset[0].albumArt;
+
+    d3.select("#forArt")
+            .data(dataset)
+            .attr("src", albumArt)
+            .attr("height", 166);
+            //.attr("width", auto)
+
+    dataset.forEach(function(d) {
+        d.date = new Date(d.date);
+        d.pop = +d.pop;
+    });
+
+    xScale = d3.scaleTime()
+                .domain([
+                    d3.min(dataset, function(d) { return d.date; }),
+                    d3.max(dataset, function(d) { return d.date; })
+                ])
+                .range([padding, w - padding]);
+
+    yScale = d3.scaleLinear()
+               .domain(d3.extent(data, function(d) { return d.pop; }))
+               .range([h - padding, padding]);
+
+    const xAxis = d3.axisBottom()
+                    .scale(xScale)
+                    .tickFormat(d3.timeFormat("%b"));
+
+    const yAxis = d3.axisLeft()
+                    .scale(yScale);
+
+    var line = d3.line()
+                .x(function(d) { return xScale(d.date); })
+                .y(function(d) { return yScale(d.pop); });
+
+    var svg = d3.select("#forAlbumChart")
+                    .append("svg")
+                    .attr("width", w)
+                    .attr("height", h);
+
+    svg.append("path")
+        .datum(dataset)
+        .attr("class", "line")
+        .attr("d", line);
+
+    svg.append("g")
+       .call(xAxis)
+       .attr("transform", "translate(0," + (h - padding) + ")")
+       .attr("class", "axis");
+
+    svg.append("g")
+       .call(yAxis)
+       .attr("transform", "translate(" + padding + ",0)")
+       .attr("class", "axis");
+
+});
+
+</script>
+
+
+
+
+<script>
+
+    d3.json("functions/getAlbumLastFM.php?albumID=<?php echo $albumID; ?>", function(dataset) {
+        
+        console.log(dataset);
+        
+        var data = dataset;
+
+        const dataListeners = data[0].albumListeners;
+        let listeners = String(dataListeners).replace(/(.)(?=(\d{3})+$)/g,'$1,');
+        const albumListeners = d3.select("#forCurrentListeners")
+            .text(listeners);   
+
+        const dataPlaycount = data[0].albumPlaycount;
+        let playcount = String(dataPlaycount).replace(/(.)(?=(\d{3})+$)/g,'$1,');
+        const albumPlaycount = d3.select("#forCurrentPlaycount")
+            .text(playcount); 
+    });   
+     
+</script>
+
+
+
+
+
 <?php echo $scriptsAndSuch; ?>
 <script src="https://www.roxorsoxor.com/poprock/functions/sortTheseTracks.js"></script>
 </body>
