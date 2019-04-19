@@ -5,7 +5,7 @@ $navbarIndex = "
 	<div id='header' class='container-fluid'>		
 		<ul class='nav navbar-nav'>		
 			
-			<li><a href='https://roxorsoxor.com/poprock/index2.php'>Artists List</a></li>
+			<li><a href='https://roxorsoxor.com/poprock/index3.php'>Artists List</a></li>
 			<li><a href='https://roxorsoxor.com/poprock/multiArtists_albumsChart2.php'>Group Chart</a></li>
 			<li><a href='https://roxorsoxor.com/poprock/multiArtists_popTimeLines2.php'>Compare Time</a></li>
 			<li><a href='https://roxorsoxor.com/poprock/multiArtists_popCurrentColumns2.php'>Compare Current Popularity</a></li>	
