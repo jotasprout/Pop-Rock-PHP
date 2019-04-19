@@ -78,12 +78,12 @@ if(!$getit){ echo 'Cursed-Crap. Did not run the query.'; }
 <!---->
 <th class="popStyle">Spotify ID</th>
 <th class="popStyle">Spotify<br>Data Date</th>
-<th onClick="sortColumn('pop', 'unsorted')"><div class="pointyHead popStyle">Spotify<br>Popularity</div></th>
+<th onClick="sortColumn('pop', 'ASC')"><div class="pointyHead popStyle">Spotify<br>Popularity</div></th>
 
-<th onClick="sortColumn('followers', 'unsorted')"><div class="pointyHead rightNum">Spotify<br>Followers</div></th>
-<th onClick="sortColumn('datadate', 'unsorted')"><div class="pointyHead popStyle">LastFM<br>Data Date</div></th>
-<th onClick="sortColumn('artistListeners', 'unsorted')"><div class="pointyHead rightNum">LastFM<br>Listeners</div></th>
-<th onClick="sortColumn('artistPlaycount', 'unsorted')"><div class="pointyHead rightNum">LastFM<br>Playcount</div></th>
+<th onClick="sortColumn('followers', 'ASC')"><div class="pointyHead rightNum">Spotify<br>Followers</div></th>
+<th onClick="sortColumn('datadate', 'ASC')"><div class="pointyHead popStyle">LastFM<br>Data Date</div></th>
+<th onClick="sortColumn('listeners', 'ASC')"><div class="pointyHead rightNum">LastFM<br>Listeners</div></th>
+<th onClick="sortColumn('playcount', 'ASC')"><div class="pointyHead rightNum">LastFM<br>Playcount</div></th>
 </tr>
 	</thead>
 

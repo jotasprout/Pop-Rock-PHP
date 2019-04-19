@@ -85,6 +85,7 @@ margin = {
 
 var dataset, xScale, yScale, xAxis, yAxis, line;
 
+const $comedians = "Stand-up Comedians";
 const $thrashEtc = "Thrash and Black Metal";
 const $longTerm = "Elder Artists with History";
 const $allRappers = "All Rappers";
@@ -102,7 +103,7 @@ d3.json("functions/multiArtistsPop2.php", function(data) {
 
         var parseTime = d3.timeParse("%y-%m-%d");
 
-        const title = $2019Noms;
+        const title = $comedians;
 
         dataset.forEach(function(d) {
             // date = parseTime(d.date);

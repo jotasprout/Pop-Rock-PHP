@@ -52,13 +52,13 @@ function divideCombineAlbums ($artistAlbums) {
 			$insertAlbum = "INSERT INTO albums (albumID,albumName,artistID,year,albumArt) VALUES('$albumID','$albumName','$thisArtistID','$albumReleased','$albumTotalTracks','$albumArt')";
 			
 			if (!$connekt) {
-				echo '<p>Darn. Did not connect.</p>';
+				echo '<p>Darn. Did not connect. Screwed up like: ' . mysqli_connect_error() . '</p>';
 			};
 			
 			$rockout = $connekt->query($insertAlbum);
 		
 			if(!$rockout){
-				echo '<p>Crap de General Tsao! Could not insert ' . $albumName . '.</p>';
+				echo '<p>Crap de General Tsao! Could not insert ' . $albumName . ' by ' . $thisArtistName . '. Screwed up like this: ' . mysqli_error($connekt) . '</p>';
 			}
 		
 			$insertAlbumsPop = "INSERT INTO popAlbums (albumID,pop,date) VALUES('$albumID','$albumPop',curdate())";
@@ -66,7 +66,7 @@ function divideCombineAlbums ($artistAlbums) {
 			$rockin = $connekt->query($insertAlbumsPop);
 			
 			if(!$rockin){
-				echo '<p>Sweet & Sour Crap! Could not insert albums popularity.</p>';
+				echo '<p>Sweet & Sour Crap! Could not insert ' . $albumName . 's popularity. Screwed up like this: ' . mysqli_error($connekt) . '</p>';
 			}
 
             echo '<p><img src="' . $albumArt . '" height="64" width="64"><br>' . $albumName . '<br>' . $albumReleased . '<br><strong>Popularity:</strong> ' . $albumPop . '<br><strong>Total tracks:</strong> ' . $albumTotalTracks . '</p>';
@@ -170,6 +170,8 @@ function gatherArtistAlbums ($artistID) {
 }
 
 function divideCombineArtistsForAlbums ($theseArtists) {
+	
+	echo "I am in the first function which is divideCombineArtistsForAlbums";
 
 	// Divide all artists into chunks of 50
 	$artistsChunk = array ();
@@ -210,11 +212,11 @@ function divideCombineArtistsForAlbums ($theseArtists) {
 
 			$rockpop = $connekt->query($insertArtistsPop);
 			if(!$rockpop){
-				echo '<p>Cursed-Crap. Could not insert artists popularity & followers.</p>';
+				echo '<p>Cursed-Crap. Could not insert ' . $artistName . ' popularity & followers.</p>';
 			}
 	
 			else {
-				echo '<p><img src="' . $artistArt . '"></p><p>' . $artistName . '</p><p><b>Popularity:</b> ' . $artistPop . '</p><p><b>Followers:</b> ' . $artistFollowers . '</p>';
+				echo '<p><img src="' . $artistArt . '"></p><p>' . $artistName . '<br>' . $artistID . '</p><p><b>Popularity:</b> ' . $artistPop . '</p><p><b>Followers:</b> ' . $artistFollowers . '</p>';
 			} 
 			
 		}
@@ -233,9 +235,9 @@ function divideCombineArtistsForAlbums ($theseArtists) {
 	unset($artistsChunk);
 
 }
-//$ac = array ('3EhbVgyfGd7HkpsagwL9GS');
-//$artistID = "5M52tdBnJaKSvOpJGz8mfZ";
-//gatherArtistAlbums ($artistID);
+
+echo "Hi, Jay! Cron_03 is open!";
+
 divideCombineArtistsForAlbums ($artists03);
 
 ?>

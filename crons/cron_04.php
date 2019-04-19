@@ -233,9 +233,7 @@ function divideCombineArtistsForAlbums ($theseArtists) {
 	unset($artistsChunk);
 
 }
-//$ac = array ('3EhbVgyfGd7HkpsagwL9GS');
-//$artistID = "5M52tdBnJaKSvOpJGz8mfZ";
-//gatherArtistAlbums ($artistID);
+
 divideCombineArtistsForAlbums ($artists04);
 
 ?>

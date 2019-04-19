@@ -4,12 +4,6 @@ WHERE a.albumID = b.albumID AND a.date = b.date AND a.id < b.id;
 
 ###############################
 
-SELECT count(*) FROM (SELECT * FROM popTracks a
-INNER JOIN popTracks b
-WHERE a.trackID = b.trackID AND a.date = b.date) pops;
-
-##############################
-
 DELETE a FROM popArtists a
 INNER JOIN popArtists b
 WHERE a.artistID = b.artistID AND a.date = b.date AND a.id < b.id;
@@ -21,6 +15,12 @@ INNER JOIN popTracks b
 WHERE a.trackID = b.trackID AND a.date = b.date AND a.id < b.id;
 
 ###############
+
+SELECT count(*) FROM (SELECT * FROM popTracks a
+INNER JOIN popTracks b
+WHERE a.trackID = b.trackID AND a.date = b.date) pops;
+
+##############################
 
 DELETE a FROM albumsLastFM2 a
 INNER JOIN albumsLastFM2 b

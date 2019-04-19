@@ -1,8 +1,8 @@
 <?php
 
-//$artistID = $_GET['artistID'];
+$artistID = $_GET['artistID'];
 
-$artistID = '0cc6vw3VN8YlIcvr1v7tBL';
+//$artistID = '0cc6vw3VN8YlIcvr1v7tBL';
 
 require_once '../rockdb.php';
 require( "class.artist.php" );
