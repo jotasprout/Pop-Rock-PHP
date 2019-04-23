@@ -6,7 +6,7 @@ require_once '../rockdb.php';
 $connekt = new mysqli($GLOBALS['host'], $GLOBALS['un'], $GLOBALS['magicword'], $GLOBALS['db']);
 
 if (!$connekt) {
-    echo 'Darn. Did not connect.';
+    echo '<p>Darn. Did not connect. Screwed up like: ' . mysqli_connect_error() . '.</p>';
 };
 
 $postedColumnName = $_POST[ "columnName" ];
@@ -25,26 +25,89 @@ if ( !empty( $_POST[ "currentOrder" ] ) ) {
     // if the current order came through, use it
 	$currentOrder = $_POST[ "currentOrder" ];
 }
-
-if ( $currentOrder == "DESC" ) {
+/*
+// Next is for the SQL query
+if ($currentOrder == "ASC" or $currentOrder == "unsorted") {
+    $newOrder = "DESC";
+} else {
 	$newOrder = "ASC";
 }
+*/
+///////////////////
 
-if ($currentOrder == "ASC") {
-    $newOrder = "DESC";
-}
+$artistNameNewOrder = "unsorted";
 
-// These next three variables are for building the TH table headers. 
-$artistNameNewOrder = "DESC";
-$popNewOrder = "ASC";
+if ( $columnName == "artistName" ) {
+	if ($currentOrder == "unsorted" or $currentOrder == "DESC") {
+		$artistNameNewOrder = "ASC";
+		$newOrder = "ASC";
+	} else {
+		$artistNameNewOrder = "DESC";
+		$newOrder = "DESC";
+	};
+};
 
-if ( $columnName == "artistName" and $currentOrder == "DESC" ) {
-	$artistNameNewOrder = "ASC";
-}
+///////////////////
 
-if ( $columnName == "pop" and $currentOrder == "ASC" ) {
-	$popNewOrder = "DESC";
-}
+$popNewOrder = "unsorted";
+
+if ( $columnName == "pop" ) {
+	if ($currentOrder == "unsorted" or $currentOrder == "ASC") {
+		$popNewOrder = "DESC";
+		$newOrder = "DESC";
+	} else {
+		$popNewOrder = "ASC";
+		$newOrder = "ASC";
+	};
+};
+
+$followersNewOrder = "unsorted";
+
+if ( $columnName == "followers" ) {
+	if ($currentOrder == "unsorted" or $currentOrder == "ASC") {
+		$followersNewOrder = "DESC";
+		$newOrder = "DESC";
+	} else {
+		$followersNewOrder = "ASC";
+		$newOrder = "ASC";
+	};
+};
+
+$datadateNewOrder = "unsorted";
+
+if ( $columnName == "datadate" ) {
+	if ($currentOrder == "unsorted" or $currentOrder == "ASC") {
+		$datadateNewOrder = "DESC";
+		$newOrder = "DESC";
+	} else {
+		$datadateNewOrder = "ASC";
+		$newOrder = "ASC";
+	};
+};
+
+$listenersNewOrder = "unsorted";
+
+if ( $columnName == "artistListeners" ) {
+	if ($currentOrder == "unsorted" or $currentOrder == "ASC") {
+		$listenersNewOrder = "DESC";
+		$newOrder = "DESC";
+	} else {
+		$listenersNewOrder = "ASC";
+		$newOrder = "ASC";
+	};
+};
+
+$playcountNewOrder = "unsorted";
+
+if ( $columnName == "artistPlaycount" ) {
+	if ($currentOrder == "unsorted" or $currentOrder == "ASC") {
+		$playcountNewOrder = "DESC";
+		$newOrder = "DESC";
+	} else {
+		$playcountNewOrder = "ASC";
+		$newOrder = "ASC";
+	};
+};
 
 $allthatAndLastFM = "SELECT a.artistID AS artistID, a.artistArt AS artistArt, a.artistName AS artistName, a.albumsTotal AS albumsTotal, p1.pop AS pop, p1.followers AS followers, f1.dataDate AS dataDate, f1.artistListeners AS artistListeners, f1.artistPlaycount AS artistPlaycount, p1.date AS date
     FROM artists a
@@ -69,7 +132,7 @@ $allthatAndLastFM = "SELECT a.artistID AS artistID, a.artistArt AS artistArt, a.
 $sortit = $connekt->query($allthatAndLastFM); 
 
 if (!$sortit) {
-    echo 'Darn. No query.';
+    echo '<p>Darn. No query. Screwed up like this: ' . mysqli_error($connekt) . '</p>';
 };
 
 if (!empty($sortit)) { ?>
@@ -79,14 +142,17 @@ if (!empty($sortit)) { ?>
 	<tr>
 	<th>Pretty Face</th>	
 	<th onClick="sortColumn('artistName', '<?php echo $artistNameNewOrder; ?>')"><div class="pointyHead">Artist Name</div></th>
-	
+	<!--
+	<th class="popStyle">Spotify ID</th>
 	<th class="popStyle">Spotify<br>Data Date</th>
+	-->
 	<th onClick="sortColumn('pop', '<?php echo $popNewOrder; ?>')"><div class="pointyHead popStyle">Spotify<br>Popularity</div></th>
-	
-	<th class="rightNum">Spotify<br>Followers</th>
-	<th class="popStyle">LastFM<br>Data Date</th>
-	<th class="rightNum">LastFM<br>Listeners</th>
-	<th class="rightNum">LastFM<br>Playcount</th>
+	<th onClick="sortColumn('followers', '<?php echo $followersNewOrder; ?>')"><div class="pointyHead rightNum">Spotify<br>Followers</div></th>
+	<!--
+	<th onClick="sortColumn('datadate', '<?php echo $datadateNewOrder; ?>')"><div class="pointyHead popStyle">LastFM<br>Data Date</div></th>
+	-->
+	<th onClick="sortColumn('artistListeners', '<?php echo $listenersNewOrder; ?>')"><div class="pointyHead rightNum">LastFM<br>Listeners</div></th>
+	<th onClick="sortColumn('artistPlaycount', '<?php echo $playcountNewOrder; ?>')"><div class="pointyHead rightNum">LastFM<br>Playcount</div></th>
 	</tr>
 </thead>
 
@@ -118,12 +184,15 @@ if (!empty($sortit)) { ?>
 <tr>
 	<td><img src='<?php echo $artistArt ?>' class="indexArtistArt"></td>	
 	<td><a href='https://www.roxorsoxor.com/poprock/artist_Chart.php?artistID=<?php echo $artistID ?>'><?php echo $artistName ?></a></td>
-	
+<!--
+	<td class="popStyle"><?php echo $artistID ?></td>
 	<td class="popStyle"><?php echo $popDate ?></td>
+	-->
 	<td class="popStyle"><?php echo $artistPop ?></td>
-	
 	<td id="followers" class="rightNum"><?php echo $artistFollowers ?></td>
+<!--
 	<td class="popStyle"><?php echo $lastFMDate ?></td>
+-->
 	<td class="rightNum"><?php echo $artistListeners ?></td>
 	<td class="rightNum"><?php echo $artistPlaycount ?></td>
 </tr>

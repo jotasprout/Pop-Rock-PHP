@@ -1,9 +1,6 @@
 <?php
 require_once 'page_pieces/navbar_rock.php';
 require_once 'page_pieces/stylesAndScripts.php';
-
-$artistGenre = $_GET['artistGenre'];
-
 ?>
 
 <!doctype html>
@@ -22,7 +19,7 @@ $artistGenre = $_GET['artistGenre'];
     <p>Please be patient while data loads.</p>
 	<div class="panel panel-primary">
 		<div class="panel-heading">
-			<h3 id="genreHeader" class="panel-title">These Artists' Current Popularity On Spotify</h3>
+			<h3 class="panel-title">These Artists' Current Popularity On Spotify</h3>
 		</div>
 
 		<div class="panel-body">
@@ -35,21 +32,15 @@ $artistGenre = $_GET['artistGenre'];
 </div> <!-- /container -->		 
 
 <script type="text/javascript">
-    d3.json("functions/multiGenreArtistsColumnsD3.php?artistGenre=<?php echo $artistGenre; ?>", function(dataset) {
+    d3.json("functions/multiArtistsColumnsD3.php", function(dataset) {
         console.log(dataset);
         // Width and height
         var w = 2400;
         var h = 265;
         var barPadding = 1;
         const widen = dataset.length;
+        console.log(widen);
         
-        const artistGenre = dataset[0].genre;
-
-        const genreTitle = d3.select("#genreHeader")
-            //.data(dataset)
-            //.append("text")
-            .text(artistGenre + " -- Artists Current Popularity on Spotify");
-
         // Create SVG element
         var svg = d3.select("#forChart")
             .append("svg")

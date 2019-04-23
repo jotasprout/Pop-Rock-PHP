@@ -89,7 +89,7 @@ if(!empty($sortit)) { ?>
 <thead>
 <tr>
 	<th onClick="sortColumn('albumName', '<?php echo $albumNameNewOrder; ?>', '<?php echo $artistID ?>')"><div class="pointyHead">Album Title</div></th>
-	
+	<th>Spotify<br>trackID</th>
 	<th onClick="sortColumn('trackName', '<?php echo $trackNameNewOrder; ?>', '<?php echo $artistID ?>')"><div class="pointyHead">Track Title</div></th>
 	<th>Spotify<br>Data Date</th>
 	
@@ -122,7 +122,7 @@ if(!empty($sortit)) { ?>
 	?>
 			<tr>
 				<td><?php echo $albumName ?></td>
-				
+				<td><?php echo $trackID ?></td>
 				<td><?php echo $trackName ?></td>
 				<td><?php echo $popDate ?></td>
 				
