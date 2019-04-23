@@ -95,7 +95,7 @@ const $latinos = "Alternativo y Rock en Espanol";
 const $2019Noms = "2019 Rock and Roll Hall of Fame Nominees";
 const $2019Inductees = "2019 Rock and Roll Hall of Fame Inductees";
 
-d3.json("functions/multiArtists_pop2.php", function(data) {
+d3.json("functions/multiArtists_pop.php", function(data) {
 
         console.log(data);
     

@@ -11,10 +11,6 @@ if (!$connekt) {
 	echo 'Darn. Did not connect.';
 };
 
-$blackSabbath = "5M52tdBnJaKSvOpJGz8mfZ";
-
-//$artistID = $blackSabbath;
-
 $blackScabies = "SELECT b.albumName, b.albumMBID, b.albumID, b.artistID, a.year, a.albumArt, a.tracksTotal, z.artistName, p1.pop, p1.date, f1.dataDate, f1.albumListeners, f1.albumPlaycount, x.albumArtMB
 FROM (SELECT sp.albumName, sp.albumMBID, sp.albumID, sp.artistID
 	FROM albums sp
@@ -87,7 +83,7 @@ if(!$getit){
 <table class="table" id="recordCollection">
 <thead>
 	<tr>
-		<th>Album Art</th>
+		<th>Cover Art</th>
 <!--
 		<th>Album Spotify ID</th>
 		<th>albumMBID</th>
@@ -111,7 +107,11 @@ if(!$getit){
 <?php
 	while ($row = mysqli_fetch_array($getit)) {
 		$artistName = $row['artistName'];
-		$albumArt = $row['albumArt'];
+		if (is_null($row['albumArt'])) {
+			$coverArt = $row['albumArtMB'];
+		} else {
+			$coverArt = $row['albumArt'];
+		};
 		$albumID = $row['albumID'];
 		$albumMBID = $row['albumMBID'];
 		$albumName = $row['albumName'];
@@ -133,7 +133,7 @@ if(!$getit){
 ?>
 					
 <tr>
-<td><img src='<?php echo $albumArt ?>' height='64' width='64'></td>
+<td><img src='<?php echo $coverArt ?>' height='64' width='64'></td>
 <!--
 <td><?php echo $albumID ?></td>
 <td><?php echo $albumMBID ?></td>
