@@ -76,7 +76,7 @@ if(!$getit){ echo 'Cursed-Crap. Did not run the query.'; }
 						<td><img src='<?php // echo $artistArt ?>' height='64' width='64'></td>	
 						-->
 						<td><?php echo $artistName ?></td>
-						<td><a href='https://www.roxorsoxor.com/poprock/genreArtists_comparePopBars.php?artistGenre=<?php echo $artistGenre ?>'><?php echo $artistGenre ?></a></td>
+						<td><a href='https://www.roxorsoxor.com/poprock/genreArtists_popCurrentBars.php?artistGenre=<?php echo $artistGenre ?>'><?php echo $artistGenre ?></a></td>
 					</tr>
 
 					<?php 
@@ -99,7 +99,7 @@ if(!$getit){ echo 'Cursed-Crap. Did not run the query.'; }
 	<!-- close container -->
 
 	<?php echo $scriptsAndSuch; ?>
-	<script src="https://www.roxorsoxor.com/poprock/functions/sortTheseArtistsGenres.js"></script>
+	<script src="https://www.roxorsoxor.com/poprock/functions/sort_genresArtists.js"></script>
 
 	<script>
 	

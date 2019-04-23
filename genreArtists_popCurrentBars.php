@@ -35,7 +35,7 @@ $artistGenre = $_GET['artistGenre'];
 </div> <!-- /container -->		 
 
 <script type="text/javascript">
-    d3.json("functions/multiGenreArtistsColumnsD3.php?artistGenre=<?php echo $artistGenre; ?>", function(dataset) {
+    d3.json("functions/genreArtists_popCurrentBars_Query.php?artistGenre=<?php echo $artistGenre; ?>", function(dataset) {
         console.log(dataset);
         // Width and height
         var w = 2400;
