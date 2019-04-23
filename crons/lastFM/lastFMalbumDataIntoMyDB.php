@@ -38,18 +38,18 @@ $filenames = array (
 );
 
 $filenames2 = array (
-    'data/jsonLastFM/AliceCooper_Combined_04-23-19.json',
-    'data/jsonLastFM/Anvil_Group_04-23-19.json',
-    'data/jsonLastFM/BlackSabbath_Group_04-23-19.json',
-    'data/jsonLastFM/LindseyBuckingham_Person_04-23-19.json',
-    'data/jsonLastFM/DefLeppard_Group_04-23-19.json',
-    'data/jsonLastFM/Dio_Group_04-23-19.json', 
-    'data/jsonLastFM/Elf_Group_04-23-19.json', 
-    'data/jsonLastFM/EvilStig_Group_04-23-19.json', 
-    'data/jsonLastFM/FleetwoodMac_Group_04-23-19.json',
-    'data/jsonLastFM/Heaven&Hell_Group_04-23-19.json', 
-    'data/jsonLastFM/JanetJackson_Person_04-23-19.json', 
-    'data/jsonLastFM/JoanJett_Combined_04-23-19.json'
+    'data/AliceCooper_Combined_04-23-19.json',
+    'data/Anvil_Group_04-23-19.json',
+    'data/BlackSabbath_Group_04-23-19.json',
+    'data/LindseyBuckingham_Person_04-23-19.json',
+    'data/DefLeppard_Group_04-23-19.json',
+    'data/Dio_Group_04-23-19.json', 
+    'data/Elf_Group_04-23-19.json', 
+    'data/EvilStig_Group_04-23-19.json', 
+    'data/FleetwoodMac_Group_04-23-19.json',
+    'data/Heaven&Hell_Group_04-23-19.json', 
+    'data/JanetJackson_Person_04-23-19.json', 
+    'data/JoanJett_Combined_04-23-19.json'
 );
 
 $filenames = $filenames2;
