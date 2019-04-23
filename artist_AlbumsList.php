@@ -15,7 +15,7 @@ $blackSabbath = "5M52tdBnJaKSvOpJGz8mfZ";
 
 //$artistID = $blackSabbath;
 
-$blackScabies = "SELECT b.albumName, b.albumMBID, b.albumID, b.artistID, a.year, a.albumArt, a.tracksTotal, z.artistName, p1.pop, p1.date, f1.dataDate, f1.albumListeners, f1.albumPlaycount
+$blackScabies = "SELECT b.albumName, b.albumMBID, b.albumID, b.artistID, a.year, a.albumArt, a.tracksTotal, z.artistName, p1.pop, p1.date, f1.dataDate, f1.albumListeners, f1.albumPlaycount, x.albumArtMB
 FROM (SELECT sp.albumName, sp.albumMBID, sp.albumID, sp.artistID
 	FROM albums sp
 	WHERE sp.artistID='$artistID'
@@ -33,6 +33,7 @@ LEFT JOIN (SELECT p.*
 		ON p.albumID = groupedp.albumID
 		AND p.date = groupedp.MaxDate) p1 
 ON a.albumID = p1.albumID
+LEFT JOIN albumsMB x ON b.albumMBID = x.albumMBID
 LEFT JOIN (SELECT f.*
 		FROM albumsLastFM f
 		INNER JOIN (SELECT albumMBID, albumListeners, albumPlaycount, max(dataDate) AS MaxDataDate
@@ -87,14 +88,20 @@ if(!$getit){
 <thead>
 	<tr>
 		<th>Album Art</th>
+<!--
 		<th>Album Spotify ID</th>
 		<th>albumMBID</th>
+		-->
 		<th onClick="sortColumn('albumName', 'ASC', '<?php echo $artistID; ?>')"><div class="pointyHead">Album Name</div></th>
 		<th onClick="sortColumn('year', 'DESC', '<?php echo $artistID; ?>')"><div class="pointyHead popStyle">Released</div></th>
+<!--
 		<th><div class="pointyHead popStyle">Total<br>Tracks</div></th>
 		<th class="popStyle">Spotify<br>Data Date</th>
+		-->
 		<th onClick="sortColumn('pop', 'ASC', '<?php echo $artistID; ?>')"><div class="pointyHead popStyle">Spotify<br>Popularity</div></th>
+<!--
 		<th>LastFM<br>Data Date</th>
+-->
 		<th class="rightNum pointyHead">LastFM<br>Listeners</th>
 		<th class="rightNum pointyHead">LastFM<br>Playcount</th>
 	</tr>
@@ -127,14 +134,20 @@ if(!$getit){
 					
 <tr>
 <td><img src='<?php echo $albumArt ?>' height='64' width='64'></td>
+<!--
 <td><?php echo $albumID ?></td>
 <td><?php echo $albumMBID ?></td>
+-->
 <td><a href='https://www.roxorsoxor.com/poprock/thisAlbum_TracksList.php?albumID=<?php echo $albumID ?>'><?php echo $albumName ?></a></td>
 <td class="popStyle"><?php echo $albumReleased ?></td>
+<!--
 <td class="popStyle"><?php echo $tracksTotal ?></td>
 <th class="popStyle"><?php echo $date ?></th>
+-->
 <td class="popStyle"><?php echo $albumPop ?></td>
+<!--
 <td class="popStyle"><?php echo $lastFMDate ?></td>
+-->
 <td class="rightNum"><?php echo $albumListeners ?></td>
 <td class="rightNum"><?php echo $albumPlaycount ?></td>
 </tr>
@@ -160,7 +173,7 @@ if(!$getit){
 	let artistID = '<?php echo $artistID ?>';
 </script>
 
-<script src="https://www.roxorsoxor.com/poprock/functions/sortTheseAlbums.js"></script>
+<script src="https://www.roxorsoxor.com/poprock/functions/sort_artistAlbums.js"></script>
 
 </body>
 	
