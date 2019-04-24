@@ -58,14 +58,14 @@ if ( $columnName == "pop" and $currentOrder == "ASC" ) {
 	$popNewOrder = "DESC";
 }
 
-$sortScabies = "SELECT a.albumName, a.year, a.albumArt, a.tracksTotal, z.artistName, p1.pop, p1.date, a.albumID, f1.albumMBID, f1.dataDate, f1.albumListeners, f1.albumPlaycount
+$sortScabies = "SELECT a.albumName, a.year, a.albumArtSpot, a.tracksTotal, z.artistName, p1.pop, p1.date, a.albumID, f1.albumMBID, f1.dataDate, f1.albumListeners, f1.albumPlaycount
 	FROM (SELECT
 				y.albumID AS albumID,
 				y.albumMBID AS albumMBID,
 				y.albumName AS albumName,
 				y.artistID AS artistID,
 				y.tracksTotal AS tracksTotal,
-				y.albumArt AS albumArt,
+				y.albumArtSpot AS albumArtSpot,
 				y.year AS year
 			FROM albums y 
 			WHERE y.artistID = '$artistID') a
@@ -120,7 +120,7 @@ if(!empty($sortit))	 { ?>
 							  
 while ( $row = mysqli_fetch_array( $sortit ) ) {
 	$artistName = $row['artistName'];
-	$albumArt = $row['albumArt'];
+	$albumArtSpot = $row['albumArtSpot'];
 	$albumID = $row['albumID'];
 	$albumMBID = $row['albumMBID'];
 	$albumName = $row['albumName'];
@@ -143,7 +143,7 @@ while ( $row = mysqli_fetch_array( $sortit ) ) {
 ?>
 
 	<tr>
-		<td><img src='<?php echo $albumArt ?>' height='64' width='64'></td>
+		<td><img src='<?php echo $albumArtSpot ?>' height='64' width='64'></td>
 		<td><?php echo $albumID ?></td>
 		<td><?php echo $albumMBID ?></td>
 		<td><a href='https://www.roxorsoxor.com/poprock/thisAlbum_TracksList.php?albumID=<?php echo $albumID ?>'><?php echo $albumName ?></a></td>

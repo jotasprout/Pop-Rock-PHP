@@ -11,12 +11,12 @@ if ( !$connekt ) {
 	echo 'Darn. Did not connect.';
 };
 
-$happyScabies2 = "SELECT a.albumName, a.year, a.albumArt, z.artistName, p1.pop, p1.date
+$happyScabies2 = "SELECT a.albumName, a.year, a.albumArtSpot, z.artistName, p1.pop, p1.date
 	FROM (SELECT
 				y.albumID AS albumID,
 				y.albumName AS albumName,
 				y.artistID AS artistID,
-				y.albumArt AS albumArt,
+				y.albumArtSpot AS albumArtSpot,
 				y.year AS year
 			FROM albums y 
 			WHERE y.artistID = '$artistID') a
@@ -31,12 +31,12 @@ $happyScabies2 = "SELECT a.albumName, a.year, a.albumArt, z.artistName, p1.pop, 
 	ON a.albumID = p1.albumID
 	ORDER BY year ASC;";	
 	
-	$happyScabies3 = "SELECT a.albumName, a.year, a.albumArt, z.artistName, p.pop, p.date
+	$happyScabies3 = "SELECT a.albumName, a.year, a.albumArtSpot, z.artistName, p.pop, p.date
 	FROM (SELECT
 				y.albumID AS albumID,
 				y.albumName AS albumName,
 				y.artistID AS artistID,
-				y.albumArt AS albumArt,
+				y.albumArtSpot AS albumArtSpot,
 				y.year AS year
 			FROM albums y 
 			WHERE y.artistID = '0cc6vw3VN8YlIcvr1v7tBL') a

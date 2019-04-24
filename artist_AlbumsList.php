@@ -11,24 +11,24 @@ if (!$connekt) {
 	echo 'Darn. Did not connect.';
 };
 
-$blackScabies = "SELECT b.albumName, b.albumMBID, b.albumID, b.artistID, a.year, a.albumArt, a.tracksTotal, z.artistName, p1.pop, p1.date, f1.dataDate, f1.albumListeners, f1.albumPlaycount, x.albumArtMB
-FROM (SELECT sp.albumName, sp.albumMBID, sp.albumID, sp.artistID
+$blackScabies = "SELECT b.albumName, b.albumMBID, b.albumSpotID, b.artistID, a.year, a.albumArtSpot, a.tracksTotal, z.artistName, p1.pop, p1.date, f1.dataDate, f1.albumListeners, f1.albumPlaycount, x.albumArtMB
+FROM (SELECT sp.albumName, sp.albumMBID, sp.albumSpotID, sp.artistID
 	FROM albums sp
 	WHERE sp.artistID='$artistID'
 UNION
 SELECT mb.albumName, mb.albumMBID, mb.albumSpotID, mb.artistSpotID
 	FROM albumsMB mb 
 	WHERE mb.artistSpotID='$artistID') b 
-LEFT JOIN albums a ON b.albumID = a.albumID	
+LEFT JOIN albums a ON b.albumSpotID = a.albumSpotID	
 JOIN artists z ON z.artistID = b.artistID
 LEFT JOIN (SELECT p.*
 		FROM popAlbums p
-		INNER JOIN (SELECT albumID, pop, max(date) AS MaxDate
+		INNER JOIN (SELECT albumSpotID, pop, max(date) AS MaxDate
 					FROM popAlbums  
-					GROUP BY albumID) groupedp
-		ON p.albumID = groupedp.albumID
+					GROUP BY albumSpotID) groupedp
+		ON p.albumSpotID = groupedp.albumSpotID
 		AND p.date = groupedp.MaxDate) p1 
-ON a.albumID = p1.albumID
+ON a.albumSpotID = p1.albumSpotID
 LEFT JOIN albumsMB x ON b.albumMBID = x.albumMBID
 LEFT JOIN (SELECT f.*
 		FROM albumsLastFM f
@@ -113,12 +113,12 @@ if(!$getit){
 <?php
 	while ($row = mysqli_fetch_array($getit)) {
 		$artistName = $row['artistName'];
-		if (is_null($row['albumArt'])) {
+		if (is_null($row['albumArtSpot'])) {
 			$coverArt = $row['albumArtMB'];
 		} else {
-			$coverArt = $row['albumArt'];
+			$coverArt = $row['albumArtSpot'];
 		};
-		$albumID = $row['albumID'];
+		$albumSpotID = $row['albumSpotID'];
 		$albumMBID = $row['albumMBID'];
 		$albumName = $row['albumName'];
 		$tracksTotal = $row['tracksTotal'];
@@ -141,10 +141,10 @@ if(!$getit){
 <tr>
 <td><img src='<?php echo $coverArt ?>' height='64' width='64'></td>
 <!--
-<td><?php echo $albumID ?></td>
+<td><?php echo $albumSpotID ?></td>
 <td><?php echo $albumMBID ?></td>
 -->
-<td><a href='https://www.roxorsoxor.com/poprock/thisAlbum_TracksList.php?albumID=<?php echo $albumID ?>'><?php echo $albumName ?></a></td>
+<td><a href='https://www.roxorsoxor.com/poprock/thisAlbum_TracksList.php?albumSpotID=<?php echo $albumSpotID ?>'><?php echo $albumName ?></a></td>
 <td class="popStyle"><?php echo $albumReleased ?></td>
 <!--
 <td class="popStyle"><?php echo $tracksTotal ?></td>
