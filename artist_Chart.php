@@ -240,15 +240,7 @@ d3.json("functions/createArtistD3.php?artistID=<?php echo $artistID; ?>", functi
 });
 
 </script>
-	
-	
-	
-	
-	
-	
-	
-	
-	
+		
 <script>
 
 var w = 740;
@@ -324,16 +316,6 @@ d3.json("functions/createArtist_followersD3.php?artistID=<?php echo $artistID; ?
 });
 
 </script>	
-	
-	
-	
-	
-	
-		
-	
-	
-	
-	
 	
 	
 <script type="text/javascript">

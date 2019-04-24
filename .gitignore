@@ -1,10 +1,11 @@
 .DS_Store
 fromRockinJS
-misc
+miscInProgress
 secrets
 rockdb.php
-old_archive
 vendor
 spotifyAuthorization.txt
 data_text/jsonLastFM
 data_text/JSON_BS_Samples
+imgs
+cover-art

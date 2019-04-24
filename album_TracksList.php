@@ -106,9 +106,7 @@ if ( !$getit ) {
 <tr>
 <td><?php echo $albumName ?></td>
 <td><?php echo $trackID ?></td>
-<!--
-
--->
+<!--  -->
 <td><a href='https://www.roxorsoxor.com/poprock/track_Chart.php?trackID=<?php echo $trackID ?>'><?php echo $trackName ?></a></td>
 <td class="popStyle"><?php echo $popDate ?></td>
 <td class="popStyle"><?php echo $trackPop ?></td>

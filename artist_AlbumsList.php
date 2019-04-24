@@ -81,27 +81,33 @@ if(!$getit){
 		<?php if(!empty($getit)) { ?>
 		
 <table class="table" id="recordCollection">
+
 <thead>
-	<tr>
-		<th>Cover Art</th>
+
+<tr>
+
+<th>Cover Art</th>
 <!--
-		<th>Album Spotify ID</th>
-		<th>albumMBID</th>
-		-->
-		<th onClick="sortColumn('albumName', 'ASC', '<?php echo $artistID; ?>')"><div class="pointyHead">Album Name</div></th>
-		<th onClick="sortColumn('year', 'DESC', '<?php echo $artistID; ?>')"><div class="pointyHead popStyle">Released</div></th>
-<!--
-		<th><div class="pointyHead popStyle">Total<br>Tracks</div></th>
-		<th class="popStyle">Spotify<br>Data Date</th>
-		-->
-		<th onClick="sortColumn('pop', 'ASC', '<?php echo $artistID; ?>')"><div class="pointyHead popStyle">Spotify<br>Popularity</div></th>
-<!--
-		<th>LastFM<br>Data Date</th>
+<th>Album Spotify ID</th>
+<th>albumMBID</th>
 -->
-		<th class="rightNum pointyHead">LastFM<br>Listeners</th>
-		<th class="rightNum pointyHead">LastFM<br>Playcount</th>
-	</tr>
+<th onClick="sortColumn('albumName', 'ASC', '<?php echo $artistID; ?>')"><div class="pointyHead">Album Name</div></th>
+<th onClick="sortColumn('year', 'DESC', '<?php echo $artistID; ?>')"><div class="pointyHead popStyle">Released</div></th>
+<!--
+<th><div class="pointyHead popStyle">Total<br>Tracks</div></th>
+<th class="popStyle">Spotify<br>Data Date</th>
+-->
+<th onClick="sortColumn('pop', 'ASC', '<?php echo $artistID; ?>')"><div class="pointyHead popStyle">Spotify<br>Popularity</div></th>
+<!--
+<th>LastFM<br>Data Date</th>
+-->
+<th class="rightNum pointyHead">LastFM<br>Listeners</th>
+<th class="rightNum pointyHead">LastFM<br>Playcount</th>
+
+</tr>
+
 </thead>
+
 <tbody>
 					
 <?php

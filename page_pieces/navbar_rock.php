@@ -22,7 +22,7 @@ $navbar = "
 	<div id='header' class='container-fluid'>		
 		<ul class='nav navbar-nav'>		
 			
-			<li><a href='https://roxorsoxor.com/poprock/index2.php'>Artists List</a></li>
+			<li><a href='https://roxorsoxor.com/poprock/index.php'>Artists List</a></li>
 			<li><a href='https://roxorsoxor.com/poprock/artist_AlbumsList.php?artistID=" . $artistID . "'>Albums List</a></li>
 			<li><a href='https://roxorsoxor.com/poprock/artist_TracksList.php?artistID=" . $artistID . "'>Tracks List</a></li>
 			<li><a href='https://roxorsoxor.com/poprock/multiArtists_albumsChart.php'>Group Chart</a></li>

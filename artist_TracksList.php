@@ -12,25 +12,25 @@ if ( !$connekt ) {
 };
 
 $gatherTrackInfo = "SELECT t.trackID, t.trackName, a.albumName, a.artistID, p1.pop, p1.date, f1.dataDate, f1.trackListeners, f1.trackPlaycount
-						FROM tracks t
-						INNER JOIN albums a ON a.albumID = t.albumID
-						JOIN (SELECT p.* FROM popTracks p
-								INNER JOIN (SELECT trackID, pop, max(date) AS MaxDate
-											FROM popTracks  
-											GROUP BY trackID) groupedp
-								ON p.trackID = groupedp.trackID
-								AND p.date = groupedp.MaxDate) p1 
-						ON t.trackID = p1.trackID
-							LEFT JOIN (SELECT f.*
-								FROM tracksLastFM f
-								INNER JOIN (SELECT trackMBID, trackListeners, trackPlaycount, max(dataDate) AS MaxDataDate
-											FROM tracksLastFM  
-											GROUP BY trackMBID) groupedf
-								ON f.trackMBID = groupedf.trackMBID
-								AND f.dataDate = groupedf.MaxDataDate) f1
-						ON t.trackMBID = f1.trackMBID
-						WHERE a.artistID = '$artistID'
-						ORDER BY t.trackName ASC";
+		FROM tracks t
+		INNER JOIN albums a ON a.albumID = t.albumID
+		JOIN (SELECT p.* FROM popTracks p
+				INNER JOIN (SELECT trackID, pop, max(date) AS MaxDate
+							FROM popTracks  
+							GROUP BY trackID) groupedp
+				ON p.trackID = groupedp.trackID
+				AND p.date = groupedp.MaxDate) p1 
+		ON t.trackID = p1.trackID
+			LEFT JOIN (SELECT f.*
+				FROM tracksLastFM f
+				INNER JOIN (SELECT trackMBID, trackListeners, trackPlaycount, max(dataDate) AS MaxDataDate
+							FROM tracksLastFM  
+							GROUP BY trackMBID) groupedf
+				ON f.trackMBID = groupedf.trackMBID
+				AND f.dataDate = groupedf.MaxDataDate) f1
+		ON t.trackMBID = f1.trackMBID
+		WHERE a.artistID = '$artistID'
+		ORDER BY t.trackName ASC";
 
 $getit = $connekt->query( $gatherTrackInfo );
 

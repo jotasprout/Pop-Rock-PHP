@@ -1,56 +1,43 @@
 <?php
 
+require_once '../../rockdb.php';
+
 $filenames = array (
-    'data/jsonLastFM/AliceCooper_Combined_04-23-19.json',
-    'data/jsonLastFM/Anvil_Group_04-23-19.json',
-    'data/jsonLastFM/BlackSabbath_Group_04-23-19.json',
-    'data/jsonLastFM/LindseyBuckingham_Person_04-23-19.json',
-    'data/jsonLastFM/DefLeppard_Group_04-23-19.json',
-    'data/jsonLastFM/Dio_Group_04-23-19.json', 
-    'data/jsonLastFM/Elf_Group_04-23-19.json', 
-    'data/jsonLastFM/EvilStig_Group_04-23-19.json', 
-    'data/jsonLastFM/FleetwoodMac_Group_04-23-19.json',
-    'data/jsonLastFM/Heaven&Hell_Group_04-23-19.json', 
-    'data/jsonLastFM/JanetJackson_Person_04-23-19.json', 
-    'data/jsonLastFM/JoanJett_Combined_04-23-19.json', 
-    'data/jsonLastFM/Journey_Group_04-23-19.json', 
-    'data/jsonLastFM/MeatLoaf_Person_04-23-19.json', 
-    'data/jsonLastFM/MötleyCrüe_Group_04-23-19.json', 
-    'data/jsonLastFM/StevieNicks_Person_04-23-19.json',
-    'data/jsonLastFM/OzzyOsbourne_Person_04-23-19.json', 
-    'data/jsonLastFM/Queen_Group_04-23-19.json', 
-    'data/jsonLastFM/QuietRiot_Group_04-23-19.json', 
-    'data/jsonLastFM/Radiohead_Group_04-23-19.json',
-    'data/jsonLastFM/Rainbow_Group_04-23-19.json', 
-    'data/jsonLastFM/RonnieDioandtheProphets_Group_04-23-19.json', 
-    'data/jsonLastFM/RonnieDioandtheRedCaps_Group_04-23-19.json', 
-    'data/jsonLastFM/RoxyMusic_Group_04-23-19.json',
-    'data/jsonLastFM/Saxon_Group_04-23-19.json', 
-    'data/jsonLastFM/Stoney&Meatloaf_Group_04-23-19.json',
-    'data/jsonLastFM/TedNugent_Person_04-23-19.json', 
-    'data/jsonLastFM/TheAmboyDukes_Group_04-23-19.json',
-    'data/jsonLastFM/TheCure_Group_04-23-19.json',
-    'data/jsonLastFM/TheElectricElves_Group_04-23-19.json', 
-    'data/jsonLastFM/TheRunaways_Group_04-23-19.json',
-    'data/jsonLastFM/TheZombies_Group_04-23-19.json'
+    'data/AliceCooper_Combined_04-24-19.json',
+    'data/Anvil_Group_04-24-19.json',
+    'data/BlackSabbath_Group_04-24-19.json',
+    'data/LindseyBuckingham_Person_04-24-19.json',
+    'data/DefLeppard_Group_04-24-19.json',
+    'data/Dio_Group_04-24-19.json', 
+    'data/Elf_Group_04-24-19.json', 
+    'data/EvilStig_Group_04-24-19.json', 
+    'data/FleetwoodMac_Group_04-24-19.json',
+    'data/Heaven&Hell_Group_04-24-19.json', 
+    'data/JanetJackson_Person_04-24-19.json', 
+    'data/JoanJett_Combined_04-24-19.json', 
+    'data/Journey_Group_04-24-19.json', 
+    'data/MeatLoaf_Person_04-24-19.json', 
+    'data/MötleyCrüe_Group_04-24-19.json', 
+    'data/StevieNicks_Person_04-24-19.json',
+    'data/OzzyOsbourne_Person_04-24-19.json', 
+    'data/Queen_Group_04-24-19.json', 
+    'data/QuietRiot_Group_04-24-19.json', 
+    'data/Radiohead_Group_04-24-19.json',
+    'data/Rainbow_Group_04-24-19.json', 
+    'data/RonnieDioandtheProphets_Group_04-24-19.json', 
+    'data/RonnieDioandtheRedCaps_Group_04-24-19.json', 
+    'data/RoxyMusic_Group_04-24-19.json',
+    'data/Saxon_Group_04-24-19.json', 
+    'data/Stoney&Meatloaf_Group_04-24-19.json',
+    'data/TedNugent_Person_04-24-19.json', 
+    'data/TheAmboyDukes_Group_04-24-19.json',
+    'data/TheCure_Group_04-24-19.json',
+    'data/TheElectricElves_Group_04-24-19.json', 
+    'data/TheRunaways_Group_04-24-19.json',
+    'data/TheZombies_Group_04-24-19.json'
 );
 
-$filenames2 = array (
-    'data/AliceCooper_Combined_04-23-19.json',
-    'data/Anvil_Group_04-23-19.json',
-    'data/BlackSabbath_Group_04-23-19.json',
-    'data/LindseyBuckingham_Person_04-23-19.json',
-    'data/DefLeppard_Group_04-23-19.json',
-    'data/Dio_Group_04-23-19.json', 
-    'data/Elf_Group_04-23-19.json', 
-    'data/EvilStig_Group_04-23-19.json', 
-    'data/FleetwoodMac_Group_04-23-19.json',
-    'data/Heaven&Hell_Group_04-23-19.json', 
-    'data/JanetJackson_Person_04-23-19.json', 
-    'data/JoanJett_Combined_04-23-19.json'
-);
-
-$filenames = $filenames2;
+$filenames = $filenames;
 
 $x = ceil((count($filenames)));
 
