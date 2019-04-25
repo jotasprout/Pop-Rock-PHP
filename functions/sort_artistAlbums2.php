@@ -13,7 +13,6 @@ if ( !$connekt ) {
 $artistID = "artistID";
 $columnName = "year";
 $currentOrder = "ASC";
-$source = "spotify";
 
 if ( !empty( $_POST[ "artistID" ] ) ) {
 	$artistID = $_POST[ "artistID" ];
@@ -35,10 +34,6 @@ if ( $currentOrder == "DESC" ) {
 
 if ($currentOrder == "ASC") {
     $newOrder = "DESC";
-}
-
-if ($source == "spotify") {
-    $source = "spotify";
 }
 
 // These next three variables are for building the TH table headers. 

@@ -91,16 +91,17 @@ if(!$getit){
 <th>Album Spotify ID</th>
 <th>albumMBID</th>
 -->
-<th onClick="sortColumn('albumName', 'ASC', '<?php echo $artistID; ?>', '<?php echo $source; ?>')"><div class="pointyHead">Album Name</div></th>
-<th onClick="sortColumn('year', 'DESC', '<?php echo $artistID; ?>', '<?php echo $source; ?>')"><div class="pointyHead popStyle">Released</div></th>
+<th onClick="sortColumn('albumName', 'ASC', '<?php echo $artistID; ?>')"><div class="pointyHead">Album Name</div></th>
+<th onClick="sortColumn('year', 'DESC', '<?php echo $artistID; ?>')"><div class="pointyHead popStyle">Released</div></th>
 <!--
 <th><div class="pointyHead popStyle">Total<br>Tracks</div></th>
+
 <th class="popStyle">Spotify<br>Data Date</th>
 -->
-<th onClick="sortColumn('pop', 'ASC', '<?php echo $artistID; ?>', '<?php echo $source; ?>')"><div class="pointyHead popStyle">Spotify<br>Popularity</div></th>
-<!--
+<th onClick="sortColumn('pop', 'ASC', '<?php echo $artistID; ?>')"><div class="pointyHead popStyle">Spotify<br>Popularity</div></th>
+<!---->
 <th>LastFM<br>Data Date</th>
--->
+
 <th class="rightNum pointyHead">LastFM<br>Listeners</th>
 <th class="rightNum pointyHead">LastFM<br>Playcount</th>
 
@@ -154,16 +155,17 @@ if(!$getit){
 <td><?php //echo $albumSpotID ?></td>
 <td><?php //echo $albumMBID ?></td>
 -->
-<td><a href='https://www.roxorsoxor.com/poprock/thisAlbum_TracksList.php?albumID=<?php echo $albumID ?>'><?php echo $albumName ?></a></td>
+<td><a href='https://www.roxorsoxor.com/poprock/album_TracksList.php?albumID=<?php echo $albumID ?>'><?php echo $albumName ?></a></td>
 <td class="popStyle"><?php echo $albumReleased ?></td>
 <!--
 <td class="popStyle"><?php //echo $tracksTotal ?></td>
+
 <th class="popStyle"><?php //echo $date ?></th>
 -->
 <td class="popStyle"><?php echo $albumPop ?></td>
-<!--
-<td class="popStyle"><?php //echo $lastFMDate ?></td>
--->
+<!---->
+<td class="popStyle"><?php echo $lastFMDate ?></td>
+
 <td class="rightNum"><?php echo $albumListeners ?></td>
 <td class="rightNum"><?php echo $albumPlaycount ?></td>
 </tr>
@@ -189,7 +191,7 @@ if(!$getit){
 	let artistID = '<?php echo $artistID ?>';
 </script>
 
-<script src="https://www.roxorsoxor.com/poprock/functions/sort_artistAlbums.js"></script>
+<script src="https://www.roxorsoxor.com/poprock/functions/sort_artistAlbums2.js"></script>
 
 </body>
 	
