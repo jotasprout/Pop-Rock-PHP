@@ -43,7 +43,7 @@ ORDER BY b.albumName ASC;";
 $getit = $connekt->query($blackScabies);
 
 if(!$getit){
-	echo 'Cursed-Crap. Did not run the query.';
+	echo '<p>Cursed-Crap. Did not run the query. Screwed up like this: ' . mysqli_error($connekt) . '</p>';
 }
 
 ?>

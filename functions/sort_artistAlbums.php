@@ -96,7 +96,7 @@ $sortScabies = "SELECT a.albumName, a.year, a.albumArtSpot, a.tracksTotal, z.art
 $sortit = $connekt->query( $sortScabies );
 
 if ( !$sortit ) {
-	echo ('Cursed-Crap. Did not run the query.');
+	echo ('<p>Cursed-Crap. Did not run the query. Screwed up like this: ' . mysqli_error($connekt) . '</p>');
 }
 
 if(!empty($sortit))	 { ?>
