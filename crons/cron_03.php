@@ -30,16 +30,16 @@ function divideCombineAlbums ($artistAlbums) {
 
 	for ($i=0; $i<(count($albumsArrays)); ++$i) {
 				
-		$albumIds = implode(',', $albumsArrays[$i]);
+		$albumSpotIds = implode(',', $albumsArrays[$i]);
 	
 		// For each array of albums (20 at a time), "get several albums"
-		$bunchofalbums = $GLOBALS['api']->getAlbums($albumIds);
+		$bunchofalbums = $GLOBALS['api']->getAlbums($albumSpotIds);
 			
 		foreach ($bunchofalbums->albums as $album) {
 
 			$connekt = new mysqli($GLOBALS['host'], $GLOBALS['un'], $GLOBALS['magicword'], $GLOBALS['db']);
 	
-			$albumID = $album->id;	
+			$albumSpotID = $album->id;	
 			$albumName = $album->name;
 			$albumReleasedWhole = $album->release_date;
 			$albumReleased = substr($albumReleasedWhole, 0, 4);
@@ -49,7 +49,7 @@ function divideCombineAlbums ($artistAlbums) {
 			$albumPop = $album->popularity;
 			$albumArt = $album->images[0]->url;
 
-			$insertAlbum = "INSERT INTO albums (albumID,albumName,artistID,year,albumArt) VALUES('$albumID','$albumName','$thisArtistID','$albumReleased','$albumTotalTracks','$albumArt')";
+			$insertAlbum = "INSERT INTO albums (albumSpotID,albumName,artistID,year,tracksTotal,albumArt) VALUES('$albumSpotID','$albumName','$thisArtistID','$albumReleased','$albumTotalTracks','$albumArt')";
 			
 			if (!$connekt) {
 				echo '<p>Darn. Did not connect. Screwed up like: ' . mysqli_connect_error() . '</p>';
@@ -61,7 +61,7 @@ function divideCombineAlbums ($artistAlbums) {
 				echo '<p>Crap de General Tsao! Could not insert ' . $albumName . ' by ' . $thisArtistName . '. Screwed up like this: ' . mysqli_error($connekt) . '</p>';
 			}
 		
-			$insertAlbumsPop = "INSERT INTO popAlbums (albumID,pop,date) VALUES('$albumID','$albumPop',curdate())";
+			$insertAlbumsPop = "INSERT INTO popAlbums (albumSpotID,pop,date) VALUES('$albumSpotID','$albumPop',curdate())";
 		
 			$rockin = $connekt->query($insertAlbumsPop);
 			
@@ -87,7 +87,7 @@ function divideCombineAlbums ($artistAlbums) {
 
 				echo "<p>Here is chunk #" . $q . ".</p>";
 				
-				$thisAlbumTracks = $GLOBALS['api']->getAlbumTracks($albumID, [
+				$thisAlbumTracks = $GLOBALS['api']->getAlbumTracks($albumSpotID, [
 					'limit' => '50',
 					'offset' => $trackListOffset,
 					'market' => 'US'
@@ -148,8 +148,8 @@ function gatherArtistAlbums ($artistID) {
 		]);
 
 		foreach ($discography->items as $album) {
-			$albumID = $album->id;
-			$discogChunk [] = $albumID;
+			$albumSpotID = $album->id;
+			$discogChunk [] = $albumSpotID;
 		};
 
 		$allAlbumsThisArtist = array_merge($allAlbumsThisArtist, $discogChunk);
