@@ -102,8 +102,8 @@ if(!$getit){
 <!---->
 <th class="popStyle">LastFM<br>Data Date</th>
 
-<th onClick="sortColumn('albumListeners', 'unsorted')"><div class="pointyHead rightNum">LastFM<br>Listeners</div></th>
-<th onClick="sortColumn('albumPlaycount', 'unsorted')"><div class="pointyHead rightNum">LastFM<br>Playcount</div></th>
+<th onClick="sortColumn('albumListeners', 'unsorted', '<?php echo $artistID; ?>')"><div class="pointyHead rightNum">LastFM<br>Listeners</div></th>
+<th onClick="sortColumn('albumPlaycount', 'unsorted', '<?php echo $artistID; ?>')"><div class="pointyHead rightNum">LastFM<br>Playcount</div></th>
 
 </tr>
 
@@ -112,6 +112,7 @@ if(!$getit){
 <tbody>
 					
 <?php
+
 	while ($row = mysqli_fetch_array($getit)) {
 		$artistName = $row['artistName'];
 		if (is_null($row['albumArtSpot'])) {
