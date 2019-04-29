@@ -8,7 +8,7 @@ require_once 'page_pieces/stylesAndScripts.php';
 $connekt = new mysqli( $GLOBALS[ 'host' ], $GLOBALS[ 'un' ], $GLOBALS[ 'magicword' ], $GLOBALS[ 'db' ] );
 
 if ( !$connekt ) {
-	echo 'Darn. Did not connect.';
+	echo 'Darn. Did not connect. Screwed up like this: ' . mysqli_error($connekt) . '</p>';
 };
 
 $artistInfoWithArtAndGenres = "SELECT a.artistID, a.artistArt, a.artistName, g.genre
@@ -18,7 +18,9 @@ $artistInfoWithArtAndGenres = "SELECT a.artistID, a.artistArt, a.artistName, g.g
 
 $getit = $connekt->query( $artistInfoWithArtAndGenres );
 
-if(!$getit){ echo 'Cursed-Crap. Did not run the query.'; }	
+if(!$getit){ 
+	echo 'Cursed-Crap. Did not run the query. Screwed up like this: ' . mysqli_error($getit) . '</p>';
+}	
 
 ?>
 

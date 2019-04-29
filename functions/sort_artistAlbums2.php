@@ -6,7 +6,7 @@ require( "class.artist.php" );
 $connekt = new mysqli( $GLOBALS[ 'host' ], $GLOBALS[ 'un' ], $GLOBALS[ 'magicword' ], $GLOBALS[ 'db' ] );
 
 if ( !$connekt ) {
-	echo 'Darn. Did not connect.';
+	echo 'Darn. Did not connect. Screwed up like this: ' . mysqli_error($connekt) . '</p>';
 };
 
 // if any of these did not come through, the defaults are the basic starting sort from the sql query
@@ -91,7 +91,7 @@ $sortScabies = "SELECT a.albumName, a.year, a.albumArtSpot, a.tracksTotal, z.art
 $sortit = $connekt->query( $sortScabies );
 
 if ( !$sortit ) {
-	echo ('<p>Cursed-Crap. Did not run the query. Screwed up like this: ' . mysqli_error($connekt) . '</p>');
+	echo ('<p>Cursed-Crap. Did not run the query. Screwed up like this: ' . mysqli_error($sortit) . '</p>');
 }
 
 if(!empty($sortit))	 { ?>

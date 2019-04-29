@@ -8,7 +8,7 @@ require_once 'page_pieces/stylesAndScripts.php';
 $connekt = new mysqli($GLOBALS['host'], $GLOBALS['un'], $GLOBALS['magicword'], $GLOBALS['db']);
 
 if (!$connekt) {
-	echo 'Darn. Did not connect.';
+	echo 'Darn. Did not connect. Screwed up like this: ' . mysqli_error($connekt) . '</p>';
 };
 
 $blackScabies = "SELECT b.albumName, b.albumMBID, b.albumSpotID, b.artistID, a.year, a.albumArtSpot, a.tracksTotal, z.artistName, p1.pop, p1.date, f1.dataDate, f1.albumListeners, f1.albumPlaycount, x.albumArtMB

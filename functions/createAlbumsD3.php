@@ -8,7 +8,7 @@ require( "class.artist.php" );
 $connekt = new mysqli( $GLOBALS[ 'host' ], $GLOBALS[ 'un' ], $GLOBALS[ 'magicword' ], $GLOBALS[ 'db' ] );
 
 if ( !$connekt ) {
-	echo 'Darn. Did not connect.';
+	echo 'Darn. Did not connect. Screwed up like this: ' . mysqli_error($connekt) . '</p>';
 };
 
 $happyScabies2 = "SELECT a.albumName, a.year, a.albumArtSpot, z.artistName, p1.pop, p1.date
@@ -56,7 +56,7 @@ if (mysqli_num_rows($result) > 0) {
 }
 
 else {
-	echo "Nope. Nothing to see here.";
+	echo "Nope. Nothing to see here. Screwed up like this: " . mysqli_error($result) . "</p>";
 }
 
 mysqli_close($connekt);
