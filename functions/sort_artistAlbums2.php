@@ -6,7 +6,7 @@ require( "class.artist.php" );
 $connekt = new mysqli( $GLOBALS[ 'host' ], $GLOBALS[ 'un' ], $GLOBALS[ 'magicword' ], $GLOBALS[ 'db' ] );
 
 if ( !$connekt ) {
-	echo 'Darn. Did not connect. Screwed up like this: ' . mysqli_error($connekt) . '</p>';
+	echo 'Darn. Did not connect. Screwed up like this: ' . mysqli_connect_error() . '.</p>';
 };
 
 // if any of these did not come through, the defaults are the basic starting sort from the sql query
@@ -42,21 +42,73 @@ if ($currentOrder == "ASC") {
 // Clicking the header toggles it to DESC so next time it should toggle to ASC
 $yearNewOrder = "ASC";
 // The other two columns are not sorted. Clicking their header sorts them ASC so next time 
-$albumNameNewOrder = "ASC";
+
 $popNewOrder = "ASC";
 
 // For the clicked column
+/*
 if ( $columnName == "albumName" and $currentOrder == "ASC" ) {
 	$albumNameNewOrder = "DESC";
 }
+*/
+
+$albumNameNewOrder = "unsorted";
+
+if ( $columnName == "albumName" ) {
+	if ($currentOrder == "unsorted" or $currentOrder == "DESC") {
+		$albumNameNewOrder = "ASC";
+		$newOrder = "ASC";
+	} else {
+		$albumNameNewOrder = "DESC";
+		$newOrder = "DESC";
+	};
+};
 
 if ( $columnName == "year" and $currentOrder == "ASC" ) {
 	$yearNewOrder = "DESC";
 }
 
+/*
 if ( $columnName == "pop" and $currentOrder == "ASC" ) {
 	$popNewOrder = "DESC";
 }
+*/
+
+$popNewOrder = "unsorted";
+
+if ( $columnName == "pop" ) {
+	if ($currentOrder == "unsorted" or $currentOrder == "ASC") {
+		$popNewOrder = "DESC";
+		$newOrder = "DESC";
+	} else {
+		$popNewOrder = "ASC";
+		$newOrder = "ASC";
+	};
+};
+
+$listenersNewOrder = "unsorted";
+
+if ( $columnName == "albumListeners" ) {
+	if ($currentOrder == "unsorted" or $currentOrder == "ASC") {
+		$listenersNewOrder = "DESC";
+		$newOrder = "DESC";
+	} else {
+		$listenersNewOrder = "ASC";
+		$newOrder = "ASC";
+	};
+};
+
+$playcountNewOrder = "unsorted";
+
+if ( $columnName == "albumPlaycount" ) {
+	if ($currentOrder == "unsorted" or $currentOrder == "ASC") {
+		$playcountNewOrder = "DESC";
+		$newOrder = "DESC";
+	} else {
+		$playcountNewOrder = "ASC";
+		$newOrder = "ASC";
+	};
+};
 
 $sortScabies = "SELECT a.albumName, a.year, a.albumArtSpot, a.tracksTotal, z.artistName, p1.pop, p1.date, a.albumSpotID, f1.albumMBID, f1.dataDate, f1.albumListeners, f1.albumPlaycount
 	FROM (SELECT
@@ -91,7 +143,7 @@ $sortScabies = "SELECT a.albumName, a.year, a.albumArtSpot, a.tracksTotal, z.art
 $sortit = $connekt->query( $sortScabies );
 
 if ( !$sortit ) {
-	echo ('<p>Cursed-Crap. Did not run the query. Screwed up like this: ' . mysqli_error($sortit) . '</p>');
+	echo '<p>Cursed-Crap. Did not run the query. Screwed up like this: ' . mysqli_error($connekt) . '</p>';
 }
 
 if(!empty($sortit))	 { ?>
@@ -115,8 +167,8 @@ if(!empty($sortit))	 { ?>
 <!--
 <th>LastFM<br>Data Date</th>
 -->
-	<th class="rightNum pointyHead">LastFM<br>Listeners</th>
-	<th class="rightNum pointyHead">LastFM<br>Playcount</th>
+<th onClick="sortColumn('artistListeners', '<?php echo $listenersNewOrder; ?>')"><div class="pointyHead rightNum">LastFM<br>Listeners</div></th>
+<th onClick="sortColumn('artistPlaycount', '<?php echo $playcountNewOrder; ?>')"><div class="pointyHead rightNum">LastFM<br>Playcount</div></th>
 </tr>
 </thead>
 	
