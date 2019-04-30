@@ -1,6 +1,6 @@
 <?php
 
-$albumID = $_GET['albumID'];
+$albumSpotID = $_GET['albumSpotID'];
 
 require_once 'rockdb.php';
 require_once 'page_pieces/navbar_rock.php';
@@ -12,16 +12,16 @@ if ( !$connekt ) {
 	echo 'Darn. Did not connect. Screwed up like this: ' . mysqli_error($connekt) . '</p>';
 };
 
-$gatherTrackInfo = "SELECT t.trackID, t.trackName, a.albumName, a.artistID, p1.pop, p1.date, f1.dataDate, f1.trackListeners, f1.trackPlaycount
+$gatherTrackInfo = "SELECT t.trackSpotID, t.trackName, a.albumName, a.artistSpotID, p1.pop, p1.date, f1.dataDate, f1.trackListeners, f1.trackPlaycount
 						FROM tracks t
-						INNER JOIN albums a ON a.albumID = t.albumID
+						INNER JOIN albums a ON a.albumSpotID = t.albumSpotID
 						JOIN (SELECT p.* FROM popTracks p
-								INNER JOIN (SELECT trackID, pop, max(date) AS MaxDate
+								INNER JOIN (SELECT trackSpotID, pop, max(date) AS MaxDate
 											FROM popTracks  
-											GROUP BY trackID) groupedp
-								ON p.trackID = groupedp.trackID
+											GROUP BY trackSpotID) groupedp
+								ON p.trackSpotID = groupedp.trackSpotID
 								AND p.date = groupedp.MaxDate) p1 
-						ON t.trackID = p1.trackID
+						ON t.trackSpotID = p1.trackSpotID
 						LEFT JOIN (SELECT f.*
 								FROM tracksLastFM f
 								INNER JOIN (SELECT trackMBID, trackListeners, trackPlaycount, max(dataDate) AS MaxDataDate
@@ -30,7 +30,7 @@ $gatherTrackInfo = "SELECT t.trackID, t.trackName, a.albumName, a.artistID, p1.p
 								ON f.trackMBID = groupedf.trackMBID
 								AND f.dataDate = groupedf.MaxDataDate) f1
 						ON t.trackMBID = f1.trackMBID
-						WHERE a.albumID = '$albumID'
+						WHERE a.albumSpotID = '$albumSpotID'
 						ORDER BY p1.pop DESC";
 
 $getit = $connekt->query( $gatherTrackInfo );
@@ -70,7 +70,7 @@ if ( !$getit ) {
 					<thead>
 						<tr>
 							<th onClick="sortColumn('albumName', 'ASC')"><div class="pointyHead">Album Name</div></th>
-							<th>Spotify<br>trackID</th>
+							<th>Spotify<br>trackSpotID</th>
 				<!--
 
 				-->
@@ -88,7 +88,7 @@ if ( !$getit ) {
 		while ( $row = mysqli_fetch_array( $getit ) ) {
 			$albumName = $row[ "albumName" ];
 			$trackName = $row[ "trackName" ];
-			$trackID = $row[ "trackID" ];
+			$trackSpotID = $row[ "trackSpotID" ];
 			$trackPop = $row[ "pop" ];
 			$popDate = $row[ "date" ];
 			$lastFMDate = $row[ "dataDate" ];
@@ -105,9 +105,9 @@ if ( !$getit ) {
 	?>
 <tr>
 <td><?php echo $albumName ?></td>
-<td><?php echo $trackID ?></td>
+<td><?php echo $trackSpotID ?></td>
 <!--  -->
-<td><a href='https://www.roxorsoxor.com/poprock/track_Chart.php?trackID=<?php echo $trackID ?>'><?php echo $trackName ?></a></td>
+<td><a href='https://www.roxorsoxor.com/poprock/track_Chart.php?trackSpotID=<?php echo $trackSpotID ?>'><?php echo $trackName ?></a></td>
 <td class="popStyle"><?php echo $popDate ?></td>
 <td class="popStyle"><?php echo $trackPop ?></td>
 <td class="popStyle"><?php echo $lastFMDate ?></td>
