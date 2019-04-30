@@ -120,8 +120,8 @@ function artistsAssemble (relatives) {
             .enter()
             .append("svg:image")
             .attr("xlink:href", function (d){
-                return d.albumArt;
-                console.log(d.albumArt);
+                return d.albumArtSpot;
+                console.log(d.albumArtSpot);
             })
             .attr("x", function (d,i) {
                 return i * 65;

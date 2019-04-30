@@ -24,27 +24,27 @@ function divideCombineAlbumsForTracks ($artistAlbums) {
 
 	for ($i=0; $i<(count($albumsArrays)); ++$i) {
 				
-		$albumIds = implode(',', $albumsArrays[$i]);
+		$albumSpotIDs = implode(',', $albumsArrays[$i]);
 	
 		// For each array of albums (20 at a time), "get several albums"
-		$bunchofalbums = $GLOBALS['api']->getAlbums($albumIds);
+		$bunchofalbums = $GLOBALS['api']->getAlbums($albumSpotIDs);
 			
 		foreach ($bunchofalbums->albums as $album) {
 
 			$AlbumsTracks = array();
 	
-			$albumID = $album->id;
+			$albumSpotID = $album->id;
 			
-			$thisAlbumTracks = $GLOBALS['api']->getAlbumTracks($albumID);
+			$thisAlbumTracks = $GLOBALS['api']->getAlbumTracks($albumSpotID);
 
 			// should be method in albums class
 			foreach ($thisAlbumTracks->items as $track) {
 				
-				// Get each trackID for requesting Full Track Object with popularity
-				$trackID = $track->id;
+				// Get each trackSpotID for requesting Full Track Object with popularity
+				$trackSpotID = $track->id;
 				
-				// Put trackIDs in array for requesting several at a time (far fewer requests)
-				$AlbumsTracks [] = $trackID;
+				// Put trackSpotIDs in array for requesting several at a time (far fewer requests)
+				$AlbumsTracks [] = $trackSpotID;
 				
 			}
 
@@ -74,27 +74,27 @@ function divideCombineAlbums ($artistAlbums) {
 
 	for ($i=0; $i<(count($albumsArrays)); ++$i) {
 				
-		$albumIds = implode(',', $albumsArrays[$i]);
+		$albumSpotIDs = implode(',', $albumsArrays[$i]);
 	
 		// For each array of albums (20 at a time), "get several albums"
-		$bunchofalbums = $GLOBALS['api']->getAlbums($albumIds);
+		$bunchofalbums = $GLOBALS['api']->getAlbums($albumSpotIDs);
 			
 		foreach ($bunchofalbums->albums as $album) {
 
 			$connekt = new mysqli($GLOBALS['host'], $GLOBALS['un'], $GLOBALS['magicword'], $GLOBALS['db']);
 	
-			$albumID = $album->id;	
+			$albumSpotID = $album->id;	
 			$albumNameYucky = $album->name;
 			$albumName = mysqli_real_escape_string($connekt,$albumNameYucky);
 			$albumReleasedWhole = $album->release_date;
 			$albumReleased = substr($albumReleasedWhole, 0, 4);
 			$albumTotalTracks = $album->total_tracks;
-			$thisArtistID = $album->artists[0]->id;
+			$thisartistSpotID = $album->artists[0]->id;
 			$thisArtistName = $album->artists[0]->name;
 			$albumPop = $album->popularity;
-			$albumArt = $album->images[0]->url;
+			$albumArtSpot = $album->images[0]->url;
 
-			$insertAlbums = "INSERT INTO albums (albumID,albumName,artistID,year,albumArt) VALUES('$albumID','$albumName','$thisArtistID','$albumReleased','$albumTotalTracks','$albumArt')";
+			$insertAlbums = "INSERT INTO albums (albumSpotID,albumName,artistSpotID,year,albumArtSpot) VALUES('$albumSpotID','$albumName','$thisartistSpotID','$albumReleased','$albumTotalTracks','$albumArtSpot')";
 			
 			if (!$connekt) {
 				echo 'Darn. Did not connect.<br>';
@@ -106,7 +106,7 @@ function divideCombineAlbums ($artistAlbums) {
 				echo '<p>Crap de General Tsao! Could not insert ' . $albumName . '.</p>';
 			}
 
-			$insertAlbumsPop = "INSERT INTO popAlbums (albumID,pop,date) VALUES('$albumID','$albumPop',curdate())";
+			$insertAlbumsPop = "INSERT INTO popAlbums (albumSpotID,pop,date) VALUES('$albumSpotID','$albumPop',curdate())";
 
 			$rockin = $connekt->query($insertAlbumsPop);
 			
@@ -114,7 +114,7 @@ function divideCombineAlbums ($artistAlbums) {
 				echo 'Sweet & Sour Crap! Could not insert albums popularity.';
 			}
 		
-            echo '<p><img src="' . $albumArt . '" height="64" width="64"><br>' . $albumName . '<br>' . $albumReleased . '<br>Pop is ' . $albumPop . '<br>Total tracks: ' . $albumTotalTracks . '</p>';
+            echo '<p><img src="' . $albumArtSpot . '" height="64" width="64"><br>' . $albumName . '<br>' . $albumReleased . '<br>Pop is ' . $albumPop . '<br>Total tracks: ' . $albumTotalTracks . '</p>';
 
 		}
 	};

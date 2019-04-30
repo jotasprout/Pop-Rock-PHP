@@ -11,7 +11,7 @@ function makeArtistsMenu () {
         console.log(artist);
         const option = document.createElement('option');
         option.innerHTML = artist.artistName;
-        option.value = artist.artistID;
+        option.value = artist.artistSpotID;
         select.append(option);
         /*
 

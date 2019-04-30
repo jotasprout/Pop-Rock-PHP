@@ -140,7 +140,7 @@ d3.json("functions/multiArtists_pop.php", function(data) {
                         .attr("height", h + margin.top + margin.bottom);
 
         const dataNest = d3.nest()
-                        .key(function(d) { return d.artistID;})
+                        .key(function(d) { return d.artistSpotID;})
                         .entries(data);
 
         const color = d3.scaleOrdinal(d3.schemeCategory20);

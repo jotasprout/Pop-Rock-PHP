@@ -9,10 +9,10 @@ if (!$connekt) {
 	echo 'Darn. Did not connect.';
 };
 
-$multiArtistFollowers = 'SELECT a.artistID, a.artistArt , a.artistName, p.followers, p.date
+$multiArtistFollowers = 'SELECT a.artistSpotID, a.artistArt , a.artistName, p.followers, p.date
     FROM artists a
-    JOIN popArtists p ON p.artistID = a.artistID
-	WHERE a.artistID IN ("' . implode('", "', $comedy) . '")
+    JOIN popArtists p ON p.artistSpotID = a.artistSpotID
+	WHERE a.artistSpotID IN ("' . implode('", "', $comedy) . '")
 		AND p.followers IS NOT NULL
 	ORDER BY p.date DESC';
 

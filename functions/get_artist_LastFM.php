@@ -1,7 +1,7 @@
 <?php
 
-$artistID = $_GET['artistID'];
-//$artistID = '3EhbVgyfGd7HkpsagwL9GS';
+$artistSpotID = $_GET['artistSpotID'];
+//$artistSpotID = '3EhbVgyfGd7HkpsagwL9GS';
 require_once '../rockdb.php';
 require( "class.artist.php" );
 
@@ -20,7 +20,7 @@ $getLastFM = "SELECT a.artistName, f1.artistListeners, f1.artistPlaycount, f1.da
 			ON f.artistMBID = groupedf.artistMBID
 			AND f.dataDate = groupedf.MaxDataDate) f1
 	JOIN artists a ON a.artistMBID = f1.artistMBID
-    WHERE a.artistID = '$artistID'
+    WHERE a.artistSpotID = '$artistSpotID'
 	ORDER BY a.artistName ASC";
 
 $getit = mysqli_query($connekt, $getLastFM);

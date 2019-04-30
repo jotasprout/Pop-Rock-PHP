@@ -44,12 +44,12 @@ function divideCombineAlbums ($artistAlbums) {
 			$albumReleasedWhole = $album->release_date;
 			$albumReleased = substr($albumReleasedWhole, 0, 4);
 			$albumTotalTracks = intval($album->total_tracks);
-			$thisArtistID = $album->artists[0]->id;
+			$thisartistSpotID = $album->artists[0]->id;
 			$thisArtistName = $album->artists[0]->name;
 			$albumPop = $album->popularity;
-			$albumArt = $album->images[0]->url;
+			$albumArtSpot = $album->images[0]->url;
 
-			$insertAlbum = "INSERT INTO albums (albumSpotID,albumName,artistID,year,tracksTotal,albumArt) VALUES('$albumSpotID','$albumName','$thisArtistID','$albumReleased','$albumTotalTracks','$albumArt')";
+			$insertAlbum = "INSERT INTO albums (albumSpotID,albumName,artistSpotID,year,tracksTotal,albumArtSpot) VALUES('$albumSpotID','$albumName','$thisartistSpotID','$albumReleased','$albumTotalTracks','$albumArtSpot')";
 			
 			if (!$connekt) {
 				echo '<p>Darn. Did not connect.</p>';
@@ -69,7 +69,7 @@ function divideCombineAlbums ($artistAlbums) {
 				echo '<p>Sweet & Sour Crap! Could not insert albums popularity.</p>';
 			}
 
-            echo '<p><img src="' . $albumArt . '" height="64" width="64"><br>' . $albumName . '<br>' . $albumReleased . '<br><strong>Popularity:</strong> ' . $albumPop . '<br><strong>Total tracks:</strong> ' . $albumTotalTracks . '</p>';
+            echo '<p><img src="' . $albumArtSpot . '" height="64" width="64"><br>' . $albumName . '<br>' . $albumReleased . '<br><strong>Popularity:</strong> ' . $albumPop . '<br><strong>Total tracks:</strong> ' . $albumTotalTracks . '</p>';
 			
 			$AlbumsTracks = array ();
 			
@@ -94,9 +94,9 @@ function divideCombineAlbums ($artistAlbums) {
 				]);
 
 				foreach ($thisAlbumTracks->items as $track) {
-					$trackID = $track->id;
+					$trackSpotID = $track->id;
 					$trackName = $track->name;
-					$AlbumsTracks [] = $trackID;
+					$AlbumsTracks [] = $trackSpotID;
 				};
 
 				$trackListOffset += 50;
@@ -113,18 +113,18 @@ function divideCombineAlbums ($artistAlbums) {
   
 }
 
-function gatherArtistAlbums ($artistID) {
+function gatherArtistAlbums ($artistSpotID) {
 
 	$discogOffset = 0;
 
-	$discography = $GLOBALS['api']->getArtistAlbums($artistID, [
+	$discography = $GLOBALS['api']->getArtistAlbums($artistSpotID, [
 		'limit' => '50',
 		'offset' => $discogOffset
 	]);
 
 	$artistAlbumsTotal = intval($discography->total);
 
-	echo "<p>" . $artistID . " has " . $artistAlbumsTotal . " total albums.</p>";
+	echo "<p>" . $artistSpotID . " has " . $artistAlbumsTotal . " total albums.</p>";
 
 	$a = ceil($artistAlbumsTotal/50);
 
@@ -140,7 +140,7 @@ function gatherArtistAlbums ($artistID) {
 		
 		echo "<p>Here is chunk #" . $p . ".</p>";
 
-		$discography = $GLOBALS['api']->getArtistAlbums($artistID, [
+		$discography = $GLOBALS['api']->getArtistAlbums($artistSpotID, [
 			'limit' => '50',
 			'offset' => $discogOffset,
 			'album_type' => ['album', 'compilation']//,
@@ -199,14 +199,14 @@ function divideCombineArtistsForAlbums ($theseArtists) {
 			if(!$connekt){
 				echo '<p>Fiddlesticks! Could not connect to database.</p>';
 			}
-			$artistID = $artist->id;
+			$artistSpotID = $artist->id;
 			$artistNameYucky = $artist->name;
 			$artistName = mysqli_real_escape_string($connekt,$artistNameYucky);
 			$artistArt = $artist->images[0]->url;
 			$artistPop = $artist->popularity;
 			$artistFollowers = $artist->followers->total;
 	
-			$insertArtistsPop = "INSERT INTO popArtists (artistID,pop,followers,date) VALUES('$artistID','$artistPop','$artistFollowers',curdate())";
+			$insertArtistsPop = "INSERT INTO popArtists (artistSpotID,pop,followers,date) VALUES('$artistSpotID','$artistPop','$artistFollowers',curdate())";
 
 			$rockpop = $connekt->query($insertArtistsPop);
 			if(!$rockpop){
@@ -223,9 +223,9 @@ function divideCombineArtistsForAlbums ($theseArtists) {
 			
 		for ($j=0; $j<(count($artistsArray)); ++$j) {
 
-			$artistID = $artistsArray[$j];
+			$artistSpotID = $artistsArray[$j];
 
-			gatherArtistAlbums ($artistID);
+			gatherArtistAlbums ($artistSpotID);
 			
 		}
 	};	

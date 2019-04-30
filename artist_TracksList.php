@@ -1,6 +1,6 @@
 <?php
 
-$artistID = $_GET['artistID'];
+$artistSpotID = $_GET['artistSpotID'];
 require_once 'rockdb.php';
 require_once 'page_pieces/navbar_rock.php';
 require_once 'page_pieces/stylesAndScripts.php';
@@ -11,16 +11,16 @@ if ( !$connekt ) {
 	echo 'Darn. Did not connect.';
 };
 
-$gatherTrackInfo = "SELECT t.trackID, t.trackName, a.albumName, a.artistID, p1.pop, p1.date, f1.dataDate, f1.trackListeners, f1.trackPlaycount
+$gatherTrackInfo = "SELECT t.trackSpotID, t.trackName, a.albumName, a.artistSpotID, p1.pop, p1.date, f1.dataDate, f1.trackListeners, f1.trackPlaycount
 		FROM tracks t
-		INNER JOIN albums a ON a.albumID = t.albumID
+		INNER JOIN albums a ON a.albumSpotID = t.albumSpotID
 		JOIN (SELECT p.* FROM popTracks p
-				INNER JOIN (SELECT trackID, pop, max(date) AS MaxDate
+				INNER JOIN (SELECT trackSpotID, pop, max(date) AS MaxDate
 							FROM popTracks  
-							GROUP BY trackID) groupedp
-				ON p.trackID = groupedp.trackID
+							GROUP BY trackSpotID) groupedp
+				ON p.trackSpotID = groupedp.trackSpotID
 				AND p.date = groupedp.MaxDate) p1 
-		ON t.trackID = p1.trackID
+		ON t.trackSpotID = p1.trackSpotID
 			LEFT JOIN (SELECT f.*
 				FROM tracksLastFM f
 				INNER JOIN (SELECT trackMBID, trackListeners, trackPlaycount, max(dataDate) AS MaxDataDate
@@ -29,7 +29,7 @@ $gatherTrackInfo = "SELECT t.trackID, t.trackName, a.albumName, a.artistID, p1.p
 				ON f.trackMBID = groupedf.trackMBID
 				AND f.dataDate = groupedf.MaxDataDate) f1
 		ON t.trackMBID = f1.trackMBID
-		WHERE a.artistID = '$artistID'
+		WHERE a.artistSpotID = '$artistSpotID'
 		ORDER BY t.trackName ASC";
 
 $getit = $connekt->query( $gatherTrackInfo );
@@ -69,12 +69,12 @@ if ( !$getit ) {
 <table class="table" id="tableotracks">
 	<thead>
 		<tr>
-			<th onClick="sortColumn('albumName', 'DESC', '<?php echo $artistID ?>')"><div class="pointyHead">Album Title</div></th>
-			<th>Spotify<br>trackID</th>
+			<th onClick="sortColumn('albumName', 'DESC', '<?php echo $artistSpotID ?>')"><div class="pointyHead">Album Title</div></th>
+			<th>Spotify<br>trackSpotID</th>
 			
-			<th onClick="sortColumn('trackName', 'ASC', '<?php echo $artistID ?>')"><div class="pointyHead">Track Title</div></th>
+			<th onClick="sortColumn('trackName', 'ASC', '<?php echo $artistSpotID ?>')"><div class="pointyHead">Track Title</div></th>
 			<th>Spotify<br>Data Date</th>
-			<th class="popStyle" onClick="sortColumn('pop', 'ASC', '<?php echo $artistID ?>')"><div class="pointyHead">Spotify<br>Popularity</div></th>
+			<th class="popStyle" onClick="sortColumn('pop', 'ASC', '<?php echo $artistSpotID ?>')"><div class="pointyHead">Spotify<br>Popularity</div></th>
 			<th class="popStyle">LastFM<br>Data Date</th>
 			<th class="rightNum pointyHead">LastFM<br>Listeners</th>
 			<th class="rightNum pointyHead">LastFM<br>Playcount</th>
@@ -86,7 +86,7 @@ if ( !$getit ) {
 						while ( $row = mysqli_fetch_array( $getit ) ) {
 							$albumName = $row[ "albumName" ];
 							$trackName = $row[ "trackName" ];
-							$trackID = $row[ "trackID" ];
+							$trackSpotID = $row[ "trackSpotID" ];
 							$trackPop = $row[ "pop" ];
 							$popDate = $row[ "date" ];
 							$lastFMDate = $row[ "dataDate" ];
@@ -103,7 +103,7 @@ if ( !$getit ) {
 					?>
 							<tr>
 								<td><?php echo $albumName ?></td>
-								<td><?php echo $trackID ?></td>
+								<td><?php echo $trackSpotID ?></td>
 								
 								<td><?php echo $trackName ?></td>
 								<td><?php echo $popDate ?></td>
@@ -128,7 +128,7 @@ if ( !$getit ) {
 <?php echo $scriptsAndSuch; ?>
 
 <script>
-	let artistID = '<?php echo $artistID ?>';
+	let artistSpotID = '<?php echo $artistSpotID ?>';
 </script>
 
 <script src="https://www.roxorsoxor.com/poprock/functions/sort_Tracks.js"></script>

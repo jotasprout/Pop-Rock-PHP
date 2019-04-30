@@ -23,8 +23,8 @@ $navbar = "
 		<ul class='nav navbar-nav'>		
 			
 			<li><a href='https://roxorsoxor.com/poprock/index.php'>Artists List</a></li>
-			<li><a href='https://roxorsoxor.com/poprock/artist_AlbumsList2.php?artistID=" . $artistID . "'>Albums List</a></li>
-			<li><a href='https://roxorsoxor.com/poprock/artist_TracksList.php?artistID=" . $artistID . "'>Tracks List</a></li>
+			<li><a href='https://roxorsoxor.com/poprock/artist_AlbumsList2.php?artistSpotID=" . $artistSpotID . "'>Albums List</a></li>
+			<li><a href='https://roxorsoxor.com/poprock/artist_TracksList.php?artistSpotID=" . $artistSpotID . "'>Tracks List</a></li>
 			<li><a href='https://roxorsoxor.com/poprock/multiArtists_albumsChart.php'>Group Chart</a></li>
 			<li><a href='https://roxorsoxor.com/poprock/multiArtists_popTimeLines.php'>Compare Time</a></li>
 			<li><a href='https://roxorsoxor.com/poprock/multiArtists_popCurrentColumns.php'>Compare Current Popularity</a></li>	

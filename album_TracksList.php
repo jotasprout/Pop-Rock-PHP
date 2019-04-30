@@ -9,7 +9,7 @@ require_once 'page_pieces/stylesAndScripts.php';
 $connekt = new mysqli( $GLOBALS[ 'host' ], $GLOBALS[ 'un' ], $GLOBALS[ 'magicword' ], $GLOBALS[ 'db' ] );
 
 if ( !$connekt ) {
-	echo 'Darn. Did not connect. Screwed up like this: ' . mysqli_error($connekt) . '</p>';
+	echo 'Darn. Did not connect. Screwed up like this: ' . mysqli_connect_error() . '</p>';
 };
 
 $gatherTrackInfo = "SELECT t.trackSpotID, t.trackName, a.albumName, a.artistSpotID, p1.pop, p1.date, f1.dataDate, f1.trackListeners, f1.trackPlaycount
@@ -36,7 +36,7 @@ $gatherTrackInfo = "SELECT t.trackSpotID, t.trackName, a.albumName, a.artistSpot
 $getit = $connekt->query( $gatherTrackInfo );
 
 if ( !$getit ) {
-	echo 'Cursed-Crap. Did not run the query. Screwed up like this: ' . mysqli_error($getit) . '</p>';
+	echo '<p>Cursed-Crap. Did not run the query. Screwed up like this: ' . mysqli_error($connekt) . '</p>';
 }
 
 ?>
@@ -66,11 +66,11 @@ if ( !$getit ) {
 
 				<?php if(!empty($getit)) { ?>
 				
-				<table class="table" id="tableotracks">
-					<thead>
-						<tr>
-							<th onClick="sortColumn('albumName', 'ASC')"><div class="pointyHead">Album Name</div></th>
-							<th>Spotify<br>trackSpotID</th>
+<table class="table" id="tableotracks">
+	<thead>
+		<tr>
+			<th onClick="sortColumn('albumName', 'ASC')"><div class="pointyHead">Album Name</div></th>
+			<th>Spotify<br>trackSpotID</th>
 				<!--
 
 				-->
@@ -86,8 +86,11 @@ if ( !$getit ) {
 	<tbody>
 	<?php
 		while ( $row = mysqli_fetch_array( $getit ) ) {
+			echo "inside the while";
 			$albumName = $row[ "albumName" ];
+			echo "<p>album name is " . $albumName . "</p>";
 			$trackName = $row[ "trackName" ];
+			echo "<p>track name is " . $trackName . "</p>";
 			$trackSpotID = $row[ "trackSpotID" ];
 			$trackPop = $row[ "pop" ];
 			$popDate = $row[ "date" ];
@@ -128,7 +131,7 @@ if ( !$getit ) {
 	</div> <!-- closing container -->
 	
 <?php echo $scriptsAndSuch; ?>
-<script src="https://www.roxorsoxor.com/poprock/functions/sortTheseTracks.js"></script>
+<script src="https://www.roxorsoxor.com/poprock/functions/sort_Tracks.js"></script>
 </body>
 	
 </html>

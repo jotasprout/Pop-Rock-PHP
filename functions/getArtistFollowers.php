@@ -4,14 +4,14 @@
 // Eventually, replace artists.php with class file?
 require ("class.artist.php");
 
-function updateMyArtistFollowers($artistID, $artistFollowers){
+function updateMyArtistFollowers($artistSpotID, $artistFollowers){
 
 	$connekt = new mysqli($GLOBALS['host'], $GLOBALS['un'], $GLOBALS['magicword'], $GLOBALS['db']);
 
-	$artistID = $artistID;
+	$artistSpotID = $artistSpotID;
 	$artistFollowers = $artistFollowers;
 
-	$updatePopArtistsTableFollowers = "UPDATE popArtists SET followers $artistFollowers WHERE artistID = $artistID";
+	$updatePopArtistsTableFollowers = "UPDATE popArtists SET followers $artistFollowers WHERE artistSpotID = $artistSpotID";
 
 	$followArtist = $connekt->query($updatePopArtistsTableFollowers);
 	
@@ -47,17 +47,17 @@ function getArtistFollowersFromSpotify ($theseArtists) {
 				
 		$artistsThisTime = count($artistsArrays[$i]);
 
-		$artistIds = implode(',', $artistsArrays[$i]);
+		$artistSpotIDs = implode(',', $artistsArrays[$i]);
 
 		// For each array of artists (50 at a time), "get several artists"
-		$bunchofartists = $GLOBALS['api']->getArtists($artistIds);
+		$bunchofartists = $GLOBALS['api']->getArtists($artistSpotIDs);
 			
 		foreach ($bunchofartists->artists as $artist) {
 			$connekt = new mysqli($GLOBALS['host'], $GLOBALS['un'], $GLOBALS['magicword'], $GLOBALS['db']);
 			if(!$connekt){
 				echo 'Fiddlesticks! Could not connect to database.<br>';
 			}
-			$artistID = $artist->id;
+			$artistSpotID = $artist->id;
 			$artistNameYucky = $artist->name;
 			$artistName = mysqli_real_escape_string($connekt,$artistNameYucky);
 			$artistArt = $artist->images[0]->url;
@@ -65,7 +65,7 @@ function getArtistFollowersFromSpotify ($theseArtists) {
 			$artistFollowers = $artist->followers->total;
 			$jsonArtistGenres = $artist->genres;
 
-			$insertArtistsInfo = "INSERT INTO artists (artistID, artistName, artistArt) VALUES('$artistID','$artistName', '$artistArt')";
+			$insertArtistsInfo = "INSERT INTO artists (artistSpotID, artistName, artistArt) VALUES('$artistSpotID','$artistName', '$artistArt')";
 
 			$rockout = $connekt->query($insertArtistsInfo);
 
@@ -73,7 +73,7 @@ function getArtistFollowersFromSpotify ($theseArtists) {
 			echo 'Cursed-Crap. Could not insert artist ' . $artistName . '.<br>';
 			}
 	
-			$insertArtistsPop = "INSERT INTO popArtists (artistID,pop,followers,date) VALUES('$artistID','$artistPop','$artistFollowers',curdate())";
+			$insertArtistsPop = "INSERT INTO popArtists (artistSpotID,pop,followers,date) VALUES('$artistSpotID','$artistPop','$artistFollowers',curdate())";
 
 			$rockpop = $connekt->query($insertArtistsPop);
 			if(!$rockpop){

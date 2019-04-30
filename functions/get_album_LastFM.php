@@ -1,6 +1,6 @@
 <?php
 
-$albumID = $_GET['albumID'];
+$albumSpotID = $_GET['albumSpotID'];
 require_once '../rockdb.php';
 require( "class.album.php" );
 
@@ -19,8 +19,8 @@ $getLastFM = "SELECT z.artistName, a.albumName, f1.albumListeners, f1.albumPlayc
 			ON f.albumMBID = groupedf.albumMBID
 			AND f.dataDate = groupedf.MaxDataDate) f1
 	JOIN albums a ON a.albumMBID = f1.albumMBID
-    JOIN artists z ON a.artistSpotID = z.artistID
-    WHERE a.albumID = '$albumID'
+    JOIN artists z ON a.artistSpotID = z.artistSpotID
+    WHERE a.albumSpotID = '$albumSpotID'
 	ORDER BY a.albumName ASC";
 
 $getit = mysqli_query($connekt, $getLastFM);

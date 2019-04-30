@@ -1,8 +1,8 @@
 <?php 
 
 include '../page_pieces/sesh.php';
-$artistID = $_SESSION['artist'];
-$_SESSION['artist'] = $artistID;
+$artistSpotID = $_SESSION['artist'];
+$_SESSION['artist'] = $artistSpotID;
 require_once '../rockdb.php';
 require_once 'artists.php';
 
@@ -31,10 +31,10 @@ if ( $order == "ASC" ) {
 	$dateNextOrder = "DESC";
 }
 
-$artistInfoAll = "SELECT a.artistID, a.artistName, b.pop, b.date 
+$artistInfoAll = "SELECT a.artistSpotID, a.artistName, b.pop, b.date 
 	FROM artists a
-		INNER JOIN popArtists b ON a.artistID = b.artistID
-			WHERE a.artistID = '$artistID'
+		INNER JOIN popArtists b ON a.artistSpotID = b.artistSpotID
+			WHERE a.artistSpotID = '$artistSpotID'
 			ORDER BY " . $sortBy . " " . $order . ";";
 
 $sortit = $connekt->query($artistInfoAll);
@@ -57,7 +57,7 @@ if(!empty($sortit))	 { ?>
 
 <?php
 		while ($row = mysqli_fetch_array($sortit)) {
-	// $artistID = $row["artistID"];
+	// $artistSpotID = $row["artistSpotID"];
 	$artistName = $row["artistName"];
 	$artistPop = $row["pop"];
 	$popDate = $row["date"];

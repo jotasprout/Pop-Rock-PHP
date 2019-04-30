@@ -1,5 +1,5 @@
 <?php 
-    $trackID = $_GET['trackID'];
+    $trackSpotID = $_GET['trackSpotID'];
 	require_once 'page_pieces/stylesAndScripts.php';
 	require_once 'page_pieces/navbar_rock.php';
 ?>
@@ -42,9 +42,9 @@
 	<?php echo $navbar ?>
 
     <!--
-        Get trackID from URL
-        fetch trackName, artistName, artistArt, albumName, albumArt and trackPop using that artistID
-        Display trackName, artistName, artistArt, albumName, albumArt and trackPop
+        Get trackSpotID from URL
+        fetch trackName, artistName, artistArt, albumName, albumArtSpot and trackPop using that artistSpotID
+        Display trackName, artistName, artistArt, albumName, albumArtSpot and trackPop
     -->
 
 	<div class="panel panel-primary">
@@ -68,7 +68,7 @@ var padding = 40;
 
 var dataset, xScale, yScale, xAxis, yAxis, line;
 
-d3.json("functions/createTrackD3.php?trackID=<?php echo $trackID ?>", function(data) {
+d3.json("functions/createTrackD3.php?trackSpotID=<?php echo $trackSpotID ?>", function(data) {
     
     console.log(data);
     

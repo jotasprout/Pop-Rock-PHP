@@ -7,21 +7,21 @@
 
     class artist {
 
-        var $artistID;
+        var $artistSpotID;
         var $artistName;
         var $artistPop;
 
         function __construct ($artists_id, $artists_name) {
-            $this -> artistID = $artists_id;
+            $this -> artistSpotID = $artists_id;
             $this -> artistName = $artists_name;
         }
 
-        function set_artistID ($new_artistID) {
-            $this -> artistID = $new_artistID;
+        function set_artistSpotID ($new_artistSpotID) {
+            $this -> artistSpotID = $new_artistSpotID;
         }
 
-        function get_artistID () {
-            return $this -> artistID;
+        function get_artistSpotID () {
+            return $this -> artistSpotID;
         }
 
         function set_artistName ($new_artistName) {

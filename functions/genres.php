@@ -15,7 +15,7 @@ $accessToken = $_SESSION['accessToken'];
 $GLOBALS['api'] = new SpotifyWebAPI\SpotifyWebAPI();
 $GLOBALS['api']->setAccessToken($accessToken);
 
-function addGenres ($artistID, $jsonArtistGenres, $artistNameYucky) {
+function addGenres ($artistSpotID, $jsonArtistGenres, $artistNameYucky) {
 
     $connekt = new mysqli($GLOBALS['host'], $GLOBALS['un'], $GLOBALS['magicword'], $GLOBALS['db']);
 
@@ -25,7 +25,7 @@ function addGenres ($artistID, $jsonArtistGenres, $artistNameYucky) {
         echo 'Yay! We are connected to the database!<br>';
 
         for ($i=0; $i<(count($jsonArtistGenres)); ++$i) {
-            $insertArtistGenres = "INSERT INTO genres (artistID,genre) VALUES('$artistID','$jsonArtistGenres[$i]')";
+            $insertArtistGenres = "INSERT INTO genres (artistSpotID,genre) VALUES('$artistSpotID','$jsonArtistGenres[$i]')";
 
             $rockicon = $connekt->query($insertArtistGenres);
 
@@ -40,7 +40,7 @@ function addGenres ($artistID, $jsonArtistGenres, $artistNameYucky) {
 
 function getAndStoreSpotifyGenres ($thisArtist) {
     $artist = $GLOBALS['api']->getArtist($thisArtist);
-    $artistID = $artist->id;
+    $artistSpotID = $artist->id;
     $artistNameYucky = $artist->name;
     $artistName = mysqli_real_escape_string($connekt,$artistNameYucky);
     $jsonArtistGenres = $artist->genres;
@@ -49,7 +49,7 @@ function getAndStoreSpotifyGenres ($thisArtist) {
     for ($i=0; $i<(count($jsonArtistGenres)); ++$i) {
         echo $jsonArtistGenres[$i] . '<br>'; 
     };  
-    addGenres ($artistID, $jsonArtistGenres, $artistNameYucky);
+    addGenres ($artistSpotID, $jsonArtistGenres, $artistNameYucky);
 }
 
 function getAndStoreSpotifyGenresForAllArtists ($allArtists) {

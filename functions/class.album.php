@@ -2,16 +2,16 @@
 
     class album {
 
-        public function insert_album($albumID,$albumName,$albumReleased,$thisArtistID) {
+        public function insert_album($albumSpotID,$albumName,$albumReleased,$thisartistSpotID) {
 
             
 
             try {
-                $stmt = $rock->conn->prepare("INSERT INTO albums (albumID,albumName,albumReleased,thisArtistID) VALUES(:albumID, :albumName, :albumReleased, :thisArtistID)");
-                $stmt->bindparam(":albumID",$albumID);
+                $stmt = $rock->conn->prepare("INSERT INTO albums (albumSpotID,albumName,albumReleased,thisartistSpotID) VALUES(:albumSpotID, :albumName, :albumReleased, :thisartistSpotID)");
+                $stmt->bindparam(":albumSpotID",$albumSpotID);
                 $stmt->bindparam(":albumName",$albumName);
                 $stmt->bindparam(":albumReleased",$albumReleased);
-                $stmt->bindparam(":thisArtistID",$thisArtistID);
+                $stmt->bindparam(":thisartistSpotID",$thisartistSpotID);
                 $stmt->execute();
                 return $stmt;
             }
@@ -23,8 +23,8 @@
         }
         
         // Do these variables need to be declared here? Or are below functions enough? What about variables in albums file? And that file should be combined with this, correct?
-        var $albumID;
-		var $albumArtist;
+        var $albumSpotID;
+		var $albumArtSpotist;
         var $albumName;
 		var $albumReleased;
 		var $albumPop;
@@ -32,16 +32,16 @@
         public function __construct () {
         }
 
-//        public function __construct ($thisAlbumID) {
-//            $this -> albumID = $thisAlbumID;
+//        public function __construct ($thisalbumSpotID) {
+//            $this -> albumSpotID = $thisalbumSpotID;
 //        }
 
-        function set_albumID ($new_albumID) {
-            $this -> albumID = $new_albumID;
+        function set_albumSpotID ($new_albumSpotID) {
+            $this -> albumSpotID = $new_albumSpotID;
         }
 
-        function get_albumID () {
-            return $this -> albumID;
+        function get_albumSpotID () {
+            return $this -> albumSpotID;
         }
 
         function set_albumName ($new_albumName) {
@@ -68,12 +68,12 @@
             return $this -> albumPop;
         }
 		
-		function set_albumArtist ($new_albumArtist) {
-            $this -> albumArtist = $new_albumArtist;
+		function set_albumArtSpotist ($new_albumArtSpotist) {
+            $this -> albumArtSpotist = $new_albumArtSpotist;
         }
 
-        function get_albumArtist () {
-            return $this -> albumArtist;
+        function get_albumArtSpotist () {
+            return $this -> albumArtSpotist;
         }
 		
 		function set_albumReleased ($new_albumReleased) {

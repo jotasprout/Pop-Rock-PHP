@@ -1,6 +1,6 @@
 <?php 
 
-$artistID = $_GET['artistID'];
+$artistSpotID = $_GET['artistSpotID'];
 
 require_once 'rockdb.php';
 require_once 'page_pieces/stylesAndScripts.php';
@@ -13,10 +13,10 @@ if (!$connekt) {
 	echo 'Darn. Did not connect.';
 };
 
-$artistInfoAll = "SELECT a.artistID, a.artistName, b.pop, b.followers, b.date, f1.dataDate,  
+$artistInfoAll = "SELECT a.artistSpotID, a.artistName, b.pop, b.followers, b.date, f1.dataDate,  
 	FROM artists a
-		INNER JOIN popArtists b ON a.artistID = b.artistID
-			WHERE a.artistID = '$artistID'
+		INNER JOIN popArtists b ON a.artistSpotID = b.artistSpotID
+			WHERE a.artistSpotID = '$artistSpotID'
 				ORDER BY b.date DESC";
 
 $getit = $connekt->query($artistInfoAll);
@@ -67,7 +67,7 @@ if(!$getit){
 			<?php
 
 			while ($row = mysqli_fetch_array($getit)) {
-				// $artistID = $row["artistID"];
+				// $artistSpotID = $row["artistSpotID"];
 				$artistName = $row["artistName"];
 				$artistPop = $row["pop"];
 				$lastFMDate = $row[ "dataDate" ];

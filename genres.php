@@ -11,9 +11,9 @@ if ( !$connekt ) {
 	echo 'Darn. Did not connect. Screwed up like this: ' . mysqli_error($connekt) . '</p>';
 };
 
-$artistInfoWithArtAndGenres = "SELECT a.artistID, a.artistArt, a.artistName, g.genre
+$artistInfoWithArtAndGenres = "SELECT a.artistSpotID, a.artistArt, a.artistName, g.genre
     FROM artists a
-    JOIN genres g ON a.artistID = g.artistID
+    JOIN genres g ON a.artistSpotID = g.artistSpotID
 	ORDER BY a.artistName ASC";
 
 $getit = $connekt->query( $artistInfoWithArtAndGenres );

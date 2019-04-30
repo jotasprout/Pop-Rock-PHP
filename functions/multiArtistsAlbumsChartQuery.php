@@ -32,24 +32,24 @@ switch ($relatives){
 		break;		
 };
 
-$happyScabies2 = 'SELECT a.albumName, a.artistID, a.year, a.albumArt, z.artistName, p1.pop, p1.date
+$happyScabies2 = 'SELECT a.albumName, a.artistSpotID, a.year, a.albumArtSpot, z.artistName, p1.pop, p1.date
 FROM (SELECT
-			y.albumID AS albumID,
+			y.albumSpotID AS albumSpotID,
 			y.albumName AS albumName,
-			y.artistID AS artistID,
-			y.albumArt AS albumArt,
+			y.artistSpotID AS artistSpotID,
+			y.albumArtSpot AS albumArtSpot,
 			y.year AS year
 		FROM albums y) a
-JOIN artists z ON z.artistID = a.artistID
+JOIN artists z ON z.artistSpotID = a.artistSpotID
 JOIN (SELECT p.*
 		FROM popAlbums p
-		INNER JOIN (SELECT albumID, pop, max(date) AS MaxDate
+		INNER JOIN (SELECT albumSpotID, pop, max(date) AS MaxDate
 					FROM popAlbums  
-					GROUP BY albumID) groupedp
-		ON p.albumID = groupedp.albumID
+					GROUP BY albumSpotID) groupedp
+		ON p.albumSpotID = groupedp.albumSpotID
 		AND p.date = groupedp.MaxDate) p1 
-ON a.albumID = p1.albumID
-WHERE a.artistID IN ("' . implode('", "', $group) . '")
+ON a.albumSpotID = p1.albumSpotID
+WHERE a.artistSpotID IN ("' . implode('", "', $group) . '")
 ORDER BY year ASC';						
 
 $result = mysqli_query($connekt, $happyScabies2);

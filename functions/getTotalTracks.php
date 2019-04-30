@@ -36,19 +36,19 @@ function divideCombineAlbums ($artistAlbums) {
 
 	for ($i=0; $i<(count($albumsArrays)); ++$i) {
 				
-		$albumIds = implode(',', $albumsArrays[$i]);
+		$albumSpotIDs = implode(',', $albumsArrays[$i]);
 	
-		$bunchofalbums = $GLOBALS['api']->getAlbums($albumIds);
+		$bunchofalbums = $GLOBALS['api']->getAlbums($albumSpotIDs);
 			
 		foreach ($bunchofalbums->albums as $album) {
 
 			$connekt = new mysqli($GLOBALS['host'], $GLOBALS['un'], $GLOBALS['magicword'], $GLOBALS['db']);
 	
-            $albumID = $album->id;	
+            $albumSpotID = $album->id;	
             $albumName = $album->name;
 			$albumTotalTracks = $album->total_tracks;
 
-			$insertAlbumTotalTracks = "UPDATE albums SET albumTotalTracks='$albumTotalTracks' WHERE albumID='$albumID' AND albumTotalTracks='0'";
+			$insertAlbumTotalTracks = "UPDATE albums SET albumTotalTracks='$albumTotalTracks' WHERE albumSpotID='$albumSpotID' AND albumTotalTracks='0'";
 			
 			if (!$connekt) {
 				echo 'Darn. Did not connect.<br>';
@@ -86,15 +86,15 @@ function divideCombineArtistsForAlbums ($theseArtists) {
 			
 		for ($j=0; $j<(count($artistsArray)); ++$j) {
 
-			$artistID = $artistsArray[$j];
+			$artistSpotID = $artistsArray[$j];
 
-			$discography = $GLOBALS['api']->getArtistAlbums($artistID, [
+			$discography = $GLOBALS['api']->getArtistAlbums($artistSpotID, [
                 'limit' => '50'
 			]);
 			
 			foreach ($discography->items as $album) {
-				$albumID = $album->id;
-				$artistAlbums [] = $albumID;
+				$albumSpotID = $album->id;
+				$artistAlbums [] = $albumSpotID;
 			}
 			
 			divideCombineAlbums ($artistAlbums);

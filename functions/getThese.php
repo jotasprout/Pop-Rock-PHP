@@ -6,15 +6,15 @@ require_once '../rockdb.php';
 
 $AlbumsTracks = array();
 	
-$albumID = '74QNc1Vo0PshHAkQu3K9sI';
+$albumSpotID = '74QNc1Vo0PshHAkQu3K9sI';
 			
-$thisAlbumTracks = $GLOBALS['api']->getAlbumTracks($albumID);
+$thisAlbumTracks = $GLOBALS['api']->getAlbumTracks($albumSpotID);
 
 foreach ($thisAlbumTracks->items as $track) {
-    // Get each trackID for requesting Full Track Object with popularity
-    $trackID = $track->id;
-    // Put trackIDs in array for requesting several at a time (far fewer requests)
-    $AlbumsTracks [] = $trackID;
+    // Get each trackSpotID for requesting Full Track Object with popularity
+    $trackSpotID = $track->id;
+    // Put trackSpotIDs in array for requesting several at a time (far fewer requests)
+    $AlbumsTracks [] = $trackSpotID;
 }
 
 
@@ -42,10 +42,10 @@ function divideCombineInsertTracksAndPop ($AlbumsTracks) {
 		$tracksThisTime = count($albumsTracksArrays[$i]);
 		echo $tracksThisTime . '<br>';
 
-		$trackIds = implode(',', $albumsTracksArrays[$i]);
+		$trackSpotIDs = implode(',', $albumsTracksArrays[$i]);
 
 		// For each array of tracks (50 at a time), "get several tracks"
-		$bunchoftracks = $GLOBALS['api']->getTracks($trackIds);
+		$bunchoftracks = $GLOBALS['api']->getTracks($trackSpotIDs);
 			
 		foreach ($bunchoftracks->tracks as $track) {
 			
@@ -55,8 +55,8 @@ function divideCombineInsertTracksAndPop ($AlbumsTracks) {
 				echo 'Darn. Did not connect.';
 			};			
 
-			$trackID = $track->id;
-			$trackAlbumID = $track->album->id;
+			$trackSpotID = $track->id;
+			$trackalbumSpotID = $track->album->id;
 			$trackAlbumNameYucky = $track->album->name;
 			$trackAlbumName = mysqli_real_escape_string($connekt,$trackAlbumNameYucky);
 			$trackNameYucky = $track->name;
@@ -64,7 +64,7 @@ function divideCombineInsertTracksAndPop ($AlbumsTracks) {
 			$trackPop = $track->popularity;
 			$thisArtistName = $track->artists[0]->name;
 			
-			$insertTrackInfo = "INSERT INTO tracks (trackID,trackName,albumID) VALUES('$trackID','$trackName','$trackAlbumID')";
+			$insertTrackInfo = "INSERT INTO tracks (trackSpotID,trackName,albumSpotID) VALUES('$trackSpotID','$trackName','$trackalbumSpotID')";
 	
 			$rockout = $connekt->query($insertTrackInfo);
 	
@@ -72,7 +72,7 @@ function divideCombineInsertTracksAndPop ($AlbumsTracks) {
 				echo 'Cursed-Crap. Could not insert "' . $trackName . '" from <i>' . $trackAlbumName . '</i>.<br>';
 			}
 	
-			$insertTrackPop = "INSERT INTO popTracks (trackID,pop) VALUES('$trackID','$trackPop')";
+			$insertTrackPop = "INSERT INTO popTracks (trackSpotID,pop) VALUES('$trackSpotID','$trackPop')";
 	
 			$rockpop = $connekt->query($insertTrackPop);
 			

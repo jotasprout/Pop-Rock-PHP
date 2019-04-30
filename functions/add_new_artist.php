@@ -16,7 +16,7 @@ $accessToken = $_SESSION['accessToken'];
 $GLOBALS['api'] = new SpotifyWebAPI\SpotifyWebAPI();
 $GLOBALS['api']->setAccessToken($accessToken);
 $baseURL = "https://api.spotify.com/v1/artists/";
-// $artistID = $_POST['artist'];
+// $artistSpotID = $_POST['artist'];
 // $thisArtist = '3D4qYDvoPn5cQxtBm4oseo';
 // $artistFromJS = $_POST['artist'];
 
@@ -39,8 +39,8 @@ function addArtist ($thisArtist) {
         echo 'Fiddlesticks! Could not connect to database.<br>';
     }
 
-    $artistID = $artist->id;
-    // echo $artistID;
+    $artistSpotID = $artist->id;
+    // echo $artistSpotID;
     $artistNameYucky = $artist->name;
     $artistName = mysqli_real_escape_string($connekt,$artistNameYucky);
     // echo $artistName;
@@ -48,21 +48,21 @@ function addArtist ($thisArtist) {
     // echo $artistArt;
     $artistPop = $artist->popularity;
     // echo $artistPop;
-    $artistInfo = '{"artistID": "' . $artistID . '", "artistName": "' . $artistName . '", "artistArt": "' . $artistArt . '", "artistPop": "' . $artistPop . '"}';
+    $artistInfo = '{"artistSpotID": "' . $artistSpotID . '", "artistName": "' . $artistName . '", "artistArt": "' . $artistArt . '", "artistPop": "' . $artistPop . '"}';
     // array ();
-    //     $artistInfo[] = $artistID;
+    //     $artistInfo[] = $artistSpotID;
     //     $artistInfo[] = $artistName;
     //     $artistInfo[] = $artistArt;
     //     $artistInfo[] = $artistPop;
 
-    $insertArtistsInfo = "INSERT INTO artists (artistID,artistName, artistArt) VALUES('$artistID','$artistName', '$artistArt')";
+    $insertArtistsInfo = "INSERT INTO artists (artistSpotID,artistName, artistArt) VALUES('$artistSpotID','$artistName', '$artistArt')";
 
     $rockout = $connekt->query($insertArtistsInfo);
 
     if(!$rockout){
         echo 'Cursed-Crap. Could not insert artist ' . $artistName . '.<br>';
     }
-    $insertArtistsPop = "INSERT INTO popArtists (artistID,pop) VALUES('$artistID','$artistPop')";
+    $insertArtistsPop = "INSERT INTO popArtists (artistSpotID,pop) VALUES('$artistSpotID','$artistPop')";
     $rockpop = $connekt->query($insertArtistsPop);
     if(!$rockpop){
         echo 'Cursed-Crap. Could not insert artists popularity.';

@@ -1,6 +1,6 @@
 <?php
 
-$artistID = $_GET['artistID'];
+$artistSpotID = $_GET['artistSpotID'];
 require_once 'rockdb.php';
 require_once 'page_pieces/navbar_rock.php';
 require_once 'page_pieces/stylesAndScripts.php';
@@ -8,19 +8,19 @@ require_once 'page_pieces/stylesAndScripts.php';
 $connekt = new mysqli($GLOBALS['host'], $GLOBALS['un'], $GLOBALS['magicword'], $GLOBALS['db']);
 
 if (!$connekt) {
-	echo 'Darn. Did not connect. Screwed up like this: ' . mysqli_error($connekt) . '</p>';
+	echo 'Darn. Did not connect. Screwed up like this: ' . mysqli_connect_error() . '</p>';
 };
 
-$blackScabies = "SELECT b.albumName, b.albumMBID, b.albumSpotID, b.artistID, a.year, a.albumArtSpot, a.tracksTotal, z.artistName, p1.pop, p1.date, f1.dataDate, f1.albumListeners, f1.albumPlaycount, x.albumArtMB
-FROM (SELECT sp.albumName, sp.albumMBID, sp.albumSpotID, sp.artistID
+$blackScabies = "SELECT b.albumName, b.albumMBID, b.albumSpotID, b.artistSpotID, a.year, a.albumArtSpot, a.tracksTotal, z.artistName, p1.pop, p1.date, f1.dataDate, f1.albumListeners, f1.albumPlaycount, x.albumArtMB
+FROM (SELECT sp.albumName, sp.albumMBID, sp.albumSpotID, sp.artistSpotID
 	FROM albums sp
-	WHERE sp.artistID='$artistID'
+	WHERE sp.artistSpotID='$artistSpotID'
 UNION
 SELECT mb.albumName, mb.albumMBID, mb.albumSpotID, mb.artistSpotID
 	FROM albumsMB mb 
-	WHERE mb.artistSpotID='$artistID') b 
+	WHERE mb.artistSpotID='$artistSpotID') b 
 LEFT JOIN albums a ON b.albumSpotID = a.albumSpotID	
-JOIN artists z ON z.artistID = b.artistID
+JOIN artists z ON z.artistSpotID = b.artistSpotID
 LEFT JOIN (SELECT p.*
 		FROM popAlbums p
 		INNER JOIN (SELECT albumSpotID, pop, max(date) AS MaxDate
@@ -91,19 +91,19 @@ if(!$getit){
 <th>Album Spotify ID</th>
 <th>albumMBID</th>
 -->
-<th onClick="sortColumn('albumName', 'ASC', '<?php echo $artistID; ?>')"><div class="pointyHead">Album Name</div></th>
-<th onClick="sortColumn('year', 'unsorted', '<?php echo $artistID; ?>')"><div class="pointyHead popStyle">Released</div></th>
+<th onClick="sortColumn('albumName', 'ASC', '<?php echo $artistSpotID; ?>')"><div class="pointyHead">Album Name</div></th>
+<th onClick="sortColumn('year', 'unsorted', '<?php echo $artistSpotID; ?>')"><div class="pointyHead popStyle">Released</div></th>
 <!--
 <th><div class="pointyHead popStyle">Total<br>Tracks</div></th>
 -->
 <th class="popStyle">Spotify<br>Data Date</th>
 
-<th onClick="sortColumn('pop', 'ASC', '<?php echo $artistID; ?>')"><div class="pointyHead popStyle">Spotify<br>Popularity</div></th>
+<th onClick="sortColumn('pop', 'ASC', '<?php echo $artistSpotID; ?>')"><div class="pointyHead popStyle">Spotify<br>Popularity</div></th>
 <!---->
 <th class="popStyle">LastFM<br>Data Date</th>
 
-<th onClick="sortColumn('albumListeners', 'unsorted', '<?php echo $artistID; ?>')"><div class="pointyHead rightNum">LastFM<br>Listeners</div></th>
-<th onClick="sortColumn('albumPlaycount', 'unsorted', '<?php echo $artistID; ?>')"><div class="pointyHead rightNum">LastFM<br>Playcount</div></th>
+<th onClick="sortColumn('albumListeners', 'unsorted', '<?php echo $artistSpotID; ?>')"><div class="pointyHead rightNum">LastFM<br>Listeners</div></th>
+<th onClick="sortColumn('albumPlaycount', 'unsorted', '<?php echo $artistSpotID; ?>')"><div class="pointyHead rightNum">LastFM<br>Playcount</div></th>
 
 </tr>
 
@@ -122,10 +122,10 @@ if(!$getit){
 		};
 
 		if (is_null($row['albumSpotID'])) {
-			$albumID = $row['albumMBID'];
+			$albumSpotID = $row['albumMBID'];
 			$source = 'musicbrainz';
 		} else {
-			$albumID = $row['albumSpotID'];
+			$albumSpotID = $row['albumSpotID'];
 			$source = 'spotify';
 		};
 
@@ -156,7 +156,7 @@ if(!$getit){
 <td><?php //echo $albumSpotID ?></td>
 <td><?php //echo $albumMBID ?></td>
 -->
-<td><a href='https://www.roxorsoxor.com/poprock/album_TracksList.php?albumID=<?php echo $albumID ?>'><?php echo $albumName ?></a></td>
+<td><a href='https://www.roxorsoxor.com/poprock/album_TracksList.php?albumSpotID=<?php echo $albumSpotID ?>'><?php echo $albumName ?></a></td>
 <td class="popStyle"><?php echo $albumReleased ?></td>
 <!--
 <td class="popStyle"><?php //echo $tracksTotal ?></td>
@@ -189,7 +189,7 @@ if(!$getit){
 <?php echo $scriptsAndSuch; ?>
 
 <script>
-	let artistID = '<?php echo $artistID ?>';
+	let artistSpotID = '<?php echo $artistSpotID ?>';
 </script>
 
 <script src="https://www.roxorsoxor.com/poprock/functions/sort_artistAlbums2.js"></script>

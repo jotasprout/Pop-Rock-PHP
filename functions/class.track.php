@@ -4,21 +4,21 @@
 
     class track {
 
-        var $trackID;
+        var $trackSpotID;
 		var $trackAlbum;
         var $trackName;
 		var $trackPop;
 
         function __construct ($track_id) {
-            $this -> trackID = $track_id;
+            $this -> trackSpotID = $track_id;
         }
 
-        function set_trackID ($new_trackID) {
-            $this -> trackID = $new_trackID;
+        function set_trackSpotID ($new_trackSpotID) {
+            $this -> trackSpotID = $new_trackSpotID;
         }
 
-        function get_trackID () {
-            return $this -> trackID;
+        function get_trackSpotID () {
+            return $this -> trackSpotID;
         }
 		
         function set_trackAlbum ($new_trackAlbum) {

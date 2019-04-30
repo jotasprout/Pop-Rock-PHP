@@ -1,6 +1,6 @@
 <?php
 
-$artistID = $_GET['artistID'];
+$artistSpotID = $_GET['artistSpotID'];
 
 require_once '../rockdb.php';
 require( "class.artist.php" );
@@ -11,11 +11,11 @@ if (!$connekt) {
 	echo 'Darn. Did not connect.';
 };
 
-// Could I remove artistID from the select statement below as long as artistID is in the WHERE clause?
-$artistInfoAll = "SELECT a.artistID, a.artistName, a.artistArt, b.followers, b.date
+// Could I remove artistSpotID from the select statement below as long as artistSpotID is in the WHERE clause?
+$artistInfoAll = "SELECT a.artistSpotID, a.artistName, a.artistArt, b.followers, b.date
 	FROM artists a
-		INNER JOIN popArtists b ON a.artistID = b.artistID
-			WHERE a.artistID = '$artistID'
+		INNER JOIN popArtists b ON a.artistSpotID = b.artistSpotID
+			WHERE a.artistSpotID = '$artistSpotID'
 				AND b.followers IS NOT NULL
 	ORDER BY b.date DESC";
 

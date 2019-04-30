@@ -1,5 +1,5 @@
 <?php 
-    $artistID = $_GET['artistID'];
+    $artistSpotID = $_GET['artistSpotID'];
 	require_once 'page_pieces/stylesAndScripts.php';
 	require_once 'page_pieces/navbar_rock.php';
 ?>
@@ -157,7 +157,7 @@ var padding = 40;
 
 var dataset, xScale, yScale, xAxis, yAxis, line;
 
-d3.json("functions/createArtistD3.php?artistID=<?php echo $artistID; ?>", function(data) {
+d3.json("functions/createArtistD3.php?artistSpotID=<?php echo $artistSpotID; ?>", function(data) {
     
     console.log(data);
     
@@ -249,7 +249,7 @@ var padding = 50;
 
 var dataset, xScale, yScale, xAxis, yAxis, line;
 
-d3.json("functions/createArtist_followersD3.php?artistID=<?php echo $artistID; ?>", function(data) {
+d3.json("functions/createArtist_followersD3.php?artistSpotID=<?php echo $artistSpotID; ?>", function(data) {
     
     console.log(data);
     
@@ -319,7 +319,7 @@ d3.json("functions/createArtist_followersD3.php?artistID=<?php echo $artistID; ?
 	
 	
 <script type="text/javascript">
-    d3.json("functions/createAlbumsD3.php?artistID=<?php echo $artistID ?>", function(dataset) {
+    d3.json("functions/createAlbumsD3.php?artistSpotID=<?php echo $artistSpotID ?>", function(dataset) {
         console.log(dataset);
         // Width and height
         var w = 2400;
@@ -396,7 +396,7 @@ d3.json("functions/createArtist_followersD3.php?artistID=<?php echo $artistID; ?
 
 <script>
 
-    d3.json("functions/get_artist_LastFM.php?artistID=<?php echo $artistID; ?>", function(dataset) {
+    d3.json("functions/get_artist_LastFM.php?artistSpotID=<?php echo $artistSpotID; ?>", function(dataset) {
         
         console.log(dataset);
         

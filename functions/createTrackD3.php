@@ -1,6 +1,6 @@
 <?php
 
-$trackID = $_GET['trackID'];
+$trackSpotID = $_GET['trackSpotID'];
 
 require_once '../rockdb.php';
 //require( "class.artist.php" );
@@ -11,11 +11,11 @@ if (!$connekt) {
 	echo 'Darn. Did not connect.';
 };
 
-$trackPop = "SELECT t.trackID, t.trackName, a.albumName, a.artistID, p.pop, p.date
+$trackPop = "SELECT t.trackSpotID, t.trackName, a.albumName, a.artistSpotID, p.pop, p.date
 						FROM tracks t
-						JOIN albums a ON a.albumID = t.albumID
-						JOIN popTracks p ON p.trackID = t.trackID
-						WHERE t.trackID = '$trackID'
+						JOIN albums a ON a.albumSpotID = t.albumSpotID
+						JOIN popTracks p ON p.trackSpotID = t.trackSpotID
+						WHERE t.trackSpotID = '$trackSpotID'
 						ORDER BY p.date ASC";
 
 $getit = mysqli_query($connekt, $trackPop);

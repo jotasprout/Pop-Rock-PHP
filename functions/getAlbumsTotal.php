@@ -28,15 +28,15 @@ function insertTotalAlbums ($theseArtists) {
 			
 		for ($j=0; $j<(count($artistsArray)); ++$j) {
 
-			$artistID = $artistsArray[$j];
+			$artistSpotID = $artistsArray[$j];
 
-			$discography = $GLOBALS['api']->getArtistAlbums($artistID, [
+			$discography = $GLOBALS['api']->getArtistAlbums($artistSpotID, [
 				'limit' => '50'
 			]);
 			
             $artistAlbumsTotal = $discography->total;
             
-            echo ("<p>Artist " . $artistID . " has " . $artistAlbumsTotal . " total albums.</p>");
+            echo ("<p>Artist " . $artistSpotID . " has " . $artistAlbumsTotal . " total albums.</p>");
 
             $connekt = new mysqli($GLOBALS['host'], $GLOBALS['un'], $GLOBALS['magicword'], $GLOBALS['db']);
     
@@ -45,7 +45,7 @@ function insertTotalAlbums ($theseArtists) {
             } else { 
                 echo '<p>Yay! I am connekted.';
         
-                $update = "UPDATE artists SET albumsTotal = '$artistAlbumsTotal' WHERE artistID = '$artistID'";
+                $update = "UPDATE artists SET albumsTotal = '$artistAlbumsTotal' WHERE artistSpotID = '$artistSpotID'";
             
                 $albumsTote = $connekt->query($update);
                 
@@ -54,7 +54,7 @@ function insertTotalAlbums ($theseArtists) {
                 }
             
                 else {
-                    echo '<p>Inserted ' . $artistAlbumsTotal . ' total albums for ' . $artistID . '.</p>';
+                    echo '<p>Inserted ' . $artistAlbumsTotal . ' total albums for ' . $artistSpotID . '.</p>';
                 } 
             };
 		}

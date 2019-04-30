@@ -32,9 +32,9 @@ if ( $sortBy == "genre" and $order == "ASC" ) {
 	$genreNextOrder = "DESC";
 }
 
-$artistInfoWithArtAndGenres = "SELECT a.artistID, a.artistArt, a.artistName, g.genre
+$artistInfoWithArtAndGenres = "SELECT a.artistSpotID, a.artistArt, a.artistName, g.genre
     FROM artists a
-    JOIN genres g ON a.artistID = g.artistID
+    JOIN genres g ON a.artistSpotID = g.artistSpotID
 	ORDER BY " . $sortBy . " " . $order . ";";	
 
 $sortit = $connekt->query($artistInfoWithArtAndGenres); 

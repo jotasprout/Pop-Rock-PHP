@@ -12,7 +12,7 @@ if ( !$connekt ) {
 
 $albumsWithZero = array ();
 
-$gatherAlbumsWithZeroInTracksColumn = "SELECT a.albumID, a.albumTotalTracks
+$gatherAlbumsWithZeroInTracksColumn = "SELECT a.albumSpotID, a.albumTotalTracks
 						FROM albums a 
 						WHERE a.albumTotalTracks = '0'";
 
@@ -25,8 +25,8 @@ if ( !$getit ) {
 if(!empty($getit)) {
 
 	while ( $row = mysqli_fetch_array( $getit ) ) {
-		$albumID = $row[ "albumID" ];
-		$albumsWithZero [] = $albumID;		
+		$albumSpotID = $row[ "albumSpotID" ];
+		$albumsWithZero [] = $albumSpotID;		
 	}; // end of while
  
     $session = new SpotifyWebAPI\Session($myClientID, $myClientSecret);
@@ -56,19 +56,19 @@ if(!empty($getit)) {
 
         for ($i=0; $i<(count($albumsArrays)); ++$i) {
                     
-            $albumIds = implode(',', $albumsArrays[$i]);
+            $albumSpotIDs = implode(',', $albumsArrays[$i]);
         
-            $bunchofalbums = $GLOBALS['api']->getAlbums($albumIds);
+            $bunchofalbums = $GLOBALS['api']->getAlbums($albumSpotIDs);
                 
             foreach ($bunchofalbums->albums as $album) {
 
                 $connekt = new mysqli($GLOBALS['host'], $GLOBALS['un'], $GLOBALS['magicword'], $GLOBALS['db']);
         
-                $albumID = $album->id;	
+                $albumSpotID = $album->id;	
                 $albumName = $album->name;
                 $albumTotalTracks = $album->total_tracks;
 
-                $insertAlbumTotalTracks = "UPDATE albums SET albumTotalTracks='$albumTotalTracks' WHERE albumID='$albumID'";
+                $insertAlbumTotalTracks = "UPDATE albums SET albumTotalTracks='$albumTotalTracks' WHERE albumSpotID='$albumSpotID'";
                 
                 if (!$connekt) {
                     echo 'Darn. Did not connect.<br>';
@@ -109,15 +109,15 @@ function divideCombineArtistsForAlbums ($theseArtists) {
 			
 		for ($j=0; $j<(count($artistsArray)); ++$j) {
 
-			$artistID = $artistsArray[$j];
+			$artistSpotID = $artistsArray[$j];
 
-			$discography = $GLOBALS['api']->getalbumsWithZero($artistID, [
+			$discography = $GLOBALS['api']->getalbumsWithZero($artistSpotID, [
                 'limit' => '50'
 			]);
 			
 			foreach ($discography->items as $album) {
-				$albumID = $album->id;
-				$albumsWithZero [] = $albumID;
+				$albumSpotID = $album->id;
+				$albumsWithZero [] = $albumSpotID;
 			}
 			
 			divideCombineAlbums ($albumsWithZero);

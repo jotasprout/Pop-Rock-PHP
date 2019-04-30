@@ -1,6 +1,6 @@
 <?php
 
-$albumID = $_GET['albumID'];
+$albumSpotID = $_GET['albumSpotID'];
 
 require_once '../rockdb.php';
 require( "class.album.php" );
@@ -11,11 +11,11 @@ if (!$connekt) {
 	echo 'Darn. Did not connect.';
 };
 
-$albumInfoAll = "SELECT a.artistID, a.artistName, a.artistArt, r.albumID, r.albumName, b.pop, b.date
+$albumInfoAll = "SELECT a.artistSpotID, a.artistName, a.artistArt, r.albumSpotID, r.albumName, b.pop, b.date
 	FROM albums r
-    JOIN artists a ON a.artistID = r.artistID
-		INNER JOIN popAlbums b ON a.albumID = b.albumID
-			WHERE a.albumID = '$albumID'
+    JOIN artists a ON a.artistSpotID = r.artistSpotID
+		INNER JOIN popAlbums b ON a.albumSpotID = b.albumSpotID
+			WHERE a.albumSpotID = '$albumSpotID'
 				ORDER BY b.date DESC";
 
 $getit = mysqli_query($connekt, $albumInfoAll);

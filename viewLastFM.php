@@ -11,16 +11,16 @@ if ( !$connekt ) {
 	echo 'Darn. Did not connect.';
 };
 
-$artistInfoRecentWithArt = "SELECT a.artistID AS artistID, a.artistArt AS artistArt, a.artistName AS artistName, p1.pop AS pop, p1.date AS date
+$artistInfoRecentWithArt = "SELECT a.artistSpotID AS artistSpotID, a.artistArt AS artistArt, a.artistName AS artistName, p1.pop AS pop, p1.date AS date
     FROM artists a
     JOIN (SELECT p.*
 			FROM popArtists p
-			INNER JOIN (SELECT artistID, pop, max(date) AS MaxDate
+			INNER JOIN (SELECT artistSpotID, pop, max(date) AS MaxDate
 						FROM popArtists  
-						GROUP BY artistID) groupedp
-			ON p.artistID = groupedp.artistID
+						GROUP BY artistSpotID) groupedp
+			ON p.artistSpotID = groupedp.artistSpotID
 			AND p.date = groupedp.MaxDate) p1
-	ON a.artistID = p1.artistID
+	ON a.artistSpotID = p1.artistSpotID
 	ORDER BY p1.pop DESC";
 
 $getit = $connekt->query( $artistInfoRecentWithArt );
@@ -64,7 +64,7 @@ if(!$getit){ echo 'Cursed-Crap. Did not run the query.'; }
 						<th>Pretty Face</th>	
 						<th onClick="sortColumn('artistName', 'ASC')"><div class="pointyHead">Artist Name</div></th>
 						<!--
-						<th>artistID</th>
+						<th>artistSpotID</th>
 						<th>Date</th>
 				-->
 						<th onClick="sortColumn('pop', 'DESC')"><div class="pointyHead popScore">Popularity</div></th>
@@ -78,7 +78,7 @@ if(!$getit){ echo 'Cursed-Crap. Did not run the query.'; }
 					<?php
 						while ( $row = mysqli_fetch_array( $getit ) ) {
 							$artistName = $row[ "artistName" ];
-							$artistID = $row[ "artistID" ];
+							$artistSpotID = $row[ "artistSpotID" ];
 							$artistPop = $row[ "pop" ];
 							$artistArt = $row[ "artistArt" ];
 							$popDate = $row[ "date" ];
@@ -86,9 +86,9 @@ if(!$getit){ echo 'Cursed-Crap. Did not run the query.'; }
 
 					<tr>
 						<td><img src='<?php echo $artistArt ?>' class="indexArtistArt"></td>	
-						<td><a href='https://www.roxorsoxor.com/poprock/artist_Chart.php?artistID=<?php echo $artistID ?>'><?php echo $artistName ?></a></td>
+						<td><a href='https://www.roxorsoxor.com/poprock/artist_Chart.php?artistSpotID=<?php echo $artistSpotID ?>'><?php echo $artistName ?></a></td>
 						<!--
-						<td><?php //echo $artistID ?></td>
+						<td><?php //echo $artistSpotID ?></td>
 						<td><?php // echo $popDate ?></td>
 						-->
 						<td class="popScore"><?php echo $artistPop ?></td>

@@ -11,17 +11,17 @@ if ( !$connekt ) {
 	echo 'Darn. Did not connect.';
 };
 
-$artistID = '3EhbVgyfGd7HkpsagwL9GS';
+$artistSpotID = '3EhbVgyfGd7HkpsagwL9GS';
 
 $allTracks = array ();
 
-$gatherAllTrackIDsForThisArtist = "SELECT t.trackID, t.trackName, a.albumName, a.artistID
+$gatherAlltrackSpotIDsForThisArtist = "SELECT t.trackSpotID, t.trackName, a.albumName, a.artistSpotID
 						FROM tracks t
 						INNER JOIN albums a 
-						ON a.albumID = t.albumID
-						WHERE a.artistID = '$artistID'";
+						ON a.albumSpotID = t.albumSpotID
+						WHERE a.artistSpotID = '$artistSpotID'";
 
-$getit = $connekt->query( $gatherAllTrackIDsForThisArtist );
+$getit = $connekt->query( $gatherAlltrackSpotIDsForThisArtist );
 
 if ( !$getit ) {
 	echo 'Cursed-Crap. Did not run the query.';
@@ -30,8 +30,8 @@ if ( !$getit ) {
 if(!empty($getit)) {
 
 	while ( $row = mysqli_fetch_array( $getit ) ) {
-		$trackID = $row[ "trackID" ];
-		$allTracks [] = $trackID;		
+		$trackSpotID = $row[ "trackSpotID" ];
+		$allTracks [] = $trackSpotID;		
 	}; // end of while
 	
 	$session = new SpotifyWebAPI\Session($myClientID, $myClientSecret);

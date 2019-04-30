@@ -19,7 +19,7 @@ if (!$getThem) {
 $returnables = array();
 
 while ( $row = mysqli_fetch_array( $getThem ) ) {
-    $rowstuff['artistID'] = $row[ "artistID" ];
+    $rowstuff['artistSpotID'] = $row[ "artistSpotID" ];
     $rowstuff['artistName'] = $row[ "artistName" ];
     array_push($returnables, $rowstuff);
 };
