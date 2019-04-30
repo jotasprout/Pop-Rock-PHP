@@ -47,7 +47,7 @@
 <div class="container-fluid">
     <?php echo $navbar ?>
     <p>Please be patient while data loads.</p>
-    <p>If, after the page loads, it is empty, or the wrong discography displays, <a href='https://www.roxorsoxor.com/poprock/index2.php'>choose an artist</a> from the <a href='https://www.roxorsoxor.com/poprock/index2.php'>Artists List</a> first.</p>
+    <p>If, after the page loads, it is empty, or the wrong discography displays, <a href='https://www.roxorsoxor.com/poprock/index.php'>choose an artist</a> from the <a href='https://www.roxorsoxor.com/poprock/index.php'>Artists List</a> first.</p>
 
 
 <div class="panel panel-primary">
@@ -357,8 +357,8 @@ d3.json("functions/createArtist_followersD3.php?artistID=<?php echo $artistID; ?
             .enter()
             .append("svg:image")
             .attr("xlink:href", function (d){
-                return d.albumArt;
-                console.log(d.albumArt);
+                return d.albumArtSpot;
+                console.log(d.albumArtSpot);
             })
             .attr("x", function (d,i) {
                 return i * 65;

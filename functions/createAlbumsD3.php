@@ -13,7 +13,7 @@ if ( !$connekt ) {
 
 $happyScabies2 = "SELECT a.albumName, a.year, a.albumArtSpot, z.artistName, p1.pop, p1.date
 	FROM (SELECT
-				y.albumID AS albumID,
+				y.albumSpotID AS albumSpotID,
 				y.albumName AS albumName,
 				y.artistID AS artistID,
 				y.albumArtSpot AS albumArtSpot,
@@ -23,14 +23,15 @@ $happyScabies2 = "SELECT a.albumName, a.year, a.albumArtSpot, z.artistName, p1.p
 	JOIN artists z ON z.artistID = '$artistID'
 	JOIN (SELECT p.*
 			FROM popAlbums p
-			INNER JOIN (SELECT albumID, pop, max(date) AS MaxDate
+			INNER JOIN (SELECT albumSpotID, pop, max(date) AS MaxDate
 						FROM popAlbums  
-						GROUP BY albumID) groupedp
-			ON p.albumID = groupedp.albumID
+						GROUP BY albumSpotID) groupedp
+			ON p.albumSpotID = groupedp.albumSpotID
 			AND p.date = groupedp.MaxDate) p1 
-	ON a.albumID = p1.albumID
+	ON a.albumSpotID = p1.albumSpotID
 	ORDER BY year ASC;";	
 	
+/*
 	$happyScabies3 = "SELECT a.albumName, a.year, a.albumArtSpot, z.artistName, p.pop, p.date
 	FROM (SELECT
 				y.albumID AS albumID,
@@ -44,7 +45,7 @@ $happyScabies2 = "SELECT a.albumName, a.year, a.albumArtSpot, z.artistName, p1.p
 	JOIN popAlbums p ON a.albumID = p.albumID
 		WHERE p.date = '2019-03-17'
 	ORDER BY a.year ASC;";
-
+*/
 $result = mysqli_query($connekt, $happyScabies2);
 
 if (mysqli_num_rows($result) > 0) {
