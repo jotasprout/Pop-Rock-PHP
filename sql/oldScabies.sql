@@ -1,4 +1,8 @@
+
 /*
+
+ARTIST'S ALBUMS
+
 blackSabbath = "5M52tdBnJaKSvOpJGz8mfZ";
 */
 
@@ -63,7 +67,13 @@ LEFT JOIN (SELECT f.*
 		AND f.dataDate = groupedf.MaxDataDate) f1
 ON b.albumMBID = f1.albumMBID	
 ORDER BY b.albumName ASC;
+
+
+
 /*
+
+ALBUM TRACKS
+
 Live Evil = "6AOClmLV3vaZ83kjqXtwrq"
 */
 	

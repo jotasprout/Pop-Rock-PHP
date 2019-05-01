@@ -44,14 +44,33 @@ LEFT JOIN (SELECT f.*
 	ON x.trackMBID = f1.trackMBID
 	ORDER BY trackName ASC;
 
-
-
-
-
-
+/*
+below works for MBID album and tracks!
+*/
+SELECT k.trackMBID, k.trackName, h.albumName
+	FROM (
+		SELECT m.trackMBID, m.trackName, m.albumMBID
+			FROM tracksMB m
+			WHERE m.albumMBID = '5d2e8936-8c36-3ccd-8e8f-916e3b771d49'
+	) k
+	INNER JOIN albumsMB h
+		ON h.albumMBID = k.albumMBID;
+/*
+adding LastFM data WORKS!
+*/
+SELECT k.trackMBID, k.trackName, h.albumName, fm.dataDate, fm.trackListeners, fm.trackPlaycount
+	FROM (
+		SELECT m.trackMBID, m.trackName, m.albumMBID
+			FROM tracksMB m
+			WHERE m.albumMBID = '5d2e8936-8c36-3ccd-8e8f-916e3b771d49'
+	) k
+	INNER JOIN albumsMB h
+		ON h.albumMBID = k.albumMBID
+    JOIN tracksLastFM fm
+    	ON fm.trackMBID = k.trackMBID
+/*
 ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
-
-/* 
+ 
 tried this and it worked
 */
 SELECT z.trackName 
