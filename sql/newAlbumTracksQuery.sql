@@ -13,36 +13,26 @@ SELECT v.trackName, v.albumName, v.pop, max(v.date) AS MaxDate
 	) v
 	GROUP BY v.trackSpotID
 
-/* 
-Above works splendidly
-Below tries to add LastFM
+/*
+Now let us filter to current day -- HOLY SHIT IT'S FAST!
 */
 
-SELECT v.trackName, v.albumName, v.pop, max(v.date) AS MaxDate
+SELECT d.trackName, d.albumName, d.trackListeners, d.trackPlaycount, max(d.dataDate) AS MaxDataDate
 	FROM (
-		SELECT z.trackSpotID, z.trackName, r.albumName, p.date, p.pop
+		SELECT k.trackMBID, k.trackName, h.albumName, fm.dataDate, fm.trackListeners, fm.trackPlaycount
 			FROM (
-				SELECT t.trackSpotID, t.trackName, t.albumSpotID
-					FROM tracks t
-					WHERE t.albumSpotID = '6AOClmLV3vaZ83kjqXtwrq'
-			) z
-		INNER JOIN albums r 
-			ON r.albumSpotID = z.albumSpotID
-		JOIN popTracks p 
-			ON z.trackSpotID = p.trackSpotID					
-	) v
-	GROUP BY v.trackSpotID
+				SELECT m.trackMBID, m.trackName, m.albumMBID
+					FROM tracksMB m
+					WHERE m.albumMBID = '5d2e8936-8c36-3ccd-8e8f-916e3b771d49'
+			) k
+			INNER JOIN albumsMB h
+				ON h.albumMBID = k.albumMBID
+			JOIN tracksLastFM fm
+				ON fm.trackMBID = k.trackMBID
+	) d
+	GROUP BY d.trackMBID
 
-
-LEFT JOIN (SELECT f.*
-			FROM tracksLastFM f
-			INNER JOIN (SELECT trackMBID, trackListeners, trackPlaycount, max(dataDate) AS MaxDataDate
-			FROM tracksLastFM
-			GROUP BY trackMBID) groupedf
-			ON f.trackMBID = groupedf.trackMBID
-			AND f.dataDate = groupedf.MaxDataDate) f1
-	ON x.trackMBID = f1.trackMBID
-	ORDER BY trackName ASC;
+/*	
 
 /*
 below works for MBID album and tracks!
