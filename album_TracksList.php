@@ -50,7 +50,7 @@ FROM (
 	JOIN popTracks p 
 		ON z.trackSpotID = p.trackSpotID					
 ) v
-GROUP BY v.trackSpotID;"
+GROUP BY v.trackSpotID;";
 
 /*
 MB LastFM current day
@@ -69,7 +69,7 @@ $MBLastFM = "SELECT d.trackName, d.albumName, d.trackListeners, d.trackPlaycount
 			JOIN tracksLastFM fm
 				ON fm.trackMBID = k.trackMBID
 	) d
-	GROUP BY d.trackMBID;"
+	GROUP BY d.trackMBID;";
 
 $getit = $connekt->query( $gatherTrackInfo );
 
