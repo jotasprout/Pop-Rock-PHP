@@ -119,46 +119,6 @@ JOIN popTracks p ON z.trackSpotID = p.trackSpotID
 
 
 /* 
-From clipboard didn't really work but ...
-*/
-SELECT p1.* 
-	FROM (
-		SELECT e.* 
-		FROM (
-			SELECT z.trackSpotID, z.trackName, r.albumName, p.date, p.pop
-				FROM (
-					SELECT t.trackSpotID, t.trackName, t.albumSpotID
-						FROM tracks t
-						WHERE t.albumSpotID = '6AOClmLV3vaZ83kjqXtwrq'
-				) z
-			INNER JOIN albums r 
-				ON r.albumSpotID = z.albumSpotID
-			JOIN popTracks p 
-				ON z.trackSpotID = p.trackSpotID
-		) e
-		INNER JOIN (
-			SELECT v.trackSpotID AS trackSpotID, v.pop, max(v.date) AS MaxDate
-				FROM (
-					SELECT z.trackSpotID AS trackSpotID, z.trackName, r.albumName, p.date, p.pop
-						FROM (
-							SELECT t.trackSpotID AS trackSpotID, t.trackName, t.albumSpotID
-								FROM tracks t
-								WHERE t.albumSpotID = '6AOClmLV3vaZ83kjqXtwrq'
-						) z
-					INNER JOIN albums r 
-						ON r.albumSpotID = z.albumSpotID
-					JOIN popTracks p 
-						ON z.trackSpotID = p.trackSpotID					
-				) v
-				GROUP BY v.trackSpotID
-		) groupde
-			ON e.trackSpotID = groupede.trackSpotID
-			AND e.date = groupde.MaxDate
-	) p1
-
-
-
-/* 
 THIS WORKS! YAY!
 */
 SELECT p1.* 

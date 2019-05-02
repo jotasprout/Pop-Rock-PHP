@@ -33,6 +33,44 @@ $gatherTrackInfo = "SELECT t.trackSpotID, t.trackName, a.albumName, a.artistSpot
 						WHERE a.albumSpotID = '$albumSpotID'
 						ORDER BY p1.pop DESC";
 
+/*
+Spotify Pop current day
+*/
+
+$spotPop = "SELECT v.trackName, v.albumName, v.pop, max(v.date) AS MaxDate
+FROM (
+	SELECT z.trackSpotID, z.trackName, r.albumName, p.date, p.pop
+		FROM (
+			SELECT t.trackSpotID, t.trackName, t.albumSpotID
+				FROM tracks t
+				WHERE t.albumSpotID = '6AOClmLV3vaZ83kjqXtwrq'
+		) z
+	INNER JOIN albums r 
+		ON r.albumSpotID = z.albumSpotID
+	JOIN popTracks p 
+		ON z.trackSpotID = p.trackSpotID					
+) v
+GROUP BY v.trackSpotID;"
+
+/*
+MB LastFM current day
+*/
+
+$MBLastFM = "SELECT d.trackName, d.albumName, d.trackListeners, d.trackPlaycount, max(d.dataDate) AS MaxDataDate
+	FROM (
+		SELECT k.trackMBID, k.trackName, h.albumName, fm.dataDate, fm.trackListeners, fm.trackPlaycount
+			FROM (
+				SELECT m.trackMBID, m.trackName, m.albumMBID
+					FROM tracksMB m
+					WHERE m.albumMBID = '5d2e8936-8c36-3ccd-8e8f-916e3b771d49'
+			) k
+			INNER JOIN albumsMB h
+				ON h.albumMBID = k.albumMBID
+			JOIN tracksLastFM fm
+				ON fm.trackMBID = k.trackMBID
+	) d
+	GROUP BY d.trackMBID;"
+
 $getit = $connekt->query( $gatherTrackInfo );
 
 if ( !$getit ) {
@@ -86,11 +124,8 @@ if ( !$getit ) {
 	<tbody>
 	<?php
 		while ( $row = mysqli_fetch_array( $getit ) ) {
-			echo "inside the while";
 			$albumName = $row[ "albumName" ];
-			echo "<p>album name is " . $albumName . "</p>";
 			$trackName = $row[ "trackName" ];
-			echo "<p>track name is " . $trackName . "</p>";
 			$trackSpotID = $row[ "trackSpotID" ];
 			$trackPop = $row[ "pop" ];
 			$popDate = $row[ "date" ];
