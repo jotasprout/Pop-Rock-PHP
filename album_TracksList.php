@@ -1,6 +1,9 @@
 <?php
 
+$artistSpotID = $_GET['artistSpotID'];
 $albumSpotID = $_GET['albumSpotID'];
+$albumMBID = $_GET['albumMBID'];
+$source = $_GET['source'];
 
 require_once 'rockdb.php';
 require_once 'page_pieces/navbar_rock.php';
@@ -12,7 +15,10 @@ if ( !$connekt ) {
 	echo 'Darn. Did not connect. Screwed up like this: ' . mysqli_connect_error() . '</p>';
 };
 
-$gatherTrackInfo = "SELECT t.trackSpotID, t.trackName, a.albumName, a.artistSpotID, p1.pop, p1.date, f1.dataDate, f1.trackListeners, f1.trackPlaycount
+$liveEvil_albumMBID = '1Uq7JKrKGGYCkg6l79gkoa';
+$crossPurposes_albumSpotID = '5d2e8936-8c36-3ccd-8e8f-916e3b771d49';
+
+$spotOnly = "SELECT t.trackSpotID, t.trackName, a.albumName, p1.pop, p1.MaxDate, f1.MaxDataDate, f1.trackListeners, f1.trackPlaycount
 						FROM tracks t
 						INNER JOIN albums a ON a.albumSpotID = t.albumSpotID
 						JOIN (SELECT p.* FROM popTracks p
@@ -33,17 +39,46 @@ $gatherTrackInfo = "SELECT t.trackSpotID, t.trackName, a.albumName, a.artistSpot
 						WHERE a.albumSpotID = '$albumSpotID'
 						ORDER BY p1.pop DESC";
 
-/*
-Spotify Pop current day
-*/
+$SpotAndLastFM = "SELECT q.trackSpotID, q.trackName, q.albumName, q.pop, q.MaxDate, f1.MaxDataDate, f1.trackListeners, f1.trackPlaycount
+						FROM (SELECT v.trackSpotID, v.trackMBID, v.trackName, v.albumName, v.pop, max(v.date) AS MaxDate
+							FROM (
+								SELECT z.trackSpotID, z.trackMBID, z.trackName, r.albumName, r.albumMBID, p.date, p.pop
+									FROM (
+										SELECT t.trackSpotID, t.trackMBID, t.trackName, t.albumSpotID
+											FROM tracks t
+											WHERE t.albumSpotID = '$albumSpotID'
+									) z
+								INNER JOIN albums r 
+									ON r.albumSpotID = z.albumSpotID
+								JOIN popTracks p 
+									ON z.trackSpotID = p.trackSpotID					
+							) v
+							GROUP BY v.trackSpotID) q
+						LEFT JOIN (SELECT d.trackMBID, d.trackName, d.albumName, d.trackListeners, d.trackPlaycount, max(d.dataDate) AS MaxDataDate
+							FROM (
+								SELECT k.trackMBID, k.trackName, h.albumName, fm.dataDate, fm.trackListeners, fm.trackPlaycount
+									FROM (
+										SELECT m.trackMBID, m.trackName, m.albumMBID
+											FROM tracksMB m
+											WHERE m.albumMBID = '$albumMBID'
+									) k
+									INNER JOIN albumsMB h
+										ON h.albumMBID = k.albumMBID
+									JOIN tracksLastFM fm
+										ON fm.trackMBID = k.trackMBID
+							) d
+							GROUP BY d.trackMBID) f1
+						ON q.trackMBID = f1.trackMBID
+						ORDER BY q.pop DESC";
 
-$spotPop = "SELECT v.trackName, v.albumName, v.pop, max(v.date) AS MaxDate
+/* Spotify Pop current day */
+$spotPop = "SELECT v.trackSpotID, v.trackName, v.albumName, v.pop, max(v.date) AS MaxDate
 FROM (
 	SELECT z.trackSpotID, z.trackName, r.albumName, p.date, p.pop
 		FROM (
 			SELECT t.trackSpotID, t.trackName, t.albumSpotID
 				FROM tracks t
-				WHERE t.albumSpotID = '6AOClmLV3vaZ83kjqXtwrq'
+				WHERE t.albumSpotID = '$albumSpotID'
 		) z
 	INNER JOIN albums r 
 		ON r.albumSpotID = z.albumSpotID
@@ -52,17 +87,14 @@ FROM (
 ) v
 GROUP BY v.trackSpotID;";
 
-/*
-MB LastFM current day
-*/
-
-$MBLastFM = "SELECT d.trackName, d.albumName, d.trackListeners, d.trackPlaycount, max(d.dataDate) AS MaxDataDate
+/* MB LastFM current day */
+$MBLastFM = "SELECT d.trackMBID, d.trackName, d.albumName, d.trackListeners, d.trackPlaycount, max(d.dataDate) AS MaxDataDate
 	FROM (
 		SELECT k.trackMBID, k.trackName, h.albumName, fm.dataDate, fm.trackListeners, fm.trackPlaycount
 			FROM (
 				SELECT m.trackMBID, m.trackName, m.albumMBID
 					FROM tracksMB m
-					WHERE m.albumMBID = '5d2e8936-8c36-3ccd-8e8f-916e3b771d49'
+					WHERE m.albumMBID = '$albumMBID'
 			) k
 			INNER JOIN albumsMB h
 				ON h.albumMBID = k.albumMBID
@@ -71,7 +103,14 @@ $MBLastFM = "SELECT d.trackName, d.albumName, d.trackListeners, d.trackPlaycount
 	) d
 	GROUP BY d.trackMBID;";
 
-$getit = $connekt->query( $gatherTrackInfo );
+if ($source = 'spotify') {
+	$getAlbumTracks = $SpotAndLastFM;
+} else {
+	$getAlbumTracks = $SpotAndLastFM;
+};
+
+
+$getit = $connekt->query( $getAlbumTracks );
 
 if ( !$getit ) {
 	echo '<p>Cursed-Crap. Did not run the query. Screwed up like this: ' . mysqli_error($connekt) . '</p>';
@@ -110,12 +149,11 @@ if ( !$getit ) {
 			<th onClick="sortColumn('albumName', 'ASC')"><div class="pointyHead">Album Name</div></th>
 			<th>Spotify<br>trackSpotID</th>
 				<!--
-
 				-->
 			<th onClick="sortColumn('trackName', 'DESC')"><div class="pointyHead">Track Title</div></th>
 			<th class="popStyle">Spotify<br>Data Date</th>
 			<th class="popStyle" onClick="sortColumn('pop', 'ASC')"><div class="pointyHead">Track<br>Popularity</div></th>
-			<th>LastFM<br>Data Date</th>
+			<th class="popStyle">LastFM<br>Data Date</th>
 			<th class="rightNum pointyHead">LastFM<br>Listeners</th>
 			<th class="rightNum pointyHead">LastFM<br>Playcount</th>
 		</tr>
@@ -128,8 +166,8 @@ if ( !$getit ) {
 			$trackName = $row[ "trackName" ];
 			$trackSpotID = $row[ "trackSpotID" ];
 			$trackPop = $row[ "pop" ];
-			$popDate = $row[ "date" ];
-			$lastFMDate = $row[ "dataDate" ];
+			$popDate = $row[ "MaxDate" ];
+			$lastFMDate = $row[ "MaxDataDate" ];
 			$trackListenersNum = $row[ "trackListeners"];
 			$trackListeners = number_format ($trackListenersNum);
 			if (!$trackListeners > 0) {

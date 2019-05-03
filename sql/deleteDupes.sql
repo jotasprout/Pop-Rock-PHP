@@ -1,18 +1,18 @@
 DELETE a FROM popAlbums a
 INNER JOIN popAlbums b
-WHERE a.albumID = b.albumID AND a.date = b.date AND a.id < b.id;
+WHERE a.albumSpotID = b.albumSpotID AND a.date = b.date AND a.id < b.id;
 
 ###############################
 
 DELETE a FROM popArtists a
 INNER JOIN popArtists b
-WHERE a.artistID = b.artistID AND a.date = b.date AND a.id < b.id;
+WHERE a.artistSpotID = b.artistSpotID AND a.date = b.date AND a.id < b.id;
 
 ###############
 
 DELETE a FROM popTracks a
 INNER JOIN popTracks b
-WHERE a.trackID = b.trackID AND a.date = b.date AND a.id < b.id;
+WHERE a.trackSpotID = b.trackSpotID AND a.date = b.date AND a.id < b.id;
 
 ###############
 

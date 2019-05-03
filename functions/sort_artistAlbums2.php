@@ -6,7 +6,7 @@ require( "class.artist.php" );
 $connekt = new mysqli( $GLOBALS[ 'host' ], $GLOBALS[ 'un' ], $GLOBALS[ 'magicword' ], $GLOBALS[ 'db' ] );
 
 if ( !$connekt ) {
-	echo 'Darn. Did not connect. Screwed up like this: ' . mysqli_connect_error() . '.</p>';
+	echo '<p>Darn. Did not connect. Screwed up like this: ' . mysqli_connect_error() . '.</p>';
 };
 
 // if any of these did not come through, the defaults are the basic starting sort from the sql query

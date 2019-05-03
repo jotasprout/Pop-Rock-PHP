@@ -8,8 +8,11 @@ require_once 'page_pieces/stylesAndScripts.php';
 $connekt = new mysqli($GLOBALS['host'], $GLOBALS['un'], $GLOBALS['magicword'], $GLOBALS['db']);
 
 if (!$connekt) {
-	echo 'Darn. Did not connect. Screwed up like this: ' . mysqli_connect_error() . '</p>';
+	echo '<p>Darn. Did not connect. Screwed up like this: ' . mysqli_connect_error() . '</p>';
 };
+
+$blackSabbath_SpotID = '5M52tdBnJaKSvOpJGz8mfZ';
+$blackSabbath_MBID = '5182c1d9-c7d2-4dad-afa0-ccfeada921a8';
 
 $blackScabies = "SELECT b.albumName, b.albumMBID, b.albumSpotID, b.artistSpotID, a.year, a.albumArtSpot, a.tracksTotal, z.artistName, p1.pop, p1.date, f1.dataDate, f1.albumListeners, f1.albumPlaycount, x.albumArtMB
 FROM (SELECT sp.albumName, sp.albumMBID, sp.albumSpotID, sp.artistSpotID
@@ -87,11 +90,12 @@ if(!$getit){
 <tr>
 
 <th>Cover Art</th>
-<!--
-<th>Album Spotify ID</th>
-<th>albumMBID</th>
--->
+<!---->
 <th onClick="sortColumn('albumName', 'ASC', '<?php echo $artistSpotID; ?>')"><div class="pointyHead">Album Name</div></th>
+<th>Album Spotify ID</th>
+<th>Album MBID</th>
+
+
 <th onClick="sortColumn('year', 'unsorted', '<?php echo $artistSpotID; ?>')"><div class="pointyHead popStyle">Released</div></th>
 <!--
 <th><div class="pointyHead popStyle">Total<br>Tracks</div></th>
@@ -115,29 +119,42 @@ if(!$getit){
 
 	while ($row = mysqli_fetch_array($getit)) {
 		$artistName = $row['artistName'];
-		if (is_null($row['albumArtSpot'])) {
-			$coverArt = $row['albumArtMB'];
-		} else {
-			$coverArt = $row['albumArtSpot'];
+		$albumSpotID = $row['albumSpotID'];
+		$albumMBID = $row['albumMBID'];
+
+		if (is_null($row['albumMBID'])) {
+			$albumMBID = "NULL";
 		};
 
-		if (is_null($row['albumSpotID'])) {
-			$albumSpotID = $row['albumMBID'];
-			$source = 'musicbrainz';
-		} else {
-			$albumSpotID = $row['albumSpotID'];
-			$source = 'spotify';
-		};
-
-		//$albumSpotID = $row['albumSpotID'];
-		//$albumMBID = $row['albumMBID'];
-
-		$albumName = $row['albumName'];
-		$tracksTotal = $row['tracksTotal'];
-		$albumReleased = $row['year'];
+		$source = 'spotify';
 		$albumPop = $row['pop'];
+		$coverArt = $row['albumArtSpot'];
+		$tracksTotal = $row['tracksTotal'];
+		// need to get a tracks total for MusicBrainz-only albums
+		$albumName = $row['albumName'];
+		$albumReleased = $row['year'];	
+		// need to get release year for MusicBrainz-only albums	
+/*
+		if (is_null($row['albumArtSpot'])) {
+			
+		} else {
+			
+		};
+*/
 		$date = $row['date'];
+		if (is_null($row['albumSpotID'])) {
+			$source = 'musicbrainz';
+			$albumSpotID = "NULL";
+			$date = "n/a";
+			$coverArt = $row['albumArtMB'];
+			$albumPop = "n/a";
+		};
+
 		$lastFMDate = $row[ "dataDate" ];
+		if (!$lastFMDate == "NULL") {
+			$lastFMDate = "n/a";
+		};
+
 		$albumListenersNum = $row[ "albumListeners"];
 		$albumListeners = number_format ($albumListenersNum);
 		if (!$albumListeners > 0) {
@@ -152,16 +169,17 @@ if(!$getit){
 					
 <tr>
 <td><img src='<?php echo $coverArt ?>' height='64' width='64'></td>
-<!--
-<td><?php //echo $albumSpotID ?></td>
-<td><?php //echo $albumMBID ?></td>
--->
-<td><a href='https://www.roxorsoxor.com/poprock/album_TracksList.php?albumSpotID=<?php echo $albumSpotID ?>'><?php echo $albumName ?></a></td>
+<!---->
+<td><a href='https://www.roxorsoxor.com/poprock/album_TracksList.php?artistSpotID=<?php echo $artistSpotID ?>&albumSpotID=<?php echo $albumSpotID ?>&albumMBID=<?php echo $albumMBID ?>&source=<?php echo $source ?>'><?php echo $albumName ?></a></td>
+<td><?php echo $albumSpotID ?></td>
+<td><?php echo $albumMBID ?></td>
+
+
 <td class="popStyle"><?php echo $albumReleased ?></td>
 <!--
 <td class="popStyle"><?php //echo $tracksTotal ?></td>
 -->
-<th class="popStyle"><?php echo $date ?></th>
+<td class="popStyle"><?php echo $date ?></td>
 
 <td class="popStyle"><?php echo $albumPop ?></td>
 <!---->
