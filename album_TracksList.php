@@ -15,8 +15,8 @@ if ( !$connekt ) {
 	echo 'Darn. Did not connect. Screwed up like this: ' . mysqli_connect_error() . '</p>';
 };
 
-$liveEvil_albumMBID = '1Uq7JKrKGGYCkg6l79gkoa';
-$crossPurposes_albumSpotID = '5d2e8936-8c36-3ccd-8e8f-916e3b771d49';
+$liveEvil_albumSpotID = '1Uq7JKrKGGYCkg6l79gkoa';
+$crossPurposes_albumMBID = '5d2e8936-8c36-3ccd-8e8f-916e3b771d49';
 
 $spotOnly = "SELECT t.trackSpotID, t.trackName, a.albumName, p1.pop, p1.MaxDate, f1.MaxDataDate, f1.trackListeners, f1.trackPlaycount
 						FROM tracks t
@@ -71,6 +71,40 @@ $SpotAndLastFM = "SELECT q.trackSpotID, q.trackName, q.albumName, q.pop, q.MaxDa
 						ON q.trackMBID = f1.trackMBID
 						ORDER BY q.pop DESC";
 
+
+$LastFMthenSpot = "SELECT q.trackSpotID, q.trackName, q.albumName, q.pop, q.MaxDate, f1.MaxDataDate, f1.trackListeners, f1.trackPlaycount
+						FROM (SELECT d.trackMBID, d.trackName, d.albumName, d.trackListeners, d.trackPlaycount, max(d.dataDate) AS MaxDataDate
+							FROM (
+								SELECT k.trackMBID, k.trackName, h.albumName, fm.dataDate, fm.trackListeners, fm.trackPlaycount
+									FROM (
+										SELECT m.trackMBID, m.trackName, m.albumMBID
+											FROM tracksMB m
+											WHERE m.albumMBID = '$albumMBID'
+									) k
+									INNER JOIN albumsMB h
+										ON h.albumMBID = k.albumMBID
+									JOIN tracksLastFM fm
+										ON fm.trackMBID = k.trackMBID
+							) d
+							GROUP BY d.trackMBID) f1
+						LEFT JOIN 
+						(SELECT v.trackSpotID, v.trackMBID, v.trackName, v.albumName, v.pop, max(v.date) AS MaxDate
+							FROM (
+								SELECT z.trackSpotID, z.trackMBID, z.trackName, r.albumName, r.albumMBID, p.date, p.pop
+									FROM (
+										SELECT t.trackSpotID, t.trackMBID, t.trackName, t.albumSpotID
+											FROM tracks t
+											WHERE t.albumSpotID = '$albumSpotID'
+									) z
+								INNER JOIN albums r 
+									ON r.albumSpotID = z.albumSpotID
+								JOIN popTracks p 
+									ON z.trackSpotID = p.trackSpotID					
+							) v
+							GROUP BY v.trackSpotID) q
+						ON q.trackMBID = f1.trackMBID
+						ORDER BY q.trackListeners DESC";
+
 /* Spotify Pop current day */
 $spotPop = "SELECT v.trackSpotID, v.trackName, v.albumName, v.pop, max(v.date) AS MaxDate
 FROM (
@@ -105,8 +139,8 @@ $MBLastFM = "SELECT d.trackMBID, d.trackName, d.albumName, d.trackListeners, d.t
 
 if ($source = 'spotify') {
 	$getAlbumTracks = $SpotAndLastFM;
-} else {
-	$getAlbumTracks = $MBLastFM;
+} else if ($source = 'musicbrainz') {
+	$getAlbumTracks = $LastFMthenSpot;
 };
 
 
