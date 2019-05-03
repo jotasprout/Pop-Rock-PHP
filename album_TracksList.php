@@ -106,7 +106,7 @@ $MBLastFM = "SELECT d.trackMBID, d.trackName, d.albumName, d.trackListeners, d.t
 if ($source = 'spotify') {
 	$getAlbumTracks = $SpotAndLastFM;
 } else {
-	$getAlbumTracks = $SpotAndLastFM;
+	$getAlbumTracks = $MBLastFM;
 };
 
 
@@ -168,6 +168,9 @@ if ( !$getit ) {
 			$trackPop = $row[ "pop" ];
 			$popDate = $row[ "MaxDate" ];
 			$lastFMDate = $row[ "MaxDataDate" ];
+			if ($lastFMDate = 'NULL') {
+				$lastFMDate = "n/a";
+			};			
 			$trackListenersNum = $row[ "trackListeners"];
 			$trackListeners = number_format ($trackListenersNum);
 			if (!$trackListeners > 0) {
