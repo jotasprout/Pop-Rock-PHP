@@ -5,6 +5,8 @@ $albumSpotID = $_GET['albumSpotID'];
 $albumMBID = $_GET['albumMBID'];
 $source = $_GET['source'];
 
+echo $artistSpotID;
+
 require_once 'rockdb.php';
 require_once 'page_pieces/navbar_rock.php';
 require_once 'page_pieces/stylesAndScripts.php';

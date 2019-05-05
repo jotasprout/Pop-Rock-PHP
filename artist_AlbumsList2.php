@@ -1,7 +1,7 @@
 <?php
 
 $artistSpotID = $_GET['artistSpotID'];
-echo $artistSpotID;
+//echo $artistSpotID;
 require_once 'rockdb.php';
 require_once 'page_pieces/navbar_rock.php';
 require_once 'page_pieces/stylesAndScripts.php';
@@ -101,7 +101,7 @@ if(!$getit){
 -->
 <th class="popStyle">Spotify<br>Data Date</th>
 
-<th onClick="sortColumn('pop', 'unsorted', '<?php echo $artistSpotID; ?>')"><div class="pointyHead popStyle">Spotify<br>Popularity</div></th>
+<th onClick="sortColumn('pop', 'unsorted', '<?php echo $artistSpotID ?>')"><div class="pointyHead popStyle">Spotify<br>Popularity</div></th>
 <!---->
 <th class="popStyle">LastFM<br>Data Date</th>
 
@@ -204,9 +204,10 @@ if(!$getit){
     </div> <!-- closing container -->
 	
 <?php echo $scriptsAndSuch; ?>
-
+<!-- -->
 <script>
 	let artistSpotID = '<?php echo $artistSpotID ?>';
+	console.log(artistSpotID);
 </script>
 
 <script src="https://www.roxorsoxor.com/poprock/functions/sort_artistAlbums2.js"></script>

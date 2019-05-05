@@ -9,17 +9,20 @@ if ( !$connekt ) {
 	echo '<p>Darn. Did not connect. Screwed up like this: ' . mysqli_connect_error() . '.</p>';
 };
 
-$postedArtistSpotID = $_POST[ "artistSpotID" ];
+//$postedArtistSpotID = $_POST[ "artistSpotID" ];
+//echo "<p>Sort PHP received artistSpotID " . $postedArtistSpotID . " in sort PHP file</p>";
 $postedColumnName = $_POST[ "columnName" ];
+//echo "<p>Sort PHP received column name " . $postedColumnName . " in sort PHP file</p>";
 $postedCurrentOrder = $_POST[ "currentOrder" ];
+//echo "<p>Sort PHP received current order " . $postedCurrentOrder . " in sort PHP file</p>";
 
 // if any of these did not come through, the defaults are the basic starting sort from the sql query
-$artistSpotID = "";
-//echo "<p>Sort PHP received artistSpotID " . $artistSpotID . " in sort PHP file</p>";
+$artistSpotID = $_POST[ "artistSpotID" ];
+//
 $columnName = "year";
-//echo "<p>Sort PHP received column name " . $columnName . " in sort PHP file</p>";
+//
 $currentOrder = "ASC";
-//echo "<p>Sort PHP received current order " . $currentOrder . " in sort PHP file</p>";
+//
 
 if ( !empty( $_POST[ "artistSpotID" ] ) ) {
 	$artistSpotID = $_POST[ "artistSpotID" ];
