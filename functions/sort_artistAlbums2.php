@@ -9,32 +9,39 @@ if ( !$connekt ) {
 	echo '<p>Darn. Did not connect. Screwed up like this: ' . mysqli_connect_error() . '.</p>';
 };
 
+$postedArtistSpotID = $_POST[ "artistSpotID" ];
+$postedColumnName = $_POST[ "columnName" ];
+$postedCurrentOrder = $_POST[ "currentOrder" ];
+
 // if any of these did not come through, the defaults are the basic starting sort from the sql query
-$artistSpotID = $_POST["artistSpotID"];
+$artistSpotID = "";
+//echo "<p>Sort PHP received artistSpotID " . $artistSpotID . " in sort PHP file</p>";
 $columnName = "year";
+//echo "<p>Sort PHP received column name " . $columnName . " in sort PHP file</p>";
 $currentOrder = "ASC";
+//echo "<p>Sort PHP received current order " . $currentOrder . " in sort PHP file</p>";
 
 if ( !empty( $_POST[ "artistSpotID" ] ) ) {
 	$artistSpotID = $_POST[ "artistSpotID" ];
-}
+};
 
 if ( !empty( $_POST[ "columnName" ] ) ) {
     // if the column name came through, use it
 	$columnName = $_POST[ "columnName" ];
-}
+};
 
 if ( !empty( $_POST[ "currentOrder" ] ) ) {
     // if the current order came through, use it
 	$currentOrder = $_POST[ "currentOrder" ];
-}
+};
 
 if ( $currentOrder == "DESC" ) {
 	$newOrder = "ASC";
-}
+};
 
 if ($currentOrder == "ASC") {
     $newOrder = "DESC";
-}
+};
 
 // These next three variables are for building the TH table headers. 
 // They're the defaults-in-waiting, I guess

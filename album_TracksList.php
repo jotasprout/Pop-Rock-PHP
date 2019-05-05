@@ -91,7 +91,6 @@ if ($source = 'musicbrainz') {
 	$getAlbumTracks = $MBLastFM;
 };
 
-
 $getit = $connekt->query( $getAlbumTracks );
 
 if ( !$getit ) {
