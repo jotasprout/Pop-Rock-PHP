@@ -5,7 +5,7 @@ $albumSpotID = $_GET['albumSpotID'];
 $albumMBID = $_GET['albumMBID'];
 $source = $_GET['source'];
 
-echo $artistSpotID;
+echo $source;
 
 require_once 'rockdb.php';
 require_once 'page_pieces/navbar_rock.php';
@@ -19,6 +19,8 @@ if ( !$connekt ) {
 
 $liveEvil_albumSpotID = '1Uq7JKrKGGYCkg6l79gkoa';
 $crossPurposes_albumMBID = '5d2e8936-8c36-3ccd-8e8f-916e3b771d49';
+$thirteen_SpotID = '46fDgOnY2RavytWwL88x5M';
+$thirteen_MBID = '7dbf4b1f-d3e9-47bc-9194-d15b31017bd6';
 
 /* Spotify Pop current day */
 $spotPop = "SELECT v.trackSpotID, v.trackName, v.albumName, v.pop, max(v.date) AS MaxDate
@@ -70,6 +72,39 @@ $SpotAndLastFM = "SELECT q.trackSpotID, q.trackName, q.albumName, q.pop, q.MaxDa
 						ORDER BY q.pop DESC";
 
 /* MB LastFM current day */
+$LastFMAndSpot = "SELECT q.trackSpotID, f1.trackName, f1.albumName, q.pop, q.MaxDate, f1.MaxDataDate, f1.trackListeners, f1.trackPlaycount
+					FROM (SELECT d.trackMBID, d.trackName, d.albumName, d.trackListeners, d.trackPlaycount, max(d.dataDate) AS MaxDataDate
+						FROM (
+							SELECT k.trackMBID, k.trackName, h.albumName, fm.dataDate, fm.trackListeners, fm.trackPlaycount
+								FROM (
+									SELECT m.trackMBID, m.trackName, m.albumMBID
+										FROM tracksMB m
+										WHERE m.albumMBID = '$albumMBID'
+								) k
+								INNER JOIN albumsMB h
+									ON h.albumMBID = k.albumMBID
+								JOIN tracksLastFM fm
+									ON fm.trackMBID = k.trackMBID
+						) d
+						GROUP BY d.trackMBID) f1
+					LEFT JOIN (SELECT v.trackSpotID, v.trackMBID, v.trackName, v.albumName, v.pop, max(v.date) AS MaxDate
+						FROM (
+							SELECT z.trackSpotID, z.trackMBID, z.trackName, r.albumName, r.albumMBID, p.date, p.pop
+								FROM (
+									SELECT t.trackSpotID, t.trackMBID, t.trackName, t.albumSpotID
+										FROM tracks t
+										WHERE t.albumSpotID = '$albumSpotID'
+								) z
+							INNER JOIN albums r 
+								ON r.albumSpotID = z.albumSpotID
+							JOIN popTracks p 
+								ON z.trackSpotID = p.trackSpotID					
+						) v
+						GROUP BY v.trackSpotID) q
+					ON q.trackMBID = f1.trackMBID
+					ORDER BY q.pop DESC;";
+
+/* MB LastFM current day */
 $MBLastFM = "SELECT d.trackMBID, d.trackName, d.albumName, d.trackListeners, d.trackPlaycount, max(d.dataDate) AS MaxDataDate
 	FROM (
 		SELECT k.trackMBID, k.trackName, h.albumName, fm.dataDate, fm.trackListeners, fm.trackPlaycount
@@ -90,7 +125,7 @@ if ($source = 'spotify') {
 };
 
 if ($source = 'musicbrainz') {
-	$getAlbumTracks = $MBLastFM;
+	$getAlbumTracks = $LastFMAndSpot;
 };
 
 $getit = $connekt->query( $getAlbumTracks );
@@ -148,29 +183,46 @@ if ( !$getit ) {
 		while ( $row = mysqli_fetch_array( $getit ) ) {
 			$albumName = $row[ "albumName" ];
 			$trackName = $row[ "trackName" ];
-			if ($source == "spotify") {
-				$trackSpotID = $row[ "trackSpotID" ];
-				$trackPop = $row[ "pop" ];
-				$popDate = $row[ "MaxDate" ];
-			} else {
-				$trackSpotID = "n/a";
-				$trackPop = "n/a";
+
+			$trackSpotID = $row[ "trackSpotID" ];
+			echo "<p>trackSpotID is " . $trackSpotID . ".</p>";
+			if ($trackSpotID == '') {
+				$trackSpotID = "n/a";			
+			};		
+
+			$trackPop = $row[ "pop" ];
+			echo "<p>trackPop is " . $trackPop . ".</p>";
+			if ($trackPop == '') {
+				$trackPop = "n/a";				
+			};	
+
+			$popDate = $row[ "MaxDate" ];
+			if ($popDate == '') {
 				$popDate = "n/a";				
 			};
+
 			$lastFMDate = $row[ "MaxDataDate" ];
 			if ($lastFMDate == 'NULL') {
 				$lastFMDate = "n/a";
 			};			
 			$trackListenersNum = $row[ "trackListeners"];
-			$trackListeners = number_format ($trackListenersNum);
-			if (!$trackListeners > 0) {
-				$trackListeners = "n/a";
+			echo "<p>trackListenersNum is " . $trackListenersNum . ".</p>";
+			if ($trackListenersNum != 'NULL') {
+				$trackListeners = number_format ($trackListenersNum);
+				if (!$trackListeners > 0) {
+					$trackListeners = "n/a";
+				};
 			};
+
 			$trackPlaycountNum = $row[ "trackPlaycount"];
-			$trackPlaycount = number_format ($trackPlaycountNum);
-			if (!$trackPlaycount > 0) {
-				$trackPlaycount = "n/a";
+			echo "<p>trackPlaycountNum is " . $trackPlaycountNum . ".</p>";
+			if ($trackPlaycountNum != 'NULL'){
+				$trackPlaycount = number_format ($trackPlaycountNum);
+				if (!$trackPlaycount > 0) {
+					$trackPlaycount = "n/a";
+				};
 			};
+
 	?>
 <tr>
 <td><?php echo $albumName ?></td>
