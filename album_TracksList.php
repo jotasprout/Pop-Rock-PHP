@@ -18,26 +18,22 @@ if ( !$connekt ) {
 $liveEvil_albumSpotID = '1Uq7JKrKGGYCkg6l79gkoa';
 $crossPurposes_albumMBID = '5d2e8936-8c36-3ccd-8e8f-916e3b771d49';
 
-$spotOnly = "SELECT t.trackSpotID, t.trackName, a.albumName, p1.pop, p1.MaxDate, f1.MaxDataDate, f1.trackListeners, f1.trackPlaycount
-						FROM tracks t
-						INNER JOIN albums a ON a.albumSpotID = t.albumSpotID
-						JOIN (SELECT p.* FROM popTracks p
-								INNER JOIN (SELECT trackSpotID, pop, max(date) AS MaxDate
-											FROM popTracks  
-											GROUP BY trackSpotID) groupedp
-								ON p.trackSpotID = groupedp.trackSpotID
-								AND p.date = groupedp.MaxDate) p1 
-						ON t.trackSpotID = p1.trackSpotID
-						LEFT JOIN (SELECT f.*
-								FROM tracksLastFM f
-								INNER JOIN (SELECT trackMBID, trackListeners, trackPlaycount, max(dataDate) AS MaxDataDate
-											FROM tracksLastFM  
-											GROUP BY trackMBID) groupedf
-								ON f.trackMBID = groupedf.trackMBID
-								AND f.dataDate = groupedf.MaxDataDate) f1
-						ON t.trackMBID = f1.trackMBID
-						WHERE a.albumSpotID = '$albumSpotID'
-						ORDER BY p1.pop DESC";
+/* Spotify Pop current day */
+$spotPop = "SELECT v.trackSpotID, v.trackName, v.albumName, v.pop, max(v.date) AS MaxDate
+FROM (
+	SELECT z.trackSpotID, z.trackName, r.albumName, p.date, p.pop
+		FROM (
+			SELECT t.trackSpotID, t.trackName, t.albumSpotID
+				FROM tracks t
+				WHERE t.albumSpotID = '$albumSpotID'
+		) z
+	INNER JOIN albums r 
+		ON r.albumSpotID = z.albumSpotID
+	JOIN popTracks p 
+		ON z.trackSpotID = p.trackSpotID					
+) v
+GROUP BY v.trackSpotID;";
+
 
 $SpotAndLastFM = "SELECT q.trackSpotID, q.trackName, q.albumName, q.pop, q.MaxDate, f1.MaxDataDate, f1.trackListeners, f1.trackPlaycount
 						FROM (SELECT v.trackSpotID, v.trackMBID, v.trackName, v.albumName, v.pop, max(v.date) AS MaxDate
@@ -71,56 +67,6 @@ $SpotAndLastFM = "SELECT q.trackSpotID, q.trackName, q.albumName, q.pop, q.MaxDa
 						ON q.trackMBID = f1.trackMBID
 						ORDER BY q.pop DESC";
 
-
-$LastFMthenSpot = "SELECT q.trackSpotID, q.trackName, q.albumName, q.pop, q.MaxDate, f1.MaxDataDate, f1.trackListeners, f1.trackPlaycount
-						FROM (SELECT d.trackMBID, d.trackName, d.albumName, d.trackListeners, d.trackPlaycount, max(d.dataDate) AS MaxDataDate
-							FROM (
-								SELECT k.trackMBID, k.trackName, h.albumName, fm.dataDate, fm.trackListeners, fm.trackPlaycount
-									FROM (
-										SELECT m.trackMBID, m.trackName, m.albumMBID
-											FROM tracksMB m
-											WHERE m.albumMBID = '$albumMBID'
-									) k
-									INNER JOIN albumsMB h
-										ON h.albumMBID = k.albumMBID
-									JOIN tracksLastFM fm
-										ON fm.trackMBID = k.trackMBID
-							) d
-							GROUP BY d.trackMBID) f1
-						LEFT JOIN 
-						(SELECT v.trackSpotID, v.trackMBID, v.trackName, v.albumName, v.pop, max(v.date) AS MaxDate
-							FROM (
-								SELECT z.trackSpotID, z.trackMBID, z.trackName, r.albumName, r.albumMBID, p.date, p.pop
-									FROM (
-										SELECT t.trackSpotID, t.trackMBID, t.trackName, t.albumSpotID
-											FROM tracks t
-											WHERE t.albumSpotID = '$albumSpotID'
-									) z
-								INNER JOIN albums r 
-									ON r.albumSpotID = z.albumSpotID
-								JOIN popTracks p 
-									ON z.trackSpotID = p.trackSpotID					
-							) v
-							GROUP BY v.trackSpotID) q
-						ON q.trackMBID = f1.trackMBID
-						ORDER BY q.trackListeners DESC";
-
-/* Spotify Pop current day */
-$spotPop = "SELECT v.trackSpotID, v.trackName, v.albumName, v.pop, max(v.date) AS MaxDate
-FROM (
-	SELECT z.trackSpotID, z.trackName, r.albumName, p.date, p.pop
-		FROM (
-			SELECT t.trackSpotID, t.trackName, t.albumSpotID
-				FROM tracks t
-				WHERE t.albumSpotID = '$albumSpotID'
-		) z
-	INNER JOIN albums r 
-		ON r.albumSpotID = z.albumSpotID
-	JOIN popTracks p 
-		ON z.trackSpotID = p.trackSpotID					
-) v
-GROUP BY v.trackSpotID;";
-
 /* MB LastFM current day */
 $MBLastFM = "SELECT d.trackMBID, d.trackName, d.albumName, d.trackListeners, d.trackPlaycount, max(d.dataDate) AS MaxDataDate
 	FROM (
@@ -139,8 +85,10 @@ $MBLastFM = "SELECT d.trackMBID, d.trackName, d.albumName, d.trackListeners, d.t
 
 if ($source = 'spotify') {
 	$getAlbumTracks = $SpotAndLastFM;
-} else if ($source = 'musicbrainz') {
-	$getAlbumTracks = $LastFMthenSpot;
+};
+
+if ($source = 'musicbrainz') {
+	$getAlbumTracks = $MBLastFM;
 };
 
 
@@ -184,6 +132,7 @@ if ( !$getit ) {
 			<th>Spotify<br>trackSpotID</th>
 				<!--
 				-->
+				
 			<th onClick="sortColumn('trackName', 'DESC')"><div class="pointyHead">Track Title</div></th>
 			<th class="popStyle">Spotify<br>Data Date</th>
 			<th class="popStyle" onClick="sortColumn('pop', 'ASC')"><div class="pointyHead">Track<br>Popularity</div></th>
@@ -198,11 +147,17 @@ if ( !$getit ) {
 		while ( $row = mysqli_fetch_array( $getit ) ) {
 			$albumName = $row[ "albumName" ];
 			$trackName = $row[ "trackName" ];
-			$trackSpotID = $row[ "trackSpotID" ];
-			$trackPop = $row[ "pop" ];
-			$popDate = $row[ "MaxDate" ];
+			if ($source == "spotify") {
+				$trackSpotID = $row[ "trackSpotID" ];
+				$trackPop = $row[ "pop" ];
+				$popDate = $row[ "MaxDate" ];
+			} else {
+				$trackSpotID = "n/a";
+				$trackPop = "n/a";
+				$popDate = "n/a";				
+			};
 			$lastFMDate = $row[ "MaxDataDate" ];
-			if ($lastFMDate = 'NULL') {
+			if ($lastFMDate == 'NULL') {
 				$lastFMDate = "n/a";
 			};			
 			$trackListenersNum = $row[ "trackListeners"];
