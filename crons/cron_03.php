@@ -170,8 +170,8 @@ function gatherArtistAlbums ($artistSpotID) {
 }
 
 function divideCombineArtistsForAlbums ($theseArtists) {
-	
-	echo "I am in the first function which is divideCombineArtistsForAlbums";
+
+	$timeStart = microtime(true);	
 
 	// Divide all artists into chunks of 50
 	$artistsChunk = array ();
@@ -234,9 +234,11 @@ function divideCombineArtistsForAlbums ($theseArtists) {
 
 	unset($artistsChunk);
 
+	$timeEnd = microtime(true);
+	$duration = ($timeEnd - $timeStart)/60;
+	echo "<p><b>This cron took:</b> " . $duration . " minutes.</p>";
+	
 }
-
-echo "Hi, Jay! Cron_03 is open!";
 
 divideCombineArtistsForAlbums ($artists03);
 
