@@ -2,12 +2,12 @@
 
 require_once '../../rockdb.php';
 
-$baseURL = '';
+$baseURL = 'data/';
 $today = date("m/d/y");
 $endURL = '.json';
 
-function assembleURL (artist) {
-	$artistURL = $baseURL . $artistNames[i] . "_" . $endURL;
+function assembleURL ($artistForURL) {
+	$artistURL = $baseURL . $artistForURL . "_" . $today . $endURL;
 	echo $artistURL;
 };
 
@@ -121,8 +121,8 @@ $x = ceil((count($filenames)));
 
 $y = ceil((count($artistNames)));
 
-for ($i=0; $i<$y; ++$i){
-	assembleURL ($artistNames[i]);
+for ($j=0; $j<$y; ++$j){
+	assembleURL ($artistNames[$j]);
 };
 
 for ($i=0; $i<$x; ++$i) {

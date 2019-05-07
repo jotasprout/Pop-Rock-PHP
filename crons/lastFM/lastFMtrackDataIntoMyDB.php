@@ -2,12 +2,12 @@
 
 require_once '../../rockdb.php';
 
-$baseURL = '';
+$baseURL = 'data/';
 $today = date("m/d/y");
 $endURL = '.json';
 
-function assembleURL (artist) {
-	$artistURL = $baseURL . $artistNames[i] . "_" . $endURL;
+function assembleURL ($artistForURL) {
+	$artistURL = $baseURL . $artistForURL . "_" . $today . $endURL;
 	echo $artistURL;
 };
 
@@ -61,7 +61,9 @@ $artistNames = array (
     'TheZombies_Group',
     'ToddRundgren_Person',
     'Utopia_Group'
-);$filenames = array (
+);
+
+$filenames = array (
     'data/2Pac_Person_05-04-19.json',
     'data/AliceCooper_Combined_05-04-19.json',
     'data/Anvil_Group_05-04-19.json',
@@ -121,9 +123,13 @@ for ($i=0; $i<$x; ++$i) {
 
 $y = ceil((count($artistNames)));
 
-for ($i=0; $i<$y; ++$i){
-	assembleURL ($artistNames[i]);
-};    $jsonFile = $filenames[$i];
+for ($j=0; $j<$y; ++$j){
+	assembleURL ($artistNames[$j]);
+};
+
+for ($i=0; $i<$x; ++$i) {
+
+    $jsonFile = $filenames[$i];
     $fileContents = file_get_contents($jsonFile);
     $artistData = json_decode($fileContents,true);
 
