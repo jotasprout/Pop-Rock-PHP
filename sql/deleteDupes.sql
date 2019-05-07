@@ -14,31 +14,29 @@ DELETE a FROM popTracks a
 INNER JOIN popTracks b
 WHERE a.trackSpotID = b.trackSpotID AND a.date = b.date AND a.id < b.id;
 
-###############
+############################################################
+############################################################
+############################################################
 
-SELECT count(*) FROM (SELECT * FROM popTracks a
-INNER JOIN popTracks b
-WHERE a.trackID = b.trackID AND a.date = b.date) pops;
-
-##############################
-
-DELETE a FROM albumsLastFM2 a
-INNER JOIN albumsLastFM2 b
+DELETE a FROM albumsLastFM a
+INNER JOIN albumsLastFM b
 WHERE a.albumMBID = b.albumMBID AND a.dataDate = b.dataDate AND a.id < b.id;
 
 ###############
 
-DELETE a FROM artistsLastFM2 a
-INNER JOIN artistsLastFM2 b
+DELETE a FROM artistsLastFM a
+INNER JOIN artistsLastFM b
 WHERE a.artistMBID = b.artistMBID AND a.dataDate = b.dataDate AND a.id < b.id;
 
 ###############
 
-DELETE a FROM tracksLastFM2 a
-INNER JOIN tracksLastFM2 b
+DELETE a FROM tracksLastFM a
+INNER JOIN tracksLastFM b
 WHERE a.trackMBID = b.trackMBID AND a.dataDate = b.dataDate AND a.id < b.id;
 
-##################
+############################################################
+############################################################
+############################################################
 
 SELECT * FROM `albumsMB` WHERE artistSpotID='5M52tdBnJaKSvOpJGz8mfZ' ORDER BY albumName ASC;
 
@@ -63,3 +61,9 @@ SELECT mb.albumName, mb.albumMBID, mb.albumSpotID, mb.artistSpotID
 FROM albumsMB mb 
 WHERE mb.artistSpotID='5M52tdBnJaKSvOpJGz8mfZ' 
 ORDER BY albumName ASC;
+
+###############
+
+SELECT count(*) FROM (SELECT * FROM popTracks a
+INNER JOIN popTracks b
+WHERE a.trackID = b.trackID AND a.date = b.date) pops;
