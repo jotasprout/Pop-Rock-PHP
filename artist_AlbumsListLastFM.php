@@ -1,6 +1,7 @@
 <?php
 
 $artistMBID = $_GET['artistMBID'];
+$artistSpotID = $_GET['artistSpotID'];
 //echo $artistMBID;
 require_once 'rockdb.php';
 require_once 'page_pieces/navbar_rock.php';
@@ -16,7 +17,7 @@ $blackSabbath_SpotID = '5M52tdBnJaKSvOpJGz8mfZ';
 $blackSabbath_MBID = '5182c1d9-c7d2-4dad-afa0-ccfeada921a8';
 
 $blackScabies = "SELECT b.albumName, b.albumMBID, z.artistName, f1.dataDate, f1.albumListeners, f1.albumPlaycount, x.albumArtMB
-FROM (SELECT mb.albumName, mb.albumMBID
+FROM (SELECT mb.albumName, mb.albumMBID, mb.artistMBID
 	FROM albumsMB mb 
 	WHERE mb.artistMBID='$artistMBID') b 
 JOIN artists z ON z.artistMBID = b.artistMBID
@@ -114,8 +115,7 @@ if(!$getit){
 <tr>
 <td><img src='<?php echo $coverArt ?>' height='64' width='64'></td>
 <!---->
-<td><a href='https://www.roxorsoxor.com/poprock/album_TracksList.php?artistMBID=<?php echo $artistMBID ?>&albumMBID=<?php echo $albumMBID ?>&source=<?php echo $source ?>'><?php echo $albumName ?></a></td>
-<td><?php echo $albumSpotID ?></td>
+<td><a href='https://www.roxorsoxor.com/poprock/album_TracksListMBID.php?artistMBID=<?php echo $artistMBID ?>&albumMBID=<?php echo $albumMBID ?>'><?php echo $albumName ?></a></td>
 <td><?php echo $albumMBID ?></td>
 
 <!---->

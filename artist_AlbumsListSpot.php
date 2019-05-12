@@ -1,6 +1,7 @@
 <?php
 
 $artistSpotID = $_GET['artistSpotID'];
+$artistMBID = $_GET['artistMBID'];
 //echo $artistSpotID;
 require_once 'rockdb.php';
 require_once 'page_pieces/navbar_rock.php';
@@ -15,20 +16,20 @@ if (!$connekt) {
 $blackSabbath_SpotID = '5M52tdBnJaKSvOpJGz8mfZ';
 $blackSabbath_MBID = '5182c1d9-c7d2-4dad-afa0-ccfeada921a8';
 
-$blackScabies = "SELECT b.albumName, b.albumSpotID, b.artistSpotID, a.year, a.albumArtSpot, a.tracksTotal, z.artistName, p1.pop, p1.date
-FROM (SELECT sp.albumName, sp.albumMBID, sp.albumSpotID, sp.artistSpotID
-	FROM albums sp
-	WHERE sp.artistSpotID='$artistSpotID') b
-LEFT JOIN albums a ON b.albumSpotID = a.albumSpotID	
+$blackScabies = "SELECT b.albumName, b.albumSpotID, b.year, z.artistName, p1.date, p1.pop, x.tracksTotal, x.albumArtSpot
+FROM (SELECT sp.albumName, sp.albumSpotID, sp.artistSpotID, sp.year
+		FROM albums sp
+		WHERE sp.artistSpotID='$artistSpotID') b
 JOIN artists z ON z.artistSpotID = b.artistSpotID
-LEFT JOIN (SELECT p.*
+LEFT JOIN albums x ON b.albumSpotID = x.albumSpotID	
+LEFT JOIN (SELECT p.* 
 		FROM popAlbums p
 		INNER JOIN (SELECT albumSpotID, pop, max(date) AS MaxDate
 					FROM popAlbums  
 					GROUP BY albumSpotID) groupedp
-		ON p.albumSpotID = groupedp.albumSpotID
-		AND p.date = groupedp.MaxDate) p1 
-ON a.albumSpotID = p1.albumSpotID
+					ON p.albumSpotID = groupedp.albumSpotID
+					AND p.date = groupedp.MaxDate) p1 
+ON b.albumSpotID = p1.albumSpotID
 ORDER BY b.albumName ASC;";
 
 $getit = $connekt->query($blackScabies);
@@ -80,7 +81,6 @@ if(!$getit){
 <!---->
 <th onClick="sortColumn('albumName', 'ASC', '<?php echo $artistSpotID; ?>')"><div class="pointyHead">Album Name</div></th>
 <th>Album Spotify ID</th>
-<th>Album MBID</th>
 
 <th onClick="sortColumn('year', 'unsorted', '<?php echo $artistSpotID; ?>')"><div class="pointyHead popStyle">Released</div></th>
 <!--
@@ -90,10 +90,6 @@ if(!$getit){
 
 <th onClick="sortColumn('pop', 'unsorted', '<?php echo $artistSpotID ?>')"><div class="pointyHead popStyle">Spotify<br>Popularity</div></th>
 <!---->
-<th class="popStyle">LastFM<br>Data Date</th>
-
-<th onClick="sortColumn('albumListeners', 'unsorted', '<?php echo $artistSpotID; ?>')"><div class="pointyHead rightNum">LastFM<br>Listeners</div></th>
-<th onClick="sortColumn('albumPlaycount', 'unsorted', '<?php echo $artistSpotID; ?>')"><div class="pointyHead rightNum">LastFM<br>Playcount</div></th>
 
 </tr>
 
@@ -106,11 +102,7 @@ if(!$getit){
 	while ($row = mysqli_fetch_array($getit)) {
 		$artistName = $row['artistName'];
 		$albumSpotID = $row['albumSpotID'];
-		$albumMBID = $row['albumMBID'];
-
-		if (is_null($row['albumMBID'])) {
-			$albumMBID = "NULL";
-		};
+		$date = $row['date'];
 
 		$source = 'spotify';
 		$albumPop = $row['pop'];
@@ -121,45 +113,16 @@ if(!$getit){
 		$albumReleased = $row['year'];	
 		// need to get release year for MusicBrainz-only albums	
 /*
-		if (is_null($row['albumArtSpot'])) {
-			
-		} else {
-			
-		};
+
 */
-		$date = $row['date'];
-		if (is_null($row['albumSpotID'])) {
-			$source = 'musicbrainz';
-			$albumSpotID = "NULL";
-			$date = "n/a";
-			$coverArt = $row['albumArtMB'];
-			$albumPop = "n/a";
-		};
 
-		$lastFMDate = $row[ "dataDate" ];
-		if (!$lastFMDate == "NULL") {
-			$lastFMDate = "n/a";
-		};
-
-		$albumListenersNum = $row[ "albumListeners"];
-		$albumListeners = number_format ($albumListenersNum);
-		if (!$albumListeners > 0) {
-			$albumListeners = "n/a";
-		};
-		$albumPlaycountNum = $row[ "albumPlaycount"];
-		$albumPlaycount = number_format ($albumPlaycountNum);
-		if (!$albumPlaycount > 0) {
-			$albumPlaycount = "n/a";
-		};
 ?>
 					
 <tr>
 <td><img src='<?php echo $coverArt ?>' height='64' width='64'></td>
 <!---->
-<td><a href='https://www.roxorsoxor.com/poprock/album_TracksList.php?artistSpotID=<?php echo $artistSpotID ?>&albumSpotID=<?php echo $albumSpotID ?>&albumMBID=<?php echo $albumMBID ?>&source=<?php echo $source ?>'><?php echo $albumName ?></a></td>
+<td><a href='https://www.roxorsoxor.com/poprock/album_TracksListSpot.php?artistSpotID=<?php echo $artistSpotID ?>&albumSpotID=<?php echo $albumSpotID ?>'><?php echo $albumName ?></a></td>
 <td><?php echo $albumSpotID ?></td>
-<td><?php echo $albumMBID ?></td>
-
 
 <td class="popStyle"><?php echo $albumReleased ?></td>
 <!--
@@ -169,10 +132,7 @@ if(!$getit){
 
 <td class="popStyle"><?php echo $albumPop ?></td>
 <!---->
-<td class="popStyle"><?php echo $lastFMDate ?></td>
 
-<td class="rightNum"><?php echo $albumListeners ?></td>
-<td class="rightNum"><?php echo $albumPlaycount ?></td>
 </tr>
 					
 					<?php 
