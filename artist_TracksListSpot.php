@@ -24,7 +24,7 @@ $gatherTrackInfo = "SELECT v.trackName, v.albumName, v.pop, max(v.date) AS MaxDa
 									FROM tracks t
 									INNER JOIN albums r ON r.albumSpotID = t.albumSpotID
 									JOIN artists a ON r.artistSpotID = a.artistSpotID
-									WHERE a.artistSpotID = '5M52tdBnJaKSvOpJGz8mfZ'
+									WHERE a.artistSpotID = '$artistSpotID'
 							) z
 						JOIN popTracks p 
 							ON z.trackSpotID = p.trackSpotID					
@@ -69,20 +69,20 @@ if ( !$getit ) {
 				
 <table class="table" id="tableotracks">
 	<thead>
-		<tr>
-			<th onClick="sortColumn('albumName', 'DESC', '<?php echo $artistSpotID ?>')"><div class="pointyHead">Album Title</div></th>
-			
-			
-			<th onClick="sortColumn('trackName', 'ASC', '<?php echo $artistSpotID ?>')"><div class="pointyHead">Track Title</div></th>
-			<th>Spotify<br>Data Date</th>
-			<th class="popStyle" onClick="sortColumn('pop', 'ASC', '<?php echo $artistSpotID ?>')"><div class="pointyHead">Spotify<br>Popularity</div></th>
-			<!--
+	<tr>
+		<th onClick="sortColumn('albumName', 'DESC', '<?php echo $artistSpotID ?>')"><div class="pointyHead">Album Title</div></th>
+		
+		
+		<th onClick="sortColumn('trackName', 'ASC', '<?php echo $artistSpotID ?>')"><div class="pointyHead">Track Title</div></th>
+		<th>Spotify<br>Data Date</th>
+		<th class="popStyle" onClick="sortColumn('pop', 'ASC', '<?php echo $artistSpotID ?>')"><div class="pointyHead">Spotify<br>Popularity</div></th>
+		<!--
 <th>Spotify<br>trackSpotID</th>
-			<th class="popStyle">LastFM<br>Data Date</th>
-			<th class="rightNum pointyHead">LastFM<br>Listeners</th>
-			<th class="rightNum pointyHead">LastFM<br>Playcount</th>
-			-->
-		</tr>
+		<th class="popStyle">LastFM<br>Data Date</th>
+		<th class="rightNum pointyHead">LastFM<br>Listeners</th>
+		<th class="rightNum pointyHead">LastFM<br>Playcount</th>
+		-->
+	</tr>
 	</thead>
 					
 					<tbody>
