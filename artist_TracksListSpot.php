@@ -1,6 +1,8 @@
 <?php
 
 $artistSpotID = $_GET['artistSpotID'];
+$artistMBID = $_GET['artistMBID'];
+$source = $_GET['source'];
 
 require_once 'rockdb.php';
 require_once 'page_pieces/navbar_rock.php';
@@ -13,7 +15,7 @@ if ( !$connekt ) {
 };
 
 $blackSabbath_SpotID = '5M52tdBnJaKSvOpJGz8mfZ';
-
+/*
 $gatherTrackInfo = "SELECT t.trackSpotID, t.trackName, a.albumName, a.artistSpotID, p1.pop, p1.date
 		FROM tracks t
 		INNER JOIN albums a ON a.albumSpotID = t.albumSpotID
@@ -40,7 +42,7 @@ $gatherTrackInfo = "SELECT t.trackSpotID, t.trackName, a.albumName, a.artistSpot
 		ON t.trackSpotID = p1.trackSpotID
 		WHERE a.artistSpotID = '5M52tdBnJaKSvOpJGz8mfZ'
 		ORDER BY t.trackName ASC";
-
+*/
 $gatherTrackInfo = "SELECT t.trackSpotID, t.trackName, a.albumName, a.artistSpotID, p1.pop, p1.date
 		FROM tracks t
 		INNER JOIN albums a ON a.albumSpotID = t.albumSpotID
@@ -97,9 +99,12 @@ if ( !$getit ) {
 			<th onClick="sortColumn('trackName', 'ASC', '<?php echo $artistSpotID ?>')"><div class="pointyHead">Track Title</div></th>
 			<th>Spotify<br>Data Date</th>
 			<th class="popStyle" onClick="sortColumn('pop', 'ASC', '<?php echo $artistSpotID ?>')"><div class="pointyHead">Spotify<br>Popularity</div></th>
+			<!--
+
 			<th class="popStyle">LastFM<br>Data Date</th>
 			<th class="rightNum pointyHead">LastFM<br>Listeners</th>
 			<th class="rightNum pointyHead">LastFM<br>Playcount</th>
+			-->
 		</tr>
 	</thead>
 					
@@ -111,9 +116,10 @@ if ( !$getit ) {
 							$trackSpotID = $row[ "trackSpotID" ];
 							$trackPop = $row[ "pop" ];
 							$popDate = $row[ "date" ];
-							$lastFMDate = $row[ "dataDate" ];
-							$trackListenersNum = $row["trackListeners"];
-							$trackListeners = number_format ($trackListenersNum);
+							//$lastFMDate = $row[ "dataDate" ];
+							//$trackListenersNum = $row["trackListeners"];
+							//$trackListeners = number_format ($trackListenersNum);
+							/*
 							if (!$trackListeners > 0) {
 								$trackListeners = "n/a";
 							};
@@ -122,6 +128,7 @@ if ( !$getit ) {
 							if (!$trackPlaycount > 0) {
 								$trackPlaycount = "n/a";
 							};
+							*/
 					?>
 							<tr>
 								<td><?php echo $albumName ?></td>
@@ -130,9 +137,12 @@ if ( !$getit ) {
 								<td><?php echo $trackName ?></td>
 								<td><?php echo $popDate ?></td>
 								<td class="popStyle"><?php echo $trackPop ?></td>
-								<td class="popStyle"><?php echo $lastFMDate ?></td>
-								<td class="rightNum"><?php echo $trackListeners ?></td>
-								<td class="rightNum"><?php echo $trackPlaycount ?></td>
+								<!--
+
+								<td class="popStyle"><?php //echo $lastFMDate ?></td>
+								<td class="rightNum"><?php //echo $trackListeners ?></td>
+								<td class="rightNum"><?php //echo $trackPlaycount ?></td>
+								-->
 							</tr>
 					<?php 
 						} // end of while

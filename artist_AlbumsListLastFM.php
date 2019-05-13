@@ -2,7 +2,8 @@
 
 $artistMBID = $_GET['artistMBID'];
 $artistSpotID = $_GET['artistSpotID'];
-//echo $artistMBID;
+$source = $_GET['source'];
+
 require_once 'rockdb.php';
 require_once 'page_pieces/navbar_rock.php';
 require_once 'page_pieces/stylesAndScripts.php';
@@ -100,7 +101,7 @@ if(!$getit){
 		$artistName = $row['artistName'];
 		$albumMBID = $row['albumMBID'];
 		$albumName = $row['albumName'];	
-        $source = 'musicbrainz';
+        //$source = 'musicbrainz';
         $coverArt = $row['albumArtMB'];
 
 		$lastFMDate = $row[ "dataDate" ];
@@ -115,7 +116,7 @@ if(!$getit){
 <tr>
 <td><img src='<?php echo $coverArt ?>' height='64' width='64'></td>
 <!---->
-<td><a href='https://www.roxorsoxor.com/poprock/album_TracksListMBID.php?artistMBID=<?php echo $artistMBID ?>&albumMBID=<?php echo $albumMBID ?>'><?php echo $albumName ?></a></td>
+<td><a href='https://www.roxorsoxor.com/poprock/album_TracksListLastFM.php?artistMBID=<?php echo $artistMBID ?>&albumMBID=<?php echo $albumMBID ?>&source=musicbrainz'><?php echo $albumName ?></a></td>
 <td><?php echo $albumMBID ?></td>
 
 <!---->

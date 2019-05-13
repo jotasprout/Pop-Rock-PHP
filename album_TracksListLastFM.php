@@ -36,7 +36,7 @@ $getAlbumTracks = "SELECT d.trackName, d.albumName, d.trackListeners, d.trackPla
 				ON fm.trackMBID = k.trackMBID
 	) d
 	GROUP BY d.trackMBID";
-
+/*
 if ($source = 'spotify') {
 	$getAlbumTracks = $SpotAndLastFM;
 };
@@ -44,7 +44,7 @@ if ($source = 'spotify') {
 if ($source = 'musicbrainz') {
 	$getAlbumTracks = $LastFMAndSpot;
 };
-
+*/
 $getit = $connekt->query( $getAlbumTracks );
 
 if ( !$getit ) {
@@ -84,11 +84,12 @@ if ( !$getit ) {
 			<th onClick="sortColumn('albumName', 'ASC')"><div class="pointyHead">Album Name</div></th>
 			<th>Spotify<br>trackSpotID</th>
 				<!--
-				-->
-				
 			<th onClick="sortColumn('trackName', 'DESC')"><div class="pointyHead">Track Title</div></th>
 			<th class="popStyle">Spotify<br>Data Date</th>
-			<th class="popStyle" onClick="sortColumn('pop', 'ASC')"><div class="pointyHead">Track<br>Popularity</div></th>
+			<th class="popStyle" onClick="sortColumn('pop', 'ASC')"><div class="pointyHead">Track<br>Popularity</div></th>					
+				-->
+				
+
 			<th class="popStyle">LastFM<br>Data Date</th>
 			<th class="rightNum pointyHead">LastFM<br>Listeners</th>
 			<th class="rightNum pointyHead">LastFM<br>Playcount</th>
@@ -100,7 +101,7 @@ if ( !$getit ) {
 		while ( $row = mysqli_fetch_array( $getit ) ) {
 			$albumName = $row[ "albumName" ];
 			$trackName = $row[ "trackName" ];
-
+/*
 			$trackSpotID = $row[ "trackSpotID" ];
 			echo "<p>trackSpotID is " . $trackSpotID . ".</p>";
 			if ($trackSpotID == '') {
@@ -117,7 +118,7 @@ if ( !$getit ) {
 			if ($popDate == '') {
 				$popDate = "n/a";				
 			};
-
+*/
 			$lastFMDate = $row[ "MaxDataDate" ];
 			if ($lastFMDate == 'NULL') {
 				$lastFMDate = "n/a";
@@ -143,11 +144,13 @@ if ( !$getit ) {
 	?>
 <tr>
 <td><?php echo $albumName ?></td>
-<td><?php echo $trackSpotID ?></td>
-<!--  -->
-<td><a href='https://www.roxorsoxor.com/poprock/track_Chart.php?trackSpotID=<?php echo $trackSpotID ?>'><?php echo $trackName ?></a></td>
-<td class="popStyle"><?php echo $popDate ?></td>
-<td class="popStyle"><?php echo $trackPop ?></td>
+<td><?php echo $trackMBID ?></td>
+
+<td><a href='https://www.roxorsoxor.com/poprock/track_Chart.php?trackMBID=<?php echo $trackMBID ?>'><?php echo $trackName ?></a></td>
+<!-- 
+	<td class="popStyle"><?php //echo $popDate ?></td>
+<td class="popStyle"><?php //echo $trackPop ?></td>
+ -->
 <td class="popStyle"><?php echo $lastFMDate ?></td>
 <td class="rightNum"><?php echo $trackListeners ?></td>
 <td class="rightNum"><?php echo $trackPlaycount ?></td>

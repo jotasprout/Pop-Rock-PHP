@@ -2,6 +2,7 @@
 
 $artistSpotID = $_GET['artistSpotID'];
 $artistMBID = $_GET['artistMBID'];
+$source = $_GET['source'];
 
 require_once 'rockdb.php';
 require_once 'page_pieces/navbar_rock.php';
@@ -15,17 +16,10 @@ if ( !$connekt ) {
 
 $blackSabbath_MBID = '5182c1d9-c7d2-4dad-afa0-ccfeada921a8';
 
-$gatherTrackInfo = "SELECT t.trackSpotID, t.trackName, a.albumName, a.artistSpotID, p1.pop, p1.date, f1.dataDate, f1.trackListeners, f1.trackPlaycount
-		FROM tracks t
-		INNER JOIN albums a ON a.albumSpotID = t.albumSpotID
-		JOIN (SELECT p.* FROM popTracks p
-				INNER JOIN (SELECT trackSpotID, pop, max(date) AS MaxDate
-							FROM popTracks  
-							GROUP BY trackSpotID) groupedp
-				ON p.trackSpotID = groupedp.trackSpotID
-				AND p.date = groupedp.MaxDate) p1 
-		ON t.trackSpotID = p1.trackSpotID
-			LEFT JOIN (SELECT f.*
+$gatherTrackInfo = "SELECT t.trackMBID, t.trackName, a.albumName, a.artistMBID, f1.MaxDataDate, f1.trackListeners, f1.trackPlaycount
+		FROM tracksMB t
+		INNER JOIN albumsMB a ON a.albumMBID = t.albumMBID
+		JOIN (SELECT f.*
 				FROM tracksLastFM f
 				INNER JOIN (SELECT trackMBID, trackListeners, trackPlaycount, max(dataDate) AS MaxDataDate
 							FROM tracksLastFM  
@@ -33,7 +27,7 @@ $gatherTrackInfo = "SELECT t.trackSpotID, t.trackName, a.albumName, a.artistSpot
 				ON f.trackMBID = groupedf.trackMBID
 				AND f.dataDate = groupedf.MaxDataDate) f1
 		ON t.trackMBID = f1.trackMBID
-		WHERE a.artistSpotID = '$artistSpotID'
+		WHERE a.artistMBID = '$artistMBID'
 		ORDER BY t.trackName ASC";
 
 $getit = $connekt->query( $gatherTrackInfo );
@@ -90,9 +84,9 @@ if ( !$getit ) {
 						while ( $row = mysqli_fetch_array( $getit ) ) {
 							$albumName = $row[ "albumName" ];
 							$trackName = $row[ "trackName" ];
-							$trackSpotID = $row[ "trackSpotID" ];
-							$trackPop = $row[ "pop" ];
-							$popDate = $row[ "date" ];
+							//$trackSpotID = $row[ "trackSpotID" ];
+							//$trackPop = $row[ "pop" ];
+							//$popDate = $row[ "date" ];
 							$lastFMDate = $row[ "dataDate" ];
 							$trackListenersNum = $row["trackListeners"];
 							$trackListeners = number_format ($trackListenersNum);

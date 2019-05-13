@@ -2,7 +2,8 @@
 
 $artistSpotID = $_GET['artistSpotID'];
 $artistMBID = $_GET['artistMBID'];
-//echo $artistSpotID;
+$source = $_GET['source'];
+
 require_once 'rockdb.php';
 require_once 'page_pieces/navbar_rock.php';
 require_once 'page_pieces/stylesAndScripts.php';
@@ -15,6 +16,17 @@ if (!$connekt) {
 
 $blackSabbath_SpotID = '5M52tdBnJaKSvOpJGz8mfZ';
 $blackSabbath_MBID = '5182c1d9-c7d2-4dad-afa0-ccfeada921a8';
+
+$praying = "SELECT t.trackName, a.albumName, p1.date, p1.pop
+FROM (SELECT p.* 
+        FROM popTracks p
+        INNER JOIN (SELECT id, trackSpotID, pop, max(date) AS MaxDate 
+                    FROM `popTracks` 
+                    GROUP BY trackSpotID) groupedp
+        ON p.trackSpotID = groupedp.trackSpotID AND p.date = groupedp.MaxDate) p1
+INNER JOIN tracks t ON p1.trackSpotID = t.trackSpotID
+INNER JOIN albums a ON t.albumSpotID = a.albumSpotID
+WHERE a.artistSpotID = '5M52tdBnJaKSvOpJGz8mfZ';";
 
 $blackScabies = "SELECT b.albumName, b.albumSpotID, b.year, z.artistName, p1.date, p1.pop, x.tracksTotal, x.albumArtSpot
 FROM (SELECT sp.albumName, sp.albumSpotID, sp.artistSpotID, sp.year
@@ -121,7 +133,7 @@ if(!$getit){
 <tr>
 <td><img src='<?php echo $coverArt ?>' height='64' width='64'></td>
 <!---->
-<td><a href='https://www.roxorsoxor.com/poprock/album_TracksListSpot.php?artistSpotID=<?php echo $artistSpotID ?>&albumSpotID=<?php echo $albumSpotID ?>'><?php echo $albumName ?></a></td>
+<td><a href='https://www.roxorsoxor.com/poprock/album_TracksListSpot.php?artistSpotID=<?php echo $artistSpotID ?>&albumSpotID=<?php echo $albumSpotID ?>&source=spotify'><?php echo $albumName ?></a></td>
 <td><?php echo $albumSpotID ?></td>
 
 <td class="popStyle"><?php echo $albumReleased ?></td>

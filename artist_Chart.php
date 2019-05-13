@@ -1,5 +1,8 @@
 <?php 
     $artistSpotID = $_GET['artistSpotID'];
+    $artistMBID = $_GET['artistMBID'];
+    $source = $_GET['source'];
+    
 	require_once 'page_pieces/stylesAndScripts.php';
 	require_once 'page_pieces/navbar_rock.php';
 ?>
