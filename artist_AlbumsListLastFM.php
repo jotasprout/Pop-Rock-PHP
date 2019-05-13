@@ -116,7 +116,7 @@ if(!$getit){
 <tr>
 <td><img src='<?php echo $coverArt ?>' height='64' width='64'></td>
 <!---->
-<td><a href='https://www.roxorsoxor.com/poprock/album_TracksListLastFM.php?artistMBID=<?php echo $artistMBID ?>&albumMBID=<?php echo $albumMBID ?>&source=musicbrainz'><?php echo $albumName ?></a></td>
+<td><a href='https://www.roxorsoxor.com/poprock/album_TracksListLastFM.php?artistSpotID=<?php echo $artistSpotID ?>&artistMBID=<?php echo $artistMBID ?>&albumMBID=<?php echo $albumMBID ?>&source=musicbrainz'><?php echo $albumName ?></a></td>
 <td><?php echo $albumMBID ?></td>
 
 <!---->

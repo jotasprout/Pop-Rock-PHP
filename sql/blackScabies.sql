@@ -30,7 +30,7 @@ SELECT a.albumName, a.year, a.albumArt, a.tracksTotal, z.artistName, p1.pop, p1.
 	ON a.albumMBID = f1.albumMBID
 	ORDER BY albumName ASC;
 
-# Adding LastFMdata worked but withoutdata
+/* Adding LastFMdata worked but withoutdata */
 
 SELECT b.albumName, b.albumMBID, b.albumID, b.artistID, a.year, a.albumArt, a.tracksTotal, z.artistName, p1.pop, p1.date, f1.dataDate, f1.albumListeners, f1.albumPlaycount
 FROM (SELECT sp.albumName, sp.albumMBID, sp.albumID, sp.artistID
@@ -61,8 +61,10 @@ ON a.albumMBID = f1.albumMBID
 ORDER BY b.albumName ASC;
 
 
-# This gets just MBID LastFM stats
-# ReplaceLines 53to59 withBelow
+/*
+This gets just MBID LastFM stats
+ReplaceLines 53to59 withBelow
+*/
 SELECT mb.albumMBID, mb.albumName, f1.albumListeners, f1.albumPlaycount
 FROM albumsMB mb 	
 LEFT JOIN (SELECT f.*
@@ -76,8 +78,9 @@ ON mb.albumMBID = f1.albumMBID
 WHERE mb.artistSpotID='5M52tdBnJaKSvOpJGz8mfZ'
 ORDER BY mb.albumName ASC;
 
-# Adding spotify popularity WORKS
-
+/*
+Adding spotify popularity WORKS
+*/
 SELECT b.albumName, b.albumMBID, b.albumID, b.artistID, a.year, a.albumArt, a.tracksTotal, z.artistName, p1.pop, p1.date
 FROM (SELECT sp.albumName, sp.albumMBID, sp.albumID, sp.artistID
 	FROM albums sp
@@ -98,7 +101,9 @@ LEFT JOIN (SELECT p.*
 ON a.albumID = p1.albumID
 ORDER BY b.albumName ASC;
 
-# Adding artistName fromartiststable works
+/*
+Adding artistName from artists table works
+*/
 
 SELECT b.albumName, b.albumMBID, b.albumID, b.artistID, a.year, a.albumArt, a.tracksTotal, z.artistName
 FROM (SELECT sp.albumName, sp.albumMBID, sp.albumID, sp.artistID
@@ -125,7 +130,9 @@ SELECT mb.albumName, mb.albumMBID, mb.albumSpotID, mb.artistSpotID
 LEFT JOIN albums a ON b.albumID = a.albumID	
 ORDER BY b.albumName ASC;
 
-# Wrappingin aSELECT works
+/*
+Wrapping in a SELECT works
+*/
 
 SELECT b.albumName, b.albumMBID, b.albumID, b.artistID
 FROM (SELECT sp.albumName, sp.albumMBID, sp.albumID, sp.artistID
@@ -137,7 +144,9 @@ SELECT mb.albumName, mb.albumMBID, mb.albumSpotID, mb.artistSpotID
 	WHERE mb.artistSpotID='5M52tdBnJaKSvOpJGz8mfZ') b 
 ORDER BY b.albumName ASC;
 
-# Below gets all albums
+/*
+Below gets all albums
+*/
 
 SELECT sp.albumName, sp.albumMBID, sp.albumID, sp.artistID 
 	FROM albums sp

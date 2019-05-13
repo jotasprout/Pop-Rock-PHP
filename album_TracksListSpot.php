@@ -67,7 +67,9 @@ if ( !$getit ) {
 		<?php echo $navbar ?>
 
 		<!-- main -->
+		<!--
 		<p>Please be patient while data loads.</p>
+		-->
 		<div class="panel panel-primary">
 			<div class="panel-heading">
 				<h3 class="panel-title">This Album's Tracks Popularity On Spotify</h3>
@@ -80,8 +82,9 @@ if ( !$getit ) {
 	<thead>
 		<tr>
 			<th onClick="sortColumn('albumName', 'ASC')"><div class="pointyHead">Album Name</div></th>
+<!--
 			<th>Spotify<br>trackSpotID</th>
-				
+				-->
 				
 				
 			<th onClick="sortColumn('trackName', 'DESC')"><div class="pointyHead">Track Title</div></th>
@@ -101,11 +104,7 @@ if ( !$getit ) {
 			$albumName = $row[ "albumName" ];
 			$trackName = $row[ "trackName" ];
 
-			$trackSpotID = $row[ "trackSpotID" ];
-			//echo "<p>trackSpotID is " . $trackSpotID . ".</p>";
-			if ($trackSpotID == '') {
-				$trackSpotID = "n/a";			
-			};		
+			// $trackSpotID = $row[ "trackSpotID" ];		
 
 			$trackPop = $row[ "pop" ];
 			//echo "<p>trackPop is " . $trackPop . ".</p>";
@@ -146,17 +145,14 @@ if ( !$getit ) {
 	?>
 <tr>
 <td><?php echo $albumName ?></td>
-<td><?php echo $trackSpotID ?></td>
-
+<!--
+<td><?php //echo $trackSpotID ?></td>
+-->
 <td><a href='https://www.roxorsoxor.com/poprock/track_Chart.php?trackSpotID=<?php echo $trackSpotID ?>'><?php echo $trackName ?></a></td>
 <td class="popStyle"><?php echo $popDate ?></td>
 <td class="popStyle"><?php echo $trackPop ?></td>
 
-<!-- 
-	<td class="popStyle"><?php //echo $lastFMDate ?></td>
-<td class="rightNum"><?php //echo $trackListeners ?></td>
-<td class="rightNum"><?php //echo $trackPlaycount ?></td>
- -->
+
 </tr>
 	<?php 
 		} // end of while

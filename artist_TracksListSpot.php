@@ -15,46 +15,22 @@ if ( !$connekt ) {
 };
 
 $blackSabbath_SpotID = '5M52tdBnJaKSvOpJGz8mfZ';
-/*
-$gatherTrackInfo = "SELECT t.trackSpotID, t.trackName, a.albumName, a.artistSpotID, p1.pop, p1.date
-		FROM tracks t
-		INNER JOIN albums a ON a.albumSpotID = t.albumSpotID
-		WHERE a.artistSpotID = '5M52tdBnJaKSvOpJGz8mfZ'
-		JOIN (SELECT p.* FROM popTracks p
-				INNER JOIN (SELECT trackSpotID, pop, max(date) AS MaxDate
-							FROM popTracks  
-							GROUP BY trackSpotID) groupedp
-				ON p.trackSpotID = groupedp.trackSpotID
-				AND p.date = groupedp.MaxDate) p1 
-		ON t.trackSpotID = p1.trackSpotID
-		ORDER BY t.trackName ASC";
 
-$gatherTrackInfo = "SELECT t.trackSpotID, t.trackName, a.albumName, a.artistSpotID, p1.pop, p1.date
-		FROM tracks t
-		GROUP BY albumSpotID
-		INNER JOIN albums a ON a.albumSpotID = t.albumSpotID
-		JOIN (SELECT p.* FROM popTracks p
-				INNER JOIN (SELECT trackSpotID, pop, max(date) AS MaxDate
-							FROM popTracks  
-							GROUP BY trackSpotID) groupedp
-				ON p.trackSpotID = groupedp.trackSpotID
-				AND p.date = groupedp.MaxDate) p1 
-		ON t.trackSpotID = p1.trackSpotID
-		WHERE a.artistSpotID = '5M52tdBnJaKSvOpJGz8mfZ'
-		ORDER BY t.trackName ASC";
-*/
-$gatherTrackInfo = "SELECT t.trackSpotID, t.trackName, a.albumName, a.artistSpotID, p1.pop, p1.date
-		FROM tracks t
-		INNER JOIN albums a ON a.albumSpotID = t.albumSpotID
-		JOIN (SELECT p.* FROM popTracks p
-				INNER JOIN (SELECT trackSpotID, pop, max(date) AS MaxDate
-							FROM popTracks  
-							GROUP BY trackSpotID) groupedp
-				ON p.trackSpotID = groupedp.trackSpotID
-				AND p.date = groupedp.MaxDate) p1 
-		ON t.trackSpotID = p1.trackSpotID
-		WHERE a.artistSpotID = '$artistSpotID'
-		ORDER BY t.trackName ASC";
+$gatherTrackInfo = "SELECT v.trackName, v.albumName, v.pop, max(v.date) AS MaxDate
+					FROM (
+						SELECT z.trackSpotID, z.trackName, z.albumName, p.date, p.pop
+							FROM (
+								SELECT t.*, r.albumName, a.artistName
+									FROM tracks t
+									INNER JOIN albums r ON r.albumSpotID = t.albumSpotID
+									JOIN artists a ON r.artistSpotID = a.artistSpotID
+									WHERE a.artistSpotID = '5M52tdBnJaKSvOpJGz8mfZ'
+							) z
+						JOIN popTracks p 
+							ON z.trackSpotID = p.trackSpotID					
+					) v
+					GROUP BY v.trackSpotID
+					ORDER BY v.pop DESC";
 
 $getit = $connekt->query( $gatherTrackInfo );
 
@@ -80,8 +56,9 @@ if ( !$getit ) {
 		<?php echo $navbar ?>
 
 		<!-- main -->
+		<!--
 		<p>If this page is empty, or the wrong discography displays, <a href='https://www.roxorsoxor.com/poprock/index.php'>choose an artist</a> first.</p>
-
+		-->
 		<div class="panel panel-primary">
 			<div class="panel-heading">
 				<h3 class="panel-title">Latest Tracks Stats from My Database</h3>
@@ -94,13 +71,13 @@ if ( !$getit ) {
 	<thead>
 		<tr>
 			<th onClick="sortColumn('albumName', 'DESC', '<?php echo $artistSpotID ?>')"><div class="pointyHead">Album Title</div></th>
-			<th>Spotify<br>trackSpotID</th>
+			
 			
 			<th onClick="sortColumn('trackName', 'ASC', '<?php echo $artistSpotID ?>')"><div class="pointyHead">Track Title</div></th>
 			<th>Spotify<br>Data Date</th>
 			<th class="popStyle" onClick="sortColumn('pop', 'ASC', '<?php echo $artistSpotID ?>')"><div class="pointyHead">Spotify<br>Popularity</div></th>
 			<!--
-
+<th>Spotify<br>trackSpotID</th>
 			<th class="popStyle">LastFM<br>Data Date</th>
 			<th class="rightNum pointyHead">LastFM<br>Listeners</th>
 			<th class="rightNum pointyHead">LastFM<br>Playcount</th>
@@ -113,36 +90,16 @@ if ( !$getit ) {
 						while ( $row = mysqli_fetch_array( $getit ) ) {
 							$albumName = $row[ "albumName" ];
 							$trackName = $row[ "trackName" ];
-							$trackSpotID = $row[ "trackSpotID" ];
 							$trackPop = $row[ "pop" ];
-							$popDate = $row[ "date" ];
-							//$lastFMDate = $row[ "dataDate" ];
-							//$trackListenersNum = $row["trackListeners"];
-							//$trackListeners = number_format ($trackListenersNum);
-							/*
-							if (!$trackListeners > 0) {
-								$trackListeners = "n/a";
-							};
-							$trackPlaycountNum = $row["trackPlaycount"];
-							$trackPlaycount = number_format ($trackPlaycountNum);
-							if (!$trackPlaycount > 0) {
-								$trackPlaycount = "n/a";
-							};
-							*/
+							$popDate = $row[ "MaxDate" ];
+
 					?>
 							<tr>
 								<td><?php echo $albumName ?></td>
-								<td><?php echo $trackSpotID ?></td>
-								
 								<td><?php echo $trackName ?></td>
 								<td><?php echo $popDate ?></td>
 								<td class="popStyle"><?php echo $trackPop ?></td>
-								<!--
 
-								<td class="popStyle"><?php //echo $lastFMDate ?></td>
-								<td class="rightNum"><?php //echo $trackListeners ?></td>
-								<td class="rightNum"><?php //echo $trackPlaycount ?></td>
-								-->
 							</tr>
 					<?php 
 						} // end of while
@@ -158,11 +115,11 @@ if ( !$getit ) {
 	</div> <!-- closing container -->
 	
 <?php echo $scriptsAndSuch; ?>
-
+<!--
 <script>
-	let artistSpotID = '<?php echo $artistSpotID ?>';
+	let artistSpotID = '<?php //echo $artistSpotID ?>';
 </script>
-
+-->
 <script src="https://www.roxorsoxor.com/poprock/functions/sort_Tracks.js"></script>
 
 </body>

@@ -1,4 +1,6 @@
-# Adding LastFMdata worked but withoutdata
+/*
+Adding LastFM data worked but without data
+*/
 SELECT b.albumName, b.albumMBID, b.albumID, b.artistID, a.year, a.albumArt, a.tracksTotal, z.artistName, p1.pop, p1.date, f1.dataDate, f1.albumListeners, f1.albumPlaycount
 FROM (SELECT sp.albumName, sp.albumMBID, sp.albumID, sp.artistID
 	FROM albums sp
@@ -28,8 +30,11 @@ ON b.albumMBID = f1.albumMBID
 ORDER BY b.albumName ASC;
 
 
-# This gets just MBID LastFM stats
-# ReplaceLines 53to59 withBelow
+/*
+This gets just MBID LastFM stats
+ReplaceLines 53to59 withBelow
+*/
+
 SELECT mb.albumMBID, mb.albumName, f1.albumListeners, f1.albumPlaycount
 FROM albumsMB mb 	
 LEFT JOIN (SELECT f.*

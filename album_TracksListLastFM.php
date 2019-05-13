@@ -1,11 +1,10 @@
 <?php
 
-$artistSpotID = $_GET['artistSpotID'];
-$albumSpotID = $_GET['albumSpotID'];
+$artistMBID = $_GET['artistMBID'];
 $albumMBID = $_GET['albumMBID'];
 $source = $_GET['source'];
 
-echo $source;
+//echo $source;
 
 require_once 'rockdb.php';
 require_once 'page_pieces/navbar_rock.php';
@@ -69,7 +68,9 @@ if ( !$getit ) {
 		<?php echo $navbar ?>
 
 		<!-- main -->
+		<!--
 		<p>Please be patient while data loads.</p>
+		-->
 		<div class="panel panel-primary">
 			<div class="panel-heading">
 				<h3 class="panel-title">This Album's Tracks Popularity On Spotify</h3>
@@ -82,14 +83,12 @@ if ( !$getit ) {
 	<thead>
 		<tr>
 			<th onClick="sortColumn('albumName', 'ASC')"><div class="pointyHead">Album Name</div></th>
-			<th>Spotify<br>trackSpotID</th>
+			<th>MBID</th>
 				<!--
 			<th onClick="sortColumn('trackName', 'DESC')"><div class="pointyHead">Track Title</div></th>
 			<th class="popStyle">Spotify<br>Data Date</th>
-			<th class="popStyle" onClick="sortColumn('pop', 'ASC')"><div class="pointyHead">Track<br>Popularity</div></th>					
+			<th class="popStyle" onClick="sortColumn('pop', 'ASC')"><div class="pointyHead">Track<br>Popularity</div></th>				
 				-->
-				
-
 			<th class="popStyle">LastFM<br>Data Date</th>
 			<th class="rightNum pointyHead">LastFM<br>Listeners</th>
 			<th class="rightNum pointyHead">LastFM<br>Playcount</th>
@@ -101,56 +100,21 @@ if ( !$getit ) {
 		while ( $row = mysqli_fetch_array( $getit ) ) {
 			$albumName = $row[ "albumName" ];
 			$trackName = $row[ "trackName" ];
-/*
-			$trackSpotID = $row[ "trackSpotID" ];
-			echo "<p>trackSpotID is " . $trackSpotID . ".</p>";
-			if ($trackSpotID == '') {
-				$trackSpotID = "n/a";			
-			};		
-
-			$trackPop = $row[ "pop" ];
-			echo "<p>trackPop is " . $trackPop . ".</p>";
-			if ($trackPop == '') {
-				$trackPop = "n/a";				
-			};	
-
-			$popDate = $row[ "MaxDate" ];
-			if ($popDate == '') {
-				$popDate = "n/a";				
-			};
-*/
+			//$trackMBID = $row[ "trackMBID" ];
 			$lastFMDate = $row[ "MaxDataDate" ];
-			if ($lastFMDate == 'NULL') {
-				$lastFMDate = "n/a";
-			};			
-			$trackListenersNum = $row[ "trackListeners"];
-			echo "<p>trackListenersNum is " . $trackListenersNum . ".</p>";
-			if ($trackListenersNum != 'NULL') {
-				$trackListeners = number_format ($trackListenersNum);
-				if (!$trackListeners > 0) {
-					$trackListeners = "n/a";
-				};
-			};
-
-			$trackPlaycountNum = $row[ "trackPlaycount"];
-			echo "<p>trackPlaycountNum is " . $trackPlaycountNum . ".</p>";
-			if ($trackPlaycountNum != 'NULL'){
-				$trackPlaycount = number_format ($trackPlaycountNum);
-				if (!$trackPlaycount > 0) {
-					$trackPlaycount = "n/a";
-				};
-			};
+			$trackListeners = $row[ "trackListeners"];
+			$trackPlaycount = $row[ "trackPlaycount"];
 
 	?>
 <tr>
 <td><?php echo $albumName ?></td>
-<td><?php echo $trackMBID ?></td>
-
-<td><a href='https://www.roxorsoxor.com/poprock/track_Chart.php?trackMBID=<?php echo $trackMBID ?>'><?php echo $trackName ?></a></td>
 <!-- 
-	<td class="popStyle"><?php //echo $popDate ?></td>
-<td class="popStyle"><?php //echo $trackPop ?></td>
+<td><?php echo $trackMBID ?></td>
  -->
+<td><a href='https://www.roxorsoxor.com/poprock/track_Chart.php?trackMBID=<?php echo $trackMBID ?>'><?php echo $trackName ?></a></td>
+
+
+
 <td class="popStyle"><?php echo $lastFMDate ?></td>
 <td class="rightNum"><?php echo $trackListeners ?></td>
 <td class="rightNum"><?php echo $trackPlaycount ?></td>
