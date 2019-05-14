@@ -17,8 +17,6 @@ if (!$connekt) {
 $blackSabbath_SpotID = '5M52tdBnJaKSvOpJGz8mfZ';
 $blackSabbath_MBID = '5182c1d9-c7d2-4dad-afa0-ccfeada921a8';
 
-// Is below the holy shit fastest?
-
 $blackScabies = "SELECT b.albumName, b.albumSpotID, b.year, z.artistName, p1.date, p1.pop, x.tracksTotal, x.albumArtSpot
 					FROM (SELECT sp.albumName, sp.albumSpotID, sp.artistSpotID, sp.year
 							FROM albums sp

@@ -1,6 +1,3 @@
-/*
-Based on #1 Original below. Trying to make it all tracks for an artist.
-*/
 SELECT v.trackName, v.albumName, v.pop, max(v.date) AS MaxDate
 	FROM (
 		SELECT z.trackSpotID, z.trackName, r.albumName, p.date, p.pop
@@ -9,7 +6,7 @@ SELECT v.trackName, v.albumName, v.pop, max(v.date) AS MaxDate
 					FROM tracks t
                     INNER JOIN albums r ON r.albumSpotID = t.albumSpotID
                     JOIN artists a ON r.artistSpotID = a.artistSpotID
-                    WHERE a.artistSpotID = '5M52tdBnJaKSvOpJGz8mfZ'
+                    WHERE a.artistSpotID = '$artistSpotID'
 			) z
 		JOIN popTracks p 
 			ON z.trackSpotID = p.trackSpotID					
@@ -17,16 +14,13 @@ SELECT v.trackName, v.albumName, v.pop, max(v.date) AS MaxDate
 	GROUP BY v.trackSpotID
 
 
-/*
-#1 ORIGINAL #1 - Spotify version filtered to current day -- HOLY SHIT IT'S FAST TOO!
-*/
 SELECT v.trackName, v.albumName, v.pop, max(v.date) AS MaxDate
 	FROM (
 		SELECT z.trackSpotID, z.trackName, r.albumName, p.date, p.pop
 			FROM (
 				SELECT t.trackSpotID, t.trackName, t.albumSpotID
 					FROM tracks t
-					WHERE t.albumSpotID = '6AOClmLV3vaZ83kjqXtwrq'
+					WHERE t.albumSpotID = '$albumSpotID'
 			) z
 		INNER JOIN albums r 
 			ON r.albumSpotID = z.albumSpotID

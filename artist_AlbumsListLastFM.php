@@ -18,20 +18,20 @@ $blackSabbath_SpotID = '5M52tdBnJaKSvOpJGz8mfZ';
 $blackSabbath_MBID = '5182c1d9-c7d2-4dad-afa0-ccfeada921a8';
 
 $blackScabies = "SELECT b.albumName, b.albumMBID, z.artistName, f1.dataDate, f1.albumListeners, f1.albumPlaycount, x.albumArtMB
-FROM (SELECT mb.albumName, mb.albumMBID, mb.artistMBID
-	FROM albumsMB mb 
-	WHERE mb.artistMBID='$artistMBID') b 
-JOIN artists z ON z.artistMBID = b.artistMBID
-LEFT JOIN albumsMB x ON b.albumMBID = x.albumMBID
-LEFT JOIN (SELECT f.*
-		FROM albumsLastFM f
-		INNER JOIN (SELECT albumMBID, albumListeners, albumPlaycount, max(dataDate) AS MaxDataDate
-		FROM albumsLastFM
-		GROUP BY albumMBID) groupedf
-		ON f.albumMBID = groupedf.albumMBID
-		AND f.dataDate = groupedf.MaxDataDate) f1
-ON b.albumMBID = f1.albumMBID	
-ORDER BY f1.albumPlaycount DESC;";
+					FROM (SELECT mb.albumName, mb.albumMBID, mb.artistMBID
+						FROM albumsMB mb 
+						WHERE mb.artistMBID='$artistMBID') b 
+					JOIN artists z ON z.artistMBID = b.artistMBID
+					LEFT JOIN albumsMB x ON b.albumMBID = x.albumMBID
+					LEFT JOIN (SELECT f.*
+							FROM albumsLastFM f
+							INNER JOIN (SELECT albumMBID, albumListeners, albumPlaycount, max(dataDate) AS MaxDataDate
+							FROM albumsLastFM
+							GROUP BY albumMBID) groupedf
+							ON f.albumMBID = groupedf.albumMBID
+							AND f.dataDate = groupedf.MaxDataDate) f1
+					ON b.albumMBID = f1.albumMBID	
+					ORDER BY f1.albumPlaycount DESC;";
 
 $getit = $connekt->query($blackScabies);
 
