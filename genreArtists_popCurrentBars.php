@@ -18,8 +18,8 @@ $artistGenre = $_GET['artistGenre'];
 <body>
 
  <div class="container">
-    <?php echo $navbar ?> 
-    <p>Please be patient while data loads.</p>
+ <div id="fluidCon">
+</div> <!-- end of fluidCon -->
 	<div class="panel panel-primary">
 		<div class="panel-heading">
 			<h3 id="genreHeader" class="panel-title">These Artists' Current Popularity On Spotify</h3>
@@ -115,6 +115,7 @@ $artistGenre = $_GET['artistGenre'];
 
 
 		<?php echo $scriptsAndSuch; ?>	
+        <script src="https://www.roxorsoxor.com/poprock/page_pieces/navbar.js"></script>
 </body>
 
 </html>

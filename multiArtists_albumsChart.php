@@ -17,11 +17,8 @@
 
 
  <div class="container">
-    <?php echo $navbar ?> 
-
-<!--
-    Buttons below will use code based on prezPlayPro index line 464
--->
+ <div id="fluidCon">
+</div> <!-- end of fluidCon -->
 <form id="selectGroup" action="" method="post">
 
     <fieldset class="form-group">
@@ -189,7 +186,7 @@ $(document).ready(function(){
 </script>				
 
 <?php echo $scriptsAndSuch; ?>	
-
+<script src="https://www.roxorsoxor.com/poprock/page_pieces/navbar.js"></script>
 </body>
 
 </html>

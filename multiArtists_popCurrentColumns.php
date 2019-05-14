@@ -15,8 +15,8 @@ require_once 'page_pieces/stylesAndScripts.php';
 <body>
 
  <div class="container">
-    <?php echo $navbar ?> 
-    <p>Please be patient while data loads.</p>
+ <div id="fluidCon">
+</div> <!-- end of fluidCon -->
 	<div class="panel panel-primary">
 		<div class="panel-heading">
 			<h3 class="panel-title">These Artists' Current Popularity On Spotify</h3>
@@ -106,6 +106,7 @@ require_once 'page_pieces/stylesAndScripts.php';
 
 
 		<?php echo $scriptsAndSuch; ?>	
+        <script src="https://www.roxorsoxor.com/poprock/page_pieces/navbar.js"></script>
 </body>
 
 </html>

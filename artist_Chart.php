@@ -48,8 +48,8 @@
 <body>
 
 <div class="container-fluid">
-    <?php echo $navbar ?>
-    <p>Please be patient while data loads.</p>
+<div id="fluidCon">
+</div> <!-- end of fluidCon -->
     <p>If, after the page loads, it is empty, or the wrong discography displays, <a href='https://www.roxorsoxor.com/poprock/index.php'>choose an artist</a> from the <a href='https://www.roxorsoxor.com/poprock/index.php'>Artists List</a> first.</p>
 
 
@@ -422,7 +422,7 @@ d3.json("functions/createArtist_followersD3.php?artistSpotID=<?php echo $artistS
 </script>
 
 <?php echo $scriptsAndSuch; ?>
-
+<script src="https://www.roxorsoxor.com/poprock/page_pieces/navbar.js"></script>
 </body>
 
 </html>

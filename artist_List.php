@@ -41,7 +41,8 @@ if(!$getit){
 <body>
 
     <div class="container-fluid">
-        <?php echo $navbar ?>
+	<div id="fluidCon">
+</div> <!-- end of fluidCon -->
 
         <!-- D3 chart goes here -->
 		<?php if(!empty($getit)) { ?>
@@ -103,6 +104,7 @@ if(!$getit){
     
     <?php echo $scriptsAndSuch; ?>
 	<script src="https://www.roxorsoxor.com/poprock/functions/sortThisArtist.js"></script>
+	<script src="https://www.roxorsoxor.com/poprock/page_pieces/navbar.js"></script>
 </body>
 
 </html>

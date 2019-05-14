@@ -15,21 +15,7 @@ if ( !$connekt ) {
 };
 
 $blackSabbath_MBID = '5182c1d9-c7d2-4dad-afa0-ccfeada921a8';
-/*
-$gatherTrackInfo = "SELECT t.trackMBID, t.trackName, a.albumName, a.artistMBID, f1.MaxDataDate, f1.trackListeners, f1.trackPlaycount
-					FROM tracksMB t
-					INNER JOIN albumsMB a ON a.albumMBID = t.albumMBID
-					JOIN (SELECT f.*
-							FROM tracksLastFM f
-							INNER JOIN (SELECT trackMBID, trackListeners, trackPlaycount, max(dataDate) AS MaxDataDate
-										FROM tracksLastFM  
-										GROUP BY trackMBID) groupedf
-							ON f.trackMBID = groupedf.trackMBID
-							AND f.dataDate = groupedf.MaxDataDate) f1
-					ON t.trackMBID = f1.trackMBID
-					WHERE a.artistMBID = '$artistMBID'
-					ORDER BY t.trackName ASC";
-*/
+
 
 $gatherTrackInfo = "SELECT v.trackName, v.albumName, v.trackListeners, v.trackPlaycount, max(v.dataDate) AS MaxDataDate
 					FROM (
@@ -69,7 +55,8 @@ if ( !$getit ) {
 
 	<div class="container-fluid">
 
-		<?php echo $navbar ?>
+	<div id="fluidCon">
+</div> <!-- end of fluidCon -->
 
 		<!-- main -->
 		<p>If this page is empty, or the wrong discography displays, <a href='https://www.roxorsoxor.com/poprock/index.php'>choose an artist</a> first.</p>
@@ -144,7 +131,7 @@ if ( !$getit ) {
 </script>
 
 <script src="https://www.roxorsoxor.com/poprock/functions/sort_Tracks.js"></script>
-
+<script src="https://www.roxorsoxor.com/poprock/page_pieces/navbar.js"></script>
 </body>
 	
 </html>

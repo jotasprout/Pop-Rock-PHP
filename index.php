@@ -1,7 +1,7 @@
 <?php
 
 require_once 'rockdb.php';
-require_once 'page_pieces/navbar_rock.php';
+//require_once 'page_pieces/navbar_rock.php';
 require_once 'page_pieces/stylesAndScripts.php';
 
 $connekt = new mysqli( $GLOBALS[ 'host' ], $GLOBALS[ 'un' ], $GLOBALS[ 'magicword' ], $GLOBALS[ 'db' ] );
@@ -49,13 +49,14 @@ if(!$getit){ echo 'Cursed-Crap. Did not run the query.'; }
 <body>
 
 	<div class='container-fluid'>
-	<!--
-	<div class="container">
-	-->
+	
+	<div id="fluidCon">
+		<!--
 		<?php 
-			echo $navbarIndex;
+			//echo $navbarIndex;
 		?>
-
+		-->
+	</div> <!-- end of fluidCon -->
 	<!-- main -->
 
 	<div class="panel panel-primary">
@@ -84,10 +85,9 @@ if(!$getit){ echo 'Cursed-Crap. Did not run the query.'; }
 
 <th onClick="sortColumn('followers', 'unsorted')"><div class="pointyHead rightNum">Spotify<br>Followers</div></th>
 	<!--
-
+<th onClick="sortColumn('datadate', 'unsorted')"><div class="pointyHead popStyle">LastFM<br>Data Date</div></th>	
 	-->
 
-<th onClick="sortColumn('datadate', 'unsorted')"><div class="pointyHead popStyle">LastFM<br>Data Date</div></th>	
 <th onClick="sortColumn('artistListeners', 'unsorted')"><div class="pointyHead rightNum">LastFM<br>Listeners</div></th>
 <th onClick="sortColumn('artistPlaycount', 'unsorted')"><div class="pointyHead rightNum">LastFM<br>Playcount</div></th>
 </tr>
@@ -122,10 +122,10 @@ if(!$getit){ echo 'Cursed-Crap. Did not run the query.'; }
 	<td><a href='https://www.roxorsoxor.com/poprock/artist_Chart.php?artistSpotID=<?php echo $artistSpotID ?>'><img src='<?php echo $artistArt ?>' class="indexArtistArt"></a></td>	
 	<td><a href='https://www.roxorsoxor.com/poprock/artist_Chart.php?artistSpotID=<?php echo $artistSpotID ?>'><?php echo $artistName ?></a></td>
 	<!--
-	<td class="popStyle"><?php echo $artistSpotID ?></td>
-	
-	-->
+	<td class="popStyle"><?php //echo $artistSpotID ?></td>
 	<td class="popStyle"><?php echo $popDate ?></td>
+	-->
+	
 	<td class="popStyle"><?php echo $artistPop ?></td>
 	<td id="followers" class="rightNum"><?php echo $artistFollowers ?></td>
 	<!--  -->
@@ -156,6 +156,7 @@ if(!$getit){ echo 'Cursed-Crap. Did not run the query.'; }
 
 	<?php echo $scriptsAndSuch; ?>
 	<script src="https://www.roxorsoxor.com/poprock/functions/sort_Artists.js"></script>
+	<script src="https://www.roxorsoxor.com/poprock/page_pieces/navbarIndex.js"></script>
 
 </body>
 

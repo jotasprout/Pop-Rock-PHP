@@ -53,12 +53,11 @@ if ( !$getit ) {
 
 	<div class="container-fluid">
 
-		<?php echo $navbar ?>
+	<div id="fluidCon">
+</div> <!-- end of fluidCon -->
 
 		<!-- main -->
-		<!--
-		<p>If this page is empty, or the wrong discography displays, <a href='https://www.roxorsoxor.com/poprock/index.php'>choose an artist</a> first.</p>
-		-->
+
 		<div class="panel panel-primary">
 			<div class="panel-heading">
 				<h3 class="panel-title">Latest Tracks Stats from My Database</h3>
@@ -123,7 +122,7 @@ if ( !$getit ) {
 </script>
 -->
 <script src="https://www.roxorsoxor.com/poprock/functions/sort_Tracks.js"></script>
-
+<script src="https://www.roxorsoxor.com/poprock/page_pieces/navbar.js"></script>
 </body>
 	
 </html>

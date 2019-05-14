@@ -149,10 +149,11 @@ if ( !$getit ) {
 
 	<div class="container-fluid">
 
-		<?php echo $navbar ?>
+	<div id="fluidCon">
+</div> <!-- end of fluidCon -->
 
 		<!-- main -->
-		<p>Please be patient while data loads.</p>
+
 		<div class="panel panel-primary">
 			<div class="panel-heading">
 				<h3 class="panel-title">This Album's Tracks Popularity On Spotify</h3>
@@ -250,6 +251,7 @@ if ( !$getit ) {
 	
 <?php echo $scriptsAndSuch; ?>
 <script src="https://www.roxorsoxor.com/poprock/functions/sort_Tracks.js"></script>
+<script src="https://www.roxorsoxor.com/poprock/page_pieces/navbar.js"></script>
 </body>
 	
 </html>

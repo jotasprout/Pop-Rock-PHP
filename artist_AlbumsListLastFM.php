@@ -54,12 +54,8 @@ if(!$getit){
 
 <div class="container-fluid">
 
-	<?php echo $navbar ?>
-	
-	<!-- main 
-<p>Please be patient while data loads.</p>
-<p>If, after the page loads, it is empty, or the wrong discography displays, <a href='https://www.roxorsoxor.com/poprock/index.php'>choose an artist</a> from the <a href='https://www.roxorsoxor.com/poprock/index.php'>Artists List</a> first.</p>
-	-->
+<div id="fluidCon">
+</div> <!-- end of fluidCon -->
 <div class="panel panel-primary">
 
 	<div class="panel-heading">
@@ -148,7 +144,7 @@ if(!$getit){
 </script>
 
 <script src="https://www.roxorsoxor.com/poprock/functions/sort_artistAlbums2.js"></script>
-
+<script src="https://www.roxorsoxor.com/poprock/page_pieces/navbar.js"></script>
 </body>
 	
 </html>

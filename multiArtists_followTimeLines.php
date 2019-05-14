@@ -56,8 +56,8 @@
 <body>
 
 <div class="container">
-	<?php echo $navbar ?>
-    <p>Please be patient while data loads.</p>
+<div id="fluidCon">
+</div> <!-- end of fluidCon -->
 	<div class="panel panel-primary">
 		<div class="panel-heading">
 			<h3 class="panel-title">These Artists Followers Over Time</h3>
@@ -227,7 +227,7 @@ d3.json("functions/multiArtists_follow2.php", function(data) {
 </script>
 
 <?php echo $scriptsAndSuch; ?>
-
+<script src="https://www.roxorsoxor.com/poprock/page_pieces/navbar.js"></script>
 </body>
 
 </html>

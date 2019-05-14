@@ -37,7 +37,8 @@ if(!$getit){
 <body>
 
 	<div class="container">
-		<?php echo $navbar ?>
+	<div id="fluidCon">
+</div> <!-- end of fluidCon -->
 
 		<!-- main -->
 
@@ -103,9 +104,7 @@ if(!$getit){
 	<?php echo $scriptsAndSuch; ?>
 	<script src="https://www.roxorsoxor.com/poprock/functions/sort_genresArtists.js"></script>
 
-	<script>
-	
-	</script>
+	<script src="https://www.roxorsoxor.com/poprock/page_pieces/navbar.js"></script>
 
 </body>
 

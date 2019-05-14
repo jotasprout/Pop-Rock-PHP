@@ -16,7 +16,8 @@ require_once 'page_pieces/stylesAndScripts.php';
 <body>
 
 <div class = "container">
-
+<div id="fluidCon">
+</div> <!-- end of fluidCon -->
     <form class="form-horizontal" id="addalbums" action="theseArtists_comparePop.php" method="post">
         <fieldset>
                 <legend>Choose Group of Artists to Compare</legend>
@@ -42,7 +43,7 @@ require_once 'page_pieces/stylesAndScripts.php';
 
 </div> <!-- end of Container -->
 <?php echo $scriptsAndSuch; ?>
-
+<script src="https://www.roxorsoxor.com/poprock/page_pieces/navbar.js"></script>
 </body>
 
 </html>
