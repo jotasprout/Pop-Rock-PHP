@@ -31,7 +31,7 @@ LEFT JOIN (SELECT f.*
 		ON f.albumMBID = groupedf.albumMBID
 		AND f.dataDate = groupedf.MaxDataDate) f1
 ON b.albumMBID = f1.albumMBID	
-ORDER BY b.albumName ASC;";
+ORDER BY f1.albumPlaycount DESC;";
 
 $getit = $connekt->query($blackScabies);
 
@@ -81,11 +81,10 @@ if(!$getit){
 <th>Cover Art</th>
 <!---->
 <th onClick="sortColumn('albumName', 'ASC', '<?php echo $artistMBID; ?>')"><div class="pointyHead">Album Name</div></th>
-
+<!--
 <th>Album MBID</th>
-
 <th class="popStyle">LastFM<br>Data Date</th>
-
+-->
 <th onClick="sortColumn('albumListeners', 'unsorted', '<?php echo $artistMBID; ?>')"><div class="pointyHead rightNum">LastFM<br>Listeners</div></th>
 <th onClick="sortColumn('albumPlaycount', 'unsorted', '<?php echo $artistMBID; ?>')"><div class="pointyHead rightNum">LastFM<br>Playcount</div></th>
 
@@ -115,13 +114,13 @@ if(!$getit){
 					
 <tr>
 <td><img src='<?php echo $coverArt ?>' height='64' width='64'></td>
-<!---->
+
 <td><a href='https://www.roxorsoxor.com/poprock/album_TracksListLastFM.php?artistSpotID=<?php echo $artistSpotID ?>&artistMBID=<?php echo $artistMBID ?>&albumMBID=<?php echo $albumMBID ?>&source=musicbrainz'><?php echo $albumName ?></a></td>
-<td><?php echo $albumMBID ?></td>
 
-<!---->
-<td class="popStyle"><?php echo $lastFMDate ?></td>
-
+<!--
+	<td><?php echo $albumMBID ?></td>
+<td class="popStyle"><?php //echo $lastFMDate ?></td>
+-->
 <td class="rightNum"><?php echo $albumListeners ?></td>
 <td class="rightNum"><?php echo $albumPlaycount ?></td>
 </tr>

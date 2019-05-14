@@ -87,7 +87,9 @@ if ( !$getit ) {
 		<tr>
 			<th onClick="sortColumn('albumName', 'DESC', '<?php echo $artistSpotID ?>')"><div class="pointyHead">Album Title</div></th>
 			<th onClick="sortColumn('trackName', 'ASC', '<?php echo $artistSpotID ?>')"><div class="pointyHead">Track Title</div></th>
+<!--
 			<th class="popStyle">LastFM<br>Data Date</th>
+			-->
 			<th class="rightNum pointyHead">LastFM<br>Listeners</th>
 			<th class="rightNum pointyHead">LastFM<br>Playcount</th>
 		</tr>
@@ -116,7 +118,9 @@ if ( !$getit ) {
 							<tr>
 								<td><?php echo $albumName ?></td>
 								<td><?php echo $trackName ?></td>
-								<td class="popStyle"><?php echo $lastFMDate ?></td>
+<!--
+								<td class="popStyle"><?php //echo $lastFMDate ?></td>
+								-->
 								<td class="rightNum"><?php echo $trackListeners ?></td>
 								<td class="rightNum"><?php echo $trackPlaycount ?></td>
 							</tr>
