@@ -1,10 +1,9 @@
 <?php 
     $artistSpotID = $_GET['artistSpotID'];
     $artistMBID = $_GET['artistMBID'];
-    $source = $_GET['source'];
-    
+    //$source = $_GET['source'];
 	require_once 'page_pieces/stylesAndScripts.php';
-	require_once 'page_pieces/navbar_rock.php';
+	//require_once 'page_pieces/navbar_rock.php';
 ?>
 
 <!DOCTYPE html>
@@ -52,7 +51,6 @@
 </div> <!-- end of fluidCon -->
     <p>If, after the page loads, it is empty, or the wrong discography displays, <a href='https://www.roxorsoxor.com/poprock/index.php'>choose an artist</a> from the <a href='https://www.roxorsoxor.com/poprock/index.php'>Artists List</a> first.</p>
 
-
 <div class="panel panel-primary">
 
     <div class="panel-heading">
@@ -97,11 +95,7 @@
 </div> <!-- End of Card -->
 	
 	
-	
-	
-	
 <!-- START OF ROW #2 WITH POPULARITY LINE GRAPH AND FOLLOWERS LINE GRAPH -->	
-	
 	
 <div class="row"> <!-- Start of Row 2 -->	
 	
@@ -131,11 +125,7 @@
 </div> <!-- End of Column 2 -->
 	
 </div> <!-- End of row 2 -->	
-	
-	
-	
-	
-	
+
 	
 	<!-- START OF ROW #3 WITH ALBUMS COLUMNS -->
 	
@@ -204,9 +194,12 @@ d3.json("functions/createArtistD3.php?artistSpotID=<?php echo $artistSpotID; ?>"
                     d3.max(dataset, function(d) { return d.date; })
                 ])
                 .range([padding, w - padding]);
-
+                  
     yScale = d3.scaleLinear()
-               .domain(d3.extent(data, function(d) { return d.pop; }))
+               //.domain(d3.extent(data, function(d) { return d.pop; }))
+               // Above is lowest to highest
+               // Below is 0-100 
+               .domain([0, 100])
                .range([h - padding, padding]);
 
     const xAxis = d3.axisBottom()
@@ -404,13 +397,11 @@ d3.json("functions/createArtist_followersD3.php?artistSpotID=<?php echo $artistS
         console.log(dataset);
         
         var data = dataset;
-       
 
         const dataListeners = data[0].artistListeners;
         let listeners = String(dataListeners).replace(/(.)(?=(\d{3})+$)/g,'$1,');
         const artistListeners = d3.select("#forCurrentListeners")
             .text(listeners);   
-
 
         const dataPlaycount = data[0].artistPlaycount;
         let playcount = String(dataPlaycount).replace(/(.)(?=(\d{3})+$)/g,'$1,');
@@ -422,6 +413,12 @@ d3.json("functions/createArtist_followersD3.php?artistSpotID=<?php echo $artistS
 </script>
 
 <?php echo $scriptsAndSuch; ?>
+
+<script>
+const artistSpotID = '<?php echo $artistSpotID; ?>';
+const artistMBID = '<?php echo $artistMBID ?>';
+</script>
+
 <script src="https://www.roxorsoxor.com/poprock/page_pieces/navbar.js"></script>
 </body>
 

@@ -2,10 +2,7 @@
 
 $artistSpotID = $_GET['artistSpotID'];
 $artistMBID = $_GET['artistMBID'];
-$source = $_GET['source'];
-
 require_once 'rockdb.php';
-require_once 'page_pieces/navbar_rock.php';
 require_once 'page_pieces/stylesAndScripts.php';
 
 $connekt = new mysqli($GLOBALS['host'], $GLOBALS['un'], $GLOBALS['magicword'], $GLOBALS['db']);
@@ -56,12 +53,13 @@ if(!$getit){
 
 <div id="fluidCon">
 </div> <!-- end of fluidCon -->
+<!--
 <p>If, after the page loads, it is empty, or the wrong discography displays, <a href='https://www.roxorsoxor.com/poprock/index.php'>choose an artist</a> from the <a href='https://www.roxorsoxor.com/poprock/index.php'>Artists List</a> first.</p>
-	-->
+-->
 <div class="panel panel-primary">
 
 	<div class="panel-heading">
-		<h3 class="panel-title">This Artist's Albums</h3>
+		<h3 id="panelTitle" class="panel-title">This Artist's Albums</h3>
 	</div>
 
 	<div class="panel-body"> 
@@ -73,27 +71,20 @@ if(!$getit){
 <table class="table" id="recordCollection">
 
 <thead>
-
 <tr>
-
 <th>Cover Art</th>
 <!-- 
 <th>Album Spotify ID</th>
 -->
 <th onClick="sortColumn('albumName', 'ASC', '<?php echo $artistSpotID; ?>')"><div class="pointyHead">Album Name</div></th>
-
-
 <th onClick="sortColumn('year', 'unsorted', '<?php echo $artistSpotID; ?>')"><div class="pointyHead popStyle">Released</div></th>
 <!--
 <th><div class="pointyHead popStyle">Total<br>Tracks</div></th>
-
 <th class="popStyle">Spotify<br>Data Date</th>
 -->
 <th onClick="sortColumn('pop', 'unsorted', '<?php echo $artistSpotID ?>')"><div class="pointyHead popStyle">Spotify<br>Popularity</div></th>
 <!-- -->
-
 </tr>
-
 </thead>
 
 <tbody>
@@ -120,7 +111,7 @@ if(!$getit){
 <!--
 <td><?php //echo $albumSpotID ?></td>
 -->
-<td><a href='https://www.roxorsoxor.com/poprock/album_TracksListSpot.php?artistSpotID=<?php echo $artistSpotID ?>&albumSpotID=<?php echo $albumSpotID ?>&source=spotify'><?php echo $albumName ?></a></td>
+<td><a href='https://www.roxorsoxor.com/poprock/album_TracksListSpot.php?artistSpotID=<?php echo $artistSpotID ?>&artistMBID=<?php echo $artistMBID ?>&albumSpotID=<?php echo $albumSpotID ?>'><?php echo $albumName ?></a></td>
 
 
 <td class="popStyle"><?php echo $albumReleased ?></td>
@@ -152,8 +143,16 @@ if(!$getit){
 <?php echo $scriptsAndSuch; ?>
 <!-- -->
 <script>
-	let artistSpotID = '<?php echo $artistSpotID ?>';
-	console.log(artistSpotID);
+	const artistName = '<?php echo $artistName ?>';
+	const panelTitleText = 'Popularity On Spotify for albums by ' + artistName + '</em>';
+	const panelTitle = document.getElementById('panelTitle');
+	$(document).ready(function(){
+		panelTitle.innerHTML = panelTitleText;
+	});
+</script>
+<script>
+	const artistSpotID = '<?php echo $artistSpotID ?>';
+	const artistMBID = '<?php echo $artistMBID ?>';
 </script>
 
 <script src="https://www.roxorsoxor.com/poprock/functions/sort_artistAlbums2.js"></script>

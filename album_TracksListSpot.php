@@ -2,11 +2,10 @@
 
 $artistSpotID = $_GET['artistSpotID'];
 $albumSpotID = $_GET['albumSpotID'];
-//$albumMBID = $_GET['albumMBID'];
-$source = $_GET['source'];
+$artistMBID = $_GET['artistMBID'];
 
 require_once 'rockdb.php';
-require_once 'page_pieces/navbar_rock.php';
+
 require_once 'page_pieces/stylesAndScripts.php';
 
 $connekt = new mysqli( $GLOBALS[ 'host' ], $GLOBALS[ 'un' ], $GLOBALS[ 'magicword' ], $GLOBALS[ 'db' ] );
@@ -63,17 +62,14 @@ if ( !$getit ) {
 <body>
 
 	<div class="container-fluid">
-
 	<div id="fluidCon">
 </div> <!-- end of fluidCon -->
 
 		<!-- main -->
-		<!--
-		
-		-->
+		<!-- -->
 		<div class="panel panel-primary">
 			<div class="panel-heading">
-				<h3 class="panel-title">This Album's Tracks Popularity On Spotify</h3>
+				<h3 id="panelTitle" class="panel-title">This Album's Tracks Popularity On Spotify</h3>
 			</div>
 			<div class="panel-body">
 
@@ -83,15 +79,14 @@ if ( !$getit ) {
 	<thead>
 		<tr>
 			<th onClick="sortColumn('albumName', 'ASC')"><div class="pointyHead">Album Name</div></th>
-<!--
+			<!--
 			<th>Spotify<br>trackSpotID</th>
-				-->
-				
-				
+			-->
+	
 			<th onClick="sortColumn('trackName', 'DESC')"><div class="pointyHead">Track Title</div></th>
 			<th class="popStyle">Spotify<br>Data Date</th>
 			<th class="popStyle" onClick="sortColumn('pop', 'ASC')"><div class="pointyHead">Track<br>Popularity</div></th>
-<!--
+			<!--
 			<th class="popStyle">LastFM<br>Data Date</th>
 			<th class="rightNum pointyHead">LastFM<br>Listeners</th>
 			<th class="rightNum pointyHead">LastFM<br>Playcount</th>
@@ -153,7 +148,6 @@ if ( !$getit ) {
 <td class="popStyle"><?php echo $popDate ?></td>
 <td class="popStyle"><?php echo $trackPop ?></td>
 
-
 </tr>
 	<?php 
 		} // end of while
@@ -169,6 +163,20 @@ if ( !$getit ) {
 	</div> <!-- closing container -->
 	
 <?php echo $scriptsAndSuch; ?>
+
+<script>
+	const albumName = '<?php echo $albumName ?>';
+	const panelTitleText = 'Popularity On Spotify for tracks from <em>' + albumName + '</em>';
+	const panelTitle = document.getElementById('panelTitle');
+	$(document).ready(function(){
+		panelTitle.innerHTML = panelTitleText;
+	});
+</script>
+<script>
+	const artistSpotID = '<?php echo $artistSpotID ?>';
+	const artistMBID = '<?php echo $artistMBID ?>';
+</script>
+
 <script src="https://www.roxorsoxor.com/poprock/functions/sort_Tracks.js"></script>
 <script src="https://www.roxorsoxor.com/poprock/page_pieces/navbar.js"></script>
 </body>

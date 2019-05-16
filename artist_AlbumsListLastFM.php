@@ -2,10 +2,7 @@
 
 $artistMBID = $_GET['artistMBID'];
 $artistSpotID = $_GET['artistSpotID'];
-$source = $_GET['source'];
-
 require_once 'rockdb.php';
-require_once 'page_pieces/navbar_rock.php';
 require_once 'page_pieces/stylesAndScripts.php';
 
 $connekt = new mysqli($GLOBALS['host'], $GLOBALS['un'], $GLOBALS['magicword'], $GLOBALS['db']);
@@ -59,9 +56,8 @@ if(!$getit){
 <div class="panel panel-primary">
 
 	<div class="panel-heading">
-		<h3 class="panel-title">This Artist's Albums</h3>
+		<h3 id="panelTitle" class="panel-title">This Artist's Albums</h3>
 	</div>
-
 	<div class="panel-body"> 
 		
 		<!-- Panel Content --> 
@@ -73,17 +69,16 @@ if(!$getit){
 <thead>
 
 <tr>
-
-<th>Cover Art</th>
-<!---->
-<th onClick="sortColumn('albumName', 'ASC', '<?php echo $artistMBID; ?>')"><div class="pointyHead">Album Name</div></th>
-<!--
-<th>Album MBID</th>
-<th class="popStyle">LastFM<br>Data Date</th>
--->
-<th onClick="sortColumn('albumListeners', 'unsorted', '<?php echo $artistMBID; ?>')"><div class="pointyHead rightNum">LastFM<br>Listeners</div></th>
-<th onClick="sortColumn('albumPlaycount', 'unsorted', '<?php echo $artistMBID; ?>')"><div class="pointyHead rightNum">LastFM<br>Playcount</div></th>
-
+	<th>Cover Art</th>
+	<!---->
+	<th onClick="sortColumn('albumName', 'ASC', '<?php echo $artistMBID; ?>')"><div class="pointyHead">Album Name</div></th>
+	<!--
+	<th>Album MBID</th>
+	-->
+	<th class="popStyle">LastFM<br>Data Date</th>
+	<th onClick="sortColumn('albumListeners', 'unsorted', '<?php echo $artistMBID; ?>')"><div class="pointyHead rightNum">LastFM<br>Listeners</div></th>
+	<th onClick="sortColumn('albumPlaycount', 'unsorted', '<?php echo $artistMBID; ?>')"><div class="pointyHead rightNum">LastFM<br>Playcount</div></th>
+	<th><div class="popStyle">LastFM<br>Ratio</div></th>
 </tr>
 
 </thead>
@@ -96,11 +91,8 @@ if(!$getit){
 		$artistName = $row['artistName'];
 		$albumMBID = $row['albumMBID'];
 		$albumName = $row['albumName'];	
-        //$source = 'musicbrainz';
         $coverArt = $row['albumArtMB'];
-
 		$lastFMDate = $row[ "dataDate" ];
-
 		$albumListenersNum = $row[ "albumListeners"];
 		$albumListeners = number_format ($albumListenersNum);
 		$albumPlaycountNum = $row[ "albumPlaycount"];
@@ -114,11 +106,13 @@ if(!$getit){
 <td><a href='https://www.roxorsoxor.com/poprock/album_TracksListLastFM.php?artistSpotID=<?php echo $artistSpotID ?>&artistMBID=<?php echo $artistMBID ?>&albumMBID=<?php echo $albumMBID ?>&source=musicbrainz'><?php echo $albumName ?></a></td>
 
 <!--
-	<td><?php echo $albumMBID ?></td>
-<td class="popStyle"><?php //echo $lastFMDate ?></td>
+	<td><?php //echo $albumMBID ?></td>
+
 -->
+<td class="popStyle"><?php echo $lastFMDate ?></td>
 <td class="rightNum"><?php echo $albumListeners ?></td>
 <td class="rightNum"><?php echo $albumPlaycount ?></td>
+<td class="popStyle"><p>Coming Soon</p></td>
 </tr>
 					
 					<?php 
@@ -139,8 +133,16 @@ if(!$getit){
 <?php echo $scriptsAndSuch; ?>
 <!-- -->
 <script>
-	let artistMBID = '<?php echo $artistMBID ?>';
-	console.log(artistMBID);
+	const artistName = '<?php echo $artistName; ?>';
+	const panelTitleText = 'LastFM stats for all albums by ' + artistName;
+	const panelTitle = document.getElementById('panelTitle');
+	$(document).ready(function(){
+		panelTitle.innerHTML = panelTitleText;
+	});
+</script>
+<script>
+	const artistSpotID = '<?php echo $artistSpotID ?>';
+	const artistMBID = '<?php echo $artistMBID ?>';
 </script>
 
 <script src="https://www.roxorsoxor.com/poprock/functions/sort_artistAlbums2.js"></script>

@@ -1,13 +1,12 @@
 <?php
 
 $artistMBID = $_GET['artistMBID'];
+$artistSpotID = $_GET['artistSpotID'];
 $albumMBID = $_GET['albumMBID'];
-$source = $_GET['source'];
-
-//echo $source;
+//$source = $_GET['source'];
 
 require_once 'rockdb.php';
-require_once 'page_pieces/navbar_rock.php';
+//require_once 'page_pieces/navbar_rock.php';
 require_once 'page_pieces/stylesAndScripts.php';
 
 $connekt = new mysqli( $GLOBALS[ 'host' ], $GLOBALS[ 'un' ], $GLOBALS[ 'magicword' ], $GLOBALS[ 'db' ] );
@@ -64,17 +63,15 @@ if ( !$getit ) {
 <body>
 
 	<div class="container-fluid">
-
 	<div id="fluidCon">
-</div> <!-- end of fluidCon -->
+	</div> <!-- end of fluidCon -->
 
 		<!-- main -->
 		<!--
-	
 		-->
 		<div class="panel panel-primary">
 			<div class="panel-heading">
-				<h3 class="panel-title">This Album's Tracks Popularity On Spotify</h3>
+				<h3 id="panelTitle" class="panel-title">This Album's Tracks Popularity On Spotify</h3>
 			</div>
 			<div class="panel-body">
 
@@ -88,11 +85,12 @@ if ( !$getit ) {
 				<!--
 			<th onClick="sortColumn('trackName', 'DESC')"><div class="pointyHead">Track Title</div></th>
 			<th class="popStyle">Spotify<br>Data Date</th>
-			<th class="popStyle" onClick="sortColumn('pop', 'ASC')"><div class="pointyHead">Track<br>Popularity</div></th>				
+			<th class="popStyle" onClick="sortColumn('pop', 'ASC')"><div class="pointyHead">Track<br>Popularity</div></th>			
 				-->
 			<th class="popStyle">LastFM<br>Data Date</th>
 			<th class="rightNum pointyHead">LastFM<br>Listeners</th>
 			<th class="rightNum pointyHead">LastFM<br>Playcount</th>
+			<th><div class="popStyle">LastFM<br>Ratio</div></th>
 		</tr>
 	</thead>
 	
@@ -110,7 +108,7 @@ if ( !$getit ) {
 <tr>
 <td><?php echo $albumName ?></td>
 <!-- 
-<td><?php echo $trackMBID ?></td>
+<td><?php //echo $trackMBID ?></td>
  -->
 <td><a href='https://www.roxorsoxor.com/poprock/track_Chart.php?trackMBID=<?php echo $trackMBID ?>'><?php echo $trackName ?></a></td>
 
@@ -119,6 +117,7 @@ if ( !$getit ) {
 <td class="popStyle"><?php echo $lastFMDate ?></td>
 <td class="rightNum"><?php echo $trackListeners ?></td>
 <td class="rightNum"><?php echo $trackPlaycount ?></td>
+<td class="popStyle"><p>Coming Soon</p></td>
 </tr>
 	<?php 
 		} // end of while
@@ -134,6 +133,18 @@ if ( !$getit ) {
 	</div> <!-- closing container -->
 	
 <?php echo $scriptsAndSuch; ?>
+<script>
+	const albumName = '<?php echo $albumName ?>';
+	const panelTitleText = 'Popularity On Spotify for tracks from <em>' + albumName + '</em>';
+	const panelTitle = document.getElementById('panelTitle');
+	$(document).ready(function(){
+		panelTitle.innerHTML = panelTitleText;
+	});
+</script>
+<script>
+	const artistSpotID = '<?php echo $artistSpotID ?>';
+	const artistMBID = '<?php echo $artistMBID ?>';
+</script>
 <script src="https://www.roxorsoxor.com/poprock/functions/sort_Tracks.js"></script>
 <script src="https://www.roxorsoxor.com/poprock/page_pieces/navbar.js"></script>
 </body>

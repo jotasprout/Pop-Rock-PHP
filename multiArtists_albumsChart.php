@@ -1,7 +1,7 @@
 <?php
     require "functions/class.artist.php";
     require_once 'page_pieces/stylesAndScripts.php';
-    require_once 'page_pieces/navbar_rock.php';
+    //require_once 'page_pieces/navbar_rock.php';
 ?>
 
 <!doctype html>
@@ -25,7 +25,7 @@
         <legend>Groups of Related Artists</legend>
 		
 		<div class="form-check">
-		  <label class="form-check-label">
+		    <label class="form-check-label">
 			<input type="radio" name="options" id="steveTaylor" value="steveTaylor" autocomplete="off" checked=""> Steve Taylor
             </label>
         </div>
@@ -47,7 +47,7 @@
         <div class="form-check">
             <label class="form-check-label">
 			<input type="radio" name="options" id="iggyPop" value="iggyPop" autocomplete="off"> Iggy Pop
-		  </label>
+		    </label>
 		</div>
     </fieldset>
 

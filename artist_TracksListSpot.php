@@ -2,10 +2,10 @@
 
 $artistSpotID = $_GET['artistSpotID'];
 $artistMBID = $_GET['artistMBID'];
-$source = $_GET['source'];
+//$source = $_GET['source'];
 
 require_once 'rockdb.php';
-require_once 'page_pieces/navbar_rock.php';
+//require_once 'page_pieces/navbar_rock.php';
 require_once 'page_pieces/stylesAndScripts.php';
 
 $connekt = new mysqli( $GLOBALS[ 'host' ], $GLOBALS[ 'un' ], $GLOBALS[ 'magicword' ], $GLOBALS[ 'db' ] );
@@ -16,9 +16,9 @@ if ( !$connekt ) {
 
 $blackSabbath_SpotID = '5M52tdBnJaKSvOpJGz8mfZ';
 
-$gatherTrackInfo = "SELECT v.trackName, v.albumName, v.pop, max(v.date) AS MaxDate
+$gatherTrackInfo = "SELECT v.artistName, v.trackName, v.albumName, v.pop, max(v.date) AS MaxDate
 					FROM (
-						SELECT z.trackSpotID, z.trackName, z.albumName, p.date, p.pop
+						SELECT z.artistName, z.trackSpotID, z.trackName, z.albumName, p.date, p.pop
 							FROM (
 								SELECT t.*, r.albumName, a.artistName
 									FROM tracks t
@@ -76,8 +76,8 @@ if ( !$getit ) {
 		
 		<th class="popStyle" onClick="sortColumn('pop', 'ASC', '<?php echo $artistSpotID ?>')"><div class="pointyHead">Spotify<br>Popularity</div></th>
 		<!--
-			<th>Spotify<br>Data Date</th>
-<th>Spotify<br>trackSpotID</th>
+		<th>Spotify<br>Data Date</th>
+		<th>Spotify<br>trackSpotID</th>
 		<th class="popStyle">LastFM<br>Data Date</th>
 		<th class="rightNum pointyHead">LastFM<br>Listeners</th>
 		<th class="rightNum pointyHead">LastFM<br>Playcount</th>
@@ -116,11 +116,18 @@ if ( !$getit ) {
 	</div> <!-- closing container -->
 	
 <?php echo $scriptsAndSuch; ?>
-<!--
 <script>
-	let artistSpotID = '<?php //echo $artistSpotID ?>';
+	const artistName = '<?php echo $artistName; ?>';
+	const panelTitleText = 'Spotify stats for all tracks by ' + artistName;
+	const panelTitle = document.getElementById('panelTitle');
+	$(document).ready(function(){
+		panelTitle.innerHTML = panelTitleText;
+	});
 </script>
--->
+<script>
+	const artistSpotID = '<?php echo $artistSpotID ?>';
+	const artistMBID = '<?php echo $artistMBID ?>';
+</script>
 <script src="https://www.roxorsoxor.com/poprock/functions/sort_Tracks.js"></script>
 <script src="https://www.roxorsoxor.com/poprock/page_pieces/navbar.js"></script>
 </body>
