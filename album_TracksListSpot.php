@@ -78,8 +78,9 @@ if ( !$getit ) {
 <table class="table" id="tableotracks">
 	<thead>
 		<tr>
-			<th onClick="sortColumn('albumName', 'ASC')"><div class="pointyHead">Album Name</div></th>
+			
 			<!--
+				<th onClick="sortColumn('albumName', 'ASC')"><div class="pointyHead">Album Name</div></th>
 			<th>Spotify<br>trackSpotID</th>
 			-->
 	
@@ -140,8 +141,9 @@ if ( !$getit ) {
 
 	?>
 <tr>
-<td><?php echo $albumName ?></td>
+
 <!--
+	<td><?php //echo $albumName ?></td>
 <td><?php //echo $trackSpotID ?></td>
 -->
 <td><a href='https://www.roxorsoxor.com/poprock/track_Chart.php?trackSpotID=<?php echo $trackSpotID ?>'><?php echo $trackName ?></a></td>
@@ -165,8 +167,8 @@ if ( !$getit ) {
 <?php echo $scriptsAndSuch; ?>
 
 <script>
-	const albumName = '<?php echo $albumName ?>';
-	const panelTitleText = 'Popularity On Spotify for tracks from <em>' + albumName + '</em>';
+	const albumName = "<?php echo $albumName ?>";
+	const panelTitleText = 'Popularity on Spotify for tracks from <em>' + albumName + '</em>';
 	const panelTitle = document.getElementById('panelTitle');
 	$(document).ready(function(){
 		panelTitle.innerHTML = panelTitleText;

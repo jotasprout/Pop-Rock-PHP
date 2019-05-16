@@ -60,7 +60,7 @@ if ( !$getit ) {
 
 		<div class="panel panel-primary">
 			<div class="panel-heading">
-				<h3 class="panel-title">Latest Tracks Stats from My Database</h3>
+				<h3 id='panelTitle' class="panel-title">Latest Tracks Stats from My Database</h3>
 			</div>
 			<div class="panel-body">
 
@@ -89,6 +89,7 @@ if ( !$getit ) {
 					<?php
 						while ( $row = mysqli_fetch_array( $getit ) ) {
 							$albumName = $row[ "albumName" ];
+							$artistName = $row[ "artistName" ];
 							$trackName = $row[ "trackName" ];
 							$trackPop = $row[ "pop" ];
 							$popDate = $row[ "MaxDate" ];
@@ -117,7 +118,7 @@ if ( !$getit ) {
 	
 <?php echo $scriptsAndSuch; ?>
 <script>
-	const artistName = '<?php echo $artistName; ?>';
+	const artistName = '<?php echo $artistName ?>';
 	const panelTitleText = 'Spotify stats for all tracks by ' + artistName;
 	const panelTitle = document.getElementById('panelTitle');
 	$(document).ready(function(){
