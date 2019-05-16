@@ -12,8 +12,8 @@ $relatedArtists = 'relatedArtists';
 require_once '../../rockdb.php';
 
 function assembleURL ($artistForURL) {
-    $baseURL = 'data/';
-    $today = date("m/d/y");
+    $baseURL = 'data/done/04-30-19/';
+    $today = date("m-d-y");
     $endURL = '.json';
 	$artistURL = $baseURL . $artistForURL . "_" . $today . $endURL;
 	echo "<p>" . $artistURL . "</p>";
@@ -71,68 +71,145 @@ $artistNames = array (
     'Utopia_Group'
 );
 
-$filenames = array (
-    'data/2Pac_Person_05-07-19.json',
-    'data/AliceCooper_Combined_05-07-19.json',
-    'data/Anvil_Group_05-07-19.json',
-    'data/BlackSabbath_Group_05-07-19.json',
-    'data/DavidBowie_Person_05-07-19.json',
-    'data/LindseyBuckingham_Person_05-07-19.json',
-    'data/Eminem_Person_05-07-19.json',
-    'data/Cream_Group_05-07-19.json',
-    'data/DefLeppard_Group_05-07-19.json',
-    'data/Dio_Group_05-07-19.json', 
-    'data/Elf_Group_05-07-19.json', 
-    'data/EricClapton_Person_05-07-19.json',
-    'data/EvilStig_Group_05-07-19.json', 
-    'data/FleetwoodMac_Group_05-07-19.json',
-    'data/Heaven&Hell_Group_05-07-19.json', 
-    'data/IggyandTheStooges_Group_05-07-19.json',
-    'data/JanetJackson_Person_05-07-19.json', 
-    'data/JimmyPage_Person_05-07-19.json',
-    'data/JimmyPage&RobertPlant_Group_05-07-19.json',
-    'data/JoanJett_Combined_05-07-19.json', 
-    'data/Journey_Group_05-07-19.json', 
-    'data/LedZeppelin_Group_05-07-19.json',
-    'data/MeatLoaf_Person_05-07-19.json', 
-    'data/MötleyCrüe_Group_05-07-19.json', 
-    'data/NeilYoung_Person_05-07-19.json',
-    'data/StevieNicks_Person_05-07-19.json',
-    'data/OzzyOsbourne_Person_05-07-19.json', 
-    'data/RobertPlant_Person_05-07-19.json',
-    'data/IggyPop_Person_05-07-19.json',
-    'data/Queen_Group_05-07-19.json', 
-    'data/QuietRiot_Group_05-07-19.json', 
-    'data/Radiohead_Group_05-07-19.json',
-    'data/Rainbow_Group_05-07-19.json', 
-    'data/RonnieDioandtheProphets_Group_05-07-19.json', 
-    'data/RonnieDioandtheRedCaps_Group_05-07-19.json', 
-    'data/RoxyMusic_Group_05-07-19.json',
-    'data/Saxon_Group_05-07-19.json', 
-    'data/Stoney&Meatloaf_Group_05-07-19.json',
-    'data/TedNugent_Person_05-07-19.json', 
-    'data/TheAmboyDukes_Group_05-07-19.json',
-    'data/TheCure_Group_05-07-19.json',
-    'data/TheElectricElves_Group_05-07-19.json', 
-    'data/TheFirm_Group_05-07-19.json',
-    'data/TheRunaways_Group_05-07-19.json',
-    'data/TheStooges_Group_05-07-19.json',
-    'data/TheYardbirds_Group_05-07-19.json',
-    'data/TheZombies_Group_05-07-19.json',
-    'data/ToddRundgren_Person_05-07-19.json',
-    'data/Utopia_Group_05-07-19.json'
+$filenames2 = array (
+    'data/done/04-30-19/2Pac_Person_04-30-19.json',
+    'data/done/04-30-19/AliceCooper_Combined_04-30-19.json',
+    'data/done/04-30-19/Anvil_Group_04-30-19.json',
+    'data/done/04-30-19/BlackSabbath_Group_04-30-19.json',
+    'data/done/04-30-19/DavidBowie_Person_04-30-19.json',
+    'data/done/04-30-19/LindseyBuckingham_Person_04-30-19.json',
+    'data/done/04-30-19/Eminem_Person_04-30-19.json',
+    'data/done/04-30-19/Cream_Group_04-30-19.json',
+    'data/done/04-30-19/DefLeppard_Group_04-30-19.json',
+    'data/done/04-30-19/Dio_Group_04-30-19.json', 
+    'data/done/04-30-19/Elf_Group_04-30-19.json', 
+    'data/done/04-30-19/EricClapton_Person_04-30-19.json',
+    'data/done/04-30-19/EvilStig_Group_04-30-19.json', 
+    'data/done/04-30-19/FleetwoodMac_Group_04-30-19.json',
+    'data/done/04-30-19/Heaven&Hell_Group_04-30-19.json', 
+    'data/done/04-30-19/IggyandTheStooges_Group_04-30-19.json',
+    'data/done/04-30-19/JanetJackson_Person_04-30-19.json', 
+    'data/done/04-30-19/JimmyPage_Person_04-30-19.json',
+    'data/done/04-30-19/JimmyPage&RobertPlant_Group_04-30-19.json',
+    'data/done/04-30-19/JoanJett_Combined_04-30-19.json', 
+    'data/done/04-30-19/Journey_Group_04-30-19.json', 
+    'data/done/04-30-19/LedZeppelin_Group_04-30-19.json',
+    'data/done/04-30-19/MeatLoaf_Person_04-30-19.json', 
+    'data/done/04-30-19/MötleyCrüe_Group_04-30-19.json', 
+    'data/done/04-30-19/NeilYoung_Person_04-30-19.json',
+    'data/done/04-30-19/StevieNicks_Person_04-30-19.json',
+    'data/done/04-30-19/OzzyOsbourne_Person_04-30-19.json', 
+    'data/done/04-30-19/RobertPlant_Person_04-30-19.json',
+    'data/done/04-30-19/IggyPop_Person_04-30-19.json',
+    'data/done/04-30-19/Queen_Group_04-30-19.json', 
+    'data/done/04-30-19/QuietRiot_Group_04-30-19.json', 
+    'data/done/04-30-19/Radiohead_Group_04-30-19.json',
+    'data/done/04-30-19/Rainbow_Group_04-30-19.json', 
+    'data/done/04-30-19/RonnieDioandtheProphets_Group_04-30-19.json', 
+    'data/done/04-30-19/RonnieDioandtheRedCaps_Group_04-30-19.json', 
+    'data/done/04-30-19/RoxyMusic_Group_04-30-19.json',
+    'data/done/04-30-19/Saxon_Group_04-30-19.json', 
+    'data/done/04-30-19/Stoney&Meatloaf_Group_04-30-19.json',
+    'data/done/04-30-19/TedNugent_Person_04-30-19.json', 
+    'data/done/04-30-19/TheAmboyDukes_Group_04-30-19.json',
+    'data/done/04-30-19/TheCure_Group_04-30-19.json',
+    'data/done/04-30-19/TheElectricElves_Group_04-30-19.json', 
+    'data/done/04-30-19/TheFirm_Group_04-30-19.json',
+    'data/done/04-30-19/TheRunaways_Group_04-30-19.json',
+    'data/done/04-30-19/TheStooges_Group_04-30-19.json',
+    'data/done/04-30-19/TheYardbirds_Group_04-30-19.json',
+    'data/done/04-30-19/TheZombies_Group_04-30-19.json',
+    'data/done/04-30-19/ToddRundgren_Person_04-30-19.json',
+    'data/done/04-30-19/Utopia_Group_04-30-19.json'
 );
 
+$filenames = array (
+    'data/done/05-02-19/2Pac_Person_05-02-19.json',
+    'data/done/05-02-19/AliceCooper_Combined_05-02-19.json',
+    'data/done/05-02-19/Anvil_Group_05-02-19.json',
+    'data/done/05-02-19/BlackSabbath_Group_05-02-19.json',
+    'data/done/05-02-19/DavidBowie_Person_05-02-19.json',
+    'data/done/05-02-19/LindseyBuckingham_Person_05-02-19.json',
+    'data/done/05-02-19/Eminem_Person_05-02-19.json',
+    'data/done/05-02-19/Cream_Group_05-02-19.json',
+    'data/done/05-02-19/DefLeppard_Group_05-02-19.json',
+    'data/done/05-02-19/Dio_Group_05-02-19.json', 
+    'data/done/05-02-19/Elf_Group_05-02-19.json', 
+    'data/done/05-02-19/EricClapton_Person_05-02-19.json',
+    'data/done/05-02-19/EvilStig_Group_05-02-19.json', 
+    'data/done/05-02-19/FleetwoodMac_Group_05-02-19.json',
+    'data/done/05-02-19/Heaven&Hell_Group_05-02-19.json', 
+    'data/done/05-02-19/IggyandTheStooges_Group_05-02-19.json',
+    'data/done/05-02-19/JanetJackson_Person_05-02-19.json', 
+    'data/done/05-02-19/JimmyPage_Person_05-02-19.json',
+    'data/done/05-02-19/JimmyPage&RobertPlant_Group_05-02-19.json',
+    'data/done/05-02-19/JoanJett_Combined_05-02-19.json', 
+    'data/done/05-02-19/Journey_Group_05-02-19.json', 
+    'data/done/05-02-19/LedZeppelin_Group_05-02-19.json',
+    'data/done/05-02-19/MeatLoaf_Person_05-02-19.json', 
+    'data/done/05-02-19/MötleyCrüe_Group_05-02-19.json', 
+    'data/done/05-02-19/NeilYoung_Person_05-02-19.json',
+    'data/done/05-02-19/StevieNicks_Person_05-02-19.json',
+    'data/done/05-02-19/OzzyOsbourne_Person_05-02-19.json', 
+    'data/done/05-02-19/RobertPlant_Person_05-02-19.json',
+    'data/done/05-02-19/IggyPop_Person_05-02-19.json',
+    'data/done/05-02-19/Queen_Group_05-02-19.json', 
+    'data/done/05-02-19/QuietRiot_Group_05-02-19.json', 
+    'data/done/05-02-19/Radiohead_Group_05-02-19.json',
+    'data/done/05-02-19/Rainbow_Group_05-02-19.json', 
+    'data/done/05-02-19/RonnieDioandtheProphets_Group_05-02-19.json', 
+    'data/done/05-02-19/RonnieDioandtheRedCaps_Group_05-02-19.json', 
+    'data/done/05-02-19/RoxyMusic_Group_05-02-19.json',
+    'data/done/05-02-19/Saxon_Group_05-02-19.json', 
+    'data/done/05-02-19/Stoney&Meatloaf_Group_05-02-19.json',
+    'data/done/05-02-19/TedNugent_Person_05-02-19.json', 
+    'data/done/05-02-19/TheAmboyDukes_Group_05-02-19.json',
+    'data/done/05-02-19/TheCure_Group_05-02-19.json',
+    'data/done/05-02-19/TheElectricElves_Group_05-02-19.json', 
+    'data/done/05-02-19/TheFirm_Group_05-02-19.json',
+    'data/done/05-02-19/TheRunaways_Group_05-02-19.json',
+    'data/done/05-02-19/TheStooges_Group_05-02-19.json',
+    'data/done/05-02-19/TheYardbirds_Group_05-02-19.json',
+    'data/done/05-02-19/TheZombies_Group_05-02-19.json',
+    'data/done/05-02-19/ToddRundgren_Person_05-02-19.json',
+    'data/done/05-02-19/Utopia_Group_05-02-19.json'
+);
+/*
+$catchUp = array (
+    'data/done/04-30-19/2Pac_Person_05-12-19.json',
+    'data/done/04-30-19/AliceCooper_Combined_05-12-19.json',
+    'data/done/04-30-19/DavidBowie_Person_05-12-19.json',
+    'data/done/04-30-19/Eminem_Person_05-12-19.json',
+    'data/done/04-30-19/Cream_Group_05-12-19.json',
+    'data/done/04-30-19/EricClapton_Person_05-12-19.json',
+    'data/done/04-30-19/IggyandTheStooges_Group_05-12-19.json',
+    'data/done/04-30-19/JanetJackson_Person_05-12-19.json', 
+    'data/done/04-30-19/JimmyPage_Person_05-12-19.json',
+    'data/done/04-30-19/JimmyPage&RobertPlant_Group_05-12-19.json',
+    'data/done/04-30-19/JoanJett_Combined_05-12-19.json', 
+    'data/done/04-30-19/Journey_Group_05-12-19.json', 
+    'data/done/04-30-19/LedZeppelin_Group_05-12-19.json',
+    'data/done/04-30-19/RobertPlant_Person_05-12-19.json',
+    'data/done/04-30-19/IggyPop_Person_05-12-19.json',
+    'data/done/04-30-19/Stoney&Meatloaf_Group_05-12-19.json',
+    'data/done/04-30-19/TheElectricElves_Group_05-12-19.json', 
+    'data/done/04-30-19/TheFirm_Group_05-12-19.json',
+    'data/done/04-30-19/TheStooges_Group_05-12-19.json',
+    'data/done/04-30-19/TheYardbirds_Group_05-12-19.json',
+    'data/done/04-30-19/ToddRundgren_Person_05-12-19.json',
+    'data/done/04-30-19/Utopia_Group_05-12-19.json'
+);
+*/
 $filenames = $filenames;
 
 $x = ceil((count($filenames)));
-
+/*
 $y = ceil((count($artistNames)));
 
 for ($j=0; $j<$y; ++$j){
-	assembleURL ($artistNames[$j]);
+    assembleURL ($artistNames[$j]);
 };
-
+*/
 for ($i=0; $i<$x; ++$i) {
 
     $jsonFile = $filenames[$i];
@@ -146,15 +223,26 @@ for ($i=0; $i<$x; ++$i) {
     
     $artistListeners = $artistData['stats']['listeners'];
     $artistPlaycount = $artistData['stats']['playcount'];
-    
-    $insertArtistStats = "INSERT INTO artistsLastFM (artistMBID, dataDate, artistListeners, artistPlaycount) VALUES('$artistMBID','$dataDate','$artistListeners', '$artistPlaycount')";
-    
+
     $connekt = new mysqli($GLOBALS['host'], $GLOBALS['un'], $GLOBALS['magicword'], $GLOBALS['db']);
     
     if(!$connekt){
         echo '<p>Fiddlesticks! Could not connect to database.</p>';
-    }
-    
+    }; // Could and should this if statement go outside this for loop?
+
+    $tryInsertArtistData = "INSERT INTO artistsMB (artistMBID, artistName) VALUES ('$artistMBID', '$artistName')";
+
+    $rockin = $connekt->query($tryInsertArtistData);
+
+    if(!$rockin){
+        echo 'Could not insert info for ' . $artistName . '.<br>';
+        }
+        else {
+            echo '<p>Inserted ' . $artistName . ' in table.</p>';
+        } 
+
+    $insertArtistStats = "INSERT INTO artistsLastFM (artistMBID, dataDate, artistListeners, artistPlaycount) VALUES('$artistMBID','$dataDate','$artistListeners', '$artistPlaycount')";
+        
     $rockout = $connekt->query($insertArtistStats);
     
     if(!$rockout){
