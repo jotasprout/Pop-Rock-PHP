@@ -78,12 +78,10 @@ if ( !$getit ) {
 <table class="table" id="tableotracks">
 	<thead>
 		<tr>
-			
 			<!--
-				<th onClick="sortColumn('albumName', 'ASC')"><div class="pointyHead">Album Name</div></th>
+			<th onClick="sortColumn('albumName', 'ASC')"><div class="pointyHead">Album Name</div></th>
 			<th>Spotify<br>trackSpotID</th>
 			-->
-	
 			<th onClick="sortColumn('trackName', 'DESC')"><div class="pointyHead">Track Title</div></th>
 			<th class="popStyle">Spotify<br>Data Date</th>
 			<th class="popStyle" onClick="sortColumn('pop', 'ASC')"><div class="pointyHead">Track<br>Popularity</div></th>

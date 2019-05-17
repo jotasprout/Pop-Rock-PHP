@@ -70,10 +70,7 @@ if ( !$getit ) {
 	<thead>
 	<tr>
 		<th onClick="sortColumn('albumName', 'DESC', '<?php echo $artistSpotID ?>')"><div class="pointyHead">Album Title</div></th>
-		
-		
 		<th onClick="sortColumn('trackName', 'ASC', '<?php echo $artistSpotID ?>')"><div class="pointyHead">Track Title</div></th>
-		
 		<th class="popStyle" onClick="sortColumn('pop', 'ASC', '<?php echo $artistSpotID ?>')"><div class="pointyHead">Spotify<br>Popularity</div></th>
 		<!--
 		<th>Spotify<br>Data Date</th>
@@ -117,6 +114,7 @@ if ( !$getit ) {
 	</div> <!-- closing container -->
 	
 <?php echo $scriptsAndSuch; ?>
+
 <script>
 	const artistName = '<?php echo $artistName ?>';
 	const panelTitleText = 'Spotify stats for all tracks by ' + artistName;

@@ -83,8 +83,8 @@ if(!$getit){ echo 'Cursed-Crap. Did not run the query.'; }
 	<th onClick="sortColumn('pop', 'unsorted')"><div class="pointyHead popStyle">Spotify<br>Popularity</div></th>
 	<th onClick="sortColumn('followers', 'unsorted')"><div class="pointyHead rightNum">Spotify<br>Followers</div></th>
 		<!--
+	<th onClick="sortColumn('datadate', 'unsorted')"><div class="pointyHead popStyle">LastFM<br>Data Date</div></th>			
 		-->
-	<th onClick="sortColumn('datadate', 'unsorted')"><div class="pointyHead popStyle">LastFM<br>Data Date</div></th>
 	<th onClick="sortColumn('artistListeners', 'unsorted')"><div class="pointyHead rightNum">LastFM<br>Listeners</div></th>
 	<th onClick="sortColumn('artistPlaycount', 'unsorted')"><div class="pointyHead rightNum">LastFM<br>Playcount</div></th>
 	<th><div class="popStyle">LastFM<br>Ratio</div></th>
@@ -126,9 +126,10 @@ if(!$getit){ echo 'Cursed-Crap. Did not run the query.'; }
 	-->
 		<td class="popStyle"><?php echo $artistPop ?></td>
 	<td id="followers" class="rightNum"><?php echo $artistFollowers ?></td>
-	<!--  -->
-	<td class="popStyle"><?php echo $lastFMDate ?></td>
-		<td class="rightNum"><?php echo $artistListeners ?></td>
+	<!--  
+	<td class="popStyle"><?php echo $lastFMDate ?></td>		
+	-->
+	<td class="rightNum"><?php echo $artistListeners ?></td>
 	<td class="rightNum"><?php echo $artistPlaycount ?></td>
 	<td class="popStyle"><p>Coming<br>Soon</p></td>
 </tr>

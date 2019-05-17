@@ -73,12 +73,13 @@ if ( !$getit ) {
 		<tr>
 			<th onClick="sortColumn('albumName', 'DESC', '<?php echo $artistSpotID ?>')"><div class="pointyHead">Album Title</div></th>
 			<th onClick="sortColumn('trackName', 'ASC', '<?php echo $artistSpotID ?>')"><div class="pointyHead">Track Title</div></th>
-			<!--			
+			<!--
+				<th class="popStyle">LastFM<br>Data Date</th>	
+				<th><div class="popStyle">LastFM<br>Ratio</div></th>		
 			-->
-			<th class="popStyle">LastFM<br>Data Date</th>
 			<th class="rightNum pointyHead">LastFM<br>Listeners</th>
 			<th class="rightNum pointyHead">LastFM<br>Playcount</th>
-			<th><div class="popStyle">LastFM<br>Ratio</div></th>
+			
 		</tr>
 	</thead>
 					
@@ -87,9 +88,7 @@ if ( !$getit ) {
 						while ( $row = mysqli_fetch_array( $getit ) ) {
 							$albumName = $row[ "albumName" ];
 							$trackName = $row[ "trackName" ];
-							//$trackSpotID = $row[ "trackSpotID" ];
-							//$trackPop = $row[ "pop" ];
-							//$popDate = $row[ "date" ];
+							$artistName = $row[ "artistName" ];
 							$lastFMDate = $row[ "MaxDataDate" ];
 							$trackListenersNum = $row["trackListeners"];
 							$trackListeners = number_format ($trackListenersNum);
@@ -106,11 +105,11 @@ if ( !$getit ) {
 								<td><?php echo $albumName ?></td>
 								<td><?php echo $trackName ?></td>
 								<!--
+									<td class="popStyle"><?php //echo $lastFMDate ?></td>
+									<td class="popStyle"><p>Coming Soon</p></td>
 								-->
-								<td class="popStyle"><?php echo $lastFMDate ?></td>
 								<td class="rightNum"><?php echo $trackListeners ?></td>
 								<td class="rightNum"><?php echo $trackPlaycount ?></td>
-								<td class="popStyle"><p>Coming Soon</p></td>
 							</tr>
 					<?php 
 						} // end of while
@@ -128,13 +127,14 @@ if ( !$getit ) {
 <?php echo $scriptsAndSuch; ?>
 
 <script>
-	const artistName = '<?php echo $artistName; ?>';
+	const artistName = '<?php echo $artistName ?>';
 	const panelTitleText = 'LastFM stats for all tracks by ' + artistName;
 	const panelTitle = document.getElementById('panelTitle');
 	$(document).ready(function(){
 		panelTitle.innerHTML = panelTitleText;
 	});
 </script>
+
 <script>
 	const artistSpotID = '<?php echo $artistSpotID ?>';
 	const artistMBID = '<?php echo $artistMBID ?>';

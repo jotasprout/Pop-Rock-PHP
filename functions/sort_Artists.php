@@ -142,17 +142,18 @@ if (!empty($sortit)) { ?>
 	<tr>
 	<th>Pretty Face</th>	
 	<th onClick="sortColumn('artistName', '<?php echo $artistNameNewOrder; ?>')"><div class="pointyHead">Artist Name</div></th>
-	<!---->
+	<!--
 	<th class="popStyle">Spotify ID</th>
 	<th class="popStyle">Spotify<br>Data Date</th>
-	
+	-->
 	<th onClick="sortColumn('pop', '<?php echo $popNewOrder; ?>')"><div class="pointyHead popStyle">Spotify<br>Popularity</div></th>
 	<th onClick="sortColumn('followers', '<?php echo $followersNewOrder; ?>')"><div class="pointyHead rightNum">Spotify<br>Followers</div></th>
-	<!---->
-	<th onClick="sortColumn('datadate', '<?php echo $datadateNewOrder; ?>')"><div class="pointyHead popStyle">LastFM<br>Data Date</div></th>
-	
+	<!--
+	<th onClick="sortColumn('datadate', '<?php //echo $datadateNewOrder; ?>')"><div class="pointyHead popStyle">LastFM<br>Data Date</div></th>
+	-->	
 	<th onClick="sortColumn('artistListeners', '<?php echo $listenersNewOrder; ?>')"><div class="pointyHead rightNum">LastFM<br>Listeners</div></th>
 	<th onClick="sortColumn('artistPlaycount', '<?php echo $playcountNewOrder; ?>')"><div class="pointyHead rightNum">LastFM<br>Playcount</div></th>
+	<th><div class="popStyle">LastFM<br>Ratio</div></th>
 	</tr>
 </thead>
 
@@ -184,17 +185,18 @@ if (!empty($sortit)) { ?>
 <tr>
 	<td><img src='<?php echo $artistArt ?>' class="indexArtistArt"></td>	
 	<td><a href='https://www.roxorsoxor.com/poprock/artist_Chart.php?artistSpotID=<?php echo $artistSpotID ?>'><?php echo $artistName ?></a></td>
-<!---->
-	<td class="popStyle"><?php echo $artistSpotID ?></td>
-	<td class="popStyle"><?php echo $popDate ?></td>
-	
+<!--
+	<td class="popStyle"><?php //echo $artistSpotID ?></td>
+	<td class="popStyle"><?php //echo $popDate ?></td>
+-->
 	<td class="popStyle"><?php echo $artistPop ?></td>
 	<td id="followers" class="rightNum"><?php echo $artistFollowers ?></td>
-<!---->
-	<td class="popStyle"><?php echo $lastFMDate ?></td>
-
+<!--
+	<td class="popStyle"><?php //echo $lastFMDate ?></td>
+-->
 	<td class="rightNum"><?php echo $artistListeners ?></td>
 	<td class="rightNum"><?php echo $artistPlaycount ?></td>
+	<td class="popStyle"><p>Coming<br>Soon</p></td>
 </tr>
 
 		<?php 

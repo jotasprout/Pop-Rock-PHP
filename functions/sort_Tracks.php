@@ -1,8 +1,7 @@
 <?php
 
 require_once '../rockdb.php';
-require_once '../page_pieces/navbar_rock.php';
-require_once '../page_pieces/stylesAndScripts.php';
+//require_once '../page_pieces/stylesAndScripts.php';
 
 $connekt = new mysqli( $GLOBALS[ 'host' ], $GLOBALS[ 'un' ], $GLOBALS[ 'magicword' ], $GLOBALS[ 'db' ] );
 
@@ -73,7 +72,7 @@ $gatherTrackInfo = "SELECT t.trackSpotID, t.trackName, a.albumName, a.artistSpot
 											GROUP BY trackMBID) groupedf
 								ON f.trackMBID = groupedf.trackMBID
 								AND f.dataDate = groupedf.MaxDataDate) f1
-						ON t.trackMBID = f1.trackMBID
+							ON t.trackMBID = f1.trackMBID
 						WHERE a.artistSpotID = '$artistSpotID'
 						ORDER BY " . $columnName . " " . $newOrder . ";";
 

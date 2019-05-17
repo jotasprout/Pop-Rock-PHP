@@ -81,11 +81,9 @@ if ( !$getit ) {
 	<thead>
 		<tr>
 			<th onClick="sortColumn('albumName', 'ASC')"><div class="pointyHead">Album Name</div></th>
-			<th>MBID</th>
-				<!--
 			<th onClick="sortColumn('trackName', 'DESC')"><div class="pointyHead">Track Title</div></th>
-			<th class="popStyle">Spotify<br>Data Date</th>
-			<th class="popStyle" onClick="sortColumn('pop', 'ASC')"><div class="pointyHead">Track<br>Popularity</div></th>			
+				<!--
+					<th>MBID</th>
 				-->
 			<th class="popStyle">LastFM<br>Data Date</th>
 			<th class="rightNum pointyHead">LastFM<br>Listeners</th>
@@ -101,8 +99,10 @@ if ( !$getit ) {
 			$trackName = $row[ "trackName" ];
 			//$trackMBID = $row[ "trackMBID" ];
 			$lastFMDate = $row[ "MaxDataDate" ];
-			$trackListeners = $row[ "trackListeners"];
-			$trackPlaycount = $row[ "trackPlaycount"];
+			$trackListenersNum = $row[ "trackListeners"];
+			$trackPlaycountNum = $row[ "trackPlaycount"];
+			$trackListeners = number_format ($trackListenersNum);
+			$trackPlaycount = number_format ($trackPlaycountNum);			
 
 	?>
 <tr>
@@ -111,8 +111,6 @@ if ( !$getit ) {
 <td><?php //echo $trackMBID ?></td>
  -->
 <td><a href='https://www.roxorsoxor.com/poprock/track_Chart.php?trackMBID=<?php echo $trackMBID ?>'><?php echo $trackName ?></a></td>
-
-
 
 <td class="popStyle"><?php echo $lastFMDate ?></td>
 <td class="rightNum"><?php echo $trackListeners ?></td>
