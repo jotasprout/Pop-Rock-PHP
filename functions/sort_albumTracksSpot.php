@@ -66,7 +66,7 @@ if ( $columnName == "pop" and $currentOrder == "ASC" ) {
 	$popNewOrder = "DESC";
 }
 
-$gatherTrackInfoSpot = "SELECT v.trackName, v.albumName, v.pop, max(v.date) AS MaxDate
+$gatherTrackInfoSpot = "SELECT v.trackSpotID, v.trackName, v.albumName, v.pop, max(v.date) AS MaxDate
 					FROM (
 						SELECT z.trackSpotID, z.trackName, z.albumName, p.date, p.pop
 							FROM (
@@ -107,7 +107,7 @@ if(!empty($sortit)) { ?>
 			$trackName = $row[ "trackName" ];
 			$trackSpotID = $row[ "trackSpotID" ];
 			$trackPop = $row[ "pop" ];
-			$popDate = $row[ "date" ];
+			$popDate = $row[ "MaxDate" ];
 	?>
 			<tr>
 

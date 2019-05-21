@@ -68,19 +68,19 @@ if ( !$getit ) {
 				<?php if(!empty($getit)) { ?>
 				
 <table class="table" id="tableotracks">
-	<thead>
-		<tr>
-			<th onClick="sortColumn('albumName', 'DESC', '<?php echo $artistSpotID ?>', '<?php echo $source ?>')"><div class="pointyHead">Album Title</div></th>
-			<th onClick="sortColumn('trackName', 'ASC', '<?php echo $artistSpotID ?>', '<?php echo $source ?>')"><div class="pointyHead">Track Title</div></th>
-			<!--
-				<th class="popStyle">LastFM<br>Data Date</th>	
-				<th><div class="popStyle">LastFM<br>Ratio</div></th>		
-			-->
-			<th class="rightNum pointyHead">LastFM<br>Listeners</th>
-			<th class="rightNum pointyHead">LastFM<br>Playcount</th>
-			
-		</tr>
-	</thead>
+<thead>
+<tr>
+<!---->
+<th onClick="sortColumn('albumName', 'DESC', '<?php echo $artistMBID ?>', '<?php echo $source ?>')"><div class="pointyHead">Album Title</div></th>
+
+<th onClick="sortColumn('trackName', 'ASC', '<?php echo $artistMBID ?>', '<?php echo $source ?>')"><div class="pointyHead">Track Title</div></th>
+<th class="popStyle">LastFM<br>Data Date</th>
+
+<th class="rightNum pointyHead" onClick="sortColumn('trackListeners', '<?php echo $popNewOrder; ?>', '<?php echo $artistMBID ?>', '<?php echo $source ?>')"">LastFM<br>Listeners</th>
+<th class="rightNum pointyHead" onClick="sortColumn('trackPlaycount', '<?php echo $popNewOrder; ?>', '<?php echo $artistMBID ?>', '<?php echo $source ?>')">LastFM<br>Playcount</th>
+<th><div class="popStyle">LastFM<br>Ratio</div></th>
+</tr>
+</thead>
 					
 					<tbody>
 					<?php
@@ -91,24 +91,21 @@ if ( !$getit ) {
 							$lastFMDate = $row[ "MaxDataDate" ];
 							$trackListenersNum = $row["trackListeners"];
 							$trackListeners = number_format ($trackListenersNum);
-							if (!$trackListeners > 0) {
-								$trackListeners = "n/a";
-							};
 							$trackPlaycountNum = $row["trackPlaycount"];
 							$trackPlaycount = number_format ($trackPlaycountNum);
-							if (!$trackPlaycount > 0) {
-								$trackPlaycount = "n/a";
-							};
 					?>
 							<tr>
+								<!---->
 								<td><?php echo $albumName ?></td>
+								
 								<td><?php echo $trackName ?></td>
+								<td class="popStyle"><?php echo $lastFMDate ?></td>
 								<!--
-									<td class="popStyle"><?php //echo $lastFMDate ?></td>
-									<td class="popStyle"><p>Coming Soon</p></td>
+
 								-->
 								<td class="rightNum"><?php echo $trackListeners ?></td>
 								<td class="rightNum"><?php echo $trackPlaycount ?></td>
+								<td class="popStyle"><p>Coming Soon</p></td>
 							</tr>
 					<?php 
 						} // end of while

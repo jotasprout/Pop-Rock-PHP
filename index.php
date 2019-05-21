@@ -42,7 +42,7 @@ if(!$getit){ echo 'Cursed-Crap. Did not run the query.'; }
 
 <head>
 	<meta charset="UTF-8">
-	<title>All Artists</title>
+	<title>All Spotify Artists</title>
 	<?php echo $stylesAndSuch; ?>
 </head>
 
@@ -51,11 +51,7 @@ if(!$getit){ echo 'Cursed-Crap. Did not run the query.'; }
 	<div class='container-fluid'>
 	
 	<div id="fluidCon">
-		<!--
-		<?php 
-			//echo $navbarIndex;
-		?>
-		-->
+
 	</div> <!-- end of fluidCon -->
 	<!-- main -->
 

@@ -140,7 +140,7 @@ if ( !$getit ) {
 <?php echo $scriptsAndSuch; ?>
 
 <script>
-	const albumName = "<?php echo $albumName ?>";
+	const albumName = '<?php echo $albumName ?>';
 	const panelTitleText = 'Popularity on Spotify for tracks from <em>' + albumName + '</em>';
 	const panelTitle = document.getElementById('panelTitle');
 	$(document).ready(function(){

@@ -98,7 +98,7 @@ $gatherTrackInfoLastFM = "SELECT v.artistName, v.trackName, v.albumName, v.track
 					GROUP BY v.trackMBID
 					ORDER BY " . $columnName . " " . $newOrder . ";";
 */
-$gatherTrackInfoSpot = "SELECT v.artistName, v.trackName, v.albumName, v.pop, max(v.date) AS MaxDate
+$gatherTrackInfoSpot = "SELECT v.trackSpotID, v.artistName, v.trackName, v.albumName, v.pop, max(v.date) AS MaxDate
 					FROM (
 						SELECT z.artistName, z.trackSpotID, z.trackName, z.albumName, p.date, p.pop
 							FROM (
@@ -159,7 +159,7 @@ if(!empty($sortit)) { ?>
 			$trackName = $row[ "trackName" ];
 			$trackSpotID = $row[ "trackSpotID" ];
 			$trackPop = $row[ "pop" ];
-			$popDate = $row[ "date" ];
+			$popDate = $row[ "MaxDate" ];
 /*
 			$lastFMDate = $row[ "dataDate" ];
 			$trackListenersNum = $row["trackListeners"];
