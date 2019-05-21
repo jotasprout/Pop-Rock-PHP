@@ -81,7 +81,7 @@ $OLDgatherTrackInfo = "SELECT t.trackSpotID, t.trackName, a.albumName, a.artistS
 							ON t.trackMBID = f1.trackMBID
 						WHERE a.artistSpotID = '$artistSpotID'
 						ORDER BY " . $columnName . " " . $newOrder . ";";
-*/
+
 $gatherTrackInfoLastFM = "SELECT v.artistName, v.trackName, v.albumName, v.trackListeners, v.trackPlaycount, max(v.dataDate) AS MaxDataDate
 					FROM (
 						SELECT z.trackMBID, z.trackName, z.albumName, z.artistName, p.dataDate, p.trackListeners, p.trackPlaycount
@@ -97,7 +97,7 @@ $gatherTrackInfoLastFM = "SELECT v.artistName, v.trackName, v.albumName, v.track
 					) v
 					GROUP BY v.trackMBID
 					ORDER BY " . $columnName . " " . $newOrder . ";";
-
+*/
 $gatherTrackInfoSpot = "SELECT v.artistName, v.trackName, v.albumName, v.pop, max(v.date) AS MaxDate
 					FROM (
 						SELECT z.artistName, z.trackSpotID, z.trackName, z.albumName, p.date, p.pop
@@ -113,7 +113,7 @@ $gatherTrackInfoSpot = "SELECT v.artistName, v.trackName, v.albumName, v.pop, ma
 					) v
 					GROUP BY v.trackSpotID
 					ORDER BY " . $columnName . " " . $newOrder . ";";
-
+/*
 $gathering = "";
 
 if ( $source == "musicbrainz" ) {
@@ -123,8 +123,8 @@ if ( $source == "musicbrainz" ) {
 if ( $source == "spotify" ) {
 	$gathering = $gatherTrackInfoSpot;
 };
-
-$sortit = $connekt->query( $gathering );
+*/
+$sortit = $connekt->query( $gatherTrackInfoSpot );
 
 if ( !$sortit ) {
 	echo '<p>Cursed-Crap. Did not run the query because ' . mysqli_error($connekt) . '.</p>';
@@ -136,14 +136,19 @@ if(!empty($sortit)) { ?>
 <thead>
 <tr>
 	<th onClick="sortColumn('albumName', '<?php echo $albumNameNewOrder; ?>', '<?php echo $artistSpotID ?>', '<?php echo $source ?>')"><div class="pointyHead">Album Title</div></th>
+	<!--
 	<th>Spotify<br>trackSpotID</th>
-	<th onClick="sortColumn('trackName', '<?php echo $trackNameNewOrder; ?>', '<?php echo $artistSpotID ?>', '<?php echo $source ?>')"><div class="pointyHead">Track Title</div></th>
 	<th>Spotify<br>Data Date</th>
+	-->
+	<th onClick="sortColumn('trackName', '<?php echo $trackNameNewOrder; ?>', '<?php echo $artistSpotID ?>', '<?php echo $source ?>')"><div class="pointyHead">Track Title</div></th>
+	
 	
 	<th class="popStyle" onClick="sortColumn('pop', '<?php echo $popNewOrder; ?>', '<?php echo $artistSpotID ?>', '<?php echo $source ?>')"><div class="pointyHead">Spotify<br>Popularity</div></th>
+	<!--
 	<th>LastFM<br>Data Date</th>
 	<th class="rightNum pointyHead">LastFM<br>Listeners</th>
 	<th class="rightNum pointyHead">LastFM<br>Playcount</th>
+-->
 </tr>
 </thead>
 
@@ -155,6 +160,7 @@ if(!empty($sortit)) { ?>
 			$trackSpotID = $row[ "trackSpotID" ];
 			$trackPop = $row[ "pop" ];
 			$popDate = $row[ "date" ];
+/*
 			$lastFMDate = $row[ "dataDate" ];
 			$trackListenersNum = $row["trackListeners"];
 			$trackListeners = number_format ($trackListenersNum);
@@ -166,17 +172,19 @@ if(!empty($sortit)) { ?>
 			if (!$trackPlaycount > 0) {
 				$trackPlaycount = "n/a";
 			};
+			*/
 	?>
 			<tr>
 				<td><?php echo $albumName ?></td>
-				<td><?php echo $trackSpotID ?></td>
 				<td><?php echo $trackName ?></td>
-				<td><?php echo $popDate ?></td>
-				
 				<td class="popStyle"><?php echo $trackPop ?></td>
-				<td class="popStyle"><?php echo $lastFMDate ?></td>
-				<td class="rightNum"><?php echo $trackListeners ?></td>
-				<td class="rightNum"><?php echo $trackPlaycount ?></td>
+<!--
+				<td><?php //echo $trackSpotID ?></td>
+				<td><?php //echo $popDate ?></td>
+				<td class="popStyle"><?php //echo $lastFMDate ?></td>
+				<td class="rightNum"><?php //echo $trackListeners ?></td>
+				<td class="rightNum"><?php //echo $trackPlaycount ?></td>
+-->				
 			</tr>
 	<?php 
 		} // end of while

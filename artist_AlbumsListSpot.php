@@ -156,7 +156,7 @@ if(!$getit){
 	const artistMBID = '<?php echo $artistMBID ?>';
 </script>
 
-<script src="https://www.roxorsoxor.com/poprock/functions/sort_artistAlbums2.js"></script>
+<script src="https://www.roxorsoxor.com/poprock/functions/sort_artistAlbumsSpot.js"></script>
 <script src="https://www.roxorsoxor.com/poprock/page_pieces/navbar.js"></script>
 </body>
 	

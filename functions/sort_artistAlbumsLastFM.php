@@ -176,7 +176,7 @@ $gatherAlbumInfoLastFM = "SELECT b.albumName, b.albumMBID, z.artistName, f1.data
 							AND f.dataDate = groupedf.MaxDataDate) f1
 					ON b.albumMBID = f1.albumMBID	
 					ORDER BY " . $columnName . " " . $newOrder . ";";
-
+/*
 $gatherAlbumInfoSpot = "SELECT b.albumName, b.albumSpotID, b.year, z.artistName, p1.date, p1.pop, x.tracksTotal, x.albumArtSpot
 					FROM (SELECT sp.albumName, sp.albumSpotID, sp.artistSpotID, sp.year
 							FROM albums sp
@@ -202,8 +202,8 @@ if ( $source == "musicbrainz" ) {
 if ( $source == "spotify" ) {
 	$gathering = $gatherAlbumInfoSpot;
 };
-
-$sortit = $connekt->query( $gathering );
+*/
+$sortit = $connekt->query( $gatherAlbumInfoLastFM );
 
 if ( !$sortit ) {
 	echo '<p>Cursed-Crap. Did not run the query. Screwed up like this: ' . mysqli_error($connekt) . '</p>';
@@ -221,14 +221,11 @@ if(!empty($sortit))	 { ?>
 <th>albumMBID</th>
 -->
 <th onClick="sortColumn('albumName', '<?php echo $albumNameNewOrder; ?>', '<?php echo $artistSpotID; ?>', '<?php echo $source ?>')"><div class="pointyHead">Album Name</div></th>
-
-<th onClick="sortColumn('year', '<?php echo $yearNewOrder; ?>', '<?php echo $artistSpotID; ?>', '<?php echo $source ?>')"><div class="pointyHead popStyle">Released</div></th>
 <!--
+<th onClick="sortColumn('year', '<?php //echo $yearNewOrder; ?>', '<?php //echo $artistSpotID; ?>', '<?php //echo $source ?>')"><div class="pointyHead popStyle">Released</div></th>
 <th><div class="pointyHead popStyle">Total<br>Tracks</div></th>
 <th class="popStyle">Spotify<br>Data Date</th>
--->
-<th onClick="sortColumn('pop', '<?php echo $popNewOrder; ?>', '<?php echo $artistSpotID; ?>', '<?php echo $source ?>')"><div class="pointyHead popStyle">Spotify<br>Popularity</div></th>
-<!--
+<th onClick="sortColumn('pop', '<?php //echo $popNewOrder; ?>', '<?php //echo $artistSpotID; ?>', '<?php //echo $source ?>')"><div class="pointyHead popStyle">Spotify<br>Popularity</div></th>
 <th>LastFM<br>Data Date</th>
 -->
 <th onClick="sortColumn('albumListeners', '<?php echo $listenersNewOrder; ?>', '<?php echo $artistSpotID; ?>', '<?php echo $source ?>')"><div class="pointyHead rightNum">LastFM<br>Listeners</div></th>
@@ -260,11 +257,13 @@ if(!empty($sortit))	 { ?>
 		//$albumMBID = $row['albumMBID'];
 
 		$albumName = $row['albumName'];
+		/*
 		$tracksTotal = $row['tracksTotal'];
 		$albumReleased = $row['year'];
 		$albumPop = $row['pop'];
 		$date = $row['date'];
 		$lastFMDate = $row[ "dataDate" ];
+*/
 		$albumListenersNum = $row[ "albumListeners"];
 		$albumListeners = number_format ($albumListenersNum);
 		if (!$albumListeners > 0) {
@@ -288,8 +287,9 @@ if(!empty($sortit))	 { ?>
 <!--
 <td class="popStyle"><?php //echo $tracksTotal ?></td>
 <th class="popStyle"><?php //echo $date ?></th>
+<td class="popStyle"><?php //echo $albumPop ?></td>
 -->
-		<td class="popStyle"><?php echo $albumPop ?></td>
+		
 <!--
 <td class="popStyle"><?php //echo $lastFMDate ?></td>
 -->
