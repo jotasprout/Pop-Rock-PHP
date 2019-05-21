@@ -9,15 +9,15 @@ if ( !$connekt ) {
 	echo '<p>Darn. Did not connect. Screwed up like this: ' . mysqli_connect_error() . '.</p>';
 };
 
-//$postedArtistSpotID = $_POST[ "artistSpotID" ];
-//echo "<p>Sort PHP received artistSpotID " . $postedArtistSpotID . " in sort PHP file</p>";
+//$postedartistMBID = $_POST[ "artistMBID" ];
+//echo "<p>Sort PHP received artistMBID " . $postedartistMBID . " in sort PHP file</p>";
 $postedColumnName = $_POST[ "columnName" ];
 //echo "<p>Sort PHP received column name " . $postedColumnName . " in sort PHP file</p>";
 $postedCurrentOrder = $_POST[ "currentOrder" ];
 //echo "<p>Sort PHP received current order " . $postedCurrentOrder . " in sort PHP file</p>";
 
 // if any of these did not come through, the defaults are the basic starting sort from the sql query
-$artistSpotID = $_POST[ "artistSpotID" ];
+$artistMBID = $_POST[ "artistMBID" ];
 //
 $columnName = "year";
 //
@@ -25,8 +25,8 @@ $currentOrder = "ASC";
 //
 $source = $_POST[ "source" ];
 
-if ( !empty( $_POST[ "artistSpotID" ] ) ) {
-	$artistSpotID = $_POST[ "artistSpotID" ];
+if ( !empty( $_POST[ "artistMBID" ] ) ) {
+	$artistMBID = $_POST[ "artistMBID" ];
 };
 
 if ( !empty( $_POST[ "columnName" ] ) ) {
@@ -131,16 +131,16 @@ if ( $columnName == "albumPlaycount" ) {
 };
 
 /*
-$sortScabies = "SELECT b.albumName, b.albumMBID, b.albumSpotID, b.artistSpotID, a.year, a.albumArtSpot, a.tracksTotal, z.artistName, p1.pop, p1.date, f1.dataDate, f1.albumListeners, f1.albumPlaycount, x.albumArtMB
-FROM (SELECT sp.albumName, sp.albumMBID, sp.albumSpotID, sp.artistSpotID
+$sortScabies = "SELECT b.albumName, b.albumMBID, b.albumSpotID, b.artistMBID, a.year, a.albumArtSpot, a.tracksTotal, z.artistName, p1.pop, p1.date, f1.dataDate, f1.albumListeners, f1.albumPlaycount, x.albumArtMB
+FROM (SELECT sp.albumName, sp.albumMBID, sp.albumSpotID, sp.artistMBID
 	FROM albums sp
-	WHERE sp.artistSpotID='$artistSpotID'
+	WHERE sp.artistMBID='$artistMBID'
 UNION
-SELECT mb.albumName, mb.albumMBID, mb.albumSpotID, mb.artistSpotID
+SELECT mb.albumName, mb.albumMBID, mb.albumSpotID, mb.artistMBID
 	FROM albumsMB mb 
-	WHERE mb.artistSpotID='$artistSpotID') b 
+	WHERE mb.artistMBID='$artistMBID') b 
 LEFT JOIN albums a ON b.albumSpotID = a.albumSpotID	
-JOIN artists z ON z.artistSpotID = b.artistSpotID
+JOIN artists z ON z.artistMBID = b.artistMBID
 LEFT JOIN (SELECT p.*
 		FROM popAlbums p
 		INNER JOIN (SELECT albumSpotID, pop, max(date) AS MaxDate
@@ -178,10 +178,10 @@ $gatherAlbumInfoLastFM = "SELECT b.albumName, b.albumMBID, z.artistName, f1.data
 					ORDER BY " . $columnName . " " . $newOrder . ";";
 /*
 $gatherAlbumInfoSpot = "SELECT b.albumName, b.albumSpotID, b.year, z.artistName, p1.date, p1.pop, x.tracksTotal, x.albumArtSpot
-					FROM (SELECT sp.albumName, sp.albumSpotID, sp.artistSpotID, sp.year
+					FROM (SELECT sp.albumName, sp.albumSpotID, sp.artistMBID, sp.year
 							FROM albums sp
-							WHERE sp.artistSpotID='$artistSpotID') b
-					JOIN artists z ON z.artistSpotID = b.artistSpotID
+							WHERE sp.artistMBID='$artistMBID') b
+					JOIN artists z ON z.artistMBID = b.artistMBID
 					LEFT JOIN albums x ON b.albumSpotID = x.albumSpotID	
 					LEFT JOIN (SELECT p.* 
 							FROM popAlbums p
@@ -220,16 +220,16 @@ if(!empty($sortit))	 { ?>
 <th>Album Spotify ID</th>
 <th>albumMBID</th>
 -->
-<th onClick="sortColumn('albumName', '<?php echo $albumNameNewOrder; ?>', '<?php echo $artistSpotID; ?>', '<?php echo $source ?>')"><div class="pointyHead">Album Name</div></th>
+<th onClick="sortColumn('albumName', '<?php echo $albumNameNewOrder; ?>', '<?php echo $artistMBID; ?>', '<?php echo $source ?>')"><div class="pointyHead">Album Name</div></th>
 <!--
-<th onClick="sortColumn('year', '<?php //echo $yearNewOrder; ?>', '<?php //echo $artistSpotID; ?>', '<?php //echo $source ?>')"><div class="pointyHead popStyle">Released</div></th>
+<th onClick="sortColumn('year', '<?php //echo $yearNewOrder; ?>', '<?php //echo $artistMBID; ?>', '<?php //echo $source ?>')"><div class="pointyHead popStyle">Released</div></th>
 <th><div class="pointyHead popStyle">Total<br>Tracks</div></th>
 <th class="popStyle">Spotify<br>Data Date</th>
-<th onClick="sortColumn('pop', '<?php //echo $popNewOrder; ?>', '<?php //echo $artistSpotID; ?>', '<?php //echo $source ?>')"><div class="pointyHead popStyle">Spotify<br>Popularity</div></th>
+<th onClick="sortColumn('pop', '<?php //echo $popNewOrder; ?>', '<?php //echo $artistMBID; ?>', '<?php //echo $source ?>')"><div class="pointyHead popStyle">Spotify<br>Popularity</div></th>
 <th>LastFM<br>Data Date</th>
 -->
-<th onClick="sortColumn('albumListeners', '<?php echo $listenersNewOrder; ?>', '<?php echo $artistSpotID; ?>', '<?php echo $source ?>')"><div class="pointyHead rightNum">LastFM<br>Listeners</div></th>
-<th onClick="sortColumn('albumPlaycount', '<?php echo $playcountNewOrder; ?>', '<?php echo $artistSpotID; ?>', '<?php echo $source ?>')"><div class="pointyHead rightNum">LastFM<br>Playcount</div></th>
+<th onClick="sortColumn('albumListeners', '<?php echo $listenersNewOrder; ?>', '<?php echo $artistMBID; ?>', '<?php echo $source ?>')"><div class="pointyHead rightNum">LastFM<br>Listeners</div></th>
+<th onClick="sortColumn('albumPlaycount', '<?php echo $playcountNewOrder; ?>', '<?php echo $artistMBID; ?>', '<?php echo $source ?>')"><div class="pointyHead rightNum">LastFM<br>Playcount</div></th>
 </tr>
 </thead>
 	
@@ -283,10 +283,11 @@ if(!empty($sortit))	 { ?>
 <td><?php //echo $albumMBID ?></td>
 -->
 		<td><a href='https://www.roxorsoxor.com/poprock/album_TracksList.php?albumSpotID=<?php echo $albumSpotID ?>&source=<?php echo $source ?>'><?php echo $albumName ?></a></td>
-		<td class="popStyle"><?php echo $albumReleased ?></td>
+		
 <!--
+	<td class="popStyle"><?php echo $albumReleased ?></td>
 <td class="popStyle"><?php //echo $tracksTotal ?></td>
-<th class="popStyle"><?php //echo $date ?></th>
+<td class="popStyle"><?php //echo $date ?></td>
 <td class="popStyle"><?php //echo $albumPop ?></td>
 -->
 		
