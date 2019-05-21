@@ -126,7 +126,7 @@ if ( !$getit ) {
 	const artistSpotID = '<?php echo $artistSpotID ?>';
 	const artistMBID = '<?php echo $artistMBID ?>';
 </script>
-<script src="https://www.roxorsoxor.com/poprock/functions/sort_Tracks.js"></script>
+<script src="https://www.roxorsoxor.com/poprock/functions/sort_artistTracksSpot.js"></script>
 <script src="https://www.roxorsoxor.com/poprock/page_pieces/navbar.js"></script>
 </body>
 	

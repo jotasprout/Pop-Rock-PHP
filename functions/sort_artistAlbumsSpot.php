@@ -39,6 +39,8 @@ if ( !empty( $_POST[ "currentOrder" ] ) ) {
 	$currentOrder = $_POST[ "currentOrder" ];
 };
 
+$newOrder = "DESC";
+
 if ( $currentOrder == "DESC" ) {
 	$newOrder = "ASC";
 };

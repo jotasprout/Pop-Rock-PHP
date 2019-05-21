@@ -20,7 +20,7 @@ $crossPurposes_albumMBID = '5d2e8936-8c36-3ccd-8e8f-916e3b771d49';
 $thirteen_SpotID = '46fDgOnY2RavytWwL88x5M';
 $thirteen_MBID = '7dbf4b1f-d3e9-47bc-9194-d15b31017bd6';
 
-$getAlbumTracks = "SELECT d.trackName, d.albumName, d.trackListeners, d.trackPlaycount, max(d.dataDate) AS MaxDataDate
+$getAlbumTracks = "SELECT d.trackMBID, d.trackName, d.albumName, d.trackListeners, d.trackPlaycount, max(d.dataDate) AS MaxDataDate
 	FROM (
 		SELECT k.trackMBID, k.trackName, h.albumName, fm.dataDate, fm.trackListeners, fm.trackPlaycount
 			FROM (
@@ -78,26 +78,22 @@ if ( !$getit ) {
 				<?php if(!empty($getit)) { ?>
 				
 <table class="table" id="tableotracks">
-	<thead>
-		<tr>
-			<th onClick="sortColumn('albumName', 'ASC')"><div class="pointyHead">Album Name</div></th>
-			<th onClick="sortColumn('trackName', 'DESC')"><div class="pointyHead">Track Title</div></th>
-				<!--
-					<th>MBID</th>
-				-->
-			<th class="popStyle">LastFM<br>Data Date</th>
-			<th class="rightNum pointyHead">LastFM<br>Listeners</th>
-			<th class="rightNum pointyHead">LastFM<br>Playcount</th>
-			<th><div class="popStyle">LastFM<br>Ratio</div></th>
-		</tr>
-	</thead>
+<thead>
+<tr>
+<th onClick="sortColumn('trackName', 'DESC', '<?php echo $albumMBID ?>', 'musicbrainz')"><div class="pointyHead">Track Title</div></th>
+<th class="popStyle" >LastFM<br>Data Date</th>
+<th class="rightNum pointyHead" onClick="sortColumn('trackListeners', 'DESC', '<?php echo $albumMBID ?>', 'musicbrainz')">LastFM<br>Listeners</th>
+<th class="rightNum pointyHead" onClick="sortColumn('trackPlaycount', 'DESC', '<?php echo $albumMBID ?>', 'musicbrainz')">LastFM<br>Playcount</th>
+<th><div class="popStyle">LastFM<br>Ratio</div></th>
+</tr>
+</thead>
 	
 	<tbody>
 	<?php
 		while ( $row = mysqli_fetch_array( $getit ) ) {
 			$albumName = $row[ "albumName" ];
 			$trackName = $row[ "trackName" ];
-			//$trackMBID = $row[ "trackMBID" ];
+			$trackMBID = $row[ "trackMBID" ];
 			$lastFMDate = $row[ "MaxDataDate" ];
 			$trackListenersNum = $row[ "trackListeners"];
 			$trackPlaycountNum = $row[ "trackPlaycount"];
@@ -106,12 +102,7 @@ if ( !$getit ) {
 
 	?>
 <tr>
-<td><?php echo $albumName ?></td>
-<!-- 
-<td><?php //echo $trackMBID ?></td>
- -->
 <td><a href='https://www.roxorsoxor.com/poprock/track_Chart.php?trackMBID=<?php echo $trackMBID ?>'><?php echo $trackName ?></a></td>
-
 <td class="popStyle"><?php echo $lastFMDate ?></td>
 <td class="rightNum"><?php echo $trackListeners ?></td>
 <td class="rightNum"><?php echo $trackPlaycount ?></td>

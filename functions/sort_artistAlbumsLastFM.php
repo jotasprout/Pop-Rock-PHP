@@ -131,24 +131,24 @@ if ( $columnName == "albumPlaycount" ) {
 };
 
 /*
-$sortScabies = "SELECT b.albumName, b.albumMBID, b.albumSpotID, b.artistMBID, a.year, a.albumArtSpot, a.tracksTotal, z.artistName, p1.pop, p1.date, f1.dataDate, f1.albumListeners, f1.albumPlaycount, x.albumArtMB
-FROM (SELECT sp.albumName, sp.albumMBID, sp.albumSpotID, sp.artistMBID
+$sortScabies = "SELECT b.albumName, b.albumMBID, b.albumMBID, b.artistMBID, a.year, a.albumArtSpot, a.tracksTotal, z.artistName, p1.pop, p1.date, f1.dataDate, f1.albumListeners, f1.albumPlaycount, x.albumArtMB
+FROM (SELECT sp.albumName, sp.albumMBID, sp.albumMBID, sp.artistMBID
 	FROM albums sp
 	WHERE sp.artistMBID='$artistMBID'
 UNION
-SELECT mb.albumName, mb.albumMBID, mb.albumSpotID, mb.artistMBID
+SELECT mb.albumName, mb.albumMBID, mb.albumMBID, mb.artistMBID
 	FROM albumsMB mb 
 	WHERE mb.artistMBID='$artistMBID') b 
-LEFT JOIN albums a ON b.albumSpotID = a.albumSpotID	
+LEFT JOIN albums a ON b.albumMBID = a.albumMBID	
 JOIN artists z ON z.artistMBID = b.artistMBID
 LEFT JOIN (SELECT p.*
 		FROM popAlbums p
-		INNER JOIN (SELECT albumSpotID, pop, max(date) AS MaxDate
+		INNER JOIN (SELECT albumMBID, pop, max(date) AS MaxDate
 					FROM popAlbums  
-					GROUP BY albumSpotID) groupedp
-		ON p.albumSpotID = groupedp.albumSpotID
+					GROUP BY albumMBID) groupedp
+		ON p.albumMBID = groupedp.albumMBID
 		AND p.date = groupedp.MaxDate) p1 
-ON a.albumSpotID = p1.albumSpotID
+ON a.albumMBID = p1.albumMBID
 LEFT JOIN albumsMB x ON b.albumMBID = x.albumMBID
 LEFT JOIN (SELECT f.*
 		FROM albumsLastFM f
@@ -177,20 +177,20 @@ $gatherAlbumInfoLastFM = "SELECT b.albumName, b.albumMBID, z.artistName, f1.data
 					ON b.albumMBID = f1.albumMBID	
 					ORDER BY " . $columnName . " " . $newOrder . ";";
 /*
-$gatherAlbumInfoSpot = "SELECT b.albumName, b.albumSpotID, b.year, z.artistName, p1.date, p1.pop, x.tracksTotal, x.albumArtSpot
-					FROM (SELECT sp.albumName, sp.albumSpotID, sp.artistMBID, sp.year
+$gatherAlbumInfoSpot = "SELECT b.albumName, b.albumMBID, b.year, z.artistName, p1.date, p1.pop, x.tracksTotal, x.albumArtSpot
+					FROM (SELECT sp.albumName, sp.albumMBID, sp.artistMBID, sp.year
 							FROM albums sp
 							WHERE sp.artistMBID='$artistMBID') b
 					JOIN artists z ON z.artistMBID = b.artistMBID
-					LEFT JOIN albums x ON b.albumSpotID = x.albumSpotID	
+					LEFT JOIN albums x ON b.albumMBID = x.albumMBID	
 					LEFT JOIN (SELECT p.* 
 							FROM popAlbums p
-							INNER JOIN (SELECT albumSpotID, pop, max(date) AS MaxDate
+							INNER JOIN (SELECT albumMBID, pop, max(date) AS MaxDate
 										FROM popAlbums  
-										GROUP BY albumSpotID) groupedp
-										ON p.albumSpotID = groupedp.albumSpotID
+										GROUP BY albumMBID) groupedp
+										ON p.albumMBID = groupedp.albumMBID
 										AND p.date = groupedp.MaxDate) p1 
-					ON b.albumSpotID = p1.albumSpotID
+					ON b.albumMBID = p1.albumMBID
 					ORDER BY " . $columnName . " " . $newOrder . ";";
 
 $gathering = "";
@@ -239,50 +239,27 @@ if(!empty($sortit))	 { ?>
 
 	while ($row = mysqli_fetch_array($sortit)) {
 		$artistName = $row['artistName'];
-		if (is_null($row['albumArtSpot'])) {
-			$coverArt = $row['albumArtMB'];
-		} else {
-			$coverArt = $row['albumArtSpot'];
-		};
-
-		if (is_null($row['albumSpotID'])) {
-			$albumSpotID = $row['albumMBID'];
-			$source = 'musicbrainz';
-		} else {
-			$albumSpotID = $row['albumSpotID'];
-			$source = 'spotify';
-		};
-
-		//$albumSpotID = $row['albumSpotID'];
-		//$albumMBID = $row['albumMBID'];
+		$coverArt = $row['albumArtMB'];
+		//$coverArt = $row['albumArtSpot'];
+		$albumMBID = $row['albumMBID'];
 
 		$albumName = $row['albumName'];
 		/*
-		$tracksTotal = $row['tracksTotal'];
-		$albumReleased = $row['year'];
-		$albumPop = $row['pop'];
-		$date = $row['date'];
 		$lastFMDate = $row[ "dataDate" ];
 */
 		$albumListenersNum = $row[ "albumListeners"];
 		$albumListeners = number_format ($albumListenersNum);
-		if (!$albumListeners > 0) {
-			$albumListeners = "n/a";
-		};
 		$albumPlaycountNum = $row[ "albumPlaycount"];
 		$albumPlaycount = number_format ($albumPlaycountNum);
-		if (!$albumPlaycount > 0) {
-			$albumPlaycount = "n/a";
-		};
 ?>
 
 	<tr>
 	<td><img src='<?php echo $coverArt ?>' height='64' width='64'></td>
 <!--
-<td><?php //echo $albumSpotID ?></td>
+<td><?php //echo $albumMBID ?></td>
 <td><?php //echo $albumMBID ?></td>
 -->
-		<td><a href='https://www.roxorsoxor.com/poprock/album_TracksList.php?albumSpotID=<?php echo $albumSpotID ?>&source=<?php echo $source ?>'><?php echo $albumName ?></a></td>
+		<td><a href='https://www.roxorsoxor.com/poprock/album_TracksList.php?albumMBID=<?php echo $albumMBID ?>&source=<?php echo $source ?>'><?php echo $albumName ?></a></td>
 		
 <!--
 	<td class="popStyle"><?php echo $albumReleased ?></td>

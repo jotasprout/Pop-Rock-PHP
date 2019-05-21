@@ -38,7 +38,6 @@ if(!$getit){
 }
 
 ?>
-
 <!doctype html>
 <html>
 	

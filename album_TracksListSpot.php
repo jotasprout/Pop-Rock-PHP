@@ -76,22 +76,22 @@ if ( !$getit ) {
 				<?php if(!empty($getit)) { ?>
 				
 <table class="table" id="tableotracks">
-	<thead>
-		<tr>
-			<!--
-			<th onClick="sortColumn('albumName', 'ASC')"><div class="pointyHead">Album Name</div></th>
-			<th>Spotify<br>trackSpotID</th>
-			-->
-			<th onClick="sortColumn('trackName', 'DESC', '<?php echo $albumSpotID ?>', 'spotify')"><div class="pointyHead">Track Title</div></th>
-			<th class="popStyle">Spotify<br>Data Date</th>
-			<th class="popStyle" onClick="sortColumn('pop', 'ASC', '<?php echo $albumSpotID ?>', 'spotify')"><div class="pointyHead">Track<br>Popularity</div></th>
-			<!--
-			<th class="popStyle">LastFM<br>Data Date</th>
-			<th class="rightNum pointyHead">LastFM<br>Listeners</th>
-			<th class="rightNum pointyHead">LastFM<br>Playcount</th>
-			-->
-		</tr>
-	</thead>
+<thead>
+<tr>
+<!--
+<th onClick="sortColumn('albumName', 'ASC')"><div class="pointyHead">Album Name</div></th>
+<th>Spotify<br>trackSpotID</th>
+-->
+<th onClick="sortColumn('trackName', 'DESC', '<?php echo $albumSpotID ?>', 'spotify')"><div class="pointyHead">Track Title</div></th>
+<th class="popStyle">Spotify<br>Data Date</th>
+<th class="popStyle" onClick="sortColumn('pop', 'ASC', '<?php echo $albumSpotID ?>', 'spotify')"><div class="pointyHead">Track<br>Popularity</div></th>
+<!--
+<th class="popStyle">LastFM<br>Data Date</th>
+<th class="rightNum pointyHead">LastFM<br>Listeners</th>
+<th class="rightNum pointyHead">LastFM<br>Playcount</th>
+-->
+</tr>
+</thead>
 	
 	<tbody>
 	<?php
