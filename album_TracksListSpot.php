@@ -82,9 +82,9 @@ if ( !$getit ) {
 			<th onClick="sortColumn('albumName', 'ASC')"><div class="pointyHead">Album Name</div></th>
 			<th>Spotify<br>trackSpotID</th>
 			-->
-			<th onClick="sortColumn('trackName', 'DESC')"><div class="pointyHead">Track Title</div></th>
+			<th onClick="sortColumn('trackName', 'DESC', '<?php echo $albumSpotID ?>', 'spotify')"><div class="pointyHead">Track Title</div></th>
 			<th class="popStyle">Spotify<br>Data Date</th>
-			<th class="popStyle" onClick="sortColumn('pop', 'ASC')"><div class="pointyHead">Track<br>Popularity</div></th>
+			<th class="popStyle" onClick="sortColumn('pop', 'ASC', '<?php echo $albumSpotID ?>', 'spotify')"><div class="pointyHead">Track<br>Popularity</div></th>
 			<!--
 			<th class="popStyle">LastFM<br>Data Date</th>
 			<th class="rightNum pointyHead">LastFM<br>Listeners</th>
@@ -111,31 +111,6 @@ if ( !$getit ) {
 			if ($popDate == '') {
 				$popDate = "n/a";				
 			};
-
-			/*
-
-			$lastFMDate = $row[ "MaxDataDate" ];
-			if ($lastFMDate == 'NULL') {
-				$lastFMDate = "n/a";
-			};			
-			$trackListenersNum = $row[ "trackListeners"];
-			echo "<p>trackListenersNum is " . $trackListenersNum . ".</p>";
-			if ($trackListenersNum != 'NULL') {
-				$trackListeners = number_format ($trackListenersNum);
-				if (!$trackListeners > 0) {
-					$trackListeners = "n/a";
-				};
-			};
-
-			$trackPlaycountNum = $row[ "trackPlaycount"];
-			echo "<p>trackPlaycountNum is " . $trackPlaycountNum . ".</p>";
-			if ($trackPlaycountNum != 'NULL'){
-				$trackPlaycount = number_format ($trackPlaycountNum);
-				if (!$trackPlaycount > 0) {
-					$trackPlaycount = "n/a";
-				};
-			};
-			*/
 
 	?>
 <tr>
@@ -177,7 +152,7 @@ if ( !$getit ) {
 	const artistMBID = '<?php echo $artistMBID ?>';
 </script>
 
-<script src="https://www.roxorsoxor.com/poprock/functions/sort_Tracks.js"></script>
+<script src="https://www.roxorsoxor.com/poprock/functions/sort_albumTracksSpot.js"></script>
 <script src="https://www.roxorsoxor.com/poprock/page_pieces/navbar.js"></script>
 </body>
 	
