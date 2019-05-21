@@ -2,10 +2,9 @@
 
 $artistSpotID = $_GET['artistSpotID'];
 $artistMBID = $_GET['artistMBID'];
-//$source = $_GET['source'];
+$source = $_GET['source'];
 
 require_once 'rockdb.php';
-//require_once 'page_pieces/navbar_rock.php';
 require_once 'page_pieces/stylesAndScripts.php';
 
 $connekt = new mysqli( $GLOBALS[ 'host' ], $GLOBALS[ 'un' ], $GLOBALS[ 'magicword' ], $GLOBALS[ 'db' ] );
@@ -54,7 +53,7 @@ if ( !$getit ) {
 	<div class="container-fluid">
 
 	<div id="fluidCon">
-</div> <!-- end of fluidCon -->
+	</div> <!-- end of fluidCon -->
 
 		<!-- main -->
 
@@ -69,9 +68,9 @@ if ( !$getit ) {
 <table class="table" id="tableotracks">
 	<thead>
 	<tr>
-		<th onClick="sortColumn('albumName', 'DESC', '<?php echo $artistSpotID ?>')"><div class="pointyHead">Album Title</div></th>
-		<th onClick="sortColumn('trackName', 'ASC', '<?php echo $artistSpotID ?>')"><div class="pointyHead">Track Title</div></th>
-		<th class="popStyle" onClick="sortColumn('pop', 'ASC', '<?php echo $artistSpotID ?>')"><div class="pointyHead">Spotify<br>Popularity</div></th>
+		<th onClick="sortColumn('albumName', 'DESC', '<?php echo $artistSpotID ?>', '<?php echo $source ?>')"><div class="pointyHead">Album Title</div></th>
+		<th onClick="sortColumn('trackName', 'ASC', '<?php echo $artistSpotID ?>', '<?php echo $source ?>')"><div class="pointyHead">Track Title</div></th>
+		<th class="popStyle" onClick="sortColumn('pop', 'ASC', '<?php echo $artistSpotID ?>', '<?php echo $source ?>')"><div class="pointyHead">Spotify<br>Popularity</div></th>
 		<!--
 		<th>Spotify<br>Data Date</th>
 		<th>Spotify<br>trackSpotID</th>

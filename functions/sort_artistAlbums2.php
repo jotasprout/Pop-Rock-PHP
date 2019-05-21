@@ -23,6 +23,7 @@ $columnName = "year";
 //
 $currentOrder = "ASC";
 //
+$source = $_POST[ "source" ];
 
 if ( !empty( $_POST[ "artistSpotID" ] ) ) {
 	$artistSpotID = $_POST[ "artistSpotID" ];
@@ -175,19 +176,19 @@ if(!empty($sortit))	 { ?>
 <th>Album Spotify ID</th>
 <th>albumMBID</th>
 -->
-	<th onClick="sortColumn('albumName', '<?php echo $albumNameNewOrder; ?>', '<?php echo $artistSpotID; ?>')"><div class="pointyHead">Album Name</div></th>
+	<th onClick="sortColumn('albumName', '<?php echo $albumNameNewOrder; ?>', '<?php echo $artistSpotID; ?>', '<?php echo $source ?>')"><div class="pointyHead">Album Name</div></th>
 
-	<th onClick="sortColumn('year', '<?php echo $yearNewOrder; ?>', '<?php echo $artistSpotID; ?>')"><div class="pointyHead popStyle">Released</div></th>
+	<th onClick="sortColumn('year', '<?php echo $yearNewOrder; ?>', '<?php echo $artistSpotID; ?>', '<?php echo $source ?>')"><div class="pointyHead popStyle">Released</div></th>
 <!--
 <th><div class="pointyHead popStyle">Total<br>Tracks</div></th>
 <th class="popStyle">Spotify<br>Data Date</th>
 -->
-	<th onClick="sortColumn('pop', '<?php echo $popNewOrder; ?>', '<?php echo $artistSpotID; ?>')"><div class="pointyHead popStyle">Spotify<br>Popularity</div></th>
+	<th onClick="sortColumn('pop', '<?php echo $popNewOrder; ?>', '<?php echo $artistSpotID; ?>', '<?php echo $source ?>')"><div class="pointyHead popStyle">Spotify<br>Popularity</div></th>
 <!--
 <th>LastFM<br>Data Date</th>
 -->
-<th onClick="sortColumn('albumListeners', '<?php echo $listenersNewOrder; ?>', '<?php echo $artistSpotID; ?>')"><div class="pointyHead rightNum">LastFM<br>Listeners</div></th>
-<th onClick="sortColumn('albumPlaycount', '<?php echo $playcountNewOrder; ?>', '<?php echo $artistSpotID; ?>')"><div class="pointyHead rightNum">LastFM<br>Playcount</div></th>
+<th onClick="sortColumn('albumListeners', '<?php echo $listenersNewOrder; ?>', '<?php echo $artistSpotID; ?>', '<?php echo $source ?>')"><div class="pointyHead rightNum">LastFM<br>Listeners</div></th>
+<th onClick="sortColumn('albumPlaycount', '<?php echo $playcountNewOrder; ?>', '<?php echo $artistSpotID; ?>', '<?php echo $source ?>')"><div class="pointyHead rightNum">LastFM<br>Playcount</div></th>
 </tr>
 </thead>
 	
@@ -238,7 +239,7 @@ if(!empty($sortit))	 { ?>
 <td><?php //echo $albumSpotID ?></td>
 <td><?php //echo $albumMBID ?></td>
 -->
-		<td><a href='https://www.roxorsoxor.com/poprock/thisAlbum_TracksList.php?albumSpotID=<?php echo $albumSpotID ?>'><?php echo $albumName ?></a></td>
+		<td><a href='https://www.roxorsoxor.com/poprock/album_TracksList.php?albumSpotID=<?php echo $albumSpotID ?>&source=<?php echo $source ?>'><?php echo $albumName ?></a></td>
 		<td class="popStyle"><?php echo $albumReleased ?></td>
 <!--
 <td class="popStyle"><?php //echo $tracksTotal ?></td>

@@ -2,6 +2,7 @@
 
 $artistSpotID = $_GET['artistSpotID'];
 $artistMBID = $_GET['artistMBID'];
+$source = $_GET['source'];
 require_once 'rockdb.php';
 require_once 'page_pieces/stylesAndScripts.php';
 
@@ -76,13 +77,13 @@ if(!$getit){
 <!-- 
 <th>Album Spotify ID</th>
 -->
-<th onClick="sortColumn('albumName', 'ASC', '<?php echo $artistSpotID; ?>')"><div class="pointyHead">Album Name</div></th>
-<th onClick="sortColumn('year', 'unsorted', '<?php echo $artistSpotID; ?>')"><div class="pointyHead popStyle">Released</div></th>
+<th onClick="sortColumn('albumName', 'ASC', '<?php echo $artistSpotID; ?>', '<?php echo $source ?>')"><div class="pointyHead">Album Name</div></th>
+<th onClick="sortColumn('year', 'unsorted', '<?php echo $artistSpotID; ?>', '<?php echo $source ?>')"><div class="pointyHead popStyle">Released</div></th>
 <!--
 <th><div class="pointyHead popStyle">Total<br>Tracks</div></th>
 <th class="popStyle">Spotify<br>Data Date</th>
 -->
-<th onClick="sortColumn('pop', 'unsorted', '<?php echo $artistSpotID ?>')"><div class="pointyHead popStyle">Spotify<br>Popularity</div></th>
+<th onClick="sortColumn('pop', 'unsorted', '<?php echo $artistSpotID ?>', '<?php echo $source ?>')"><div class="pointyHead popStyle">Spotify<br>Popularity</div></th>
 <!-- -->
 </tr>
 </thead>
@@ -111,7 +112,7 @@ if(!$getit){
 <!--
 <td><?php //echo $albumSpotID ?></td>
 -->
-<td><a href='https://www.roxorsoxor.com/poprock/album_TracksListSpot.php?artistSpotID=<?php echo $artistSpotID ?>&artistMBID=<?php echo $artistMBID ?>&albumSpotID=<?php echo $albumSpotID ?>'><?php echo $albumName ?></a></td>
+<td><a href='https://www.roxorsoxor.com/poprock/album_TracksListSpot.php?artistSpotID=<?php echo $artistSpotID ?>&artistMBID=<?php echo $artistMBID ?>&albumSpotID=<?php echo $albumSpotID ?>&source=<?php echo $source ?>''><?php echo $albumName ?></a></td>
 
 
 <td class="popStyle"><?php echo $albumReleased ?></td>

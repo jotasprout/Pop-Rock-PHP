@@ -13,6 +13,7 @@ if ( !$connekt ) {
 $artistSpotID = "artistSpotID";
 $columnName = "trackName";
 $currentOrder = "ASC";
+$source = $_POST[ "source" ];
 
 // If POSTed columnNames came through, use them
 if ( !empty( $_POST[ "artistSpotID" ] ) ) {
@@ -87,12 +88,12 @@ if(!empty($sortit)) { ?>
 <table class="table" id="tableotracks">
 <thead>
 <tr>
-	<th onClick="sortColumn('albumName', '<?php echo $albumNameNewOrder; ?>', '<?php echo $artistSpotID ?>')"><div class="pointyHead">Album Title</div></th>
+	<th onClick="sortColumn('albumName', '<?php echo $albumNameNewOrder; ?>', '<?php echo $artistSpotID ?>', '<?php echo $source ?>')"><div class="pointyHead">Album Title</div></th>
 	<th>Spotify<br>trackSpotID</th>
-	<th onClick="sortColumn('trackName', '<?php echo $trackNameNewOrder; ?>', '<?php echo $artistSpotID ?>')"><div class="pointyHead">Track Title</div></th>
+	<th onClick="sortColumn('trackName', '<?php echo $trackNameNewOrder; ?>', '<?php echo $artistSpotID ?>', '<?php echo $source ?>')"><div class="pointyHead">Track Title</div></th>
 	<th>Spotify<br>Data Date</th>
 	
-	<th class="popStyle" onClick="sortColumn('pop', '<?php echo $popNewOrder; ?>', '<?php echo $artistSpotID ?>')"><div class="pointyHead">Spotify<br>Popularity</div></th>
+	<th class="popStyle" onClick="sortColumn('pop', '<?php echo $popNewOrder; ?>', '<?php echo $artistSpotID ?>', '<?php echo $source ?>')"><div class="pointyHead">Spotify<br>Popularity</div></th>
 	<th>LastFM<br>Data Date</th>
 	<th class="rightNum pointyHead">LastFM<br>Listeners</th>
 	<th class="rightNum pointyHead">LastFM<br>Playcount</th>

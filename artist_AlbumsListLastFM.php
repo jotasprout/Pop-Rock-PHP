@@ -2,6 +2,7 @@
 
 $artistMBID = $_GET['artistMBID'];
 $artistSpotID = $_GET['artistSpotID'];
+$source = $_GET['source'];
 require_once 'rockdb.php';
 require_once 'page_pieces/stylesAndScripts.php';
 
@@ -71,14 +72,14 @@ if(!$getit){
 <tr>
 	<th>Cover Art</th>
 	<!---->
-	<th onClick="sortColumn('albumName', 'ASC', '<?php echo $artistMBID; ?>')"><div class="pointyHead">Album Name</div></th>
+	<th onClick="sortColumn('albumName', 'ASC', '<?php echo $artistMBID; ?>', '<?php echo $source ?>')"><div class="pointyHead">Album Name</div></th>
 	<!--
 	<th>Album MBID</th>
 	<th class="popStyle">LastFM<br>Data Date</th>		
 	-->
 
-	<th onClick="sortColumn('albumListeners', 'unsorted', '<?php echo $artistMBID; ?>')"><div class="pointyHead rightNum">LastFM<br>Listeners</div></th>
-	<th onClick="sortColumn('albumPlaycount', 'unsorted', '<?php echo $artistMBID; ?>')"><div class="pointyHead rightNum">LastFM<br>Playcount</div></th>
+	<th onClick="sortColumn('albumListeners', 'unsorted', '<?php echo $artistMBID; ?>', '<?php echo $source ?>')"><div class="pointyHead rightNum">LastFM<br>Listeners</div></th>
+	<th onClick="sortColumn('albumPlaycount', 'unsorted', '<?php echo $artistMBID; ?>', '<?php echo $source ?>')"><div class="pointyHead rightNum">LastFM<br>Playcount</div></th>
 	<th><div class="popStyle">LastFM<br>Ratio</div></th>
 </tr>
 

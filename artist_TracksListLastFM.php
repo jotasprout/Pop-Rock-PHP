@@ -2,10 +2,9 @@
 
 $artistSpotID = $_GET['artistSpotID'];
 $artistMBID = $_GET['artistMBID'];
-//$source = $_GET['source'];
+$source = $_GET['source'];
 
 require_once 'rockdb.php';
-//require_once 'page_pieces/navbar_rock.php';
 require_once 'page_pieces/stylesAndScripts.php';
 
 $connekt = new mysqli( $GLOBALS[ 'host' ], $GLOBALS[ 'un' ], $GLOBALS[ 'magicword' ], $GLOBALS[ 'db' ] );
@@ -71,8 +70,8 @@ if ( !$getit ) {
 <table class="table" id="tableotracks">
 	<thead>
 		<tr>
-			<th onClick="sortColumn('albumName', 'DESC', '<?php echo $artistSpotID ?>')"><div class="pointyHead">Album Title</div></th>
-			<th onClick="sortColumn('trackName', 'ASC', '<?php echo $artistSpotID ?>')"><div class="pointyHead">Track Title</div></th>
+			<th onClick="sortColumn('albumName', 'DESC', '<?php echo $artistSpotID ?>', '<?php echo $source ?>')"><div class="pointyHead">Album Title</div></th>
+			<th onClick="sortColumn('trackName', 'ASC', '<?php echo $artistSpotID ?>', '<?php echo $source ?>')"><div class="pointyHead">Track Title</div></th>
 			<!--
 				<th class="popStyle">LastFM<br>Data Date</th>	
 				<th><div class="popStyle">LastFM<br>Ratio</div></th>		

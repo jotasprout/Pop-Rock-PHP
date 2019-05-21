@@ -1,7 +1,7 @@
-function sortColumn (columnName, currentOrder, artistSpotID) {
+function sortColumn (columnName, currentOrder, artistSpotID, source) {
 	$.ajax ({
 		url: "functions/sort_Tracks.php",
-		data: "columnName=" + columnName + "&currentOrder=" + currentOrder + "&artistSpotID=" + artistSpotID,
+		data: "columnName=" + columnName + "&currentOrder=" + currentOrder + "&artistSpotID=" + artistSpotID + "&source=" + source,
 		type: "POST",
 		success: function (data) {
 			$("#tableotracks").html(data);
