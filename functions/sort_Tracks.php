@@ -10,6 +10,7 @@ if ( !$connekt ) {
 };
 
 // if any of these did not come through, the defaults are the basic starting sort from the sql query
+$artistMBID = "artistMBID";
 $artistSpotID = "artistSpotID";
 $columnName = "trackName";
 $currentOrder = "ASC";
@@ -18,6 +19,10 @@ $source = $_POST[ "source" ];
 // If POSTed columnNames came through, use them
 if ( !empty( $_POST[ "artistSpotID" ] ) ) {
 	$artistSpotID = $_POST[ "artistSpotID" ];
+}
+
+if ( !empty( $_POST[ "artistMBID" ] ) ) {
+	$artistMBID = $_POST[ "artistMBID" ];
 }
 
 if ( !empty( $_POST[ "columnName" ] ) ) {
@@ -55,8 +60,8 @@ $popNewOrder = "ASC";
 if ( $columnName == "pop" and $currentOrder == "ASC" ) {
 	$popNewOrder = "DESC";
 }
-
-$gatherTrackInfo = "SELECT t.trackSpotID, t.trackName, a.albumName, a.artistSpotID, p1.pop, p1.date, f1.dataDate, f1.trackListeners, f1.trackPlaycount
+/*
+$OLDgatherTrackInfo = "SELECT t.trackSpotID, t.trackName, a.albumName, a.artistSpotID, p1.pop, p1.date, f1.dataDate, f1.trackListeners, f1.trackPlaycount
 						FROM tracks t
 						INNER JOIN albums a ON a.albumSpotID = t.albumSpotID
 						JOIN (SELECT p.* FROM popTracks p
@@ -76,8 +81,50 @@ $gatherTrackInfo = "SELECT t.trackSpotID, t.trackName, a.albumName, a.artistSpot
 							ON t.trackMBID = f1.trackMBID
 						WHERE a.artistSpotID = '$artistSpotID'
 						ORDER BY " . $columnName . " " . $newOrder . ";";
+*/
+$gatherTrackInfoLastFM = "SELECT v.artistName, v.trackName, v.albumName, v.trackListeners, v.trackPlaycount, max(v.dataDate) AS MaxDataDate
+					FROM (
+						SELECT z.trackMBID, z.trackName, z.albumName, z.artistName, p.dataDate, p.trackListeners, p.trackPlaycount
+							FROM (
+								SELECT t.*, r.albumName, a.artistName
+									FROM tracksMB t
+									INNER JOIN albumsMB r ON r.albumMBID = t.albumMBID
+									JOIN artistsMB a ON r.artistMBID = a.artistMBID
+									WHERE a.artistMBID = '$artistMBID'
+							) z
+						JOIN tracksLastFM p 
+							ON z.trackMBID = p.trackMBID					
+					) v
+					GROUP BY v.trackMBID
+					ORDER BY " . $columnName . " " . $newOrder . ";";
 
-$sortit = $connekt->query( $gatherTrackInfo );
+$gatherTrackInfoSpot = "SELECT v.artistName, v.trackName, v.albumName, v.pop, max(v.date) AS MaxDate
+					FROM (
+						SELECT z.artistName, z.trackSpotID, z.trackName, z.albumName, p.date, p.pop
+							FROM (
+								SELECT t.*, r.albumName, a.artistName
+									FROM tracks t
+									INNER JOIN albums r ON r.albumSpotID = t.albumSpotID
+									JOIN artists a ON r.artistSpotID = a.artistSpotID
+									WHERE a.artistSpotID = '$artistSpotID'
+							) z
+						JOIN popTracks p 
+							ON z.trackSpotID = p.trackSpotID					
+					) v
+					GROUP BY v.trackSpotID
+					ORDER BY " . $columnName . " " . $newOrder . ";";
+
+$gathering = "";
+
+if ( $source == "musicbrainz" ) {
+	$gathering = $gatherTrackInfoLastFM;
+};
+
+if ( $source == "spotify" ) {
+	$gathering = $gatherTrackInfoSpot;
+};
+
+$sortit = $connekt->query( $gathering );
 
 if ( !$sortit ) {
 	echo '<p>Cursed-Crap. Did not run the query because ' . mysqli_error($connekt) . '.</p>';

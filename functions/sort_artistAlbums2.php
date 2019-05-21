@@ -130,6 +130,7 @@ if ( $columnName == "albumPlaycount" ) {
 	};
 };
 
+/*
 $sortScabies = "SELECT b.albumName, b.albumMBID, b.albumSpotID, b.artistSpotID, a.year, a.albumArtSpot, a.tracksTotal, z.artistName, p1.pop, p1.date, f1.dataDate, f1.albumListeners, f1.albumPlaycount, x.albumArtMB
 FROM (SELECT sp.albumName, sp.albumMBID, sp.albumSpotID, sp.artistSpotID
 	FROM albums sp
@@ -158,8 +159,51 @@ LEFT JOIN (SELECT f.*
 		AND f.dataDate = groupedf.MaxDataDate) f1
 ON b.albumMBID = f1.albumMBID
 ORDER BY " . $columnName . " " . $newOrder . ";";
+*/
 
-$sortit = $connekt->query( $sortScabies );
+$gatherAlbumInfoLastFM = "SELECT b.albumName, b.albumMBID, z.artistName, f1.dataDate, f1.albumListeners, f1.albumPlaycount, x.albumArtMB
+					FROM (SELECT mb.albumName, mb.albumMBID, mb.artistMBID
+						FROM albumsMB mb 
+						WHERE mb.artistMBID='$artistMBID') b 
+					JOIN artists z ON z.artistMBID = b.artistMBID
+					LEFT JOIN albumsMB x ON b.albumMBID = x.albumMBID
+					LEFT JOIN (SELECT f.*
+							FROM albumsLastFM f
+							INNER JOIN (SELECT albumMBID, albumListeners, albumPlaycount, max(dataDate) AS MaxDataDate
+							FROM albumsLastFM
+							GROUP BY albumMBID) groupedf
+							ON f.albumMBID = groupedf.albumMBID
+							AND f.dataDate = groupedf.MaxDataDate) f1
+					ON b.albumMBID = f1.albumMBID	
+					ORDER BY " . $columnName . " " . $newOrder . ";";
+
+$gatherAlbumInfoSpot = "SELECT b.albumName, b.albumSpotID, b.year, z.artistName, p1.date, p1.pop, x.tracksTotal, x.albumArtSpot
+					FROM (SELECT sp.albumName, sp.albumSpotID, sp.artistSpotID, sp.year
+							FROM albums sp
+							WHERE sp.artistSpotID='$artistSpotID') b
+					JOIN artists z ON z.artistSpotID = b.artistSpotID
+					LEFT JOIN albums x ON b.albumSpotID = x.albumSpotID	
+					LEFT JOIN (SELECT p.* 
+							FROM popAlbums p
+							INNER JOIN (SELECT albumSpotID, pop, max(date) AS MaxDate
+										FROM popAlbums  
+										GROUP BY albumSpotID) groupedp
+										ON p.albumSpotID = groupedp.albumSpotID
+										AND p.date = groupedp.MaxDate) p1 
+					ON b.albumSpotID = p1.albumSpotID
+					ORDER BY " . $columnName . " " . $newOrder . ";";
+
+$gathering = "";
+
+if ( $source == "musicbrainz" ) {
+	$gathering = $gatherAlbumInfoLastFM;
+};
+
+if ( $source == "spotify" ) {
+	$gathering = $gatherAlbumInfoSpot;
+};
+
+$sortit = $connekt->query( $gathering );
 
 if ( !$sortit ) {
 	echo '<p>Cursed-Crap. Did not run the query. Screwed up like this: ' . mysqli_error($connekt) . '</p>';
@@ -176,14 +220,14 @@ if(!empty($sortit))	 { ?>
 <th>Album Spotify ID</th>
 <th>albumMBID</th>
 -->
-	<th onClick="sortColumn('albumName', '<?php echo $albumNameNewOrder; ?>', '<?php echo $artistSpotID; ?>', '<?php echo $source ?>')"><div class="pointyHead">Album Name</div></th>
+<th onClick="sortColumn('albumName', '<?php echo $albumNameNewOrder; ?>', '<?php echo $artistSpotID; ?>', '<?php echo $source ?>')"><div class="pointyHead">Album Name</div></th>
 
-	<th onClick="sortColumn('year', '<?php echo $yearNewOrder; ?>', '<?php echo $artistSpotID; ?>', '<?php echo $source ?>')"><div class="pointyHead popStyle">Released</div></th>
+<th onClick="sortColumn('year', '<?php echo $yearNewOrder; ?>', '<?php echo $artistSpotID; ?>', '<?php echo $source ?>')"><div class="pointyHead popStyle">Released</div></th>
 <!--
 <th><div class="pointyHead popStyle">Total<br>Tracks</div></th>
 <th class="popStyle">Spotify<br>Data Date</th>
 -->
-	<th onClick="sortColumn('pop', '<?php echo $popNewOrder; ?>', '<?php echo $artistSpotID; ?>', '<?php echo $source ?>')"><div class="pointyHead popStyle">Spotify<br>Popularity</div></th>
+<th onClick="sortColumn('pop', '<?php echo $popNewOrder; ?>', '<?php echo $artistSpotID; ?>', '<?php echo $source ?>')"><div class="pointyHead popStyle">Spotify<br>Popularity</div></th>
 <!--
 <th>LastFM<br>Data Date</th>
 -->
