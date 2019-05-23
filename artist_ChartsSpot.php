@@ -1,9 +1,8 @@
 <?php 
     $artistSpotID = $_GET['artistSpotID'];
     $artistMBID = $_GET['artistMBID'];
-    //$source = $_GET['source'];
+    $source = $_GET['source'];
 	require_once 'page_pieces/stylesAndScripts.php';
-	//require_once 'page_pieces/navbar_rock.php';
 ?>
 
 <!DOCTYPE html>
@@ -11,7 +10,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Artist Data | PopRock</title>
+    <title>Artist Spotify Charts | PopRock</title>
 	<?php echo $stylesAndSuch; ?>
 	<style type="text/css">
 		.line {
@@ -49,8 +48,9 @@
 <div class="container-fluid">
 <div id="fluidCon">
 </div> <!-- end of fluidCon -->
+  <!-- 
     <p>If, after the page loads, it is empty, or the wrong discography displays, <a href='https://www.roxorsoxor.com/poprock/index.php'>choose an artist</a> from the <a href='https://www.roxorsoxor.com/poprock/index.php'>Artists List</a> first.</p>
-
+       -->
 <div class="panel panel-primary">
 
     <div class="panel-heading">
@@ -58,8 +58,7 @@
     </div> <!-- close panel-heading -->
         
   <div class="panel-body">
-      <!-- 
-       -->
+
        <div class="row">
 
             <div class="col-md-2 popStyle">

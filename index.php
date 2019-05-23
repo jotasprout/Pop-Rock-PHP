@@ -115,8 +115,8 @@ if(!$getit){ echo 'Cursed-Crap. Did not run the query.'; }
 				?>
 
 <tr>
-	<td><a href='https://www.roxorsoxor.com/poprock/artist_Chart.php?artistSpotID=<?php echo $artistSpotID ?>&artistMBID=<?php echo $artistMBID ?>'><img src='<?php echo $artistArt ?>' class="indexArtistArt"></a></td>	
-	<td><a href='https://www.roxorsoxor.com/poprock/artist_Chart.php?artistSpotID=<?php echo $artistSpotID ?>&artistMBID=<?php echo $artistMBID ?>'><?php echo $artistName ?></a></td>
+	<td><a href='https://www.roxorsoxor.com/poprock/artist_ChartsSpot.php?artistSpotID=<?php echo $artistSpotID ?>&artistMBID=<?php echo $artistMBID ?>'><img src='<?php echo $artistArt ?>' class="indexArtistArt"></a></td>	
+	<td><a href='https://www.roxorsoxor.com/poprock/artist_ChartsSpot.php?artistSpotID=<?php echo $artistSpotID ?>&artistMBID=<?php echo $artistMBID ?>'><?php echo $artistName ?></a></td>
 	<!--
 	<td class="popStyle"><?php //echo $artistSpotID ?></td>
 	<td class="popStyle"><?php //echo $popDate ?></td>
@@ -152,7 +152,7 @@ if(!$getit){ echo 'Cursed-Crap. Did not run the query.'; }
 	<!-- close container -->
 
 	<?php echo $scriptsAndSuch; ?>
-	<script src="https://www.roxorsoxor.com/poprock/functions/sort_Artists.js"></script>
+	<script src="https://www.roxorsoxor.com/poprock/functions/sort_ArtistsSpot.js"></script>
 	<script src="https://www.roxorsoxor.com/poprock/page_pieces/navbarIndex.js"></script>
 
 </body>
