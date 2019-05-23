@@ -54,38 +54,6 @@ $filenames = array (
     'data/Utopia_Group_05-07-19.json'
 );
 
-$catchUp = array (
-    'data/2Pac_Person_05-07-19.json',
-    'data/AliceCooper_Combined_05-07-19.json',
-    'data/DavidBowie_Person_05-07-19.json',
-    'data/Eminem_Person_05-07-19.json',
-    'data/Cream_Group_05-07-19.json',
-    'data/EricClapton_Person_05-07-19.json',
-    'data/IggyandTheStooges_Group_05-07-19.json',
-    'data/JanetJackson_Person_05-07-19.json', 
-    'data/JimmyPage_Person_05-07-19.json',
-    'data/JimmyPage&RobertPlant_Group_05-07-19.json',
-    'data/JoanJett_Combined_05-07-19.json', 
-    'data/Journey_Group_05-07-19.json', 
-    'data/LedZeppelin_Group_05-07-19.json',
-    'data/RobertPlant_Person_05-07-19.json',
-    'data/IggyPop_Person_05-07-19.json',
-    'data/Stoney&Meatloaf_Group_05-07-19.json',
-    'data/TheElectricElves_Group_05-07-19.json', 
-    'data/TheFirm_Group_05-07-19.json',
-    'data/TheStooges_Group_05-07-19.json',
-    'data/TheYardbirds_Group_05-07-19.json',
-    'data/ToddRundgren_Person_05-07-19.json',
-    'data/Utopia_Group_05-07-19.json',
-    'data/NeilYoung_Person_05-07-19.json',
-);
-
-$neilYoung = array (
-    'data/NeilYoung_Person_05-07-19.json',
-    'data/NeilYoung_Person_05-15-19.json'
-);
-
-
 $filenames = $filenames;
 
 $x = ceil((count($filenames)));
