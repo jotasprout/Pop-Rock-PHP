@@ -71,14 +71,14 @@ $filenames_07 = array (
     'data/TheZombies_Group_05-20-19.json'
 );
 
-$filenames = $filenames_02;
+$filenames = $filenames_01;
 
 $x = ceil((count($filenames)));
 /*
 $y = ceil((count($artistNames)));
 
 for ($j=0; $j<$y; ++$j){
-    assembleURL ($artistNames[$j]);
+	assembleURL ($artistNames[$j]);
 };
 */
 for ($i=0; $i<$x; ++$i) {
@@ -86,43 +86,66 @@ for ($i=0; $i<$x; ++$i) {
     $jsonFile = $filenames[$i];
     $fileContents = file_get_contents($jsonFile);
     $artistData = json_decode($fileContents,true);
-    
+
     $artistMBID = $artistData['mbid'];
     $artistName = $artistData['name'];
-    
+
     $dataDate = $artistData['date'];
-    
-    $artistListeners = $artistData['stats']['listeners'];
-    $artistPlaycount = $artistData['stats']['playcount'];
+
+    $albums = $artistData['albums'];
+
+    $albumsNum = ceil((count($albums)));
 
     $connekt = new mysqli($GLOBALS['host'], $GLOBALS['un'], $GLOBALS['magicword'], $GLOBALS['db']);
-    
+
     if(!$connekt){
-        echo '<p>Fiddlesticks! Could not connect to database.</p>';
-    }; // Could and should this if statement go outside this for loop?
+        echo 'Fiddlesticks! Could not connect to database.<br>';
+    } else {
 
-    $tryInsertArtistData = "INSERT INTO artistsMB (artistMBID, artistName) VALUES ('$artistMBID', '$artistName')";
+        for ($j=0; $j<$albumsNum; ++$j) {
+            $album = $albums[$j];
+            $releases = $album['releases'];
+            $releasesNum = ceil((count($releases)));
+            if ($releasesNum > 0){
+                $release = $releases[0];
+                $releaseMBID = $album['releases'][0]['mbid'];
+                $releaseName = $album['releases'][0]['name'];
 
-    $rockin = $connekt->query($tryInsertArtistData);
+                $tracks = $release['tracks'];
+                $tracksNum = ceil((count($tracks)));   
 
-    if(!$rockin){
-        echo 'Could not insert info for ' . $artistName . '.<br>';
-        }
-        else {
-            echo '<p>Inserted ' . $artistName . ' in table.</p>';
-        } 
+                for ($m=0; $m<$tracksNum; ++$m) {
+                    $track = $tracks[$m];
+                    $trackMBID = $track['mbid'];
+                    $trackNameYucky = $track['title'];
+                    $trackName = mysqli_real_escape_string($connekt,$trackNameYucky);
+                    $trackListeners = $track['stats']['listeners'];
+                    $trackPlaycount = $track['stats']['playcount'];
 
-    $insertArtistStats = "INSERT INTO artistsLastFM (artistMBID, dataDate, artistListeners, artistPlaycount) VALUES('$artistMBID','$dataDate','$artistListeners', '$artistPlaycount')";
-        
-    $rockout = $connekt->query($insertArtistStats);
-    
-    if(!$rockout){
-    echo 'Shickety Brickety! Could not insert stats for ' . $artistName . '.<br>';
-    }
-    else {
-        echo '<p>Inserted ' . $artistListeners . ' listeners and ' . $artistPlaycount . ' plays for ' . $artistName . ' on ' . $dataDate . '.</p>';
-    } 
-    
-};
+                    $insertMBIDtrack = "INSERT INTO tracksLastFM (
+                        trackMBID, 
+                        dataDate,
+						trackListeners,
+						trackPlaycount 
+                        ) 
+                        VALUES(
+                            '$trackMBID',
+                            '$dataDate',
+							'$trackListeners',
+							'$trackPlaycount'
+                        )";
+
+                    $pushTrack = $connekt->query($insertMBIDtrack);
+
+                    if(!$pushTrack){
+                        echo '<p>Shickety Brickety! Could not insert ' . $trackName . ' stats.</p>';
+                    } else {
+                        echo '<p>' . $trackName . ' from ' . $releaseName . ' had ' . $trackListeners . ' listeners and ' . $trackPlaycount . ' plays on ' . $dataDate . '.</p>';
+                    }       
+                };
+            }  
+        };
+    };
+};       
 
 ?>
