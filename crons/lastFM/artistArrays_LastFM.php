@@ -2,10 +2,11 @@
 
 function assembleURL ($artistForURL) {
     $baseURL = 'data/';
-    $today = date("m/d/y");
+	//$today = date("m-d-y");
+	$today = "05-24-19";
     $endURL = '.json';
 	$artistURL = $baseURL . $artistForURL . "_" . $today . $endURL;
-	echo "<p>" . $artistURL . "</p>";
+	//echo "<p>" . $artistURL . "</p>";
 };
 
 function insertLastFMtrackDataArtistNames ($artistNames) {
@@ -14,14 +15,21 @@ function insertLastFMtrackDataArtistNames ($artistNames) {
 	
 	for ($j=0; $j<$y; ++$j){
 		
-		assembleURL ($artistNames[$j]);
+		$artistForURL = $artistNames[$j];
+		$baseURL = 'data/';
+		//$today = date("m-d-y");
+		$today = "05-24-19";
+		$endURL = '.json';
+		$artistURL = $baseURL . $artistForURL . "_" . $today . $endURL;
+		echo "<p>" . $artistURL . "</p>";
 
-		$jsonFile = $artistNames[$i];
+		$jsonFile = $artistURL;
 		$fileContents = file_get_contents($jsonFile);
 		$artistData = json_decode($fileContents,true);
 
 		$artistMBID = $artistData['mbid'];
 		$artistName = $artistData['name'];
+		echo "<p>" . $artistName . "</p>";
 
 		$dataDate = $artistData['date'];
 
@@ -88,9 +96,15 @@ function insertLastFMalbumDataArtistNames ($artistNames) {
 	
 	for ($j=0; $j<$y; ++$j){
 		
-		assembleURL ($artistNames[$j]);
+		$artistForURL = $artistNames[$j];
+		$baseURL = 'data/';
+		//$today = date("m-d-y");
+		$today = "05-24-19";
+		$endURL = '.json';
+		$artistURL = $baseURL . $artistForURL . "_" . $today . $endURL;
+		echo "<p>" . $artistURL . "</p>";
 
-		$jsonFile = $artistNames[$i];
+		$jsonFile = $artistURL;
 		$fileContents = file_get_contents($jsonFile);
 
 		$artistData = json_decode($fileContents,true);
@@ -110,8 +124,8 @@ function insertLastFMalbumDataArtistNames ($artistNames) {
 			echo 'Fiddlesticks! Could not connect to database.<br>';
 		} else {
 
-			for ($j=0; $j<$albumsNum; ++$j) {
-				$album = $albums[$j];
+			for ($q=0; $q<$albumsNum; ++$q) {
+				$album = $albums[$q];
 				$releases = $album['releases'];
 				$releasesNum = ceil((count($releases)));
 				if ($releasesNum > 0){

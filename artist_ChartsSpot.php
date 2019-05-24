@@ -48,9 +48,7 @@
 <div class="container-fluid">
 <div id="fluidCon">
 </div> <!-- end of fluidCon -->
-  <!-- 
-    <p>If, after the page loads, it is empty, or the wrong discography displays, <a href='https://www.roxorsoxor.com/poprock/index.php'>choose an artist</a> from the <a href='https://www.roxorsoxor.com/poprock/index.php'>Artists List</a> first.</p>
-       -->
+
 <div class="panel panel-primary">
 
     <div class="panel-heading">

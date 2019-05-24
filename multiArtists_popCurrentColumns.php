@@ -105,8 +105,8 @@ require_once 'page_pieces/stylesAndScripts.php';
 </script>				
 
 
-		<?php echo $scriptsAndSuch; ?>	
-        <script src="https://www.roxorsoxor.com/poprock/page_pieces/navbar.js"></script>
+    <?php echo $scriptsAndSuch; ?>	
+    <script src="https://www.roxorsoxor.com/poprock/page_pieces/navbarIndex.js"></script>
 </body>
 
 </html>

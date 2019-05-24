@@ -10,6 +10,8 @@ if ( !$connekt ) {
 	echo 'Darn. Did not connect.';
 };
 
+$source = 'spotify';
+
 $allthatAndLastFM = "SELECT a.artistSpotID AS artistSpotID, a.artistMBID AS artistMBID, a.artistArt AS artistArt, a.artistName AS artistName, a.albumsTotal AS albumsTotal, p1.pop AS pop, p1.followers AS followers, f1.dataDate AS dataDate, f1.artistListeners AS artistListeners, f1.artistPlaycount AS artistPlaycount, p1.date AS date
     FROM artists a
     JOIN (SELECT p.*
@@ -115,8 +117,8 @@ if(!$getit){ echo 'Cursed-Crap. Did not run the query.'; }
 				?>
 
 <tr>
-	<td><a href='https://www.roxorsoxor.com/poprock/artist_ChartsSpot.php?artistSpotID=<?php echo $artistSpotID ?>&artistMBID=<?php echo $artistMBID ?>'><img src='<?php echo $artistArt ?>' class="indexArtistArt"></a></td>	
-	<td><a href='https://www.roxorsoxor.com/poprock/artist_ChartsSpot.php?artistSpotID=<?php echo $artistSpotID ?>&artistMBID=<?php echo $artistMBID ?>'><?php echo $artistName ?></a></td>
+	<td><a href='https://www.roxorsoxor.com/poprock/artist_ChartsSpot.php?artistSpotID=<?php echo $artistSpotID ?>&artistMBID=<?php echo $artistMBID ?>&source=<?php echo $source ?>'><img src='<?php echo $artistArt ?>' class="indexArtistArt"></a></td>	
+	<td><a href='https://www.roxorsoxor.com/poprock/artist_ChartsSpot.php?artistSpotID=<?php echo $artistSpotID ?>&artistMBID=<?php echo $artistMBID ?>&source=<?php echo $source ?>'><?php echo $artistName ?></a></td>
 	<!--
 	<td class="popStyle"><?php //echo $artistSpotID ?></td>
 	<td class="popStyle"><?php //echo $popDate ?></td>
