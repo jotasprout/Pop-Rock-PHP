@@ -11,10 +11,12 @@ if (!$connekt) {
 
 $postedColumnName = $_POST[ "columnName" ];
 $postedCurrentOrder = $_POST[ "currentOrder" ];
+$postedSource = $_POST[ "source" ];
 
 // if any POSTed variables did not come through, these defaults were basic starting sort from original sql query
 $columnName = "artistName";
 $currentOrder = "ASC";
+$source="spotify";
 
 if ( !empty( $_POST[ "columnName" ] ) ) {
     // if the column name came through, use it
@@ -163,6 +165,7 @@ if (!empty($sortit)) { ?>
 			while ($row = mysqli_fetch_array($sortit)) {
 				$artistName = $row[ "artistName" ];
 				$artistSpotID = $row[ "artistSpotID" ];
+				$artistMBID = $row[ "artistMBID" ];
 				$artistPop = $row[ "pop" ];
 				$artistFollowersNum = $row[ "followers"];
 				$artistFollowers = number_format ($artistFollowersNum);
