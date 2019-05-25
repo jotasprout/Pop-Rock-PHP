@@ -1,24 +1,24 @@
 <?php
-
+/*
 function assembleURL ($artistForURL) {
     $baseURL = 'data/';
-	//$today = date("m-d-y");
-	$today = "05-24-19";
+	$today = date("m-d-y");
+	//$today = "05-24-19";
     $endURL = '.json';
 	$artistURL = $baseURL . $artistForURL . "_" . $today . $endURL;
 	//echo "<p>" . $artistURL . "</p>";
 };
-
+*/
 function insertLastFMtrackDataArtistNames ($artistNames) {
 	
 	$y = ceil((count($artistNames)));
 	
-	for ($j=0; $j<$y; ++$j){
+	for ($i=0; $i<$y; ++$i){
 		
-		$artistForURL = $artistNames[$j];
+		$artistForURL = $artistNames[$i];
 		$baseURL = 'data/';
-		//$today = date("m-d-y");
-		$today = "05-24-19";
+		$today = date("m-d-y");
+		//$today = "05-24-19";
 		$endURL = '.json';
 		$artistURL = $baseURL . $artistForURL . "_" . $today . $endURL;
 		echo "<p>" . $artistURL . "</p>";
@@ -82,13 +82,13 @@ function insertLastFMtrackDataArtistNames ($artistNames) {
 							echo '<p>Shickety Brickety! Could not insert ' . $trackName . ' stats.</p>';
 						} else {
 							echo '<p>' . $trackName . ' from ' . $releaseName . ' had ' . $trackListeners . ' listeners and ' . $trackPlaycount . ' plays on ' . $dataDate . '.</p>';
-						}       
-					};
-				}  
-			};
-		};
-	};       
-};
+						} // end of IF query is not successful ELSE it is      
+					}; // end of FOR each track on the album
+				} // end of IF there are releases
+			}; // end of FOR every album
+		}; // end of IF database connection
+	}; // end of FOR each artist in array       
+}; // end of FUNCTION insert tracks
 
 function insertLastFMalbumDataArtistNames ($artistNames) {
 	
@@ -98,19 +98,19 @@ function insertLastFMalbumDataArtistNames ($artistNames) {
 		
 		$artistForURL = $artistNames[$j];
 		$baseURL = 'data/';
-		//$today = date("m-d-y");
-		$today = "05-24-19";
+		$today = date("m-d-y");
+		//$today = "05-25-19";
 		$endURL = '.json';
 		$artistURL = $baseURL . $artistForURL . "_" . $today . $endURL;
 		echo "<p>" . $artistURL . "</p>";
 
 		$jsonFile = $artistURL;
 		$fileContents = file_get_contents($jsonFile);
-
 		$artistData = json_decode($fileContents,true);
 
 		$artistMBID = $artistData['mbid'];
 		$artistName = $artistData['name'];
+		echo "<p>" . $artistName . "</p>";
 
 		$dataDate = $artistData['date'];
 
