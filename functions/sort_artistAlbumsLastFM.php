@@ -259,7 +259,7 @@ if(!empty($sortit))	 { ?>
 <td><?php //echo $albumMBID ?></td>
 <td><?php //echo $albumMBID ?></td>
 -->
-		<td><a href='https://www.roxorsoxor.com/poprock/album_TracksList.php?albumMBID=<?php echo $albumMBID ?>&source=<?php echo $source ?>'><?php echo $albumName ?></a></td>
+		<td><a href='https://www.roxorsoxor.com/poprock/album_TracksList.php?albumMBID=<?php echo $albumMBID ?>&artistSpotID=<?php echo $artistSpotID ?>&artistMBID=<?php echo $artistMBID ?>&source=<?php echo $source ?>'><?php echo $albumName ?></a></td>
 		
 <!--
 	<td class="popStyle"><?php echo $albumReleased ?></td>

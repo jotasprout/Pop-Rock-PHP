@@ -1,7 +1,7 @@
 function sortColumn (columnName, currentOrder, artistMBID, source) {
 	$.ajax ({
 		url: "functions/sort_artistAlbumsLastFM.php",
-		data: "columnName=" + columnName + "&artistMBID=" + artistMBID + "&currentOrder=" + currentOrder + "&source=" + source,
+		data: "columnName=" + columnName + "&currentOrder=" + currentOrder + "&artistSpotID=" + artistSpotID + "&artistMBID=" + "&source=" + source,
 		type: "POST",
 		success: function (data) {
 			$("#recordCollection").html(data);
