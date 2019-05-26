@@ -123,11 +123,13 @@ if ( !$getit ) {
 <?php echo $scriptsAndSuch; ?>
 
 <script>
-	const artistName = '<?php echo $artistName ?>';
-	const panelTitleText = 'LastFM stats for all tracks by ' + artistName;
+	const artistName = '<?php echo $artistName; ?>';
+	const panelTitleText = 'Last.fm stats for all tracks by ' + artistName;
 	const panelTitle = document.getElementById('panelTitle');
+	const docTitleText = 'All ' + artistName + ' tracks Last.fm Stats';
 	$(document).ready(function(){
 		panelTitle.innerHTML = panelTitleText;
+		document.title = docTitleText;
 	});
 </script>
 

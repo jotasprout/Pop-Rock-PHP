@@ -118,8 +118,10 @@ if ( !$getit ) {
 	const artistName = '<?php echo $artistName ?>';
 	const panelTitleText = 'Spotify stats for all tracks by ' + artistName;
 	const panelTitle = document.getElementById('panelTitle');
+	const docTitleText = 'All ' + artistName + ' tracks Spotify Stats';
 	$(document).ready(function(){
 		panelTitle.innerHTML = panelTitleText;
+		document.title = docTitleText;
 	});
 </script>
 <script>

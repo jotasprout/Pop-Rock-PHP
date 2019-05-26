@@ -146,8 +146,10 @@ if(!$getit){
 	const artistName = '<?php echo $artistName ?>';
 	const panelTitleText = 'Popularity On Spotify for albums by ' + artistName + '</em>';
 	const panelTitle = document.getElementById('panelTitle');
+	const docTitleText = 'All ' + artistName + ' albums Spotify Stats';
 	$(document).ready(function(){
 		panelTitle.innerHTML = panelTitleText;
+		document.title = docTitleText;
 	});
 </script>
 <script>

@@ -155,6 +155,9 @@ d3.json("functions/createArtistD3.php?artistSpotID=<?php echo $artistSpotID; ?>"
 
     const artistName = dataset[0].artistName;
 
+    const nameInTitle = d3.select("title")
+            .text(artistName + "'s current stats on Spotify and LastFM")
+
     const topHeading = d3.select("#topHead")
             .text(artistName + "'s current stats on Spotify and LastFM"); 
 
@@ -411,6 +414,15 @@ d3.json("functions/createArtist_followersD3.php?artistSpotID=<?php echo $artistS
 
 <?php echo $scriptsAndSuch; ?>
 
+<script>
+
+const artistName = '<?php echo $artistName; ?>';
+const docTitleText = artistName + ' main Charts and Spotify Stats';
+$(document).ready(function(){
+    panelTitle.innerHTML = panelTitleText;
+    document.title = docTitleText;
+});
+</script>
 <script>
 const artistSpotID = '<?php echo $artistSpotID; ?>';
 const artistMBID = '<?php echo $artistMBID ?>';

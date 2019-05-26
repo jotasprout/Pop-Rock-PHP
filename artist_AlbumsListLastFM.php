@@ -132,10 +132,12 @@ if(!$getit){
 <!-- -->
 <script>
 	const artistName = '<?php echo $artistName; ?>';
-	const panelTitleText = 'LastFM stats for all albums by ' + artistName;
+	const panelTitleText = 'Last.fm stats for all albums by ' + artistName;
 	const panelTitle = document.getElementById('panelTitle');
+	const docTitleText = 'All ' + artistName + ' albums Last.fm Stats';
 	$(document).ready(function(){
 		panelTitle.innerHTML = panelTitleText;
+		document.title = docTitleText;
 	});
 </script>
 <script>

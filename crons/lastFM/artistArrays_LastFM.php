@@ -3,12 +3,13 @@
 function assembleURL ($artistForURL) {
     $baseURL = 'data/';
 	$today = date("m-d-y");
-	//$today = "05-24-19";
+	//$today = "05-19-19";
     $endURL = '.json';
 	$artistURL = $baseURL . $artistForURL . "_" . $today . $endURL;
 	//echo "<p>" . $artistURL . "</p>";
 };
 */
+
 function insertLastFMtrackDataArtistNames ($artistNames) {
 	
 	$y = ceil((count($artistNames)));
@@ -18,7 +19,7 @@ function insertLastFMtrackDataArtistNames ($artistNames) {
 		$artistForURL = $artistNames[$i];
 		$baseURL = 'data/';
 		$today = date("m-d-y");
-		//$today = "05-24-19";
+		//$today = "05-19-19";
 		$endURL = '.json';
 		$artistURL = $baseURL . $artistForURL . "_" . $today . $endURL;
 		echo "<p>" . $artistURL . "</p>";
@@ -29,7 +30,7 @@ function insertLastFMtrackDataArtistNames ($artistNames) {
 
 		$artistMBID = $artistData['mbid'];
 		$artistName = $artistData['name'];
-		echo "<p>" . $artistName . "</p>";
+		echo "<h1>" . $artistName . "</h1>";
 
 		$dataDate = $artistData['date'];
 
@@ -51,6 +52,7 @@ function insertLastFMtrackDataArtistNames ($artistNames) {
 					$release = $releases[0];
 					$releaseMBID = $album['releases'][0]['mbid'];
 					$releaseName = $album['releases'][0]['name'];
+					echo "<h2>" . $releaseName . "</h2>";
 
 					$tracks = $release['tracks'];
 					$tracksNum = ceil((count($tracks)));   
@@ -63,7 +65,26 @@ function insertLastFMtrackDataArtistNames ($artistNames) {
 						$trackListeners = $track['stats']['listeners'];
 						$trackPlaycount = $track['stats']['playcount'];
 
-						$insertMBIDtrack = "INSERT INTO tracksLastFM (
+						$insertMBIDtrackInfo = "INSERT INTO tracksMB (
+							albumMBID,
+							trackMBID,
+							trackName
+							) 
+							VALUES(
+								'$releaseMBID',
+								'$trackMBID',
+								'$trackName'
+							)";
+
+						$addTrack = $connekt->query($insertMBIDtrackInfo);
+
+						if(!$addTrack){
+							echo '<p>Could not add <b>' . $trackName . '</b> into tracksMB.</p>';
+						} else {
+							echo '<p>Added <b>' . $trackName . '</b> from <i>' . $releaseName . '</i> into tracksMB.</p>';
+						};
+
+						$insertLastFMtrackStats = "INSERT INTO tracksLastFM (
 							trackMBID, 
 							dataDate,
 							trackListeners,
@@ -76,18 +97,18 @@ function insertLastFMtrackDataArtistNames ($artistNames) {
 								'$trackPlaycount'
 							)";
 
-						$pushTrack = $connekt->query($insertMBIDtrack);
+						$pushTrack = $connekt->query($insertLastFMtrackStats);
 
 						if(!$pushTrack){
 							echo '<p>Shickety Brickety! Could not insert ' . $trackName . ' stats.</p>';
 						} else {
 							echo '<p>' . $trackName . ' from ' . $releaseName . ' had ' . $trackListeners . ' listeners and ' . $trackPlaycount . ' plays on ' . $dataDate . '.</p>';
-						} // end of IF query is not successful ELSE it is      
-					}; // end of FOR each track on the album
-				} // end of IF there are releases
+						}; // end of IF query is not successful ELSE it is      
+					} // end of FOR each track on the album
+				}; // end of IF there are releases
 			}; // end of FOR every album
-		}; // end of IF database connection
-	}; // end of FOR each artist in array       
+		}; // end of IF database connection       
+	}; // end of FOR each artist in array
 }; // end of FUNCTION insert tracks
 
 function insertLastFMalbumDataArtistNames ($artistNames) {
@@ -99,7 +120,7 @@ function insertLastFMalbumDataArtistNames ($artistNames) {
 		$artistForURL = $artistNames[$j];
 		$baseURL = 'data/';
 		$today = date("m-d-y");
-		//$today = "05-25-19";
+		//$today = "05-19-19";
 		$endURL = '.json';
 		$artistURL = $baseURL . $artistForURL . "_" . $today . $endURL;
 		echo "<p>" . $artistURL . "</p>";
@@ -110,7 +131,7 @@ function insertLastFMalbumDataArtistNames ($artistNames) {
 
 		$artistMBID = $artistData['mbid'];
 		$artistName = $artistData['name'];
-		echo "<p>" . $artistName . "</p>";
+		echo "<h1>" . $artistName . "</h1>";
 
 		$dataDate = $artistData['date'];
 
@@ -135,6 +156,23 @@ function insertLastFMalbumDataArtistNames ($artistNames) {
 					$albumListeners = $album['releases'][0]['listeners'];
 					$albumPlaycount = $album['releases'][0]['playcount'];
 
+					$insertAlbumMBinfo = "INSERT INTO albumsMB (
+						albumMBID,
+						albumName,
+						artistMBID
+						) 
+						VALUES(
+							'$releaseMBID',
+							'$releaseName',
+							'$artistMBID'
+							)";
+
+					$rockout = $connekt->query($insertAlbumMBinfo);
+		
+					if(!$rockout){
+						echo '<p>Shuzbutt! Could not add <b>' . $releaseName . '</b> to albumsMB.</p>';
+					};
+
 					$insertLastFMalbumData = "INSERT INTO albumsLastFM (
 						albumMBID, 
 						dataDate,
@@ -151,16 +189,16 @@ function insertLastFMalbumDataArtistNames ($artistNames) {
 					$insertReleaseStats = $connekt->query($insertLastFMalbumData);
 
 					if(!$insertReleaseStats){
-						echo '<p>Shickety Brickety! Could not insert ' . $releaseName . ' stats.</p>';
+						echo '<p>Shickety Brickety! Could not insert <b>' . $releaseName . '</b> stats.</p>';
 					} else {
-						echo '<p>' . $releaseName . ' had ' . $albumListeners . ' listeners and ' . $albumPlaycount . ' plays on ' . $dataDate . '.</p>';
-					}
+						echo '<p><b>' . $releaseName . '</b> had ' . $albumListeners . ' listeners and ' . $albumPlaycount . ' plays on ' . $dataDate . '.</p>';
+					}; // end of if stats are inserted
 
-				}
-			};
-		};
-	};	
-};
+				}; // end of if there are any releases for this album
+			}; // end of FOR each album
+		}; // End of IF ELSE connect to db
+	}; // End of FOR each artist name
+}; // end of Function
 
 function insertLastFMalbumDataFilenames ($filenames) {
 	
