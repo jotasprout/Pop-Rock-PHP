@@ -2,7 +2,6 @@
 
 include 'page_pieces/sesh.php';
 require_once 'rockdb.php';
-require_once 'page_pieces/navbar_rock.php';
 require_once 'page_pieces/stylesAndScripts.php';
 
 $connekt = new mysqli( $GLOBALS[ 'host' ], $GLOBALS[ 'un' ], $GLOBALS[ 'magicword' ], $GLOBALS[ 'db' ] );
@@ -103,9 +102,7 @@ if(!$getit){
 
 	<?php echo $scriptsAndSuch; ?>
 	<script src="https://www.roxorsoxor.com/poprock/functions/sort_genresArtists.js"></script>
-
-	<script src="https://www.roxorsoxor.com/poprock/page_pieces/navbar.js"></script>
-
+	<script src="https://www.roxorsoxor.com/poprock/page_pieces/navbarIndex.js"></script>
 </body>
 
 </html>
