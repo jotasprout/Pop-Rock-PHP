@@ -1,12 +1,12 @@
 <?php
 require_once '../../rockdb.php';
 
-$jsonFile = 'genres.json';
+$jsonFile = '../data_text/genres.json';
 
 $fileContents = file_get_contents($jsonFile);
 $artistData = json_decode($fileContents,true);
 
-$artistsNum = ceil((count($artists)));
+$artistsNum = ceil((count($artistData)));
 
 $connekt = new mysqli($GLOBALS['host'], $GLOBALS['un'], $GLOBALS['magicword'], $GLOBALS['db']);
 
@@ -18,8 +18,6 @@ if(!$connekt){
         $artist = $artists[$j];
         $artistMBID = $artist['mbid'];
         $artistName = $artist['name'];
-        $artistListeners = $artist['stats']['listeners'];
-        $artistPlaycount = $artist['stats']['playcount'];
 
         $tryInsertArtistData = "INSERT INTO artistsMB (artistMBID, artistName) VALUES ('$artistMBID', '$artistName')";
 
