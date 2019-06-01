@@ -50,7 +50,6 @@
             "heavy metal",
             "speed metal",
             "thrash metal",
-            "seen live",
             "metal"
         ]
     },
@@ -82,7 +81,6 @@
         "genres": [
             "classic rock",
             "rock",
-            "Fleetwood Mac",
             "folk rock",
             "singer-songwriter"
         ]
@@ -157,23 +155,15 @@
         "name": "Ronnie Dio and the Prophets",
         "mbid": "9f6c4063-ce0a-4b71-a7b7-a32c91997260",
         "genres": [
-            "Dio",
-            "Ronnie James Dio",
             "classic rock",
             "oldies",
             "rock"
         ]
     },
     {
-        "name": "Ronnie Dio and the Red Caps",
-        "mbid": "883871a1-f154-4df8-a7f7-558ea456dd0a",
-        "genres": []
-    },
-    {
         "name": "The Electric Elves",
         "mbid": "30f9591a-778b-40dd-be8f-105589f9c998",
         "genres": [
-            "Dio",
             "rock",
             "60s",
             "classic rock",
@@ -197,7 +187,6 @@
         "genres": [
             "rap",
             "Hip-Hop",
-            "Eminem",
             "hip hop",
             "pop"
         ]
@@ -208,7 +197,6 @@
         "genres": [
             "punk",
             "punk rock",
-            "gits live",
             "rock",
             "female vocalists"
         ]
@@ -264,8 +252,7 @@
             "heavy metal",
             "doom metal",
             "hard rock",
-            "metal",
-            "seen live"
+            "metal"
         ]
     },
     {
@@ -357,7 +344,7 @@
         ]
     },
     {
-        "name": "M\u00f6tley Cr\u00fce",
+        "name": "Motley Crue",
         "mbid": "26f07661-e115-471d-a930-206f5c89d17c",
         "genres": [
             "hard rock",
@@ -556,7 +543,6 @@
         "mbid": "37283116-f2cc-47cb-8806-facd063b564f",
         "genres": [
             "Progressive rock",
-            "Drum and bass",
             "neurofunk",
             "rock",
             "punk"

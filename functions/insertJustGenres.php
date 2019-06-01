@@ -1,11 +1,12 @@
 <?php
-require_once '../../rockdb.php';
+require_once '../rockdb.php';
 
 $jsonFile = '../data_text/genres.json';
 
 $fileContents = file_get_contents($jsonFile);
+echo $fileContents;
 $artistData = json_decode($fileContents,true);
-
+//echo $artistData;
 $artistsNum = ceil((count($artistData)));
 
 $connekt = new mysqli($GLOBALS['host'], $GLOBALS['un'], $GLOBALS['magicword'], $GLOBALS['db']);
@@ -15,32 +16,28 @@ if(!$connekt){
 } else {
 
     for ($j=0; $j<$artistsNum; ++$j) {
-        $artist = $artists[$j];
+        $source = 'LastFM';
+        $artist = $artistData[$j];
         $artistMBID = $artist['mbid'];
         $artistName = $artist['name'];
+        $artistGenres = $artist['genres'];
+        $genresNum = ceil((count($artistGenres)));
+        echo '<p>' . $artistName . ' has ' . $genresNum . ' genres.</p>';
 
-        $tryInsertArtistData = "INSERT INTO artistsMB (artistMBID, artistName) VALUES ('$artistMBID', '$artistName')";
-
-        $rockin = $connekt->query($tryInsertArtistData);
-
-        if(!$rockin){
-            echo 'Could not insert ' . $artistName . ' into artistsMB table.<br>';
+        for ($i=0; $i<$genresNum; ++$i) {
+            $genre = $artistGenres[$i]; 
+            $insertGenre = "INSERT INTO genresLastFM (artistMBID, genre, source) VALUES('$artistMBID','$genre', '$source')";
+            $genreIn = $connekt->query($insertGenre);
+    
+            if(!$genreIn){
+            echo '<p>Could not insert genre for ' . $artistName . '.</p>';
             }
             else {
-                echo '<p>Inserted ' . $artistName . ' in table.</p>';
-            }; 
+                echo '<p>Inserted ' . $genre . ' for ' . $artistName . '.</p>';
+            };             
+        }; 
 
-        $insertArtistStats = "INSERT INTO artistsLastFM (artistMBID, dataDate, artistListeners, artistPlaycount) VALUES('$artistMBID','$dataDate','$artistListeners', '$artistPlaycount')";
-            
-        $rockout = $connekt->query($insertArtistStats);
-
-        if(!$rockout){
-        echo 'Shickety Brickety! Could not insert stats for ' . $artistName . '.<br>';
-        }
-        else {
-            echo '<p>Inserted ' . $artistListeners . ' listeners and ' . $artistPlaycount . ' plays for ' . $artistName . ' on ' . $dataDate . '.</p>';
-        } 
-    }
+    };
 };
 
 ?>
