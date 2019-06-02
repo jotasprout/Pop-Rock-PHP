@@ -10,9 +10,9 @@ if ( !$connekt ) {
 	echo 'Darn. Did not connect. Screwed up like this: ' . mysqli_error($connekt) . '</p>';
 };
 
-$artistInfoWithArtAndGenres = "SELECT a.artistSpotID, a.artistArt, a.artistName, g.genre
-    FROM artists a
-    JOIN genres g ON a.artistSpotID = g.artistSpotID
+$artistInfoWithArtAndGenres = "SELECT a.artistMBID, a.artistArtMB, a.artistName, g.genre
+    FROM artistsMB a
+    JOIN genresLastFM g ON a.artistMBID = g.artistMBID
 	ORDER BY a.artistName ASC";
 
 $getit = $connekt->query( $artistInfoWithArtAndGenres );
@@ -29,7 +29,7 @@ if(!$getit){
 
 <head>
 	<meta charset="UTF-8">
-	<title>Genres</title>
+	<title>Genres LastFM</title>
 	<?php echo $stylesAndSuch; ?>
 </head>
 
@@ -45,6 +45,8 @@ if(!$getit){
 
 			<div class="panel-heading">
 				<h3 class="panel-title">Click a genre to compare artists in that genre.</h3>
+				<p>Create LastFM versions of related scripts</p>
+				<p>As well as sorting files</p>
 			</div>
 
 			<div class="panel-body">
