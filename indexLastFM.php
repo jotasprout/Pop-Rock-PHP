@@ -63,6 +63,7 @@ if(!$getit){ echo 'Cursed-Crap. Did not run the query.'; }
 <tr>
 	<th>Pretty Face</th>	
 	<th onClick="sortColumn('artistName', 'ASC')"><div class="pointyHead">Artist Name</div></th>
+	<th>MBID</th>
 
 	<th onClick="sortColumn('datadate', 'unsorted')"><div class="pointyHead popStyle">LastFM<br>Data Date</div></th>			
 
@@ -93,6 +94,7 @@ if(!$getit){ echo 'Cursed-Crap. Did not run the query.'; }
 
 <tr>
 	<td><a href='https://www.roxorsoxor.com/poprock/artist_ChartsLastFM.php?artistSpotID=<?php echo $artistSpotID ?>&artistMBID=<?php echo $artistMBID ?>&source=<?php echo $source ?>'><img src='<?php echo $artistArt ?>' class="indexArtistArt"></a></td>	
+	<td><?php echo $artistMBID ?></td>
 	<td><a href='https://www.roxorsoxor.com/poprock/artist_ChartsLastFM.php?artistSpotID=<?php echo $artistSpotID ?>&artistMBID=<?php echo $artistMBID ?>&source=<?php echo $source ?>'><?php echo $artistName ?></a></td>
 	<!-- --> 
 	<td class="popStyle"><?php echo $lastFMDate ?></td>		
