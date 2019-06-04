@@ -1,6 +1,5 @@
 <?php 
 	require_once 'page_pieces/stylesAndScripts.php';
-    require_once 'page_pieces/navbar_rock.php'; 
     require_once 'data_text/artists_groups.php';
     require_once 'functions/class.artist.php';
 ?>
@@ -86,6 +85,7 @@ margin = {
 
 var dataset, xScale, yScale, xAxis, yAxis, line;
 
+const $sabbathAndFriends = "Black Sabbath, Ozzy, Dio, Rainbow";
 const $comedians = "Stand-up Comedians";
 const $thrashEtc = "Thrash and Black Metal";
 const $longTerm = "Elder Artists with History";
@@ -104,7 +104,7 @@ d3.json("functions/multiArtists_pop.php", function(data) {
 
         var parseTime = d3.timeParse("%y-%m-%d");
 
-        const title = $comedians;
+        const title = $sabbathAndFriends;
 
         dataset.forEach(function(d) {
             // date = parseTime(d.date);
@@ -118,7 +118,6 @@ d3.json("functions/multiArtists_pop.php", function(data) {
                         d3.max(dataset, function(d) { return d.date; })
                     ])
                     .range([margin.left, w + margin.left]);
-
 
         yScale = d3.scaleLinear()
                 .domain([0, 100])
@@ -224,7 +223,7 @@ d3.json("functions/multiArtists_pop.php", function(data) {
 </script>
 
 <?php echo $scriptsAndSuch; ?>
-<script src="https://www.roxorsoxor.com/poprock/page_pieces/navbar.js"></script>
+<script src="https://www.roxorsoxor.com/poprock/page_pieces/navbarIndex.js"></script>
 </body>
 
 </html>

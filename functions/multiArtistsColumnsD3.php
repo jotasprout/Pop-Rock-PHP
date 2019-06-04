@@ -21,7 +21,7 @@ $artistInfoRecentWithArt = "SELECT a.artistSpotID AS artistSpotID, a.artistArt A
 			ON p.artistSpotID = groupedp.artistSpotID
 			AND p.date = groupedp.MaxDate) p1
 	ON a.artistSpotID = p1.artistSpotID
-	WHERE a.artistSpotID IN ('0UKfenbZb15sqhfPC6zbt3', '4WquJweZPIK9qcfVFhTKvf', '0nJUwPwC9Ti4vvuJ0q3MfT', '1P8IfcNKwrkQP5xJWuhaOC', '2d0hyoQ5ynDBnkvAbJKORj', '0dmPX6ovclgOy8WWJaFEUU', '0Lpr5wXzWLtDWm1SjNbpPb', '1YLsqPcFg1rj7VvhfwnDWm')    
+	WHERE a.artistSpotID IN ('6ZLTlhejhndI4Rh53vYhrY', '4UjiBRkTw9VmvDZiJZKPJ7', '4CYeVo5iZbtYGBN4Isc3n6', '5M52tdBnJaKSvOpJGz8mfZ', '6SLAMfhOi7UJI0fMztaK0m')    
     ORDER BY a.artistName ASC";
     
 

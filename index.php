@@ -1,7 +1,6 @@
 <?php
 
 require_once 'rockdb.php';
-//require_once 'page_pieces/navbar_rock.php';
 require_once 'page_pieces/stylesAndScripts.php';
 
 $connekt = new mysqli( $GLOBALS[ 'host' ], $GLOBALS[ 'un' ], $GLOBALS[ 'magicword' ], $GLOBALS[ 'db' ] );
@@ -75,9 +74,10 @@ if(!$getit){ echo 'Cursed-Crap. Did not run the query.'; }
 	<th>Pretty Face</th>	
 	<th onClick="sortColumn('artistName', 'ASC')"><div class="pointyHead">Artist Name</div></th>
 	<!--
-	<th class="popStyle">Spotify ID</th>
+	
 	<th class="popStyle">Spotify<br>Data Date</th>
 	-->	
+	<th class="popStyle">Spotify ID</th>
 	<th onClick="sortColumn('pop', 'unsorted')"><div class="pointyHead popStyle">Spotify<br>Popularity</div></th>
 	<th onClick="sortColumn('followers', 'unsorted')"><div class="pointyHead rightNum">Spotify<br>Followers</div></th>
 		<!--
@@ -119,8 +119,9 @@ if(!$getit){ echo 'Cursed-Crap. Did not run the query.'; }
 <tr>
 	<td><a href='https://www.roxorsoxor.com/poprock/artist_ChartsSpot.php?artistSpotID=<?php echo $artistSpotID ?>&artistMBID=<?php echo $artistMBID ?>&source=<?php echo $source ?>'><img src='<?php echo $artistArt ?>' class="indexArtistArt"></a></td>	
 	<td><a href='https://www.roxorsoxor.com/poprock/artist_ChartsSpot.php?artistSpotID=<?php echo $artistSpotID ?>&artistMBID=<?php echo $artistMBID ?>&source=<?php echo $source ?>'><?php echo $artistName ?></a></td>
+	<td class="popStyle"><?php echo $artistSpotID ?></td>
 	<!--
-	<td class="popStyle"><?php //echo $artistSpotID ?></td>
+	
 	<td class="popStyle"><?php //echo $popDate ?></td>
 	-->
 		<td class="popStyle"><?php echo $artistPop ?></td>

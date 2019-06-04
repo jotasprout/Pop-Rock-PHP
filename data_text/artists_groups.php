@@ -1,4 +1,32 @@
 <?php
+
+$dragdrop = array (
+    '2BTZIqw0ntH9MvilQ3ewNY', # Cyndi Lauper
+    '0oSGxfWSnnOXhD2fKuz2Gy', # David Bowie
+    '3RYdggbT5C9r4BsljokJ1Q', # Elf
+    '3qm84nBOXUEQ2vnTfUTTFC', # Guns and Roses
+    '33EUXrFKGjpUSGacqEHhU4', # Iggy Pop
+    '6mdiAmATAx73kdxrNrnlao', # Iron Maiden
+    '4xtWjIlVuZwTCeqVAsgEXy', # ICP
+    '1Fmb52lZ6Jv7FMWXXTPO3K', # Joan Jett
+    '3lPQ2Fk5JOwGWAF3ORFCqH', # John Mellencamp
+    '4VCZkmckTZMDFU0WsaepBe', # LSU
+    '0klkYTAeGHgItyB4R9YYjU', # Larry Norman
+    '36QJpDe2go2KgaRleHCDTp', # Led Zeppelin
+    '7dnB1wSxbYa8CejeVg98hz', # Meat Loaf
+    '0VOvF0kfqCTRe37XzWQdvH', # 90 lb Wuss
+    '1P72cdCRCvytPnFLkGSeVm', # PID
+    '5a2EaR3hamoenG9rDuVn8j', # Prince
+    '2y8Jo9CKhJvtfeKOsYzRdT', # Rod Stewart
+    '3PXQl96QHBJbzAGENdJWc1', # SFC
+    '0t1uzfQspxLvAifZLdmFe2', # Steve Taylor
+    '4salDzkGmfycRqNUbyBphh', # Styx
+    '2x9SpqnPi8rlE9pjHBwmSC', # Talking Heads
+    '3lHPBMb024SqetFwwVwuwH', # Tourniquet
+    '3lgxzeCbj6oMQMmaUhH2H6', # Vengeance Rising
+    '3h66yQiOXZpT6AV2Np5yIq' # XL and Death Before Dishonor
+);
+
 $crueFriends = array ('4qwGe91Bz9K2T8jXTZ815W', '7bu3H8JO7d0UbMoVzbo70s', '2cnMpRsOVqtPMfq7YiFE6K', '3PhoLpVuITZKcymswpck5b', '08GQAI4eElDnROBrJRGE0X', '6H1RjVyNruCmrBEWRbD0VZ', '0cc6vw3VN8YlIcvr1v7tBL');
 
 $crueFollowers = array ('22bE4uQ6baNwSHPVcDxLCe', '3qm84nBOXUEQ2vnTfUTTFC', '4qwGe91Bz9K2T8jXTZ815W', '7bu3H8JO7d0UbMoVzbo70s', '6ZLTlhejhndI4Rh53vYhrY', '2cnMpRsOVqtPMfq7YiFE6K', '3PhoLpVuITZKcymswpck5b', '08GQAI4eElDnROBrJRGE0X', '6H1RjVyNruCmrBEWRbD0VZ', '0cc6vw3VN8YlIcvr1v7tBL', '6mdiAmATAx73kdxrNrnlao','1dfeR4HaWDbWqFHLkxsg1d', '3EhbVgyfGd7HkpsagwL9GS', '07XSN3sPlIlB2L2XNcTwJw');
@@ -30,6 +58,9 @@ $group_ozzy = array ('6ZLTlhejhndI4Rh53vYhrY', '5M52tdBnJaKSvOpJGz8mfZ');
 
 # Heaven & Hell, Dio, Black Sabbath, Rainbow
 $group_dio = array ('4UjiBRkTw9VmvDZiJZKPJ7', '4CYeVo5iZbtYGBN4Isc3n6', '5M52tdBnJaKSvOpJGz8mfZ', '6SLAMfhOi7UJI0fMztaK0m');
+
+# Ozzy, Heaven & Hell, Dio, Black Sabbath, Rainbow
+$group_sabbathRainbow = array ('6ZLTlhejhndI4Rh53vYhrY', '4UjiBRkTw9VmvDZiJZKPJ7', '4CYeVo5iZbtYGBN4Isc3n6', '5M52tdBnJaKSvOpJGz8mfZ', '6SLAMfhOi7UJI0fMztaK0m');
 
 # Tom Petty, Heartbreakers, Traveling Wilburys
 $group_petty = array ('2UZMlIwnkgAEDBsw1Rejkn', '4tX2TplrkIP4v05BNC903e', '2hO4YtXUFJiUYS2uYFvHNK');
