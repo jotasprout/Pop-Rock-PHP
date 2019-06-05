@@ -136,10 +136,10 @@ if(!empty($sortit)) { ?>
 <thead>
 <tr>
 	<th onClick="sortColumn('albumName', '<?php echo $albumNameNewOrder; ?>', '<?php echo $artistSpotID ?>', '<?php echo $source ?>')"><div class="pointyHead">Album Title</div></th>
-	<!--
+	<!---->
 	<th>Spotify<br>trackSpotID</th>
 	<th>Spotify<br>Data Date</th>
-	-->
+	
 	<th onClick="sortColumn('trackName', '<?php echo $trackNameNewOrder; ?>', '<?php echo $artistSpotID ?>', '<?php echo $source ?>')"><div class="pointyHead">Track Title</div></th>
 	
 	
@@ -178,9 +178,10 @@ if(!empty($sortit)) { ?>
 				<td><?php echo $albumName ?></td>
 				<td><?php echo $trackName ?></td>
 				<td class="popStyle"><?php echo $trackPop ?></td>
+				<td><?php echo $trackSpotID ?></td>
+				<td><?php echo $popDate ?></td>
 <!--
-				<td><?php //echo $trackSpotID ?></td>
-				<td><?php //echo $popDate ?></td>
+				
 				<td class="popStyle"><?php //echo $lastFMDate ?></td>
 				<td class="rightNum"><?php //echo $trackListeners ?></td>
 				<td class="rightNum"><?php //echo $trackPlaycount ?></td>

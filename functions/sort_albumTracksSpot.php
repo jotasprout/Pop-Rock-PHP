@@ -92,7 +92,7 @@ if(!empty($sortit)) { ?>
 <table class="table" id="tableotracks">
 <thead>
 <tr>
-
+<th>Date</th>
 <th onClick="sortColumn('trackName', '<?php echo $trackNameNewOrder; ?>', '<?php echo $albumSpotID ?>', '<?php echo $source ?>')"><div class="pointyHead">Track Title</div></th>
 
 <th class="popStyle" onClick="sortColumn('pop', '<?php echo $popNewOrder; ?>', '<?php echo $albumSpotID ?>', '<?php echo $source ?>')"><div class="pointyHead">Spotify<br>Popularity</div></th>
@@ -110,7 +110,7 @@ if(!empty($sortit)) { ?>
 			$popDate = $row[ "MaxDate" ];
 	?>
 			<tr>
-
+			<td><?php echo $popDate ?></td>
 				<td><?php echo $trackName ?></td>
 				<td class="popStyle"><?php echo $trackPop ?></td>
 			

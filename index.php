@@ -120,15 +120,13 @@ if(!$getit){ echo 'Cursed-Crap. Did not run the query.'; }
 	<td><a href='https://www.roxorsoxor.com/poprock/artist_ChartsSpot.php?artistSpotID=<?php echo $artistSpotID ?>&artistMBID=<?php echo $artistMBID ?>&source=<?php echo $source ?>'><img src='<?php echo $artistArt ?>' class="indexArtistArt"></a></td>	
 	<td><a href='https://www.roxorsoxor.com/poprock/artist_ChartsSpot.php?artistSpotID=<?php echo $artistSpotID ?>&artistMBID=<?php echo $artistMBID ?>&source=<?php echo $source ?>'><?php echo $artistName ?></a></td>
 	<td class="popStyle"><?php echo $artistSpotID ?></td>
-	<!--
+	<!---->
 	
-	<td class="popStyle"><?php //echo $popDate ?></td>
-	-->
+	<td class="popStyle"><?php echo $popDate ?></td>
+	
 		<td class="popStyle"><?php echo $artistPop ?></td>
 	<td id="followers" class="rightNum"><?php echo $artistFollowers ?></td>
-	<!--  
-		
-	-->
+
 	<td class="popStyle"><?php echo $lastFMDate ?></td>	
 	<td class="rightNum"><?php echo $artistListeners ?></td>
 	<td class="rightNum"><?php echo $artistPlaycount ?></td>

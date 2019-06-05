@@ -100,9 +100,6 @@ if ( !$getit ) {
 								
 								<td><?php echo $trackName ?></td>
 								<td class="popStyle"><?php echo $lastFMDate ?></td>
-								<!--
-
-								-->
 								<td class="rightNum"><?php echo $trackListeners ?></td>
 								<td class="rightNum"><?php echo $trackPlaycount ?></td>
 								<td class="popStyle"><p>Coming Soon</p></td>

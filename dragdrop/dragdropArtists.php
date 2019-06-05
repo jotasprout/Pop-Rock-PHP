@@ -1,6 +1,6 @@
 <?php 
-    //require "functions/class.artist.php";
-    require_once '../data_text/artists_groups.php';
+    require_once '../rockdb.php';
+    //require_once '../data_text/artists_groups.php';
 ?>
 
 <!DOCTYPE html>
@@ -29,9 +29,28 @@
 
 <script>
 
-d3.json("getChoices.php", function (dataset) {
-    console.log("hi");
+w = 1000;
+h = 500;
+
+d3.json("dragDropCompare.php", function (dataset) {
+
     console.log(dataset);
+
+    const svg = d3.select("#dragFrom")
+                  .append("svg")
+
+    const from = svg.select
+                   .data(dataset)
+                   .enter()
+                   .append("g")
+                   .attr("class", "ui-widget-content")
+                   .append("svg:image")
+                   .attr("xlink:href", function(d){
+                       return d.artistArt;
+                    })
+                    .attr("width", 128)
+                    .attr("height", 128);
+
 });
 
 </script>

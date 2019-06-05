@@ -1,7 +1,5 @@
 <?php
-
 require_once '../rockdb.php';
-//require( "class.artist.php" );
 
 $connekt = new mysqli( $GLOBALS[ 'host' ], $GLOBALS[ 'un' ], $GLOBALS[ 'magicword' ], $GLOBALS[ 'db' ] );
 
@@ -9,11 +7,15 @@ if ( !$connekt ) {
 	echo 'Darn. Did not connect.';
 };
 
+$dragdrop = array ('2BTZIqw0ntH9MvilQ3ewNY', '0oSGxfWSnnOXhD2fKuz2Gy', '3RYdggbT5C9r4BsljokJ1Q', '3qm84nBOXUEQ2vnTfUTTFC','33EUXrFKGjpUSGacqEHhU4', '6mdiAmATAx73kdxrNrnlao', '4xtWjIlVuZwTCeqVAsgEXy', '1Fmb52lZ6Jv7FMWXXTPO3K', '3lPQ2Fk5JOwGWAF3ORFCqH', '4VCZkmckTZMDFU0WsaepBe', '0klkYTAeGHgItyB4R9YYjU', '36QJpDe2go2KgaRleHCDTp', '7dnB1wSxbYa8CejeVg98hz', '0VOvF0kfqCTRe37XzWQdvH', '1P72cdCRCvytPnFLkGSeVm', '5a2EaR3hamoenG9rDuVn8j', '2y8Jo9CKhJvtfeKOsYzRdT', '3PXQl96QHBJbzAGENdJWc1', '0t1uzfQspxLvAifZLdmFe2', '4salDzkGmfycRqNUbyBphh', '2x9SpqnPi8rlE9pjHBwmSC', '3lHPBMb024SqetFwwVwuwH', '3lgxzeCbj6oMQMmaUhH2H6', '3h66yQiOXZpT6AV2Np5yIq');
+
+$thisarray = implode("', '", $dragdrop);
+
 $artistInfoRecentWithArt = "SELECT a.artistSpotID AS artistSpotID, a.artistArt AS artistArt, a.artistName AS artistName
     FROM artists a
-	WHERE a.artistSpotID IN ('6ZLTlhejhndI4Rh53vYhrY', '4UjiBRkTw9VmvDZiJZKPJ7', '4CYeVo5iZbtYGBN4Isc3n6', '5M52tdBnJaKSvOpJGz8mfZ', '6SLAMfhOi7UJI0fMztaK0m')    
+	WHERE a.artistSpotID IN ('" . $thisarray . "')    
     ORDER BY a.artistName ASC";
-    
+
 $result = mysqli_query($connekt, $artistInfoRecentWithArt);
 
 if (mysqli_num_rows($result) > 0) {

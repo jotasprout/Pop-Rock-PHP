@@ -27,14 +27,7 @@ if ( !empty( $_POST[ "currentOrder" ] ) ) {
     // if the current order came through, use it
 	$currentOrder = $_POST[ "currentOrder" ];
 }
-/*
-// Next is for the SQL query
-if ($currentOrder == "ASC" or $currentOrder == "unsorted") {
-    $newOrder = "DESC";
-} else {
-	$newOrder = "ASC";
-}
-*/
+
 ///////////////////
 
 $artistNameNewOrder = "unsorted";
@@ -144,10 +137,10 @@ if (!empty($sortit)) { ?>
 	<tr>
 	<th>Pretty Face</th>	
 	<th onClick="sortColumn('artistName', '<?php echo $artistNameNewOrder; ?>')"><div class="pointyHead">Artist Name</div></th>
-	<!--
+	<!---->
 	<th class="popStyle">Spotify ID</th>
 	<th class="popStyle">Spotify<br>Data Date</th>
-	-->
+	
 	<th onClick="sortColumn('pop', '<?php echo $popNewOrder; ?>')"><div class="pointyHead popStyle">Spotify<br>Popularity</div></th>
 	<th onClick="sortColumn('followers', '<?php echo $followersNewOrder; ?>')"><div class="pointyHead rightNum">Spotify<br>Followers</div></th>
 	<!---->	
@@ -188,10 +181,10 @@ if (!empty($sortit)) { ?>
 <tr>
 	<td><img src='<?php echo $artistArt ?>' class="indexArtistArt"></td>	
 	<td><a href='https://www.roxorsoxor.com/poprock/artist_Chart.php?artistSpotID=<?php echo $artistSpotID ?>&artistMBID=<?php echo $artistMBID ?>&source=<?php echo $source ?>'><?php echo $artistName ?></a></td>
-<!--
-	<td class="popStyle"><?php //echo $artistSpotID ?></td>
-	<td class="popStyle"><?php //echo $popDate ?></td>
--->
+<!---->
+	<td class="popStyle"><?php echo $artistSpotID ?></td>
+	<td class="popStyle"><?php echo $popDate ?></td>
+
 	<td class="popStyle"><?php echo $artistPop ?></td>
 	<td id="followers" class="rightNum"><?php echo $artistFollowers ?></td>
 <!---->

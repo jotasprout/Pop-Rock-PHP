@@ -226,10 +226,11 @@ if(!empty($sortit))	 { ?>
 <th><div class="pointyHead popStyle">Total<br>Tracks</div></th>
 <th class="popStyle">Spotify<br>Data Date</th>
 <th onClick="sortColumn('pop', '<?php //echo $popNewOrder; ?>', '<?php //echo $artistMBID; ?>', '<?php //echo $source ?>')"><div class="pointyHead popStyle">Spotify<br>Popularity</div></th>
-<th>LastFM<br>Data Date</th>
+
 -->
 <th onClick="sortColumn('albumListeners', '<?php echo $listenersNewOrder; ?>', '<?php echo $artistMBID; ?>', '<?php echo $source ?>')"><div class="pointyHead rightNum">LastFM<br>Listeners</div></th>
 <th onClick="sortColumn('albumPlaycount', '<?php echo $playcountNewOrder; ?>', '<?php echo $artistMBID; ?>', '<?php echo $source ?>')"><div class="pointyHead rightNum">LastFM<br>Playcount</div></th>
+<th>LastFM<br>Data Date</th>
 </tr>
 </thead>
 	
@@ -244,9 +245,9 @@ if(!empty($sortit))	 { ?>
 		$albumMBID = $row['albumMBID'];
 
 		$albumName = $row['albumName'];
-		/*
+		/**/
 		$lastFMDate = $row[ "dataDate" ];
-*/
+
 		$albumListenersNum = $row[ "albumListeners"];
 		$albumListeners = number_format ($albumListenersNum);
 		$albumPlaycountNum = $row[ "albumPlaycount"];
@@ -257,7 +258,6 @@ if(!empty($sortit))	 { ?>
 	<td><img src='<?php echo $coverArt ?>' height='64' width='64'></td>
 <!--
 <td><?php //echo $albumMBID ?></td>
-<td><?php //echo $albumMBID ?></td>
 -->
 		<td><a href='https://www.roxorsoxor.com/poprock/album_TracksList.php?albumMBID=<?php echo $albumMBID ?>&artistSpotID=<?php echo $artistSpotID ?>&artistMBID=<?php echo $artistMBID ?>&source=<?php echo $source ?>'><?php echo $albumName ?></a></td>
 		
@@ -266,13 +266,11 @@ if(!empty($sortit))	 { ?>
 <td class="popStyle"><?php //echo $tracksTotal ?></td>
 <td class="popStyle"><?php //echo $date ?></td>
 <td class="popStyle"><?php //echo $albumPop ?></td>
--->
-		
-<!--
-<td class="popStyle"><?php //echo $lastFMDate ?></td>
+
 -->
 		<td class="rightNum"><?php echo $albumListeners ?></td>
 		<td class="rightNum"><?php echo $albumPlaycount ?></td>
+		<td class="popStyle"><?php echo $lastFMDate ?></td>
 	</tr>
 
 <?php

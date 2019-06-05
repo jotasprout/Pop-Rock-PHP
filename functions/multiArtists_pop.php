@@ -9,11 +9,11 @@ if (!$connekt) {
 	echo 'Darn. Did not connect.';
 };
 
-$multiArtistPop = 'SELECT a.artistSpotID, a.artistArt , a.artistName, p.pop, p.date
+$multiArtistPop = "SELECT a.artistSpotID, a.artistArt , a.artistName, p.pop, p.date
     FROM artists a
     JOIN popArtists p ON p.artistSpotID = a.artistSpotID
-	WHERE a.artistSpotID IN ("' . implode('", "', $group_sabbathRainbow) . '")
-	ORDER BY a.artistSpotID ASC';
+	WHERE a.artistSpotID IN ('" . implode("', '", $group_sabbathRainbow) . "')
+	ORDER BY a.artistSpotID ASC, p.date ASC";
 
 $getit = mysqli_query($connekt, $multiArtistPop);
 
