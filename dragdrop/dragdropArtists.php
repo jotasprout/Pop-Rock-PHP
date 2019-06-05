@@ -1,6 +1,6 @@
 <?php 
-    require "functions/class.artist.php";
-    require_once 'data_text/artists_groups.php';
+    //require "functions/class.artist.php";
+    require_once '../data_text/artists_groups.php';
 ?>
 
 <!DOCTYPE html>
@@ -30,6 +30,7 @@
 <script>
 
 d3.json("getChoices.php", function (dataset) {
+    console.log("hi");
     console.log(dataset);
 });
 

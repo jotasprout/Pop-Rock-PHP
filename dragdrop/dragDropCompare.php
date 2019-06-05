@@ -1,7 +1,7 @@
 <?php
 
 require_once '../rockdb.php';
-require( "class.artist.php" );
+//require( "class.artist.php" );
 
 $connekt = new mysqli( $GLOBALS[ 'host' ], $GLOBALS[ 'un' ], $GLOBALS[ 'magicword' ], $GLOBALS[ 'db' ] );
 

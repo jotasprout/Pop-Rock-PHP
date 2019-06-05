@@ -9,14 +9,39 @@ if (!connekt) {
     echo 'Nope. No connection.';
 }
 
-$getChoices = 'SELECT a.artistSpotID, a.artistArt , a.artistName, p.pop, p.date
+$getChoices = 'SELECT a.artistSpotID AS artistSpotID, a.artistArt AS artistArt, a.artistName AS artistName, p1.pop AS pop, p1.date AS date
+FROM artists a
+JOIN (SELECT p.*
+        FROM popArtists p
+        INNER JOIN (SELECT artistSpotID, pop, max(date) AS MaxDate
+                    FROM popArtists  
+                    GROUP BY artistSpotID) groupedp
+        ON p.artistSpotID = groupedp.artistSpotID
+        AND p.date = groupedp.MaxDate) p1
+ON a.artistSpotID = p1.artistSpotID
+WHERE a.artistSpotID IN ("' . implode('", "', $dragdrop) . '")    
+ORDER BY a.artistName ASC';
+
+$getChoices2 = "SELECT a.artistSpotID AS artistSpotID, a.artistArt AS artistArt, a.artistName AS artistName, p1.pop AS pop, p1.date AS date
+FROM artists a
+JOIN (SELECT p.*
+        FROM popArtists p
+        INNER JOIN (SELECT artistSpotID, pop, max(date) AS MaxDate
+                    FROM popArtists  
+                    GROUP BY artistSpotID) groupedp
+        ON p.artistSpotID = groupedp.artistSpotID
+        AND p.date = groupedp.MaxDate) p1
+ON a.artistSpotID = p1.artistSpotID
+WHERE a.artistSpotID IN ('" . implode("', '", $dragdrop) . "')    
+ORDER BY a.artistName ASC";
+
+$multiArtistPop = 'SELECT a.artistSpotID, a.artistArt , a.artistName, p.pop, p.date
     FROM artists a
     JOIN popArtists p ON p.artistSpotID = a.artistSpotID
-	WHERE a.artistSpotID IN ("' . implode('", "', $dragdrop) . '")
+	WHERE a.artistSpotID IN ("' . implode('", "', $group_sabbathRainbow) . '")
     ORDER BY a.artistSpotID ASC';
     
-
-$getem = mysqli_query($connekt, $getChoices);
+$getem = mysqli_query($connekt, $multiArtistPop);
 
 if(!$getem){
     echo 'Did not run the query.';
