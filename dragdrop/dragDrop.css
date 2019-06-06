@@ -1,17 +1,17 @@
 .choice {
-    width: 50px;
-    height: 50px;
+    width: 128px;
+    height: 128px;
 }
 
-div {
+.space {
     height: 300px;
-    width: 300px;
+    width: 800px;
 }
 
 #dragFrom {
-    background-color: red;
+    background-color: #FF0000;
 }
 
 #dropTo {
-    background-color: yellow;
+    background-color: #FFFF00;
 }

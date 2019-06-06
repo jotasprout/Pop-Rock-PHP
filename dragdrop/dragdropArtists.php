@@ -21,36 +21,57 @@
 
 <body>
 
-<h3>From Here</h3>
-<div id="dragFrom"></div> <!-- close dragFrom -->
-
-<h3>To Here</h3>
-<div id="dropTo"></div> <!-- close dropTo -->
-
 <script>
 
 w = 1000;
-h = 500;
+h = 800;
+	
+margin = {
+	top: 50,
+	right: 50,
+	bottom: 50,
+	left: 50
+};
+	
+	
 
 d3.json("dragDropCompare.php", function (dataset) {
 
     console.log(dataset);
 
-    const svg = d3.select("#dragFrom")
+    const svg = d3.select("body")
                   .append("svg")
+				  .attr("width", w + margin.left + margin.right)
+				  .attr("height", h + margin.top + margin.bottom);
 
-    const from = svg.select
-                   .data(dataset)
-                   .enter()
-                   .append("g")
-                   .attr("class", "ui-widget-content")
-                   .append("svg:image")
-                   .attr("xlink:href", function(d){
-                       return d.artistArt;
-                    })
-                    .attr("width", 128)
-                    .attr("height", 128);
+    //const rects = svg.selectAll("rect").data(dataset).enter().append("rect");
+	
+	const dragFrom = svg.append("rect")
+					.attr("class", "space")
+					.attr("id", "dragFrom")
+					.style("fill", "red")
+					.attr("x", margin.left)
+					.attr("y", margin.top);
+	
+	const dropTo = svg.append("rect")
+					.attr("class", "space")
+					.attr("id", "dropTo")
+					.attr("fill", "blue")
+					.attr("x", margin.left)
+					.attr("y", h/2);
 
+	const faces = svg.selectAll("#dragFrom").data(dataset).enter().append("g");
+	
+	faces.append("svg:image")
+		 .attr("xlink:href", function(d){
+			return d.artistArt;
+		})
+		.attr("x", function (d,i){
+			return (i*60);
+		})
+		.attr("y", margin.top)
+		.attr("width", 50)
+		.attr("height", 50);
 });
 
 </script>
