@@ -11,8 +11,14 @@
     <title>Drag-n-Drop</title>
 
     <script src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
+	<!--
     <script src='https://code.jquery.com/ui/1.12.1/jquery-ui.js'></script>
+	-->
     <script src='https://d3js.org/d3.v4.min.js'></script>
+	<!--
+    Do I need the next line? Or is it included in d3?
+	-->	
+	<script src="https://d3js.org/d3-drag.v1.min.js"></script>
 
     <link rel='stylesheet' href='https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css'>   
     <link rel='stylesheet' href='dragDrop.css'>
@@ -33,7 +39,9 @@ margin = {
 	left: 50
 };
 	
+spacepadding = 10;	
 	
+const drag = d3.drag();
 
 d3.json("dragDropCompare.php", function (dataset) {
 
@@ -60,18 +68,36 @@ d3.json("dragDropCompare.php", function (dataset) {
 					.attr("x", margin.left)
 					.attr("y", h/2);
 
-	const faces = svg.selectAll("#dragFrom").data(dataset).enter().append("g");
+	const faces = svg.selectAll("#dragFrom").data(dataset).enter()
+	.append("g")
+	.attr("transform", function (d,i){
+		xOff = (i%10) * 75 + margin.left + spacepadding;
+		yOff = Math.floor(i/10) * 75 + margin.top + spacepadding;
+		return "translate(" + xOff + "," + yOff + ")";
+	});
 	
 	faces.append("svg:image")
 		 .attr("xlink:href", function(d){
 			return d.artistArt;
 		})
+		/*
 		.attr("x", function (d,i){
 			return (i*60);
 		})
-		.attr("y", margin.top)
-		.attr("width", 50)
-		.attr("height", 50);
+		.attr("y", margin.top + spacepadding)
+		*/
+		//.attr("width", 64)
+		//.attr("height", 64)
+		.attr("class", "choice");
+	
+	const dragHandler = d3.drag()
+		.on("drag", function () {
+			d3.select(this)
+			  .attr("x", d3.event.x)
+			  .attr("y", d3.event.y);
+		});
+	
+	dragHandler(svg.selectAll(".choice"));
 });
 
 </script>
