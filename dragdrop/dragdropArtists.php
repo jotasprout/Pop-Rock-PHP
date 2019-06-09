@@ -51,8 +51,6 @@ d3.json("dragDropCompare.php", function (dataset) {
                   .append("svg")
 				  .attr("width", w + margin.left + margin.right)
 				  .attr("height", h + margin.top + margin.bottom);
-
-    //const rects = svg.selectAll("rect").data(dataset).enter().append("rect");
 	
 	const dragFrom = svg.append("rect")
 					.attr("class", "space")
@@ -80,15 +78,10 @@ d3.json("dragDropCompare.php", function (dataset) {
 		 .attr("xlink:href", function(d){
 			return d.artistArt;
 		})
-		/*
-		.attr("x", function (d,i){
-			return (i*60);
-		})
-		.attr("y", margin.top + spacepadding)
-		*/
-		//.attr("width", 64)
-		//.attr("height", 64)
-		.attr("class", "choice");
+		.attr("data-artistName", (d) => d.artistName)
+		.attr("class", "choice")
+		.append("title")
+		.text((d) => d.artistName);
 	
 	const dragHandler = d3.drag()
 		.on("drag", function () {
