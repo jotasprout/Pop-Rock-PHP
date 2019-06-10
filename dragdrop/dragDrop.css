@@ -4,14 +4,16 @@
 }
 
 .space {
-    height: 300px;
-    width: 800px;
+	width: 800px;
 }
 
 #dragFrom {
     background-color: #FF0000;
+	height: 300px;
 }
 
 #dropTo {
+	width: 800px;
+	height: 400px;
     background-color: #FFFF00;
 }

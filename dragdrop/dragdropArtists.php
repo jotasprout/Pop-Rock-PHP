@@ -33,10 +33,10 @@ w = 1000;
 h = 800;
 	
 margin = {
-	top: 50,
-	right: 50,
-	bottom: 50,
-	left: 50
+	top: 20,
+	right: 20,
+	bottom: 20,
+	left: 20
 };
 	
 spacepadding = 10;	
@@ -52,6 +52,11 @@ d3.json("dragDropCompare.php", function (dataset) {
 				  .attr("width", w + margin.left + margin.right)
 				  .attr("height", h + margin.top + margin.bottom);
 	
+	const bg = svg.append("rect")
+				  .style("fill", "gray")
+				  .attr("width", w)
+				  .attr("height", h);
+	
 	const dragFrom = svg.append("rect")
 					.attr("class", "space")
 					.attr("id", "dragFrom")
@@ -64,7 +69,9 @@ d3.json("dragDropCompare.php", function (dataset) {
 					.attr("id", "dropTo")
 					.attr("fill", "blue")
 					.attr("x", margin.left)
-					.attr("y", h/2);
+					.attr("y", 340)
+					.append("title")
+					.text("Hello");
 
 	const faces = svg.selectAll("#dragFrom").data(dataset).enter()
 	.append("g")
