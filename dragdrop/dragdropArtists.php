@@ -69,9 +69,7 @@ d3.json("dragDropCompare.php", function (dataset) {
 					.attr("id", "dropTo")
 					.attr("fill", "blue")
 					.attr("x", margin.left)
-					.attr("y", 340)
-					.append("title")
-					.text("Hello");
+					.attr("y", 340);
 
 	const faces = svg.selectAll("#dragFrom").data(dataset).enter()
 	.append("g")
@@ -88,7 +86,8 @@ d3.json("dragDropCompare.php", function (dataset) {
 		.attr("data-artistName", (d) => d.artistName)
 		.attr("class", "choice")
 		.append("title")
-		.text((d) => d.artistName);
+		.text((d) => d.artistName)
+		.attr("transform", "translate(-50% -50%)");
 	
 	const dragHandler = d3.drag()
 		.on("drag", function () {
@@ -98,6 +97,19 @@ d3.json("dragDropCompare.php", function (dataset) {
 		});
 	
 	dragHandler(svg.selectAll(".choice"));
+/*
+	const drag = d3.drag()
+				   .on("dragstart", function(){
+					   // do some drag start stuff
+				   })
+				   .on("drag", function(){
+					   // hey we are dragging let us update some stuff
+				   })
+				   .on("dragend", function(){
+					   // we are done, end some stuff
+				   });
+*/
+	//d3.selectAll(".choice").call(drag);
 });
 
 </script>

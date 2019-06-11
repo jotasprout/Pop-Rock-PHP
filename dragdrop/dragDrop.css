@@ -1,6 +1,7 @@
 .choice {
     width: 64px;
     height: 64px;
+    transform-origin: -32 -32;
 }
 
 .space {
