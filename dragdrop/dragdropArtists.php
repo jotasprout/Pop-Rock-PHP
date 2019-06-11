@@ -17,9 +17,9 @@
     <script src='https://d3js.org/d3.v4.min.js'></script>
 	<!--
     Do I need the next line? Or is it included in d3?
-	-->	
+		
 	<script src="https://d3js.org/d3-drag.v1.min.js"></script>
-
+-->
     <link rel='stylesheet' href='https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css'>   
     <link rel='stylesheet' href='dragDrop.css'>
 	<link rel='stylesheet' href='lineGraphStyles.css'>
@@ -67,12 +67,23 @@ d3.json("dragDropCompare.php", function (dataset) {
 					.attr("x", margin.left)
 					.attr("y", margin.top);
 	
+	let dropToReady = false;
+	
 	const dropTo = svg.append("rect")
 					.attr("class", "space")
 					.attr("id", "dropTo")
 					.attr("fill", "blue")
 					.attr("x", margin.left)
-					.attr("y", 340);
+					.attr("y", 340)
+					.attr("data-ready", false)
+					.on("mouseover", function(){
+						dropToReady = true;
+						console.log("dropTo is " + dropToReady);
+					})
+					.on("mouseout", function(){
+						dropToReady = false;
+						console.log("dropTo is " + dropToReady);
+					});
 
 	const faces = svg.selectAll("#dragFrom").data(dataset).enter()
 		.append("g")
@@ -94,39 +105,61 @@ d3.json("dragDropCompare.php", function (dataset) {
 		.append("title")
 		.text((d) => d.artistName);
 	
+	let droppedArtists = [];
+	
 	// DRAG HANDLER
 	const dragHandler = d3.drag()
-		.on("drag", function () {
+		.on("drag", function (d) {
 			const mouse = d3.mouse(this);
 			const picWidth = 64;
 			const picHeight = 64;
+			console.log ("Dragging " + d.artistName + " with " + d.pop + " popularity");
 			d3.select(this)
 			  //.attr("x", d3.event.x)
 			  //.attr("y", d3.event.y)
 			  .attr("x", (mouse[0])-picWidth/2)
-			  .attr("y", (mouse[1])-picWidth/2);
+			  .attr("y", (mouse[1])-picHeight/2)
+			  .attr("pointer-events", "none");
+		})
+		.on("end", function (d) {
+			if (dropToReady == true){
+				droppedArtists.push(d.artistName);
+			};
+			let dropped = droppedArtists.length;
+			for(let i=0; i<dropped; i++){
+				console.log(droppedArtists[i]);
+			};
+			
+			d3.select(this)
+			  .attr("pointer-events", "auto");
 		});
 	
 	dragHandler(svg.selectAll(".choice"));
-/*
-	const drag = d3.drag()
-				   .on("dragstart", function(){
-					   // do some drag start stuff
-				   })
-				   .on("drag", function(){
-					   // hey we are dragging let us update some stuff
-				   })
-				   .on("dragend", function(){
-					   // we are done, end some stuff
-				   });
-*/
+	
+	function pickUp(d){
+		// do some drag start stuff
+	};
+	
+	function carry(d){
+		// hey we are dragging let us update some stuff
+	};
+	
+	function putDown(){
+		// we are done, end some stuff
+	};
+	
+/**/
+	const dragMaster = d3.drag()
+					   .on("start", pickUp)
+					   .on("drag", carry)
+					   .on("end", putDown);
+
 	//d3.selectAll(".choice").call(drag);
+	
+	
 });
 
 </script>
-
-
-
 
 
 <script src="https://www.roxorsoxor.com/poprock/dragdrop/dragdrop.js"></script>
