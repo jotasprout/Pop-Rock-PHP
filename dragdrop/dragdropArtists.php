@@ -29,23 +29,26 @@
 
 <script>
 
-w = 1000;
-h = 800;
+const w = 1000;
+const h = 800;
 	
-margin = {
+const margin = {
 	top: 20,
 	right: 20,
 	bottom: 20,
 	left: 20
 };
 	
-spacepadding = 10;	
-	
+const spacepadding = 10;	
+
 const drag = d3.drag();
 
 d3.json("dragDropCompare.php", function (dataset) {
 
     console.log(dataset);
+	
+	//const picWidth = 64;
+	//const picHeight = 64;
 
     const svg = d3.select("body")
                   .append("svg")
@@ -72,28 +75,36 @@ d3.json("dragDropCompare.php", function (dataset) {
 					.attr("y", 340);
 
 	const faces = svg.selectAll("#dragFrom").data(dataset).enter()
-	.append("g")
-	.attr("transform", function (d,i){
-		xOff = (i%10) * 75 + margin.left + spacepadding;
-		yOff = Math.floor(i/10) * 75 + margin.top + spacepadding;
-		return "translate(" + xOff + "," + yOff + ")";
-	});
+		.append("g")
+		.attr("transform", function (d,i){
+			xOff = (i%10) * 75 + margin.left + spacepadding;
+			yOff = Math.floor(i/10) * 75 + margin.top + spacepadding;
+			return "translate(" + xOff + "," + yOff + ")";
+		});
 	
 	faces.append("svg:image")
 		 .attr("xlink:href", function(d){
 			return d.artistArt;
 		})
 		.attr("data-artistName", (d) => d.artistName)
+		.attr("data-artistPop", (d) => d.pop)
+		.attr("data-artistSpotID", (d) => d.artistSpotID)
+		.attr("data-popDate", (d) => d.date)
 		.attr("class", "choice")
 		.append("title")
-		.text((d) => d.artistName)
-		.attr("transform", "translate(-50% -50%)");
+		.text((d) => d.artistName);
 	
+	// DRAG HANDLER
 	const dragHandler = d3.drag()
 		.on("drag", function () {
+			const mouse = d3.mouse(this);
+			const picWidth = 64;
+			const picHeight = 64;
 			d3.select(this)
-			  .attr("x", d3.event.x)
-			  .attr("y", d3.event.y);
+			  //.attr("x", d3.event.x)
+			  //.attr("y", d3.event.y)
+			  .attr("x", (mouse[0])-picWidth/2)
+			  .attr("y", (mouse[1])-picWidth/2);
 		});
 	
 	dragHandler(svg.selectAll(".choice"));

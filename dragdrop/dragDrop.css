@@ -1,7 +1,7 @@
 .choice {
-    width: 64px;
-    height: 64px;
-    transform-origin: -32 -32;
+    background-color: #FF00FF;
+	width: 64px;
+	height: 64px;
 }
 
 .space {
