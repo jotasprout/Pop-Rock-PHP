@@ -12,9 +12,6 @@ if (!$connekt) {
 	echo '<p>Darn. Did not connect. Screwed up like this: ' . mysqli_connect_error() . '</p>';
 };
 
-$blackSabbath_SpotID = '5M52tdBnJaKSvOpJGz8mfZ';
-$blackSabbath_MBID = '5182c1d9-c7d2-4dad-afa0-ccfeada921a8';
-
 $blackScabies = "SELECT b.albumName, b.albumMBID, z.artistName, f1.dataDate, f1.albumListeners, f1.albumPlaycount, x.albumArtMB
 					FROM (SELECT mb.albumName, mb.albumMBID, mb.artistMBID
 						FROM albumsMB mb 

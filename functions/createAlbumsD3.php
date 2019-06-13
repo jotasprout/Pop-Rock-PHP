@@ -31,21 +31,6 @@ $happyScabies2 = "SELECT a.albumName, a.year, a.albumArtSpot, z.artistName, p1.p
 	ON a.albumSpotID = p1.albumSpotID
 	ORDER BY year ASC;";	
 	
-/*
-	$happyScabies3 = "SELECT a.albumName, a.year, a.albumArtSpot, z.artistName, p.pop, p.date
-	FROM (SELECT
-				y.albumSpotID AS albumSpotID,
-				y.albumName AS albumName,
-				y.artistSpotID AS artistSpotID,
-				y.albumArtSpot AS albumArtSpot,
-				y.year AS year
-			FROM albums y 
-			WHERE y.artistSpotID = '0cc6vw3VN8YlIcvr1v7tBL') a
-	JOIN artists z ON z.artistSpotID = a.artistSpotID
-	JOIN popAlbums p ON a.albumSpotID = p.albumSpotID
-		WHERE p.date = '2019-03-17'
-	ORDER BY a.year ASC;";
-*/
 $result = mysqli_query($connekt, $happyScabies2);
 
 if (mysqli_num_rows($result) > 0) {

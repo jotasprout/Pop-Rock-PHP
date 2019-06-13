@@ -74,14 +74,13 @@ if(!$getit){ echo 'Cursed-Crap. Did not run the query.'; }
 	<th>Pretty Face</th>	
 	<th onClick="sortColumn('artistName', 'ASC')"><div class="pointyHead">Artist Name</div></th>
 	<!--
-	
+	-->
 	<th class="popStyle">Spotify<br>Data Date</th>
-	-->	
+		
 	<th class="popStyle">Spotify ID</th>
 	<th onClick="sortColumn('pop', 'unsorted')"><div class="pointyHead popStyle">Spotify<br>Popularity</div></th>
 	<th onClick="sortColumn('followers', 'unsorted')"><div class="pointyHead rightNum">Spotify<br>Followers</div></th>
-		<!--
-				
+		<!--	
 		-->
 		<th onClick="sortColumn('datadate', 'unsorted')"><div class="pointyHead popStyle">LastFM<br>Data Date</div></th>
 	<th onClick="sortColumn('artistListeners', 'unsorted')"><div class="pointyHead rightNum">LastFM<br>Listeners</div></th>
@@ -111,14 +110,21 @@ if(!$getit){ echo 'Cursed-Crap. Did not run the query.'; }
 						};
 						$artistPlaycountNum = $row[ "artistPlaycount"];
 						$artistPlaycount = number_format ($artistPlaycountNum);
+						$artistRatio = 0;
 						if (!$artistPlaycount > 0) {
 							$artistPlaycount = "n/a";
+							$artistRatio = "n/a";
+							$lastFMDate = "n/a";
+						} else {
+							$artistRatio = $artistPlaycount/$artistListeners;
 						};
 				?>
 
 <tr>
 	<td><a href='https://www.roxorsoxor.com/poprock/artist_ChartsSpot.php?artistSpotID=<?php echo $artistSpotID ?>&artistMBID=<?php echo $artistMBID ?>&source=<?php echo $source ?>'><img src='<?php echo $artistArt ?>' class="indexArtistArt"></a></td>	
+	
 	<td><a href='https://www.roxorsoxor.com/poprock/artist_ChartsSpot.php?artistSpotID=<?php echo $artistSpotID ?>&artistMBID=<?php echo $artistMBID ?>&source=<?php echo $source ?>'><?php echo $artistName ?></a></td>
+	
 	<td class="popStyle"><?php echo $artistSpotID ?></td>
 	<!---->
 	
