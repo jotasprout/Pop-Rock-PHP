@@ -6,8 +6,6 @@ $albumMBID = $_GET['albumMBID'];
 require_once '../rockdb.php';
 require_once '../page_pieces/stylesAndScripts.php';
 
-# https://roxorsoxor.com/poprock/forms/edit_AlbumMB.php?artistSpotID=3EhbVgyfGd7HkpsagwL9GS&artistMBID=ee58c59f-8e7f-4430-b8ca-236c4d3745ae&albumMBID=506844d3-80c7-4a41-9b6d-c16c496c8629&source=musicbrainz
-
 $connekt = new mysqli( $GLOBALS[ 'host' ], $GLOBALS[ 'un' ], $GLOBALS[ 'magicword' ], $GLOBALS[ 'db' ] );
 
 if ( !$connekt ) {
@@ -23,10 +21,11 @@ if (isset($_POST['submit'])){
 	$artistName = mysqli_real_escape_string($connekt, htmlspecialchars($_POST['artistName']));
 	$artistMBID = mysqli_real_escape_string($connekt, htmlspecialchars($_POST['artistMBID']));
 	$artistSpotID = mysqli_real_escape_string($connekt, htmlspecialchars($_POST['artistSpotID']));
+	$assocArtistSpotID = mysqli_real_escape_string($connekt, htmlspecialchars($_POST['assocArtistSpotID']));
 	$albumArtMB = mysqli_real_escape_string($connekt, htmlspecialchars($_POST['albumArtMB']));
 	
 	// save data to database
-	$updateAlbum = "UPDATE albumsMB SET albumName='$albumName', artistName='$artistName', artistMBID='$artistMBID', artistSpotID='$artistSpotID', albumArtMB='$albumArtMB' WHERE albumMBID='$albumMBID'";
+	$updateAlbum = "UPDATE albumsMB SET albumName='$albumName', artistMBID='$artistMBID', artistSpotID='$artistSpotID', assocArtistSpotID='$assocArtistSpotID', albumArtMB='$albumArtMB' WHERE albumMBID='$albumMBID'";
 	
 	$retval = $connekt->query($updateAlbum);
 	
@@ -74,6 +73,7 @@ else // if the form isn't being submitted, get the data from the db and display 
 			$artistMBID = $row['artistMBID'];
 			$artistSpotID = $row['artistSpotID'];
 			$assocArtistSpotID = $row['assocArtistSpotID'];
+			//$assocArtistName = $row['assocArtistName'];
 			if($row["albumArtMB"] == "") {
 				$albumArtMB = "nope.png";
 			}
@@ -119,7 +119,7 @@ else // if the form isn't being submitted, get the data from the db and display 
 	<!-- This form displays user profile info from the database -->
 	
 	<form class="form-horizontal" action="" method="post">
-		<input type="hidden" name="id" value="<?php echo $albumMBID; ?>"/>
+		<input type="hidden" name="albumMBID" value="<?php echo $albumMBID; ?>"/>
 		<fieldset>
             
 			<div class="form-group"> <!-- Row 1 --> 
@@ -166,9 +166,14 @@ else // if the form isn't being submitted, get the data from the db and display 
 				<!-- Column 1 -->
 				<label class="col-lg-2 control-label" for="assocArtistSpotID">Associated Artist SpotID</label>
 				<!-- Column 2 -->
-				<div class="col-lg-4">
+				<div class="col-lg-3">
 					<input class="form-control" type="assocArtistSpotID" name="assocArtistSpotID"  value="<?php echo $assocArtistSpotID; ?>" />
 				</div>
+				<!-- Column 3 
+				<div class="col-lg-3">
+					<input class="form-control" type="assocArtistName" name="assocArtistName"  value="<?php //echo $assocArtistName; ?>" readonly/>
+				</div>
+				-->
 			</div>
 					
 			<!-- Last Row -->
