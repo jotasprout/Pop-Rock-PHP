@@ -3,10 +3,8 @@
 $artistMBID = $_GET['artistMBID'];
 $artistSpotID = $_GET['artistSpotID'];
 $albumMBID = $_GET['albumMBID'];
-//$source = $_GET['source'];
 
 require_once 'rockdb.php';
-//require_once 'page_pieces/navbar_rock.php';
 require_once 'page_pieces/stylesAndScripts.php';
 
 $connekt = new mysqli( $GLOBALS[ 'host' ], $GLOBALS[ 'un' ], $GLOBALS[ 'magicword' ], $GLOBALS[ 'db' ] );
@@ -34,15 +32,7 @@ $getAlbumTracks = "SELECT d.trackMBID, d.trackName, d.albumName, d.trackListener
 				ON fm.trackMBID = k.trackMBID
 	) d
 	GROUP BY d.trackMBID";
-/*
-if ($source = 'spotify') {
-	$getAlbumTracks = $SpotAndLastFM;
-};
 
-if ($source = 'musicbrainz') {
-	$getAlbumTracks = $LastFMAndSpot;
-};
-*/
 $getit = $connekt->query( $getAlbumTracks );
 
 if ( !$getit ) {
