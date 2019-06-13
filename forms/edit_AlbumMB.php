@@ -3,8 +3,10 @@ $artistMBID = $_GET['artistMBID'];
 $artistSpotID = $_GET['artistSpotID'];
 $albumMBID = $_GET['albumMBID'];
 
-require_once 'rockdb.php';
-require_once 'page_pieces/stylesAndScripts.php';
+require_once '../rockdb.php';
+require_once '../page_pieces/stylesAndScripts.php';
+
+# https://roxorsoxor.com/poprock/forms/edit_AlbumMB.php?artistSpotID=3EhbVgyfGd7HkpsagwL9GS&artistMBID=ee58c59f-8e7f-4430-b8ca-236c4d3745ae&albumMBID=506844d3-80c7-4a41-9b6d-c16c496c8629&source=musicbrainz
 
 $connekt = new mysqli( $GLOBALS[ 'host' ], $GLOBALS[ 'un' ], $GLOBALS[ 'magicword' ], $GLOBALS[ 'db' ] );
 
@@ -22,32 +24,24 @@ if (isset($_POST['submit'])){
 	$artistMBID = mysqli_real_escape_string($connekt, htmlspecialchars($_POST['artistMBID']));
 	$artistSpotID = mysqli_real_escape_string($connekt, htmlspecialchars($_POST['artistSpotID']));
 	$albumArtMB = mysqli_real_escape_string($connekt, htmlspecialchars($_POST['albumArtMB']));
-
-	// check that artistMBID field is filled in
-	if ($artistMBID == ''){
-		// if form is NOT filled in
-		// generate error message
-		$error = 'ERROR: Boy, you sure are stupid! Fill in all required fields like you were told!';
-		// and display form
-		renderForm($albumMBID, $albumName, $artistName, $artistMBID, $artistSpotID, $albumArtMB, $error);
+	
+	// save data to database
+	$updateAlbum = "UPDATE albumsMB SET albumName='$albumName', artistName='$artistName', artistMBID='$artistMBID', artistSpotID='$artistSpotID', albumArtMB='$albumArtMB' WHERE albumMBID='$albumMBID'";
+	
+	$retval = $connekt->query($updateAlbum);
+	
+	// Feedback of whether UPDATE worked or not
+	if(!$retval){
+		// if insert did NOT work
+		die('Crap. Could not update this album because: ' . mysqli_error($connekt));
 	}
-	else // if form is filled in
+	else
 	{
-		// save data to database
-		$updateAlbum = "UPDATE albumsMB SET albumName='$albumName', artistName='$artistName', artistMBID='$artistMBID', artistSpotID='$artistSpotID', albumArtMB='$albumArtMB' WHERE albumMBID='$albumMBID'";
-		$retval = $connekt->query($updateAlbum);
-		// Feedback of whether UPDATE worked or not
-		if(!$retval){
-			// if insert did NOT work
-			die('Crap. Could not update this album because: ' . mysqli_error());
-		}
-		else
-		{
-			// if update worked, go to list of albums
-			// do I want to change that to something AJAXy?
-			header("Location: artist_AlbumsListLastFM.php?artistSpotID=" . $artistSpotID . "&artistMBID=" . $artistMBID . "&source=musicbrainz");
-		}
+		// if update worked, go to list of albums
+		// do I want to change that to something AJAXy?
+		header("Location: ../artist_AlbumsListLastFM.php?artistSpotID=" . $artistSpotID . "&artistMBID=" . $artistMBID . "&source=musicbrainz");
 	}
+	
 
 }
 else // if the form isn't being submitted, get the data from the db and display the form
@@ -56,9 +50,20 @@ else // if the form isn't being submitted, get the data from the db and display 
 	if (isset($_GET['albumMBID'])){
 		// query db
 		$albumMBID = $_GET['albumMBID'];
-		$result = mysqli_query($connekt, "SELECT * FROM albumsMB WHERE albumMBID=$albumMBID")
-		or die(mysqli_error($result));
-		$row = mysqli_fetch_array($result);
+		
+		$queryZ = "
+			SELECT mb.albumName, mb.albumMBID, z.artistName, z.artistMBID, z.artistSpotID, mb.albumArtMB, mb.assocArtistSpotID
+				FROM albumsMB mb 
+				JOIN artists z ON z.artistMBID = mb.artistMBID
+				WHERE mb.albumMBID='" . $albumMBID . "';";
+		
+		//$resultZ = $connekt->query($queryZ);
+		
+		$resultZ = mysqli_query($connekt, $queryZ) 
+			or die(mysqli_error($connekt));
+		
+		$row = mysqli_fetch_array($resultZ);
+		
 		// check that the 'albumMBID' matches up with a row in the databse
 		if($row){
 			// if there's a match
@@ -68,6 +73,7 @@ else // if the form isn't being submitted, get the data from the db and display 
 			$artistName = $row['artistName'];
 			$artistMBID = $row['artistMBID'];
 			$artistSpotID = $row['artistSpotID'];
+			$assocArtistSpotID = $row['assocArtistSpotID'];
 			if($row["albumArtMB"] == "") {
 				$albumArtMB = "nope.png";
 			}
@@ -178,28 +184,25 @@ else // if the form isn't being submitted, get the data from the db and display 
 <div class="well">	
 	
 	<?php
-	// this lists the cases assigned to this user
-	// PHP code in a more secure location
-	include("../../secret_php/xxxxxxx.php");
 	// Start creating an HTML table for Assigned Cases and create header row
     echo "<table class='table table-striped table-hover '><thead><tr><th>Other Albums by " . $artistName . "</th></tr></thead>";
 	echo "<tbody>";
-	//Uses PHP code to connect to database
-	$connekt = new mysqli($db_hostname, $db_artistMBID, $db_password, $db_database);
+
+	$connekt = new mysqli( $GLOBALS[ 'host' ], $GLOBALS[ 'un' ], $GLOBALS[ 'magicword' ], $GLOBALS[ 'db' ] );
 	// Connection test and feedback
 	if (!$connekt) {
 		die('Rats! Could not connect: ' . mysqli_error());
 	}
-	// Create variable for query
+
 	$query0 = "
-	SELECT b.albumName, b.albumMBID, z.artistName, x.albumArtMB
-					FROM (SELECT mb.albumName, mb.albumMBID, mb.artistMBID
-						FROM albumsMB mb 
-						WHERE mb.artistMBID='$artistMBID') b 
-					JOIN artists z ON z.artistMBID = b.artistMBID
-					LEFT JOIN albumsMB x ON b.albumMBID = x.albumMBID
-					ORDER BY b.albumName ASC;";
-	// Use variable with MySQL command to grab info from database
+		SELECT b.albumName, b.albumMBID, z.artistName, z.artistMBID, z.artistSpotID, x.albumArtMB
+			FROM (SELECT mb.albumName, mb.albumMBID, mb.artistMBID
+				FROM albumsMB mb 
+				WHERE mb.artistMBID='" . $artistMBID . "') b 
+			JOIN artists z ON z.artistMBID = b.artistMBID
+			LEFT JOIN albumsMB x ON b.albumMBID = x.albumMBID
+			ORDER BY b.albumName ASC;";
+	
 	$result0 = $connekt->query($query0);
 	// Create a row in HTML table for each row from database
     while ($row = mysqli_fetch_array($result0)) {
@@ -218,7 +221,10 @@ else // if the form isn't being submitted, get the data from the db and display 
 	
 
 	</div> <!-- /container-fluid --> 
-
+<script>
+	const artistSpotID = '<?php echo $artistSpotID; ?>';
+	const artistMBID = '<?php echo $artistMBID ?>';
+</script>
 <script src="https://www.roxorsoxor.com/poprock/page_pieces/navbar.js"></script>
 </body>
 </html>
