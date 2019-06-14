@@ -22,7 +22,8 @@ if (isset($_POST['submit'])){
 	$artistMBID = mysqli_real_escape_string($connekt, htmlspecialchars($_POST['artistMBID']));
 	$artistSpotID = mysqli_real_escape_string($connekt, htmlspecialchars($_POST['artistSpotID']));
 	$assocArtistSpotID = mysqli_real_escape_string($connekt, htmlspecialchars($_POST['assocArtistSpotID']));
-	$albumArtMB = mysqli_real_escape_string($connekt, htmlspecialchars($_POST['albumArtMB']));
+	$albumArtFilename = mysqli_real_escape_string($connekt, htmlspecialchars($_POST['albumArtMB']));
+	$albumArtMB = "https://www.roxorsoxor.com/poprock/cover-art/" . $albumArtFilename;
 	
 	// save data to database
 	$updateAlbum = "UPDATE albumsMB SET albumName='$albumName', artistMBID='$artistMBID', artistSpotID='$artistSpotID', assocArtistSpotID='$assocArtistSpotID', albumArtMB='$albumArtMB' WHERE albumMBID='$albumMBID'";
@@ -56,8 +57,6 @@ else // if the form isn't being submitted, get the data from the db and display 
 				JOIN artists z ON z.artistMBID = mb.artistMBID
 				WHERE mb.albumMBID='" . $albumMBID . "';";
 		
-		//$resultZ = $connekt->query($queryZ);
-		
 		$resultZ = mysqli_query($connekt, $queryZ) 
 			or die(mysqli_error($connekt));
 		
@@ -65,8 +64,6 @@ else // if the form isn't being submitted, get the data from the db and display 
 		
 		// check that the 'albumMBID' matches up with a row in the databse
 		if($row){
-			// if there's a match
-			// get data from db
 			$albumMBID = $row['albumMBID'];
 			$albumName = $row['albumName'];
 			$artistName = $row['artistName'];
@@ -141,6 +138,16 @@ else // if the form isn't being submitted, get the data from the db and display 
 				</div>
 			</div>
 			<!-- /Row 2 -->
+
+			<div class="form-group"> <!-- Row Art --> 
+				<!-- Column 1 -->				
+				<label class="col-lg-2 control-label" for="albumArtMB">Album Art</label>
+				<!-- Column 2 -->				
+				<div class="col-lg-4">
+					<input class="form-control" type="text" name="albumArtMB" value="<?php echo $albumArtMB; ?>" />
+				</div>
+			</div>
+			<!-- /Row Art -->
 			
 			<div class="form-group"> <!-- Row 3 --> 
 				<!-- Column 1 -->
