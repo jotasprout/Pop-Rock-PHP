@@ -1,12 +1,7 @@
 .DS_Store
-fromRockinJS
 miscInProgress
 secrets
 rockdb.php
-vendor
-spotifyAuthorization.txt
-crons/lastFM/data
-data_text/jsonLastFM
-data_text/JSON_BS_Samples
-imgs
-cover-art
+public_site/crons/lastFM/data
+public_site/data_text/jsonLastFM
+public_site/data_text/JSON_BS_Samples
