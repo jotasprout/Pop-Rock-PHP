@@ -35,7 +35,7 @@ Below is a line graph showing the increase in popularity of the song "Bohemian R
 
 Below is a multiline graph comparing this year's inductees into the **Rock and Roll Hall of Fame** showing the lack of influence their nominations and inductions had on their popularity.
 
-<img src="https://github.com/jotasprout/Pop-Rock-PHP/blob/master/imgs/induct-2018-12-18.png">
+<img src="https://github.com/jotasprout/Pop-Rock-PHP/blob/master/miscInProgress/imgs/induct-2018-12-18.png">
 
 ### Albums Bar Chart
 ![Column chart created with D3 displaying popularity score for Billy Idol albums. Album cover art appears beneath each column. Numerical score appears above each column.](https://jotascript.files.wordpress.com/2018/04/billyidol.png)
