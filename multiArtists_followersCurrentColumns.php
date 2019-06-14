@@ -1,5 +1,4 @@
 <?php
-require_once 'page_pieces/navbar_rock.php';
 require_once 'page_pieces/stylesAndScripts.php';
 ?>
 

@@ -185,7 +185,7 @@ $(document).ready(function(){
 </script>				
 
 <?php echo $scriptsAndSuch; ?>	
-<script src="https://www.roxorsoxor.com/poprock/page_pieces/navbar.js"></script>
+<script src="https://www.roxorsoxor.com/poprock/page_pieces/navbarIndex.js"></script>
 </body>
 
 </html>
