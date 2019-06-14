@@ -89,6 +89,7 @@ if(!$getit){ echo 'Cursed-Crap. Did not run the query.'; }
 
 						$artistPlaycountNum = $row[ "artistPlaycount"];
 						$artistPlaycount = number_format ($artistPlaycountNum);
+						$artistRatio = "1:" . floor($artistPlaycountNum/$artistListenersNum);
 
 				?>
 
@@ -100,7 +101,7 @@ if(!$getit){ echo 'Cursed-Crap. Did not run the query.'; }
 	<td class="popStyle"><?php echo $lastFMDate ?></td>		
 	<td class="rightNum"><?php echo $artistListeners ?></td>
 	<td class="rightNum"><?php echo $artistPlaycount ?></td>
-	<td class="popStyle"><p>Coming<br>Soon</p></td>
+	<td class="popStyle"><?php echo $artistRatio ?></td>
 </tr>
 
 				<?php 
