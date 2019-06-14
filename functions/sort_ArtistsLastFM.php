@@ -25,14 +25,7 @@ if ( !empty( $_POST[ "currentOrder" ] ) ) {
     // if the current order came through, use it
 	$currentOrder = $_POST[ "currentOrder" ];
 }
-/*
-// Next is for the SQL query
-if ($currentOrder == "ASC" or $currentOrder == "unsorted") {
-    $newOrder = "DESC";
-} else {
-	$newOrder = "ASC";
-}
-*/
+
 ///////////////////
 
 $artistNameNewOrder = "unsorted";
@@ -130,6 +123,7 @@ if (!empty($sortit)) { ?>
 				$artistListeners = number_format ($artistListenersNum);
 				$artistPlaycountNum = $row[ "artistPlaycount"];
 				$artistPlaycount = number_format ($artistPlaycountNum);
+				$artistRatio = "1:" . floor($artistPlaycountNum/$artistListenersNum);
 		?>
 
 <tr>
@@ -141,7 +135,7 @@ if (!empty($sortit)) { ?>
 	<td class="popStyle"><?php echo $lastFMDate ?></td>
 	<td class="rightNum"><?php echo $artistListeners ?></td>
 	<td class="rightNum"><?php echo $artistPlaycount ?></td>
-	<td class="popStyle"><p>Coming<br>Soon</p></td>
+	<td class="popStyle"><?php echo $albumRatio ?></td>
 </tr>
 
 		<?php 

@@ -95,7 +95,7 @@ if(!$getit){
 		$albumListeners = number_format ($albumListenersNum);
 		$albumPlaycountNum = $row[ "albumPlaycount"];
 		$albumPlaycount = number_format ($albumPlaycountNum);
-
+		$albumRatio = "1:" . floor($albumPlaycountNum/$albumListenersNum);
 ?>
 					
 <tr>
@@ -107,7 +107,7 @@ if(!$getit){
 <td class="popStyle"><?php echo $lastFMDate ?></td>
 <td class="rightNum"><?php echo $albumListeners ?></td>
 <td class="rightNum"><?php echo $albumPlaycount ?></td>
-<td class="popStyle"><p>Coming Soon</p></td>
+<td class="popStyle"><?php echo $albumRatio ?></td>
 </tr>
 					
 					<?php 

@@ -130,37 +130,6 @@ if ( $columnName == "albumPlaycount" ) {
 	};
 };
 
-/*
-$sortScabies = "SELECT b.albumName, b.albumMBID, b.albumMBID, b.artistMBID, a.year, a.albumArtSpot, a.tracksTotal, z.artistName, p1.pop, p1.date, f1.dataDate, f1.albumListeners, f1.albumPlaycount, x.albumArtMB
-FROM (SELECT sp.albumName, sp.albumMBID, sp.albumMBID, sp.artistMBID
-	FROM albums sp
-	WHERE sp.artistMBID='$artistMBID'
-UNION
-SELECT mb.albumName, mb.albumMBID, mb.albumMBID, mb.artistMBID
-	FROM albumsMB mb 
-	WHERE mb.artistMBID='$artistMBID') b 
-LEFT JOIN albums a ON b.albumMBID = a.albumMBID	
-JOIN artists z ON z.artistMBID = b.artistMBID
-LEFT JOIN (SELECT p.*
-		FROM popAlbums p
-		INNER JOIN (SELECT albumMBID, pop, max(date) AS MaxDate
-					FROM popAlbums  
-					GROUP BY albumMBID) groupedp
-		ON p.albumMBID = groupedp.albumMBID
-		AND p.date = groupedp.MaxDate) p1 
-ON a.albumMBID = p1.albumMBID
-LEFT JOIN albumsMB x ON b.albumMBID = x.albumMBID
-LEFT JOIN (SELECT f.*
-		FROM albumsLastFM f
-		INNER JOIN (SELECT albumMBID, albumListeners, albumPlaycount, max(dataDate) AS MaxDataDate
-		FROM albumsLastFM
-		GROUP BY albumMBID) groupedf
-		ON f.albumMBID = groupedf.albumMBID
-		AND f.dataDate = groupedf.MaxDataDate) f1
-ON b.albumMBID = f1.albumMBID
-ORDER BY " . $columnName . " " . $newOrder . ";";
-*/
-
 $gatherAlbumInfoLastFM = "SELECT b.albumName, b.albumMBID, z.artistName, f1.dataDate, f1.albumListeners, f1.albumPlaycount, x.albumArtMB
 					FROM (SELECT mb.albumName, mb.albumMBID, mb.artistMBID
 						FROM albumsMB mb 
@@ -176,33 +145,7 @@ $gatherAlbumInfoLastFM = "SELECT b.albumName, b.albumMBID, z.artistName, f1.data
 							AND f.dataDate = groupedf.MaxDataDate) f1
 					ON b.albumMBID = f1.albumMBID	
 					ORDER BY " . $columnName . " " . $newOrder . ";";
-/*
-$gatherAlbumInfoSpot = "SELECT b.albumName, b.albumMBID, b.year, z.artistName, p1.date, p1.pop, x.tracksTotal, x.albumArtSpot
-					FROM (SELECT sp.albumName, sp.albumMBID, sp.artistMBID, sp.year
-							FROM albums sp
-							WHERE sp.artistMBID='$artistMBID') b
-					JOIN artists z ON z.artistMBID = b.artistMBID
-					LEFT JOIN albums x ON b.albumMBID = x.albumMBID	
-					LEFT JOIN (SELECT p.* 
-							FROM popAlbums p
-							INNER JOIN (SELECT albumMBID, pop, max(date) AS MaxDate
-										FROM popAlbums  
-										GROUP BY albumMBID) groupedp
-										ON p.albumMBID = groupedp.albumMBID
-										AND p.date = groupedp.MaxDate) p1 
-					ON b.albumMBID = p1.albumMBID
-					ORDER BY " . $columnName . " " . $newOrder . ";";
 
-$gathering = "";
-
-if ( $source == "musicbrainz" ) {
-	$gathering = $gatherAlbumInfoLastFM;
-};
-
-if ( $source == "spotify" ) {
-	$gathering = $gatherAlbumInfoSpot;
-};
-*/
 $sortit = $connekt->query( $gatherAlbumInfoLastFM );
 
 if ( !$sortit ) {
@@ -230,6 +173,7 @@ if(!empty($sortit))	 { ?>
 -->
 <th onClick="sortColumn('albumListeners', '<?php echo $listenersNewOrder; ?>', '<?php echo $artistMBID; ?>', '<?php echo $source ?>')"><div class="pointyHead rightNum">LastFM<br>Listeners</div></th>
 <th onClick="sortColumn('albumPlaycount', '<?php echo $playcountNewOrder; ?>', '<?php echo $artistMBID; ?>', '<?php echo $source ?>')"><div class="pointyHead rightNum">LastFM<br>Playcount</div></th>
+<th><div class="popStyle">LastFM<br>Ratio</div></th>
 <th>LastFM<br>Data Date</th>
 </tr>
 </thead>
@@ -252,6 +196,7 @@ if(!empty($sortit))	 { ?>
 		$albumListeners = number_format ($albumListenersNum);
 		$albumPlaycountNum = $row[ "albumPlaycount"];
 		$albumPlaycount = number_format ($albumPlaycountNum);
+		$albumRatio = "1:" . floor($albumPlaycountNum/$albumListenersNum);
 ?>
 
 	<tr>
@@ -270,6 +215,7 @@ if(!empty($sortit))	 { ?>
 -->
 		<td class="rightNum"><?php echo $albumListeners ?></td>
 		<td class="rightNum"><?php echo $albumPlaycount ?></td>
+		<td class="popStyle"><?php echo $albumRatio ?></td>
 		<td class="popStyle"><?php echo $lastFMDate ?></td>
 	</tr>
 

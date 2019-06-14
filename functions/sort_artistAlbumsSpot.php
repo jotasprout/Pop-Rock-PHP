@@ -171,9 +171,8 @@ if(!empty($sortit))	 { ?>
 <thead>
 <tr>
 <th>Cover Art</th>
-<th>Album Spotify ID</th>
 <!--
-
+<th>Album Spotify ID</th>
 <th>albumMBID</th>
 -->
 <th onClick="sortColumn('albumName', '<?php echo $albumNameNewOrder; ?>', '<?php echo $artistSpotID; ?>', '<?php echo $source ?>')"><div class="pointyHead">Album Name</div></th>
@@ -183,8 +182,9 @@ if(!empty($sortit))	 { ?>
 <th><div class="pointyHead popStyle">Total<br>Tracks</div></th>
 
 -->
-<th class="popStyle">Spotify<br>Data Date</th>
+
 <th onClick="sortColumn('pop', '<?php echo $popNewOrder; ?>', '<?php echo $artistSpotID; ?>', '<?php echo $source ?>')"><div class="pointyHead popStyle">Spotify<br>Popularity</div></th>
+<th class="popStyle">Spotify<br>Data Date</th>
 <!--
 <th>LastFM<br>Data Date</th>
 
@@ -200,12 +200,8 @@ if(!empty($sortit))	 { ?>
 
 	while ($row = mysqli_fetch_array($sortit)) {
 		$artistName = $row['artistName'];
-		if (is_null($row['albumArtSpot'])) {
-			$coverArt = $row['albumArtMB'];
-		} else {
-			$coverArt = $row['albumArtSpot'];
-		};
 
+		$coverArt = $row['albumArtSpot'];
 		if (is_null($row['albumSpotID'])) {
 			$albumSpotID = $row['albumMBID'];
 			$source = 'musicbrainz';
@@ -222,19 +218,7 @@ if(!empty($sortit))	 { ?>
 		$albumReleased = $row['year'];
 		$albumPop = $row['pop'];
 		$date = $row['date'];
-/*
-		$lastFMDate = $row[ "dataDate" ];
-		$albumListenersNum = $row[ "albumListeners"];
-		$albumListeners = number_format ($albumListenersNum);
-		if (!$albumListeners > 0) {
-			$albumListeners = "n/a";
-		};
-		$albumPlaycountNum = $row[ "albumPlaycount"];
-		$albumPlaycount = number_format ($albumPlaycountNum);
-		if (!$albumPlaycount > 0) {
-			$albumPlaycount = "n/a";
-		};
-		*/
+
 ?>
 
 	<tr>

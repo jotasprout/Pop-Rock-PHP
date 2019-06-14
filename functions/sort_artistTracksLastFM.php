@@ -111,7 +111,7 @@ if(!empty($sortit)) { ?>
 
 			$trackPlaycountNum = $row["trackPlaycount"];
 			$trackPlaycount = number_format ($trackPlaycountNum);
-
+			$trackRatio = "1:" . floor($trackPlaycountNum/$trackListenersNum);
 	?>
 			<tr>
 				<td><?php echo $albumName ?></td>
@@ -120,7 +120,7 @@ if(!empty($sortit)) { ?>
 				<td class="popStyle"><?php echo $lastFMDate ?></td>
 				<td class="rightNum"><?php echo $trackListeners ?></td>
 				<td class="rightNum"><?php echo $trackPlaycount ?></td>
-				<td class="popStyle"><p>Coming Soon</p></td>
+				<td class="popStyle"><?php echo $trackRatio ?></td>
 			</tr>
 	<?php 
 		} // end of while
