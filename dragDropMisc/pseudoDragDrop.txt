@@ -1,0 +1,6 @@
+artistArt has artistID property
+artistID passed up to group/list/div 
+
+* input text field for typing in artist name AJAX filters artist art
+* save group button
+* Button to create chart from group? Or just happens auto AJAX?

@@ -1,0 +1,252 @@
+var comm_ajax_timer_id = 0;
+
+
+
+
+function hide_all()
+{
+	$comm("#comments").hide();
+}
+
+function click_checkbox(check_id)
+{
+	check_handle = document.getElementById(check_id);
+	check_handle.checked = !check_handle.checked;
+}
+
+function update_preview()
+{
+	var name = nl2br(strip_tags($comm("#comment-form-name").val()));
+	var email = nl2br(strip_tags($comm("#comment-form-email").val()));
+	var website = nl2br(strip_tags($comm("#comment-form-website").val()));
+    var cmt = $comm("#comment-form-comment").val();
+    cmt = cmt.replace(/</g, "&lt;");
+    cmt = cmt.replace(/&lt;blockquote/g, '<blockquote');
+    cmt = cmt.replace(/&lt;\/blockquote/g, '</blockquote');
+	var comment = nl2br(strip_tags(cmt));
+
+	if (trim(comment) == '')
+	{
+		$comm("#comment-preview-div").hide();
+		$comm("#comment-preview-title").hide();
+	}
+	else
+	{
+		$comm("#comment-preview-div").show();
+		$comm("#comment-preview-title").show();
+	}
+
+
+	$comm("#comment-preview").html(nl2br(strip_tags(cmt, '<a><br><strong><b><em><i><blockquote><pre><code><img><ul><ol><li><del>')));
+	if (trim(email) != '')
+		$comm("#comment-preview-avatar").attr("src", "http://www.gravatar.com/avatar/" + md5(email) + ".jpg?s=50");
+
+	if (trim(name) != '')
+		$comm("#comment-preview-author").html("<a href='"+website+"'>"+name+"</a>");
+}
+
+function ajax_error(page)
+{
+	$comm("#comments-loading").addClass("invisible");
+	shownote('error', 'AJAX Error: There is something wrong with ' + page + '. Please contact website administrator!');
+}
+
+function quote_comment(commid,page)
+{
+	$comm("#comments-loading").removeClass("invisible");
+	comm_ajax_timer_id = setTimeout('ajax_error("'+page+'");', 10000);
+	$comm.postJSON(page, { id: commid }, function (data){hendluj_quote(data);});
+}
+
+function hendluj_quote(json)
+{
+	$comm("#comments-loading").addClass("invisible");
+	clearTimeout(comm_ajax_timer_id);
+	var old = $comm('#comment-form-comment').text();
+	$comm('#comment-form-comment').text(old+"<blockquote><a href=\"#comment"+json.id+"\">"+json.wrote+"</a>\n"+json.comment+"</blockquote>\n\n");
+	$comm.scrollTo('#comment-form-div', 1000);
+}
+
+function shownote(cssclass, note)
+{
+	$comm("#comments-note").removeClass("invisible");
+	$comm("#comments-note").removeClass("warning");
+	$comm("#comments-note").removeClass("info");
+	$comm("#comments-note").removeClass("success");
+	$comm("#comments-note").removeClass("error");
+
+	$comm("#comments-note").addClass(cssclass);
+	$comm("#comments-note").html(note);
+	$comm("#comments-note").show("slow");
+}
+
+function hidenote()
+{
+	$comm("#comments-note").hide("slow");
+}
+
+function try_ajax_submit(page)
+{
+
+	$comm("#comments-loading").removeClass("invisible");
+
+	comm_ajax_timer_id = setTimeout('ajax_error("'+page+'");', 30000);
+
+	var what = document.getElementById("comment-form-what").value;
+	var name = document.getElementById("comment-form-name").value;
+	var email = document.getElementById("comment-form-email").value;
+	var website = document.getElementById("comment-form-website").value;
+	var comment = document.getElementById("comment-form-comment").value;
+	var captcha = document.getElementById("comment-form-captcha").value;
+	var image = document.getElementById("comment-form-image").value;
+	var notify = document.getElementById("comment-form-notify").checked;
+
+ 	$comm.postJSON(page, { ajax: "true", what: what, name: name, email: email, website: website, comment: comment, captcha: captcha, image: image, notify: notify }, function (data){hendluj(data);});
+
+ 	return false; //prevent classic form submit
+}
+
+function hendluj(json)
+{
+
+	$comm("#comments-loading").addClass("invisible");
+	clearTimeout(comm_ajax_timer_id);
+	shownote(json.status, json.note);
+	if (json.comment != undefined) {
+		window.location.reload();
+		//$comm("#comments").append("<li class='new-comment' id='commentNEW'><div class='comment-author'>"+json.youwrote+"</div><div class='comments-gravatar'><img src='"+json.avatar+"' /></div><div class='comment-content'><p>"+json.comment+"</p></div></li>");
+	}
+}
+
+function jqCheckAll( flag )
+{
+   $comm(":checkbox").attr('checked', flag);
+}
+
+/**
+ *
+ * @access public
+ * @return void
+ **/
+function get_title(id, sURL)
+{
+	$comm.ajaxq ("comm_ajax_queue", {
+	    url: "get-title.php?url="+sURL,
+	    cache: false,
+	    success: function(html)
+	    {
+	        $comm("#"+id).html(html);
+	    }
+	});
+
+}
+
+/**
+ *
+ * @access public
+ * @return void
+ **/
+function check_batch_form()
+{
+	var value1 = document.getElementsByName("action")[0].value;
+	var value2 = document.getElementsByName("action")[1].value;
+	if (value1 == 'none' && value2 == 'none') {
+			alert('You have not selected batch action!');
+			return false;
+	}
+	else return true;
+}
+
+//added in 2.2
+
+function make_star_rating(id, saveURL)
+{
+	var $val = $comm("#rate"+id).val();
+
+	$comm("#rate"+id).children().not("select, .rating_title").hide();
+
+	$comm("#rate"+id).stars({
+		inputType: "select",
+		oneVoteOnly: true,
+		callback: function(ui, type, value)
+		{
+			$comm("#ajax"+id).removeClass("ajax_ok_small");
+			$comm("#ajax"+id).addClass("ajax_loader_small");
+			$comm("#ajax"+id).show();
+
+			$comm.post(saveURL, {rate: value, id: id}, function(json)
+			{
+				$comm("#ajax"+id).removeClass("ajax_loader_small");;
+				if (json.status != 'ok')
+					$comm("#ajax"+id).addClass("ajax_error_small");
+				else
+					$comm("#ajax"+id).addClass("ajax_ok_small");
+
+				setTimeout(function(){
+					$comm("#ajax"+id).fadeOut();
+					ui.select(json.avg);
+				}, 2000);
+
+			}, "json");
+		}
+	});
+}
+
+function ajax_remove_comment(id, delURL)
+{
+	if (!confirm("Are you sure?")) return false;
+
+	$comm.post(delURL, {id: id}, function(json)
+	{
+		if (json.status == 'ok')
+		{
+			$comm("#comment"+id).fadeOut();
+		}
+	}, "json");
+
+	return false;
+}
+
+function ajax_unapprove_comment(id, theURL)
+{
+	//if (!confirm("Are you sure?")) return false;
+
+	$comm.post(theURL, {id: id}, function(json)
+	{
+		if (json.status == 'ok')
+		{
+			$comm("#comment"+id).fadeOut();
+		}
+	}, "json");
+
+	return false;
+}
+
+function ajax_approve_comment(id, theURL)
+{
+	//call the unapprove function, but pass the active=1 to make it actually active
+	return ajax_unapprove_comment(id, theURL+"?active=1");
+}
+
+function ajax_toggle_ban(el, criteria, theURL)
+{
+	$comm(el).html("<span class='ajax_loader_small'></span>")
+
+	$comm.post(theURL, {criteria: criteria}, function(json)
+	{
+		if (json.status == 'ok')
+			$comm(el).html("<em>"+json.poruka+"</em>");
+		else
+			$comm(el).html("<strong>"+json.poruka+"</strong>");
+
+	}, "json");
+
+	return false;
+}
+
+
+
+var $comm = $;
+$comm.postJSON = function(url, data, callback) {
+	$comm.post(url, data, callback, "json");
+};
