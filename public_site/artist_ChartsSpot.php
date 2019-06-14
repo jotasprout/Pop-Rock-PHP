@@ -413,7 +413,7 @@ d3.json("functions/createArtist_followersD3.php?artistSpotID=<?php echo $artistS
 </script>
 
 <?php echo $scriptsAndSuch; ?>
-
+<!--
 <script>
 
 const artistName = '<?php echo $artistName; ?>';
@@ -423,6 +423,7 @@ $(document).ready(function(){
     document.title = docTitleText;
 });
 </script>
+-->
 <script>
 const artistSpotID = '<?php echo $artistSpotID; ?>';
 const artistMBID = '<?php echo $artistMBID ?>';

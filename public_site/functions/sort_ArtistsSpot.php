@@ -173,9 +173,14 @@ if (!empty($sortit)) { ?>
 				};
 				$artistPlaycountNum = $row[ "artistPlaycount"];
 				$artistPlaycount = number_format ($artistPlaycountNum);
-				if (!$artistPlaycount > 0) {
-					$artistPlaycount = "n/a";
-				};
+				$artistRatio = 0;
+						if (!$artistPlaycount > 0) {
+							$artistPlaycount = "n/a";
+							$artistRatio = "n/a";
+							$lastFMDate = "n/a";
+						} else {
+							$artistRatio = "1:" . floor($artistPlaycountNum/$artistListenersNum);
+						};
 		?>
 
 <tr>
@@ -192,7 +197,7 @@ if (!empty($sortit)) { ?>
 
 	<td class="rightNum"><?php echo $artistListeners ?></td>
 	<td class="rightNum"><?php echo $artistPlaycount ?></td>
-	<td class="popStyle"><p>Coming<br>Soon</p></td>
+	<td class="popStyle"><?php echo $artistRatio ?></td>
 </tr>
 
 		<?php 

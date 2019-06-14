@@ -55,7 +55,6 @@ if(!$getit){ echo 'Cursed-Crap. Did not run the query.'; }
 		<div class="panel-body">
 
 			<!-- Panel Content -->
-			<!-- D3 chart goes here -->
 			<?php if (!empty($getit)) { ?>
 
 <table class="table" id="tableoartists">
@@ -71,32 +70,34 @@ if(!$getit){ echo 'Cursed-Crap. Did not run the query.'; }
 	<th onClick="sortColumn('artistPlaycount', 'unsorted')"><div class="pointyHead rightNum">LastFM<br>Playcount</div></th>
 	<th><div class="popStyle">LastFM<br>Ratio</div></th>
 </tr>
-	</thead>
+</thead>
 
-	<tbody>
+<tbody>
 
-				<?php
-					while ( $row = mysqli_fetch_array( $getit ) ) {
-						$artistName = $row[ "artistName" ];
+<?php
+	while ( $row = mysqli_fetch_array( $getit ) ) {
+		$artistName = $row[ "artistName" ];
 
-						$artistMBID = $row[ "artistMBID" ];
+		$artistMBID = $row[ "artistMBID" ];
 
-						$artistArt = $row[ "artistArt" ];
+		$artistArt = $row[ "artistArt" ];
 
-						$lastFMDate = $row[ "dataDate" ];
-						$artistListenersNum = $row[ "artistListeners"];
-						$artistListeners = number_format ($artistListenersNum);
+		$lastFMDate = $row[ "dataDate" ];
+		$artistListenersNum = $row[ "artistListeners"];
+		$artistListeners = number_format ($artistListenersNum);
 
-						$artistPlaycountNum = $row[ "artistPlaycount"];
-						$artistPlaycount = number_format ($artistPlaycountNum);
-						$artistRatio = "1:" . floor($artistPlaycountNum/$artistListenersNum);
+		$artistPlaycountNum = $row[ "artistPlaycount"];
+		$artistPlaycount = number_format ($artistPlaycountNum);
+		$artistRatio = "1:" . floor($artistPlaycountNum/$artistListenersNum);
 
-				?>
+?>
 
 <tr>
-	<td><a href='https://www.roxorsoxor.com/poprock/artist_ChartsLastFM.php?artistSpotID=<?php echo $artistSpotID ?>&artistMBID=<?php echo $artistMBID ?>&source=<?php echo $source ?>'><img src='<?php echo $artistArt ?>' class="indexArtistArt"></a></td>	
-	<td><?php echo $artistMBID ?></td>
+<td><a href='https://www.roxorsoxor.com/poprock/artist_ChartsLastFM.php?artistSpotID=<?php echo $artistSpotID ?>&artistMBID=<?php echo $artistMBID ?>&source=<?php echo $source ?>'><img src='<?php echo $artistArt ?>' class="indexArtistArt"></a></td>	
+	
 	<td><a href='https://www.roxorsoxor.com/poprock/artist_ChartsLastFM.php?artistSpotID=<?php echo $artistSpotID ?>&artistMBID=<?php echo $artistMBID ?>&source=<?php echo $source ?>'><?php echo $artistName ?></a></td>
+
+	<td><?php echo $artistMBID ?></td>
 	<!-- --> 
 	<td class="popStyle"><?php echo $lastFMDate ?></td>		
 	<td class="rightNum"><?php echo $artistListeners ?></td>

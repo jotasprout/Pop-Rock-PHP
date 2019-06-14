@@ -110,9 +110,9 @@ if(!$getit){
 <td class="popStyle"><?php echo $albumRatio ?></td>
 </tr>
 					
-					<?php 
-						} // end of while
-					?>
+<?php 
+	} // end of while
+?>
 					
 				</tbody>
 			</table>

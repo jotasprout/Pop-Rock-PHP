@@ -135,7 +135,7 @@ if (!empty($sortit)) { ?>
 	<td class="popStyle"><?php echo $lastFMDate ?></td>
 	<td class="rightNum"><?php echo $artistListeners ?></td>
 	<td class="rightNum"><?php echo $artistPlaycount ?></td>
-	<td class="popStyle"><?php echo $albumRatio ?></td>
+	<td class="popStyle"><?php echo $artistRatio ?></td>
 </tr>
 
 		<?php 
