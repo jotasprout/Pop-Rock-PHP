@@ -359,6 +359,15 @@ function insertLastFMalbumDataFilenames ($filenames) {
 	};	
 };
 
+$rainbowJJ = array (
+	'data/JanetJackson_Person_06-09-19.json', 
+	'data/JanetJackson_Person_06-02-19.json',
+	'data/JanetJackson_Person_05-26-19.json',
+	'data/Rainbow_Group_06-08-19.json', 
+	'data/Rainbow_Group_06-01-19.json',
+	'data/Rainbow_Group_05-25-19.json'
+);
+
 $filenames_01 = array (
     'data/AliceCooper_Combined_06-09-19.json',
     'data/TheAmboyDukes_Group_06-09-19.json',
