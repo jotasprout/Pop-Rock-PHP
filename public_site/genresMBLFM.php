@@ -72,13 +72,13 @@ if(!$getit){
 						while ( $row = mysqli_fetch_array( $getit ) ) {
 							$artistName = $row[ "artistName" ];
 							$artistGenre = $row[ "genre" ];
-							$artistArt = $row[ "artistArt" ];
+							$artistArtMB = $row[ "artistArtMB" ];
 					?>
 
 					<tr>
-						<!--
-						<td><img src='<?php // echo $artistArt ?>' height='64' width='64'></td>	
-						-->
+						<!---->
+						<td><img src='<?php echo $artistArtMB ?>' height='64' width='64'></td>	
+						
 						<td><?php echo $artistName ?></td>
 						<td><a href='https://www.roxorsoxor.com/poprock/genreArtists_popCurrentBars.php?artistGenre=<?php echo $artistGenre ?>'><?php echo $artistGenre ?></a></td>
 					</tr>

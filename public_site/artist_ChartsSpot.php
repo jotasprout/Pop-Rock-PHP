@@ -1,7 +1,6 @@
 <?php 
     $artistSpotID = $_GET['artistSpotID'];
     $artistMBID = $_GET['artistMBID'];
-    $source = $_GET['source'];
 	require_once 'page_pieces/stylesAndScripts.php';
 ?>
 
@@ -48,6 +47,8 @@
 <div class="container-fluid">
 <div id="fluidCon">
 </div> <!-- end of fluidCon -->
+
+<p><a href="forms/edit_Artist.php?artistSpotID=<?php echo $artistSpotID ?>&artistMBID=<?php echo $artistMBID ?>">Edit this Artist</a></p>	
 
 <div class="panel panel-primary">
 
