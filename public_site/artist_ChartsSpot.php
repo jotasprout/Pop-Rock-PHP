@@ -85,7 +85,9 @@
                 </ul>
             </div> <!-- End of Column 2 -->
 
-            <div class="col-md-7"></div>
+            <div id="assocArtists" class="col-md-7"> <!-- End of Column 3 -->
+
+            </div> <!-- End of Column 3 -->
 
         </div> <!-- End of row -->
         
