@@ -1,7 +1,6 @@
 <?php 
-    $artistSpotID = $_GET['artistSpotID'];
+    //$artistSpotID = $_GET['artistSpotID'];
     $artistMBID = $_GET['artistMBID'];
-    $source = $_GET['source'];
 	require_once 'page_pieces/stylesAndScripts.php';
 ?>
 
