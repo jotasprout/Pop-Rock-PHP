@@ -1,5 +1,7 @@
 <?php
-require_once '../../rockdb.php';
+
+	require __DIR__ . '../../rockdb.php';
+
 /*
 $filename = '';
 
