@@ -3,8 +3,8 @@
 	require_once '../../rockdb.php';
 	require_once 'artistArrays_LastFM.php';
 
-    insertLastFMalbumDataFilenames ($rainbowJJ); 
-	insertLastFMtrackDataFilenames ($rainbowJJ);
+    insertLastFMalbumDataFilenames ($aliceJJ); 
+	insertLastFMtrackDataFilenames ($aliceJJ);
     #insertLastFMalbumDataFilenames ($filenames_02); 
     #insertLastFMtrackDataFilenames ($filenames_02);
     #insertLastFMalbumDataFilenames ($filenames_03); 
