@@ -22,11 +22,12 @@ if (isset($_POST['submit'])){
 	$artistMBID = mysqli_real_escape_string($connekt, htmlspecialchars($_POST['artistMBID']));
 	$artistSpotID = mysqli_real_escape_string($connekt, htmlspecialchars($_POST['artistSpotID']));
 	$assocArtistSpotID = mysqli_real_escape_string($connekt, htmlspecialchars($_POST['assocArtistSpotID']));
+	$assocAlbumSpotID = mysqli_real_escape_string($connekt, htmlspecialchars($_POST['assocAlbumSpotID']));
 	$albumArtFilename = mysqli_real_escape_string($connekt, htmlspecialchars($_POST['albumArtMB']));
 	$albumArtMB = "https://www.roxorsoxor.com/poprock/cover-art/" . $albumArtFilename;
 	
 	// save data to database
-	$updateAlbum = "UPDATE albumsMB SET albumName='$albumName', artistMBID='$artistMBID', artistSpotID='$artistSpotID', assocArtistSpotID='$assocArtistSpotID', albumArtMB='$albumArtMB' WHERE albumMBID='$albumMBID'";
+	$updateAlbum = "UPDATE albumsMB SET albumName='$albumName', artistMBID='$artistMBID', artistSpotID='$artistSpotID', assocArtistSpotID='$assocArtistSpotID', assocAlbumSpotID='$assocAlbumSpotID', albumArtMB='$albumArtMB' WHERE albumMBID='$albumMBID'";
 	
 	$retval = $connekt->query($updateAlbum);
 	
@@ -52,7 +53,7 @@ else // if the form isn't being submitted, get the data from the db and display 
 		$albumMBID = $_GET['albumMBID'];
 		
 		$queryZ = "
-			SELECT mb.albumName, mb.albumMBID, z.artistName, z.artistMBID, z.artistSpotID, mb.albumArtMB, mb.assocArtistSpotID
+			SELECT mb.albumName, mb.albumMBID, z.artistName, z.artistMBID, z.artistSpotID, mb.albumArtMB, mb.assocArtistSpotID, mb.assocAlbumSpotID
 				FROM albumsMB mb 
 				JOIN artists z ON z.artistMBID = mb.artistMBID
 				WHERE mb.albumMBID='" . $albumMBID . "';";
@@ -71,6 +72,7 @@ else // if the form isn't being submitted, get the data from the db and display 
 			$artistSpotID = $row['artistSpotID'];
 			$assocArtistSpotID = $row['assocArtistSpotID'];
 			//$assocArtistName = $row['assocArtistName'];
+			$assocAlbumSpotID = $row['assocAlbumSpotID'];
 			if($row["albumArtMB"] == "") {
 				$albumArtMB = "nope.png";
 			}
@@ -182,6 +184,21 @@ else // if the form isn't being submitted, get the data from the db and display 
 				</div>
 				-->
 			</div>
+			
+						
+			<div class="form-group"> <!-- Row 4 --> 
+				<!-- Column 1 -->
+				<label class="col-lg-2 control-label" for="assocAlbumSpotID">Associated Album SpotID</label>
+				<!-- Column 2 -->
+				<div class="col-lg-3">
+					<input class="form-control" type="assocAlbumSpotID" name="assocAlbumSpotID"  value="<?php echo $assocAlbumSpotID; ?>" />
+				</div>
+				<!-- Column 3 
+				<div class="col-lg-3">
+					<input class="form-control" type="assocArtistName" name="assocArtistName"  value="<?php //echo $assocArtistName; ?>" readonly/>
+				</div>
+				-->
+			</div>
 					
 			<!-- Last Row -->
 			<div class="form-group"> <!-- Last Row -->	
@@ -220,7 +237,7 @@ else // if the form isn't being submitted, get the data from the db and display 
     while ($row = mysqli_fetch_array($result0)) {
 		echo "<tr><td><img src='" . $row['albumArtMB'] . "' height='64' width='64'></td><td>" . $row['albumName'] . "</td></tr>";
     }
-	// Finish table of Assigned Cases
+
     echo "</tbody></table>";
 	// When attempt is complete, connection closes
     mysqli_close($connekt);

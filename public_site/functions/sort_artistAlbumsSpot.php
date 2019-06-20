@@ -171,8 +171,9 @@ if(!empty($sortit))	 { ?>
 <thead>
 <tr>
 <th>Cover Art</th>
+	<th>Album Spotify ID</th>
 <!--
-<th>Album Spotify ID</th>
+
 <th>albumMBID</th>
 -->
 <th onClick="sortColumn('albumName', '<?php echo $albumNameNewOrder; ?>', '<?php echo $artistSpotID; ?>', '<?php echo $source ?>')"><div class="pointyHead">Album Name</div></th>
@@ -223,8 +224,9 @@ if(!empty($sortit))	 { ?>
 
 	<tr>
 	<td><img src='<?php echo $coverArt ?>' height='64' width='64'></td>
+		<td><?php echo $albumSpotID ?></td>
 <!--
-<td><?php //echo $albumSpotID ?></td>
+
 <td><?php //echo $albumMBID ?></td>
 -->
 		<td><a href='https://www.roxorsoxor.com/poprock/album_TracksListSpot.php?albumSpotID=<?php echo $albumSpotID ?>&source=<?php echo $source ?>'><?php echo $albumName ?></a></td>

@@ -73,17 +73,17 @@ if(!$getit){
 <thead>
 <tr>
 <th>Cover Art</th>
-<!-- 
+<!-- -->
 <th>Album Spotify ID</th>
--->
+
 <th onClick="sortColumn('albumName', 'ASC', '<?php echo $artistSpotID; ?>', '<?php echo $source ?>')"><div class="pointyHead">Album Name</div></th>
 <th onClick="sortColumn('year', 'unsorted', '<?php echo $artistSpotID; ?>', '<?php echo $source ?>')"><div class="pointyHead popStyle">Released</div></th>
 <!--
 <th><div class="pointyHead popStyle">Total<br>Tracks</div></th>
 -->
-<th class="popStyle">Spotify<br>Data Date</th>
+
 <th onClick="sortColumn('pop', 'unsorted', '<?php echo $artistSpotID ?>', '<?php echo $source ?>')"><div class="pointyHead popStyle">Spotify<br>Popularity</div></th>
-<!-- -->
+<th class="popStyle">Spotify<br>Data Date</th>
 </tr>
 </thead>
 
@@ -108,9 +108,9 @@ if(!$getit){
 					
 <tr>
 <td><img src='<?php echo $coverArt ?>' height='64' width='64'></td>
-<!--
-<td><?php //echo $albumSpotID ?></td>
--->
+<!---->
+<td><?php echo $albumSpotID ?></td>
+
 <td><a href='https://www.roxorsoxor.com/poprock/album_TracksListSpot.php?artistSpotID=<?php echo $artistSpotID ?>&artistMBID=<?php echo $artistMBID ?>&albumSpotID=<?php echo $albumSpotID ?>&source=<?php echo $source ?>''><?php echo $albumName ?></a></td>
 
 
