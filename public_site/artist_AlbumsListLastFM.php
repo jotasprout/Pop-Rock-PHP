@@ -13,7 +13,7 @@ if (!$connekt) {
 };
 
 $blackScabies = "SELECT b.albumName, b.albumMBID, z.artistName, f1.dataDate, f1.albumListeners, f1.albumPlaycount, x.albumArtMB
-					FROM (SELECT mb.albumName, mb.albumMBID, mb.artistMBID
+					FROM (SELECT mb.albumName, mb.albumMBID, mb.artistMBID, mb.assocAlbumSpotID
 						FROM albumsMB mb 
 						WHERE mb.artistMBID='$artistMBID') b 
 					JOIN artists z ON z.artistMBID = b.artistMBID
