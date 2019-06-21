@@ -32,15 +32,18 @@ if (isset($_POST['submit'])){
 	
 	$retval2 = $connekt->query($updateArtistMB);
 	
+    $updateArtistMB = "UPDATE artistsMB SET artistName='$artistName', artistMBID='$artistMBID', assocArtistSpotID='$assocArtistSpotID', artistArtMB='$artistArtMB' WHERE artistMBID='$artistMBID'";
+	
+	$retval2 = $connekt->query($updateArtistMB);	
+	
 	// Feedback of whether UPDATE worked or not
 	if(!$retval){
-		// if insert did NOT work
+		// if update did NOT work
 		die('Crap. Could not update this artist because: ' . mysqli_error($connekt));
 	}
 	else
 	{
-		// if update worked, go to list of artists
-		// do I want to change that to something AJAXy?
+		// if update worked, go back to artist page
 		header("Location: https://www.roxorsoxor.com/poprock/artist_ChartsSpot.php?artistSpotID=" . $artistSpotID . "&artistMBID=" . $artistMBID);
 	}
 }
@@ -53,13 +56,13 @@ else // if the form isn't being submitted, get the data from the db and display 
 		$artistMBID = $_GET['artistMBID'];
 		
 		$queryJ = "
-		SELECT z.artistName, z.artistMBID, z.artistSpotID, z.assocArtistSpotID, z.artistArt, mb.artistArtMB
+		SELECT z.artistName, z.artistMBID, z.artistSpotID, z.artistArt, mb.artistArtMB
 			FROM artists z 
 			JOIN artistsMB mb ON z.artistMBID = mb.artistMBID
 			WHERE z.artistSpotID='" . $artistSpotID . "';";
 
 		$queryZ = "
-			SELECT z.artistName, z.artistMBID, z.artistSpotID, z.assocArtistSpotID, z.artistArt, mb.artistArtMB
+			SELECT z.artistName, z.artistMBID, z.artistSpotID, z.artistArt, mb.artistArtMB
                 FROM artists z 
                 LEFT JOIN artistsMB mb ON z.artistMBID = mb.artistMBID
 				WHERE z.artistSpotID='" . $artistSpotID . "';";
@@ -76,8 +79,6 @@ else // if the form isn't being submitted, get the data from the db and display 
             $artistArtMB = $row['artistArtMB'];
             $artistArt = $row['artistArt'];
 			$artistSpotID = $row['artistSpotID'];
-			$assocArtistSpotID = $row['assocArtistSpotID'];
-			//$assocArtistName = $row['assocArtistName'];
 			if($row["artistArtMB"] == "") {
 				$artistArtMB = "nope.png";
 			}

@@ -88,7 +88,7 @@
             <div class="col-md-5"> <!-- Start of Column 3 -->
 					<div class="panel panel-primary">
 						<div class="panel-heading">
-							<h3 class="panel-title">Related Artists</h3>
+							<h3 class="panel-title">Associated Artists</h3>
 						</div> <!-- close panel-heading -->
 
 						<div class="panel-body">
@@ -420,7 +420,51 @@ d3.json("functions/createArtist_followersD3.php?artistSpotID=<?php echo $artistS
             .text(playcount); 
 
     });   
-     
+    
+	
+	
+	
+	d3.json("functions/get_assocArtists.php", function (assocData) {
+		
+		console.log(assocData);
+		
+		var svg = d3.select("#assocArtists")
+					.append("svg")
+					.attr("width", 400)
+					.attr("height", 100);
+        // Rectangles
+        svg.selectAll("rect")
+            .data(assocData)
+            .enter()
+            .append("rect")
+            .attr("x", function (d,i) {
+                return i * 65;
+            })
+            .attr("width", 64)
+            .attr("height", 64);
+
+        // Images
+        svg.selectAll("image")
+            .data(assocData)
+            .enter()
+            .append("svg:image")
+            .attr("xlink:href", function (d){
+                return d.artistArt;
+            })
+            .attr("x", function (d,i) {
+                return i * 65;
+            })
+            .attr("width", 64)
+            .attr("height", 64)
+            .append("title")
+            .text(function(d){
+                return d.artistName;
+            });	
+
+		
+	});
+	
+	
 </script>
 
 <?php echo $scriptsAndSuch; ?>
