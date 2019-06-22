@@ -24,18 +24,18 @@ if (isset($_POST['submit'])){
 	$artistArtMB = "https://www.roxorsoxor.com/poprock/artist-art/" . $artistArtFilename;
 	
 	// save data to database
-	$updateArtistSpot = "UPDATE artists SET artistName='$artistName', artistMBID='$artistMBID', assocArtistSpotID='$assocArtistSpotID' WHERE artistSpotID='$artistSpotID'";
+	$updateArtistSpot = "UPDATE artists SET artistName='$artistName', artistMBID='$artistMBID' WHERE artistSpotID='$artistSpotID'";
 	
     $retval = $connekt->query($updateArtistSpot);
     
-    $updateArtistMB = "UPDATE artistsMB SET artistName='$artistName', artistMBID='$artistMBID', assocArtistSpotID='$assocArtistSpotID', artistArtMB='$artistArtMB' WHERE artistMBID='$artistMBID'";
+    $updateArtistMB = "UPDATE artistsMB SET artistName='$artistName', artistMBID='$artistMBID', artistArtMB='$artistArtMB' WHERE artistMBID='$artistMBID'";
 	
 	$retval2 = $connekt->query($updateArtistMB);
 	
-    $updateArtistMB = "UPDATE artistsMB SET artistName='$artistName', artistMBID='$artistMBID', assocArtistSpotID='$assocArtistSpotID', artistArtMB='$artistArtMB' WHERE artistMBID='$artistMBID'";
+    $updateAssocArtists = "INSERT INTO artistAssocArtists SET PrimaryArtistName='$artistName', primaryArtistMBID='$artistMBID', primaryArtistSpotID='$artistSpotID', assocArtistSpotID='$assocArtistSpotID'";
 	
-	$retval2 = $connekt->query($updateArtistMB);	
-	
+	$retval3 = $connekt->query($updateAssocArtists);	
+	/**/
 	// Feedback of whether UPDATE worked or not
 	if(!$retval){
 		// if update did NOT work
@@ -62,9 +62,10 @@ else // if the form isn't being submitted, get the data from the db and display 
 			WHERE z.artistSpotID='" . $artistSpotID . "';";
 
 		$queryZ = "
-			SELECT z.artistName, z.artistMBID, z.artistSpotID, z.artistArt, mb.artistArtMB
+			SELECT z.artistName, z.artistMBID, z.artistSpotID, z.artistArt, mb.artistArtMB, a.assocArtistSpotID
                 FROM artists z 
                 LEFT JOIN artistsMB mb ON z.artistMBID = mb.artistMBID
+				LEFT JOIN artistAssocArtists a ON a.primaryArtistSpotID = z.artistSpotID
 				WHERE z.artistSpotID='" . $artistSpotID . "';";
 		
 		$resultZ = mysqli_query($connekt, $queryZ) 
@@ -79,6 +80,7 @@ else // if the form isn't being submitted, get the data from the db and display 
             $artistArtMB = $row['artistArtMB'];
             $artistArt = $row['artistArt'];
 			$artistSpotID = $row['artistSpotID'];
+			$assocArtistSpotID = $row['assocArtistSpotID'];
 			if($row["artistArtMB"] == "") {
 				$artistArtMB = "nope.png";
 			}

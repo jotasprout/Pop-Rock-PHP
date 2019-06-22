@@ -8,15 +8,17 @@ require( "class.artist.php" );
 $connekt = new mysqli($GLOBALS['host'], $GLOBALS['un'], $GLOBALS['magicword'], $GLOBALS['db']);
 
 if (!$connekt) {
-	echo 'Darn. Did not connect.';
+	echo 'Darn. Did not connect. Screwed up like this: ' . mysqli_error($connekt) . '</p>';
 };
 
-// Could I remove artistSpotID from the select statement below as long as artistSpotID is in the WHERE clause?
+
+
 $artistInfoAll = "SELECT a.artistSpotID, a.artistName, a.artistArt, b.pop, b.date, b.followers
 	FROM artists a
 		INNER JOIN popArtists b ON a.artistSpotID = b.artistSpotID
 			WHERE a.artistSpotID = '$artistSpotID'
 				ORDER BY b.date DESC";
+
 
 $getit = mysqli_query($connekt, $artistInfoAll);
 

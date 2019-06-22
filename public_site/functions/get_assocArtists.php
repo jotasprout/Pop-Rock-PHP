@@ -12,20 +12,27 @@ if ( !$connekt ) {
 	echo 'Darn. Did not connect. Screwed up like this: ' . mysqli_error($connekt) . '</p>';
 };
 
+
 $getAssocArtists = "SELECT r.assocArtistName, r.assocArtistSpotID, r.assocArtistMBID, a.artistArt, m.artistArtMB
 					FROM artistAssocArtists r
-					JOIN artists a ON r.primaryArtistSpotID = a.artistSpotID
-					LEFT JOIN artistsMB m ON m.artistMBID = a.artistMBID
-					WHERE r.primaryArtistSpotID = $artistSpotID;";
+					LEFT JOIN artists a ON r.assocArtistSpotID = a.artistSpotID
+					LEFT JOIN artistsMB m ON m.artistMBID = '$artistMBID'
+					WHERE r.primaryArtistSpotID = '$artistSpotID';";
 	
 $result = mysqli_query($connekt, $getAssocArtists);
+/**/
+if(!$result){
+	echo 'Cursed-Crap. Did not run the query.';
+}
 
 if (mysqli_num_rows($result) > 0) {
+	/**/
 	$rows = array();
 	while ($row = mysqli_fetch_array($result)) {
 		$rows[] = $row;
 	}
 	echo json_encode($rows);
+	
 }
 
 else {

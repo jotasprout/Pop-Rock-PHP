@@ -320,7 +320,11 @@ d3.json("functions/get_artist_Playcounts.php?artistSpotID=<?php echo $artistSpot
                 .range([padding, w - padding]);
 
     yScale = d3.scaleLinear()
-               .domain(d3.extent(data, function(d) { return (d.playcount); }))
+               //.domain(d3.extent(data, function(d) { return (d.playcount); }))
+			   .domain([
+					d3.min(dataset, function(d) { return d.playcount; }),
+                    d3.max(dataset, function(d) { return d.playcount; })
+				])
                .range([h - padding, padding]);
 
     const xAxis = d3.axisBottom()
