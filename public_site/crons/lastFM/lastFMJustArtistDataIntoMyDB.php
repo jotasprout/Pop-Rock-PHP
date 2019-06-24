@@ -3,13 +3,16 @@
 require_once '../../rockdb.php';
 
 $filenames = array (
+    'data/justDaily_06-23-19.json',
+    'data/justDaily_06-24-19.json'
+	/*
     'data/justDaily_06-03-19.json',
     'data/justDaily_06-04-19.json',
     'data/justDaily_06-05-19.json',
     'data/justDaily_06-06-19.json',
     'data/justDaily_06-07-19.json',
     'data/justDaily_06-08-19.json',
-    'data/justDaily_06-09-19.json',
+	'data/justDaily_06-09-19.json',
     'data/justDaily_06-10-19.json',
     'data/justDaily_06-11-19.json',
     'data/justDaily_06-12-19.json',
@@ -19,6 +22,8 @@ $filenames = array (
     'data/justDaily_06-16-19.json',
     'data/justDaily_06-17-19.json',
     'data/justDaily_06-18-19.json'
+	*/
+
 );
 
 $filenames = $filenames;
