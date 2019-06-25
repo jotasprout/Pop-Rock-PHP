@@ -1,5 +1,4 @@
 <?php 
-    //$artistSpotID = $_GET['artistSpotID'];
     $artistMBID = $_GET['artistMBID'];
 	require_once 'page_pieces/stylesAndScripts.php';
 ?>
@@ -45,12 +44,10 @@
 <body>
 
 <div class="container-fluid">
-<div id="fluidCon">
-</div> <!-- end of fluidCon -->
+<div id="fluidCon"></div> <!-- end of fluidCon -->
 <!-- 
     <p>If, after the page loads, it is empty, or the wrong discography displays, <a href='https://www.roxorsoxor.com/poprock/index.php'>choose an artist</a> from the <a href='https://www.roxorsoxor.com/poprock/index.php'>Artists List</a> first.</p>
-      
-       -->
+ -->
 <div class="panel panel-primary">
 
     <div class="panel-heading">
@@ -84,7 +81,6 @@
         
   </div> <!-- End of Card Body -->
 </div> <!-- End of Card -->
-	
 	
 <!-- START OF ROW #2 WITH POPULARITY LINE GRAPH AND FOLLOWERS LINE GRAPH -->	
 	
@@ -208,7 +204,37 @@ d3.json("functions/createArtistD3.php?artistSpotID=<?php echo $artistSpotID; ?>"
 });
 
 </script>
-		
+<script>
+	d3.json("functions/get_assocArtists.php?artistSpotID=<?php echo $artistSpotID ?>&artistMBID=<?php echo $artistMBID ?>", function (assocData) {
+
+	console.log(assocData);
+
+	
+	const assocFaces = d3.select("#assocArtists");
+	
+	assocFaces.selectAll("img")
+			  .data(assocData)
+			  .enter()
+			  .append("img")
+			  .attr("src", function (d){
+				if (d.artistArt == "" || d.artistArt == null || d.artistArt == undefined) {
+					console.log("artistArt is " + d.artistArtMB);
+					return d.artistArtMB;
+				} else {
+					console.log("artistArt is " + d.artistArt);
+					return d.artistArt;
+				};
+			  })
+			  .attr("x", function (d,i) {
+				return i * 65;
+			  })
+			  .attr("height", 128)
+			  .attr("title", (d) => d.assocArtistName);
+});
+
+</script>	
+	
+	
 <script>
 
 var w = 740;
@@ -217,7 +243,7 @@ var padding = 50;
 
 var dataset, xScale, yScale, xAxis, yAxis, line;
 
-d3.json("functions/createArtist_followersD3.php?artistSpotID=<?php echo $artistSpotID; ?>", function(data) {
+d3.json("functions/get_artist_Playcounts.php?artistSpotID=<?php echo $artistSpotID; ?>&artistMBID=<?php echo $artistMBID ?>", function(data) {
     
     console.log(data);
     
@@ -225,14 +251,24 @@ d3.json("functions/createArtist_followersD3.php?artistSpotID=<?php echo $artistS
 
     const artistName = dataset[0].artistName;
 
-    const artistTitle = d3.select("#artistFollow")
-            .text(artistName + "'s followers on Spotify over time");   
-
-    dataset.forEach(function(d) {
-        d.date = new Date(d.date);
-        d.followers = +d.followers;
+    const artistTitle = d3.select("#artistPlaycounts")
+            .text(artistName + "'s Daily LastFM Playcounts");   
+	
+    dataset.forEach(function(d,i) {
+		if (i>0){
+			d.date = new Date(d.dataDate);
+			let h = i-1;
+			let todaysTotal = parseInt(dataset[i].artistPlaycount, 10);
+			let yesterPlays = parseInt(dataset[h].artistPlaycount, 10);
+			d.todaysPlays = parseInt(todaysTotal - yesterPlays);
+		} else {
+			d.date = new Date(d.dataDate);
+			d.todaysPlays = +d.artistPlaycount;
+		};
     });
-
+	
+	dataset.splice(0,2);
+	
     xScale = d3.scaleTime()
                 .domain([
                     d3.min(dataset, function(d) { return d.date; }),
@@ -241,12 +277,16 @@ d3.json("functions/createArtist_followersD3.php?artistSpotID=<?php echo $artistS
                 .range([padding, w - padding]);
 
     yScale = d3.scaleLinear()
-               .domain(d3.extent(data, function(d) { return (d.followers); }))
+               //.domain(d3.extent(data, function(d) { return (d.playcount); }))
+			   .domain([
+					d3.min(dataset, function(d) { return d.todaysPlays; }),
+                    d3.max(dataset, function(d) { return d.todaysPlays; })
+				])
                .range([h - padding, padding]);
 
     const xAxis = d3.axisBottom()
                     .scale(xScale)
-                    .tickFormat(d3.timeFormat("%b"));
+                    .tickFormat(d3.timeFormat("%b-%e"));
 
     formatMillions = d3.format(".3s");
 
@@ -257,11 +297,11 @@ d3.json("functions/createArtist_followersD3.php?artistSpotID=<?php echo $artistS
                     .scale(yScale)
                     .tickFormat(function(d) { return formatMillions(d)});
 
-    var line = d3.line()
+	var line = d3.line()
                 .x(function(d) { return xScale(d.date); })
-                .y(function(d) { return yScale((d.followers)); });
+                .y(function(d) { return yScale((d.todaysPlays)); });
 
-    var svg = d3.select("#forFollowersChart")
+    var svg = d3.select("#forPlaycountChart")
                     .append("svg")
                     .attr("width", w)
                     .attr("height", h);

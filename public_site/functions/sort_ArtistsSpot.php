@@ -185,7 +185,7 @@ if (!empty($sortit)) { ?>
 
 <tr>
 	<td><img src='<?php echo $artistArt ?>' class="indexArtistArt"></td>	
-	<td><a href='https://www.roxorsoxor.com/poprock/artist_Chart.php?artistSpotID=<?php echo $artistSpotID ?>&artistMBID=<?php echo $artistMBID ?>&source=<?php echo $source ?>'><?php echo $artistName ?></a></td>
+	<td><a href='https://www.roxorsoxor.com/poprock/artist_ChartsSpot4.php?artistSpotID=<?php echo $artistSpotID ?>&artistMBID=<?php echo $artistMBID ?>&source=<?php echo $source ?>'><?php echo $artistName ?></a></td>
 <!---->
 	<td class="popStyle"><?php echo $artistSpotID ?></td>
 	<td class="popStyle"><?php echo $popDate ?></td>
