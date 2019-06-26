@@ -45,7 +45,7 @@ if ( $currentOrder == "ASC" ) {
 
 $albumNameNewOrder = "DESC";
 
-if ( $columnName == "albumName" and $currentOrder == "DESC" ) {
+if ( $columnName == "albumNameSpot" and $currentOrder == "DESC" ) {
 	$albumNameNewOrder = "ASC";
 }
 
@@ -61,14 +61,14 @@ if ( $columnName == "pop" and $currentOrder == "ASC" ) {
 	$popNewOrder = "DESC";
 }
 
-$gatherTrackInfoSpot = "SELECT v.trackSpotID, v.artistName, v.trackName, v.albumName, v.pop, max(v.date) AS MaxDate
+$gatherTrackInfoSpot = "SELECT v.trackSpotID, v.artistNameSpot, v.trackName, v.albumNameSpot, v.pop, max(v.date) AS MaxDate
 					FROM (
-						SELECT z.artistName, z.trackSpotID, z.trackName, z.albumName, p.date, p.pop
+						SELECT z.artistNameSpot, z.trackSpotID, z.trackName, z.albumNameSpot, p.date, p.pop
 							FROM (
-								SELECT t.*, r.albumName, a.artistName
+								SELECT t.*, r.albumNameSpot, a.artistNameSpot
 									FROM tracks t
-									INNER JOIN albums r ON r.albumSpotID = t.albumSpotID
-									JOIN artists a ON r.artistSpotID = a.artistSpotID
+									INNER JOIN albumsSpot r ON r.albumSpotID = t.albumSpotID
+									JOIN artistsSpot a ON r.artistSpotID = a.artistSpotID
 									WHERE a.artistSpotID = '$artistSpotID'
 							) z
 						JOIN popTracks p 
@@ -76,17 +76,7 @@ $gatherTrackInfoSpot = "SELECT v.trackSpotID, v.artistName, v.trackName, v.album
 					) v
 					GROUP BY v.trackSpotID
 					ORDER BY " . $columnName . " " . $newOrder . ";";
-/*
-$gathering = "";
 
-if ( $source == "musicbrainz" ) {
-	$gathering = $gatherTrackInfoLastFM;
-};
-
-if ( $source == "spotify" ) {
-	$gathering = $gatherTrackInfoSpot;
-};
-*/
 $sortit = $connekt->query( $gatherTrackInfoSpot );
 
 if ( !$sortit ) {
@@ -98,7 +88,7 @@ if(!empty($sortit)) { ?>
 <table class="table" id="tableotracks">
 <thead>
 <tr>
-	<th onClick="sortColumn('albumName', '<?php echo $albumNameNewOrder; ?>', '<?php echo $artistSpotID ?>', '<?php echo $source ?>')"><div class="pointyHead">Album Title</div></th>
+	<th onClick="sortColumn('albumNameSpot', '<?php echo $albumNameNewOrder; ?>', '<?php echo $artistSpotID ?>', '<?php echo $source ?>')"><div class="pointyHead">Album Title</div></th>
 	<th onClick="sortColumn('trackName', '<?php echo $trackNameNewOrder; ?>', '<?php echo $artistSpotID ?>', '<?php echo $source ?>')"><div class="pointyHead">Track Title</div></th>
 	<th class="popStyle" onClick="sortColumn('pop', '<?php echo $popNewOrder; ?>', '<?php echo $artistSpotID ?>', '<?php echo $source ?>')"><div class="pointyHead">Spotify<br>Popularity</div></th>
 	<!---->
@@ -111,7 +101,7 @@ if(!empty($sortit)) { ?>
 	<tbody>
 	<?php
 		while ( $row = mysqli_fetch_array( $sortit ) ) {
-			$albumName = $row[ "albumName" ];
+			$albumNameSpot = $row[ "albumNameSpot" ];
 			$trackName = $row[ "trackName" ];
 			$trackSpotID = $row[ "trackSpotID" ];
 			$trackPop = $row[ "pop" ];
@@ -119,7 +109,7 @@ if(!empty($sortit)) { ?>
 
 	?>
 			<tr>
-				<td><?php echo $albumName ?></td>
+				<td><?php echo $albumNameSpot ?></td>
 				<td><?php echo $trackName ?></td>
 				<td class="popStyle"><?php echo $trackPop ?></td>
 				<td><?php echo $trackSpotID ?></td>

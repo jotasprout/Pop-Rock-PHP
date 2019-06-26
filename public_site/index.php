@@ -11,8 +11,8 @@ if ( !$connekt ) {
 
 $source = 'spotify';
 
-$allthatAndLastFM = "SELECT a.artistSpotID AS artistSpotID, a.artistMBID AS artistMBID, a.artistArt AS artistArt, a.artistName AS artistName, a.albumsTotal AS albumsTotal, p1.pop AS pop, p1.followers AS followers, f1.dataDate AS dataDate, f1.artistListeners AS artistListeners, f1.artistPlaycount AS artistPlaycount, p1.date AS date
-    FROM artists a
+$allthatAndLastFM = "SELECT a.artistSpotID AS artistSpotID, a.artistMBID AS artistMBID, a.artistArtSpot AS artistArtSpot, a.artistNameSpot AS artistNameSpot, a.albumsTotal AS albumsTotal, p1.pop AS pop, p1.followers AS followers, f1.dataDate AS dataDate, f1.artistListeners AS artistListeners, f1.artistPlaycount AS artistPlaycount, p1.date AS date
+    FROM artistsSpot a
     JOIN (SELECT p.*
 			FROM popArtists p
 			INNER JOIN (SELECT artistSpotID, pop, max(date) AS MaxDate
@@ -29,7 +29,7 @@ $allthatAndLastFM = "SELECT a.artistSpotID AS artistSpotID, a.artistMBID AS arti
 			ON f.artistMBID = groupedf.artistMBID
 			AND f.dataDate = groupedf.MaxDataDate) f1
 	ON a.artistMBID = f1.artistMBID
-	ORDER BY a.artistName ASC;";
+	ORDER BY a.artistNameSpot ASC;";
 
 $getit = $connekt->query( $allthatAndLastFM );
 
@@ -38,7 +38,6 @@ if(!$getit){ echo 'Cursed-Crap. Did not run the query.'; }
 ?>
 
 <!DOCTYPE html>
-
 <html>
 
 <head>
@@ -51,28 +50,26 @@ if(!$getit){ echo 'Cursed-Crap. Did not run the query.'; }
 
 	<div class='container-fluid'>
 	
-	<div id="fluidCon">
-
-	</div> <!-- end of fluidCon -->
+	<div id="fluidCon"></div> <!-- end of fluidCon -->
+	
 	<!-- main -->
 
 	<div class="panel panel-primary">
 
 		<div class="panel-heading">
-			<h3 class="panel-title">Data for All Artists</h3>
+			<h3 class="panel-title">Data for All Spotify Artists</h3>
 		</div>
 
 		<div class="panel-body">
 
 			<!-- Panel Content -->
-			<!-- D3 chart goes here -->
 			<?php if (!empty($getit)) { ?>
 
 <table class="table" id="tableoartists">
 	<thead>
 <tr>
 	<th>Pretty Face</th>	
-	<th onClick="sortColumn('artistName', 'ASC')"><div class="pointyHead">Artist Name</div></th>
+	<th onClick="sortColumn('artistNameSpot', 'ASC')"><div class="pointyHead">Artist Name</div></th>
 	<!--
 	-->
 	
@@ -94,13 +91,13 @@ if(!$getit){ echo 'Cursed-Crap. Did not run the query.'; }
 
 				<?php
 					while ( $row = mysqli_fetch_array( $getit ) ) {
-						$artistName = $row[ "artistName" ];
+						$artistNameSpot = $row[ "artistNameSpot" ];
 						$artistSpotID = $row[ "artistSpotID" ];
 						$artistMBID = $row[ "artistMBID" ];
 						$artistPop = $row[ "pop" ];
 						$artistFollowersNum = $row[ "followers"];
 						$artistFollowers = number_format ($artistFollowersNum);
-						$artistArt = $row[ "artistArt" ];
+						$artistArtSpot = $row[ "artistArtSpot" ];
 						$popDate = $row[ "date" ];
 						$albumsTotal = $row[ "albumsTotal" ];
 						$lastFMDate = $row[ "dataDate" ];
@@ -122,9 +119,9 @@ if(!$getit){ echo 'Cursed-Crap. Did not run the query.'; }
 				?>
 
 <tr>
-	<td><a href='https://www.roxorsoxor.com/poprock/artist_ChartsSpot4.php?artistSpotID=<?php echo $artistSpotID ?>&artistMBID=<?php echo $artistMBID ?>'><img src='<?php echo $artistArt ?>' class="indexArtistArt"></a></td>	
+	<td><a href='https://www.roxorsoxor.com/poprock/artist_ChartsSpot4.php?artistSpotID=<?php echo $artistSpotID ?>&artistMBID=<?php echo $artistMBID ?>'><img src='<?php echo $artistArtSpot ?>' class="indexArtistArt"></a></td>	
 	
-	<td><a href='https://www.roxorsoxor.com/poprock/artist_ChartsSpot4.php?artistSpotID=<?php echo $artistSpotID ?>&artistMBID=<?php echo $artistMBID ?>'><?php echo $artistName ?></a></td>
+	<td><a href='https://www.roxorsoxor.com/poprock/artist_ChartsSpot4.php?artistSpotID=<?php echo $artistSpotID ?>&artistMBID=<?php echo $artistMBID ?>'><?php echo $artistNameSpot ?></a></td>
 	
 	<td class="popStyle"><?php echo $artistSpotID ?></td>
 	<td class="popStyle"><?php echo $artistMBID ?></td>

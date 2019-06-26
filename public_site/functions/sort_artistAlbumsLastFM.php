@@ -65,13 +65,13 @@ if ( $columnName == "albumName" and $currentOrder == "ASC" ) {
 
 $albumNameNewOrder = "unsorted";
 
-if ( $columnName == "albumName" ) {
+if ( $columnName == "albumNameMB" ) {
 	if ($currentOrder == "unsorted" or $currentOrder == "DESC") {
-		$columnName = "b.albumName";
+		$columnName = "b.albumNameMB";
 		$albumNameNewOrder = "ASC";
 		$newOrder = "ASC";
 	} else {
-		$columnName = "b.albumName";
+		$columnName = "b.albumNameMB";
 		$albumNameNewOrder = "DESC";
 		$newOrder = "DESC";
 	};
@@ -130,11 +130,11 @@ if ( $columnName == "albumPlaycount" ) {
 	};
 };
 
-$gatherAlbumInfoLastFM = "SELECT b.albumName, b.albumMBID, z.artistName, f1.dataDate, f1.albumListeners, f1.albumPlaycount, x.albumArtMB
-					FROM (SELECT mb.albumName, mb.albumMBID, mb.artistMBID
+$gatherAlbumInfoLastFM = "SELECT b.albumNameMB, b.albumMBID, z.artistNameMB, f1.dataDate, f1.albumListeners, f1.albumPlaycount, x.albumArtMB
+					FROM (SELECT mb.albumNameMB, mb.albumMBID, mb.artistMBID
 						FROM albumsMB mb 
 						WHERE mb.artistMBID='$artistMBID') b 
-					JOIN artists z ON z.artistMBID = b.artistMBID
+					JOIN artistsMB z ON z.artistMBID = b.artistMBID
 					LEFT JOIN albumsMB x ON b.albumMBID = x.albumMBID
 					LEFT JOIN (SELECT f.*
 							FROM albumsLastFM f
@@ -160,7 +160,7 @@ if(!empty($sortit))	 { ?>
 <tr>
 <th>Cover Art</th>
 <th>albumMBID</th>
-<th onClick="sortColumn('albumName', '<?php echo $albumNameNewOrder; ?>', '<?php echo $artistMBID; ?>', '<?php echo $source ?>')"><div class="pointyHead">Album Name</div></th>
+<th onClick="sortColumn('albumNameMB', '<?php echo $albumNameNewOrder; ?>', '<?php echo $artistMBID; ?>', '<?php echo $source ?>')"><div class="pointyHead">Album Name</div></th>
 
 <th onClick="sortColumn('albumListeners', '<?php echo $listenersNewOrder; ?>', '<?php echo $artistMBID; ?>', '<?php echo $source ?>')"><div class="pointyHead rightNum">LastFM<br>Listeners</div></th>
 <th onClick="sortColumn('albumPlaycount', '<?php echo $playcountNewOrder; ?>', '<?php echo $artistMBID; ?>', '<?php echo $source ?>')"><div class="pointyHead rightNum">LastFM<br>Playcount</div></th>
@@ -174,9 +174,9 @@ if(!empty($sortit))	 { ?>
 <?php
 
 	while ($row = mysqli_fetch_array($sortit)) {
-		$artistName = $row['artistName'];
+		$artistNameMB = $row['artistNameMB'];
 		$albumMBID = $row['albumMBID'];
-		$albumName = $row['albumName'];		
+		$albumNameMB = $row['albumNameMB'];		
 		$coverArt = $row['albumArtMB'];
 		$lastFMDate = $row[ "dataDate" ];
 		$albumListenersNum = $row[ "albumListeners"];
@@ -188,7 +188,7 @@ if(!empty($sortit))	 { ?>
 
 	<tr>
 	<td><img src='<?php echo $coverArt ?>' height='64' width='64'></td>
-	<td><a href='https://www.roxorsoxor.com/poprock/album_TracksList.php?albumMBID=<?php echo $albumMBID ?>&artistSpotID=<?php echo $artistSpotID ?>&artistMBID=<?php echo $artistMBID ?>&source=<?php echo $source ?>'><?php echo $albumName ?></a></td>
+	<td><a href='https://www.roxorsoxor.com/poprock/album_TracksList.php?albumMBID=<?php echo $albumMBID ?>&artistSpotID=<?php echo $artistSpotID ?>&artistMBID=<?php echo $artistMBID ?>&source=<?php echo $source ?>'><?php echo $albumNameMB ?></a></td>
 	<td><?php echo $albumMBID ?></td>
 	<td class="popStyle"><?php echo $lastFMDate ?></td>
 		<td class="rightNum"><?php echo $albumListeners ?></td>

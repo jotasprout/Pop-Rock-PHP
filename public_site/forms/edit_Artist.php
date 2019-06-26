@@ -11,10 +11,10 @@ if ( !$connekt ) {
 	echo 'Darn. Did not connect. Screwed up like this: ' . mysqli_connect_error() . '</p>';
 };
 
-// check if the form has been submitted.
+// check if form is being submitted.
 if (isset($_POST['submit'])){
 	// If form is being submitted, process the form
-	// get form data, making sure it is valid
+	// First, get form data and make sure it is valid
 	$artistSpotID = $_POST['artistSpotID'];
     $artistName = mysqli_real_escape_string($connekt, htmlspecialchars($_POST['artistName']));
     $artistArt = mysqli_real_escape_string($connekt, htmlspecialchars($_POST['artistArt']));
@@ -25,16 +25,16 @@ if (isset($_POST['submit'])){
 	
 	// save data to database
 	$updateArtistSpot = "UPDATE artists SET artistName='$artistName', artistMBID='$artistMBID' WHERE artistSpotID='$artistSpotID'";
-	
     $retval = $connekt->query($updateArtistSpot);
     
     $updateArtistMB = "UPDATE artistsMB SET artistName='$artistName', artistMBID='$artistMBID', artistArtMB='$artistArtMB' WHERE artistMBID='$artistMBID'";
-	
 	$retval2 = $connekt->query($updateArtistMB);
 	
-    $updateAssocArtists = "INSERT INTO artistAssocArtists SET PrimaryArtistName='$artistName', primaryArtistMBID='$artistMBID', primaryArtistSpotID='$artistSpotID', assocArtistSpotID='$assocArtistSpotID'";
-	
-	$retval3 = $connekt->query($updateAssocArtists);	
+    $updateArtistAssocArtists = "INSERT INTO artistAssocArtists SET assocArtistName='$artistName', assocArtistSpotID='$assocArtistSpotID', assocArtistMBID='$artistMBID', primaryArtistName='$artistName', primaryArtistSpotID='$artistSpotID', primaryArtistMBID='$artistMBID'";
+	$retval3a = $connekt->query($updateAssocArtists);	
+
+    $updateArtistAssocArtists2 = "INSERT INTO artistAssocArtists SET assocArtistName='$artistName', assocArtistSpotID='$assocArtistSpotID', assocArtistMBID='$artistMBID', primaryArtistName='$artistName', primaryArtistSpotID='$artistSpotID', primaryArtistMBID='$artistMBID'";
+	$retval3b = $connekt->query($updateAssocArtists2);	
 	/**/
 	// Feedback of whether UPDATE worked or not
 	if(!$retval){
@@ -123,72 +123,90 @@ else // if the form isn't being submitted, get the data from the db and display 
 	<!-- This form displays user profile info from the database -->
 	
 	<form class="form-horizontal" action="" method="post">
-		<input type="hidden" name="artistMBID" value="<?php echo $artistMBID; ?>"/>
+		
 		<fieldset>
-                     	
-			<div class="form-group"> <!-- Row 2 --> 
-				<!-- Column 1 -->				
-				<label class="col-lg-2 control-label" for="artistName">Artist Name</label>
-				<!-- Column 2 -->				
-				<div class="col-lg-4">
-					<input class="form-control" type="text" name="artistName" value="<?php echo $artistName; ?>" readonly/>
-				</div>
-			</div>
-			<!-- /Row 2 -->
 
-			<div class="form-group"> <!-- Row Art --> 
-				<!-- Column 1 -->				
-				<label class="col-lg-2 control-label" for="artistArtMB">Artist Art MB</label>
-				<!-- Column 2 -->				
-				<div class="col-lg-4">
-					<input class="form-control" type="text" name="artistArtMB" value="<?php echo $artistArtMB; ?>" />
-				</div>
+		<div class="form-group"> <!-- Row ArtSpot --> 
+			<div><img src='<?php echo $artistArtSpot ?>'></div>
+			<label class="col-lg-2 control-label" for="artistArtSpot">Artist Art Spotify</label>
+			<div class="col-lg-4">
+				<input class="form-control" type="text" name="artistArtSpot" value="<?php echo $artistArtSpot; ?>" readonly/>
 			</div>
-			<!-- /Row Art -->
+		</div>
+			<!-- /Row ArtSpot -->  
 
-			<div class="form-group"> <!-- Row Art --> 
-				<!-- Column 1 -->				
-				<label class="col-lg-2 control-label" for="artistArt">Artist Art Spotify</label>
-				<!-- Column 2 -->				
-				<div class="col-lg-4">
-					<input class="form-control" type="text" name="artistArt" value="<?php echo $artistArt; ?>" readonly/>
-				</div>
+		<div class="form-group"> <!-- Row ArtMB --> 	
+			<div><img src='<?php echo $artistArtMB ?>'></div>		
+			<label class="col-lg-2 control-label" for="artistArtMB">Artist Art MB</label>			
+			<div class="col-lg-4">
+				<input class="form-control" type="text" name="artistArtMB" value="<?php echo $artistArtMB; ?>" />
 			</div>
-			<!-- /Row Art -->            
+		</div>
+		<!-- /Row ArtMB -->				   
+
+		<div class="form-group"> <!-- Primary Artist Spotify Name --> 			
+			<label class="col-lg-2 control-label" for="primaryArtistName">Primary Artist Spotify Name</label>			
+			<div class="col-lg-4">
+				<input class="form-control" type="text" name="primaryArtistName" value="<?php echo $artistNameSpot; ?>" />
+			</div>
+		</div>
+		<!-- /Primary Artist Spotify Name -->
 			
-			<div class="form-group"> <!-- Row 3 --> 
-				<!-- Column 1 -->
-				<label class="col-lg-2 control-label" for="artistMBID">artistMBID</label>
-				<!-- Column 2 -->
-				<div class="col-lg-4">
-					<input class="form-control" type="text" name="artistMBID" value="<?php echo $artistMBID; ?>" />
-				</div>
+		<div class="form-group"> <!-- Primary Artist Spotify ID --> 
+			<!-- Column 1 -->
+			<label class="col-lg-2 control-label" for="artistSpotID">Primary Artist Spotify ID</label>
+			<!-- Column 2 -->
+			<div class="col-lg-4">
+				<input class="form-control" type="artistSpotID" name="artistSpotID"  value="<?php echo $artistSpotID; ?>" readonly/>
 			</div>
-			<!-- /Row 3 -->
+		</div>
+		<!-- /Primary Artist Spotify ID --> 	
+
+		<div class="form-group"> <!-- Primary Artist MBID --> 
+			<!-- Column 1 -->
+			<label class="col-lg-2 control-label" for="artistMBID">Primary Artist MBID</label>
+			<!-- Column 2 -->
+			<div class="col-lg-4">
+				<input class="form-control" type="text" name="artistMBID" value="<?php echo $artistMBID; ?>" />
+			</div>
+		</div>
+		<!-- /Primary Artist MBID -->	
+
+		<div class="form-group"> <!-- Primary Artist MB Name --> 			
+			<label class="col-lg-2 control-label" for="primaryArtistNameMB">Primary Artist MB Name</label>			
+			<div class="col-lg-4">
+				<input class="form-control" type="text" name="primaryArtistNameMB" value="<?php echo $artistNameMB; ?>" />
+			</div>
+		</div>
+		<!-- /Primary Artist MB Name -->							
 			
-			<div class="form-group"> <!-- Row 4 --> 
-				<!-- Column 1 -->
-				<label class="col-lg-2 control-label" for="artistSpotID">artistSpotID</label>
-				<!-- Column 2 -->
-				<div class="col-lg-4">
-					<input class="form-control" type="artistSpotID" name="artistSpotID"  value="<?php echo $artistSpotID; ?>" readonly/>
-				</div>
+		<div class="form-group"> <!-- Add Associated Artist SpotID --> 
+			<!-- Column 1 -->
+			<label class="col-lg-2 control-label" for="assocArtistSpotID">Add Associated Artist SpotID</label>
+			<!-- Column 2 -->
+			<div class="col-lg-3">
+				<input class="form-control" type="assocArtistSpotID" name="assocArtistSpotID"  value="<?php echo $assocArtistSpotID; ?>" />
 			</div>
-			<!-- /Row 4 --> 					
-			
-			<div class="form-group"> <!-- Row 4 --> 
-				<!-- Column 1 -->
-				<label class="col-lg-2 control-label" for="assocArtistSpotID">Associated Artist SpotID</label>
-				<!-- Column 2 -->
-				<div class="col-lg-3">
-					<input class="form-control" type="assocArtistSpotID" name="assocArtistSpotID"  value="<?php echo $assocArtistSpotID; ?>" />
-				</div>
-				<!-- Column 3 
-				<div class="col-lg-3">
-					<input class="form-control" type="assocArtistName" name="assocArtistName"  value="<?php //echo $assocArtistName; ?>" readonly/>
-				</div>
-				-->
+			<!-- Column 3 
+			<div class="col-lg-3">
+				<input class="form-control" type="assocArtistNameSpot" name="assocArtistNameSpot"  value="<?php //echo $assocArtistNameSpot; ?>" readonly/>
 			</div>
+			-->
+		</div> <!-- /Add Associated Artist SpotID -->
+
+		<div class="form-group"> <!-- Add Associated Artist MBID --> 
+			<!-- Column 1 -->
+			<label class="col-lg-2 control-label" for="assocArtistMBID">Add Associated Artist MBID</label>
+			<!-- Column 2 -->
+			<div class="col-lg-3">
+				<input class="form-control" type="assocArtistMBID" name="assocArtistMBID"  value="<?php echo $assocArtistMBID; ?>" />
+			</div>
+			<!-- Column 3 
+			<div class="col-lg-3">
+				<input class="form-control" type="assocArtistNameMB" name="assocArtistNameMB"  value="<?php //echo $assocArtistNameMB; ?>" readonly/>
+			</div>
+			-->
+		</div> <!-- /Add Associated Artist SpotID -->			
 					
 			<!-- Last Row -->
 			<div class="form-group"> <!-- Last Row -->	
@@ -201,8 +219,62 @@ else // if the form isn't being submitted, get the data from the db and display 
 	</form>
 
 	</div> <!-- /panel-body -->
-</div> <!-- /panel -->
+</div> <!-- /panel IS THIS PRIMARY? -->
+
+<div class="well">	
 	
+	<?php
+	echo "Artists associated with " . $artistNameSpot;
+	// Start creating an HTML table for Assigned Cases and create header row
+	echo "<table class='table table-striped table-hover '><thead><tr>
+	<th>Spotify Face</th>
+	<th>Spotify Name</th>
+	<th>MB Face</th>
+	<th>MB Name</th>
+	</tr></thead>";
+	echo "<tbody>";
+
+	$connekt = new mysqli( $GLOBALS[ 'host' ], $GLOBALS[ 'un' ], $GLOBALS[ 'magicword' ], $GLOBALS[ 'db' ] );
+	// Connection test and feedback
+	if (!$connekt) {
+		echo 'Darn. Did not connect. Screwed up like this: ' . mysqli_error($connekt) . '</p>';
+	}
+
+	$getAssocArtists = "SELECT r.assocArtistNameSpot, r.assocArtistNameMB, r.assocArtistSpotID, r.assocArtistMBID, a.assocArtistArtSpot, m.assocArtistArtMB
+						FROM artistAssocArtists r
+						LEFT JOIN artists a ON r.assocArtistSpotID = a.artistSpotID
+						LEFT JOIN artistsMB m ON m.artistMBID = '$artistMBID'
+						WHERE r.primaryArtistSpotID = '$artistSpotID';";
+
+	$result0 = mysqli_query($connekt, $getAssocArtists);
+
+	/**/
+	if(!$result0){
+		echo 'Cursed-Crap. Did not run the query.';
+	}
+
+	if (mysqli_num_rows($result0) > 0) {
+		/**/
+		while ($row = mysqli_fetch_array($result0)) {
+			echo "<tr>
+					<td><img src='" . $row['artistArtSpot'] . "' height='64' width='64'></td>
+					<td>" . $row['artistNameSpot'] . "</td>
+					<td><img src='" . $row['artistArtMB'] . "' height='64' width='64'></td>
+					<td>" . $row['artistNameMB'] . "</td>								
+				</tr>";
+		}
+		echo json_encode($rows);
+		
+	} else {
+		echo "Nope. Nothing to see here. Screwed up like this: " . mysqli_error($result0) . "</p>";
+	}
+
+    echo "</tbody></table>";
+	// When attempt is complete, connection closes
+    mysqli_close($connekt);
+?>
+
+</div> <!-- /well -->	
 
 	</div> <!-- /container-fluid --> 
 <script>

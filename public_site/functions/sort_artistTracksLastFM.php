@@ -1,7 +1,6 @@
 <?php
 
 require_once '../rockdb.php';
-//require_once '../page_pieces/stylesAndScripts.php';
 
 $connekt = new mysqli( $GLOBALS[ 'host' ], $GLOBALS[ 'un' ], $GLOBALS[ 'magicword' ], $GLOBALS[ 'db' ] );
 
@@ -45,7 +44,7 @@ if ( $currentOrder == "ASC" ) {
 
 $albumNameNewOrder = "DESC";
 
-if ( $columnName == "albumName" and $currentOrder == "DESC" ) {
+if ( $columnName == "albumNameMB" and $currentOrder == "DESC" ) {
 	$albumNameNewOrder = "ASC";
 }
 
@@ -61,11 +60,11 @@ if ( $columnName == "pop" and $currentOrder == "ASC" ) {
 	$popNewOrder = "DESC";
 }
 
-$gatherTrackInfoLastFM = "SELECT v.artistMBID, v.artistName, v.trackName, v.albumName, v.trackListeners, v.trackPlaycount, max(v.dataDate) AS MaxDataDate
+$gatherTrackInfoLastFM = "SELECT v.artistMBID, v.artistNameMB, v.trackName, v.albumNameMB, v.trackListeners, v.trackPlaycount, max(v.dataDate) AS MaxDataDate
 					FROM (
-						SELECT z.artistMBID, z.trackMBID, z.trackName, z.albumName, z.artistName, p.dataDate, p.trackListeners, p.trackPlaycount
+						SELECT z.artistMBID, z.trackMBID, z.trackName, z.albumNameMB, z.artistNameMB, p.dataDate, p.trackListeners, p.trackPlaycount
 							FROM (
-								SELECT t.*, r.albumName, a.artistName, a.artistMBID
+								SELECT t.*, r.albumNameMB, a.artistNameMB, a.artistMBID
 									FROM tracksMB t
 									INNER JOIN albumsMB r ON r.albumMBID = t.albumMBID
 									JOIN artistsMB a ON r.artistMBID = a.artistMBID
@@ -88,7 +87,7 @@ if(!empty($sortit)) { ?>
 <table class="table" id="tableotracks">
 <thead>
 <tr>
-	<th onClick="sortColumn('albumName', '<?php echo $albumNameNewOrder; ?>', '<?php echo $artistMBID ?>', '<?php echo $source ?>')"><div class="pointyHead">Album Title</div></th>
+	<th onClick="sortColumn('albumNameMB', '<?php echo $albumNameNewOrder; ?>', '<?php echo $artistMBID ?>', '<?php echo $source ?>')"><div class="pointyHead">Album Title</div></th>
 	<th onClick="sortColumn('trackName', '<?php echo $trackNameNewOrder; ?>', '<?php echo $artistMBID ?>', '<?php echo $source ?>')"><div class="pointyHead">Track Title</div></th>
 
 	<th class="popStyle">LastFM<br>Data Date</th>
@@ -101,7 +100,7 @@ if(!empty($sortit)) { ?>
 	<tbody>
 	<?php
 		while ( $row = mysqli_fetch_array( $sortit ) ) {
-			$albumName = $row[ "albumName" ];
+			$albumNameMB = $row[ "albumNameMB" ];
 			$trackName = $row[ "trackName" ];
 			//$trackMBID = $row[ "trackMBID" ];
 
@@ -114,7 +113,7 @@ if(!empty($sortit)) { ?>
 			$trackRatio = "1:" . floor($trackPlaycountNum/$trackListenersNum);
 	?>
 			<tr>
-				<td><?php echo $albumName ?></td>
+				<td><?php echo $albumNameMB ?></td>
 				<td><?php echo $trackName ?></td>
 
 				<td class="popStyle"><?php echo $lastFMDate ?></td>

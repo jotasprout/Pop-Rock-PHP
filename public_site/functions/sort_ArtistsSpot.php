@@ -14,7 +14,7 @@ $postedCurrentOrder = $_POST[ "currentOrder" ];
 $postedSource = $_POST[ "source" ];
 
 // if any POSTed variables did not come through, these defaults were basic starting sort from original sql query
-$columnName = "artistName";
+$columnName = "artistNameSpot";
 $currentOrder = "ASC";
 $source="spotify";
 
@@ -32,7 +32,7 @@ if ( !empty( $_POST[ "currentOrder" ] ) ) {
 
 $artistNameNewOrder = "unsorted";
 
-if ( $columnName == "artistName" ) {
+if ( $columnName == "artistNameSpot" ) {
 	if ($currentOrder == "unsorted" or $currentOrder == "DESC") {
 		$artistNameNewOrder = "ASC";
 		$newOrder = "ASC";
@@ -104,8 +104,8 @@ if ( $columnName == "artistPlaycount" ) {
 	};
 };
 
-$allthatAndLastFM = "SELECT a.artistSpotID AS artistSpotID, a.artistMBID AS artistMBID, a.artistArt AS artistArt, a.artistName AS artistName, a.albumsTotal AS albumsTotal, p1.pop AS pop, p1.followers AS followers, f1.dataDate AS dataDate, f1.artistListeners AS artistListeners, f1.artistPlaycount AS artistPlaycount, p1.date AS date
-    FROM artists a
+$allthatAndLastFM = "SELECT a.artistSpotID AS artistSpotID, a.artistMBID AS artistMBID, a.artistArtSpot AS artistArtSpot, a.artistNameSpot AS artistNameSpot, a.albumsTotal AS albumsTotal, p1.pop AS pop, p1.followers AS followers, f1.dataDate AS dataDate, f1.artistListeners AS artistListeners, f1.artistPlaycount AS artistPlaycount, p1.date AS date
+    FROM artistsSpot a
     JOIN (SELECT p.*
 			FROM popArtists p
 			INNER JOIN (SELECT artistSpotID, pop, max(date) AS MaxDate
@@ -136,7 +136,7 @@ if (!empty($sortit)) { ?>
 <thead>
 	<tr>
 	<th>Pretty Face</th>	
-	<th onClick="sortColumn('artistName', '<?php echo $artistNameNewOrder; ?>')"><div class="pointyHead">Artist Name</div></th>
+	<th onClick="sortColumn('artistNameSpot', '<?php echo $artistNameNewOrder; ?>')"><div class="pointyHead">Artist Name</div></th>
 	<!---->
 	<th class="popStyle">Spotify ID</th>
 	<th class="popStyle">Spotify<br>Data Date</th>
@@ -156,13 +156,13 @@ if (!empty($sortit)) { ?>
 
 		<?php
 			while ($row = mysqli_fetch_array($sortit)) {
-				$artistName = $row[ "artistName" ];
+				$artistName = $row[ "artistNameSpot" ];
 				$artistSpotID = $row[ "artistSpotID" ];
 				$artistMBID = $row[ "artistMBID" ];
 				$artistPop = $row[ "pop" ];
 				$artistFollowersNum = $row[ "followers"];
 				$artistFollowers = number_format ($artistFollowersNum);
-				$artistArt = $row[ "artistArt" ];
+				$artistArt = $row[ "artistArtspot" ];
 				$popDate = $row[ "date" ];
 				$albumsTotal = $row[ "albumsTotal" ];
 				$lastFMDate = $row[ "dataDate" ];
@@ -184,8 +184,8 @@ if (!empty($sortit)) { ?>
 		?>
 
 <tr>
-	<td><img src='<?php echo $artistArt ?>' class="indexArtistArt"></td>	
-	<td><a href='https://www.roxorsoxor.com/poprock/artist_ChartsSpot4.php?artistSpotID=<?php echo $artistSpotID ?>&artistMBID=<?php echo $artistMBID ?>&source=<?php echo $source ?>'><?php echo $artistName ?></a></td>
+	<td><img src='<?php echo $artistArtSpot ?>' class="indexArtistArt"></td>	
+	<td><a href='https://www.roxorsoxor.com/poprock/artist_ChartsSpot4.php?artistSpotID=<?php echo $artistSpotID ?>&artistMBID=<?php echo $artistMBID ?>&source=<?php echo $source ?>'><?php echo $artistNameSpot ?></a></td>
 <!---->
 	<td class="popStyle"><?php echo $artistSpotID ?></td>
 	<td class="popStyle"><?php echo $popDate ?></td>

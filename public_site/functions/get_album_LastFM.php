@@ -10,7 +10,7 @@ if (!$connekt) {
 	echo 'Darn. Did not connect.';
 };
 
-$getLastFM = "SELECT z.artistName, a.albumName, f1.albumListeners, f1.albumPlaycount, f1.dataDate
+$getLastFM = "SELECT z.artistNameSpot, a.albumNameSpot, f1.albumListeners, f1.albumPlaycount, f1.dataDate
     FROM (SELECT f.*
 			FROM albumsLastFM f
 			INNER JOIN (SELECT albumMBID, albumListeners, albumPlaycount, max(dataDate) AS MaxDataDate
@@ -18,10 +18,10 @@ $getLastFM = "SELECT z.artistName, a.albumName, f1.albumListeners, f1.albumPlayc
 						GROUP BY albumMBID) groupedf
 			ON f.albumMBID = groupedf.albumMBID
 			AND f.dataDate = groupedf.MaxDataDate) f1
-	JOIN albums a ON a.albumMBID = f1.albumMBID
-    JOIN artists z ON a.artistSpotID = z.artistSpotID
+	JOIN albumsSpot a ON a.albumMBID = f1.albumMBID
+    JOIN artistsSpot z ON a.artistSpotID = z.artistSpotID
     WHERE a.albumSpotID = '$albumSpotID'
-	ORDER BY a.albumName ASC";
+	ORDER BY a.albumNameSpot ASC";
 
 $getit = mysqli_query($connekt, $getLastFM);
 

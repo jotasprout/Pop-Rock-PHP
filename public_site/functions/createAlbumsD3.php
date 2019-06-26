@@ -11,16 +11,16 @@ if ( !$connekt ) {
 	echo 'Darn. Did not connect. Screwed up like this: ' . mysqli_error($connekt) . '</p>';
 };
 
-$happyScabies2 = "SELECT a.albumName, a.year, a.albumArtSpot, z.artistName, p1.pop, p1.date
+$happyScabies2 = "SELECT a.albumNameSpot, a.year, a.albumArtSpot, z.artistNameSpot, p1.pop, p1.date
 	FROM (SELECT
 				y.albumSpotID AS albumSpotID,
-				y.albumName AS albumName,
+				y.albumNameSpot AS albumNameSpot,
 				y.artistSpotID AS artistSpotID,
 				y.albumArtSpot AS albumArtSpot,
 				y.year AS year
-			FROM albums y 
+			FROM albumsSpot y 
 			WHERE y.artistSpotID = '$artistSpotID') a
-	JOIN artists z ON z.artistSpotID = '$artistSpotID'
+	JOIN artistsSpot z ON z.artistSpotID = '$artistSpotID'
 	JOIN (SELECT p.*
 			FROM popAlbums p
 			INNER JOIN (SELECT albumSpotID, pop, max(date) AS MaxDate

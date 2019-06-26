@@ -138,7 +138,6 @@
 	</div> <!-- End of Column 2 -->
 	
 </div> <!-- End of row 2 -->	
-
 	
 	<!-- START OF ROW #3 WITH ALBUMS COLUMNS -->
 	
@@ -160,7 +159,6 @@
 d3.json("functions/get_assocArtists.php?artistSpotID=<?php echo $artistSpotID ?>&artistMBID=<?php echo $artistMBID ?>", function (assocData) {
 
 	console.log(assocData);
-
 	
 	const assocFaces = d3.select("#assocArtists");
 	
@@ -169,19 +167,20 @@ d3.json("functions/get_assocArtists.php?artistSpotID=<?php echo $artistSpotID ?>
 			  .enter()
 			  .append("img")
 			  .attr("src", function (d){
-				if (d.artistArt == "" || d.artistArt == null || d.artistArt == undefined) {
+				if (d.artistArtSpot == "" || d.artistArtSpot == null || d.artistArtSpot == undefined) {
 					console.log("artistArt is " + d.artistArtMB);
 					return d.artistArtMB;
 				} else {
-					console.log("artistArt is " + d.artistArt);
-					return d.artistArt;
+					console.log("artistArt is " + d.artistArtSpot);
+					return d.artistArtSpot;
 				};
 			  })
 			  .attr("x", function (d,i) {
 				return i * 65;
 			  })
 			  //.attr("width", 64)
-			  .attr("height", 128)
+              .attr("height", 128)
+              .attr("class", "assocArtistArt")
 			  .attr("title", (d) => d.assocArtistName);
 });
 
@@ -203,16 +202,16 @@ d3.json("functions/createArtistD3.php?artistSpotID=<?php echo $artistSpotID; ?>"
     
     var dataset = data;
 
-    const artistName = dataset[0].artistName;
+    const artistNameSpot = dataset[0].artistNameSpot;
 
     const nameInTitle = d3.select("title")
-            .text(artistName + "'s current stats on Spotify and LastFM")
+            .text(artistNameSpot + "'s current stats on Spotify and LastFM")
 
     const topHeading = d3.select("#topHead")
-            .text(artistName + "'s current stats on Spotify and LastFM"); 
+            .text(artistNameSpot + "'s current stats on Spotify and LastFM"); 
 
     const artistTitle = d3.select("#artistPop")
-            .text(artistName + "'s popularity on Spotify over time");   
+            .text(artistNameSpot + "'s popularity on Spotify over time");   
 
     const currentPopArtist = dataset[0].pop;
 
@@ -225,11 +224,11 @@ d3.json("functions/createArtistD3.php?artistSpotID=<?php echo $artistSpotID; ?>"
     const artistFollowers = d3.select("#forCurrentFollowers")
             .text(followers);  
 
-    const artistArt = dataset[0].artistArt;
+    const artistArtSpot = dataset[0].artistArtSpot;
 
     d3.select("#forArt")
             .data(dataset)
-            .attr("src", artistArt)
+            .attr("src", artistArtSpot)
             .attr("height", 166);
             //.attr("width", auto)
 
@@ -302,10 +301,10 @@ d3.json("functions/get_artist_Playcounts.php?artistSpotID=<?php echo $artistSpot
     
     var dataset = data;
 
-    const artistName = dataset[0].artistName;
+    const artistNameSpot = dataset[0].artistNameSpot;
 
     const artistTitle = d3.select("#artistPlaycounts")
-            .text(artistName + "'s Daily LastFM Playcounts");   
+            .text(artistNameSpot + "'s Daily LastFM Playcounts");   
 
 	//const dailyPlays = [];
 	
@@ -414,10 +413,10 @@ d3.json("functions/get_artist_Playcounts.php?artistSpotID=<?php echo $artistSpot
         var h = 265;
         var barPadding = 1;
 
-        const artistName = dataset[0].artistName;
+        const artistNameSpot = dataset[0].artistNameSpot;
 
         const artistTitle = d3.select("#albumPop")
-            .text(artistName + "'s albums' current popularity on Spotify");
+            .text(artistNameSpot + "'s albums' current popularity on Spotify");
         
         // Create SVG element
         var svg = d3.select("#recordCollection")
@@ -458,7 +457,7 @@ d3.json("functions/get_artist_Playcounts.php?artistSpotID=<?php echo $artistSpot
             .attr("height", 64)
             .append("title")
             .text(function(d){
-                return d.albumName;
+                return d.albumNameSpot;
             });			   
         
         // Labels

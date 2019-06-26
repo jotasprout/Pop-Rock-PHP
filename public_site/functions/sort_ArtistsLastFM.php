@@ -13,7 +13,7 @@ $postedColumnName = $_POST[ "columnName" ];
 $postedCurrentOrder = $_POST[ "currentOrder" ];
 
 // if any POSTed variables did not come through, these defaults were basic starting sort from original sql query
-$columnName = "artistName";
+$columnName = "artistNameMB";
 $currentOrder = "ASC";
 
 if ( !empty( $_POST[ "columnName" ] ) ) {
@@ -30,7 +30,7 @@ if ( !empty( $_POST[ "currentOrder" ] ) ) {
 
 $artistNameNewOrder = "unsorted";
 
-if ( $columnName == "artistName" ) {
+if ( $columnName == "artistNameMB" ) {
 	if ($currentOrder == "unsorted" or $currentOrder == "DESC") {
 		$artistNameNewOrder = "ASC";
 		$newOrder = "ASC";
@@ -78,7 +78,7 @@ if ( $columnName == "artistPlaycount" ) {
 	};
 };
 
-$allthatAndLastFM = "SELECT a.artistMBID AS artistMBID, a.artistArtMB AS artistArt, a.artistName AS artistName, f1.dataDate AS dataDate, f1.artistListeners AS artistListeners, f1.artistPlaycount AS artistPlaycount
+$allthatAndLastFM = "SELECT a.artistMBID AS artistMBID, a.artistArtMB AS artistArtMB, a.artistNameMB AS artistNameMB, f1.dataDate AS dataDate, f1.artistListeners AS artistListeners, f1.artistPlaycount AS artistPlaycount
     FROM artistsMB a
     JOIN (SELECT f.*
 			FROM artistsLastFM f
@@ -102,7 +102,7 @@ if (!empty($sortit)) { ?>
 <thead>
 	<tr>
 	<th>Pretty Face</th>	
-	<th onClick="sortColumn('artistName', '<?php echo $artistNameNewOrder; ?>')"><div class="pointyHead">Artist Name</div></th>
+	<th onClick="sortColumn('artistNameMB', '<?php echo $artistNameNewOrder; ?>')"><div class="pointyHead">Artist Name</div></th>
 	<!--
 	-->
 	<th onClick="sortColumn('datadate', '<?php echo $datadateNewOrder; ?>')"><div class="pointyHead popStyle">LastFM<br>Data Date</div></th>
@@ -116,8 +116,8 @@ if (!empty($sortit)) { ?>
 
 		<?php
 			while ($row = mysqli_fetch_array($sortit)) {
-				$artistName = $row[ "artistName" ];
-				$artistArt = $row[ "artistArt" ];
+				$artistNameMB = $row[ "artistNameMB" ];
+				$artistArtMB = $row[ "artistArtMB" ];
 				$lastFMDate = $row[ "dataDate" ];
 				$artistListenersNum = $row[ "artistListeners"];
 				$artistListeners = number_format ($artistListenersNum);
@@ -127,10 +127,8 @@ if (!empty($sortit)) { ?>
 		?>
 
 <tr>
-	<td><img src='<?php echo $artistArt ?>' class="indexArtistArt"></td>	
-	<td><a href='https://www.roxorsoxor.com/poprock/artist_ChartsLastFM.php?artistSpotID=<?php echo $artistSpotID ?>&artistMBID=<?php echo $artistMBID ?>&source=<?php echo $source ?>'><?php echo $artistName ?></a></td>
-<!--
--->
+	<td><img src='<?php echo $artistArtMB ?>' class="indexArtistArt"></td>	
+	<td><a href='https://www.roxorsoxor.com/poprock/artist_ChartsLastFM.php?artistSpotID=<?php echo $artistSpotID ?>&artistMBID=<?php echo $artistMBID ?>&source=<?php echo $source ?>'><?php echo $artistNameMB ?></a></td>
 <!---->
 	<td class="popStyle"><?php echo $lastFMDate ?></td>
 	<td class="rightNum"><?php echo $artistListeners ?></td>

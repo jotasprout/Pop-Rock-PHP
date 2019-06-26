@@ -11,7 +11,7 @@ if (!$connekt) {
 	echo 'Darn. Did not connect. Screwed up like this: ' . mysqli_error($connekt) . '</p>';
 };
 
-$getPlaycounts = "SELECT m.artistName, p.dataDate, p.artistPlaycount
+$getPlaycounts = "SELECT m.artistNameMB, p.dataDate, p.artistPlaycount
 	FROM artistsMB m
 	INNER JOIN artistsLastFM p ON m.artistMBID = p.artistMBID
 	WHERE m.artistMBID = '$artistMBID' AND p.dataDate >= '2019-02-11'

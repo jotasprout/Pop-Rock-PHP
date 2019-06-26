@@ -11,8 +11,8 @@ if ( !$connekt ) {
 
 // Class of 2019
 
-$artistInfoRecentWithArt = "SELECT a.artistSpotID AS artistSpotID, a.artistArt AS artistArt, a.artistName AS artistName, p1.followers AS followers, p1.date AS date
-    FROM artists a
+$artistInfoRecentWithArt = "SELECT a.artistSpotID AS artistSpotID, a.artistArtSpot AS artistArtSpot, a.artistNameSpot AS artistNameSpot, p1.followers AS followers, p1.date AS date
+    FROM artistsSpot a
     JOIN (SELECT p.*
 			FROM popArtists p
 			INNER JOIN (SELECT artistSpotID, followers, max(date) AS MaxDate

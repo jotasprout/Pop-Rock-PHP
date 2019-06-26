@@ -24,7 +24,7 @@ if ( !empty( $_POST[ "order" ] ) ) {
 $artistNameNextOrder = "ASC";
 $genreNextOrder = "ASC";
 
-if ( $sortBy == "artistName" and $order == "ASC" ) {
+if ( $sortBy == "artistNameSpot" and $order == "ASC" ) {
 	$artistNameNextOrder = "DESC";
 }
 
@@ -32,8 +32,8 @@ if ( $sortBy == "genre" and $order == "ASC" ) {
 	$genreNextOrder = "DESC";
 }
 
-$artistInfoWithArtAndGenres = "SELECT a.artistSpotID, a.artistArt, a.artistName, g.genre
-    FROM artists a
+$artistInfoWithArtAndGenres = "SELECT a.artistSpotID, a.artistArtSpot, a.artistNameSpot, g.genre
+    FROM artistsSpot a
     JOIN genres g ON a.artistSpotID = g.artistSpotID
 	ORDER BY " . $sortBy . " " . $order . ";";	
 
@@ -51,7 +51,7 @@ if (!empty($sortit)) { ?>
 				<!--
 				<th>Pretty Face</th>	
 				-->
-				<th onClick="sortColumn('artistName', '<?php echo $artistNameNextOrder; ?>')"><div class="pointyHead">Artist Name</div></th>
+				<th onClick="sortColumn('artistNameSpot', '<?php echo $artistNameNextOrder; ?>')"><div class="pointyHead">Artist Name</div></th>
 				<th onClick="sortColumn('genre', '<?php echo $genreNextOrder; ?>')"><div class="pointyHead">Genre</div></th>
 			</tr>
 		</thead>
@@ -60,16 +60,16 @@ if (!empty($sortit)) { ?>
 
 		<?php
 			while ($row = mysqli_fetch_array($sortit)) {
-				$artistName = $row["artistName"];
+				$artistNameSpot = $row["artistNameSpot"];
 				$genre = $row["genre"];
-				$artistArt = $row[ "artistArt" ];
+				$artistArtSpot = $row[ "artistArtSpot" ];
 		?>
 
 		<tr>
 		<!--
 		<td><img src='<?php // echo $artistArt ?>' height='64' width='64'></td>	
 		-->
-			<td><?php echo $artistName ?></td>
+			<td><?php echo $artistNameSpot ?></td>
 			<td><a href='https://www.roxorsoxor.com/poprock/genreArtists_popCurrentBars.php?artistGenre=<?php echo $genre ?>'><?php echo $genre ?></a></td>
 			<!--
 			<td><?php //echo $genre ?></td>

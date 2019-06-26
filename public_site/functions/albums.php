@@ -94,7 +94,7 @@ function divideCombineAlbums ($artistAlbums) {
 			$albumPop = $album->popularity;
 			$albumArtSpot = $album->images[0]->url;
 
-			$insertAlbums = "INSERT INTO albums (albumSpotID,albumName,artistSpotID,year,albumArtSpot) VALUES('$albumSpotID','$albumName','$thisartistSpotID','$albumReleased','$albumTotalTracks','$albumArtSpot')";
+			$insertAlbums = "INSERT INTO albumsSpot (albumSpotID,albumNameSpot,artistSpotID,year,albumArtSpot) VALUES('$albumSpotID','$albumNameSpot','$thisartistSpotID','$albumReleased','$albumTotalTracks','$albumArtSpot')";
 			
 			if (!$connekt) {
 				echo 'Darn. Did not connect.<br>';
@@ -103,7 +103,7 @@ function divideCombineAlbums ($artistAlbums) {
 			$rockout = $connekt->query($insertAlbums);
 
 			if(!$rockout){
-				echo '<p>Crap de General Tsao! Could not insert ' . $albumName . '.</p>';
+				echo '<p>Crap de General Tsao! Could not insert ' . $albumNameSpot . '.</p>';
 			}
 
 			$insertAlbumsPop = "INSERT INTO popAlbums (albumSpotID,pop,date) VALUES('$albumSpotID','$albumPop',curdate())";
@@ -114,7 +114,7 @@ function divideCombineAlbums ($artistAlbums) {
 				echo 'Sweet & Sour Crap! Could not insert albums popularity.';
 			}
 		
-            echo '<p><img src="' . $albumArtSpot . '" height="64" width="64"><br>' . $albumName . '<br>' . $albumReleased . '<br>Pop is ' . $albumPop . '<br>Total tracks: ' . $albumTotalTracks . '</p>';
+            echo '<p><img src="' . $albumArtSpot . '" height="64" width="64"><br>' . $albumNameSpot . '<br>' . $albumReleased . '<br>Pop is ' . $albumPop . '<br>Total tracks: ' . $albumTotalTracks . '</p>';
 
 		}
 	};

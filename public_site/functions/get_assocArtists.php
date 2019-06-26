@@ -13,9 +13,9 @@ if ( !$connekt ) {
 };
 
 
-$getAssocArtists = "SELECT r.assocArtistName, r.assocArtistSpotID, r.assocArtistMBID, a.artistArt, m.artistArtMB
+$getAssocArtists = "SELECT r.assocArtistName, r.assocArtistSpotID, r.assocArtistMBID, a.artistArtSpot, m.artistArtMB
 					FROM artistAssocArtists r
-					LEFT JOIN artists a ON r.assocArtistSpotID = a.artistSpotID
+					LEFT JOIN artistsSpot a ON r.assocArtistSpotID = a.artistSpotID
 					LEFT JOIN artistsMB m ON m.artistMBID = '$artistMBID'
 					WHERE r.primaryArtistSpotID = '$artistSpotID';";
 	

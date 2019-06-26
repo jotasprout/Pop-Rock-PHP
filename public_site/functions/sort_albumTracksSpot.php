@@ -50,7 +50,7 @@ if ( $currentOrder == "ASC" ) {
 
 $albumNameNewOrder = "DESC";
 
-if ( $columnName == "albumName" and $currentOrder == "DESC" ) {
+if ( $columnName == "albumNameSpot" and $currentOrder == "DESC" ) {
 	$albumNameNewOrder = "ASC";
 }
 
@@ -66,13 +66,13 @@ if ( $columnName == "pop" and $currentOrder == "ASC" ) {
 	$popNewOrder = "DESC";
 }
 
-$gatherTrackInfoSpot = "SELECT v.trackSpotID, v.trackName, v.albumName, v.pop, max(v.date) AS MaxDate
+$gatherTrackInfoSpot = "SELECT v.trackSpotID, v.trackName, v.albumNameSpot, v.pop, max(v.date) AS MaxDate
 					FROM (
-						SELECT z.trackSpotID, z.trackName, z.albumName, p.date, p.pop
+						SELECT z.trackSpotID, z.trackName, z.albumNameSpot, p.date, p.pop
 							FROM (
-								SELECT t.*, r.albumName
+								SELECT t.*, r.albumNameSpot
 									FROM tracks t
-									INNER JOIN albums r ON r.albumSpotID = t.albumSpotID
+									INNER JOIN albumsSpot r ON r.albumSpotID = t.albumSpotID
 									WHERE t.albumSpotID = '$albumSpotID'
 							) z
 						JOIN popTracks p 
@@ -103,7 +103,7 @@ if(!empty($sortit)) { ?>
 	<tbody>
 	<?php
 		while ( $row = mysqli_fetch_array( $sortit ) ) {
-			$albumName = $row[ "albumName" ];
+			$albumNameSpot = $row[ "albumNameSpot" ];
 			$trackName = $row[ "trackName" ];
 			$trackSpotID = $row[ "trackSpotID" ];
 			$trackPop = $row[ "pop" ];

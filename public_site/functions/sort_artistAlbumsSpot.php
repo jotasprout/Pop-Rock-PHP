@@ -53,27 +53,18 @@ if ($currentOrder == "ASC") {
 // They're the defaults-in-waiting, I guess
 // The table is initially sorted in chronological order using the Year Released column in ASC order.
 // Clicking the header toggles it to DESC so next time it should toggle to ASC
-//$yearNewOrder = "ASC";
 // The other two columns are not sorted. Clicking their header sorts them ASC so next time 
 
-//$popNewOrder = "ASC";
-
-// For the clicked column
-/*
-if ( $columnName == "albumName" and $currentOrder == "ASC" ) {
-	$albumNameNewOrder = "DESC";
-}
-*/
 
 $albumNameNewOrder = "unsorted";
 
-if ( $columnName == "albumName" ) {
+if ( $columnName == "albumNameSpot" ) {
 	if ($currentOrder == "unsorted" or $currentOrder == "DESC") {
-		$columnName = "b.albumName";
+		$columnName = "b.albumNameSpot";
 		$albumNameNewOrder = "ASC";
 		$newOrder = "ASC";
 	} else {
-		$columnName = "b.albumName";
+		$columnName = "b.albumNameSpot";
 		$albumNameNewOrder = "DESC";
 		$newOrder = "DESC";
 	};
@@ -132,11 +123,11 @@ if ( $columnName == "albumPlaycount" ) {
 	};
 };
 
-$gatherAlbumInfoSpot = "SELECT b.albumName, b.albumSpotID, b.year, z.artistName, p1.date, p1.pop, x.tracksTotal, x.albumArtSpot
-					FROM (SELECT sp.albumName, sp.albumSpotID, sp.artistSpotID, sp.year
-							FROM albums sp
+$gatherAlbumInfoSpot = "SELECT b.albumNameSpot, b.albumSpotID, b.year, z.artistNameSpot, p1.date, p1.pop, x.tracksTotal, x.albumArtSpot
+					FROM (SELECT sp.albumNameSpot, sp.albumSpotID, sp.artistSpotID, sp.year
+							FROM albumsSpot sp
 							WHERE sp.artistSpotID='$artistSpotID') b
-					JOIN artists z ON z.artistSpotID = b.artistSpotID
+					JOIN artistsSpot z ON z.artistSpotID = b.artistSpotID
 					LEFT JOIN albums x ON b.albumSpotID = x.albumSpotID	
 					LEFT JOIN (SELECT p.* 
 							FROM popAlbums p
@@ -147,17 +138,7 @@ $gatherAlbumInfoSpot = "SELECT b.albumName, b.albumSpotID, b.year, z.artistName,
 										AND p.date = groupedp.MaxDate) p1 
 					ON b.albumSpotID = p1.albumSpotID
 					ORDER BY " . $columnName . " " . $newOrder . ";";
-/*
-$gathering = "";
 
-if ( $source == "musicbrainz" ) {
-	$gathering = $gatherAlbumInfoLastFM;
-};
-
-if ( $source == "spotify" ) {
-	$gathering = $gatherAlbumInfoSpot;
-};
-*/
 $sortit = $connekt->query( $gatherAlbumInfoSpot );
 
 if ( !$sortit ) {
@@ -176,7 +157,7 @@ if(!empty($sortit))	 { ?>
 
 <th>albumMBID</th>
 -->
-<th onClick="sortColumn('albumName', '<?php echo $albumNameNewOrder; ?>', '<?php echo $artistSpotID; ?>', '<?php echo $source ?>')"><div class="pointyHead">Album Name</div></th>
+<th onClick="sortColumn('albumNameSpot', '<?php echo $albumNameNewOrder; ?>', '<?php echo $artistSpotID; ?>', '<?php echo $source ?>')"><div class="pointyHead">Album Name</div></th>
 
 <th onClick="sortColumn('year', '<?php echo $yearNewOrder; ?>', '<?php echo $artistSpotID; ?>', '<?php echo $source ?>')"><div class="pointyHead popStyle">Released</div></th>
 <!--
@@ -186,12 +167,7 @@ if(!empty($sortit))	 { ?>
 
 <th onClick="sortColumn('pop', '<?php echo $popNewOrder; ?>', '<?php echo $artistSpotID; ?>', '<?php echo $source ?>')"><div class="pointyHead popStyle">Spotify<br>Popularity</div></th>
 <th class="popStyle">Spotify<br>Data Date</th>
-<!--
-<th>LastFM<br>Data Date</th>
 
-<th onClick="sortColumn('albumListeners', '<?php //echo $listenersNewOrder; ?>', '<?php //echo $artistSpotID; ?>', '<?php //echo $source ?>')"><div class="pointyHead rightNum">LastFM<br>Listeners</div></th>
-<th onClick="sortColumn('albumPlaycount', '<?php //echo $playcountNewOrder; ?>', '<?php //echo $artistSpotID; ?>', '<?php //echo $source ?>')"><div class="pointyHead rightNum">LastFM<br>Playcount</div></th>
--->
 </tr>
 </thead>
 	
@@ -200,7 +176,7 @@ if(!empty($sortit))	 { ?>
 <?php
 
 	while ($row = mysqli_fetch_array($sortit)) {
-		$artistName = $row['artistName'];
+		$artistNameSpot = $row['artistNameSpot'];
 
 		$coverArt = $row['albumArtSpot'];
 		if (is_null($row['albumSpotID'])) {
@@ -211,10 +187,7 @@ if(!empty($sortit))	 { ?>
 			$source = 'spotify';
 		};
 
-		//$albumSpotID = $row['albumSpotID'];
-		//$albumMBID = $row['albumMBID'];
-
-		$albumName = $row['albumName'];
+		$albumNameSpot = $row['albumNameSpot'];
 		$tracksTotal = $row['tracksTotal'];
 		$albumReleased = $row['year'];
 		$albumPop = $row['pop'];
@@ -229,11 +202,10 @@ if(!empty($sortit))	 { ?>
 
 <td><?php //echo $albumMBID ?></td>
 -->
-		<td><a href='https://www.roxorsoxor.com/poprock/album_TracksListSpot.php?albumSpotID=<?php echo $albumSpotID ?>&source=<?php echo $source ?>'><?php echo $albumName ?></a></td>
+		<td><a href='https://www.roxorsoxor.com/poprock/album_TracksListSpot.php?albumSpotID=<?php echo $albumSpotID ?>&source=<?php echo $source ?>'><?php echo $albumNameSpot ?></a></td>
 		<td class="popStyle"><?php echo $albumReleased ?></td>
 <!--
 <td class="popStyle"><?php //echo $tracksTotal ?></td>
-<th class="popStyle"><?php //echo $date ?></th>
 -->
 		<td class="popStyle"><?php echo $albumPop ?></td>
 		<td class="popStyle"><?php echo $date ?></td>

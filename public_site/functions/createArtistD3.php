@@ -13,8 +13,8 @@ if (!$connekt) {
 
 
 
-$artistInfoAll = "SELECT a.artistSpotID, a.artistName, a.artistArt, b.pop, b.date, b.followers
-	FROM artists a
+$artistInfoAll = "SELECT a.artistSpotID, a.artistNameSpot, a.artistArtSpot, b.pop, b.date, b.followers
+	FROM artistsSpot a
 		INNER JOIN popArtists b ON a.artistSpotID = b.artistSpotID
 			WHERE a.artistSpotID = '$artistSpotID'
 				ORDER BY b.date DESC";

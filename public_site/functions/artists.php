@@ -43,7 +43,7 @@ function divideCombineArtists ($theseArtists) {
 			$artistFollowers = $artist->followers->total;
 			$jsonArtistGenres = $artist->genres;
 
-			$insertArtistsInfo = "INSERT INTO artists (artistSpotID, artistName, artistArt) VALUES('$artistSpotID','$artistName', '$artistArt')";
+			$insertArtistsInfo = "INSERT INTO artistsSpot (artistSpotID, artistNameSpot, artistArtSpot) VALUES('$artistSpotID','$artistNameSpot', '$artistArtSpot')";
 
 			$rockout = $connekt->query($insertArtistsInfo);
 
@@ -59,7 +59,7 @@ function divideCombineArtists ($theseArtists) {
 			}
 	
 			else {
-				echo '<p><img src="' . $artistArt . '"><br>' . $artistName . '<br><b>Popularity:</b> ' . $artistPop . '<br><b>Followers:</b> ' . $artistFollowers . '</p>';
+				echo '<p><img src="' . $artistArtSpot . '"><br>' . $artistNameSpot . '<br><b>Popularity:</b> ' . $artistPop . '<br><b>Followers:</b> ' . $artistFollowers . '</p>';
 			} 
 			
 		}

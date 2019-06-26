@@ -10,7 +10,7 @@ if (!$connekt) {
 	echo 'Darn. Did not connect.';
 };
 
-$getSpotStats = "SELECT z.artistName, a.albumName, f1.pop, f1.date
+$getSpotStats = "SELECT z.artistNameSpot, a.albumNameSpot, f1.pop, f1.date
     FROM (SELECT f.*
 			FROM popAlbums f
 			INNER JOIN (SELECT albumSpotID, pop, max(date) AS Maxdate
@@ -18,10 +18,10 @@ $getSpotStats = "SELECT z.artistName, a.albumName, f1.pop, f1.date
 						GROUP BY albumSpotID) groupedf
 			ON f.albumSpotID = groupedf.albumSpotID
 			AND f.date = groupedf.Maxdate) f1
-	JOIN albums a ON a.albumSpotID = f1.albumSpotID
-    JOIN artists z ON a.artistSpotID = z.artistSpotID
+	JOIN albumsSpot a ON a.albumSpotID = f1.albumSpotID
+    JOIN artistsSpot z ON a.artistSpotID = z.artistSpotID
     WHERE a.albumSpotID = '$albumSpotID'
-	ORDER BY a.albumName ASC";
+	ORDER BY a.albumNameSpot ASC";
 
 $getit = mysqli_query($connekt, $getSpotStats);
 

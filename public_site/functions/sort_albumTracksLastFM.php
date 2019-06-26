@@ -66,11 +66,11 @@ if ( $columnName == "pop" and $currentOrder == "ASC" ) {
 	$popNewOrder = "DESC";
 }
 
-$gatherTrackInfoLastFM = "SELECT v.trackName, v.albumName, v.trackListeners, v.trackPlaycount, max(v.dataDate) AS MaxDataDate
+$gatherTrackInfoLastFM = "SELECT v.trackName, v.albumNameMB, v.trackListeners, v.trackPlaycount, max(v.dataDate) AS MaxDataDate
 					FROM (
-						SELECT z.trackMBID, z.trackName, z.albumName, p.dataDate, p.trackListeners, p.trackPlaycount
+						SELECT z.trackMBID, z.trackName, z.albumNameMB, p.dataDate, p.trackListeners, p.trackPlaycount
 							FROM (
-								SELECT t.*, r.albumName
+								SELECT t.*, r.albumNameMB
 									FROM tracksMB t
 									INNER JOIN albumsMB r ON r.albumMBID = t.albumMBID
 									WHERE r.albumMBID = '$albumMBID'
