@@ -16,7 +16,7 @@ if (isset($_POST['submit'])){
 	// If form is being submitted, process the form
 	// First, get form data and make sure it is valid
 	$artistSpotID = $_POST['artistSpotID'];
-    $artistName = mysqli_real_escape_string($connekt, htmlspecialchars($_POST['artistName']));
+    $artistNameSpot = mysqli_real_escape_string($connekt, htmlspecialchars($_POST['artistNameSpot']));
     $artistArt = mysqli_real_escape_string($connekt, htmlspecialchars($_POST['artistArt']));
 	$artistMBID = mysqli_real_escape_string($connekt, htmlspecialchars($_POST['artistMBID']));
 	$assocArtistSpotID = mysqli_real_escape_string($connekt, htmlspecialchars($_POST['assocArtistSpotID']));
@@ -24,16 +24,16 @@ if (isset($_POST['submit'])){
 	$artistArtMB = "https://www.roxorsoxor.com/poprock/artist-art/" . $artistArtFilename;
 	
 	// save data to database
-	$updateArtistSpot = "UPDATE artists SET artistName='$artistName', artistMBID='$artistMBID' WHERE artistSpotID='$artistSpotID'";
+	$updateArtistSpot = "UPDATE artistsSpot SET artistNameSpot='$artistNameSpot', artistMBID='$artistMBID' WHERE artistSpotID='$artistSpotID'";
     $retval = $connekt->query($updateArtistSpot);
     
-    $updateArtistMB = "UPDATE artistsMB SET artistName='$artistName', artistMBID='$artistMBID', artistArtMB='$artistArtMB' WHERE artistMBID='$artistMBID'";
+    $updateArtistMB = "UPDATE artistsMB SET artistNameSpot='$artistNameSpot', artistMBID='$artistMBID', artistArtMB='$artistArtMB' WHERE artistMBID='$artistMBID'";
 	$retval2 = $connekt->query($updateArtistMB);
 	
-    $updateArtistAssocArtists = "INSERT INTO artistAssocArtists SET assocArtistName='$artistName', assocArtistSpotID='$assocArtistSpotID', assocArtistMBID='$artistMBID', primaryArtistName='$artistName', primaryArtistSpotID='$artistSpotID', primaryArtistMBID='$artistMBID'";
+    $updateArtistAssocArtists = "INSERT INTO artistAssocArtists SET assocArtistName='$artistNameSpot', assocArtistSpotID='$assocArtistSpotID', assocArtistMBID='$artistMBID', primaryArtistName='$artistNameSpot', primaryArtistSpotID='$artistSpotID', primaryArtistMBID='$artistMBID'";
 	$retval3a = $connekt->query($updateAssocArtists);	
 
-    $updateArtistAssocArtists2 = "INSERT INTO artistAssocArtists SET assocArtistName='$artistName', assocArtistSpotID='$assocArtistSpotID', assocArtistMBID='$artistMBID', primaryArtistName='$artistName', primaryArtistSpotID='$artistSpotID', primaryArtistMBID='$artistMBID'";
+    $updateArtistAssocArtists2 = "INSERT INTO artistAssocArtists SET assocArtistName='$artistNameSpot', assocArtistSpotID='$assocArtistSpotID', assocArtistMBID='$artistMBID', primaryArtistName='$artistNameSpot', primaryArtistSpotID='$artistSpotID', primaryArtistMBID='$artistMBID'";
 	$retval3b = $connekt->query($updateAssocArtists2);	
 	/**/
 	// Feedback of whether UPDATE worked or not
@@ -56,14 +56,14 @@ else // if the form isn't being submitted, get the data from the db and display 
 		$artistMBID = $_GET['artistMBID'];
 		
 		$queryJ = "
-		SELECT z.artistName, z.artistMBID, z.artistSpotID, z.artistArt, mb.artistArtMB
-			FROM artists z 
+		SELECT z.artistNameSpot, z.artistMBID, z.artistSpotID, z.artistArtSpot, mb.artistArtMB
+			FROM artistsSpot z 
 			JOIN artistsMB mb ON z.artistMBID = mb.artistMBID
 			WHERE z.artistSpotID='" . $artistSpotID . "';";
 
 		$queryZ = "
-			SELECT z.artistName, z.artistMBID, z.artistSpotID, z.artistArt, mb.artistArtMB, a.assocArtistSpotID
-                FROM artists z 
+			SELECT z.artistNameSpot, z.artistMBID, z.artistSpotID, z.artistArtSpot, mb.artistArtMB, a.assocArtistSpotID
+                FROM artistsSpot z 
                 LEFT JOIN artistsMB mb ON z.artistMBID = mb.artistMBID
 				LEFT JOIN artistAssocArtists a ON a.primaryArtistSpotID = z.artistSpotID
 				WHERE z.artistSpotID='" . $artistSpotID . "';";
@@ -75,10 +75,10 @@ else // if the form isn't being submitted, get the data from the db and display 
 		
 		// check that the 'artistMBID' matches up with a row in the databse
 		if($row){
-			$artistName = $row['artistName'];
+			$artistNameSpot = $row['artistNameSpot'];
             $artistMBID = $row['artistMBID'];
             $artistArtMB = $row['artistArtMB'];
-            $artistArt = $row['artistArt'];
+            $artistArtSpot = $row['artistArtSpot'];
 			$artistSpotID = $row['artistSpotID'];
 			$assocArtistSpotID = $row['assocArtistSpotID'];
 			if($row["artistArtMB"] == "") {
@@ -105,7 +105,7 @@ else // if the form isn't being submitted, get the data from the db and display 
 <head>
 <meta name="viewport" content="user-scalable=no, width=device-width" />
 <meta charset="UTF-8">
-<title>Edit <?php echo $artistName; ?></title>
+<title>Edit <?php echo $artistNameSpot; ?></title>
 <?php echo $stylesAndSuch; ?>
 </head>
 <body>
@@ -116,7 +116,7 @@ else // if the form isn't being submitted, get the data from the db and display 
 	
 	<!-- main -->
 	<div class="panel panel-primary">
-		<div class="panel-heading"><h3 class="panel-title">Edit <?php echo $artistName; ?></h3></div>
+		<div class="panel-heading"><h3 class="panel-title">Edit <?php echo $artistNameSpot; ?></h3></div>
 			<div class="panel-body">
 				<!-- Panel Content -->
 	
@@ -127,7 +127,7 @@ else // if the form isn't being submitted, get the data from the db and display 
 		<fieldset>
 
 		<div class="form-group"> <!-- Row ArtSpot --> 
-			<div><img src='<?php echo $artistArtSpot ?>'></div>
+			<div><img src='<?php echo $artistArtSpot ?>' class="indexArtistArt"></div>
 			<label class="col-lg-2 control-label" for="artistArtSpot">Artist Art Spotify</label>
 			<div class="col-lg-4">
 				<input class="form-control" type="text" name="artistArtSpot" value="<?php echo $artistArtSpot; ?>" readonly/>
@@ -136,7 +136,7 @@ else // if the form isn't being submitted, get the data from the db and display 
 			<!-- /Row ArtSpot -->  
 
 		<div class="form-group"> <!-- Row ArtMB --> 	
-			<div><img src='<?php echo $artistArtMB ?>'></div>		
+			<div><img src='<?php echo $artistArtMB ?>' class="indexArtistArt"></div>		
 			<label class="col-lg-2 control-label" for="artistArtMB">Artist Art MB</label>			
 			<div class="col-lg-4">
 				<input class="form-control" type="text" name="artistArtMB" value="<?php echo $artistArtMB; ?>" />
@@ -175,7 +175,7 @@ else // if the form isn't being submitted, get the data from the db and display 
 		<div class="form-group"> <!-- Primary Artist MB Name --> 			
 			<label class="col-lg-2 control-label" for="primaryArtistNameMB">Primary Artist MB Name</label>			
 			<div class="col-lg-4">
-				<input class="form-control" type="text" name="primaryArtistNameMB" value="<?php echo $artistNameMB; ?>" />
+				<input class="form-control" type="text" name="primaryArtistNameMB" value="<?php echo $artistNameSpotMB; ?>" />
 			</div>
 		</div>
 		<!-- /Primary Artist MB Name -->							
