@@ -62,7 +62,7 @@ else // if the form isn't being submitted, get the data from the db and display 
 			WHERE z.artistSpotID='" . $artistSpotID . "';";
 
 		$queryZ = "
-			SELECT z.artistNameSpot, z.artistMBID, z.artistSpotID, z.artistArtSpot, mb.artistArtMB, a.assocArtistSpotID
+			SELECT z.artistNameSpot, z.artistMBID, z.artistSpotID, z.artistArtSpot, mb.artistArtMB, a.assocArtistSpotID, mb.artistNameMB
                 FROM artistsSpot z 
                 LEFT JOIN artistsMB mb ON z.artistMBID = mb.artistMBID
 				LEFT JOIN artistAssocArtists a ON a.primaryArtistSpotID = z.artistSpotID
@@ -77,7 +77,8 @@ else // if the form isn't being submitted, get the data from the db and display 
 		if($row){
 			$artistNameSpot = $row['artistNameSpot'];
             $artistMBID = $row['artistMBID'];
-            $artistArtMB = $row['artistArtMB'];
+			$artistArtMB = $row['artistArtMB'];
+			$artistNameMB = $row['artistNameMB'];
             $artistArtSpot = $row['artistArtSpot'];
 			$artistSpotID = $row['artistSpotID'];
 			$assocArtistSpotID = $row['assocArtistSpotID'];
@@ -125,68 +126,66 @@ else // if the form isn't being submitted, get the data from the db and display 
 	<form class="form-horizontal" action="" method="post">
 		
 		<fieldset>
-
+		
 		<div class="form-group"> <!-- Row ArtSpot --> 
-			<div><img src='<?php echo $artistArtSpot ?>' class="indexArtistArt"></div>
-			<label class="col-lg-2 control-label" for="artistArtSpot">Artist Art Spotify</label>
-			<div class="col-lg-4">
+			<div class="col-lg-2 rightNum">
+				<img src='<?php echo $artistArtSpot ?>' class="indexArtistArt">
+			</div>
+			<div class="col-lg-4 align-top">
+				<label class="control-label" for="artistArtSpot">Artist Art Spotify</label>
 				<input class="form-control" type="text" name="artistArtSpot" value="<?php echo $artistArtSpot; ?>" readonly/>
 			</div>
-		</div>
-			<!-- /Row ArtSpot -->  
+		</div> <!-- /Row ArtSpot -->  
 
 		<div class="form-group"> <!-- Row ArtMB --> 	
-			<div><img src='<?php echo $artistArtMB ?>' class="indexArtistArt"></div>		
-			<label class="col-lg-2 control-label" for="artistArtMB">Artist Art MB</label>			
-			<div class="col-lg-4">
+			<div class="col-lg-2 rightNum">
+				<img src='<?php echo $artistArtMB ?>' class="indexArtistArt">
+			</div>		
+			<div class="col-lg-4 align-top">
+				<label class="control-label" for="artistArtMB">Artist Art MB</label>
 				<input class="form-control" type="text" name="artistArtMB" value="<?php echo $artistArtMB; ?>" />
 			</div>
-		</div>
-		<!-- /Row ArtMB -->				   
+		</div> <!-- /Row ArtMB -->				   
 
 		<div class="form-group"> <!-- Primary Artist Spotify Name --> 			
-			<label class="col-lg-2 control-label" for="primaryArtistName">Primary Artist Spotify Name</label>			
+			<label class="col-lg-2 control-label" for="primaryArtistName">Primary Artist Name</label>			
 			<div class="col-lg-4">
 				<input class="form-control" type="text" name="primaryArtistName" value="<?php echo $artistNameSpot; ?>" />
 			</div>
-		</div>
-		<!-- /Primary Artist Spotify Name -->
+		</div> <!-- /Primary Artist Spotify Name -->
 			
 		<div class="form-group"> <!-- Primary Artist Spotify ID --> 
 			<!-- Column 1 -->
-			<label class="col-lg-2 control-label" for="artistSpotID">Primary Artist Spotify ID</label>
+			<label class="col-lg-2 control-label" for="artistSpotID">Artist Spotify ID</label>
 			<!-- Column 2 -->
 			<div class="col-lg-4">
 				<input class="form-control" type="artistSpotID" name="artistSpotID"  value="<?php echo $artistSpotID; ?>" readonly/>
 			</div>
-		</div>
-		<!-- /Primary Artist Spotify ID --> 	
+		</div> <!-- /Primary Artist Spotify ID --> 	
 
 		<div class="form-group"> <!-- Primary Artist MBID --> 
 			<!-- Column 1 -->
-			<label class="col-lg-2 control-label" for="artistMBID">Primary Artist MBID</label>
+			<label class="col-lg-2 control-label" for="artistMBID">Artist MBID</label>
 			<!-- Column 2 -->
 			<div class="col-lg-4">
 				<input class="form-control" type="text" name="artistMBID" value="<?php echo $artistMBID; ?>" />
 			</div>
-		</div>
-		<!-- /Primary Artist MBID -->	
+		</div> <!-- /Primary Artist MBID -->	
 
 		<div class="form-group"> <!-- Primary Artist MB Name --> 			
-			<label class="col-lg-2 control-label" for="primaryArtistNameMB">Primary Artist MB Name</label>			
+			<label class="col-lg-2 control-label" for="primaryArtistNameMB">Artist MB Name</label>			
 			<div class="col-lg-4">
-				<input class="form-control" type="text" name="primaryArtistNameMB" value="<?php echo $artistNameSpotMB; ?>" />
+				<input class="form-control" type="text" name="primaryArtistNameMB" value="<?php echo $artistNameMB; ?>" />
 			</div>
-		</div>
-		<!-- /Primary Artist MB Name -->							
+		</div> <!-- /Primary Artist MB Name -->							
 			
 		<div class="form-group"> <!-- Add Associated Artist SpotID --> 
 			<!-- Column 1 -->
-			<label class="col-lg-2 control-label" for="assocArtistSpotID">Add Associated Artist SpotID</label>
+			<label class="col-lg-2 control-label" for="assocArtistSpotID">Add Assoc Artist SpotID</label>
 			<!-- Column 2 -->
 			<div class="col-lg-3">
-				<input class="form-control" type="assocArtistSpotID" name="assocArtistSpotID"  value="<?php echo $assocArtistSpotID; ?>" />
-			</div>
+				<input class="form-control" type="assocArtistSpotID" name="assocArtistSpotID" />
+			</div> 
 			<!-- Column 3 
 			<div class="col-lg-3">
 				<input class="form-control" type="assocArtistNameSpot" name="assocArtistNameSpot"  value="<?php //echo $assocArtistNameSpot; ?>" readonly/>
@@ -196,10 +195,10 @@ else // if the form isn't being submitted, get the data from the db and display 
 
 		<div class="form-group"> <!-- Add Associated Artist MBID --> 
 			<!-- Column 1 -->
-			<label class="col-lg-2 control-label" for="assocArtistMBID">Add Associated Artist MBID</label>
+			<label class="col-lg-2 control-label" for="assocArtistMBID">Add Assoc Artist MBID</label>
 			<!-- Column 2 -->
 			<div class="col-lg-3">
-				<input class="form-control" type="assocArtistMBID" name="assocArtistMBID"  value="<?php echo $assocArtistMBID; ?>" />
+				<input class="form-control" type="assocArtistMBID" name="assocArtistMBID" />
 			</div>
 			<!-- Column 3 
 			<div class="col-lg-3">
@@ -248,13 +247,14 @@ else // if the form isn't being submitted, get the data from the db and display 
 
 	$result0 = mysqli_query($connekt, $getAssocArtists);
 
-	/**/
+	
+	/*
 	if(!$result0){
 		echo 'Cursed-Crap. Did not run the query.';
 	}
 
 	if (mysqli_num_rows($result0) > 0) {
-		/**/
+		*/
 		while ($row = mysqli_fetch_array($result0)) {
 			echo "<tr>
 					<td><img src='" . $row['artistArtSpot'] . "' height='64' width='64'></td>
@@ -264,11 +264,11 @@ else // if the form isn't being submitted, get the data from the db and display 
 				</tr>";
 		}
 		echo json_encode($rows);
-		
+/*		
 	} else {
 		echo "Nope. Nothing to see here. Screwed up like this: " . mysqli_error($result0) . "</p>";
 	}
-
+*/
     echo "</tbody></table>";
 	// When attempt is complete, connection closes
     mysqli_close($connekt);
