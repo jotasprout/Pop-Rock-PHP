@@ -9,17 +9,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Drag-n-Drop</title>
-
     <script src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
-	<!--
-    <script src='https://code.jquery.com/ui/1.12.1/jquery-ui.js'></script>
-	-->
     <script src='https://d3js.org/d3.v4.min.js'></script>
-	<!--
-    Do I need the next line? Or is it included in d3?
-		
-	<script src="https://d3js.org/d3-drag.v1.min.js"></script>
--->
     <link rel='stylesheet' href='https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css'>   
     <link rel='stylesheet' href='dragDrop.css'>
 	<link rel='stylesheet' href='lineGraphStyles.css'>
@@ -46,9 +37,6 @@ const drag = d3.drag();
 d3.json("dragDropCompare.php", function (dataset) {
 
     console.log(dataset);
-	
-	//const picWidth = 64;
-	//const picHeight = 64;
 
     const svg = d3.select("body")
                   .append("svg")
@@ -95,15 +83,15 @@ d3.json("dragDropCompare.php", function (dataset) {
 	
 	faces.append("svg:image")
 		 .attr("xlink:href", function(d){
-			return d.artistArt;
+			return d.artistArtSpot;
 		})
-		.attr("data-artistName", (d) => d.artistName)
+		.attr("data-artistName", (d) => d.artistNameSpot)
 		.attr("data-artistPop", (d) => d.pop)
 		.attr("data-artistSpotID", (d) => d.artistSpotID)
 		.attr("data-popDate", (d) => d.date)
 		.attr("class", "choice")
 		.append("title")
-		.text((d) => d.artistName);
+		.text((d) => d.artistNameSpot);
 	
 	let droppedArtists = [];
 	
@@ -113,7 +101,7 @@ d3.json("dragDropCompare.php", function (dataset) {
 			const mouse = d3.mouse(this);
 			const picWidth = 64;
 			const picHeight = 64;
-			console.log ("Dragging " + d.artistName + " with " + d.pop + " popularity");
+			//console.log ("Dragging " + d.artistNameSpot + " with " + d.pop + " popularity");
 			d3.select(this)
 			  //.attr("x", d3.event.x)
 			  //.attr("y", d3.event.y)
@@ -123,13 +111,13 @@ d3.json("dragDropCompare.php", function (dataset) {
 		})
 		.on("end", function (d) {
 			if (dropToReady == true){
-				droppedArtists.push(d.artistName);
+				droppedArtists.push(d.artistNameSpot);
 			};
 			let dropped = droppedArtists.length;
 			for(let i=0; i<dropped; i++){
-				console.log(droppedArtists[i]);
+				//console.log(droppedArtists[i]);	
 			};
-			
+			console.log(droppedArtists);
 			d3.select(this)
 			  .attr("pointer-events", "auto");
 		});

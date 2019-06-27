@@ -11,8 +11,8 @@ $dragdrop = array ('2BTZIqw0ntH9MvilQ3ewNY', '0oSGxfWSnnOXhD2fKuz2Gy', '3RYdggbT
 
 $thisarray = implode("', '", $dragdrop);
 
-$artistPopCurrentWithArt = "SELECT a.artistSpotID AS artistSpotID, a.artistArt AS artistArt, a.artistName AS artistName, p1.pop AS pop, p1.date AS date
-    FROM artists a
+$artistPopCurrentWithArt = "SELECT a.artistSpotID AS artistSpotID, a.artistArtSpot AS artistArtSpot, a.artistNameSpot AS artistNameSpot, p1.pop AS pop, p1.date AS date
+    FROM artistsSpot a
     JOIN (SELECT p.*
 			FROM popArtists p
 			INNER JOIN (SELECT artistSpotID, pop, max(date) AS MaxDate
@@ -22,12 +22,12 @@ $artistPopCurrentWithArt = "SELECT a.artistSpotID AS artistSpotID, a.artistArt A
 			AND p.date = groupedp.MaxDate) p1
 	ON a.artistSpotID = p1.artistSpotID
 	WHERE a.artistSpotID IN ('" . $thisarray . "')    
-    ORDER BY a.artistName ASC";
+    ORDER BY a.artistNameSpot ASC";
 
-$artistInfoWithArt = "SELECT a.artistSpotID AS artistSpotID, a.artistArt AS artistArt, a.artistName AS artistName
-    FROM artists a
+$artistInfoWithArt = "SELECT a.artistSpotID AS artistSpotID, a.artistArtSpot AS artistArtSpot, a.artistNameSpot AS artistNameSpot
+    FROM artistsSpot a
 	WHERE a.artistSpotID IN ('" . $thisarray . "')    
-    ORDER BY a.artistName ASC";
+    ORDER BY a.artistNameSpot ASC";
 
 $result = mysqli_query($connekt, $artistPopCurrentWithArt);
 
