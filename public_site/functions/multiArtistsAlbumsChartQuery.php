@@ -40,7 +40,7 @@ FROM (SELECT
 			y.albumArtSpot AS albumArtSpot,
 			y.year AS year
 		FROM albumsSpot y) a
-JOIN artists z ON z.artistSpotID = a.artistSpotID
+JOIN artistsSpot z ON z.artistSpotID = a.artistSpotID
 JOIN (SELECT p.*
 		FROM popAlbums p
 		INNER JOIN (SELECT albumSpotID, pop, max(date) AS MaxDate

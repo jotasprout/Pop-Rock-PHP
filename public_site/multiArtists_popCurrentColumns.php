@@ -67,7 +67,7 @@ require_once 'page_pieces/stylesAndScripts.php';
             .enter()
             .append("svg:image")
             .attr("xlink:href", function (d){
-                return d.artistArt;
+                return d.artistArtSpot;
             })
             .attr("x", function (d,i) {
                 return i * 65;
@@ -79,7 +79,7 @@ require_once 'page_pieces/stylesAndScripts.php';
             .attr("height", 64)
             .append("title")
             .text(function(d){
-                return d.artistName;
+                return d.artistNameSpot;
             });			   
         
         // Popularity Labels atop columns

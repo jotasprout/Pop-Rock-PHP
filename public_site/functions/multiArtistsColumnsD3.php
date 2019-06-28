@@ -11,7 +11,7 @@ if ( !$connekt ) {
 
 // Rock en Espanol
 
-$artistInfoRecentWithArt = "SELECT a.artistSpotID AS artistSpotID, a.artistArt AS artistArt, a.artistNameSpot AS artistNameSpot, p1.pop AS pop, p1.date AS date
+$artistInfoRecentWithArt = "SELECT a.artistSpotID AS artistSpotID, a.artistArtSpot AS artistArtSpot, a.artistNameSpot AS artistNameSpot, p1.pop AS pop, p1.date AS date
     FROM artistsSpot a
     JOIN (SELECT p.*
 			FROM popArtists p

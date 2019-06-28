@@ -129,7 +129,7 @@ function artistsAssemble (relatives) {
             .attr("height", 64)
             .append("title")
             .text(function(d){
-                return d.albumName;
+                return d.albumNameSpot;
             });			   
         
         // Labels

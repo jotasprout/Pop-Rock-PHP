@@ -184,7 +184,7 @@ d3.json("functions/multiArtists_pop.php", function(data) {
                           
         legend.append("svg:image")
             .attr("xlink:href", function(d){
-                return d.values[0].artistArt;
+                return d.values[0].artistArtSpot;
             })
             .attr("width", 64)
             .attr("height", 64);            
@@ -204,7 +204,7 @@ d3.json("functions/multiArtists_pop.php", function(data) {
             .attr("dx", +32)
             .attr("dy", +84)
             .text(function(d) {
-                return d.values[0].artistName
+                return d.values[0].artistNameSpot
             })
             .attr("fill", function(d){
                 return d.color = color(d.key);

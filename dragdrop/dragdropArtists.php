@@ -37,6 +37,8 @@ const drag = d3.drag();
 d3.json("dragDropCompare.php", function (dataset) {
 
     console.log(dataset);
+	
+
 
     const svg = d3.select("body")
                   .append("svg")
@@ -93,7 +95,7 @@ d3.json("dragDropCompare.php", function (dataset) {
 		.append("title")
 		.text((d) => d.artistNameSpot);
 	
-	let droppedArtists = [];
+	
 	
 	// DRAG HANDLER
 	const dragHandler = d3.drag()
@@ -143,6 +145,64 @@ d3.json("dragDropCompare.php", function (dataset) {
 					   .on("end", putDown);
 
 	//d3.selectAll(".choice").call(drag);
+	let droppedArtists = dataset.splice(0,5);
+	console.log(dataset);
+	console.log(droppedArtists);
+	
+	dropTo.selectAll("rect")
+		.data(droppedArtists)
+		.enter()
+		.append("rect")
+		.attr("x", function (d,i) {
+			return i * 65;
+		})
+		.attr("y", function(d) {
+			return h - 64 - (d.pop * 2)
+		})
+		.attr("width", 64)
+		.attr("height", function(d) {
+			return (d.pop * 2);
+		});
+
+	dropTo.selectAll("image")
+		.data(droppedArtists)
+		.enter()
+		.append("svg:image")
+		.attr("xlink:href", function (d){
+			return d.artistArtSpot;
+		})
+		.attr("x", function (d,i) {
+			return i * 65;
+		})
+		.attr("y", function(d) {
+			return h - 64
+		})
+		.attr("width", 64)
+		.attr("height", 64)
+		.append("title")
+		.text(function(d){
+			return d.artistNameSpot;
+		});			   
+        
+        // Popularity Labels atop columns
+    dropTo.selectAll("text")
+		.data(droppedArtists)
+		.enter()
+		.append("text")
+		.text(function(d){
+			return d.pop;
+		})
+		.attr("text-anchor", "middle")
+		.attr("x", function (d, i){
+			return i * 65 + 65 / 2;
+		})
+		.attr("y", function(d){
+			return h - 64 - (d.pop * 2) - 5;
+		})
+		.attr("font-family", "sans-serif")
+		.attr("font-size", "11px")
+		.attr("fill", "white");
+
 	
 	
 });

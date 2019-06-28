@@ -22,7 +22,7 @@ $artistInfoRecentWithArt = "SELECT a.artistSpotID AS artistSpotID, a.artistArtSp
 			AND p.date = groupedp.MaxDate) p1
 	ON a.artistSpotID = p1.artistSpotID
 	WHERE a.artistSpotID IN ('0UKfenbZb15sqhfPC6zbt3', '4WquJweZPIK9qcfVFhTKvf', '0nJUwPwC9Ti4vvuJ0q3MfT', '1P8IfcNKwrkQP5xJWuhaOC', '2d0hyoQ5ynDBnkvAbJKORj', '0dmPX6ovclgOy8WWJaFEUU', '0Lpr5wXzWLtDWm1SjNbpPb', '1YLsqPcFg1rj7VvhfwnDWm', '7bu3H8JO7d0UbMoVzbo70s', '6H1RjVyNruCmrBEWRbD0VZ', '7crPfGd2k81ekOoSqQKWWz', '4qwGe91Bz9K2T8jXTZ815W', '4Z8W4fKeB5YxbusRsdQVPb', '3fhOTtm0LBJ3Ojn4hIljLo', '2jgPkn6LuUazBoBk6vvjh5')    
-    ORDER BY a.artistName ASC";
+    ORDER BY a.artistNameSpot ASC";
     
 
 $result = mysqli_query($connekt, $artistInfoRecentWithArt);
