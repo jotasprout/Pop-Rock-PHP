@@ -1,6 +1,5 @@
 <?php 
     require_once '../rockdb.php';
-    //require_once '../data_text/artists_groups.php';
 ?>
 
 <!DOCTYPE html>
@@ -37,8 +36,6 @@ const drag = d3.drag();
 d3.json("dragDropCompare.php", function (dataset) {
 
     console.log(dataset);
-	
-
 
     const svg = d3.select("body")
                   .append("svg")
@@ -94,8 +91,6 @@ d3.json("dragDropCompare.php", function (dataset) {
 		.attr("class", "choice")
 		.append("title")
 		.text((d) => d.artistNameSpot);
-	
-	
 	
 	// DRAG HANDLER
 	const dragHandler = d3.drag()
@@ -202,13 +197,10 @@ d3.json("dragDropCompare.php", function (dataset) {
 		.attr("font-family", "sans-serif")
 		.attr("font-size", "11px")
 		.attr("fill", "white");
-
-	
 	
 });
 
 </script>
-
 
 <script src="https://www.roxorsoxor.com/poprock/dragdrop/dragdrop.js"></script>
 </body>
