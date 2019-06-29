@@ -10,11 +10,9 @@
 
 #dragFrom {
     background-color: #FF0000;
-	height: 240px;
+	/* height: 240px; */
 }
 
 #dropTo {
-	width: 800px;
-	height: 400px;
     background-color: #FFFF00;
 }
