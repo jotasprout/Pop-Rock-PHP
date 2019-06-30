@@ -68,6 +68,7 @@ d3.json("dragDropCompare.php", function (dataset) {
         bottom: margin.bottom + spacepadding
     };
     
+    /*
     const droppedFaces = svg.select("#dropTo")
                             .data(droppedArtists)
                             .enter()
@@ -89,27 +90,10 @@ d3.json("dragDropCompare.php", function (dataset) {
                 .attr("class", "choice")
                 .append("title")
                 .text((d) => d.artistNameSpot);
-        
-    
-	// Column Chart
-
-	// Columns representing popularity
-	svg.selectAll("rect")
-		.data(droppedArtists)
-		.enter()
-		.append("rect")
-		.attr("x", function (d,i) {
-			return innerTo.left + (i * 65);
-		})
-		.attr("y", function(d) {
-			return h - innerTo.bottom - 64 - (d.pop * 2)
-		})
-		.attr("width", 64)
-		.attr("height", function(d) {
-			return (d.pop * 2);
-		});
+    */
 
     // photo of artist
+    /**/
 	svg.selectAll("image")
 		.data(droppedArtists)
 		.enter()
@@ -128,8 +112,25 @@ d3.json("dragDropCompare.php", function (dataset) {
 		.append("title")
 		.text(function(d){
 			return d.artistNameSpot;
-		});			   
+		});	
         
+	// Columns representing popularity
+	svg.selectAll("rect")
+		.data(droppedArtists)
+		.enter()
+		.append("rect")
+		.attr("x", function (d,i) {
+			return innerTo.left + (i * 65);
+		})
+		.attr("y", function(d) {
+			return h - innerTo.bottom - 64 - (d.pop * 2)
+		})
+		.attr("width", 64)
+		.attr("height", function(d) {
+			return (d.pop * 2);
+		});
+		   
+    
     // Popularity text Labels atop columns
     svg.selectAll("text")
 		.data(droppedArtists)
