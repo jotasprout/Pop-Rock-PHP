@@ -13,6 +13,15 @@
 	/* height: 240px; */
 }
 
+.dragFrom {
+    background-color: rgb(255, 255, 255);
+	/* height: 240px; */
+}
+
+.dropTo {
+    background-color: rgb(255, 255, 255);
+}
+
 #dropTo {
     background-color: #FFFF00;
 }

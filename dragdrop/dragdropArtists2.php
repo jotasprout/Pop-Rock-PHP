@@ -131,7 +131,7 @@ d3.json("dragDropCompare.php", function (dataset) {
         
     
 	// Column Chart
-	const facestwo = svg
+
 	// Columns representing popularity
 	svg.selectAll("rect")
 		.data(droppedArtists)

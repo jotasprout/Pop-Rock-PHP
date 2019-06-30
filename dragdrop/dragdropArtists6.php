@@ -41,59 +41,42 @@ const margin = {
 	
 const spacepadding = 10;	
 
-d3.json("dragDropCompare.php", function (dataset) {
-
-    console.log(dataset);
-    let droppedArtists = dataset.splice(0,5);
-    console.log(dataset);
-	console.log(droppedArtists);
-
-    const svg = d3.select("#forD3")
-                  .append("svg")
-				  .attr("width", w)
-				  .attr("height", h);
-	
-	const dropTo = svg.append("rect")
-					.attr("id", "dropTo")
-					.attr("fill", "blue")
-					.attr("x", margin.left)
-					.attr("y", h/2 - (margin.top + margin.bottom))
-                    .attr("width", w - (margin.left + margin.right))
-                    .attr("height", h/2 + margin.top);
-
-    const innerTo = {
+const innerTo = {
         top: h/2 - margin.bottom + spacepadding,
         right: w - margin.right + spacepadding,
         left: margin.left + spacepadding,
         bottom: margin.bottom + spacepadding
     };
-    
-    /*
-    const droppedFaces = svg.select("#dropTo")
-                            .data(droppedArtists)
-                            .enter()
-                            .append("g")
-                            .attr("transform", function (d,i){
-                                xOff = (i%10) * 75 + margin.left + spacepadding;
-                                yOff = Math.floor(i/10) * 75 + margin.top + spacepadding;
-                                return "translate(" + xOff + "," + yOff + ")";
-                            });
-	
-	droppedFaces.append("svg:image")
-                .attr("xlink:href", function(d){
-                    return d.artistArtSpot;
-                })
-                .attr("data-artistName", (d) => d.artistNameSpot)
-                .attr("data-artistPop", (d) => d.pop)
-                .attr("data-artistSpotID", (d) => d.artistSpotID)
-                .attr("data-popDate", (d) => d.date)
-                .attr("class", "choice")
-                .append("title")
-                .text((d) => d.artistNameSpot);
-    */
+
+const svg = d3.select("#forD3")
+				.append("svg")
+				.attr("width", w)
+				.attr("height", h);
+
+const dragFrom = svg.append("rect.dragFrom")
+					.attr("id", "dragFrom")
+					.style("fill", "red")
+					.attr("x", margin.left)
+					.attr("y", margin.top)
+					.attr("width", w - (margin.left + margin.right))
+					.attr("height", 240);
+
+const dropTo = svg.append("rect.dropTo")
+				.attr("id", "dropTo")
+				.attr("fill", "blue")
+				.attr("x", margin.left)
+				.attr("y", h/2 - (margin.top + margin.bottom))
+				.attr("width", w - (margin.left + margin.right))
+				.attr("height", h/2 + margin.top);
+
+
+d3.json("dragDropCompare.php", function (dataset) {
+
+    let droppedArtists = dataset.splice(0,5);
+    console.log(dataset);
+	console.log(droppedArtists);
 
     // photo of artist
-    /**/
 	svg.selectAll("image")
 		.data(droppedArtists)
 		.enter()
@@ -109,13 +92,16 @@ d3.json("dragDropCompare.php", function (dataset) {
 		})
 		.attr("width", 64)
 		.attr("height", 64)
+		.attr("data-artistName", (d) => d.artistNameSpot)
+		.attr("data-artistPop", (d) => d.pop)
+		.attr("data-artistSpotID", (d) => d.artistSpotID)
+		.attr("data-popDate", (d) => d.date)
+		.attr("class", "choice")
 		.append("title")
-		.text(function(d){
-			return d.artistNameSpot;
-		});	
+		.text((d) => d.artistNameSpot);
         
 	// Columns representing popularity
-	svg.selectAll("rect")
+	svg.selectAll("rect.columns")
 		.data(droppedArtists)
 		.enter()
 		.append("rect")
@@ -129,7 +115,6 @@ d3.json("dragDropCompare.php", function (dataset) {
 		.attr("height", function(d) {
 			return (d.pop * 2);
 		});
-		   
     
     // Popularity text Labels atop columns
     svg.selectAll("text")
