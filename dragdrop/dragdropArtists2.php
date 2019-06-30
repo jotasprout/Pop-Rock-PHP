@@ -129,7 +129,10 @@ d3.json("dragDropCompare.php", function (dataset) {
 		.append("title")
         .text((d) => d.artistNameSpot);
         
-    // Columns representing popularity
+    
+	// Column Chart
+	const facestwo = svg
+	// Columns representing popularity
 	svg.selectAll("rect")
 		.data(droppedArtists)
 		.enter()
