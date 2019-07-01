@@ -20,11 +20,11 @@ $thirteen_SpotID = '46fDgOnY2RavytWwL88x5M';
 $thirteen_MBID = '7dbf4b1f-d3e9-47bc-9194-d15b31017bd6';
 */
 
-$getAlbumTracks = "SELECT d.trackMBID, d.trackName, d.albumName, d.trackListeners, d.trackPlaycount, max(d.dataDate) AS MaxDataDate, d.albumArtMB
+$getAlbumTracks = "SELECT d.trackMBID, d.trackNameMB, d.albumNameMB, d.trackListeners, d.trackPlaycount, max(d.dataDate) AS MaxDataDate, d.albumArtMB
 FROM (
-	SELECT k.trackMBID, k.trackName, h.albumName, h.albumArtMB, h.assocAlbumSpotID, fm.dataDate, fm.trackListeners, fm.trackPlaycount
+	SELECT k.trackMBID, k.trackNameMB, h.albumNameMB, h.albumArtMB, h.assocAlbumSpotID, fm.dataDate, fm.trackListeners, fm.trackPlaycount
 		FROM (
-			SELECT m.trackMBID, m.trackName, m.albumMBID
+			SELECT m.trackMBID, m.trackNameMB, m.albumMBID
 				FROM tracksMB m
 				WHERE m.albumMBID = '$albumMBID'
 		) k
@@ -42,11 +42,11 @@ if ( !$getit ) {
 }
 
 if ($artistSpotID != "") {
-	$getAlbumTracksAndAssocArt = "SELECT d.trackMBID, d.trackName, d.albumName, d.trackListeners, d.trackPlaycount, max(d.dataDate) AS MaxDataDate, d.albumArtMB, a.albumArtSpot
+	$getAlbumTracksAndAssocArt = "SELECT d.trackMBID, d.trackNameMB, d.albumNameMB, d.trackListeners, d.trackPlaycount, max(d.dataDate) AS MaxDataDate, d.albumArtMB, a.albumArtSpot
 	FROM (
-		SELECT k.trackMBID, k.trackName, h.albumName, h.albumArtMB, h.assocAlbumSpotID, fm.dataDate, fm.trackListeners, fm.trackPlaycount
+		SELECT k.trackMBID, k.trackNameMB, h.albumNameMB, h.albumArtMB, h.assocAlbumSpotID, fm.dataDate, fm.trackListeners, fm.trackPlaycount
 			FROM (
-				SELECT m.trackMBID, m.trackName, m.albumMBID
+				SELECT m.trackMBID, m.trackNameMB, m.albumMBID
 					FROM tracksMB m
 					WHERE m.albumMBID = '$albumMBID'
 			) k
@@ -55,7 +55,7 @@ if ($artistSpotID != "") {
 			JOIN tracksLastFM fm
 				ON fm.trackMBID = k.trackMBID
 	) d
-	JOIN albums a ON a.albumSpotID = $assocAlbumSpotID;
+	JOIN albumsSpot a ON a.albumSpotID = $assocAlbumSpotID;
 	GROUP BY d.trackMBID";
 
 	$getit2 = $connekt->query( $getAlbumTracksAndAssocArt );
@@ -64,8 +64,6 @@ if ($artistSpotID != "") {
 		echo '<p>Cursed-Crap. Did not run the query. Screwed up like this: ' . mysqli_error($connekt) . '</p>';
 	}
 }
-
-
 
 ?>
 
@@ -143,7 +141,7 @@ if ($artistSpotID != "") {
 <table class="table" id="tableotracks">
 <thead>
 <tr>
-<th onClick="sortColumn('trackName', 'DESC', '<?php echo $albumMBID ?>', 'musicbrainz')"><div class="pointyHead">Track Title</div></th>
+<th onClick="sortColumn('trackNameMB', 'DESC', '<?php echo $albumMBID ?>', 'musicbrainz')"><div class="pointyHead">Track Title</div></th>
 <th class="popStyle" >LastFM<br>Data Date</th>
 <th class="rightNum pointyHead" onClick="sortColumn('trackListeners', 'DESC', '<?php echo $albumMBID ?>', 'musicbrainz')">LastFM<br>Listeners</th>
 <th class="rightNum pointyHead" onClick="sortColumn('trackPlaycount', 'DESC', '<?php echo $albumMBID ?>', 'musicbrainz')">LastFM<br>Playcount</th>
@@ -154,8 +152,8 @@ if ($artistSpotID != "") {
 	<tbody>
 	<?php
 		while ( $row = mysqli_fetch_array( $getit ) ) {
-			$albumName = $row[ "albumName" ];
-			$trackName = $row[ "trackName" ];
+			$albumNameMB = $row[ "albumNameMB" ];
+			$trackNameMB = $row[ "trackNameMB" ];
 			$trackMBID = $row[ "trackMBID" ];
 			$lastFMDate = $row[ "MaxDataDate" ];
 			$trackListenersNum = $row[ "trackListeners"];
@@ -165,7 +163,7 @@ if ($artistSpotID != "") {
 
 	?>
 		<tr>
-		<td><a href='https://www.roxorsoxor.com/poprock/track_Chart.php?trackMBID=<?php echo $trackMBID ?>'><?php echo $trackName ?></a></td>
+		<td><a href='https://www.roxorsoxor.com/poprock/track_Chart.php?trackMBID=<?php echo $trackMBID ?>'><?php echo $trackNameMB ?></a></td>
 		<td class="popStyle"><?php echo $lastFMDate ?></td>
 		<td class="rightNum"><?php echo $trackListeners ?></td>
 		<td class="rightNum"><?php echo $trackPlaycount ?></td>
@@ -189,8 +187,8 @@ if ($artistSpotID != "") {
 <?php echo $scriptsAndSuch; ?>
 <!-- closing CONTAINER-FLUID 
 <script>
-	const albumName = '<?php //echo $albumName ?>';
-	const panelTitleText = 'LastFM stats for tracks from <em>' + albumName + '</em> by ' + artistName;
+	const albumNameMB = '<?php //echo $albumNameMB ?>';
+	const panelTitleText = 'LastFM stats for tracks from <em>' + albumNameMB + '</em> by ' + artistNameMB;
 	const panelTitle = document.getElementById('panelTitle');
 	$(document).ready(function(){
 		panelTitle.innerHTML = panelTitleText;
@@ -209,17 +207,17 @@ d3.json("functions/get_albumStats_LastFM.php?albumMBID=<?php echo $albumMBID; ?>
     
     var dataset = data;
 
-    const artistName = dataset[0].artistName;
-	const albumName = dataset[0].albumName;
+    const artistNameMB = dataset[0].artistNameMB;
+	const albumNameMB = dataset[0].albumNameMB;
 
     const nameInTitle = d3.select("title")
-            .text("LastFM stats for " + albumName + " by " + artistName)
+            .text("LastFM stats for " + albumNameMB + " by " + artistNameMB)
 	
 	const nameInAlbumPanelTitle = d3.select("#albumPanelTitle")
-            .text("LastFM stats for " + albumName + " by " + artistName)
+            .text("LastFM stats for " + albumNameMB + " by " + artistNameMB)
 
     const nameInAlbumTracksPanelTitle = d3.select("#tracksPanelTitle")
-            .text("LastFM stats for tracks from " + albumName + " by " + artistName);   
+            .text("LastFM stats for tracks from " + albumNameMB + " by " + artistNameMB);   
 	
     const dataAlbumListeners = dataset[0].albumListeners;
     let listeners = String(dataAlbumListeners).replace(/(.)(?=(\d{3})+$)/g,'$1,');	

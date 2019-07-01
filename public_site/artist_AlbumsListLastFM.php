@@ -12,11 +12,11 @@ if (!$connekt) {
 	echo '<p>Darn. Did not connect. Screwed up like this: ' . mysqli_connect_error() . '</p>';
 };
 
-$blackScabies = "SELECT b.albumName, b.albumMBID, z.artistName, f1.dataDate, f1.albumListeners, f1.albumPlaycount, x.albumArtMB
-					FROM (SELECT mb.albumName, mb.albumMBID, mb.artistMBID, mb.assocAlbumSpotID
+$blackScabies = "SELECT b.albumNameMB, b.albumMBID, z.artistNameMB, f1.dataDate, f1.albumListeners, f1.albumPlaycount, x.albumArtMB
+					FROM (SELECT mb.albumNameMB, mb.albumMBID, mb.artistMBID, mb.assocAlbumSpotID
 						FROM albumsMB mb 
 						WHERE mb.artistMBID='$artistMBID') b 
-					JOIN artists z ON z.artistMBID = b.artistMBID
+					JOIN artistsMB z ON z.artistMBID = b.artistMBID
 					LEFT JOIN albumsMB x ON b.albumMBID = x.albumMBID
 					LEFT JOIN (SELECT f.*
 							FROM albumsLastFM f
@@ -69,7 +69,7 @@ if(!$getit){
 <tr>
 	<th>Cover Art</th>
 	<!---->
-	<th onClick="sortColumn('albumName', 'ASC', '<?php echo $artistMBID; ?>', '<?php echo $source ?>')"><div class="pointyHead">Album Name</div></th>
+	<th onClick="sortColumn('albumNameMB', 'ASC', '<?php echo $artistMBID; ?>', '<?php echo $source ?>')"><div class="pointyHead">Album Name</div></th>
 	<!---->
 	<th>Album MBID</th>		
 	
@@ -86,9 +86,9 @@ if(!$getit){
 <?php
 
 	while ($row = mysqli_fetch_array($getit)) {
-		$artistName = $row['artistName'];
+		$artistNameMB = $row['artistNameMB'];
 		$albumMBID = $row['albumMBID'];
-		$albumName = $row['albumName'];	
+		$albumNameMB = $row['albumNameMB'];	
         $coverArt = $row['albumArtMB'];
 		$lastFMDate = $row[ "dataDate" ];
 		$albumListenersNum = $row[ "albumListeners"];
@@ -100,7 +100,7 @@ if(!$getit){
 					
 <tr>
 <td><img src='<?php echo $coverArt ?>' height='64' width='64'></td>
-<td><a href='https://www.roxorsoxor.com/poprock/album_TracksListLastFM.php?artistSpotID=<?php echo $artistSpotID ?>&artistMBID=<?php echo $artistMBID ?>&albumMBID=<?php echo $albumMBID ?>&source=musicbrainz'><?php echo $albumName ?></a></td>
+<td><a href='https://www.roxorsoxor.com/poprock/album_TracksListLastFM.php?artistSpotID=<?php echo $artistSpotID ?>&artistMBID=<?php echo $artistMBID ?>&albumMBID=<?php echo $albumMBID ?>&source=musicbrainz'><?php echo $albumNameMB ?></a></td>
 <!---->
 <td><?php echo $albumMBID ?></td>
 
@@ -128,10 +128,10 @@ if(!$getit){
 <?php echo $scriptsAndSuch; ?>
 <!-- -->
 <script>
-	const artistName = '<?php echo $artistName; ?>';
-	const panelTitleText = 'Last.fm stats for all albums by ' + artistName;
+	const artistNameMB = '<?php echo $artistNameMB; ?>';
+	const panelTitleText = 'Last.fm stats for all albums by ' + artistNameMB;
 	const panelTitle = document.getElementById('panelTitle');
-	const docTitleText = 'All ' + artistName + ' albums Last.fm Stats';
+	const docTitleText = 'All ' + artistNameMB + ' albums Last.fm Stats';
 	$(document).ready(function(){
 		panelTitle.innerHTML = panelTitleText;
 		document.title = docTitleText;

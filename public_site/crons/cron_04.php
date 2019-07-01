@@ -96,8 +96,9 @@ function divideCombineAlbums ($artistAlbums) {
 				foreach ($thisAlbumTracks->items as $track) {
 					$trackSpotID = $track->id;
 					$trackNumber = $track->track_number;
-					$trackName = $track->name;
+					$trackNameSpot = $track->name;
 					$AlbumsTracks [] = $trackSpotID;
+					echo "<p>" . $trackNameSpot . " is track #" . $trackNumber . "</p>";
 				};
 
 				$trackListOffset += 50;
@@ -204,8 +205,8 @@ function divideCombineArtistsForAlbums ($theseArtists) {
 			}
 			$artistSpotID = $artist->id;
 			$artistNameYucky = $artist->name;
-			$artistName = mysqli_real_escape_string($connekt,$artistNameYucky);
-			$artistArt = $artist->images[0]->url;
+			$artistNameSpot = mysqli_real_escape_string($connekt,$artistNameYucky);
+			$artistArtSpot = $artist->images[0]->url;
 			$artistPop = $artist->popularity;
 			$artistFollowers = $artist->followers->total;
 	
@@ -217,7 +218,7 @@ function divideCombineArtistsForAlbums ($theseArtists) {
 			}
 	
 			else {
-				echo '<p><img src="' . $artistArt . '"></p><p>' . $artistName . '</p><p><b>Popularity:</b> ' . $artistPop . '</p><p><b>Followers:</b> ' . $artistFollowers . '</p>';
+				echo '<p><img src="' . $artistArtSpot . '"></p><p>' . $artistNameSpot . '</p><p><b>Popularity:</b> ' . $artistPop . '</p><p><b>Followers:</b> ' . $artistFollowers . '</p>';
 			} 
 			
 		}

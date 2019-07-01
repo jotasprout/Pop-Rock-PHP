@@ -41,33 +41,35 @@ function divideCombineTracksAndInsertPop ($allArtistTracks) {
 			};			
 
 			$trackSpotID = $track->id;
-			$trackAlbumName = $track->album->name;
-			$trackName = $track->name;
+			$trackAlbumNameSpot = $track->album->name;
+			$trackNameSpot = $track->name;
 			$trackNumber = $track->track_number;
 			$trackPop = $track->popularity;
+
+			echo "<p>" . $trackNameSpot . " is track #" . $trackNumber . "</p>";
 	
 			$insertTrackPop = "INSERT INTO popTracks (trackSpotID,pop,date) VALUES('$trackSpotID','$trackPop',curdate())";
 	
 			$rockpop = $connekt->query($insertTrackPop);
 			
 			if(!$rockpop){
-				echo '<p>Confounded-Crap. Could not insert POPULARITY for "' . $trackName . '" from <i>' . $trackAlbumName . '</i>.</p>';
+				echo '<p>Confounded-Crap. Could not insert POPULARITY for "' . $trackNameSpot . '" from <i>' . $trackAlbumNameSpot . '</i>.</p>';
 			}
 	
 			else {
-				echo "<p>" . $trackName . " from <i>" . $trackAlbumName . "</i>" . " has pop " . $trackPop . "</p>";
+				echo "<p>" . $trackNameSpot . " from <i>" . $trackAlbumNameSpot . "</i>" . " has pop " . $trackPop . "</p>";
 			}
 
-			$insertTrackNumber = "UPDATE tracksSpot t SET t.trackNumber = '$trackNumber' WHERE t.trackSpotID == '$trackSpotID'";
+			$insertTrackNumber = "UPDATE tracksSpot SET trackNumber = $trackNumber WHERE trackSpotID = '$trackSpotID'";
 	
 			$rockNum = $connekt->query($insertTrackNumber);
 
 			if(!$rockNum){
-				echo '<p>Confounded-Crap. Could not update TRACK # for "' . $trackName . '" from <i>' . $trackAlbumName . '</i>.</p>';
+				echo '<p>Confounded-Crap. Could not update TRACK # for "' . $trackNameSpot . '" from <i>' . $trackAlbumNameSpot . '</i>. Screwed up like this: ' . mysqli_error($connekt) . '</p>';
 			}
 	
 			else {
-				echo "<p>" . $trackName . " is track #" . $trackNumber . " on <i>" . $trackAlbumName . "</i>.</p>";
+				echo "<p>" . $trackNameSpot . " is track #" . $trackNumber . " on <i>" . $trackAlbumNameSpot . "</i>.</p>";
 			}
 		}
 	};

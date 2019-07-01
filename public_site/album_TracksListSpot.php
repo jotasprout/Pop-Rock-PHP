@@ -111,17 +111,13 @@ if ( !$getit ) {
 			if ($popDate == '') {
 				$popDate = "n/a";				
 			};
-
 	?>
 <tr>
 
-<!--
-	
-
--->
+<!---->
 <td><?php echo $trackNumber ?></td>
 <td><?php echo $trackSpotID ?></td>
-<td><a href='https://www.roxorsoxor.com/poprock/track_Chart.php?trackSpotID=<?php echo $trackSpotID ?>'><?php echo $trackNameSpot ?></a></td>
+<td><?php echo $trackNameSpot ?></td>
 <td class="popStyle"><?php echo $popDate ?></td>
 <td class="popStyle"><?php echo $trackPop ?></td>
 
@@ -142,13 +138,16 @@ if ( !$getit ) {
 <?php echo $scriptsAndSuch; ?>
 
 <script>
+/**/
 	const albumNameSpot = '<?php echo $albumNameSpot ?>';
 	const panelTitleText = 'Popularity on Spotify for tracks from <em>' + albumNameSpot + '</em>';
 	const panelTitle = document.getElementById('panelTitle');
 	$(document).ready(function(){
 		panelTitle.innerHTML = panelTitleText;
 	});
+
 </script>
+
 <script>
 	const artistSpotID = '<?php echo $artistSpotID ?>';
 	const artistMBID = '<?php echo $artistMBID ?>';

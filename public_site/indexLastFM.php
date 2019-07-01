@@ -76,11 +76,11 @@ if(!$getit){ echo 'Cursed-Crap. Did not run the query.'; }
 
 <?php
 	while ( $row = mysqli_fetch_array( $getit ) ) {
-		$artistName = $row[ "artistNameMB" ];
+		$artistNameMB = $row[ "artistNameMB" ];
 
 		$artistMBID = $row[ "artistMBID" ];
 
-		$artistArt = $row[ "artistArtMB" ];
+		$artistArt = $row[ "artistArt" ];
 
 		$lastFMDate = $row[ "dataDate" ];
 		$artistListenersNum = $row[ "artistListeners"];

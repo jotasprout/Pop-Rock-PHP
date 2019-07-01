@@ -15,7 +15,7 @@ if ( !$connekt ) {
 
 $blackSabbath_SpotID = '5M52tdBnJaKSvOpJGz8mfZ';
 
-$gatherTrackInfo = "SELECT v.artistNameSpot, v.trackNumber, v.trackNameSpot, v.albumNameSpot, v.pop, max(v.date) AS MaxDate
+$gatherTrackInfo = "SELECT v.artistNameSpot, v.trackSpotID, v.trackNumber, v.trackNameSpot, v.albumNameSpot, v.pop, max(v.date) AS MaxDate
 					FROM (
 						SELECT z.artistNameSpot, z.trackNumber, z.trackSpotID, z.trackNameSpot, z.albumNameSpot, p.date, p.pop
 							FROM (
@@ -68,14 +68,14 @@ if ( !$getit ) {
 <table class="table" id="tableotracks">
 	<thead>
 	<tr>
-		<th onClick="sortColumn('albumNameSpot', 'DESC', '<?php echo $artistSpotID ?>', '<?php echo $source ?>')"><div class="pointyHead">Album Title</div></th>
+		
 		<th>Track #</th>
 		<th onClick="sortColumn('trackNameSpot', 'ASC', '<?php echo $artistSpotID ?>', '<?php echo $source ?>')"><div class="pointyHead">Track Title</div></th>
 		<th>Spotify<br>trackSpotID</th>
 		<th class="popStyle" onClick="sortColumn('pop', 'ASC', '<?php echo $artistSpotID ?>', '<?php echo $source ?>')"><div class="pointyHead">Spotify<br>Popularity</div></th>
 		<th>Spotify<br>Data Date</th>
 		<!--
-			
+		<th onClick="sortColumn('albumNameSpot', 'DESC', '<?php //echo $artistSpotID ?>', '<?php //echo $source ?>')"><div class="pointyHead">Album Title</div></th>
 		<th class="popStyle">LastFM<br>Data Date</th>
 		<th class="rightNum pointyHead">LastFM<br>Listeners</th>
 		<th class="rightNum pointyHead">LastFM<br>Playcount</th>
@@ -88,14 +88,15 @@ if ( !$getit ) {
 							$albumNameSpot = $row[ "albumNameSpot" ];
 							$artistNameSpot = $row[ "artistNameSpot" ];
 							$trackNameSpot = $row[ "trackNameSpot" ];
+							$trackSpotID = $row[ "trackSpotID" ];
 							$trackNumber = $row[ "trackNumber" ];
 							$trackPop = $row[ "pop" ];
 							$popDate = $row[ "MaxDate" ];
 					?>
 							<tr>
-								<td><?php echo $albumNameSpot ?></td>
+							<td><?php echo $trackNumber ?></td>
 								<td><?php echo $trackNameSpot ?></td>
-								<td><?php echo $trackNumber ?></td>
+								<td><?php echo $trackSpotID ?></td>
 								<td class="popStyle"><?php echo $trackPop ?></td>
 								<td><?php echo $popDate ?></td>
 							</tr>
