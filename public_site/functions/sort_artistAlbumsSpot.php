@@ -128,7 +128,7 @@ $gatherAlbumInfoSpot = "SELECT b.albumNameSpot, b.albumSpotID, b.year, z.artistN
 							FROM albumsSpot sp
 							WHERE sp.artistSpotID='$artistSpotID') b
 					JOIN artistsSpot z ON z.artistSpotID = b.artistSpotID
-					LEFT JOIN albums x ON b.albumSpotID = x.albumSpotID	
+					LEFT JOIN albumsSpot x ON b.albumSpotID = x.albumSpotID	
 					LEFT JOIN (SELECT p.* 
 							FROM popAlbums p
 							INNER JOIN (SELECT albumSpotID, pop, max(date) AS MaxDate

@@ -15,14 +15,14 @@ if ( !$connekt ) {
 
 $blackSabbath_SpotID = '5M52tdBnJaKSvOpJGz8mfZ';
 
-$gatherTrackInfo = "SELECT v.artistName, v.trackName, v.albumName, v.pop, max(v.date) AS MaxDate
+$gatherTrackInfo = "SELECT v.artistNameSpot, v.trackNumber, v.trackNameSpot, v.albumNameSpot, v.pop, max(v.date) AS MaxDate
 					FROM (
-						SELECT z.artistName, z.trackSpotID, z.trackName, z.albumName, p.date, p.pop
+						SELECT z.artistNameSpot, z.trackNumber, z.trackSpotID, z.trackNameSpot, z.albumNameSpot, p.date, p.pop
 							FROM (
-								SELECT t.*, r.albumName, a.artistName
-									FROM tracks t
-									INNER JOIN albums r ON r.albumSpotID = t.albumSpotID
-									JOIN artists a ON r.artistSpotID = a.artistSpotID
+								SELECT t.*, r.albumNameSpot, a.artistNameSpot
+									FROM tracksSpot t
+									INNER JOIN albumsSpot r ON r.albumSpotID = t.albumSpotID
+									JOIN artistsSpot a ON r.artistSpotID = a.artistSpotID
 									WHERE a.artistSpotID = '$artistSpotID'
 							) z
 						JOIN popTracks p 
@@ -68,13 +68,14 @@ if ( !$getit ) {
 <table class="table" id="tableotracks">
 	<thead>
 	<tr>
-		<th onClick="sortColumn('albumName', 'DESC', '<?php echo $artistSpotID ?>', '<?php echo $source ?>')"><div class="pointyHead">Album Title</div></th>
-		<th onClick="sortColumn('trackName', 'ASC', '<?php echo $artistSpotID ?>', '<?php echo $source ?>')"><div class="pointyHead">Track Title</div></th>
-		
+		<th onClick="sortColumn('albumNameSpot', 'DESC', '<?php echo $artistSpotID ?>', '<?php echo $source ?>')"><div class="pointyHead">Album Title</div></th>
+		<th>Track #</th>
+		<th onClick="sortColumn('trackNameSpot', 'ASC', '<?php echo $artistSpotID ?>', '<?php echo $source ?>')"><div class="pointyHead">Track Title</div></th>
+		<th>Spotify<br>trackSpotID</th>
 		<th class="popStyle" onClick="sortColumn('pop', 'ASC', '<?php echo $artistSpotID ?>', '<?php echo $source ?>')"><div class="pointyHead">Spotify<br>Popularity</div></th>
 		<th>Spotify<br>Data Date</th>
 		<!--
-			<th>Spotify<br>trackSpotID</th>
+			
 		<th class="popStyle">LastFM<br>Data Date</th>
 		<th class="rightNum pointyHead">LastFM<br>Listeners</th>
 		<th class="rightNum pointyHead">LastFM<br>Playcount</th>
@@ -84,15 +85,17 @@ if ( !$getit ) {
 					<tbody>
 					<?php
 						while ( $row = mysqli_fetch_array( $getit ) ) {
-							$albumName = $row[ "albumName" ];
-							$artistName = $row[ "artistName" ];
-							$trackName = $row[ "trackName" ];
+							$albumNameSpot = $row[ "albumNameSpot" ];
+							$artistNameSpot = $row[ "artistNameSpot" ];
+							$trackNameSpot = $row[ "trackNameSpot" ];
+							$trackNumber = $row[ "trackNumber" ];
 							$trackPop = $row[ "pop" ];
 							$popDate = $row[ "MaxDate" ];
 					?>
 							<tr>
-								<td><?php echo $albumName ?></td>
-								<td><?php echo $trackName ?></td>
+								<td><?php echo $albumNameSpot ?></td>
+								<td><?php echo $trackNameSpot ?></td>
+								<td><?php echo $trackNumber ?></td>
 								<td class="popStyle"><?php echo $trackPop ?></td>
 								<td><?php echo $popDate ?></td>
 							</tr>
@@ -111,10 +114,10 @@ if ( !$getit ) {
 <?php echo $scriptsAndSuch; ?>
 
 <script>
-	const artistName = '<?php echo $artistName ?>';
-	const panelTitleText = 'Spotify stats for all tracks by ' + artistName;
+	const artistNameSpot = '<?php echo $artistNameSpot ?>';
+	const panelTitleText = 'Spotify stats for all tracks by ' + artistNameSpot;
 	const panelTitle = document.getElementById('panelTitle');
-	const docTitleText = 'All ' + artistName + ' tracks Spotify Stats';
+	const docTitleText = 'All ' + artistNameSpot + ' tracks Spotify Stats';
 	$(document).ready(function(){
 		panelTitle.innerHTML = panelTitleText;
 		document.title = docTitleText;

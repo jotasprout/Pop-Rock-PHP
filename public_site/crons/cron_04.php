@@ -95,6 +95,7 @@ function divideCombineAlbums ($artistAlbums) {
 
 				foreach ($thisAlbumTracks->items as $track) {
 					$trackSpotID = $track->id;
+					$trackNumber = $track->track_number;
 					$trackName = $track->name;
 					$AlbumsTracks [] = $trackSpotID;
 				};

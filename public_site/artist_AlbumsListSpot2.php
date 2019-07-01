@@ -15,12 +15,12 @@ if (!$connekt) {
 $blackSabbath_SpotID = '5M52tdBnJaKSvOpJGz8mfZ';
 $blackSabbath_MBID = '5182c1d9-c7d2-4dad-afa0-ccfeada921a8';
 
-$blackScabies = "SELECT b.albumName, b.albumSpotID, b.year, z.artistName, p1.date, p1.pop, x.tracksTotal, x.albumArtSpot
-					FROM (SELECT sp.albumName, sp.albumSpotID, sp.artistSpotID, sp.year
-							FROM albums sp
+$blackScabies = "SELECT b.albumNameSpot, b.albumSpotID, b.year, z.artistNameSpot, p1.date, p1.pop, x.tracksTotal, x.albumArtSpot
+					FROM (SELECT sp.albumNameSpot, sp.albumSpotID, sp.artistSpotID, sp.year
+							FROM albumsSpot sp
 							WHERE sp.artistSpotID='$artistSpotID') b
-					JOIN artists z ON z.artistSpotID = b.artistSpotID
-					LEFT JOIN albums x ON b.albumSpotID = x.albumSpotID	
+					JOIN artistsSpot z ON z.artistSpotID = b.artistSpotID
+					LEFT JOIN albumsSpot x ON b.albumSpotID = x.albumSpotID	
 					LEFT JOIN (SELECT p.* 
 							FROM popAlbums p
 							INNER JOIN (SELECT albumSpotID, pop, max(date) AS MaxDate
@@ -76,7 +76,7 @@ if(!$getit){
 <!-- -->
 <th>Album Spotify ID</th>
 
-<th onClick="sortColumn('albumName', 'ASC', '<?php echo $artistSpotID; ?>', '<?php echo $source ?>')"><div class="pointyHead">Album Name</div></th>
+<th onClick="sortColumn('albumNameSpot', 'ASC', '<?php echo $artistSpotID; ?>', '<?php echo $source ?>')"><div class="pointyHead">Album Name</div></th>
 <th onClick="sortColumn('year', 'unsorted', '<?php echo $artistSpotID; ?>', '<?php echo $source ?>')"><div class="pointyHead popStyle">Released</div></th>
 <!--
 <th><div class="pointyHead popStyle">Total<br>Tracks</div></th>
@@ -91,7 +91,7 @@ if(!$getit){
 					
 <?php
 	while ($row = mysqli_fetch_array($getit)) {
-		$artistName = $row['artistName'];
+		$artistNameSpot = $row['artistNameSpot'];
 		$albumSpotID = $row['albumSpotID'];
 		$date = $row['date'];
 		$source = 'spotify';
@@ -99,7 +99,7 @@ if(!$getit){
 		$coverArt = $row['albumArtSpot'];
 		$tracksTotal = $row['tracksTotal'];
 		// need to get a tracks total for MusicBrainz-only albums
-		$albumName = $row['albumName'];
+		$albumNameSpot = $row['albumNameSpot'];
 		$albumReleased = $row['year'];	
 		// need to get release year for MusicBrainz-only albums	
 /*
@@ -111,7 +111,7 @@ if(!$getit){
 <!---->
 <td><?php echo $albumSpotID ?></td>
 
-<td><a href='https://www.roxorsoxor.com/poprock/album_TracksListSpot.php?artistSpotID=<?php echo $artistSpotID ?>&artistMBID=<?php echo $artistMBID ?>&albumSpotID=<?php echo $albumSpotID ?>&source=<?php echo $source ?>''><?php echo $albumName ?></a></td>
+<td><a href='https://www.roxorsoxor.com/poprock/album_TracksListSpot.php?artistSpotID=<?php echo $artistSpotID ?>&artistMBID=<?php echo $artistMBID ?>&albumSpotID=<?php echo $albumSpotID ?>&source=<?php echo $source ?>''><?php echo $albumNameSpot ?></a></td>
 
 
 <td class="popStyle"><?php echo $albumReleased ?></td>
@@ -142,8 +142,8 @@ if(!$getit){
 <?php echo $scriptsAndSuch; ?>
 <!-- -->
 <script>
-	const artistName = '<?php echo $artistName ?>';
-	const panelTitleText = 'Popularity On Spotify for albums by ' + artistName + '</em>';
+	const artistNameSpot = '<?php echo $artistNameSpot ?>';
+	const panelTitleText = 'Popularity On Spotify for albums by ' + artistNameSpot + '</em>';
 	const panelTitle = document.getElementById('panelTitle');
 	const docTitleText = 'All ' + artistName + ' albums Spotify Stats';
 	$(document).ready(function(){

@@ -43,6 +43,7 @@ function divideCombineTracksAndInsertPop ($allArtistTracks) {
 			$trackSpotID = $track->id;
 			$trackAlbumName = $track->album->name;
 			$trackName = $track->name;
+			$trackNumber = $track->track_number;
 			$trackPop = $track->popularity;
 	
 			$insertTrackPop = "INSERT INTO popTracks (trackSpotID,pop,date) VALUES('$trackSpotID','$trackPop',curdate())";
@@ -55,6 +56,18 @@ function divideCombineTracksAndInsertPop ($allArtistTracks) {
 	
 			else {
 				echo "<p>" . $trackName . " from <i>" . $trackAlbumName . "</i>" . " has pop " . $trackPop . "</p>";
+			}
+
+			$insertTrackNumber = "UPDATE tracksSpot t SET t.trackNumber = '$trackNumber' WHERE t.trackSpotID == '$trackSpotID'";
+	
+			$rockNum = $connekt->query($insertTrackNumber);
+
+			if(!$rockNum){
+				echo '<p>Confounded-Crap. Could not update TRACK # for "' . $trackName . '" from <i>' . $trackAlbumName . '</i>.</p>';
+			}
+	
+			else {
+				echo "<p>" . $trackName . " is track #" . $trackNumber . " on <i>" . $trackAlbumName . "</i>.</p>";
 			}
 		}
 	};

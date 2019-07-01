@@ -19,15 +19,15 @@ $crossPurposes_albumMBID = '5d2e8936-8c36-3ccd-8e8f-916e3b771d49';
 $thirteen_SpotID = '46fDgOnY2RavytWwL88x5M';
 $thirteen_MBID = '7dbf4b1f-d3e9-47bc-9194-d15b31017bd6';
 
-$getAlbumTracks = "SELECT v.trackSpotID, v.trackName, v.albumName, v.pop, max(v.date) AS MaxDate
+$getAlbumTracks = "SELECT v.trackSpotID, v.trackNameSpot, v.trackNumber, v.albumNameSpot, v.pop, max(v.date) AS MaxDate
 	FROM (
-		SELECT z.trackSpotID, z.trackName, r.albumName, p.date, p.pop
+		SELECT z.trackSpotID, z.trackNameSpot, z.trackNumber, r.albumNameSpot, p.date, p.pop
 			FROM (
-				SELECT t.trackSpotID, t.trackName, t.albumSpotID
-					FROM tracks t
+				SELECT t.trackSpotID, t.trackNameSpot, t.albumSpotID, t.trackNumber
+					FROM tracksSpot t
 					WHERE t.albumSpotID = '$albumSpotID'
 			) z
-		INNER JOIN albums r 
+		INNER JOIN albumsSpot r 
 			ON r.albumSpotID = z.albumSpotID
 		JOIN popTracks p 
 			ON z.trackSpotID = p.trackSpotID					
@@ -78,11 +78,11 @@ if ( !$getit ) {
 <table class="table" id="tableotracks">
 <thead>
 <tr>
-<!--
-<th onClick="sortColumn('albumName', 'ASC')"><div class="pointyHead">Album Name</div></th>
+<!---->
+<th onClick="sortColumn('trackNumber', 'ASC')"><div class="pointyHead">Track #</div></th>
 <th>Spotify<br>trackSpotID</th>
--->
-<th onClick="sortColumn('trackName', 'DESC', '<?php echo $albumSpotID ?>', 'spotify')"><div class="pointyHead">Track Title</div></th>
+
+<th onClick="sortColumn('trackNameSpot', 'DESC', '<?php echo $albumSpotID ?>', 'spotify')"><div class="pointyHead">Track Title</div></th>
 <th class="popStyle">Spotify<br>Data Date</th>
 <th class="popStyle" onClick="sortColumn('pop', 'ASC', '<?php echo $albumSpotID ?>', 'spotify')"><div class="pointyHead">Track<br>Popularity</div></th>
 <!--
@@ -96,10 +96,10 @@ if ( !$getit ) {
 	<tbody>
 	<?php
 		while ( $row = mysqli_fetch_array( $getit ) ) {
-			$albumName = $row[ "albumName" ];
-			$trackName = $row[ "trackName" ];
-
-			// $trackSpotID = $row[ "trackSpotID" ];		
+			$albumNameSpot = $row[ "albumNameSpot" ];
+			$trackNameSpot = $row[ "trackNameSpot" ];
+			$trackNumber = $row[ "trackNumber" ];
+			$trackSpotID = $row[ "trackSpotID" ];		
 
 			$trackPop = $row[ "pop" ];
 			//echo "<p>trackPop is " . $trackPop . ".</p>";
@@ -116,10 +116,12 @@ if ( !$getit ) {
 <tr>
 
 <!--
-	<td><?php //echo $albumName ?></td>
-<td><?php //echo $trackSpotID ?></td>
+	
+
 -->
-<td><a href='https://www.roxorsoxor.com/poprock/track_Chart.php?trackSpotID=<?php echo $trackSpotID ?>'><?php echo $trackName ?></a></td>
+<td><?php echo $trackNumber ?></td>
+<td><?php echo $trackSpotID ?></td>
+<td><a href='https://www.roxorsoxor.com/poprock/track_Chart.php?trackSpotID=<?php echo $trackSpotID ?>'><?php echo $trackNameSpot ?></a></td>
 <td class="popStyle"><?php echo $popDate ?></td>
 <td class="popStyle"><?php echo $trackPop ?></td>
 
@@ -140,8 +142,8 @@ if ( !$getit ) {
 <?php echo $scriptsAndSuch; ?>
 
 <script>
-	const albumName = '<?php echo $albumName ?>';
-	const panelTitleText = 'Popularity on Spotify for tracks from <em>' + albumName + '</em>';
+	const albumNameSpot = '<?php echo $albumNameSpot ?>';
+	const panelTitleText = 'Popularity on Spotify for tracks from <em>' + albumNameSpot + '</em>';
 	const panelTitle = document.getElementById('panelTitle');
 	$(document).ready(function(){
 		panelTitle.innerHTML = panelTitleText;

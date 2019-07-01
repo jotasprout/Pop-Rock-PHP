@@ -13,7 +13,7 @@ if ( !$connekt ) {
 $artistMBID = "artistMBID";
 $artistSpotID = "artistSpotID";
 $albumSpotID = "albumSpotID";
-$columnName = "trackName";
+$columnName = "trackNameSpot";
 $currentOrder = "ASC";
 $source = $_POST[ "source" ];
 
@@ -54,10 +54,10 @@ if ( $columnName == "albumNameSpot" and $currentOrder == "DESC" ) {
 	$albumNameNewOrder = "ASC";
 }
 
-$trackNameNewOrder = "DESC";
+$trackNameSpotNewOrder = "DESC";
 
-if ( $columnName == "trackName" and $currentOrder == "ASC" ) {
-	$trackNameNewOrder = "DESC";
+if ( $columnName == "trackNameSpot" and $currentOrder == "ASC" ) {
+	$trackNameSpotNewOrder = "DESC";
 }
 
 $popNewOrder = "ASC";
@@ -66,12 +66,12 @@ if ( $columnName == "pop" and $currentOrder == "ASC" ) {
 	$popNewOrder = "DESC";
 }
 
-$gatherTrackInfoSpot = "SELECT v.trackSpotID, v.trackName, v.albumNameSpot, v.pop, max(v.date) AS MaxDate
+$gatherTrackInfoSpot = "SELECT v.trackSpotID, v.trackNameSpot, v.albumNameSpot, v.pop, max(v.date) AS MaxDate
 					FROM (
-						SELECT z.trackSpotID, z.trackName, z.albumNameSpot, p.date, p.pop
+						SELECT z.trackSpotID, z.trackNameSpot, z.albumNameSpot, p.date, p.pop
 							FROM (
 								SELECT t.*, r.albumNameSpot
-									FROM tracks t
+									FROM tracksSpot t
 									INNER JOIN albumsSpot r ON r.albumSpotID = t.albumSpotID
 									WHERE t.albumSpotID = '$albumSpotID'
 							) z
@@ -93,7 +93,7 @@ if(!empty($sortit)) { ?>
 <thead>
 <tr>
 <th>Date</th>
-<th onClick="sortColumn('trackName', '<?php echo $trackNameNewOrder; ?>', '<?php echo $albumSpotID ?>', '<?php echo $source ?>')"><div class="pointyHead">Track Title</div></th>
+<th onClick="sortColumn('trackNameSpot', '<?php echo $trackNameSpotNewOrder; ?>', '<?php echo $albumSpotID ?>', '<?php echo $source ?>')"><div class="pointyHead">Track Title</div></th>
 
 <th class="popStyle" onClick="sortColumn('pop', '<?php echo $popNewOrder; ?>', '<?php echo $albumSpotID ?>', '<?php echo $source ?>')"><div class="pointyHead">Spotify<br>Popularity</div></th>
 
@@ -104,14 +104,14 @@ if(!empty($sortit)) { ?>
 	<?php
 		while ( $row = mysqli_fetch_array( $sortit ) ) {
 			$albumNameSpot = $row[ "albumNameSpot" ];
-			$trackName = $row[ "trackName" ];
+			$trackNameSpot = $row[ "trackNameSpot" ];
 			$trackSpotID = $row[ "trackSpotID" ];
 			$trackPop = $row[ "pop" ];
 			$popDate = $row[ "MaxDate" ];
 	?>
 			<tr>
 			<td><?php echo $popDate ?></td>
-				<td><?php echo $trackName ?></td>
+				<td><?php echo $trackNameSpot ?></td>
 				<td class="popStyle"><?php echo $trackPop ?></td>
 			
 			</tr>
