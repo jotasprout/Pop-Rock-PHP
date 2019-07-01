@@ -9,13 +9,6 @@
 <head>
     <meta charset="UTF-8">
     <title>Drag-n-Drop 2</title>
-    <!--
-        <script src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
-        <link rel='stylesheet' href='https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css'> 
-        <script src='https://d3js.org/d3.v4.min.js'></script>
-        <link rel='stylesheet' href='lineGraphStyles.css'>
-    
-    -->
     <?php echo $stylesAndSuch; ?>  
     <link rel='stylesheet' href='dragDrop.css'>
 </head>
