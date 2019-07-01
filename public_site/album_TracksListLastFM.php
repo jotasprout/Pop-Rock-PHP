@@ -159,7 +159,8 @@ if ($artistSpotID != "") {
 			$trackListenersNum = $row[ "trackListeners"];
 			$trackPlaycountNum = $row[ "trackPlaycount"];
 			$trackListeners = number_format ($trackListenersNum);
-			$trackPlaycount = number_format ($trackPlaycountNum);			
+			$trackPlaycount = number_format ($trackPlaycountNum);
+			$trackRatio = "1:" . floor($trackPlaycount/$trackListeners);			
 
 	?>
 		<tr>
@@ -167,7 +168,7 @@ if ($artistSpotID != "") {
 		<td class="popStyle"><?php echo $lastFMDate ?></td>
 		<td class="rightNum"><?php echo $trackListeners ?></td>
 		<td class="rightNum"><?php echo $trackPlaycount ?></td>
-		<td class="popStyle"><p>Coming Soon</p></td>
+		<td class="popStyle"><?php echo $trackRatio ?></td>
 		</tr>
 			<?php 
 				} // end of while
