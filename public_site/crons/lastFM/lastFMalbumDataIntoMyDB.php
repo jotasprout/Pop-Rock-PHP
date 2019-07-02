@@ -132,7 +132,7 @@ for ($i=0; $i<$x; ++$i) {
     $artistData = json_decode($fileContents,true);
 
     $artistMBID = $artistData['mbid'];
-    $artistName = $artistData['name'];
+    $artistNameMB = $artistData['name'];
 
     $dataDate = $artistData['date'];
 

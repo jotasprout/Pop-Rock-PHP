@@ -85,7 +85,7 @@ function divideCombineAlbums ($artistAlbums) {
 	
 			$albumSpotID = $album->id;	
 			$albumNameYucky = $album->name;
-			$albumName = mysqli_real_escape_string($connekt,$albumNameYucky);
+			$albumNameSpot = mysqli_real_escape_string($connekt,$albumNameYucky);
 			$albumReleasedWhole = $album->release_date;
 			$albumReleased = substr($albumReleasedWhole, 0, 4);
 			$albumTotalTracks = $album->total_tracks;

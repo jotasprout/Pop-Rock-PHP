@@ -50,19 +50,19 @@ for ($i=0; $i<$x; ++$i) {
         for ($j=0; $j<$artistsNum; ++$j) {
             $artist = $artists[$j];
             $artistMBID = $artist['mbid'];
-            $artistName = $artist['name'];
+            $artistNameMB = $artist['name'];
             $artistListeners = $artist['stats']['listeners'];
             $artistPlaycount = $artist['stats']['playcount'];
     
-            $tryInsertArtistData = "INSERT INTO artistsMB (artistMBID, artistName) VALUES ('$artistMBID', '$artistName')";
+            $tryInsertArtistData = "INSERT INTO artistsMB (artistMBID, artistNameMB) VALUES ('$artistMBID', '$artistNameMB')";
     
             $rockin = $connekt->query($tryInsertArtistData);
     
             if(!$rockin){
-                echo 'Could not insert ' . $artistName . ' into artistsMB table.<br>';
+                echo 'Could not insert ' . $artistNameMB . ' into artistsMB table.<br>';
                 }
                 else {
-                    echo '<p>Inserted ' . $artistName . ' in table.</p>';
+                    echo '<p>Inserted ' . $artistNameMB . ' in table.</p>';
                 }; 
     
             $insertArtistStats = "INSERT INTO artistsLastFM (artistMBID, dataDate, artistListeners, artistPlaycount) VALUES('$artistMBID','$dataDate','$artistListeners', '$artistPlaycount')";
@@ -70,10 +70,10 @@ for ($i=0; $i<$x; ++$i) {
             $rockout = $connekt->query($insertArtistStats);
     
             if(!$rockout){
-            echo 'Shickety Brickety! Could not insert stats for ' . $artistName . '.<br>';
+            echo 'Shickety Brickety! Could not insert stats for ' . $artistNameMB . '.<br>';
             }
             else {
-                echo '<p>Inserted ' . $artistListeners . ' listeners and ' . $artistPlaycount . ' plays for ' . $artistName . ' on ' . $dataDate . '.</p>';
+                echo '<p>Inserted ' . $artistListeners . ' listeners and ' . $artistPlaycount . ' plays for ' . $artistNameMB . ' on ' . $dataDate . '.</p>';
             } 
         }
     };

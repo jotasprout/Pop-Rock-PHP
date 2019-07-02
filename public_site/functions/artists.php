@@ -37,8 +37,8 @@ function divideCombineArtists ($theseArtists) {
 			}
 			$artistSpotID = $artist->id;
 			$artistNameYucky = $artist->name;
-			$artistName = mysqli_real_escape_string($connekt,$artistNameYucky);
-			$artistArt = $artist->images[0]->url;
+			$artistNameSpot = mysqli_real_escape_string($connekt,$artistNameYucky);
+			$artistArtSpot = $artist->images[0]->url;
 			$artistPop = $artist->popularity;
 			$artistFollowers = $artist->followers->total;
 			$jsonArtistGenres = $artist->genres;
@@ -48,7 +48,7 @@ function divideCombineArtists ($theseArtists) {
 			$rockout = $connekt->query($insertArtistsInfo);
 
 			if(!$rockout){
-			echo 'Cursed-Crap. Could not insert artist ' . $artistName . '.<br>';
+			echo 'Cursed-Crap. Could not insert artist ' . $artistNameSpot . '.<br>';
 			}
 	
 			$insertArtistsPop = "INSERT INTO popArtists (artistSpotID,pop,followers,date) VALUES('$artistSpotID','$artistPop','$artistFollowers',curdate())";

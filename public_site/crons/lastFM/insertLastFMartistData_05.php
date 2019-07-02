@@ -39,7 +39,7 @@ for ($i=0; $i<$x; ++$i) {
     $artistData = json_decode($fileContents,true);
     
     $artistMBID = $artistData['mbid'];
-    $artistName = $artistData['name'];
+    $artistNameMB = $artistData['name'];
     
     $dataDate = $artistData['date'];
     
@@ -52,15 +52,15 @@ for ($i=0; $i<$x; ++$i) {
         echo '<p>Fiddlesticks! Could not connect to database.</p>';
     }; // Could and should this if statement go outside this for loop?
 
-    $tryInsertArtistData = "INSERT INTO artistsMB (artistMBID, artistName) VALUES ('$artistMBID', '$artistName')";
+    $tryInsertArtistData = "INSERT INTO artistsMB (artistMBID, artistNameMB) VALUES ('$artistMBID', '$artistNameMB')";
 
     $rockin = $connekt->query($tryInsertArtistData);
 
     if(!$rockin){
-        echo 'Could not insert info for ' . $artistName . '.<br>';
+        echo 'Could not insert info for ' . $artistNameMB . '.<br>';
         }
         else {
-            echo '<p>Inserted ' . $artistName . ' in table.</p>';
+            echo '<p>Inserted ' . $artistNameMB . ' in table.</p>';
         } 
 
     $insertArtistStats = "INSERT INTO artistsLastFM (artistMBID, dataDate, artistListeners, artistPlaycount) VALUES('$artistMBID','$dataDate','$artistListeners', '$artistPlaycount')";
@@ -68,10 +68,10 @@ for ($i=0; $i<$x; ++$i) {
     $rockout = $connekt->query($insertArtistStats);
     
     if(!$rockout){
-    echo 'Shickety Brickety! Could not insert stats for ' . $artistName . '.<br>';
+    echo 'Shickety Brickety! Could not insert stats for ' . $artistNameMB . '.<br>';
     }
     else {
-        echo '<p>Inserted ' . $artistListeners . ' listeners and ' . $artistPlaycount . ' plays for ' . $artistName . ' on ' . $dataDate . '.</p>';
+        echo '<p>Inserted ' . $artistListeners . ' listeners and ' . $artistPlaycount . ' plays for ' . $artistNameMB . ' on ' . $dataDate . '.</p>';
     } 
     
 };

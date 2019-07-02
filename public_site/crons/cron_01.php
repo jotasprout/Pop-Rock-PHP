@@ -40,7 +40,7 @@ function divideCombineAlbums ($artistAlbums) {
 			$connekt = new mysqli($GLOBALS['host'], $GLOBALS['un'], $GLOBALS['magicword'], $GLOBALS['db']);
 	
 			$albumSpotID = $album->id;	
-			$albumName = $album->name;
+			$albumNameSpot = $album->name;
 			$albumReleasedWhole = $album->release_date;
 			$albumReleased = substr($albumReleasedWhole, 0, 4);
 			$albumTotalTracks = intval($album->total_tracks);
@@ -49,7 +49,7 @@ function divideCombineAlbums ($artistAlbums) {
 			$albumPop = $album->popularity;
 			$albumArtSpot = $album->images[0]->url;
 
-			$insertAlbum = "INSERT INTO albums (albumSpotID,albumName,artistSpotID,year,tracksTotal,albumArtSpot) VALUES('$albumSpotID','$albumName','$thisartistSpotID','$albumReleased','$albumTotalTracks','$albumArtSpot')";
+			$insertAlbum = "INSERT INTO albumsSpot (albumSpotID,albumNameSpot,artistSpotID,year,tracksTotal,albumArtSpot) VALUES('$albumSpotID','$albumNameSpot','$thisartistSpotID','$albumReleased','$albumTotalTracks','$albumArtSpot')";
 			
 			if (!$connekt) {
 				echo '<p>Darn. Did not connect.</p>';
@@ -58,7 +58,7 @@ function divideCombineAlbums ($artistAlbums) {
 			$rockout = $connekt->query($insertAlbum);
 		
 			if(!$rockout){
-				echo '<p>Crap de General Tsao! Could not insert ' . $albumName . '.</p>';
+				echo '<p>Crap de General Tsao! Could not insert ' . $albumNameSpot . '.</p>';
 			}
 		
 			$insertAlbumsPop = "INSERT INTO popAlbums (albumSpotID,pop,date) VALUES('$albumSpotID','$albumPop',curdate())";
@@ -69,7 +69,7 @@ function divideCombineAlbums ($artistAlbums) {
 				echo '<p>Sweet & Sour Crap! Could not insert albums popularity.</p>';
 			}
 
-            echo '<p><img src="' . $albumArtSpot . '" height="64" width="64"><br>' . $albumName . '<br>' . $albumReleased . '<br><strong>Popularity:</strong> ' . $albumPop . '<br><strong>Total tracks:</strong> ' . $albumTotalTracks . '</p>';
+            echo '<p><img src="' . $albumArtSpot . '" height="64" width="64"><br>' . $albumNameSpot . '<br>' . $albumReleased . '<br><strong>Popularity:</strong> ' . $albumPop . '<br><strong>Total tracks:</strong> ' . $albumTotalTracks . '</p>';
 			
 			$AlbumsTracks = array ();
 			

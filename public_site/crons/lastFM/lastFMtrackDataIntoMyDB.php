@@ -131,7 +131,7 @@ for ($i=0; $i<$x; ++$i) {
     $artistData = json_decode($fileContents,true);
 
     $artistMBID = $artistData['mbid'];
-    $artistName = $artistData['name'];
+    $artistNameMB = $artistData['name'];
 
     $dataDate = $artistData['date'];
 
@@ -161,7 +161,7 @@ for ($i=0; $i<$x; ++$i) {
                     $track = $tracks[$m];
                     $trackMBID = $track['mbid'];
                     $trackNameYucky = $track['title'];
-                    $trackName = mysqli_real_escape_string($connekt,$trackNameYucky);
+                    $trackNameMB = mysqli_real_escape_string($connekt,$trackNameYucky);
                     $trackListeners = $track['stats']['listeners'];
                     $trackPlaycount = $track['stats']['playcount'];
 
@@ -181,9 +181,9 @@ for ($i=0; $i<$x; ++$i) {
                     $pushTrack = $connekt->query($insertMBIDtrack);
 
                     if(!$pushTrack){
-                        echo '<p>Shickety Brickety! Could not insert ' . $trackName . ' stats.</p>';
+                        echo '<p>Shickety Brickety! Could not insert ' . $trackNameMB . ' stats.</p>';
                     } else {
-                        echo '<p>' . $trackName . ' from ' . $releaseName . ' had ' . $trackListeners . ' listeners and ' . $trackPlaycount . ' plays on ' . $dataDate . '.</p>';
+                        echo '<p>' . $trackNameMB . ' from ' . $releaseName . ' had ' . $trackListeners . ' listeners and ' . $trackPlaycount . ' plays on ' . $dataDate . '.</p>';
                     }       
                 };
             }  

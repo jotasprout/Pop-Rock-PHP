@@ -429,7 +429,7 @@ d3.json("functions/get_artist_Playcounts.php?artistSpotID=<?php echo $artistSpot
 
 <script>
 
-//const artistNameMB = '<?php //echo $artistNameMB; ?>';
+const artistNameMB = '<?php echo $artistNameMB; ?>';
 const docTitleText = artistNameMB + ' main Charts and Last.fm Stats';
 $(document).ready(function(){
     panelTitle.innerHTML = panelTitleText;

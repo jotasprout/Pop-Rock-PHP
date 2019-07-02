@@ -29,8 +29,8 @@ function insertLastFMtrackDataArtistNames ($artistNames) {
 		$artistData = json_decode($fileContents,true);
 
 		$artistMBID = $artistData['mbid'];
-		$artistName = $artistData['name'];
-		echo "<h1>" . $artistName . "</h1>";
+		$artistNameMB = $artistData['name'];
+		echo "<h1>" . $artistNameMB . "</h1>";
 
 		$dataDate = $artistData['date'];
 
@@ -61,27 +61,27 @@ function insertLastFMtrackDataArtistNames ($artistNames) {
 						$track = $tracks[$m];
 						$trackMBID = $track['mbid'];
 						$trackNameYucky = $track['title'];
-						$trackName = mysqli_real_escape_string($connekt,$trackNameYucky);
+						$trackNameMB = mysqli_real_escape_string($connekt,$trackNameYucky);
 						$trackListeners = $track['stats']['listeners'];
 						$trackPlaycount = $track['stats']['playcount'];
 
 						$insertMBIDtrackInfo = "INSERT INTO tracksMB (
 							albumMBID,
 							trackMBID,
-							trackName
+							trackNameMB
 							) 
 							VALUES(
 								'$releaseMBID',
 								'$trackMBID',
-								'$trackName'
+								'$trackNameMB'
 							)";
 
 						$addTrack = $connekt->query($insertMBIDtrackInfo);
 
 						if(!$addTrack){
-							echo '<p>Could not add <b>' . $trackName . '</b> into tracksMB.</p>';
+							echo '<p>Could not add <b>' . $trackNameMB . '</b> into tracksMB.</p>';
 						} else {
-							echo '<p>Added <b>' . $trackName . '</b> from <i>' . $releaseName . '</i> into tracksMB.</p>';
+							echo '<p>Added <b>' . $trackNameMB . '</b> from <i>' . $releaseName . '</i> into tracksMB.</p>';
 						};
 
 						$insertLastFMtrackStats = "INSERT INTO tracksLastFM (
@@ -100,9 +100,9 @@ function insertLastFMtrackDataArtistNames ($artistNames) {
 						$pushTrack = $connekt->query($insertLastFMtrackStats);
 
 						if(!$pushTrack){
-							echo '<p>Shickety Brickety! Could not insert ' . $trackName . ' stats.</p>';
+							echo '<p>Shickety Brickety! Could not insert ' . $trackNameMB . ' stats.</p>';
 						} else {
-							echo '<p>' . $trackName . ' from ' . $releaseName . ' had ' . $trackListeners . ' listeners and ' . $trackPlaycount . ' plays on ' . $dataDate . '.</p>';
+							echo '<p>' . $trackNameMB . ' from ' . $releaseName . ' had ' . $trackListeners . ' listeners and ' . $trackPlaycount . ' plays on ' . $dataDate . '.</p>';
 						}; // end of IF query is not successful ELSE it is      
 					} // end of FOR each track on the album
 				}; // end of IF there are releases
@@ -130,8 +130,8 @@ function insertLastFMalbumDataArtistNames ($artistNames) {
 		$artistData = json_decode($fileContents,true);
 
 		$artistMBID = $artistData['mbid'];
-		$artistName = $artistData['name'];
-		echo "<h1>" . $artistName . "</h1>";
+		$artistNameMB = $artistData['name'];
+		echo "<h1>" . $artistNameMB . "</h1>";
 
 		$dataDate = $artistData['date'];
 
@@ -158,7 +158,7 @@ function insertLastFMalbumDataArtistNames ($artistNames) {
 
 					$insertAlbumMBinfo = "INSERT INTO albumsMB (
 						albumMBID,
-						albumName,
+						albumNameMB,
 						artistMBID
 						) 
 						VALUES(
@@ -212,8 +212,8 @@ function insertLastFMtrackDataFilenames ($filenames) {
 		$artistData = json_decode($fileContents,true);
 
 		$artistMBID = $artistData['mbid'];
-		$artistName = $artistData['name'];
-		echo "<h1>" . $artistName . "</h1>";
+		$artistNameMB = $artistData['name'];
+		echo "<h1>" . $artistNameMB . "</h1>";
 
 		$dataDate = $artistData['date'];
 
@@ -244,27 +244,27 @@ function insertLastFMtrackDataFilenames ($filenames) {
 						$track = $tracks[$m];
 						$trackMBID = $track['mbid'];
 						$trackNameYucky = $track['title'];
-						$trackName = mysqli_real_escape_string($connekt,$trackNameYucky);
+						$trackNameMB = mysqli_real_escape_string($connekt,$trackNameYucky);
 						$trackListeners = $track['stats']['listeners'];
 						$trackPlaycount = $track['stats']['playcount'];
 
 						$insertMBIDtrackInfo = "INSERT INTO tracksMB (
 							albumMBID,
 							trackMBID,
-							trackName
+							trackNameMB
 							) 
 							VALUES(
 								'$releaseMBID',
 								'$trackMBID',
-								'$trackName'
+								'$trackNameMB'
 							)";
 
 						$addTrack = $connekt->query($insertMBIDtrackInfo);
 
 						if(!$addTrack){
-							echo '<p>Could not add <b>' . $trackName . '</b> into tracksMB.</p>';
+							echo '<p>Could not add <b>' . $trackNameMB . '</b> into tracksMB.</p>';
 						} else {
-							echo '<p>Added <b>' . $trackName . '</b> from <i>' . $releaseName . '</i> into tracksMB.</p>';
+							echo '<p>Added <b>' . $trackNameMB . '</b> from <i>' . $releaseName . '</i> into tracksMB.</p>';
 						};
 
 						$insertLastFMtrackStats = "INSERT INTO tracksLastFM (
@@ -283,9 +283,9 @@ function insertLastFMtrackDataFilenames ($filenames) {
 						$pushTrack = $connekt->query($insertLastFMtrackStats);
 
 						if(!$pushTrack){
-							echo '<p>Shickety Brickety! Could not insert ' . $trackName . ' stats.</p>';
+							echo '<p>Shickety Brickety! Could not insert ' . $trackNameMB . ' stats.</p>';
 						} else {
-							echo '<p>' . $trackName . ' from ' . $releaseName . ' had ' . $trackListeners . ' listeners and ' . $trackPlaycount . ' plays on ' . $dataDate . '.</p>';
+							echo '<p>' . $trackNameMB . ' from ' . $releaseName . ' had ' . $trackListeners . ' listeners and ' . $trackPlaycount . ' plays on ' . $dataDate . '.</p>';
 						}; // end of IF query is not successful ELSE it is      
 					} // end of FOR each track on the album
 				}; // end of IF there are releases
@@ -307,7 +307,7 @@ function insertLastFMalbumDataFilenames ($filenames) {
 		$artistData = json_decode($fileContents,true);
 
 		$artistMBID = $artistData['mbid'];
-		$artistName = $artistData['name'];
+		$artistNameMB = $artistData['name'];
 
 		$dataDate = $artistData['date'];
 
