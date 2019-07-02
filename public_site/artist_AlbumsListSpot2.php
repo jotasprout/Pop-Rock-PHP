@@ -15,8 +15,8 @@ if (!$connekt) {
 $blackSabbath_SpotID = '5M52tdBnJaKSvOpJGz8mfZ';
 $blackSabbath_MBID = '5182c1d9-c7d2-4dad-afa0-ccfeada921a8';
 
-$blackScabies = "SELECT b.albumNameSpot, b.albumSpotID, b.year, z.artistNameSpot, p1.date, p1.pop, x.tracksTotal, x.albumArtSpot
-					FROM (SELECT sp.albumNameSpot, sp.albumSpotID, sp.artistSpotID, sp.year
+$blackScabies = "SELECT b.albumNameSpot, b.albumSpotID, b.yearReleased, z.artistNameSpot, p1.date, p1.pop, x.tracksTotal, x.albumArtSpot
+					FROM (SELECT sp.albumNameSpot, sp.albumSpotID, sp.artistSpotID, sp.yearReleased
 							FROM albumsSpot sp
 							WHERE sp.artistSpotID='$artistSpotID') b
 					JOIN artistsSpot z ON z.artistSpotID = b.artistSpotID
@@ -77,7 +77,7 @@ if(!$getit){
 <th>Album Spotify ID</th>
 
 <th onClick="sortColumn('albumNameSpot', 'ASC', '<?php echo $artistSpotID; ?>', '<?php echo $source ?>')"><div class="pointyHead">Album Name</div></th>
-<th onClick="sortColumn('year', 'unsorted', '<?php echo $artistSpotID; ?>', '<?php echo $source ?>')"><div class="pointyHead popStyle">Released</div></th>
+<th onClick="sortColumn('yearReleased', 'unsorted', '<?php echo $artistSpotID; ?>', '<?php echo $source ?>')"><div class="pointyHead popStyle">Released</div></th>
 <!--
 <th><div class="pointyHead popStyle">Total<br>Tracks</div></th>
 -->
@@ -100,7 +100,7 @@ if(!$getit){
 		$tracksTotal = $row['tracksTotal'];
 		// need to get a tracks total for MusicBrainz-only albums
 		$albumNameSpot = $row['albumNameSpot'];
-		$albumReleased = $row['year'];	
+		$albumReleased = $row['yearReleased'];	
 		// need to get release year for MusicBrainz-only albums	
 /*
 */
@@ -111,7 +111,7 @@ if(!$getit){
 <!---->
 <td><?php echo $albumSpotID ?></td>
 
-<td><a href='https://www.roxorsoxor.com/poprock/album_TracksListSpot.php?artistSpotID=<?php echo $artistSpotID ?>&artistMBID=<?php echo $artistMBID ?>&albumSpotID=<?php echo $albumSpotID ?>&source=<?php echo $source ?>''><?php echo $albumNameSpot ?></a></td>
+<td><a href='https://www.roxorsoxor.com/poprock/album_TracksListSpot.php?artistSpotID=<?php echo $artistSpotID ?>&artistMBID=<?php echo $artistMBID ?>&albumSpotID=<?php echo $albumSpotID ?>&source=<?php echo $source ?>'><?php echo $albumNameSpot ?></a></td>
 
 
 <td class="popStyle"><?php echo $albumReleased ?></td>

@@ -32,13 +32,13 @@ switch ($relatives){
 		break;		
 };
 
-$happyScabies2 = 'SELECT a.albumNameSpot, a.artistSpotID, a.year, a.albumArtSpot, z.artistNameSpot, p1.pop, p1.date
+$happyScabies2 = 'SELECT a.albumNameSpot, a.artistSpotID, a.yearReleased, a.albumArtSpot, z.artistNameSpot, p1.pop, p1.date
 FROM (SELECT
 			y.albumSpotID AS albumSpotID,
 			y.albumNameSpot AS albumNameSpot,
 			y.artistSpotID AS artistSpotID,
 			y.albumArtSpot AS albumArtSpot,
-			y.year AS year
+			y.yearReleased AS yearReleased
 		FROM albumsSpot y) a
 JOIN artistsSpot z ON z.artistSpotID = a.artistSpotID
 JOIN (SELECT p.*

@@ -49,7 +49,7 @@ function divideCombineAlbums ($artistAlbums) {
 			$albumPop = $album->popularity;
 			$albumArtSpot = $album->images[0]->url;
 
-			$insertAlbum = "INSERT INTO albumsSpot (albumSpotID,albumNameSpot,artistSpotID,year,tracksTotal,albumArtSpot) VALUES('$albumSpotID','$albumNameSpot','$thisartistSpotID','$albumReleased','$albumTotalTracks','$albumArtSpot')";
+			$insertAlbum = "INSERT INTO albumsSpot (albumSpotID,albumNameSpot,artistSpotID,yearReleased,tracksTotal,albumArtSpot) VALUES('$albumSpotID','$albumNameSpot','$thisartistSpotID','$albumReleased','$albumTotalTracks','$albumArtSpot')";
 			
 			if (!$connekt) {
 				echo '<p>Darn. Did not connect.</p>';
@@ -205,8 +205,8 @@ function divideCombineArtistsForAlbums ($theseArtists) {
 			}
 			$artistSpotID = $artist->id;
 			$artistNameYucky = $artist->name;
-			$artistName = mysqli_real_escape_string($connekt,$artistNameYucky);
-			$artistArt = $artist->images[0]->url;
+			$artistNameSpot = mysqli_real_escape_string($connekt,$artistNameYucky);
+			$artistArtSpot = $artist->images[0]->url;
 			$artistPop = $artist->popularity;
 			$artistFollowers = $artist->followers->total;
 	
@@ -218,7 +218,7 @@ function divideCombineArtistsForAlbums ($theseArtists) {
 			}
 	
 			else {
-				echo '<p><img src="' . $artistArt . '"></p><p>' . $artistName . '</p><p><b>Popularity:</b> ' . $artistPop . '</p><p><b>Followers:</b> ' . $artistFollowers . '</p>';
+				echo '<p><img src="' . $artistArtSpot . '"></p><p>' . $artistNameSpot . '</p><p><b>Popularity:</b> ' . $artistPop . '</p><p><b>Followers:</b> ' . $artistFollowers . '</p>';
 			} 
 			
 		}

@@ -11,9 +11,9 @@ if (!$connekt) {
 	echo 'Darn. Did not connect.';
 };
 
-$albumInfoAll = "SELECT a.artistSpotID, a.artistName, a.artistArt, r.albumSpotID, r.albumName, b.pop, b.date
-	FROM albums r
-    JOIN artists a ON a.artistSpotID = r.artistSpotID
+$albumInfoAll = "SELECT a.artistSpotID, a.artistNameSpot, a.artistArtSpot, r.albumSpotID, r.albumNameSpot, b.pop, b.date
+	FROM albumsSpot r
+    JOIN artistsSpot a ON a.artistSpotID = r.artistSpotID
 		INNER JOIN popAlbums b ON a.albumSpotID = b.albumSpotID
 			WHERE a.albumSpotID = '$albumSpotID'
 				ORDER BY b.date DESC";

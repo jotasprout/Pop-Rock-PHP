@@ -51,6 +51,8 @@ function insertLastFMtrackDataArtistNames ($artistNames) {
 				if ($releasesNum > 0){
 					$release = $releases[0];
 					$releaseMBID = $album['releases'][0]['mbid'];
+					$releaseBirthday = $album['releases'][0]['date'];
+					$yearReleased = substr($releaseBirthday, 0, 4);
 					$releaseName = $album['releases'][0]['name'];
 					echo "<h2>" . $releaseName . "</h2>";
 
@@ -153,18 +155,22 @@ function insertLastFMalbumDataArtistNames ($artistNames) {
 					$releaseMBID = $album['releases'][0]['mbid'];
 					$releaseNameYucky = $album['releases'][0]['name'];
 					$releaseName = mysqli_real_escape_string($connekt,$releaseNameYucky);
+					$releaseBirthday = $album['releases'][0]['date'];
+					$yearReleased = substr($releaseBirthday, 0, 4);					
 					$albumListeners = $album['releases'][0]['listeners'];
 					$albumPlaycount = $album['releases'][0]['playcount'];
 
 					$insertAlbumMBinfo = "INSERT INTO albumsMB (
 						albumMBID,
 						albumNameMB,
-						artistMBID
+						artistMBID,
+						yearReleased
 						) 
 						VALUES(
 							'$releaseMBID',
 							'$releaseName',
-							'$artistMBID'
+							'$artistMBID',
+							'$yearReleased'
 							)";
 
 					$rockout = $connekt->query($insertAlbumMBinfo);

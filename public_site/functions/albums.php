@@ -94,7 +94,7 @@ function divideCombineAlbums ($artistAlbums) {
 			$albumPop = $album->popularity;
 			$albumArtSpot = $album->images[0]->url;
 
-			$insertAlbums = "INSERT INTO albumsSpot (albumSpotID,albumNameSpot,artistSpotID,year,albumArtSpot) VALUES('$albumSpotID','$albumNameSpot','$thisartistSpotID','$albumReleased','$albumTotalTracks','$albumArtSpot')";
+			$insertAlbums = "INSERT INTO albumsSpot (albumSpotID,albumNameSpot,artistSpotID,yearReleased,albumArtSpot) VALUES('$albumSpotID','$albumNameSpot','$thisartistSpotID','$albumReleased','$albumTotalTracks','$albumArtSpot')";
 			
 			if (!$connekt) {
 				echo 'Darn. Did not connect.<br>';

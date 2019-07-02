@@ -19,7 +19,7 @@ $postedCurrentOrder = $_POST[ "currentOrder" ];
 // if any of these did not come through, the defaults are the basic starting sort from the sql query
 $artistSpotID = $_POST[ "artistSpotID" ];
 //
-$columnName = "year";
+$columnName = "yearReleased";
 //
 $currentOrder = "ASC";
 //
@@ -70,8 +70,8 @@ if ( $columnName == "albumNameSpot" ) {
 	};
 };
 
-if ( $columnName == "year" and $currentOrder == "ASC" ) {
-	$columnName = "a.year";
+if ( $columnName == "yearReleased" and $currentOrder == "ASC" ) {
+	$columnName = "a.yearReleased";
 	$yearNewOrder = "DESC";
 }
 
@@ -123,8 +123,8 @@ if ( $columnName == "albumPlaycount" ) {
 	};
 };
 
-$gatherAlbumInfoSpot = "SELECT b.albumNameSpot, b.albumSpotID, b.year, z.artistNameSpot, p1.date, p1.pop, x.tracksTotal, x.albumArtSpot
-					FROM (SELECT sp.albumNameSpot, sp.albumSpotID, sp.artistSpotID, sp.year
+$gatherAlbumInfoSpot = "SELECT b.albumNameSpot, b.albumSpotID, b.yearReleased, z.artistNameSpot, p1.date, p1.pop, x.tracksTotal, b.albumArtSpot
+					FROM (SELECT sp.albumNameSpot, sp.albumSpotID, sp.artistSpotID, sp.yearReleased, sp.albumArtSpot
 							FROM albumsSpot sp
 							WHERE sp.artistSpotID='$artistSpotID') b
 					JOIN artistsSpot z ON z.artistSpotID = b.artistSpotID
@@ -159,7 +159,7 @@ if(!empty($sortit))	 { ?>
 -->
 <th onClick="sortColumn('albumNameSpot', '<?php echo $albumNameNewOrder; ?>', '<?php echo $artistSpotID; ?>', '<?php echo $source ?>')"><div class="pointyHead">Album Name</div></th>
 
-<th onClick="sortColumn('year', '<?php echo $yearNewOrder; ?>', '<?php echo $artistSpotID; ?>', '<?php echo $source ?>')"><div class="pointyHead popStyle">Released</div></th>
+<th onClick="sortColumn('yearReleased', '<?php echo $yearNewOrder; ?>', '<?php echo $artistSpotID; ?>', '<?php echo $source ?>')"><div class="pointyHead popStyle">Released</div></th>
 <!--
 <th><div class="pointyHead popStyle">Total<br>Tracks</div></th>
 
@@ -189,7 +189,7 @@ if(!empty($sortit))	 { ?>
 
 		$albumNameSpot = $row['albumNameSpot'];
 		$tracksTotal = $row['tracksTotal'];
-		$albumReleased = $row['year'];
+		$albumReleased = $row['yearReleased'];
 		$albumPop = $row['pop'];
 		$date = $row['date'];
 

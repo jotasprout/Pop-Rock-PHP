@@ -12,8 +12,8 @@ if (!$connekt) {
 	echo '<p>Darn. Did not connect. Screwed up like this: ' . mysqli_connect_error() . '</p>';
 };
 
-$blackScabies = "SELECT b.albumNameMB, b.albumMBID, z.artistNameMB, f1.dataDate, f1.albumListeners, f1.albumPlaycount, x.albumArtMB
-					FROM (SELECT mb.albumNameMB, mb.albumMBID, mb.artistMBID, mb.assocAlbumSpotID
+$blackScabies = "SELECT b.albumNameMB, b.albumMBID, z.artistNameMB, f1.dataDate, f1.albumListeners, f1.albumPlaycount, b.albumArtMB
+					FROM (SELECT mb.albumNameMB, mb.albumMBID, mb.artistMBID, mb.assocAlbumSpotID, mb.albumArtMB
 						FROM albumsMB mb 
 						WHERE mb.artistMBID='$artistMBID') b 
 					JOIN artistsMB z ON z.artistMBID = b.artistMBID
