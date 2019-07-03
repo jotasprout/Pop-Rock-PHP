@@ -66,16 +66,19 @@ function insertLastFMtrackDataArtistNames ($artistNames) {
 						$trackNameMB = mysqli_real_escape_string($connekt,$trackNameYucky);
 						$trackListeners = $track['stats']['listeners'];
 						$trackPlaycount = $track['stats']['playcount'];
+						$trackNumber = $track['trackNumber'];
 
 						$insertMBIDtrackInfo = "INSERT INTO tracksMB (
 							albumMBID,
 							trackMBID,
-							trackNameMB
+							trackNameMB,
+							trackNumber
 							) 
 							VALUES(
 								'$releaseMBID',
 								'$trackMBID',
-								'$trackNameMB'
+								'$trackNameMB',
+								'$trackNumber'
 							)";
 
 						$addTrack = $connekt->query($insertMBIDtrackInfo);
@@ -297,12 +300,8 @@ function insertLastFMtrackDataFilenames ($filenames) {
 							echo '<p>' . $trackNameMB . ' from ' . $releaseName . ' had ' . $trackListeners . ' listeners and ' . $trackPlaycount . ' plays on ' . $dataDate . '.</p>';
 						}; // end of IF query is not successful ELSE it is    
 						
-						$updateTracksMBwithTrackNumber = "UPDATE tracksMB (
-							trackNumber
-							) 
-							VALUES(
-								'$trackNumber'
-							)";
+						$updateTracksMBwithTrackNumber = "UPDATE tracksMB SET
+							trackNumber = '$trackNumber' WHERE trackMBID = '$trackMBID'";
 
 						$updateTrack = $connekt->query($updateTracksMBwithTrackNumber);
 
@@ -408,8 +407,7 @@ $filenames_01 = array (
 	'data/TheRunaways_Group_06-30-19.json',
     'data/TedNugent_Person_06-30-19.json', 
     'data/DavidBowie_Person_06-30-19.json',
-    'data/JanetJackson_Person_06-30-19.json',	
- 
+    'data/JanetJackson_Person_06-30-19.json'	
 );
 
 $artistNames_01 = array (
@@ -506,14 +504,12 @@ $filenames_04 = array (
     'data/LedZeppelin_Group_07-03-19.json',
     'data/RobertPlant_Person_07-03-19.json',
 	'data/TheYardbirds_Group_07-03-19.json',
-
     'data/TheFirm_Group_06-26-19.json',
     'data/JimmyPage_Person_06-26-19.json',
     'data/JimmyPage&RobertPlant_Group_06-26-19.json',
     'data/LedZeppelin_Group_06-26-19.json',
     'data/RobertPlant_Person_06-26-19.json',
 	'data/TheYardbirds_Group_06-26-19.json',
-
     'data/TheFirm_Group_06-19-19.json',
     'data/JimmyPage_Person_06-19-19.json',
     'data/JimmyPage&RobertPlant_Group_06-19-19.json',
@@ -596,14 +592,12 @@ $filenames_07 = array (
     'data/Saxon_Group_06-15-19.json', 
     'data/NeilYoung_Person_06-15-19.json',
 	'data/TheZombies_Group_06-15-19.json',
-
     'data/Cream_Group_06-22-19.json',
     'data/EricClapton_Person_06-22-19.json',
     'data/RoxyMusic_Group_06-22-19.json',
     'data/Saxon_Group_06-22-19.json', 
     'data/NeilYoung_Person_06-22-19.json',
 	'data/TheZombies_Group_06-22-19.json',
-	
 	'data/Cream_Group_06-29-19.json',
     'data/EricClapton_Person_06-29-19.json',
     'data/RoxyMusic_Group_06-29-19.json',
