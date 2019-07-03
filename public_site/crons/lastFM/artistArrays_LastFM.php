@@ -253,16 +253,19 @@ function insertLastFMtrackDataFilenames ($filenames) {
 						$trackNameMB = mysqli_real_escape_string($connekt,$trackNameYucky);
 						$trackListeners = $track['stats']['listeners'];
 						$trackPlaycount = $track['stats']['playcount'];
+						$trackNumber = $track['trackNumber'];
 
 						$insertMBIDtrackInfo = "INSERT INTO tracksMB (
 							albumMBID,
 							trackMBID,
-							trackNameMB
+							trackNameMB,
+							trackNumber
 							) 
 							VALUES(
 								'$releaseMBID',
 								'$trackMBID',
-								'$trackNameMB'
+								'$trackNameMB',
+								'$trackNumber'
 							)";
 
 						$addTrack = $connekt->query($insertMBIDtrackInfo);
@@ -292,7 +295,26 @@ function insertLastFMtrackDataFilenames ($filenames) {
 							echo '<p>Shickety Brickety! Could not insert ' . $trackNameMB . ' stats.</p>';
 						} else {
 							echo '<p>' . $trackNameMB . ' from ' . $releaseName . ' had ' . $trackListeners . ' listeners and ' . $trackPlaycount . ' plays on ' . $dataDate . '.</p>';
-						}; // end of IF query is not successful ELSE it is      
+						}; // end of IF query is not successful ELSE it is    
+						
+						$updateTracksMBwithTrackNumber = "UPDATE tracksMB (
+							trackNumber
+							) 
+							VALUES(
+								'$trackNumber'
+							)";
+
+						$updateTrack = $connekt->query($updateTracksMBwithTrackNumber);
+
+						if(!$updateTrack){
+							echo '<p>Could not update <b>' . $trackNameMB . '</b> with track number.</p>';
+						} else {
+							echo '<p>Updated <b>' . $trackNameMB . '</b> from <i>' . $releaseName . '</i> with track #' . $trackNumber . '</p>';
+						};
+
+
+
+
 					} // end of FOR each track on the album
 				}; // end of IF there are releases
 			}; // end of FOR every album
@@ -371,30 +393,23 @@ $aliceJJ = array (
 );
 
 $filenames_01 = array (
-    'data/AliceCooper_Combined_06-09-19.json',
-    'data/TheAmboyDukes_Group_06-09-19.json',
-    'data/EvilStig_Group_06-09-19.json', 
-    'data/JoanJett_Combined_06-09-19.json', 
-	'data/TheRunaways_Group_06-09-19.json',
-    'data/TedNugent_Person_06-09-19.json', 
-    'data/DavidBowie_Person_06-09-19.json',
-    'data/JanetJackson_Person_06-09-19.json',	
-    'data/AliceCooper_Combined_06-02-19.json',
-    'data/TheAmboyDukes_Group_06-02-19.json',
-    'data/EvilStig_Group_06-02-19.json', 
-    'data/JoanJett_Combined_06-02-19.json', 
-	'data/TheRunaways_Group_06-02-19.json',
-    'data/TedNugent_Person_06-02-19.json', 
-    'data/DavidBowie_Person_06-02-19.json',
-    'data/JanetJackson_Person_06-02-19.json',	
-    'data/AliceCooper_Combined_05-30-19.json',
-    'data/TheAmboyDukes_Group_05-30-19.json',
-    'data/EvilStig_Group_05-30-19.json', 
-    'data/JoanJett_Combined_05-30-19.json', 
-	'data/TheRunaways_Group_05-30-19.json',
-    'data/TedNugent_Person_05-30-19.json', 
-    'data/DavidBowie_Person_05-30-19.json',
-    'data/JanetJackson_Person_05-30-19.json'
+    'data/AliceCooper_Combined_06-23-19.json',
+    'data/TheAmboyDukes_Group_06-23-19.json',
+    'data/EvilStig_Group_06-23-19.json', 
+    'data/JoanJett_Combined_06-23-19.json', 
+	'data/TheRunaways_Group_06-23-19.json',
+    'data/TedNugent_Person_06-23-19.json', 
+    'data/DavidBowie_Person_06-23-19.json',
+    'data/JanetJackson_Person_06-23-19.json',	
+    'data/AliceCooper_Combined_06-30-19.json',
+    'data/TheAmboyDukes_Group_06-30-19.json',
+    'data/EvilStig_Group_06-30-19.json', 
+    'data/JoanJett_Combined_06-30-19.json', 
+	'data/TheRunaways_Group_06-30-19.json',
+    'data/TedNugent_Person_06-30-19.json', 
+    'data/DavidBowie_Person_06-30-19.json',
+    'data/JanetJackson_Person_06-30-19.json',	
+ 
 );
 
 $artistNames_01 = array (
@@ -409,27 +424,27 @@ $artistNames_01 = array (
 );
 
 $filenames_02 = array (
-    'data/Anvil_Group_06-10-19.json',
-    'data/LindseyBuckingham_Person_06-10-19.json',
-    'data/TheCure_Group_06-10-19.json',
-    'data/Eminem_Person_06-10-19.json',
-    'data/FleetwoodMac_Group_06-10-19.json',
-    'data/StevieNicks_Person_06-10-19.json',
-    'data/Radiohead_Group_06-10-19.json',	
-    'data/Anvil_Group_06-03-19.json',
-    'data/LindseyBuckingham_Person_06-03-19.json',
-    'data/TheCure_Group_06-03-19.json',
-    'data/Eminem_Person_06-03-19.json',
-    'data/FleetwoodMac_Group_06-03-19.json',
-    'data/StevieNicks_Person_06-03-19.json',
-    'data/Radiohead_Group_06-03-19.json',	
-    'data/Anvil_Group_05-27-19.json',
-    'data/LindseyBuckingham_Person_05-27-19.json',
-    'data/TheCure_Group_05-27-19.json',
-    'data/Eminem_Person_05-27-19.json',
-    'data/FleetwoodMac_Group_05-27-19.json',
-    'data/StevieNicks_Person_05-27-19.json',
-    'data/Radiohead_Group_05-27-19.json'
+    'data/Anvil_Group_07-01-19.json',
+    'data/LindseyBuckingham_Person_07-01-19.json',
+    'data/TheCure_Group_07-01-19.json',
+    'data/Eminem_Person_07-01-19.json',
+    'data/FleetwoodMac_Group_07-01-19.json',
+    'data/StevieNicks_Person_07-01-19.json',
+	'data/Radiohead_Group_07-01-19.json',	
+    'data/Anvil_Group_06-24-19.json',
+    'data/LindseyBuckingham_Person_06-24-19.json',
+    'data/TheCure_Group_06-24-19.json',
+    'data/Eminem_Person_06-24-19.json',
+    'data/FleetwoodMac_Group_06-24-19.json',
+    'data/StevieNicks_Person_06-24-19.json',
+	'data/Radiohead_Group_06-24-19.json',	
+    'data/Anvil_Group_06-17-19.json',
+    'data/LindseyBuckingham_Person_06-17-19.json',
+    'data/TheCure_Group_06-17-19.json',
+    'data/Eminem_Person_06-17-19.json',
+    'data/FleetwoodMac_Group_06-17-19.json',
+    'data/StevieNicks_Person_06-17-19.json',
+    'data/Radiohead_Group_06-17-19.json'
 );
 
 $artistNames_02 = array (
@@ -443,33 +458,33 @@ $artistNames_02 = array (
 );
 
 $filenames_03 = array (
-    'data/BlackSabbath_Group_05-28-19.json',
-    'data/Dio_Group_05-28-19.json', 
-    'data/Elf_Group_05-28-19.json', 
-    'data/TheElectricElves_Group_05-28-19.json', 
-    'data/Heaven&Hell_Group_05-28-19.json', 
-    'data/OzzyOsbourne_Person_05-28-19.json', 
-	'data/Rainbow_Group_05-28-19.json',
-    'data/RonnieDioandtheProphets_Group_05-28-19.json', 
-	'data/RonnieDioandtheRedCaps_Group_05-28-19.json',
-    'data/BlackSabbath_Group_06-04-19.json',
-    'data/Dio_Group_06-04-19.json', 
-    'data/Elf_Group_06-04-19.json', 
-    'data/TheElectricElves_Group_06-04-19.json', 
-    'data/Heaven&Hell_Group_06-04-19.json', 
-    'data/OzzyOsbourne_Person_06-04-19.json', 
-	'data/Rainbow_Group_06-04-19.json',
-    'data/RonnieDioandtheProphets_Group_06-04-19.json', 
-	'data/RonnieDioandtheRedCaps_Group_06-04-19.json',
-    'data/BlackSabbath_Group_06-11-19.json',
-    'data/Dio_Group_06-11-19.json', 
-    'data/Elf_Group_06-11-19.json', 
-    'data/TheElectricElves_Group_06-11-19.json', 
-    'data/Heaven&Hell_Group_06-11-19.json', 
-    'data/OzzyOsbourne_Person_06-11-19.json', 
-	'data/Rainbow_Group_06-11-19.json',
-    'data/RonnieDioandtheProphets_Group_06-11-19.json', 
-    'data/RonnieDioandtheRedCaps_Group_06-11-19.json'	
+    'data/BlackSabbath_Group_06-18-19.json',
+    'data/Dio_Group_06-18-19.json', 
+    'data/Elf_Group_06-18-19.json', 
+    'data/TheElectricElves_Group_06-18-19.json', 
+    'data/Heaven&Hell_Group_06-18-19.json', 
+    'data/OzzyOsbourne_Person_06-18-19.json', 
+	'data/Rainbow_Group_06-18-19.json',
+    'data/RonnieDioandtheProphets_Group_06-18-19.json', 
+	'data/RonnieDioandtheRedCaps_Group_06-18-19.json',
+    'data/BlackSabbath_Group_06-25-19.json',
+    'data/Dio_Group_06-25-19.json', 
+    'data/Elf_Group_06-25-19.json', 
+    'data/TheElectricElves_Group_06-25-19.json', 
+    'data/Heaven&Hell_Group_06-25-19.json', 
+    'data/OzzyOsbourne_Person_06-25-19.json', 
+	'data/Rainbow_Group_06-25-19.json',
+    'data/RonnieDioandtheProphets_Group_06-25-19.json', 
+	'data/RonnieDioandtheRedCaps_Group_06-25-19.json',
+    'data/BlackSabbath_Group_07-02-19.json',
+    'data/Dio_Group_07-02-19.json', 
+    'data/Elf_Group_07-02-19.json', 
+    'data/TheElectricElves_Group_07-02-19.json', 
+    'data/Heaven&Hell_Group_07-02-19.json', 
+    'data/OzzyOsbourne_Person_07-02-19.json', 
+	'data/Rainbow_Group_07-02-19.json',
+    'data/RonnieDioandtheProphets_Group_07-02-19.json', 
+    'data/RonnieDioandtheRedCaps_Group_07-02-19.json'	
 );
 
 $artistNames_03 = array (
@@ -485,24 +500,26 @@ $artistNames_03 = array (
 );
 
 $filenames_04 = array (
-    'data/TheFirm_Group_06-05-19.json',
-    'data/JimmyPage_Person_06-05-19.json',
-    'data/JimmyPage&RobertPlant_Group_06-05-19.json',
-    'data/LedZeppelin_Group_06-05-19.json',
-    'data/RobertPlant_Person_06-05-19.json',
-	'data/TheYardbirds_Group_06-05-19.json',
-    'data/TheFirm_Group_06-12-19.json',
-    'data/JimmyPage_Person_06-12-19.json',
-    'data/JimmyPage&RobertPlant_Group_06-12-19.json',
-    'data/LedZeppelin_Group_06-12-19.json',
-    'data/RobertPlant_Person_06-12-19.json',
-	'data/TheYardbirds_Group_06-12-19.json',
-    'data/TheFirm_Group_05-29-19.json',
-    'data/JimmyPage_Person_05-29-19.json',
-    'data/JimmyPage&RobertPlant_Group_05-29-19.json',
-    'data/LedZeppelin_Group_05-29-19.json',
-    'data/RobertPlant_Person_05-29-19.json',
-    'data/TheYardbirds_Group_05-29-19.json'
+    'data/TheFirm_Group_07-03-19.json',
+    'data/JimmyPage_Person_07-03-19.json',
+    'data/JimmyPage&RobertPlant_Group_07-03-19.json',
+    'data/LedZeppelin_Group_07-03-19.json',
+    'data/RobertPlant_Person_07-03-19.json',
+	'data/TheYardbirds_Group_07-03-19.json',
+
+    'data/TheFirm_Group_06-26-19.json',
+    'data/JimmyPage_Person_06-26-19.json',
+    'data/JimmyPage&RobertPlant_Group_06-26-19.json',
+    'data/LedZeppelin_Group_06-26-19.json',
+    'data/RobertPlant_Person_06-26-19.json',
+	'data/TheYardbirds_Group_06-26-19.json',
+
+    'data/TheFirm_Group_06-19-19.json',
+    'data/JimmyPage_Person_06-19-19.json',
+    'data/JimmyPage&RobertPlant_Group_06-19-19.json',
+    'data/LedZeppelin_Group_06-19-19.json',
+    'data/RobertPlant_Person_06-19-19.json',
+    'data/TheYardbirds_Group_06-19-19.json'
 );
 
 $artistNames_04 = array (
@@ -515,12 +532,18 @@ $artistNames_04 = array (
 );
 
 $filenames_05 = array (
-    'data/IggyandTheStooges_Group_05-30-19.json',
-    'data/IggyPop_Person_05-30-19.json',
-    'data/Journey_Group_05-30-19.json', 
-    'data/MeatLoaf_Person_05-30-19.json', 
-    'data/Stoney&Meatloaf_Group_05-30-19.json',
-    'data/TheStooges_Group_05-30-19.json'
+    'data/IggyandTheStooges_Group_06-20-19.json',
+    'data/IggyPop_Person_06-20-19.json',
+    'data/Journey_Group_06-20-19.json', 
+    'data/MeatLoaf_Person_06-20-19.json', 
+    'data/Stoney&Meatloaf_Group_06-20-19.json',
+	'data/TheStooges_Group_06-20-19.json',
+	'data/IggyandTheStooges_Group_06-27-19.json',
+    'data/IggyPop_Person_06-27-19.json',
+    'data/Journey_Group_06-27-19.json', 
+    'data/MeatLoaf_Person_06-27-19.json', 
+    'data/Stoney&Meatloaf_Group_06-27-19.json',
+    'data/TheStooges_Group_06-27-19.json'
 );
 
 $artistNames_05 = array (
@@ -533,20 +556,27 @@ $artistNames_05 = array (
 );
 
 $filenames_06 = array (
-    'data/2Pac_Person_05-31-19.json',
-    'data/DefLeppard_Group_05-31-19.json',
-    'data/MötleyCrüe_Group_05-31-19.json',
-    'data/Queen_Group_05-31-19.json', 
-    'data/QuietRiot_Group_05-31-19.json', 
-    'data/ToddRundgren_Person_05-31-19.json',
-	'data/Utopia_Group_05-31-19.json',
+    'data/2Pac_Person_06-28-19.json',
+    'data/DefLeppard_Group_06-28-19.json',
+    'data/MötleyCrüe_Group_06-28-19.json',
+    'data/Queen_Group_06-28-19.json', 
+    'data/QuietRiot_Group_06-28-19.json', 
+    'data/ToddRundgren_Person_06-28-19.json',
+	'data/Utopia_Group_06-28-19.json',
 	'data/2Pac_Person_06-14-19.json',
     'data/DefLeppard_Group_06-14-19.json',
     'data/MötleyCrüe_Group_06-14-19.json',
     'data/Queen_Group_06-14-19.json', 
     'data/QuietRiot_Group_06-14-19.json', 
     'data/ToddRundgren_Person_06-14-19.json',
-    'data/Utopia_Group_06-14-19.json'
+	'data/Utopia_Group_06-14-19.json',
+	'data/2Pac_Person_06-21-19.json',
+    'data/DefLeppard_Group_06-21-19.json',
+    'data/MötleyCrüe_Group_06-21-19.json',
+    'data/Queen_Group_06-21-19.json', 
+    'data/QuietRiot_Group_06-21-19.json', 
+    'data/ToddRundgren_Person_06-21-19.json',
+    'data/Utopia_Group_06-21-19.json'
 );
 
 $artistNames_06 = array (
@@ -560,18 +590,26 @@ $artistNames_06 = array (
 );
 
 $filenames_07 = array (
-    'data/Cream_Group_06-01-19.json',
-    'data/EricClapton_Person_06-01-19.json',
-    'data/RoxyMusic_Group_06-01-19.json',
-    'data/Saxon_Group_06-01-19.json', 
-    'data/NeilYoung_Person_06-01-19.json',
-	'data/TheZombies_Group_06-01-19.json',
-    'data/Cream_Group_06-08-19.json',
-    'data/EricClapton_Person_06-08-19.json',
-    'data/RoxyMusic_Group_06-08-19.json',
-    'data/Saxon_Group_06-08-19.json', 
-    'data/NeilYoung_Person_06-08-19.json',
-    'data/TheZombies_Group_06-08-19.json'	
+    'data/Cream_Group_06-15-19.json',
+    'data/EricClapton_Person_06-15-19.json',
+    'data/RoxyMusic_Group_06-15-19.json',
+    'data/Saxon_Group_06-15-19.json', 
+    'data/NeilYoung_Person_06-15-19.json',
+	'data/TheZombies_Group_06-15-19.json',
+
+    'data/Cream_Group_06-22-19.json',
+    'data/EricClapton_Person_06-22-19.json',
+    'data/RoxyMusic_Group_06-22-19.json',
+    'data/Saxon_Group_06-22-19.json', 
+    'data/NeilYoung_Person_06-22-19.json',
+	'data/TheZombies_Group_06-22-19.json',
+	
+	'data/Cream_Group_06-29-19.json',
+    'data/EricClapton_Person_06-29-19.json',
+    'data/RoxyMusic_Group_06-29-19.json',
+    'data/Saxon_Group_06-29-19.json', 
+    'data/NeilYoung_Person_06-29-19.json',
+    'data/TheZombies_Group_06-29-19.json'
 );
 
 $artistNames_07 = array (

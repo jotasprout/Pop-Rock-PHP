@@ -95,7 +95,14 @@ if(!$getit){
 		$albumListeners = number_format ($albumListenersNum);
 		$albumPlaycountNum = $row[ "albumPlaycount"];
 		$albumPlaycount = number_format ($albumPlaycountNum);
-		$albumRatio = "1:" . floor($albumPlaycountNum/$albumListenersNum);
+		$playsPerListener = 0;
+		if ($albumPlaycount != 0) {
+			$playsPerListener = floor($albumPlaycountNum/$albumListenersNum);
+		};
+		$albumRatio = "1:" . $playsPerListener;
+		if ($albumListeners == 0){
+			$albumRatio = "0:" . $playsPerListener;
+		}
 ?>
 					
 <tr>

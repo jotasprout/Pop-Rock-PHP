@@ -94,7 +94,14 @@ if ( !$getit ) {
 							$trackListeners = number_format ($trackListenersNum);
 							$trackPlaycountNum = $row["trackPlaycount"];
 							$trackPlaycount = number_format ($trackPlaycountNum);
-							$trackRatio = "1:" . floor($trackPlaycountNum/$trackListenersNum);
+							$playsPerListener = 0;
+							if ($trackPlaycount != 0) {
+								$playsPerListener = floor($trackPlaycountNum/$trackListenersNum);
+							};
+							$trackRatio = "1:" . $playsPerListener;
+							if ($trackListeners == 0){
+								$trackRatio = "0:" . $playsPerListener;
+							}
 					?>
 							<tr>
 								<!---->
