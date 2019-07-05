@@ -528,18 +528,12 @@ $artistNames_04 = array (
 );
 
 $filenames_05 = array (
-    'data/IggyandTheStooges_Group_06-20-19.json',
-    'data/IggyPop_Person_06-20-19.json',
-    'data/Journey_Group_06-20-19.json', 
-    'data/MeatLoaf_Person_06-20-19.json', 
-    'data/Stoney&Meatloaf_Group_06-20-19.json',
-	'data/TheStooges_Group_06-20-19.json',
-	'data/IggyandTheStooges_Group_06-27-19.json',
-    'data/IggyPop_Person_06-27-19.json',
-    'data/Journey_Group_06-27-19.json', 
-    'data/MeatLoaf_Person_06-27-19.json', 
-    'data/Stoney&Meatloaf_Group_06-27-19.json',
-    'data/TheStooges_Group_06-27-19.json'
+	'data/IggyandTheStooges_Group_07-04-19.json',
+    'data/IggyPop_Person_07-04-19.json',
+    'data/Journey_Group_07-04-19.json', 
+    'data/MeatLoaf_Person_07-04-19.json', 
+    'data/Stoney&Meatloaf_Group_07-04-19.json',
+    'data/TheStooges_Group_07-04-19.json'
 );
 
 $artistNames_05 = array (
@@ -552,27 +546,13 @@ $artistNames_05 = array (
 );
 
 $filenames_06 = array (
-    'data/2Pac_Person_06-28-19.json',
-    'data/DefLeppard_Group_06-28-19.json',
-    'data/MötleyCrüe_Group_06-28-19.json',
-    'data/Queen_Group_06-28-19.json', 
-    'data/QuietRiot_Group_06-28-19.json', 
-    'data/ToddRundgren_Person_06-28-19.json',
-	'data/Utopia_Group_06-28-19.json',
-	'data/2Pac_Person_06-14-19.json',
-    'data/DefLeppard_Group_06-14-19.json',
-    'data/MötleyCrüe_Group_06-14-19.json',
-    'data/Queen_Group_06-14-19.json', 
-    'data/QuietRiot_Group_06-14-19.json', 
-    'data/ToddRundgren_Person_06-14-19.json',
-	'data/Utopia_Group_06-14-19.json',
-	'data/2Pac_Person_06-21-19.json',
-    'data/DefLeppard_Group_06-21-19.json',
-    'data/MötleyCrüe_Group_06-21-19.json',
-    'data/Queen_Group_06-21-19.json', 
-    'data/QuietRiot_Group_06-21-19.json', 
-    'data/ToddRundgren_Person_06-21-19.json',
-    'data/Utopia_Group_06-21-19.json'
+	'data/2Pac_Person_07-05-19.json',
+    'data/DefLeppard_Group_07-05-19.json',
+    'data/MötleyCrüe_Group_07-05-19.json',
+    'data/Queen_Group_07-05-19.json', 
+    'data/QuietRiot_Group_07-05-19.json', 
+    'data/ToddRundgren_Person_07-05-19.json',
+	'data/Utopia_Group_07-05-19.json'
 );
 
 $artistNames_06 = array (

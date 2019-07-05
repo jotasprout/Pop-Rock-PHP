@@ -1,31 +1,21 @@
 <?php
 require '../../rockdb.php';
 
-$filenames_01 = array (
-    'data/BlackSabbath_Group_06-18-19.json'
-);
-
-$filenames_02 = array (
-    'data/Dio_Group_06-18-19.json', 
-    'data/Elf_Group_06-18-19.json', 
-    'data/TheElectricElves_Group_06-18-19.json', 
-    'data/Heaven&Hell_Group_06-18-19.json', 
-    'data/OzzyOsbourne_Person_06-18-19.json', 
-	'data/Rainbow_Group_06-18-19.json',
-    'data/RonnieDioandtheProphets_Group_06-18-19.json', 
-    'data/RonnieDioandtheRedCaps_Group_06-18-19.json',
-    'data/IggyandTheStooges_Group_07-04-19.json',
-    'data/IggyPop_Person_07-04-19.json',
-    'data/Journey_Group_07-04-19.json', 
-    'data/MeatLoaf_Person_07-04-19.json', 
-    'data/Stoney&Meatloaf_Group_07-04-19.json',
-    'data/TheStooges_Group_07-04-19.json',
+$filenames = array (
+    'data/Dio_Group_07-02-19.json', 
+    'data/Elf_Group_07-02-19.json', 
+    'data/TheElectricElves_Group_07-02-19.json', 
+    'data/Heaven&Hell_Group_07-02-19.json', 
+    'data/OzzyOsbourne_Person_07-02-19.json', 
+	'data/Rainbow_Group_07-02-19.json',
+    'data/RonnieDioandtheProphets_Group_07-02-19.json', 
+    'data/RonnieDioandtheRedCaps_Group_07-02-19.json',
     'data/TheFirm_Group_07-03-19.json',
     'data/JimmyPage_Person_07-03-19.json',
     'data/JimmyPage&RobertPlant_Group_07-03-19.json',
     'data/LedZeppelin_Group_07-03-19.json',
     'data/RobertPlant_Person_07-03-19.json',
-	'data/TheYardbirds_Group_07-03-19.json'	
+	'data/TheYardbirds_Group_07-03-19.json'
 );
 
 function get_TrackNumbersFromFilenames ($filenames) {
@@ -36,6 +26,7 @@ function get_TrackNumbersFromFilenames ($filenames) {
 		
         $jsonFile = $filenames[$i];
 		$fileContents = file_get_contents($jsonFile);
+		echo "<script>console.log(" . $fileContents . ");</script>";
         $artistData = json_decode($fileContents,true);
 
 		$artistMBID = $artistData['mbid'];
@@ -71,8 +62,9 @@ function get_TrackNumbersFromFilenames ($filenames) {
 						$track = $tracks[$m];
 						$trackMBID = $track['mbid'];
                         $trackNameYucky = $track['title'];
-                        $trackNameMB = mysqli_real_escape_string($connekt,$trackNameYucky);
-                        $trackNumber = $track['trackNumber'];
+						$trackNameMB = mysqli_real_escape_string($connekt,$trackNameYucky);
+						$trackNumber = $track['trackNumber'];
+						
                         echo '<p>' . $trackNameMB . '</b> is track #' . $trackNumber . ' on <i>' . $releaseName . '</i>.</p>';
 
 						$updateTracksMBwithTrackNumber = "UPDATE tracksMB SET trackNumber = '$trackNumber' WHERE trackMBID = '$trackMBID'";
@@ -91,6 +83,6 @@ function get_TrackNumbersFromFilenames ($filenames) {
 	}; // end of FOR each artist in array
 }; // end of FUNCTION insert tracks
 
-get_TrackNumbersFromFilenames ($filenames_01);
+get_TrackNumbersFromFilenames ($filenames);
 
 ?>
