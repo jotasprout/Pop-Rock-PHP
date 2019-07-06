@@ -11,14 +11,11 @@ if (!$connekt) {
 	echo 'Darn. Did not connect. Screwed up like this: ' . mysqli_error($connekt) . '</p>';
 };
 
-
-
 $artistInfoAll = "SELECT a.artistSpotID, a.artistNameSpot, a.artistArtSpot, b.pop, b.date, b.followers
 	FROM artistsSpot a
 		INNER JOIN popArtists b ON a.artistSpotID = b.artistSpotID
 			WHERE a.artistSpotID = '$artistSpotID'
 				ORDER BY b.date DESC";
-
 
 $getit = mysqli_query($connekt, $artistInfoAll);
 

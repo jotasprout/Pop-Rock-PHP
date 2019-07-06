@@ -10,7 +10,7 @@ if ( !$connekt ) {
 	echo 'Darn. Did not connect.';
 };
 
-$allthatAndLastFM = "SELECT a.artistMBID AS artistMBID, s.artistSpotID, a.artistArtMB AS artistArt, a.artistNameMB AS artistNameMB, f1.dataDate AS dataDate, f1.artistListeners AS artistListeners, f1.artistPlaycount AS artistPlaycount, f1.dataDate AS date
+$allthatAndLastFM = "SELECT a.artistMBID AS artistMBID, s.artistSpotID, s.artistArtSpot, a.artistArtMB AS artistArtMB, a.artistNameMB AS artistNameMB, f1.dataDate AS dataDate, f1.artistListeners AS artistListeners, f1.artistPlaycount AS artistPlaycount, f1.dataDate AS date
     FROM artistsMB a
 	LEFT JOIN (SELECT f.*
 			FROM artistsLastFM f
@@ -61,7 +61,7 @@ if(!$getit){ echo 'Cursed-Crap. Did not run the query.'; }
 <table class="table" id="tableoartists">
 <thead>
 <tr>
-	<th>Pretty Face</th>	
+	<th><div>Pretty Face</div></th>	
 	<th onClick="sortColumn('artistNameMB', 'ASC')"><div class="pointyHead">Artist Name</div></th>
 	<th>MBID</th>
 	<th onClick="sortColumn('datadate', 'unsorted')"><div class="pointyHead popStyle">LastFM<br>Data Date</div></th>			
@@ -82,7 +82,19 @@ if(!$getit){ echo 'Cursed-Crap. Did not run the query.'; }
 
 		$artistMBID = $row[ "artistMBID" ];
 		$artistSpotID = $row[ "artistSpotID" ];
-		$artistArt = $row[ "artistArt" ];
+		$artistArtMB = $row["artistArtMB"];
+		$artistArtSpot = $row["artistArtSpot"];
+
+		$artistArt = '';
+		if(empty($row["artistArtMB"]) && empty($row["artistArtSpot"])) {
+			$artistArt = "nope.png";
+		}
+		elseif (empty($row["artistArtMB"]) && !empty($row["artistArtSpot"])) {
+			$artistArt = $artistArtSpot;
+		}	
+		else {
+			$artistArt = $artistArtMB;
+		};
 
 		$lastFMDate = $row[ "dataDate" ];
 		$artistListenersNum = $row[ "artistListeners"];

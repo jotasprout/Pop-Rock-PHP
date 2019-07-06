@@ -116,7 +116,7 @@ var padding = 40;
 
 var dataset, xScale, yScale, xAxis, yAxis, line;
 
-d3.json("functions/createArtistD3.php?artistSpotID=<?php echo $artistSpotID; ?>", function(data) {
+d3.json("functions/createArtistMBD3.php?artistSpotID=<?php echo $artistSpotID; ?>&artistMBID=<?php echo $artistMBID ?>", function(data) {
     
     console.log(data);
     
@@ -405,7 +405,7 @@ d3.json("functions/get_artist_Playcounts.php?artistSpotID=<?php echo $artistSpot
 
 <script>
 
-    d3.json("functions/get_artist_LastFM.php?artistSpotID=<?php echo $artistSpotID; ?>", function(dataset) {
+    d3.json("functions/get_artist_LastFM.php?artistSpotID=<?php echo $artistSpotID; ?>&artistMBID=<?php echo $artistMBID ?>", function(dataset) {
         
         console.log(dataset);
         

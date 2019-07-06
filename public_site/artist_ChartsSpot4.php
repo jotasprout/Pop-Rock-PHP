@@ -196,7 +196,7 @@ var padding = 40;
 
 var dataset, xScale, yScale, xAxis, yAxis, line;
 
-d3.json("functions/createArtistD3.php?artistSpotID=<?php echo $artistSpotID; ?>", function(data) {
+d3.json("functions/createArtistSpotD3.php?artistSpotID=<?php echo $artistSpotID; ?>&artistMBID=<?php echo $artistMBID ?>", function(data) {
     
     console.log(data);
     
