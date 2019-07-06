@@ -123,7 +123,14 @@ if (!empty($sortit)) { ?>
 				$artistListeners = number_format ($artistListenersNum);
 				$artistPlaycountNum = $row[ "artistPlaycount"];
 				$artistPlaycount = number_format ($artistPlaycountNum);
-				$artistRatio = "1:" . floor($artistPlaycountNum/$artistListenersNum);
+				$playsPerListener = 0;
+				if ($artistPlaycount != 0) {
+					$playsPerListener = floor($artistPlaycountNum/$artistListenersNum);
+				};
+				$artistRatio = "1:" . $playsPerListener;
+				if ($artistListeners == 0){
+					$artistRatio = "0:" . $playsPerListener;
+				}
 		?>
 
 <tr>

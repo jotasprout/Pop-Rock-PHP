@@ -2,7 +2,6 @@
 
 require_once '../rockdb.php';
 
-
 $connekt = new mysqli($GLOBALS['host'], $GLOBALS['un'], $GLOBALS['magicword'], $GLOBALS['db']);
 
 if (!$connekt) {
@@ -104,6 +103,18 @@ if ( $columnName == "artistPlaycount" ) {
 	};
 };
 
+$ratioNewOrder = "unsorted";
+
+if ( $columnName == "ratio" ) {
+	if ($currentOrder == "unsorted" or $currentOrder == "ASC") {
+		$ratioNewOrder = "DESC";
+		$newOrder = "DESC";
+	} else {
+		$ratioNewOrder = "ASC";
+		$newOrder = "ASC";
+	};
+};
+
 $allthatAndLastFM = "SELECT a.artistSpotID AS artistSpotID, a.artistMBID AS artistMBID, a.artistArtSpot AS artistArtSpot, a.artistNameSpot AS artistNameSpot, a.albumsTotal AS albumsTotal, p1.pop AS pop, p1.followers AS followers, f1.dataDate AS dataDate, f1.artistListeners AS artistListeners, f1.artistPlaycount AS artistPlaycount, p1.date AS date
     FROM artistsSpot a
     JOIN (SELECT p.*
@@ -135,20 +146,20 @@ if (!empty($sortit)) { ?>
 <table class="table" id="tableoartists">
 <thead>
 	<tr>
-	<th>Pretty Face</th>	
-	<th onClick="sortColumn('artistNameSpot', '<?php echo $artistNameNewOrder; ?>')"><div class="pointyHead">Artist Name</div></th>
-	<!---->
-	<th class="popStyle">Spotify ID</th>
-	<th class="popStyle">Spotify<br>Data Date</th>
-	
-	<th onClick="sortColumn('pop', '<?php echo $popNewOrder; ?>')"><div class="pointyHead popStyle">Spotify<br>Popularity</div></th>
-	<th onClick="sortColumn('followers', '<?php echo $followersNewOrder; ?>')"><div class="pointyHead rightNum">Spotify<br>Followers</div></th>
-	<!---->	
-	<th onClick="sortColumn('datadate', '<?php echo $datadateNewOrder; ?>')"><div class="pointyHead popStyle">LastFM<br>Data Date</div></th>
-	
-	<th onClick="sortColumn('artistListeners', '<?php echo $listenersNewOrder; ?>')"><div class="pointyHead rightNum">LastFM<br>Listeners</div></th>
-	<th onClick="sortColumn('artistPlaycount', '<?php echo $playcountNewOrder; ?>')"><div class="pointyHead rightNum">LastFM<br>Playcount</div></th>
-	<th><div class="popStyle">LastFM<br>Ratio</div></th>
+		<th><div>Pretty Face</div></th>	
+		<th onClick="sortColumn('artistNameSpot', '<?php echo $artistNameNewOrder; ?>')"><div class="pointyHead">Artist Name</div></th>
+		<!---->
+		<th><div class="popStyle">Spotify ID</div></th>
+		<th><div class="popStyle">Spotify<br>Data Date</div></th>
+		
+		<th onClick="sortColumn('pop', '<?php echo $popNewOrder; ?>')"><div class="pointyHead popStyle">Spotify<br>Popularity</div></th>
+		<th onClick="sortColumn('followers', '<?php echo $followersNewOrder; ?>')"><div class="pointyHead rightNum">Spotify<br>Followers</div></th>
+		<!---->	
+		<th onClick="sortColumn('datadate', '<?php echo $datadateNewOrder; ?>')"><div class="pointyHead popStyle">LastFM<br>Data Date</div></th>
+		
+		<th onClick="sortColumn('artistListeners', '<?php echo $listenersNewOrder; ?>')"><div class="pointyHead rightNum">LastFM<br>Listeners</div></th>
+		<th onClick="sortColumn('artistPlaycount', '<?php echo $playcountNewOrder; ?>')"><div class="pointyHead rightNum">LastFM<br>Playcount</div></th>
+		<th><div class="popStyle">LastFM<br>Ratio</div></th>
 	</tr>
 </thead>
 
@@ -156,13 +167,13 @@ if (!empty($sortit)) { ?>
 
 		<?php
 			while ($row = mysqli_fetch_array($sortit)) {
-				$artistName = $row[ "artistNameSpot" ];
+				$artistNameSpot = $row[ "artistNameSpot" ];
 				$artistSpotID = $row[ "artistSpotID" ];
 				$artistMBID = $row[ "artistMBID" ];
 				$artistPop = $row[ "pop" ];
 				$artistFollowersNum = $row[ "followers"];
 				$artistFollowers = number_format ($artistFollowersNum);
-				$artistArt = $row[ "artistArtspot" ];
+				$artistArtSpot = $row[ "artistArtSpot" ];
 				$popDate = $row[ "date" ];
 				$albumsTotal = $row[ "albumsTotal" ];
 				$lastFMDate = $row[ "dataDate" ];

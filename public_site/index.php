@@ -68,56 +68,52 @@ if(!$getit){ echo 'Cursed-Crap. Did not run the query.'; }
 <table class="table" id="tableoartists">
 	<thead>
 <tr>
-	<th>Pretty Face</th>	
+	<th><div>Pretty Face</div></th>	
 	<th onClick="sortColumn('artistNameSpot', 'ASC')"><div class="pointyHead">Artist Name</div></th>
-	<!--
-	-->
-	
-	<th class="popStyle">Spotify ID</th>
-	<th class="popStyle">Spotify MBID</th>
-	<th class="popStyle">Spotify<br>Data Date</th>
+	<!-- -->
+	<th><div class="popStyle">Spotify ID</div></th>
+	<th><div class="popStyle">Spotify MBID</div></th>
+	<th><div class="popStyle">Spotify<br>Data Date</div></th>
 	<th onClick="sortColumn('pop', 'unsorted')"><div class="pointyHead popStyle">Spotify<br>Popularity</div></th>
 	<th onClick="sortColumn('followers', 'unsorted')"><div class="pointyHead rightNum">Spotify<br>Followers</div></th>
-		<!--	
-		-->
-		<th onClick="sortColumn('datadate', 'unsorted')"><div class="pointyHead popStyle">LastFM<br>Data Date</div></th>
+	<th onClick="sortColumn('datadate', 'unsorted')"><div class="pointyHead popStyle">LastFM<br>Data Date</div></th>
 	<th onClick="sortColumn('artistListeners', 'unsorted')"><div class="pointyHead rightNum">LastFM<br>Listeners</div></th>
 	<th onClick="sortColumn('artistPlaycount', 'unsorted')"><div class="pointyHead rightNum">LastFM<br>Playcount</div></th>
 	<th><div class="popStyle">LastFM<br>Ratio</div></th>
+	<!-- 
+	<th onClick="sortColumn('ratio', 'unsorted')"><div class="pointyHead popStyle">LastFM<br>Ratio</div></th>
+	-->
 </tr>
 	</thead>
-
 	<tbody>
-
-				<?php
-					while ( $row = mysqli_fetch_array( $getit ) ) {
-						$artistNameSpot = $row[ "artistNameSpot" ];
-						$artistSpotID = $row[ "artistSpotID" ];
-						$artistMBID = $row[ "artistMBID" ];
-						$artistPop = $row[ "pop" ];
-						$artistFollowersNum = $row[ "followers"];
-						$artistFollowers = number_format ($artistFollowersNum);
-						$artistArtSpot = $row[ "artistArtSpot" ];
-						$popDate = $row[ "date" ];
-						$albumsTotal = $row[ "albumsTotal" ];
-						$lastFMDate = $row[ "dataDate" ];
-						$artistListenersNum = $row[ "artistListeners"];
-						$artistListeners = number_format ($artistListenersNum);
-						if (!$artistListeners > 0) {
-							$artistListeners = "n/a";
-						};
-						$artistPlaycountNum = $row[ "artistPlaycount"];
-						$artistPlaycount = number_format ($artistPlaycountNum);
-						$artistRatio = 0;
-						if (!$artistPlaycount > 0) {
-							$artistPlaycount = "n/a";
-							$artistRatio = "n/a";
-							$lastFMDate = "n/a";
-						} else {
-							$artistRatio = "1:" . floor($artistPlaycountNum/$artistListenersNum);
-						};
-				?>
-
+		<?php
+			while ( $row = mysqli_fetch_array( $getit ) ) {
+				$artistNameSpot = $row[ "artistNameSpot" ];
+				$artistSpotID = $row[ "artistSpotID" ];
+				$artistMBID = $row[ "artistMBID" ];
+				$artistPop = $row[ "pop" ];
+				$artistFollowersNum = $row[ "followers"];
+				$artistFollowers = number_format ($artistFollowersNum);
+				$artistArtSpot = $row[ "artistArtSpot" ];
+				$popDate = $row[ "date" ];
+				$albumsTotal = $row[ "albumsTotal" ];
+				$lastFMDate = $row[ "dataDate" ];
+				$artistListenersNum = $row[ "artistListeners"];
+				$artistListeners = number_format ($artistListenersNum);
+				if (!$artistListeners > 0) {
+					$artistListeners = "n/a";
+				};
+				$artistPlaycountNum = $row[ "artistPlaycount"];
+				$artistPlaycount = number_format ($artistPlaycountNum);
+				$artistRatio = 0;
+				if (!$artistPlaycount > 0) {
+					$artistPlaycount = "n/a";
+					$artistRatio = "n/a";
+					$lastFMDate = "n/a";
+				} else {
+					$artistRatio = "1:" . floor($artistPlaycountNum/$artistListenersNum);
+				};
+		?>
 <tr>
 	<td><a href='https://www.roxorsoxor.com/poprock/artist_ChartsSpot4.php?artistSpotID=<?php echo $artistSpotID ?>&artistMBID=<?php echo $artistMBID ?>'><img src='<?php echo $artistArtSpot ?>' class="indexArtistArt"></a></td>	
 	

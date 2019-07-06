@@ -50,7 +50,7 @@ if(!$getit){ echo 'Cursed-Crap. Did not run the query.'; }
 	<div class="panel panel-primary">
 
 		<div class="panel-heading">
-			<h3 class="panel-title">LastFM Data for Artists</h3>
+			<h3 class="panel-title">Data for LastFM-Only Artists</h3>
 		</div>
 
 		<div class="panel-body">
@@ -59,17 +59,18 @@ if(!$getit){ echo 'Cursed-Crap. Did not run the query.'; }
 			<?php if (!empty($getit)) { ?>
 
 <table class="table" id="tableoartists">
-	<thead>
+<thead>
 <tr>
 	<th>Pretty Face</th>	
 	<th onClick="sortColumn('artistNameMB', 'ASC')"><div class="pointyHead">Artist Name</div></th>
 	<th>MBID</th>
-
 	<th onClick="sortColumn('datadate', 'unsorted')"><div class="pointyHead popStyle">LastFM<br>Data Date</div></th>			
-
 	<th onClick="sortColumn('artistListeners', 'unsorted')"><div class="pointyHead rightNum">LastFM<br>Listeners</div></th>
 	<th onClick="sortColumn('artistPlaycount', 'unsorted')"><div class="pointyHead rightNum">LastFM<br>Playcount</div></th>
 	<th><div class="popStyle">LastFM<br>Ratio</div></th>
+	<!--
+	<th onClick="sortColumn('ratio', 'unsorted')"><div class="pointyHead popStyle">LastFM<br>Ratio</div></th>
+	-->
 </tr>
 </thead>
 
