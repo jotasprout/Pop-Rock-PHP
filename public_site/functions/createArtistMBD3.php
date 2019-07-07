@@ -1,6 +1,6 @@
 <?php
 
-$artistSpotID = $_GET['artistSpotID'];
+$artistMBID = $_GET['artistMBID'];
 
 require_once '../rockdb.php';
 require( "class.artist.php" );
@@ -11,11 +11,9 @@ if (!$connekt) {
 	echo 'Darn. Did not connect. Screwed up like this: ' . mysqli_error($connekt) . '</p>';
 };
 
-$artistInfoAll = "SELECT a.artistSpotID, a.artistNameSpot, a.artistArtSpot, b.pop, b.date, b.followers
-	FROM artistsSpot a
-		INNER JOIN popArtists b ON a.artistSpotID = b.artistSpotID
-			WHERE a.artistSpotID = '$artistSpotID'
-				ORDER BY b.date DESC";
+$artistInfoAll = "SELECT a.artistMBID, a.artistNameMB, a.artistArtMB
+	FROM artistsMB a
+	WHERE a.artistMBID = '$artistMBID'";
 
 $getit = mysqli_query($connekt, $artistInfoAll);
 

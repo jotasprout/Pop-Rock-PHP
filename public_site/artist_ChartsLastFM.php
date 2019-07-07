@@ -125,15 +125,13 @@ d3.json("functions/createArtistMBD3.php?artistSpotID=<?php echo $artistSpotID; ?
     const artistNameMB = dataset[0].artistNameMB;
 
     const nameInTitle = d3.select("title")
-            .text(artistNameMB + "'s current stats on Spotify and LastFM")    
+            .text(artistNameMB + "'s current stats on LastFM")    
 
     const topHeading = d3.select("#topHead")
-            .text(artistNameMB + "'s current stats on Spotify and LastFM"); 
+            .text(artistNameMB + "'s current stats on LastFM"); 
 
     const artistTitle = d3.select("#artistPop")
             .text(artistNameMB + "'s popularity on Spotify over time");   
-
-    const currentPopArtist = dataset[0].pop;
 
     const currentPop = d3.select("#forCurrentPopularity")
             .text(currentPopArtist);               
