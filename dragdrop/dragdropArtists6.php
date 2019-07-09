@@ -173,9 +173,9 @@ d3.json("dragDropCompare.php", function (dataset) {
 		const dragHandler = d3.drag()
 													.on("start", function (d){
 														console.log ("Picked up " + d.artistNameSpot);
-														//d3.select(this)
-														//  .attr("x", d3.event.x)
-														//  .attr("y", d3.event.y);
+														d3.select(this)
+														  .attr("x", d3.event.x)
+														  .attr("y", d3.event.y);
 													})
 													.on("drag", function (d) {
 														const mouse = d3.mouse(this);
