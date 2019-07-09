@@ -71,12 +71,21 @@ const dropTo = svg.append("rect")
 				.attr("y", h/2 - (margin.top + margin.bottom))
 				.attr("class", "dropTo")
 				.attr("width", w - (margin.left + margin.right))
-				.attr("height", h/2 + margin.top);
+				.attr("height", h/2 + margin.top)
+				.attr("data-ready", false)
+				.on("mouseover", function(){
+					dropToReady = true;
+					console.log("dropTo is " + dropToReady);
+				})
+				.on("mouseout", function(){
+					dropToReady = false;
+					console.log("dropTo is " + dropToReady);
+				});
 
 d3.json("dragDropCompare.php", function (dataset) {
 
-    let droppedArtists = dataset.splice(0,5);
-    console.log(dataset);
+  let droppedArtists = dataset.splice(0,5);
+  console.log(dataset);
 	console.log(droppedArtists);
 
 	svg.selectAll("image")
@@ -100,7 +109,7 @@ d3.json("dragDropCompare.php", function (dataset) {
 		.text((d) => d.artistNameSpot);
 		
 		
-    // photo of artist
+  // photo of artist
 	svg.selectAll("image.chosen")
 		.data(droppedArtists)
 		.enter()
@@ -162,33 +171,66 @@ d3.json("dragDropCompare.php", function (dataset) {
 
 		// DRAG HANDLER
 		const dragHandler = d3.drag()
-		.on("drag", function (d) {
-			const mouse = d3.mouse(this);
-			const picWidth = 64;
-			const picHeight = 64;
-			//console.log ("Dragging " + d.artistNameSpot + " with " + d.pop + " popularity");
-			d3.select(this)
-			  //.attr("x", d3.event.x)
-			  //.attr("y", d3.event.y)
-			  .attr("x", (mouse[0])-picWidth/2)
-			  .attr("y", (mouse[1])-picHeight/2)
-			  .attr("pointer-events", "none");
-		})
-		.on("end", function (d) {
-			if (dropToReady == true){
-				droppedArtists.push(d.artistNameSpot);
-			};
-			let dropped = droppedArtists.length;
-			for(let i=0; i<dropped; i++){
-				//console.log(droppedArtists[i]);	
-			};
-			console.log(droppedArtists);
-			d3.select(this)
-			  .attr("pointer-events", "auto");
-		});
+													.on("start", function (d){
+														console.log ("Picked up " + d.artistNameSpot);
+														//d3.select(this)
+														//  .attr("x", d3.event.x)
+														//  .attr("y", d3.event.y);
+													})
+													.on("drag", function (d) {
+														const mouse = d3.mouse(this);
+														const picWidth = 64;
+														const picHeight = 64;
+														console.log ("Dragging " + d.artistNameSpot);
+														d3.select(this)
+															// the event x and y under Start was here
+															.attr("x", (mouse[0])-picWidth/2)
+															.attr("y", (mouse[1])-picHeight/2)
+															.attr("pointer-events", "none");
+													})
+													.on("end", function (d) {
+														if (dropToReady == true){
+															droppedArtists.push(d);
+															let oldindex = dataset.indexOf(d);
+															dataset.splice(oldindex, 1);
+															let dropped = droppedArtists.length;
+
+															let columns = svg.selectAll("rect.columns")
+																							 .data(droppedArtists);
+
+															columns.enter()
+																		 .append("rect")
+																		 .attr("x", function (d,i) {
+																				return innerTo.left + (i * 65);
+																			})
+																			.attr("y", function(d) {
+																				return h - innerTo.bottom - 64 - (d.pop * 2)
+																			})
+																			.attr("width", 64)
+																			.attr("height", function(d) {
+																				return (d.pop * 2);
+																			})
+																			.merge(columns);
+
+															console.log ("Added " + d.artistNameSpot + " to Dropped Artists array.");
+														} else {
+															console.log ("Did NOT add " + d.artistNameSpot + " to Dropped Artists array.");
+														};
+														
+														/*
+														for(let i=0; i<dropped; i++){
+															console.log(droppedArtists[i]);	
+														};
+														*/
+														console.log(dataset);
+														console.log(droppedArtists);
+														d3.select(this)
+															.attr("pointer-events", "auto");
+													});
 	
 	dragHandler(svg.selectAll(".choice"));
-	
+
+	/*
 	function pickUp(d){
 		// do some drag start stuff
 	};
@@ -200,13 +242,14 @@ d3.json("dragDropCompare.php", function (dataset) {
 	function putDown(){
 		// we are done, end some stuff
 	};
-	
-/**/
+
 	const dragMaster = d3.drag()
 					   .on("start", pickUp)
 					   .on("drag", carry)
 					   .on("end", putDown);
-	//d3.selectAll(".choice").call(drag);
+	
+	d3.selectAll(".choice").call(dragMaster);
+	*/
 
 });
 

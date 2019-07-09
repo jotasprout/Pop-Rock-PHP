@@ -181,7 +181,14 @@ d3.json("functions/multiArtists_pop.php", function(data) {
                               yOff = Math.floor(i/8) * 105 + legendtop
                               return "translate(" + xOff + "," + yOff + ")"
                           });
-                          
+
+        legend.append("rect")
+            .attr("width", 64)
+            .attr("height", 64)
+            .style("fill", function(d){
+                return d.color = color(d.key);
+            });
+
         legend.append("svg:image")
             .attr("xlink:href", function(d){
                 return d.values[0].artistArtSpot;

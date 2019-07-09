@@ -32,11 +32,14 @@ require_once 'page_pieces/stylesAndScripts.php';
 
 <script type="text/javascript">
     d3.json("functions/multiArtistsColumnsD3.php", function(dataset) {
+        
         console.log(dataset);
+        
         // Width and height
         var w = 2400;
         var h = 265;
         var barPadding = 1;
+
         const widen = dataset.length;
         console.log(widen);
         
@@ -45,6 +48,7 @@ require_once 'page_pieces/stylesAndScripts.php';
             .append("svg")
             .attr("width", w)
             .attr("height", h);
+        
         // Rectangles
         svg.selectAll("rect")
             .data(dataset)
@@ -60,7 +64,23 @@ require_once 'page_pieces/stylesAndScripts.php';
             .attr("height", function(d) {
                 return (d.pop * 2);
             });
-          
+        
+        svg.selectAll("rect.bg")
+            .data(dataset)
+            .enter()
+            .append("rect")
+            .attr("width", 64)
+            .attr("height", 64)
+            .style("fill", "black")
+            .attr("x", function (d,i) {
+                return i * 65;
+            })
+            .attr("y", function(d) {
+                return h - 64
+            })
+            .attr("width", 64)
+            .attr("height", 64);
+
         // Images
         svg.selectAll("image")
             .data(dataset)
