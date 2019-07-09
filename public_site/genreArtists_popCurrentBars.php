@@ -1,9 +1,6 @@
 <?php
-require_once 'page_pieces/navbar_rock.php';
-require_once 'page_pieces/stylesAndScripts.php';
-
-$artistGenre = $_GET['artistGenre'];
-
+    require_once 'page_pieces/stylesAndScripts.php';
+    $artistGenre = $_GET['artistGenre'];
 ?>
 
 <!doctype html>
@@ -18,8 +15,7 @@ $artistGenre = $_GET['artistGenre'];
 <body>
 
  <div class="container">
- <div id="fluidCon">
-</div> <!-- end of fluidCon -->
+ <div id="fluidCon"></div> <!-- end of fluidCon -->
 	<div class="panel panel-primary">
 		<div class="panel-heading">
 			<h3 id="genreHeader" class="panel-title">These Artists' Current Popularity On Spotify</h3>
@@ -77,7 +73,7 @@ $artistGenre = $_GET['artistGenre'];
             .enter()
             .append("svg:image")
             .attr("xlink:href", function (d){
-                return d.artistArt;
+                return d.artistArtSpot;
             })
             .attr("x", function (d,i) {
                 return i * 65;
@@ -89,7 +85,7 @@ $artistGenre = $_GET['artistGenre'];
             .attr("height", 64)
             .append("title")
             .text(function(d){
-                return d.artistName;
+                return d.artistNameSpot;
             });			   
         
         // Popularity Labels atop columns
@@ -112,10 +108,8 @@ $artistGenre = $_GET['artistGenre'];
             .attr("fill", "white");
     });		
 </script>				
-
-
 		<?php echo $scriptsAndSuch; ?>	
-        <script src="https://www.roxorsoxor.com/poprock/page_pieces/navbar.js"></script>
+        <script src="https://www.roxorsoxor.com/poprock/page_pieces/navbarIndex.js"></script>
 </body>
 
 </html>

@@ -34,7 +34,7 @@ if ( $sortBy == "genre" and $order == "ASC" ) {
 
 $artistInfoWithArtAndGenres = "SELECT a.artistSpotID, a.artistArtSpot, a.artistNameSpot, g.genre
     FROM artistsSpot a
-    JOIN genres g ON a.artistSpotID = g.artistSpotID
+    JOIN genresSpot g ON a.artistSpotID = g.artistSpotID
 	ORDER BY " . $sortBy . " " . $order . ";";	
 
 $sortit = $connekt->query($artistInfoWithArtAndGenres); 
@@ -67,7 +67,7 @@ if (!empty($sortit)) { ?>
 
 		<tr>
 		<!--
-		<td><img src='<?php // echo $artistArt ?>' height='64' width='64'></td>	
+		<td><img src='<?php // echo $artistArtSpot ?>' height='64' width='64'></td>	
 		-->
 			<td><?php echo $artistNameSpot ?></td>
 			<td><a href='https://www.roxorsoxor.com/poprock/genreArtists_popCurrentBars.php?artistGenre=<?php echo $genre ?>'><?php echo $genre ?></a></td>

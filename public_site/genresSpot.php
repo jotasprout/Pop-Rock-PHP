@@ -7,18 +7,18 @@ require_once 'page_pieces/stylesAndScripts.php';
 $connekt = new mysqli( $GLOBALS[ 'host' ], $GLOBALS[ 'un' ], $GLOBALS[ 'magicword' ], $GLOBALS[ 'db' ] );
 
 if ( !$connekt ) {
-	echo 'Darn. Did not connect. Screwed up like this: ' . mysqli_error($connekt) . '</p>';
+	echo '<p>Darn. Did not connect. Screwed up like this: ' . mysqli_error($connekt) . '</p>';
 };
 
-$artistInfoWithArtAndGenres = "SELECT a.artistSpotID, a.artistArt, a.artistName, g.genre
-    FROM artists a
-    JOIN genres g ON a.artistSpotID = g.artistSpotID
-	ORDER BY a.artistName ASC";
+$artistInfoWithArtAndGenres = "SELECT a.artistSpotID, a.artistArtSpot, a.artistNameSpot, g.genre
+    FROM artistsSpot a
+    JOIN genresSpot g ON a.artistSpotID = g.artistSpotID
+	ORDER BY a.artistNameSpot ASC";
 
 $getit = $connekt->query( $artistInfoWithArtAndGenres );
 
 if(!$getit){ 
-	echo 'Cursed-Crap. Did not run the query. Screwed up like this: ' . mysqli_error($getit) . '</p>';
+	echo '<p>Cursed-Crap. Did not run the query. Screwed up like this: ' . mysqli_error($getit) . '</p>';
 }	
 
 ?>
@@ -29,15 +29,14 @@ if(!$getit){
 
 <head>
 	<meta charset="UTF-8">
-	<title>Genres</title>
+	<title>Spotify Genres</title>
 	<?php echo $stylesAndSuch; ?>
 </head>
 
 <body>
 
 	<div class="container">
-	<div id="fluidCon">
-</div> <!-- end of fluidCon -->
+	<div id="fluidCon"></div> <!-- end of fluidCon -->
 
 		<!-- main -->
 
@@ -59,7 +58,7 @@ if(!$getit){
 						<!--
 					<th>Pretty Face</th>	
 						-->
-					<th onClick="sortColumn('artistName', 'DESC')"><div class="pointyHead">Artist Name</div></th>
+					<th onClick="sortColumn('artistNameSpot', 'DESC')"><div class="pointyHead">Artist Name</div></th>
 					<th onClick="sortColumn('genre', 'ASC')"><div class="pointyHead">Genre</div></th>
 					</tr>
 				</thead>
@@ -68,16 +67,17 @@ if(!$getit){
 
 					<?php
 						while ( $row = mysqli_fetch_array( $getit ) ) {
-							$artistName = $row[ "artistName" ];
+							$artistNameSpot = $row[ "artistNameSpot" ];
 							$artistGenre = $row[ "genre" ];
-							$artistArt = $row[ "artistArt" ];
+							$artistArtSpot = $row[ "artistArtSpot" ];
 					?>
 
 					<tr>
 						<!--
-						<td><img src='<?php // echo $artistArt ?>' height='64' width='64'></td>	
+							<td><img src='<?php //echo $artistArtSpot ?>' height='64' width='64'></td>
 						-->
-						<td><?php echo $artistName ?></td>
+							
+						<td><?php echo $artistNameSpot ?></td>
 						<td><a href='https://www.roxorsoxor.com/poprock/genreArtists_popCurrentBars.php?artistGenre=<?php echo $artistGenre ?>'><?php echo $artistGenre ?></a></td>
 					</tr>
 
