@@ -4,6 +4,12 @@
 	height: 64px;
 }
 
+.chosen {
+    background-color: #FFFFFF;
+	width: 64px;
+	height: 64px;
+}
+
 .space {
 	width: 800px;
 }
