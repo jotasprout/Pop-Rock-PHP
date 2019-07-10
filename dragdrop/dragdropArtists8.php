@@ -8,7 +8,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Drag-n-Drop 7</title>
+    <title>Drag-n-Drop 8</title>
     <?php echo $stylesAndSuch; ?>  
     <link rel='stylesheet' href='dragDrop.css'>
 </head>
@@ -91,7 +91,9 @@ d3.json("dragDropCompare.php", function (dataset) {
 
     let firstChoices = svg.selectAll("image")
                           .data(dataset);
-    
+    let firstChosen = svg.selectAll("image.chosen")
+                          .data(droppedArtists); 
+
     function makeChoices(whichChoices){
         //svg.selectAll("image")
            //.data(dataset)
@@ -113,9 +115,6 @@ d3.json("dragDropCompare.php", function (dataset) {
            .append("title")
            .text((d) => d.artistNameSpot);       
     };
-
-    let firstChosen = svg.selectAll("image.chosen")
-                          .data(droppedArtists);
 
     function makeChosen(whichChosen){
         //svg.selectAll("image.chosen")
@@ -142,19 +141,21 @@ d3.json("dragDropCompare.php", function (dataset) {
            .text((d) => d.artistNameSpot);        
     };
     
-    function makeColumns(whichColumns){
-        whichColumns.enter()
-                    .append("rect")
-                    .attr("x", function (d,i) {
-                        return innerTo.left + (i * 65);
-                    })
-                    .attr("y", function(d) {
-                        return h - innerTo.bottom - 64 - (d.pop * 2)
-                    })
-                    .attr("width", 64)
-                    .attr("height", function(d) {
-                        return (d.pop * 2);
-                    })
+    function makeColumns(){
+        svg.selectAll("rect.columns")
+           .data(droppedArtists)
+           .enter()
+           .append("rect")
+           .attr("x", function (d,i) {
+                return innerTo.left + (i * 65);
+            })
+           .attr("y", function(d) {
+                return h - innerTo.bottom - 64 - (d.pop * 2)
+           })
+           .attr("width", 64)
+           .attr("height", function(d) {
+                return (d.pop * 2);
+           });
     };
     
     // Popularity text Labels atop columns
@@ -182,9 +183,9 @@ d3.json("dragDropCompare.php", function (dataset) {
         droppedArtists.push(chosen);
         console.log ("Added " + chosen.artistNameSpot + " to Chosen.");
         console.log(droppedArtists);
+
         let oldindex = dataset.indexOf(chosen);
         dataset.splice(oldindex, 1);
-
         console.log ("Removed " + chosen.artistNameSpot + " from Choices.");
         console.log(dataset);
     };
@@ -205,7 +206,6 @@ d3.json("dragDropCompare.php", function (dataset) {
 					   .on("end", putDown);	
 	d3.selectAll(".choice").call(dragMaster);
 	*/
-
 
     const dragHandler = d3.drag()
         .on("start", function (d){
@@ -230,26 +230,62 @@ d3.json("dragDropCompare.php", function (dataset) {
             if (dropToReady == true){
                 
                 moveitonover(d);
-
-
-                
-                makeChoices();
-                
-                makeChosen();
                 /*
+                let newChoices = svg.selectAll("image")
+                                    .data(dataset);
+                let newChosen = svg.selectAll("image.chosen")
+                                    .data(droppedArtists); 
+                
+                makeChoices(newChoices);
+                makeChosen(newChosen);
+                */
+                let newindex = droppedArtists.indexOf(d);
+
                 d3.select(this)
-                  .attr("x", function (d,i) {
-                        return innerTo.left + (i * 65);
+                  .attr("transform", "translate(0,0)")
+                  .attr("x", function (d) {
+                        return innerTo.left + (newindex * 65);
                   })
                   .attr("y", function(d) {
                         return h - innerTo.bottom - 64;
                   });
-                */
-
+                
+                /**/
                 let newColumns = svg.selectAll("rect.columns")
                                     .data(droppedArtists);    
-                                                
-                makeColumns(newColumns);
+                
+
+                // WHAT AM I NOT GETTING ABOUT MERGING?!
+                //makeColumns();
+                //svg.selectAll("rect.columns")
+                    //.data(droppedArtists)
+                newColumns.enter()
+                    .append("rect")
+                    .attr("x", function (d,i) {
+                            return innerTo.left + (i * 65);
+                        })
+                    .attr("y", function(d) {
+                            return h - innerTo.bottom - 64 - (d.pop * 2)
+                    })
+                    .attr("width", 64)
+                    .attr("height", function(d) {
+                            return (d.pop * 2);
+                    })
+                    .merge(newColumns)
+                    .transition()
+                    .duration(500)
+                    .attr("x", function (d,i) {
+                            return innerTo.left + (i * 65);
+                        })
+                    .attr("y", function(d) {
+                            return h - innerTo.bottom - 64 - (d.pop * 2)
+                    })
+                    .attr("width", 64)
+                    .attr("height", function(d) {
+                            return (d.pop * 2);
+                    });
+
+
                 makeColumnLabels();
 
                 d3.select(this)
@@ -257,14 +293,13 @@ d3.json("dragDropCompare.php", function (dataset) {
             };
 	   });
     
-    
     makeChoices(firstChoices);
     makeChosen(firstChosen);
     
-    let firstColumns = svg.selectAll("rect.columns")
-                          .data(droppedArtists);
+    //let firstColumns = svg.selectAll("rect.columns")
+    //                      .data(droppedArtists);
     
-    makeColumns(firstColumns);
+    makeColumns();
     makeColumnLabels();
     
 	dragHandler(svg.selectAll(".choice"));
