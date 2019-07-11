@@ -76,7 +76,6 @@ const dragFrom = svg.append("rect")
                         dragFromReady = false;
                         console.log("dragFrom is " + dragFromReady);
 				    });
-    
 
     
 const dropTo = svg.append("rect")
@@ -222,6 +221,9 @@ d3.json("dragDropCompare.php", function (dataset) {
         console.log(droppedArtists);
     };
 
+    
+    // CHOICE
+    
     const choiceHandler = d3.drag()
         .on("start", function (d){
             console.log ("Picked up " + d.artistNameSpot);
@@ -301,6 +303,8 @@ d3.json("dragDropCompare.php", function (dataset) {
 	   });
  
     
+    // CHOSEN
+    
     const chosenHandler = d3.drag()
         .on("start", function (d){
             console.log ("Wait, what?");
@@ -363,9 +367,29 @@ d3.json("dragDropCompare.php", function (dataset) {
                 /**/
                 let t = svg.selectAll("text")
                            .data(droppedArtists);
+                
+                t.enter()
+                 .append("text")
+                 .merge(t)
+                 .text(function(d){
+                    return d.pop;
+                 })
+                 .attr("text-anchor", "middle")
+                 .attr("x", function (d, i){
+                    return innerTo.left + (i * 65 + 65 / 2);
+                 })
+                 .attr("y", function(d){
+                    return h - innerTo.bottom - 64 - (d.pop * 2) - 5;
+                 })
+                 .attr("font-family", "sans-serif")
+                 .attr("font-size", "11px")
+                 .attr("fill", "white");
+                
                 t.exit().remove();
 
-                makeColumnLabels();
+                //makeColumnLabels();
+                // then try this
+                // makeChosen(t);
                 choiceHandler(svg.selectAll(".choice"));
                 chosenHandler(svg.selectAll(".chosen"));
             } else {
