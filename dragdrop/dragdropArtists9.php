@@ -322,20 +322,26 @@ d3.json("dragDropCompare.php", function (dataset) {
             if (dragFromReady == true){
                 
                 makeachoice(d);
+                let k = dataset.indexOf(d);
 
-                let newindex = Number(dataset.indexOf(d));
-                console.log ("newindex is " + newindex);
+                //let newlength = dataset.length;
+                console.log ("k = " + k);
                 
                 d3.select(this)
-                  .attr("transform", function (newindex){
-                    let k = newindex;
-                    console.log("k = " + k);
+                    
+                  .attr("x", function (d) {
+                    return (k%10) * 75 + margin.left + spacepadding;
+                  })
+                  .attr("y", function(d) {
+                    return Math.floor(k/10) * 75 + margin.top + spacepadding;
+                  })
+                  /*
+                  .attr("transform", function (d){
                     xOff = (k%10) * 75 + margin.left + spacepadding;
-                    console.log("xOff = " + xOff);
                     yOff = Math.floor(k/10) * 75 + margin.top + spacepadding;
-                    console.log("yOff = " + yOff);
                     return "translate(" + xOff + "," + yOff + ")";
                   })
+                  */
                   .attr("pointer-events", "auto")
                   .attr("class", "choice");
                 
@@ -343,30 +349,30 @@ d3.json("dragDropCompare.php", function (dataset) {
                                     .data(droppedArtists);    
                 
                 newColumns.enter()
-                    .append("rect")
-                    .attr("x", function (d,i) {
-                            return innerTo.left + (i * 65);
+                        .append("rect")
+                        .attr("x", function (d,i) {
+                                return innerTo.left + (i * 65);
+                            })
+                        .attr("y", function(d) {
+                                return h - innerTo.bottom - 64 - (d.pop * 2)
                         })
-                    .attr("y", function(d) {
-                            return h - innerTo.bottom - 64 - (d.pop * 2)
-                    })
-                    .attr("width", 64)
-                    .attr("height", function(d) {
-                            return (d.pop * 2);
-                    })
-                    .merge(newColumns)
-                    .transition()
-                    .duration(500)
-                    .attr("x", function (d,i) {
-                            return innerTo.left + (i * 65);
+                        .attr("width", 64)
+                        .attr("height", function(d) {
+                                return (d.pop * 2);
                         })
-                    .attr("y", function(d) {
-                            return h - innerTo.bottom - 64 - (d.pop * 2)
-                    })
-                    .attr("width", 64)
-                    .attr("height", function(d) {
-                            return (d.pop * 2);
-                    });
+                        .merge(newColumns)
+                        .transition()
+                        .duration(500)
+                        .attr("x", function (d,i) {
+                                return innerTo.left + (i * 65);
+                            })
+                        .attr("y", function(d) {
+                                return h - innerTo.bottom - 64 - (d.pop * 2)
+                        })
+                        .attr("width", 64)
+                        .attr("height", function(d) {
+                                return (d.pop * 2);
+                        });
                 
                 makeColumnLabels();
                 choiceHandler(svg.selectAll(".choice"));
