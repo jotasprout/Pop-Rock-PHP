@@ -266,13 +266,16 @@ d3.json("dragDropCompare.php", function (dataset) {
                         return h - innerTo.bottom - 64;
                   })
                   .attr("pointer-events", "auto")
-                  .attr("class", "chosen");
+                  .attr("class", "chosen")
+                  .attr("x", "initial-x")
+                  .attr("y", "initial-y");
                 
                 let u = svg.selectAll(".column")
                            .data(droppedArtists);    
-                
+
                 u.enter()
                  .append("rect")
+                 .attr("class", "column")
                  .merge(u)
                  .attr("x", function (d,i) {
                     return innerTo.left + (i * 65);
@@ -283,25 +286,71 @@ d3.json("dragDropCompare.php", function (dataset) {
                  .attr("width", 64)
                  .attr("height", function(d) {
                     return (d.pop * 2);
-                 })
-                 .attr("class", "column");
+                 });
                 
                 u.exit()
                  .remove();
                 /**/
                 let t = svg.selectAll("text")
                            .data(droppedArtists);
+                
+                t.enter()
+                 .append("text")
+                 .merge(t)
+                 .text(function(d){
+                    return d.pop;
+                 })
+                 .attr("text-anchor", "middle")
+                 .attr("x", function (d, i){
+                    return innerTo.left + (i * 65 + 65 / 2);
+                 })
+                 .attr("y", function(d){
+                    return h - innerTo.bottom - 64 - (d.pop * 2) - 5;
+                 })
+                 .attr("font-family", "sans-serif")
+                 .attr("font-size", "11px")
+                 .attr("fill", "white");
+                
                 t.exit().remove();
                 
-                makeColumnLabels();
-                choiceHandler(svg.selectAll(".choice"));
-                chosenHandler(svg.selectAll(".chosen"));
-            } else {
-                d3.select(this)
-                  .attr("x", "initial-x")
-                  .attr("y", "initial-y")
-                  .attr("pointer-events", "auto");
-            };
+                let v = svg.selectAll(".chosen")
+                           .data(droppedArtists);
+
+                v.enter()
+                 .append("svg:image")
+                 .merge(v)                
+                 .attr("xlink:href", function (d){
+                    return d.artistArtSpot;
+                 })
+                 .attr("x", function (d,i) {
+                    return innerTo.left + (i * 65);
+                 })
+                 .attr("y", function(d) {
+                    return h - innerTo.bottom - 64;
+                 })
+                 .attr("width", 64)
+                 .attr("height", 64)
+                 .attr("data-artistName", (d) => d.artistNameSpot)
+                 .attr("data-artistPop", (d) => d.pop)
+                 .attr("data-artistSpotID", (d) => d.artistSpotID)
+                 .attr("data-popDate", (d) => d.date)
+                 .attr("class", "chosen")
+                 .append("title")
+                 .text((d) => d.artistNameSpot)
+                 .attr("initial-x", (d) => d.x)
+                 .attr("initial-y", (d) => d.y); 
+                
+                v.exit().remove();     
+
+                 choiceHandler(svg.selectAll(".choice"));
+                 chosenHandler(svg.selectAll(".chosen"));
+                
+                } else {
+                    d3.select(this)
+                      .attr("x", "initial-x")
+                      .attr("y", "initial-y")
+                      .attr("pointer-events", "auto");
+                };
 	   });
  
     
@@ -362,7 +411,8 @@ d3.json("dragDropCompare.php", function (dataset) {
                  .attr("width", 64)
                  .attr("height", function(d) {
                     return (d.pop * 2);
-                 });
+                 })
+                 .attr("class", "column");
                 
                 u.exit()
                  .remove();
