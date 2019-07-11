@@ -177,7 +177,9 @@ d3.json("dragDropCompare.php", function (dataset) {
            .attr("height", function(d) {
                 return (d.pop * 2);
            })
-           .attr("class", "column");
+           .attr("class", "column")
+           .exit()
+           .remove();
     };
     
     // Popularity text Labels atop columns
@@ -386,10 +388,36 @@ d3.json("dragDropCompare.php", function (dataset) {
                  .attr("fill", "white");
                 
                 t.exit().remove();
+                
+                let v = svg.selectAll(".chosen")
+                           .data(droppedArtists);
 
-                //makeColumnLabels();
-                // then try this
-                // makeChosen(t);
+                v.enter()
+                 .append("svg:image")
+                 .merge(v)                
+                 .attr("xlink:href", function (d){
+                    return d.artistArtSpot;
+                 })
+                 .attr("x", function (d,i) {
+                    return innerTo.left + (i * 65);
+                 })
+                 .attr("y", function(d) {
+                    return h - innerTo.bottom - 64;
+                 })
+                 .attr("width", 64)
+                 .attr("height", 64)
+                 .attr("data-artistName", (d) => d.artistNameSpot)
+                 .attr("data-artistPop", (d) => d.pop)
+                 .attr("data-artistSpotID", (d) => d.artistSpotID)
+                 .attr("data-popDate", (d) => d.date)
+                 .attr("class", "chosen")
+                 .append("title")
+                 .text((d) => d.artistNameSpot)
+                 .attr("initial-x", (d) => d.x)
+                 .attr("initial-y", (d) => d.y); 
+                
+                v.exit().remove();
+                
                 choiceHandler(svg.selectAll(".choice"));
                 chosenHandler(svg.selectAll(".chosen"));
             } else {
