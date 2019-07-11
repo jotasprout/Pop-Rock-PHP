@@ -52,7 +52,12 @@ const svg = d3.select("#forD3")
 			  .append("svg")
 			  .attr("width", w)
 			  .attr("height", h);
-    
+
+let dropToReady = false;
+let dragFromReady = false;
+let choiceReady = false;
+let chosenReady = false;
+
 const dragFrom = svg.append("rect")
 					.attr("id", "dragFrom")
 					.style("fill", "red")
@@ -72,10 +77,7 @@ const dragFrom = svg.append("rect")
                         console.log("dragFrom is " + dragFromReady);
 				    });
     
-let dropToReady = false;
-let dragFromReady = false;
-let choiceReady = false;
-let chosenReady = false;
+
     
 const dropTo = svg.append("rect")
 				  .attr("id", "dropTo")
@@ -129,7 +131,9 @@ d3.json("dragDropCompare.php", function (dataset) {
            .attr("data-popDate", (d) => d.date)
            .attr("class", "choice")
            .append("title")
-           .text((d) => d.artistNameSpot);       
+           .text((d) => d.artistNameSpot)
+           .attr("initial-x", (d) => d.x)
+           .attr("initial-y", (d) => d.y);       
     };
     
     function makeChosen(whichChosen){
@@ -154,7 +158,9 @@ d3.json("dragDropCompare.php", function (dataset) {
            .attr("data-popDate", (d) => d.date)
            .attr("class", "chosen")
            .append("title")
-           .text((d) => d.artistNameSpot);        
+           .text((d) => d.artistNameSpot)
+           .attr("initial-x", (d) => d.x)
+           .attr("initial-y", (d) => d.y);        
     };
     
     function makeColumns(){
@@ -258,43 +264,39 @@ d3.json("dragDropCompare.php", function (dataset) {
                   .attr("pointer-events", "auto")
                   .attr("class", "chosen");
                 
+                let u = svg.selectAll(".column")
+                           .data(droppedArtists);    
                 
-                let newColumns = svg.selectAll("rect.columns")
-                                    .data(droppedArtists);    
+                u.enter()
+                 .append("rect")
+                 .merge(u)
+                 .attr("x", function (d,i) {
+                    return innerTo.left + (i * 65);
+                 })
+                 .attr("y", function(d) {
+                    return h - innerTo.bottom - 64 - (d.pop * 2)
+                 })
+                 .attr("width", 64)
+                 .attr("height", function(d) {
+                    return (d.pop * 2);
+                 })
+                 .attr("class", "column");
                 
-                // WHAT AM I NOT GETTING ABOUT MERGING?!
-                //makeColumns();
-                //svg.selectAll("rect.columns")
-                //.data(droppedArtists)
-                newColumns.enter()
-                    .append("rect")
-                    .attr("x", function (d,i) {
-                            return innerTo.left + (i * 65);
-                        })
-                    .attr("y", function(d) {
-                            return h - innerTo.bottom - 64 - (d.pop * 2)
-                    })
-                    .attr("width", 64)
-                    .attr("height", function(d) {
-                            return (d.pop * 2);
-                    })
-                    .merge(newColumns)
-                    .transition()
-                    .duration(500)
-                    .attr("x", function (d,i) {
-                            return innerTo.left + (i * 65);
-                        })
-                    .attr("y", function(d) {
-                            return h - innerTo.bottom - 64 - (d.pop * 2)
-                    })
-                    .attr("width", 64)
-                    .attr("height", function(d) {
-                            return (d.pop * 2);
-                    });
+                u.exit()
+                 .remove();
+                /**/
+                let t = svg.selectAll("text")
+                           .data(droppedArtists);
+                t.exit().remove();
                 
                 makeColumnLabels();
                 choiceHandler(svg.selectAll(".choice"));
                 chosenHandler(svg.selectAll(".chosen"));
+            } else {
+                d3.select(this)
+                  .attr("x", "initial-x")
+                  .attr("y", "initial-y")
+                  .attr("pointer-events", "auto");
             };
 	   });
  
@@ -336,16 +338,8 @@ d3.json("dragDropCompare.php", function (dataset) {
                   .attr("y", function(d) {
                     return Math.floor(k/10) * 75 + margin.top + spacepadding;
                   })
-                  /*
-                  .attr("transform", function (d){
-                    xOff = (k%10) * 75 + margin.left + spacepadding;
-                    yOff = Math.floor(k/10) * 75 + margin.top + spacepadding;
-                    return "translate(" + xOff + "," + yOff + ")";
-                  })
-                  */
                   .attr("pointer-events", "auto")
-                  .attr("class", "choice");
-                
+                  .attr("class", "choice");         
                 
                 let u = svg.selectAll(".column")
                            .data(droppedArtists);    
@@ -362,27 +356,28 @@ d3.json("dragDropCompare.php", function (dataset) {
                  .attr("width", 64)
                  .attr("height", function(d) {
                     return (d.pop * 2);
-                 })
-                 .attr("width", 64)
-                 .attr("height", function(d) {
-                    return (d.pop * 2);
                  });
                 
                 u.exit()
                  .remove();
                 /**/
-                //makeColumns();
+                let t = svg.selectAll("text")
+                           .data(droppedArtists);
+                t.exit().remove();
+
                 makeColumnLabels();
                 choiceHandler(svg.selectAll(".choice"));
                 chosenHandler(svg.selectAll(".chosen"));
+            } else {
+                d3.select(this)
+                  .attr("x", "initial-x")
+                  .attr("y", "initial-y")
+                  .attr("pointer-events", "auto");
             };
 	   });
     
     makeChoices(firstChoices);
     makeChosen(firstChosen);
-    
-    //let firstColumns = svg.selectAll("rect.columns")
-    //                      .data(droppedArtists);
     
     makeColumns();
     makeColumnLabels();
