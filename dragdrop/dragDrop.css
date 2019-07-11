@@ -10,6 +10,10 @@
 	height: 64px;
 }
 
+.column {
+	background-color: black;
+}
+
 .space {
 	width: 800px;
 }

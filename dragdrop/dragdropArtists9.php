@@ -158,7 +158,7 @@ d3.json("dragDropCompare.php", function (dataset) {
     };
     
     function makeColumns(){
-        svg.selectAll("rect.columns")
+        svg.selectAll("rect.column")
            .data(droppedArtists)
            .enter()
            .append("rect")
@@ -171,7 +171,8 @@ d3.json("dragDropCompare.php", function (dataset) {
            .attr("width", 64)
            .attr("height", function(d) {
                 return (d.pop * 2);
-           });
+           })
+           .attr("class", "column");
     };
     
     // Popularity text Labels atop columns
@@ -345,35 +346,32 @@ d3.json("dragDropCompare.php", function (dataset) {
                   .attr("pointer-events", "auto")
                   .attr("class", "choice");
                 
-                let newColumns = svg.selectAll("rect.columns")
-                                    .data(droppedArtists);    
                 
-                newColumns.enter()
-                        .append("rect")
-                        .attr("x", function (d,i) {
-                                return innerTo.left + (i * 65);
-                            })
-                        .attr("y", function(d) {
-                                return h - innerTo.bottom - 64 - (d.pop * 2)
-                        })
-                        .attr("width", 64)
-                        .attr("height", function(d) {
-                                return (d.pop * 2);
-                        })
-                        .merge(newColumns)
-                        .transition()
-                        .duration(500)
-                        .attr("x", function (d,i) {
-                                return innerTo.left + (i * 65);
-                            })
-                        .attr("y", function(d) {
-                                return h - innerTo.bottom - 64 - (d.pop * 2)
-                        })
-                        .attr("width", 64)
-                        .attr("height", function(d) {
-                                return (d.pop * 2);
-                        });
+                let u = svg.selectAll(".column")
+                           .data(droppedArtists);    
                 
+                u.enter()
+                 .append("rect")
+                 .merge(u)
+                 .attr("x", function (d,i) {
+                    return innerTo.left + (i * 65);
+                 })
+                 .attr("y", function(d) {
+                    return h - innerTo.bottom - 64 - (d.pop * 2)
+                 })
+                 .attr("width", 64)
+                 .attr("height", function(d) {
+                    return (d.pop * 2);
+                 })
+                 .attr("width", 64)
+                 .attr("height", function(d) {
+                    return (d.pop * 2);
+                 });
+                
+                u.exit()
+                 .remove();
+                /**/
+                //makeColumns();
                 makeColumnLabels();
                 choiceHandler(svg.selectAll(".choice"));
                 chosenHandler(svg.selectAll(".chosen"));
