@@ -340,10 +340,15 @@ d3.json("dragDropCompare.php", function (dataset) {
                  .attr("initial-x", (d) => d.x)
                  .attr("initial-y", (d) => d.y); 
                 
-                v.exit().remove();     
+                v.exit().remove();   
 
-                 choiceHandler(svg.selectAll(".choice"));
-                 chosenHandler(svg.selectAll(".chosen"));
+                let z = svg.selectAll(".choice")
+                           .data(dataset);
+
+                z.attr("width", 32).attr("height", 32);
+
+                choiceHandler(svg.selectAll(".choice"));
+                chosenHandler(svg.selectAll(".chosen"));
                 
                 } else {
                     d3.select(this)
