@@ -8,7 +8,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Drag-n-Drop X2</title>
+    <title>Drag-n-Drop</title>
     <?php echo $stylesAndSuch; ?>  
     <link rel='stylesheet' href='dragDrop.css'>
 </head>
@@ -51,10 +51,12 @@ const innerTo = {
 const svg = d3.select("#forD3")
 			  .append("svg")
 			  .attr("width", w)
-			  .attr("height", h);
-
+              .attr("height", h);
+              
 let chosenBoxReady = false;
+console.log("chosenBoxReady is " + chosenBoxReady);
 let choicesBoxReady = false;
+console.log("choicesBoxReady is " + choicesBoxReady);
 let choiceItemReady = false;
 let chosenItemReady = false;
 
@@ -69,14 +71,13 @@ const choicesBox = svg.append("rect")
 				    .on("mouseover", function(){
                       if (chosenItemReady == true){
                           choicesBoxReady = true;
-                          //console.log("choicesBox is " + choicesBoxReady);
+                          console.log("choicesBoxReady is " + choicesBoxReady);
                       };
 				    })
 				    .on("mouseout", function(){
                         choicesBoxReady = false;
-                        //console.log("choicesBox is " + choicesBoxReady);
+                        console.log("choicesBoxReady is " + choicesBoxReady);
 				    });
-
     
 const chosenBox = svg.append("rect")
 				  .attr("id", "chosenBox")
@@ -89,17 +90,15 @@ const chosenBox = svg.append("rect")
 				  .on("mouseover", function(){
                       if (choiceItemReady == true){
                           chosenBoxReady = true;
-                          //console.log("chosenBox is " + chosenBoxReady);
+                          console.log("chosenBoxReady is " + chosenBoxReady);
                       };
 				  })
 				  .on("mouseout", function(){
 					chosenBoxReady = false;
-					//console.log("chosenBox is " + chosenBoxReady);
+					console.log("chosenBoxReady is " + chosenBoxReady);
 				  });
     
-
 d3.json("dragDropCompare.php", function (dataset) {
-
    let thechoices = dataset;
    let thechosen = thechoices.splice(0,5);
     
@@ -107,16 +106,7 @@ d3.json("dragDropCompare.php", function (dataset) {
    console.log(thechoices);
    console.log("Chosen now contains");
    console.log(thechosen);
-/*
-   let test = d3.select("svg")
-                 .data(thechosen)
-                 .enter()
-                 .append("g")
-                 .attr("x", function(d, i){
-                  console.log("group#"+i);
-                  return innerTo.left + (i * 65);
-                 });
-   */ 
+
    let firstChoices = svg.selectAll(".choice")
                           .data(thechoices);
     
@@ -124,7 +114,6 @@ d3.json("dragDropCompare.php", function (dataset) {
                           .data(thechosen); 
     
     function fillChoicesBox(whichChoices){
-
         whichChoices.enter()
                     .append("svg:image")
                     .attr("xlink:href", function(d){
@@ -138,27 +127,18 @@ d3.json("dragDropCompare.php", function (dataset) {
                         y = Math.floor(i/10) * 75 + margin.top + spacepadding;
                         return y;
                     })                    
-                    /*
-                    .attr("transform", function (d,i){
-                        xOff = (i%10) * 75 + margin.left + spacepadding;
-                        yOff = Math.floor(i/10) * 75 + margin.top + spacepadding;
-                        return "translate(" + xOff + "," + yOff + ")";
-                    })
-                    */
                     .attr("data-artistName", (d) => d.artistNameSpot)
                     .attr("data-artistPop", (d) => d.pop)
                     .attr("data-artistSpotID", (d) => d.artistSpotID)
                     .attr("data-popDate", (d) => d.date)
                     .attr("class", "choice")
                     .append("title")
-                    .text((d) => d.artistNameSpot)
-                    .attr("initial-x", (d) => d.x)
-                    .attr("initial-y", (d) => d.y);       
+                    .text((d) => d.artistNameSpot);
+                    //.attr("initial-x", (d) => d.x)
+                    //.attr("initial-y", (d) => d.y);       
     };      
-
     
    function fillChosenBox(whichChosen){
-
         whichChosen.enter()
            .append("svg:image")
            .attr("xlink:href", function (d){
@@ -178,9 +158,9 @@ d3.json("dragDropCompare.php", function (dataset) {
            .attr("data-popDate", (d) => d.date)
            .attr("class", "chosen")
            .append("title")
-           .text((d) => d.artistNameSpot)
-           .attr("initial-x", (d) => d.x)
-           .attr("initial-y", (d) => d.y);        
+           .text((d) => d.artistNameSpot);
+           //.attr("initial-x", (d) => d.x)
+           //.attr("initial-y", (d) => d.y);        
     };
     
     function makeColumns(){
@@ -247,7 +227,6 @@ d3.json("dragDropCompare.php", function (dataset) {
         console.log ("Removed " + aChosen.artistNameSpot + " from Chosen.");
         console.log(thechosen);
     };
-
     
     // CHOICE HANDLER
     const choiceHandler = d3.drag()
@@ -277,8 +256,11 @@ d3.json("dragDropCompare.php", function (dataset) {
             if (chosenBoxReady == true){
                 
                 choicetochosen(d);
-
                 // Update images in Choices, remove from Choices and move others over
+
+                d3.select(this)
+                  .attr("pointer-events", "auto");
+
                 let aa = svg.selectAll(".choice")
                             .data(thechoices);
                 
@@ -302,9 +284,7 @@ d3.json("dragDropCompare.php", function (dataset) {
                  .attr("data-popDate", (d) => d.date)
                  .attr("class", "choice")
                  .append("title")
-                 .text((d) => d.artistNameSpot)
-                 .attr("initial-x", (d) => d.x)
-                 .attr("initial-y", (d) => d.y); 
+                 .text((d) => d.artistNameSpot);
                  
                  aa.exit()
                   .remove();
@@ -312,7 +292,6 @@ d3.json("dragDropCompare.php", function (dataset) {
                 // Update Columns, Remove Column from theChosen and move others over
                 let ac = svg.selectAll(".column")
                            .data(thechosen);    
-
                 ac.enter()
                  .append("rect")
                  .merge(ac)
@@ -357,7 +336,6 @@ d3.json("dragDropCompare.php", function (dataset) {
                 // Update images in theChosen, Remove image from theChosen and move others over
                 let ab = svg.selectAll(".chosen")
                            .data(thechosen);
-
                 ab.enter()
                  .append("svg:image")
                  .merge(ab)                
@@ -379,8 +357,7 @@ d3.json("dragDropCompare.php", function (dataset) {
                  .attr("class", "chosen")
                  .append("title")
                  .text((d) => d.artistNameSpot)
-                 .attr("initial-x", (d) => d.x)
-                 .attr("initial-y", (d) => d.y); 
+                 .attr("pointer-events", "auto");
                 
                 ab.exit().remove();   
                 /*
@@ -390,8 +367,16 @@ d3.json("dragDropCompare.php", function (dataset) {
                 
             } else {
                 d3.select(this)
-                    .attr("x", "initial-x")
-                    .attr("y", "initial-y")
+                    .attr("x", function (d){
+                        let j = thechoices.indexOf(d);
+                        x = (j%10) * 75 + margin.left + spacepadding;
+                        return x;
+                    })
+                    .attr("y", function (d){
+                        let h = thechoices.indexOf(d);
+                        y = Math.floor(h/10) * 75 + margin.top + spacepadding;
+                        return y;
+                    })
                     .attr("pointer-events", "auto");
             };
 	   });
@@ -401,7 +386,7 @@ d3.json("dragDropCompare.php", function (dataset) {
     const chosenHandler = d3.drag()
         .on("start", function (d){
             console.log ("Picked up " + d.artistNameSpot + " from theChosen");
-            chosenItemReady = true;
+            chosenItemReady = true; 
             console.log("chosenItemReady is " + chosenItemReady);
         })
         .on("drag", function (d) {
@@ -419,6 +404,9 @@ d3.json("dragDropCompare.php", function (dataset) {
         .on("end", function (d) {
             
             chosenItemReady = false;
+
+            d3.select(this)
+              .attr("pointer-events", "auto");
             // I think above needs to go last. APPARENTLY NOT!
             console.log("chosenItemReady is " + chosenItemReady);
             
@@ -451,8 +439,7 @@ d3.json("dragDropCompare.php", function (dataset) {
                  .attr("class", "choice")
                  .append("title")
                  .text((d) => d.artistNameSpot)
-                 .attr("initial-x", (d) => d.x)
-                 .attr("initial-y", (d) => d.y); 
+                 .attr("pointer-events", "auto");
                  
                  ba.exit()
                   .remove();
@@ -505,7 +492,6 @@ d3.json("dragDropCompare.php", function (dataset) {
                 // Update images in theChosen, Remove image from theChosen and move others over
                 let bb = svg.selectAll(".chosen")
                            .data(thechosen);
-
                 bb.enter()
                  .append("svg:image")
                  .merge(bb)                
@@ -527,19 +513,22 @@ d3.json("dragDropCompare.php", function (dataset) {
                  .attr("class", "chosen")
                  .append("title")
                  .text((d) => d.artistNameSpot)
-                 .attr("initial-x", (d) => d.x)
-                 .attr("initial-y", (d) => d.y); 
+                 .attr("pointer-events", "auto");
                 
                 bb.exit().remove();
                 /*
                  */
                 choiceHandler(svg.selectAll(".choice"));
                 chosenHandler(svg.selectAll(".chosen"));
-
             } else {
                 d3.select(this)
-                  .attr("x", "initial-x")
-                  .attr("y", "initial-y")
+                  .attr("x", function (d) {
+                        let m = thechosen.indexOf(d);
+                        return innerTo.left + (m * 65);
+                    })
+                    .attr("y", function(d) {
+                        return h - innerTo.bottom - 64;
+                    })
                   .attr("pointer-events", "auto");
             };
 	   });
