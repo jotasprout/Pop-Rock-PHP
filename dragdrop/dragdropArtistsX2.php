@@ -8,7 +8,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Drag-n-Drop X</title>
+    <title>Drag-n-Drop X2</title>
     <?php echo $stylesAndSuch; ?>  
     <link rel='stylesheet' href='dragDrop.css'>
 </head>
@@ -100,55 +100,66 @@ const chosenBox = svg.append("rect")
 
 d3.json("dragDropCompare.php", function (dataset) {
 
-   let choices = dataset;
-   let chosen = choices.splice(0,5);
+   let thechoices = dataset;
+   let thechosen = thechoices.splice(0,5);
     
-   console.log("choices of Choices now contains");
-   console.log(choices);
-   console.log("Chosen chosen now contains");
-	console.log(chosen);
-
+   console.log("Choices now contains");
+   console.log(thechoices);
+   console.log("Chosen now contains");
+   console.log(thechosen);
+/*
    let test = d3.select("svg")
-                 .data(chosen)
+                 .data(thechosen)
                  .enter()
                  .append("g")
                  .attr("x", function(d, i){
                   console.log("group#"+i);
                   return innerTo.left + (i * 65);
                  });
+   */ 
+   let firstChoices = svg.selectAll(".choice")
+                          .data(thechoices);
     
-   let firstChoices = svg.selectAll("image")
-                          .data(choices);
+   let firstChosen = svg.selectAll(".chosen")
+                          .data(thechosen); 
     
-   let firstChosen = svg.selectAll("image.chosen")
-                          .data(chosen); 
-    
-   function fillChoicesBox(whichChoices){
+    function fillChoicesBox(whichChoices){
 
-           whichChoices.enter()
-           .append("svg:image")
-           .attr("xlink:href", function(d){
-                return d.artistArtSpot;
-           })
-           .attr("transform", function (d,i){
-                xOff = (i%10) * 75 + margin.left + spacepadding;
-                yOff = Math.floor(i/10) * 75 + margin.top + spacepadding;
-                return "translate(" + xOff + "," + yOff + ")";
-           })
-           .attr("data-artistName", (d) => d.artistNameSpot)
-           .attr("data-artistPop", (d) => d.pop)
-           .attr("data-artistSpotID", (d) => d.artistSpotID)
-           .attr("data-popDate", (d) => d.date)
-           .attr("class", "choice")
-           .append("title")
-           .text((d) => d.artistNameSpot)
-           .attr("initial-x", (d) => d.x)
-           .attr("initial-y", (d) => d.y);       
-   };
+        whichChoices.enter()
+                    .append("svg:image")
+                    .attr("xlink:href", function(d){
+                        return d.artistArtSpot;
+                    })
+                    .attr("x", function (d,i){
+                        x = (i%10) * 75 + margin.left + spacepadding;
+                        return x;
+                    })
+                    .attr("y", function (d,i){
+                        y = Math.floor(i/10) * 75 + margin.top + spacepadding;
+                        return y;
+                    })                    
+                    /*
+                    .attr("transform", function (d,i){
+                        xOff = (i%10) * 75 + margin.left + spacepadding;
+                        yOff = Math.floor(i/10) * 75 + margin.top + spacepadding;
+                        return "translate(" + xOff + "," + yOff + ")";
+                    })
+                    */
+                    .attr("data-artistName", (d) => d.artistNameSpot)
+                    .attr("data-artistPop", (d) => d.pop)
+                    .attr("data-artistSpotID", (d) => d.artistSpotID)
+                    .attr("data-popDate", (d) => d.date)
+                    .attr("class", "choice")
+                    .append("title")
+                    .text((d) => d.artistNameSpot)
+                    .attr("initial-x", (d) => d.x)
+                    .attr("initial-y", (d) => d.y);       
+    };      
+
     
    function fillChosenBox(whichChosen){
 
-           whichChosen.enter()
+        whichChosen.enter()
            .append("svg:image")
            .attr("xlink:href", function (d){
                 return d.artistArtSpot;
@@ -173,8 +184,8 @@ d3.json("dragDropCompare.php", function (dataset) {
     };
     
     function makeColumns(){
-        svg.selectAll("rect.column")
-           .data(chosen)
+        svg.selectAll(".column")
+           .data(thechosen)
            .enter()
            .append("rect")
            .attr("x", function (d,i) {
@@ -195,7 +206,7 @@ d3.json("dragDropCompare.php", function (dataset) {
     // Popularity text Labels atop columns
     function makeColumnLabels(){
       svg.selectAll("text")
-	   .data(chosen)
+	   .data(thechosen)
 	   .enter()
 	   .append("text")
 	   .text(function(d){
@@ -213,77 +224,78 @@ d3.json("dragDropCompare.php", function (dataset) {
 	   .attr("fill", "white");  
     }
     
-	function moveitonover(chosen){
-        chosen.push(chosen);
-        console.log ("Added " + chosen.artistNameSpot + " to Chosen.");
-        console.log(chosen);
-        let oldindex = choices.indexOf(chosen);
-        choices.splice(oldindex, 1);
-        console.log ("Removed " + chosen.artistNameSpot + " from choices of Choices.");
-        console.log(choices);
+	function choicetochosen(aChoice){
+        // Add this artist to theChosen
+        thechosen.push(aChoice);
+        console.log ("Added " + aChoice.artistNameSpot + " to Chosen.");
+        console.log(thechosen);
+        // Remove this artist from theChoices
+        let oldindex = thechoices.indexOf(aChoice);
+        thechoices.splice(oldindex, 1);
+        console.log ("Removed " + aChoice.artistNameSpot + " from Choices.");
+        console.log(thechoices);
     };
     
-    function makeachoice(choice){
-        choices.push(choice);
-        console.log ("Added " + choice.artistNameSpot + " to choices of Choices.");
-        //console.log(choices);
-        let oldindex = chosen.indexOf(choice);
-        chosen.splice(oldindex, 1);
-        console.log ("Removed " + choice.artistNameSpot + " from Chosen.");
-        //console.log(chosen);
+    function chosentochoice(aChosen){
+        // Add this artist to theChoices
+        thechoices.push(aChosen);
+        console.log ("Added " + aChosen.artistNameSpot + " to Choices.");
+        console.log(thechoices);
+        // Remove this artist from theChosen
+        let oldindex = thechosen.indexOf(aChosen);
+        thechosen.splice(oldindex, 1);
+        console.log ("Removed " + aChosen.artistNameSpot + " from Chosen.");
+        console.log(thechosen);
     };
 
     
-    // CHOICE
-    
+    // CHOICE HANDLER
     const choiceHandler = d3.drag()
         .on("start", function (d){
-            //console.log ("Picked up " + d.artistNameSpot);
+            console.log ("Picked up " + d.artistNameSpot + " from Choices");
             choiceItemReady = true;
-            //console.log("choiceItemReady is " + choiceItemReady);
-            d3.select(this)
-              .attr("x", d3.event.x)
-              .attr("y", d3.event.y);
+            console.log("choiceItemReady is " + choiceItemReady);
         })
         .on("drag", function (d) {
             const mouse = d3.mouse(this);
             const picWidth = 64;
             const picHeight = 64;
-            //console.log ("Dragging " + d.artistNameSpot);
+            console.log ("Dragging " + d.artistNameSpot);
             d3.select(this)
               // the event x and y under Start was here
               .attr("x", (mouse[0])-picWidth/2)
               .attr("y", (mouse[1])-picHeight/2)
               .attr("pointer-events", "none");
         })
+        // CHOICE TO CHOSEN END
         .on("end", function (d) {
             
             choiceItemReady = false;
-            //console.log("choiceItemReady is " + choiceItemReady);
+            // I think above needs to go last. APPARENTLY NOT!
+            console.log("choiceItemReady is " + choiceItemReady);
             
             if (chosenBoxReady == true){
                 
-                moveitonover(d);
-                /*
-                d3.select(this)
-                   //.attr("class", "chosen");
-                   .exit()
-                   .remove();
-                */
-                let c = svg.selectAll(".choice")
-                           .data(choices);
+                choicetochosen(d);
+
+                // Update images in Choices, remove from Choices and move others over
+                let aa = svg.selectAll(".choice")
+                            .data(thechoices);
                 
-                c.enter()
+                aa.enter()
                  .append("svg:image")
-                 .merge(c)
+                 .merge(aa)
                  .attr("xlink:href", function(d){
                     return d.artistArtSpot;
                  })
-                 .attr("transform", function (d,i){
-                    xOff = (i%10) * 75 + margin.left + spacepadding;
-                    yOff = Math.floor(i/10) * 75 + margin.top + spacepadding;
-                    return "translate(" + xOff + "," + yOff + ")";
-                 })
+                 .attr("x", function (d,i){
+                    x = (i%10) * 75 + margin.left + spacepadding;
+                    return x;
+                })
+                .attr("y", function (d,i){
+                    y = Math.floor(i/10) * 75 + margin.top + spacepadding;
+                    return y;
+                })
                  .attr("data-artistName", (d) => d.artistNameSpot)
                  .attr("data-artistPop", (d) => d.pop)
                  .attr("data-artistSpotID", (d) => d.artistSpotID)
@@ -294,144 +306,16 @@ d3.json("dragDropCompare.php", function (dataset) {
                  .attr("initial-x", (d) => d.x)
                  .attr("initial-y", (d) => d.y); 
                  
-                 c.exit()
+                 aa.exit()
                   .remove();
             
-                let u = svg.selectAll(".column")
-                           .data(chosen);    
+                // Update Columns, Remove Column from theChosen and move others over
+                let ac = svg.selectAll(".column")
+                           .data(thechosen);    
 
-                u.enter()
+                ac.enter()
                  .append("rect")
-                 .attr("class", "column")
-                 .merge(u)
-                 .attr("x", function (d,i) {
-                    return innerTo.left + (i * 65);
-                 })
-                 .attr("y", function(d) {
-                    return h - innerTo.bottom - 64 - (d.pop * 2)
-                 })
-                 .attr("width", 64)
-                 .attr("height", function(d) {
-                    return (d.pop * 2);
-                 });
-                
-                u.exit()
-                 .remove();
-                /**/
-                let t = svg.selectAll("text")
-                           .data(chosen);
-                
-                t.enter()
-                 .append("text")
-                 .merge(t)
-                 .text(function(d){
-                    return d.pop;
-                 })
-                 .attr("text-anchor", "middle")
-                 .attr("x", function (d, i){
-                    return innerTo.left + (i * 65 + 65 / 2);
-                 })
-                 .attr("y", function(d){
-                    return h - innerTo.bottom - 64 - (d.pop * 2) - 5;
-                 })
-                 .attr("font-family", "sans-serif")
-                 .attr("font-size", "11px")
-                 .attr("fill", "white");
-                
-                t.exit().remove();
-                
-                let v = svg.selectAll("image.chosen")
-                           .data(chosen);
-
-                v.enter()
-                 .append("svg:image")
-                 .merge(v)                
-                 .attr("xlink:href", function (d){
-                    return d.artistArtSpot;
-                 })
-                 .attr("x", function (d,i) {
-                    return innerTo.left + (i * 65);
-                 })
-                 .attr("y", function(d) {
-                    return h - innerTo.bottom - 64;
-                 })
-                 .attr("width", 64)
-                 .attr("height", 64)
-                 .attr("data-artistName", (d) => d.artistNameSpot)
-                 .attr("data-artistPop", (d) => d.pop)
-                 .attr("data-artistSpotID", (d) => d.artistSpotID)
-                 .attr("data-popDate", (d) => d.date)
-                 .attr("class", "chosen")
-                 .append("title")
-                 .text((d) => d.artistNameSpot)
-                 .attr("initial-x", (d) => d.x)
-                 .attr("initial-y", (d) => d.y); 
-                
-                v.exit().remove();   
-                /*
-
-                 */
-                choiceHandler(svg.selectAll(".choice"));
-                chosenHandler(svg.selectAll(".chosen"));
-                
-                } else {
-                    d3.select(this)
-                      .attr("x", "initial-x")
-                      .attr("y", "initial-y")
-                      .attr("pointer-events", "auto");
-                };
-	   });
- 
-    
-    // CHOSEN
-    
-    const chosenHandler = d3.drag()
-        .on("start", function (d){
-            console.log ("Wait, what?");
-            chosenItemReady = true;
-            console.log("chosenItemReady is " + chosenItemReady);
-        })
-        .on("drag", function (d) {
-            const mouse = d3.mouse(this);
-            const picWidth = 64;
-            const picHeight = 64;
-            d3.select(this)
-              // the event x and y under Start was here
-              .attr("x", (mouse[0])-picWidth/2)
-              .attr("y", (mouse[1])-picHeight/2)
-              .attr("pointer-events", "none");
-        })
-        .on("end", function (d) {
-            
-            chosenItemReady = false;
-            console.log("chosenItemReady is " + chosenItemReady);
-            
-            if (choicesBoxReady == true){
-                
-                makeachoice(d);
-                /*
-                let k = choices.indexOf(d);
-
-                //let newlength = choices.length;
-                console.log ("k = " + k);
-                
-                d3.select(this)
-                    
-                  .attr("x", function (d) {
-                    return (k%10) * 75 + margin.left + spacepadding;
-                  })
-                  .attr("y", function(d) {
-                    return Math.floor(k/10) * 75 + margin.top + spacepadding;
-                  })
-                  .attr("pointer-events", "auto")
-                  .attr("class", "choice");         
-                */
-                let u = svg.selectAll(".column")
-                           .data(chosen);    
-                
-                u.enter()
-                 .append("rect")
-                 .merge(u)
+                 .merge(ac)
                  .attr("x", function (d,i) {
                     return innerTo.left + (i * 65);
                  })
@@ -444,15 +328,16 @@ d3.json("dragDropCompare.php", function (dataset) {
                  })
                  .attr("class", "column");
                 
-                u.exit()
+                ac.exit()
                  .remove();
-                /**/
-                let t = svg.selectAll("text")
-                           .data(chosen);
                 
-                t.enter()
+                // Update text labels, Remove label from theChosen and move others over
+                let ad = svg.selectAll("text")
+                           .data(thechosen);
+                
+                ad.enter()
                  .append("text")
-                 .merge(t)
+                 .merge(ad)
                  .text(function(d){
                     return d.pop;
                  })
@@ -467,14 +352,15 @@ d3.json("dragDropCompare.php", function (dataset) {
                  .attr("font-size", "11px")
                  .attr("fill", "white");
                 
-                t.exit().remove();
+                ad.exit().remove();
                 
-                let v = svg.selectAll(".chosen")
-                           .data(chosen);
+                // Update images in theChosen, Remove image from theChosen and move others over
+                let ab = svg.selectAll(".chosen")
+                           .data(thechosen);
 
-                v.enter()
+                ab.enter()
                  .append("svg:image")
-                 .merge(v)                
+                 .merge(ab)                
                  .attr("xlink:href", function (d){
                     return d.artistArtSpot;
                  })
@@ -496,22 +382,68 @@ d3.json("dragDropCompare.php", function (dataset) {
                  .attr("initial-x", (d) => d.x)
                  .attr("initial-y", (d) => d.y); 
                 
-                v.exit().remove();
-
-                let c = svg.selectAll(".choice")
-                           .data(choices);
+                ab.exit().remove();   
+                /*
+                 */
+                choiceHandler(svg.selectAll(".choice"));
+                chosenHandler(svg.selectAll(".chosen"));
                 
-                c.enter()
+            } else {
+                d3.select(this)
+                    .attr("x", "initial-x")
+                    .attr("y", "initial-y")
+                    .attr("pointer-events", "auto");
+            };
+	   });
+ 
+    
+    // CHOSEN HANDLER
+    const chosenHandler = d3.drag()
+        .on("start", function (d){
+            console.log ("Picked up " + d.artistNameSpot + " from theChosen");
+            chosenItemReady = true;
+            console.log("chosenItemReady is " + chosenItemReady);
+        })
+        .on("drag", function (d) {
+            const mouse = d3.mouse(this);
+            const picWidth = 64;
+            const picHeight = 64;
+            console.log ("Dragging " + d.artistNameSpot);
+            d3.select(this)
+              // the event x and y under Start was here
+              .attr("x", (mouse[0])-picWidth/2)
+              .attr("y", (mouse[1])-picHeight/2)
+              .attr("pointer-events", "none");
+        })
+        // CHOSEN TO CHOICE END
+        .on("end", function (d) {
+            
+            chosenItemReady = false;
+            // I think above needs to go last. APPARENTLY NOT!
+            console.log("chosenItemReady is " + chosenItemReady);
+            
+            if (choicesBoxReady == true){
+                
+                chosentochoice(d);
+
+                // Update images in Choices, Add image to end of theChoices
+                let ba = svg.selectAll(".choice")
+                           .data(thechoices);
+                
+                ba.enter()
                  .append("svg:image")
-                 .merge(c)
+                 .merge(ba)
                  .attr("xlink:href", function(d){
                     return d.artistArtSpot;
                  })
-                 .attr("transform", function (d,i){
-                    xOff = (i%10) * 75 + margin.left + spacepadding;
-                    yOff = Math.floor(i/10) * 75 + margin.top + spacepadding;
-                    return "translate(" + xOff + "," + yOff + ")";
-                 })
+                 .attr("x", function (d,i){
+                    x = (i%10) * 75 + margin.left + spacepadding;
+                    return x;
+                })
+                .attr("y", function (d,i){
+                    y = Math.floor(i/10) * 75 + margin.top + spacepadding;
+                    return y;
+                })
                  .attr("data-artistName", (d) => d.artistNameSpot)
                  .attr("data-artistPop", (d) => d.pop)
                  .attr("data-artistSpotID", (d) => d.artistSpotID)
@@ -522,11 +454,88 @@ d3.json("dragDropCompare.php", function (dataset) {
                  .attr("initial-x", (d) => d.x)
                  .attr("initial-y", (d) => d.y); 
                  
-                 c.exit()
+                 ba.exit()
                   .remove();
+
+                // Update Columns, Remove Column from theChosen and move others over
+                let bc = svg.selectAll(".column")
+                           .data(thechosen);    
                 
+                bc.enter()
+                 .append("rect")
+                 .merge(bc)
+                 .attr("x", function (d,i) {
+                    return innerTo.left + (i * 65);
+                 })
+                 .attr("y", function(d) {
+                    return h - innerTo.bottom - 64 - (d.pop * 2)
+                 })
+                 .attr("width", 64)
+                 .attr("height", function(d) {
+                    return (d.pop * 2);
+                 })
+                 .attr("class", "column");
+                
+                bc.exit()
+                 .remove();
+                
+                // Update text labels, Remove label from theChosen and move others over
+                let bd = svg.selectAll("text")
+                           .data(thechosen);
+                
+                bd.enter()
+                 .append("text")
+                 .merge(bd)
+                 .text(function(d){
+                    return d.pop;
+                 })
+                 .attr("text-anchor", "middle")
+                 .attr("x", function (d, i){
+                    return innerTo.left + (i * 65 + 65 / 2);
+                 })
+                 .attr("y", function(d){
+                    return h - innerTo.bottom - 64 - (d.pop * 2) - 5;
+                 })
+                 .attr("font-family", "sans-serif")
+                 .attr("font-size", "11px")
+                 .attr("fill", "white");
+                
+                bd.exit().remove();
+                
+                // Update images in theChosen, Remove image from theChosen and move others over
+                let bb = svg.selectAll(".chosen")
+                           .data(thechosen);
+
+                bb.enter()
+                 .append("svg:image")
+                 .merge(bb)                
+                 .attr("xlink:href", function (d){
+                    return d.artistArtSpot;
+                 })
+                 .attr("x", function (d,i) {
+                    return innerTo.left + (i * 65);
+                 })
+                 .attr("y", function(d) {
+                    return h - innerTo.bottom - 64;
+                 })
+                 .attr("width", 64)
+                 .attr("height", 64)
+                 .attr("data-artistName", (d) => d.artistNameSpot)
+                 .attr("data-artistPop", (d) => d.pop)
+                 .attr("data-artistSpotID", (d) => d.artistSpotID)
+                 .attr("data-popDate", (d) => d.date)
+                 .attr("class", "chosen")
+                 .append("title")
+                 .text((d) => d.artistNameSpot)
+                 .attr("initial-x", (d) => d.x)
+                 .attr("initial-y", (d) => d.y); 
+                
+                bb.exit().remove();
+                /*
+                 */
                 choiceHandler(svg.selectAll(".choice"));
                 chosenHandler(svg.selectAll(".chosen"));
+
             } else {
                 d3.select(this)
                   .attr("x", "initial-x")

@@ -29,7 +29,7 @@ $happyScabies2 = "SELECT a.albumNameSpot, a.yearReleased, a.albumArtSpot, z.arti
 			ON p.albumSpotID = groupedp.albumSpotID
 			AND p.date = groupedp.MaxDate) p1 
 	ON a.albumSpotID = p1.albumSpotID
-	ORDER BY year ASC;";	
+	ORDER BY yearReleased ASC;";	
 	
 $result = mysqli_query($connekt, $happyScabies2);
 
