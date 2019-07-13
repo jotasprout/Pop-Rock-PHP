@@ -301,10 +301,10 @@ d3.json("functions/get_artist_Playcounts.php?artistSpotID=<?php echo $artistSpot
     
     var dataset = data;
 
-    const artistNameSpot = dataset[0].artistNameSpot;
+    const artistNameMB = dataset[0].artistNameMB;
 
     const artistTitle = d3.select("#artistPlaycounts")
-            .text(artistNameSpot + "'s Daily LastFM Playcounts");   
+                          .text(artistNameMB + "'s Daily LastFM Playcounts");   
 
 	//const dailyPlays = [];
 	
