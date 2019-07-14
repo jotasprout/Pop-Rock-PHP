@@ -239,22 +239,22 @@ else // if the form isn't being submitted, get the data from the db and display 
 		echo 'Darn. Did not connect. Screwed up like this: ' . mysqli_error($connekt) . '</p>';
 	}
 
-	$getAssocArtists = "SELECT r.assocArtistNameSpot, r.assocArtistNameMB, r.assocArtistSpotID, r.assocArtistMBID, a.assocArtistArtSpot, m.assocArtistArtMB
+	$getAssocArtists = "SELECT r.assocArtistName, r.assocArtistSpotID, r.assocArtistMBID, a.assocArtistArtSpot, m.assocArtistArtMB
 						FROM artistAssocArtists r
-						LEFT JOIN artists a ON r.assocArtistSpotID = a.artistSpotID
+						LEFT JOIN artistsSpot a ON r.assocArtistSpotID = a.artistSpotID
 						LEFT JOIN artistsMB m ON m.artistMBID = '$artistMBID'
 						WHERE r.primaryArtistSpotID = '$artistSpotID';";
 
 	$result0 = mysqli_query($connekt, $getAssocArtists);
 
 	
-	/*
+	/**/
 	if(!$result0){
 		echo 'Cursed-Crap. Did not run the query.';
 	}
 
 	if (mysqli_num_rows($result0) > 0) {
-		*/
+		
 		while ($row = mysqli_fetch_array($result0)) {
 			echo "<tr>
 					<td><img src='" . $row['artistArtSpot'] . "' height='64' width='64'></td>
@@ -263,12 +263,12 @@ else // if the form isn't being submitted, get the data from the db and display 
 					<td>" . $row['artistNameMB'] . "</td>								
 				</tr>";
 		}
-		echo json_encode($rows);
-/*		
+		//echo json_encode($rows);
+/**/		
 	} else {
 		echo "Nope. Nothing to see here. Screwed up like this: " . mysqli_error($result0) . "</p>";
 	}
-*/
+
     echo "</tbody></table>";
 	// When attempt is complete, connection closes
     mysqli_close($connekt);
