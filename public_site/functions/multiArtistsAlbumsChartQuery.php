@@ -50,7 +50,7 @@ JOIN (SELECT p.*
 		AND p.date = groupedp.MaxDate) p1 
 ON a.albumSpotID = p1.albumSpotID
 WHERE a.artistSpotID IN ("' . implode('", "', $group) . '")
-ORDER BY year ASC';						
+ORDER BY yearReleased ASC';						
 
 $result = mysqli_query($connekt, $happyScabies2);
 

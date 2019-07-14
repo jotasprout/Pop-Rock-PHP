@@ -82,6 +82,7 @@ if(!$getit){ echo 'Cursed-Crap. Did not run the query.'; }
 	<th><div class="popStyle">LastFM<br>Ratio</div></th>
 	<!-- 
 	<th onClick="sortColumn('ratio', 'unsorted')"><div class="pointyHead popStyle">LastFM<br>Ratio</div></th>
+	USE Duckett table sorting chapter thingy
 	-->
 </tr>
 	</thead>
@@ -115,9 +116,9 @@ if(!$getit){ echo 'Cursed-Crap. Did not run the query.'; }
 				};
 		?>
 <tr>
-	<td><a href='https://www.roxorsoxor.com/poprock/artist_ChartsSpot4.php?artistSpotID=<?php echo $artistSpotID ?>&artistMBID=<?php echo $artistMBID ?>'><img src='<?php echo $artistArtSpot ?>' class="indexArtistArt"></a></td>	
+	<td><a href='https://www.roxorsoxor.com/poprock/artist_ChartsSpot.php?artistSpotID=<?php echo $artistSpotID ?>&artistMBID=<?php echo $artistMBID ?>'><img src='<?php echo $artistArtSpot ?>' class="indexArtistArt"></a></td>	
 	
-	<td><a href='https://www.roxorsoxor.com/poprock/artist_ChartsSpot4.php?artistSpotID=<?php echo $artistSpotID ?>&artistMBID=<?php echo $artistMBID ?>'><?php echo $artistNameSpot ?></a></td>
+	<td><a href='https://www.roxorsoxor.com/poprock/artist_ChartsSpot.php?artistSpotID=<?php echo $artistSpotID ?>&artistMBID=<?php echo $artistMBID ?>'><?php echo $artistNameSpot ?></a></td>
 	
 	<td class="popStyle"><?php echo $artistSpotID ?></td>
 	<td class="popStyle"><?php echo $artistMBID ?></td>

@@ -123,6 +123,10 @@ if(!$getit){ echo 'Cursed-Crap. Did not run the query.'; }
 	<td class="rightNum"><?php echo $artistListeners ?></td>
 	<td class="rightNum"><?php echo $artistPlaycount ?></td>
 	<td class="popStyle"><?php echo $artistRatio ?></td>
+	<!-- 
+	<th onClick="sortColumn('ratio', 'unsorted')"><div class="pointyHead popStyle">LastFM<br>Ratio</div></th>
+	USE Duckett table sorting chapter thingy
+	-->
 </tr>
 
 				<?php 

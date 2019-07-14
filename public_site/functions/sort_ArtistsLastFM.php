@@ -103,6 +103,7 @@ if (!empty($sortit)) { ?>
 	<tr>
 	<th>Pretty Face</th>	
 	<th onClick="sortColumn('artistNameMB', '<?php echo $artistNameNewOrder; ?>')"><div class="pointyHead">Artist Name</div></th>
+	<th>MBID</th>
 	<!--
 	-->
 	<th onClick="sortColumn('datadate', '<?php echo $datadateNewOrder; ?>')"><div class="pointyHead popStyle">LastFM<br>Data Date</div></th>
@@ -117,6 +118,7 @@ if (!empty($sortit)) { ?>
 		<?php
 			while ($row = mysqli_fetch_array($sortit)) {
 				$artistNameMB = $row[ "artistNameMB" ];
+				$artistMBID = $row[ "artistMBID" ];
 				$artistArtMB = $row[ "artistArtMB" ];
 				$lastFMDate = $row[ "dataDate" ];
 				$artistListenersNum = $row[ "artistListeners"];
@@ -137,6 +139,7 @@ if (!empty($sortit)) { ?>
 	<td><img src='<?php echo $artistArtMB ?>' class="indexArtistArt"></td>	
 	<td><a href='https://www.roxorsoxor.com/poprock/artist_ChartsLastFM.php?artistSpotID=<?php echo $artistSpotID ?>&artistMBID=<?php echo $artistMBID ?>&source=<?php echo $source ?>'><?php echo $artistNameMB ?></a></td>
 <!---->
+<td><?php echo $artistMBID ?></td>
 	<td class="popStyle"><?php echo $lastFMDate ?></td>
 	<td class="rightNum"><?php echo $artistListeners ?></td>
 	<td class="rightNum"><?php echo $artistPlaycount ?></td>
