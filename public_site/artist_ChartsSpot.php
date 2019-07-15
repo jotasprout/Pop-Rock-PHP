@@ -289,7 +289,7 @@ d3.json("functions/createArtistSpotD3.php?artistSpotID=<?php echo $artistSpotID;
 <!--  -->
 <script>
 
-var w = 740;
+var w = 800;
 var h = 500;
 var padding = 50;
 
@@ -311,9 +311,9 @@ d3.json("functions/get_artist_Playcounts.php?artistSpotID=<?php echo $artistSpot
     dataset.forEach(function(d,i) {
 		if (i>0){
 			d.date = new Date(d.dataDate);
-			let h = i-1;
+			let n = i-1;
 			let todaysTotal = parseInt(dataset[i].artistPlaycount, 10);
-			let yesterPlays = parseInt(dataset[h].artistPlaycount, 10);
+			let yesterPlays = parseInt(dataset[n].artistPlaycount, 10);
 			d.todaysPlays = parseInt(todaysTotal - yesterPlays);
 			//todaysPlays = +d.todaysPlays;
 			//console.log(todaysPlays);
@@ -325,13 +325,6 @@ d3.json("functions/get_artist_Playcounts.php?artistSpotID=<?php echo $artistSpot
 	
 	console.log(dataset);
 	
-	/*
-	dataset.forEach(function(d) {
-        d.date = new Date(d.dataDate);
-        d.playcount = +d.artistPlaycount;
-    });
-	*/
-	
 	dataset.splice(0,2);
 	
 	console.log(dataset);
@@ -341,7 +334,7 @@ d3.json("functions/get_artist_Playcounts.php?artistSpotID=<?php echo $artistSpot
                     d3.min(dataset, function(d) { return d.date; }),
                     d3.max(dataset, function(d) { return d.date; })
                 ])
-                .range([padding, w - padding]);
+                .range([padding, w]);
 
     yScale = d3.scaleLinear()
                //.domain(d3.extent(data, function(d) { return (d.playcount); }))
@@ -350,24 +343,16 @@ d3.json("functions/get_artist_Playcounts.php?artistSpotID=<?php echo $artistSpot
                     d3.max(dataset, function(d) { return d.todaysPlays; })
 				])
                .range([h - padding, padding]);
-/*
-    yScale = d3.scaleLinear()
-               //.domain(d3.extent(data, function(d) { return (d.playcount); }))
-			   .domain([
-					d3.min(dataset, function(d) { return d.playcount; }),
-                    d3.max(dataset, function(d) { return d.playcount; })
-				])
-               .range([h - padding, padding]);
-	*/
+
     const xAxis = d3.axisBottom()
                     .scale(xScale)
-                    .tickFormat(d3.timeFormat("%b-%e"));
+                    .tickFormat(d3.timeFormat("%d-%e"));
 
     formatMillions = d3.format(".3s");
-
+/*
     const p = d3.precisionRound(0.01, 1.01),
           f = d3.format("." + p + "r");
-
+*/
     const yAxis = d3.axisLeft()
                     .scale(yScale)
                     .tickFormat(function(d) { return formatMillions(d)});
@@ -375,11 +360,7 @@ d3.json("functions/get_artist_Playcounts.php?artistSpotID=<?php echo $artistSpot
 	var line = d3.line()
                 .x(function(d) { return xScale(d.date); })
                 .y(function(d) { return yScale((d.todaysPlays)); });
-/*	
-    var line = d3.line()
-                .x(function(d) { return xScale(d.date); })
-                .y(function(d) { return yScale((d.playcount)); });
-*/
+
     var svg = d3.select("#forPlaycountChart")
                     .append("svg")
                     .attr("width", w)

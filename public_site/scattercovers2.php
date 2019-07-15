@@ -45,8 +45,88 @@
 
 </div> <!-- close container-fluid -->
 
-<script type="text/javascript">
+
 	
+<script type="text/javascript">
+    d3.json("functions/createAlbumsD3.php?artistSpotID=<?php echo $artistSpotID ?>", function(dataset) {
+        console.log(dataset);
+        // Width and height
+        var w = 2400;
+        var h = 265;
+        var barPadding = 1;
+
+        const artistNameSpot = dataset[0].artistNameSpot;
+
+        const artistTitle = d3.select("#albumPop")
+            .text(artistNameSpot + "'s albums' current popularity on Spotify");
+        
+        // Create SVG element
+        var svg = d3.select("#recordCollection")
+            .append("svg")
+            .attr("width", w)
+            .attr("height", h);
+        
+        // Rectangles
+        svg.selectAll("rect")
+            .data(dataset)
+            .enter()
+            .append("rect")
+            .attr("x", function (d,i) {
+                return i * 65;
+            })
+            .attr("y", function(d) {
+                return h - 64 - (d[4] * 2)
+            })
+            .attr("width", 64)
+            .attr("height", function(d) {
+                return (d[4] * 2);
+            });
+
+        // Images
+        svg.selectAll("image")
+            .data(dataset)
+            .enter()
+            .append("svg:image")
+            .attr("xlink:href", function (d){
+                return d.albumArtSpot;
+                console.log(d.albumArtSpot);
+            })
+            .attr("x", function (d,i) {
+                return i * 65;
+            })
+            .attr("y", function(d) {
+                return h - 64
+            })
+            .attr("width", 64)
+            .attr("height", 64)
+            .append("title")
+            .text(function(d){
+                return d.albumNameSpot;
+            });			   
+        
+        // Labels
+        svg.selectAll("text")
+            .data(dataset)
+            .enter()
+            .append("text")
+            .text(function(d){
+                return d[4];
+            })
+            .attr("text-anchor", "middle")
+            .attr("x", function (d, i){
+                return i * 65 + 65 / 2;
+            })
+            .attr("y", function(d){
+                return h - 64 - (d[4] * 2) - 5;
+            })
+            .attr("font-family", "sans-serif")
+            .attr("font-size", "11px")
+            .attr("fill", "white");
+    });		
+</script>
+
+
+<script type="text/javascript">
 	
 const w = 1800;
 const h = 800;
@@ -68,14 +148,17 @@ const rowConverter = function(d){
 };
 	
 const artistName = "Black Sabbath";
+
+
 	
 d3.json("data_text/BlackSabbathalbumsLastFM.json", function(dataset) {
 	console.log(dataset);
 
+    const startYear;
+    const stopYear;
+
 	const artistTitle = d3.select("#name")
 		.text(artistName + "'s albums' LastFM playcount as of June 19, 2019");
-
-
 	
 	const xScale = d3.scaleLinear()
 					 .domain([1970, 2015])
@@ -89,46 +172,8 @@ d3.json("data_text/BlackSabbathalbumsLastFM.json", function(dataset) {
 		.append("svg")
 		.attr("width", w)
 		.attr("height", h);
+	
 
-	
-	
-	/*
-	
-	svg.selectAll("rect")
-		.data(dataset)
-		.enter()
-		.append("rect")
-		.attr("x", function (d,i) {
-			return i * 65;
-		})
-		.attr("y", function(d) {
-			return h - 64 - (d[4] * 2)
-		})
-		.attr("width", 64)
-		.attr("height", function(d) {
-			return (d[4] * 2);
-		});
-		
-	svg.selectAll("circle")
-		.data(dataset)
-		.enter()
-		.append("circle")
-		.attr("cx", function (d) {
-			released = parseInt(d.year);
-			return xScale(released);
-		})
-		.attr("cy", function(d) {
-			playcount = parseInt(d.plays);
-			return yScale(playcount);			
-		})
-		.attr("r", 5)
-		.style("fill", "white")
-		.append("title")
-		.text(function(d){
-			return d.title;
-		});		
-		
-	*/
 	
 
 	// Images
