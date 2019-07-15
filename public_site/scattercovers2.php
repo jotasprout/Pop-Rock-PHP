@@ -45,136 +45,65 @@
 
 </div> <!-- close container-fluid -->
 
-
-	
-<script type="text/javascript">
-    d3.json("functions/createAlbumsD3.php?artistSpotID=<?php echo $artistSpotID ?>", function(dataset) {
-        console.log(dataset);
-        // Width and height
-        var w = 2400;
-        var h = 265;
-        var barPadding = 1;
-
-        const artistNameSpot = dataset[0].artistNameSpot;
-
-        const artistTitle = d3.select("#albumPop")
-            .text(artistNameSpot + "'s albums' current popularity on Spotify");
-        
-        // Create SVG element
-        var svg = d3.select("#recordCollection")
-            .append("svg")
-            .attr("width", w)
-            .attr("height", h);
-        
-        // Rectangles
-        svg.selectAll("rect")
-            .data(dataset)
-            .enter()
-            .append("rect")
-            .attr("x", function (d,i) {
-                return i * 65;
-            })
-            .attr("y", function(d) {
-                return h - 64 - (d[4] * 2)
-            })
-            .attr("width", 64)
-            .attr("height", function(d) {
-                return (d[4] * 2);
-            });
-
-        // Images
-        svg.selectAll("image")
-            .data(dataset)
-            .enter()
-            .append("svg:image")
-            .attr("xlink:href", function (d){
-                return d.albumArtSpot;
-                console.log(d.albumArtSpot);
-            })
-            .attr("x", function (d,i) {
-                return i * 65;
-            })
-            .attr("y", function(d) {
-                return h - 64
-            })
-            .attr("width", 64)
-            .attr("height", 64)
-            .append("title")
-            .text(function(d){
-                return d.albumNameSpot;
-            });			   
-        
-        // Labels
-        svg.selectAll("text")
-            .data(dataset)
-            .enter()
-            .append("text")
-            .text(function(d){
-                return d[4];
-            })
-            .attr("text-anchor", "middle")
-            .attr("x", function (d, i){
-                return i * 65 + 65 / 2;
-            })
-            .attr("y", function(d){
-                return h - 64 - (d[4] * 2) - 5;
-            })
-            .attr("font-family", "sans-serif")
-            .attr("font-size", "11px")
-            .attr("fill", "white");
-    });		
-</script>
-
-
 <script type="text/javascript">
 	
-const w = 1800;
-const h = 800;
-const margin = {
-	top: 25,
-	right: 25,
-	bottom: 25,
-	left: 25
-};
-	
-//const year = timeFormat('%Y');
-
-const rowConverter = function(d){
-	return {
-		title: d.title,
-		year: parseTime(d.year),
-		plays: d.plays
-	};
-};
-	
-const artistName = "Black Sabbath";
-
-
-	
-d3.json("data_text/BlackSabbathalbumsLastFM.json", function(dataset) {
+d3.json("functions/createAlbumsD3.php?artistSpotID=<?php echo $artistSpotID ?>", function(dataset) {
 	console.log(dataset);
 
-    const startYear;
-    const stopYear;
+    const w = 1800;
+    const h = 800;
+    const margin = {
+        top: 25,
+        right: 25,
+        bottom: 25,
+        left: 25
+    };
+        
+    const startYear = d3.min(dataset, function(d) { return d.yearReleased; });
+    const stopYear = d3.max(dataset, function(d) { return d.yearReleased; });
+
+    //const year = timeFormat('%Y');
+
+    const rowConverter = function(d){
+        return {
+            title: d.title,
+            yearReleased: parseTime(d.yearReleased),
+            plays: d.plays
+        };
+    };
+
+    const artistNameSpot = dataset[0].artistNameSpot;
 
 	const artistTitle = d3.select("#name")
-		.text(artistName + "'s albums' LastFM playcount as of June 19, 2019");
+		                  .text(artistNameSpot + "'s albums' LastFM playcount as of xxx, 2019");
 	
 	const xScale = d3.scaleLinear()
-					 .domain([1970, 2015])
+					 .domain([
+                        d3.min(dataset, function(d) { return d.yearReleased; }),
+                        d3.max(dataset, function(d) { return d.yearReleased; })                  
+                     ])
 					 .range([margin.left, w-margin.right]);
 
+    const pop = function(d){
+        return d.pop;
+    }
+
+    const plays = function(d){
+        return d.plays;
+    }
+
 	const yScale = d3.scaleLinear()
-					 .domain([0, 15000000])
+					 .domain([
+                        d3.min(dataset, function(d) { return d.pop; }),
+                        d3.max(dataset, function(d) { return d.pop; })                         
+                     ])
 					 .range([h-margin.bottom, margin.top]);
+
 
 	var svg = d3.select("#popchart")
 		.append("svg")
 		.attr("width", w)
 		.attr("height", h);
-	
-
-	
 
 	// Images
 	svg.selectAll("image")
@@ -182,25 +111,23 @@ d3.json("data_text/BlackSabbathalbumsLastFM.json", function(dataset) {
 		.enter()
 		.append("svg:image")
 		.attr("xlink:href", function (d){
-			return d.art;
+			return d.albumArtSpot;
 		})
-		.attr("x", function (d,i) {
-			released = parseInt(d.year);
+		.attr("x", function (d) {
+			released = parseInt(d.yearReleased);
 			return xScale(released);
 		})
 		.attr("y", function(d) {
-			playcount = parseInt(d.plays);
-			return yScale(playcount);
+			pop = parseInt(d.pop);
+			return yScale(pop);
 		})
 		.attr("width", 64)
 		.attr("height", 64)
-	.attr("transform", "translate(-32, -32)")
+	    .attr("transform", "translate(-32, -32)")
 		.append("title")
 		.text(function(d){
-			return d.title;
+			return d.albumNameSpot;
 		});
-
-
 	
 	const formatYear = d3.format("d");
 	
