@@ -99,7 +99,6 @@ d3.json("functions/createAlbumsD3.php?artistSpotID=<?php echo $artistSpotID ?>",
                      ])
 					 .range([h-margin.bottom, margin.top]);
 
-
 	var svg = d3.select("#popchart")
 		.append("svg")
 		.attr("width", w)
@@ -142,7 +141,6 @@ d3.json("functions/createAlbumsD3.php?artistSpotID=<?php echo $artistSpotID ?>",
 
 });		
 </script>	
-
 
 <?php echo $scriptsAndSuch; ?>
 
