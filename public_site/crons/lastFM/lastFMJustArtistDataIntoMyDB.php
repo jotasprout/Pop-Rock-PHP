@@ -1,16 +1,10 @@
 <?php
 
-require_once '../../rockdb.php';
+require '../../rockdb.php';
 
 $filenames = array (
-    'data/justDaily_07-06-19.json',
-    'data/justDaily_07-07-19.json',
-    'data/justDaily_07-08-19.json',
-    'data/justDaily_07-09-19.json',
-    'data/justDaily_07-10-19.json',
-    'data/justDaily_07-11-19.json',
-    'data/justDaily_07-12-19.json',
-    'data/justDaily_07-13-19.json',
+    'data/justDaily_07-14-19.json',
+    'data/justDaily_07-15-19.json'
 );
 
 $filenames = $filenames;

@@ -385,21 +385,21 @@ function insertLastFMalbumDataFilenames ($filenames) {
 		};
 	};	
 };
-
+/*
 $aliceJJ = array (
 	'data/AliceCooper_Combined_06-16-19.json',
 	'data/JoanJett_Combined_06-16-19.json'
 );
-
+*/
 $filenames_01 = array (	
-    'data/AliceCooper_Combined_07-07-19.json',
-    'data/TheAmboyDukes_Group_07-07-19.json',
-    'data/EvilStig_Group_07-07-19.json', 
-    'data/JoanJett_Combined_07-07-19.json', 
-	'data/TheRunaways_Group_07-07-19.json',
-    'data/TedNugent_Person_07-07-19.json', 
-    'data/DavidBowie_Person_07-07-19.json',
-    'data/JanetJackson_Person_07-07-19.json'	
+    'data/AliceCooper_Combined_07-14-19.json',
+    'data/TheAmboyDukes_Group_07-14-19.json',
+    'data/EvilStig_Group_07-14-19.json', 
+    'data/JoanJett_Combined_07-14-19.json', 
+	'data/TheRunaways_Group_07-14-19.json',
+    'data/TedNugent_Person_07-14-19.json', 
+    'data/DavidBowie_Person_07-14-19.json',
+    'data/JanetJackson_Person_07-14-19.json'	
 );
 
 $artistNames_01 = array (
@@ -414,13 +414,13 @@ $artistNames_01 = array (
 );
 
 $filenames_02 = array (	
-    'data/Anvil_Group_07-08-19.json',
-    'data/LindseyBuckingham_Person_07-08-19.json',
-    'data/TheCure_Group_07-08-19.json',
-    'data/Eminem_Person_07-08-19.json',
-    'data/FleetwoodMac_Group_07-08-19.json',
-    'data/StevieNicks_Person_07-08-19.json',
-    'data/Radiohead_Group_07-08-19.json'
+    'data/Anvil_Group_07-15-19.json',
+    'data/LindseyBuckingham_Person_07-15-19.json',
+    'data/TheCure_Group_07-15-19.json',
+    'data/Eminem_Person_07-15-19.json',
+    'data/FleetwoodMac_Group_07-15-19.json',
+    'data/StevieNicks_Person_07-15-19.json',
+    'data/Radiohead_Group_07-15-19.json'
 );
 
 $artistNames_02 = array (
@@ -514,12 +514,12 @@ $artistNames_06 = array (
 );
 
 $filenames_07 = array (
-    'data/Cream_Group_07-06-19.json',
-    'data/EricClapton_Person_07-06-19.json',
-    'data/RoxyMusic_Group_07-06-19.json',
-    'data/Saxon_Group_07-06-19.json', 
-    'data/NeilYoung_Person_07-06-19.json',
-	'data/TheZombies_Group_07-06-19.json'
+    'data/Cream_Group_07-13-19.json',
+    'data/EricClapton_Person_07-13-19.json',
+    'data/RoxyMusic_Group_07-13-19.json',
+    'data/Saxon_Group_07-13-19.json', 
+    'data/NeilYoung_Person_07-13-19.json',
+	'data/TheZombies_Group_07-13-19.json'
 );
 
 $artistNames_07 = array (
