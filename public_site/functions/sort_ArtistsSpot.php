@@ -196,8 +196,8 @@ if (!empty($sortit)) { ?>
 		?>
 
 <tr>
-	<td><a href='https://www.roxorsoxor.com/poprock/artist_ChartsSpot4.php?artistSpotID=<?php echo $artistSpotID ?>&artistMBID=<?php echo $artistMBID ?>&source=<?php echo $source ?>'><img src='<?php echo $artistArtSpot ?>' class="indexArtistArt"></a></td>	
-	<td><a href='https://www.roxorsoxor.com/poprock/artist_ChartsSpot4.php?artistSpotID=<?php echo $artistSpotID ?>&artistMBID=<?php echo $artistMBID ?>&source=<?php echo $source ?>'><?php echo $artistNameSpot ?></a></td>
+	<td><a href='https://www.roxorsoxor.com/poprock/artist_ChartsSpot.php?artistSpotID=<?php echo $artistSpotID ?>&artistMBID=<?php echo $artistMBID ?>&source=<?php echo $source ?>'><img src='<?php echo $artistArtSpot ?>' class="indexArtistArt"></a></td>	
+	<td><a href='https://www.roxorsoxor.com/poprock/artist_ChartsSpot.php?artistSpotID=<?php echo $artistSpotID ?>&artistMBID=<?php echo $artistMBID ?>&source=<?php echo $source ?>'><?php echo $artistNameSpot ?></a></td>
 <!---->
 	<td class="popStyle"><?php echo $artistSpotID ?></td>
 	<td class="popStyle"><?php echo $artistMBID ?></td>

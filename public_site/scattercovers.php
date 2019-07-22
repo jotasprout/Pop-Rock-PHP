@@ -149,7 +149,7 @@ d3.json("data_text/BlackSabbathalbumsLastFM.json", function(dataset) {
 		})
 		.attr("width", 64)
 		.attr("height", 64)
-	.attr("transform", "translate(-32, -32)")
+	    .attr("transform", "translate(-32, -32)")
 		.append("title")
 		.text(function(d){
 			return d.title;

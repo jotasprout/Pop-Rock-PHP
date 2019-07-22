@@ -296,7 +296,7 @@ var padding = 50;
 var dataset, xScale, yScale, xAxis, yAxis, line;
 
 d3.json("functions/get_artist_Playcounts.php?artistSpotID=<?php echo $artistSpotID; ?>&artistMBID=<?php echo $artistMBID ?>", function(data) {
-    
+    console.log("Get Artist Playcounts");
     console.log(data);
     
     var dataset = data;
@@ -305,8 +305,6 @@ d3.json("functions/get_artist_Playcounts.php?artistSpotID=<?php echo $artistSpot
 
     const artistTitle = d3.select("#artistPlaycounts")
                           .text(artistNameMB + "'s Daily LastFM Playcounts");   
-
-	//const dailyPlays = [];
 	
     dataset.forEach(function(d,i) {
 		if (i>0){
@@ -346,7 +344,7 @@ d3.json("functions/get_artist_Playcounts.php?artistSpotID=<?php echo $artistSpot
 
     const xAxis = d3.axisBottom()
                     .scale(xScale)
-                    .tickFormat(d3.timeFormat("%d-%e"));
+                    .tickFormat(d3.timeFormat("%-m/%-d"));
 
     formatMillions = d3.format(".3s");
 /*
