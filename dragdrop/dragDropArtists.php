@@ -270,7 +270,7 @@ d3.json("dragDropCompare.php", function (dataset) {
                 
                 aa.enter()
                  .append("svg:image")
-                 .merge(aa)
+                 .merge(aa)              
                  .attr("xlink:href", function(d){
                     return d.artistArtSpot;
                  })
@@ -295,12 +295,13 @@ d3.json("dragDropCompare.php", function (dataset) {
             
                 // Update Columns, Add Column to theChosen
                 let ac = svg.selectAll(".column")
-                            .data(thechosen, key);    
+                            .data(thechosen, key);   
+                /*             
                 ac.enter()
                   .append("rect")
                   .merge(ac)
                   .transition()
-                  .duration(500)
+                  .duration(5000)
                   .attr("x", function (d,i) {
                     return innerTo.left + (i * 65);
                   })
@@ -312,7 +313,25 @@ d3.json("dragDropCompare.php", function (dataset) {
                     return (d.pop * 2);
                   })
                   .attr("class", "column");
-                
+                */
+                // THIS IS AN EXPERIMENT
+                ac.enter()
+                  .append("rect")
+                  .merge(ac)
+                  .attr("x", function (d,i) {
+                    return innerTo.left + (i * 65);
+                  })
+                  .attr("y", function(d) {
+                    return h - innerTo.bottom - 64 - (d.pop * 2)
+                  })
+                  .attr("width", 64)
+                  .transition()
+                  .duration(5000)
+                  .attr("height", function(d) {
+                    return (d.pop * 2);
+                  })
+                  .attr("class", "column");
+
                 ac.exit()
                   .transition()
                   .duration(500)
@@ -325,6 +344,8 @@ d3.json("dragDropCompare.php", function (dataset) {
                 ad.enter()
                   .append("text")
                   .merge(ad)
+                  .transition()
+                  .duration(500)                  
                   .text(function(d){
                     return d.pop;
                   })
@@ -347,7 +368,7 @@ d3.json("dragDropCompare.php", function (dataset) {
                            .data(thechosen, key);
                 ab.enter()
                  .append("svg:image")
-                 .merge(ab)                
+                 .merge(ab)                         
                  .attr("xlink:href", function (d){
                     return d.artistArtSpot;
                  })
@@ -485,6 +506,8 @@ d3.json("dragDropCompare.php", function (dataset) {
                 bd.enter()
                  .append("text")
                  .merge(bd)
+                 .transition()
+                 .duration(500)
                  .text(function(d){
                     return d.pop;
                  })
@@ -506,7 +529,9 @@ d3.json("dragDropCompare.php", function (dataset) {
                            .data(thechosen, key);
                 bb.enter()
                  .append("svg:image")
-                 .merge(bb)                
+                 .merge(bb)    
+                 .transition()
+                 .duration(500)                             
                  .attr("xlink:href", function (d){
                     return d.artistArtSpot;
                  })
