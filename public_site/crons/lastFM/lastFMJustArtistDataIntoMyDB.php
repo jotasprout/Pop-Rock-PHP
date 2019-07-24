@@ -3,8 +3,15 @@
 require '../../rockdb.php';
 
 $filenames = array (
-    'data/justDaily_07-14-19.json',
-    'data/justDaily_07-15-19.json'
+    'data/justDaily_07-16-19.json',
+    'data/justDaily_07-17-19.json',
+    'data/justDaily_07-18-19.json',
+    'data/justDaily_07-19-19.json',
+    'data/justDaily_07-20-19.json',
+    'data/justDaily_07-21-19.json',
+    'data/justDaily_07-22-19.json',
+    'data/justDaily_07-23-19.json',
+    'data/justDaily_07-24-19.json'
 );
 
 $filenames = $filenames;

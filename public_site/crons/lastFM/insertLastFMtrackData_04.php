@@ -1,6 +1,6 @@
 <?php
 
-require 'https://www.roxorsoxor.com/poprock/rockdb.php';
+require 'rockdb.php';
 require 'artistArrays_LastFM.php';
 
 	insertLastFMtrackDataArtistNames ($artistNames_04); 

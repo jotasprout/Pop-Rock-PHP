@@ -14,7 +14,7 @@ if (!$connekt) {
 $getPlaycounts = "SELECT m.artistNameMB, p.dataDate, p.artistPlaycount
 	FROM artistsMB m
 	INNER JOIN artistsLastFM p ON m.artistMBID = p.artistMBID
-	WHERE m.artistMBID = '$artistMBID' AND p.dataDate >= '2019-02-11'
+	WHERE m.artistMBID = '$artistMBID' AND p.dataDate >= '2019-05-01'
 	ORDER BY p.dataDate ASC";
 
 $getit = mysqli_query($connekt, $getPlaycounts);

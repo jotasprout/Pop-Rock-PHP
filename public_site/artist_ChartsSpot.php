@@ -356,8 +356,9 @@ d3.json("functions/get_artist_Playcounts.php?artistSpotID=<?php echo $artistSpot
                     .tickFormat(function(d) { return formatMillions(d)});
 
 	var line = d3.line()
-                .x(function(d) { return xScale(d.date); })
-                .y(function(d) { return yScale((d.todaysPlays)); });
+                 //.defined(function(d) { return d.todaysPlays > 0})
+                 .x(function(d) { return xScale(d.date); })
+                 .y(function(d) { return yScale((d.todaysPlays)); });
 
     var svg = d3.select("#forPlaycountChart")
                     .append("svg")

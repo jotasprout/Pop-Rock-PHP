@@ -16,28 +16,66 @@ if (isset($_POST['submit'])){
 	// If form is being submitted, process the form
 	// First, get form data and make sure it is valid
 	$artistSpotID = $_POST['artistSpotID'];
-    $artistNameSpot = mysqli_real_escape_string($connekt, htmlspecialchars($_POST['artistNameSpot']));
+    $artistNameSpot = mysqli_real_escape_string($connekt, htmlspecialchars($_POST['primaryArtistName']));
+    $artistNameMB = mysqli_real_escape_string($connekt, htmlspecialchars($_POST['primaryArtistNameMB']));
     $artistArt = mysqli_real_escape_string($connekt, htmlspecialchars($_POST['artistArt']));
 	$artistMBID = mysqli_real_escape_string($connekt, htmlspecialchars($_POST['artistMBID']));
 	$assocArtistSpotID = mysqli_real_escape_string($connekt, htmlspecialchars($_POST['assocArtistSpotID']));
 	$artistArtFilename = mysqli_real_escape_string($connekt, htmlspecialchars($_POST['artistArtMB']));
-	$artistArtMB = "https://www.roxorsoxor.com/poprock/artist-art/" . $artistArtFilename;
+	//$artistArtMB = "https://www.roxorsoxor.com/poprock/artist-art/" . $artistArtFilename;
 	
 	// save data to database
-	$updateArtistSpot = "UPDATE artistsSpot SET artistNameSpot='$artistNameSpot', artistMBID='$artistMBID' WHERE artistSpotID='$artistSpotID'";
+    $updateArtistSpot = "UPDATE artistsSpot SET artistNameSpot='$artistNameSpot', artistMBID='$artistMBID' WHERE artistSpotID='$artistSpotID'";
+    
     $retval = $connekt->query($updateArtistSpot);
     
-    $updateArtistMB = "UPDATE artistsMB SET artistNameSpot='$artistNameSpot', artistMBID='$artistMBID', artistArtMB='$artistArtMB' WHERE artistMBID='$artistMBID'";
-	$retval2 = $connekt->query($updateArtistMB);
-	
-    $updateArtistAssocArtists = "INSERT INTO artistAssocArtists SET assocArtistName='$artistNameSpot', assocArtistSpotID='$assocArtistSpotID', assocArtistMBID='$artistMBID', primaryArtistName='$artistNameSpot', primaryArtistSpotID='$artistSpotID', primaryArtistMBID='$artistMBID'";
-	$retval3a = $connekt->query($updateAssocArtists);	
+    // Feedback of whether UPDATE worked or not
+	if(!$retval){
+		// if update did NOT work
+		die('Crap. Could not update this artist because: ' . mysqli_error($connekt));
+	}
+	else
+	{
+		// if update worked, go back to artist page
+		header("Location: https://www.roxorsoxor.com/poprock/artist_ChartsSpot.php?artistSpotID=" . $artistSpotID . "&artistMBID=" . $artistMBID);
+    }
+    
+    $updateArtistMB = "UPDATE artistsMB SET artistNameMB='$artistNameMB', artistMBID='$artistMBID', artistArtMB='$artistArtFilename' WHERE artistMBID='$artistMBID'";
 
+	$retval2 = $connekt->query($updateArtistMB);
+    
+    	// Feedback of whether UPDATE worked or not
+	if(!$retval2){
+		// if update did NOT work
+		die('Crap. Could not update this artist because: ' . mysqli_error($connekt));
+	}
+	else
+	{
+		// if update worked, go back to artist page
+		header("Location: https://www.roxorsoxor.com/poprock/artist_ChartsSpot.php?artistSpotID=" . $artistSpotID . "&artistMBID=" . $artistMBID);
+    }
+    
+    $updateArtistAssocArtists = "INSERT INTO artistAssocArtists SET assocArtistName='$artistNameSpot', assocArtistSpotID='$assocArtistSpotID', assocArtistMBID='$artistMBID', primaryArtistName='$artistNameSpot', primaryArtistSpotID='$artistSpotID', primaryArtistMBID='$artistMBID'";
+
+	$retval3a = $connekt->query($updateArtistAssocArtists);	
+
+    	// Feedback of whether UPDATE worked or not
+	if(!$retval3a){
+		// if update did NOT work
+		die('Crap. Could not update this artist because: ' . mysqli_error($connekt));
+	}
+	else
+	{
+		// if update worked, go back to artist page
+		header("Location: https://www.roxorsoxor.com/poprock/artist_ChartsSpot.php?artistSpotID=" . $artistSpotID . "&artistMBID=" . $artistMBID);
+    }
+    
     $updateArtistAssocArtists2 = "INSERT INTO artistAssocArtists SET assocArtistName='$artistNameSpot', assocArtistSpotID='$assocArtistSpotID', assocArtistMBID='$artistMBID', primaryArtistName='$artistNameSpot', primaryArtistSpotID='$artistSpotID', primaryArtistMBID='$artistMBID'";
+
 	$retval3b = $connekt->query($updateAssocArtists2);	
 	/**/
 	// Feedback of whether UPDATE worked or not
-	if(!$retval){
+	if(!$retval3b){
 		// if update did NOT work
 		die('Crap. Could not update this artist because: ' . mysqli_error($connekt));
 	}
@@ -77,7 +115,9 @@ else // if the form isn't being submitted, get the data from the db and display 
 		if($row){
 			$artistNameSpot = $row['artistNameSpot'];
             $artistMBID = $row['artistMBID'];
-			$artistArtMB = $row['artistArtMB'];
+            $artistArtMB = $row['artistArtMB'];
+            $artistArtFilename = $row['artistArtMB'];
+            $artistArtMB = "https://www.roxorsoxor.com/poprock/artist-art/" . $artistArtFilename;
 			$artistNameMB = $row['artistNameMB'];
             $artistArtSpot = $row['artistArtSpot'];
 			$artistSpotID = $row['artistSpotID'];
@@ -143,7 +183,7 @@ else // if the form isn't being submitted, get the data from the db and display 
 			</div>		
 			<div class="col-lg-4 align-top">
 				<label class="control-label" for="artistArtMB">Artist Art MB</label>
-				<input class="form-control" type="text" name="artistArtMB" value="<?php echo $artistArtMB; ?>" />
+				<input class="form-control" type="text" name="artistArtMB" value="<?php echo $artistArtFilename; ?>" />
 			</div>
 		</div> <!-- /Row ArtMB -->				   
 

@@ -84,8 +84,10 @@ if(!$getit){ echo 'Cursed-Crap. Did not run the query.'; }
 		$artistSpotID = $row[ "artistSpotID" ];
 		$artistArtMB = $row["artistArtMB"];
 		$artistArtSpot = $row["artistArtSpot"];
-
-		$artistArt = '';
+        $artistArtFilename = $row['artistArtMB'];
+        $artistArtMB = "https://www.roxorsoxor.com/poprock/artist-art/" . $artistArtFilename;
+        $artistArt = '';
+        
 		if(empty($row["artistArtMB"]) && empty($row["artistArtSpot"])) {
 			$artistArt = "nope.png";
 		}
