@@ -1,7 +1,9 @@
 <?php 
     $artistSpotID = $_GET['artistSpotID'];
     $artistMBID = $_GET['artistMBID'];
-	require_once 'page_pieces/stylesAndScripts.php';
+    require_once 'page_pieces/stylesAndScripts.php';
+    
+    $artistArtMBFilePath = "https://www.roxorsoxor.com/poprock/artist-art/";
 ?>
 
 <!DOCTYPE html>
@@ -168,8 +170,9 @@ d3.json("functions/get_assocArtists.php?artistSpotID=<?php echo $artistSpotID ?>
 			  .append("img")
 			  .attr("src", function (d){
 				if (d.artistArtSpot == "" || d.artistArtSpot == null || d.artistArtSpot == undefined) {
-					console.log("artistArt is " + d.artistArtMB);
-					return d.artistArtMB;
+                    const prettyFace = <?php echo $artistArtMBFilePath ?> + d.artistArtMB;
+					console.log("artistArt is " + prettyFace);
+					return prettyFace;
 				} else {
 					console.log("artistArt is " + d.artistArtSpot);
 					return d.artistArtSpot;
