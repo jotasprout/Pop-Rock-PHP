@@ -21,7 +21,7 @@
 		}
 
         #title {
-            font-size: 24px;
+            font-size: 24px;p
             font-weight: bold;
             fill: white;
         }
@@ -170,7 +170,9 @@ d3.json("functions/get_assocArtists.php?artistSpotID=<?php echo $artistSpotID ?>
 			  .append("img")
 			  .attr("src", function (d){
 				if (d.artistArtSpot == "" || d.artistArtSpot == null || d.artistArtSpot == undefined) {
-                    const prettyFace = <?php echo $artistArtMBFilePath ?> + d.artistArtMB;
+                    let artistArtMBFilePath = '<?php echo $artistArtMBFilePath ?>';
+                    let artistArtMBFilename = d.artistArtMB;
+                    const prettyFace =  artistArtMBFilePath + artistArtMBFilename;
 					console.log("artistArt is " + prettyFace);
 					return prettyFace;
 				} else {

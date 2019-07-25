@@ -16,17 +16,20 @@ if ( !$connekt ) {
 // check if form is being submitted.
 if (isset($_POST['submit'])){
 	// If form is being submitted, process the form
-	// First, get form data and make sure it is valid
-	$artistSpotID = $_POST['artistSpotID'];
-    $artistNameSpot = mysqli_real_escape_string($connekt, htmlspecialchars($_POST['primaryArtistName']));
-    $artistNameMB = mysqli_real_escape_string($connekt, htmlspecialchars($_POST['primaryArtistNameMB']));
-    $artistArtSpot = mysqli_real_escape_string($connekt, htmlspecialchars($_POST['artistArtSpot']));
-	$artistMBID = mysqli_real_escape_string($connekt, htmlspecialchars($_POST['artistMBID']));
-	$assocArtistSpotID = mysqli_real_escape_string($connekt, htmlspecialchars($_POST['assocArtistSpotID']));
-	$artistArtMBFilename = mysqli_real_escape_string($connekt, htmlspecialchars($_POST['artistArtMB']));
 	
-	// save data to database
-    $updateArtistSpot = "UPDATE artistsSpot SET artistNameSpot='$artistNameSpot', artistMBID='$artistMBID' WHERE artistSpotID='$artistSpotID'";
+    // THESE VARIABLES TAKE INFO FROM THE FORM FIELDS AND PUT IN DB TABLES
+    $primaryArtistArtSpot = mysqli_real_escape_string($connekt, htmlspecialchars($_POST['primaryArtistArtSpot']));
+    $primaryArtistArtMBFilename = mysqli_real_escape_string($connekt, htmlspecialchars($_POST['primaryArtistArtMBFilename']));
+    $primaryArtistNameSpot = mysqli_real_escape_string($connekt, htmlspecialchars($_POST['primaryArtistNameSpot']));
+    $primaryArtistNameMB = mysqli_real_escape_string($connekt, htmlspecialchars($_POST['primaryArtistNameMB']));
+    $assocArtistNameMB = mysqli_real_escape_string($connekt, htmlspecialchars($_POST['assocArtistName']));
+	$primaryArtistSpotID = $_POST['primaryArtistSpotID'];
+    $primaryArtistMBID = mysqli_real_escape_string($connekt, htmlspecialchars($_POST['primaryArtistMBID']));
+	$assocArtistSpotID = mysqli_real_escape_string($connekt, htmlspecialchars($_POST['assocArtistSpotID']));
+    $assocArtistMBID = mysqli_real_escape_string($connekt, htmlspecialchars($_POST['assocArtistMBID']));
+	
+	// UPDATE ARTISTS of SPOTIFY
+    $updateArtistSpot = "UPDATE artistsSpot SET artistNameSpot='$primaryArtistNameSpot', artistMBID='$primaryArtistMBID' WHERE artistSpotID='$primaryArtistSpotID'";
     
     $retval = $connekt->query($updateArtistSpot);
     
@@ -41,7 +44,8 @@ if (isset($_POST['submit'])){
 		header("Location: https://www.roxorsoxor.com/poprock/artist_ChartsSpot.php?artistSpotID=" . $artistSpotID . "&artistMBID=" . $artistMBID);
     }
     
-    $updateArtistMB = "UPDATE artistsMB SET artistNameMB='$artistNameMB', artistMBID='$artistMBID', artistArtMB='$artistArtMBFilename' WHERE artistMBID='$artistMBID'";
+    // UPDATE ARTISTS of MusicBrainz
+    $updateArtistMB = "UPDATE artistsMB SET artistNameMB='$primaryArtistNameMB', artistMBID='$primaryArtistMBID', artistArtMB='$primaryArtistArtMBFilename' WHERE artistMBID='$primaryArtistMBID'";
 
 	$retval2 = $connekt->query($updateArtistMB);
     
@@ -56,25 +60,29 @@ if (isset($_POST['submit'])){
 		header("Location: https://www.roxorsoxor.com/poprock/artist_ChartsSpot.php?artistSpotID=" . $artistSpotID . "&artistMBID=" . $artistMBID);
     }
     
-    $updateArtistAssocArtists = "INSERT INTO artistAssocArtists SET assocArtistName='$artistNameSpot', assocArtistSpotID='$assocArtistSpotID', assocArtistMBID='$artistMBID', primaryArtistName='$artistNameSpot', primaryArtistSpotID='$artistSpotID', primaryArtistMBID='$artistMBID'";
+    // INSERT ASSOCIATED ARTIST into artistAssocArtists TABLE
+    if ($assocArtistSpotID != "" && $assocArtistMBID != ""){
+         $insertArtistAssocArtists = "INSERT INTO artistAssocArtists SET assocArtistSpotID='$assocArtistSpotID', assocArtistMBID='$assocArtistMBID', primaryArtistSpotID='$primaryArtistSpotID', assocArtistName='$assocArtistName', primaryArtistMBID='$primaryArtistMBID'";
 
-	$retval3 = $connekt->query($updateArtistAssocArtists);	
+        $retval3 = $connekt->query($insertArtistAssocArtists);	
 
-    	// Feedback of whether UPDATE worked or not
-	if(!$retval3){
-		// if update did NOT work
-		die('Crap. Could not update this artist because: ' . mysqli_error($connekt));
-	}
-	else
-	{
-		// if update worked, go back to artist page
-		header("Location: https://www.roxorsoxor.com/poprock/artist_ChartsSpot.php?artistSpotID=" . $artistSpotID . "&artistMBID=" . $artistMBID);
-    }
+            // Feedback of whether UPDATE worked or not
+        if(!$retval3){
+            // if update did NOT work
+            die('Crap. Could not update this artist because: ' . mysqli_error($connekt));
+        } else {
+            // if update worked, go back to artist page
+            header("Location: https://www.roxorsoxor.com/poprock/artist_ChartsSpot.php?artistSpotID=" . $artistSpotID . "&artistMBID=" . $artistMBID);
+        };    
+    };
+
     
 }
 else // if the form isn't being submitted, get the data from the db and display the form
 {
-	// confirm id is valid and is numeric/larger than 0)
+	// THESE VARIABLES POPULATE THE FORM FIELDS WITH EXISTING INFO
+    
+    // confirm id is valid and is numeric/larger than 0)
 	if (isset($_GET['artistSpotID'])){
 		// query db
 		$artistSpotID = $_GET['artistSpotID'];
@@ -87,28 +95,24 @@ else // if the form isn't being submitted, get the data from the db and display 
 				LEFT JOIN artistAssocArtists a ON a.primaryArtistSpotID = z.artistSpotID
 				WHERE z.artistSpotID='" . $artistSpotID . "';";
 		
-		$resultZ = mysqli_query($connekt, $queryZ) 
-			or die(mysqli_error($connekt));
+		$resultZ = mysqli_query($connekt, $queryZ) or die(mysqli_error($connekt));
 		
 		$row = mysqli_fetch_array($resultZ);
 		
 		// check that the 'artistMBID' matches up with a row in the database
 		if($row){
-			$artistNameSpot = $row['artistNameSpot'];
-            $artistMBID = $row['artistMBID'];
-            $artistArtMBFilename = $row['artistArtMB'];
-            $prettyFace = $artistArtMBFilePath . $artistArtMBFilename;
-			$artistNameMB = $row['artistNameMB'];
-            $artistArtSpot = $row['artistArtSpot'];
-			$artistSpotID = $row['artistSpotID'];
-            $assocArtistSpotID = $row['assocArtistSpotID'];
-            $assocArtistNameMB = $row['assocArtistNameMB'];
-			if($row["artistArtMB"] == "") {
-				$artistArtMBFilename = "nope.png";
-			}
-			else {
-				$artistArtMBFilename = $row["artistArtMB"];
-			}				
+            $primaryArtistArtSpot = $row['artistArtSpot'];
+			$primaryArtistArtMBFilename = $row['artistArtMB'];
+            $primaryArtistNameMB = $row['artistNameMB'];
+            $primaryArtistNameSpot = $row['artistNameSpot'];
+            $primaryArtistMBID = $row['artistMBID'];
+			$primaryArtistSpotID = $row['artistSpotID'];
+
+			if($primaryArtistArtMBFilename == "" || $primaryArtistArtMBFilename == null) {
+                $prettyFace = $artistArtMBFilePath . "nope.png";
+            } else {
+                $prettyFace = $artistArtMBFilePath . $primaryArtistArtMBFilename;
+            };				
 		}
 		else // if no match, display error
 		{
@@ -127,7 +131,7 @@ else // if the form isn't being submitted, get the data from the db and display 
 <head>
 <meta name="viewport" content="user-scalable=no, width=device-width" />
 <meta charset="UTF-8">
-<title>Edit <?php echo $artistNameSpot; ?></title>
+<title>Edit <?php echo $primaryArtistNameSpot; ?></title>
 <?php echo $stylesAndSuch; ?>
 </head>
 <body>
@@ -138,89 +142,104 @@ else // if the form isn't being submitted, get the data from the db and display 
 	
 	<!-- main -->
 	<div class="panel panel-primary">
-		<div class="panel-heading"><h3 class="panel-title">Edit <?php echo $artistNameSpot; ?></h3></div>
+		<div class="panel-heading"><h3 class="panel-title">Edit <?php echo $primaryArtistNameSpot; ?></h3></div>
 			<div class="panel-body">
 				<!-- Panel Content -->
 	
-	<!-- This form displays user profile info from the database -->
+	<!-- // SOME OF THESE FORM FIELDS RECEIVE VARIABLES FROM DB ... ALL OF THESE SEND INFO TO DB -->
 	
 	<form class="form-horizontal" action="" method="post">
 		
 		<fieldset>
 		
-		<div class="form-group"> <!-- Row ArtSpot --> 
+        <!-- Artist Art from Spotify -->
+		<div class="form-group">  
 			<div class="col-lg-2 rightNum">
-				<img src='<?php echo $artistArtSpot ?>' class="indexArtistArt">
+				<img src='<?php echo $primaryArtistArtSpot ?>' class="indexArtistArt" id="primaryArtistArtSpot">
 			</div>
 			<div class="col-lg-4 align-top">
-				<label class="control-label" for="artistArtSpot">Artist Art Spotify</label>
-				<input class="form-control" type="text" name="artistArtSpot" value="<?php echo $artistArtSpot; ?>" readonly/>
+				<label class="control-label" for="primaryArtistArtSpot">Artist Art Spotify</label>
+				<input class="form-control" type="text" name="primaryArtistArtSpot" value="<?php echo $primaryArtistArtSpot; ?>" readonly/>
 			</div>
-		</div> <!-- /Row ArtSpot -->  
+		</div> 
+        <!-- /Artist Art from Spotify -->  
 
 		<div class="form-group"> <!-- Row ArtMB --> 	
 			<div class="col-lg-2 rightNum">
-				<img src='<?php echo $prettyFace ?>' class="indexArtistArt">
+				<img src='<?php echo $prettyFace ?>' class="indexArtistArt" id="primaryArtistArtMB">
 			</div>		
 			<div class="col-lg-4 align-top">
-				<label class="control-label" for="artistArtMBFilename">Artist Art MB</label>
-				<input class="form-control" type="text" name="artistArtMBFilename" value="<?php echo $artistArtMBFilename; ?>" />
+				<label class="control-label" for="primaryArtistArtMBFilename">Artist Art MB</label>
+				<input class="form-control" type="text" name="primaryArtistArtMBFilename" value="<?php echo $primaryArtistArtMBFilename; ?>" />
 			</div>
 		</div> <!-- /Row ArtMB -->				   
 
 		<div class="form-group"> <!-- Primary Artist Spotify Name --> 			
 			<label class="col-lg-2 control-label" for="primaryArtistNameSpot">Primary Artist Name Spotify</label>			
 			<div class="col-lg-4">
-				<input class="form-control" type="text" name="primaryArtistNameSpot" value="<?php echo $artistNameSpot; ?>" />
+				<input class="form-control" type="text" name="primaryArtistNameSpot" value="<?php echo $primaryArtistNameSpot; ?>" />
 			</div>
 		</div> <!-- /Primary Artist Spotify Name -->
+            
+		<div class="form-group"> <!-- Primary Artist MB Name --> 			
+			<label class="col-lg-2 control-label" for="primaryArtistNameMB">Primary Artist Name MB</label>			
+			<div class="col-lg-4">
+				<input class="form-control" type="text" name="primaryArtistNameMB" value="<?php echo $primaryArtistNameMB; ?>" />
+			</div>
+		</div> <!-- /Primary Artist MB Name -->	
+            
 			
 		<div class="form-group"> <!-- Primary Artist Spotify ID --> 
 			<!-- Column 1 -->
-			<label class="col-lg-2 control-label" for="artistSpotID">Artist Spotify ID</label>
+			<label class="col-lg-2 control-label" for="primaryArtistSpotID">Primary Artist Spotify ID</label>
 			<!-- Column 2 -->
 			<div class="col-lg-4">
-				<input class="form-control" type="artistSpotID" name="artistSpotID"  value="<?php echo $artistSpotID; ?>" readonly/>
+				<input class="form-control" type="primaryArtistSpotID" name="primaryArtistSpotID"  value="<?php echo $primaryArtistSpotID; ?>" readonly/>
 			</div>
 		</div> <!-- /Primary Artist Spotify ID --> 	
 
 		<div class="form-group"> <!-- Primary Artist MBID --> 
 			<!-- Column 1 -->
-			<label class="col-lg-2 control-label" for="artistMBID">Artist MBID</label>
+			<label class="col-lg-2 control-label" for="primaryArtistMBID">Primary Artist MBID</label>
 			<!-- Column 2 -->
 			<div class="col-lg-4">
-				<input class="form-control" type="text" name="artistMBID" value="<?php echo $artistMBID; ?>" />
+				<input class="form-control" type="text" name="primaryArtistMBID" value="<?php echo $primaryArtistMBID; ?>" />
 			</div>
 		</div> <!-- /Primary Artist MBID -->	
 
-		<div class="form-group"> <!-- Primary Artist MB Name --> 			
-			<label class="col-lg-2 control-label" for="primaryArtistNameMB">Primary Artist Name MB</label>			
+						
+		<div class="form-group"> <!-- Assoc Artist Name --> 			
+			<label class="col-lg-2 control-label" for="assocArtistName">Assoc Artist Name</label>			
 			<div class="col-lg-4">
-				<input class="form-control" type="text" name="primaryArtistNameMB" value="<?php echo $artistNameMB; ?>" />
+				<input class="form-control" type="text" name="assocArtistName"/>
 			</div>
-		</div> <!-- /Primary Artist MB Name -->							
-			
+		</div> <!-- /Primary Artist MB Name -->	
+            
 		<div class="form-group"> <!-- Add Associated Artist SpotID --> 
 			<!-- Column 1 -->
-			<label class="col-lg-2 control-label" for="assocArtistSpotID">Add Assoc Artist SpotID</label>
+			<label class="col-lg-2 control-label" for="assocArtistSpotID">Assoc Artist Spotify ID</label>
 			<!-- Column 2 -->
 			<div class="col-lg-3">
 				<input class="form-control" type="assocArtistSpotID" name="assocArtistSpotID" />
 			</div> 
 			<!-- Column 3 -->
 			<div class="col-lg-3">
-				<input class="form-control" type="assocArtistNameMB" name="assocArtistNameMB"  value="<?php echo $assocArtistNameMB; ?>">
+				<input class="form-control" type="assocArtistNameSpot" name="assocArtistNameSpot"  value="Name coming soon via AJAX" readonly/>
 			</div>
 			
-		</div> <!-- Add Associated Artist SpotID -->
+		</div> <!-- end of Add Associated Artist SpotID -->
 
 		<div class="form-group"> <!-- Add Associated Artist MBID --> 
 			<!-- Column 1 -->
-			<label class="col-lg-2 control-label" for="assocArtistMBID">Add Assoc Artist MBID</label>
+			<label class="col-lg-2 control-label" for="assocArtistMBID">Assoc Artist MBID</label>
 			<!-- Column 2 -->
 			<div class="col-lg-3">
 				<input class="form-control" type="assocArtistMBID" name="assocArtistMBID" />
 			</div>
+			<!-- Column 3 -->
+			<div class="col-lg-3">
+				<input class="form-control" type="assocArtistNameMB" name="assocArtistNameMB"  value="Name coming soon via AJAX" readonly/>
+			</div>            
 
 		</div> <!-- Add Associated Artist SpotID -->			
 					
@@ -240,7 +259,7 @@ else // if the form isn't being submitted, get the data from the db and display 
 <div class="well">	
 	
 	<?php
-	echo "Artists associated with " . $artistNameSpot;
+	echo "Artists associated with " . $primaryArtistNameSpot;
 	// Start creating an HTML table for Assigned Cases and create header row
 	echo "<table class='table table-striped table-hover '><thead><tr>
 	<th>Spotify Face</th>
@@ -270,22 +289,22 @@ else // if the form isn't being submitted, get the data from the db and display 
 		echo 'Cursed-Crap. Did not run the query.';
 	}
 
-	if (mysqli_num_rows($result0) > 0) {
+	//if (mysqli_num_rows($result0) > 0) {
 		
 		while ($row = mysqli_fetch_array($result0)) {
 			echo "<tr>
-					<td><img src='" . $row['artistArtSpot'] . "' height='64' width='64'></td>
-					<td>" . $row['artistNameSpot'] . "</td>
-					<td><img src='" . $row['artistArtMB'] . "' height='64' width='64'></td>
-					<td>" . $row['artistNameMB'] . "</td>								
+					<td><img src='" . $row['assocArtistArtSpot'] . "' height='64' width='64'></td>
+					<td>" . $row['assocArtistNameSpot'] . "</td>
+					<td><img src='" . $row['assocArtistArtMB'] . "' height='64' width='64'></td>
+					<td>" . $row['assocArtistNameMB'] . "</td>								
 				</tr>";
 		}
 		//echo json_encode($rows);
-/**/		
+/*		
 	} else {
 		echo "Nope. Nothing to see here. Screwed up like this: " . mysqli_error($result0) . "</p>";
 	}
-
+*/
     echo "</tbody></table>";
 	// When attempt is complete, connection closes
     mysqli_close($connekt);
@@ -295,8 +314,8 @@ else // if the form isn't being submitted, get the data from the db and display 
 
 	</div> <!-- /container-fluid --> 
 <script>
-	const artistSpotID = '<?php echo $artistSpotID; ?>';
-	const artistMBID = '<?php echo $artistMBID ?>';
+	const artistSpotID = '<?php echo $primaryArtistSpotID; ?>';
+	const artistMBID = '<?php echo $primaryArtistMBID ?>';
 </script>
 <script src="https://www.roxorsoxor.com/poprock/page_pieces/navbar.js"></script>
 </body>
