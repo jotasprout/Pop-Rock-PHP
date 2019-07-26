@@ -35,7 +35,7 @@ if(!$getit){ echo 'Cursed-Crap. Did not run the query.'; }
 
 <head>
 	<meta charset="UTF-8">
-	<title>All LastFM-Only Artists</title>
+	<title>All LastFM Artists</title>
 	<?php echo $stylesAndSuch; ?>
 </head>
 
@@ -50,7 +50,7 @@ if(!$getit){ echo 'Cursed-Crap. Did not run the query.'; }
 	<div class="panel panel-primary">
 
 		<div class="panel-heading">
-			<h3 class="panel-title">Data for LastFM-Only Artists</h3>
+			<h3 class="panel-title">Data for LastFM Artists</h3>
 		</div>
 
 		<div class="panel-body">

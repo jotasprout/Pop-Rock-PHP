@@ -11,6 +11,9 @@ Creating dashboards and data visualizations using data gathered from multiple AP
 - Gather MBIDs for artists, releases (oversimplification is "releases" are what they call albums), recordings ("tracks")
 - **Future** Gather "Relationships" (band members, personnel) from tracks
 
+### FanArt.tv
+- Artist, logos and album art
+
 ### Last.fm
 - Listeners for artists, albums, tracks
 - Playcount for artists, albums, tracks

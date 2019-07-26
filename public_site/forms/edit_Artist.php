@@ -22,7 +22,7 @@ if (isset($_POST['submit'])){
     $primaryArtistArtMBFilename = mysqli_real_escape_string($connekt, htmlspecialchars($_POST['primaryArtistArtMBFilename']));
     $primaryArtistNameSpot = mysqli_real_escape_string($connekt, htmlspecialchars($_POST['primaryArtistNameSpot']));
     $primaryArtistNameMB = mysqli_real_escape_string($connekt, htmlspecialchars($_POST['primaryArtistNameMB']));
-    $assocArtistNameMB = mysqli_real_escape_string($connekt, htmlspecialchars($_POST['assocArtistName']));
+    $assocArtistName = mysqli_real_escape_string($connekt, htmlspecialchars($_POST['assocArtistName']));
 	$primaryArtistSpotID = $_POST['primaryArtistSpotID'];
     $primaryArtistMBID = mysqli_real_escape_string($connekt, htmlspecialchars($_POST['primaryArtistMBID']));
 	$assocArtistSpotID = mysqli_real_escape_string($connekt, htmlspecialchars($_POST['assocArtistSpotID']));
@@ -61,8 +61,8 @@ if (isset($_POST['submit'])){
     }
     
     // INSERT ASSOCIATED ARTIST into artistAssocArtists TABLE
-    if ($assocArtistSpotID != "" && $assocArtistMBID != ""){
-         $insertArtistAssocArtists = "INSERT INTO artistAssocArtists SET assocArtistSpotID='$assocArtistSpotID', assocArtistMBID='$assocArtistMBID', primaryArtistSpotID='$primaryArtistSpotID', assocArtistName='$assocArtistName', primaryArtistMBID='$primaryArtistMBID'";
+    //if ($assocArtistSpotID != "" && $assocArtistMBID != ""){
+         $insertArtistAssocArtists = "INSERT INTO artistAssocArtists SET assocArtistSpotID='$assocArtistSpotID', assocArtistMBID='$assocArtistMBID', primaryArtistSpotID='$primaryArtistSpotID', assocArtistName='$assocArtistName', primaryArtistName='$primaryArtistName', primaryArtistMBID='$primaryArtistMBID'";
 
         $retval3 = $connekt->query($insertArtistAssocArtists);	
 
@@ -74,7 +74,7 @@ if (isset($_POST['submit'])){
             // if update worked, go back to artist page
             header("Location: https://www.roxorsoxor.com/poprock/artist_ChartsSpot.php?artistSpotID=" . $artistSpotID . "&artistMBID=" . $artistMBID);
         };    
-    };
+    //};
 
     
 }
@@ -85,8 +85,8 @@ else // if the form isn't being submitted, get the data from the db and display 
     // confirm id is valid and is numeric/larger than 0)
 	if (isset($_GET['artistSpotID'])){
 		// query db
-		$artistSpotID = $_GET['artistSpotID'];
-		$artistMBID = $_GET['artistMBID'];
+		//$artistSpotID = $_GET['artistSpotID'];
+		//$artistMBID = $_GET['artistMBID'];
 
 		$queryZ = "
 			SELECT z.artistNameSpot, z.artistMBID, z.artistSpotID, z.artistArtSpot, mb.artistArtMB, a.assocArtistSpotID, mb.artistNameMB
