@@ -50,7 +50,7 @@
 <div id="fluidCon">
 </div> <!-- end of fluidCon -->
 
-<p><a href="forms/edit_Artist.php?artistSpotID=<?php echo $artistSpotID ?>&artistMBID=<?php echo $artistMBID ?>">Edit this Artist</a></p>	
+<p><a href="forms/edit_Artist.php?artistSpotID=<?php echo $artistSpotID ?>&artistMBID=<?php echo $artistMBID ?>">Edit this Artist</a> | <a href="forms/add_assocArtist.php?artistSpotID=<?php echo $artistSpotID ?>&artistMBID=<?php echo $artistMBID ?>">Add Associated Artist</a></p>	
 
 <div class="row"> <!-- Start of Row 1 -->
 	<div class="col-md-6"> <!-- Start of Row #1 Column 1 -->
@@ -183,7 +183,6 @@ d3.json("functions/get_assocArtists.php?artistSpotID=<?php echo $artistSpotID ?>
 			  .attr("x", function (d,i) {
 				return i * 65;
 			  })
-			  //.attr("width", 64)
               .attr("height", 128)
               .attr("class", "assocArtistArt")
 			  .attr("title", (d) => d.assocArtistName);
