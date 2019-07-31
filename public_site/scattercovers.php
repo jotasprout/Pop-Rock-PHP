@@ -1,6 +1,6 @@
 <?php 
-    $artistSpotID = $_GET['artistSpotID'];
-    $artistMBID = $_GET['artistMBID'];
+    //$artistSpotID = $_GET['artistSpotID'];
+    //$artistMBID = $_GET['artistMBID'];
 	require_once 'page_pieces/stylesAndScripts.php';
 ?>
 
@@ -25,6 +25,23 @@
 			fill: white;
 		}
 	
+        .tooltip {
+            position: absolute;
+            text-align: left;
+            color: black;
+            width: 220px;
+            height: 42px;
+            padding: 8px;
+            font: 12px sans-serif;
+            background: lightsteelblue;
+            border: 0px;
+            border-radius: 8px;
+        }
+
+        #logo {
+            position: absolute;
+        }
+
 	</style>
 </head>
 
@@ -36,10 +53,11 @@
 
     <div class="panel panel-primary">
 		<div class="panel-heading">
-			<h3 id="name" class="panel-title">ScatterPop</h3>
+			<h3 id="name" class="panel-title">Album Playcounts from Last.fm</h3>
 		</div>
 		<div class="panel-body">
-			<div id="popchart"></div>
+            <div id="popchart">
+            </div>
 		</div> <!-- panel body -->
 	</div> <!-- close Panel Primary -->
 
@@ -68,14 +86,14 @@ const rowConverter = function(d){
 };
 	
 const artistName = "Black Sabbath";
+
+const formatNums = d3.format(",.2r");                  
 	
 d3.json("data_text/BlackSabbathalbumsLastFM.json", function(dataset) {
 	console.log(dataset);
 
 	const artistTitle = d3.select("#name")
-		.text(artistName + "'s albums' LastFM playcount as of June 19, 2019");
-
-
+		                  .text(artistName + "'s albums' LastFM playcount as of June 19, 2019");
 	
 	const xScale = d3.scaleLinear()
 					 .domain([1970, 2015])
@@ -90,46 +108,10 @@ d3.json("data_text/BlackSabbathalbumsLastFM.json", function(dataset) {
 		.attr("width", w)
 		.attr("height", h);
 
-	
-	
-	/*
-	
-	svg.selectAll("rect")
-		.data(dataset)
-		.enter()
-		.append("rect")
-		.attr("x", function (d,i) {
-			return i * 65;
-		})
-		.attr("y", function(d) {
-			return h - 64 - (d[4] * 2)
-		})
-		.attr("width", 64)
-		.attr("height", function(d) {
-			return (d[4] * 2);
-		});
-		
-	svg.selectAll("circle")
-		.data(dataset)
-		.enter()
-		.append("circle")
-		.attr("cx", function (d) {
-			released = parseInt(d.year);
-			return xScale(released);
-		})
-		.attr("cy", function(d) {
-			playcount = parseInt(d.plays);
-			return yScale(playcount);			
-		})
-		.attr("r", 5)
-		.style("fill", "white")
-		.append("title")
-		.text(function(d){
-			return d.title;
-		});		
-		
-	*/
-	
+    const tooltip = d3.select("#popchart")
+                      .append("div")
+                      .attr("class", "tooltip")
+                      .style("opacity", 0);
 
 	// Images
 	svg.selectAll("image")
@@ -150,13 +132,29 @@ d3.json("data_text/BlackSabbathalbumsLastFM.json", function(dataset) {
 		.attr("width", 64)
 		.attr("height", 64)
 	    .attr("transform", "translate(-32, -32)")
-		.append("title")
-		.text(function(d){
-			return d.title;
-		});
+        .on("mouseover", function(d){
 
+            let xPosition = parseInt(d3.select(this).attr("x")) + 72;
+            let yPosition = parseInt(d3.select(this).attr("y")) + 32 + 64 + 32; // compensate for translate + image height + half image height
 
-	
+            let albumPlays = formatNums(d.plays);
+
+            tooltip.transition()
+                   .duration(200)
+                   .style("opacity", .9);
+            tooltip.html(
+                        //"<a href='" + d.URL + "' target='_blank'>" + d.Name + "</a>" +
+                        d.title + " (" + d.year + ")" +
+                        "<br>" + albumPlays)
+                  .style("left", xPosition + "px")
+                  .style("top", yPosition + "px");
+        })
+        .on("mouseout", function(d) {
+            tooltip.transition()
+                   .duration(200)
+                   .style("opacity", 0);
+        });
+
 	const formatYear = d3.format("d");
 	
 	const xAxis = d3.axisBottom()
@@ -167,6 +165,14 @@ d3.json("data_text/BlackSabbathalbumsLastFM.json", function(dataset) {
 		.attr("class", "axis")
 	   .attr("transform", "translate(0," + (h-margin.bottom) + ")")
 	   .call(xAxis);
+
+    const sabbathLogo = "art-logo/sabbath_Logo.png";
+
+    d3.select("svg")
+      .append("svg:image")
+	  .attr("xlink:href", sabbathLogo)
+      .attr("x", w/2 - 290)
+      .attr("y", 0);
 
 });		
 </script>	

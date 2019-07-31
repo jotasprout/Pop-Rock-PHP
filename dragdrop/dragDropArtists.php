@@ -8,7 +8,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Drag-n-Drop 2 blank</title>
+    <title>Drag-n-Drop</title>
     <?php echo $stylesAndSuch; ?>  
     <link rel='stylesheet' href='dragDrop.css'>
 </head>
