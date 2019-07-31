@@ -11,7 +11,7 @@ if ( !$connekt ) {
 
 $source = 'spotify';
 
-$allthatAndLastFM = "SELECT a.artistSpotID AS artistSpotID, a.artistMBID AS artistMBID, a.artistArtSpot AS artistArtSpot, a.artistNameSpot AS artistNameSpot, a.albumsTotal AS albumsTotal, p1.pop AS pop, p1.followers AS followers, f1.dataDate AS dataDate, f1.artistListeners AS artistListeners, f1.artistPlaycount AS artistPlaycount, p1.date AS date
+$allthatAndLastFM = "SELECT a.artistSpotID AS artistSpotID, a.artistMBID AS artistMBID, a.artistArtSpot AS artistArtSpot, a.artistNameSpot AS artistNameSpot, a.albumsTotal AS albumsTotal, p1.pop AS pop, p1.followers AS followers, f1.dataDate AS dataDate, f1.artistListeners AS artistListeners, f1.artistPlaycount AS artistPlaycount, f1.artistRatio AS artistRatio, p1.date AS date
     FROM artistsSpot a
     JOIN (SELECT p.*
 			FROM popArtists p
@@ -23,7 +23,7 @@ $allthatAndLastFM = "SELECT a.artistSpotID AS artistSpotID, a.artistMBID AS arti
 	ON a.artistSpotID = p1.artistSpotID
 	LEFT JOIN (SELECT f.*
 			FROM artistsLastFM f
-			INNER JOIN (SELECT artistMBID, artistListeners, artistPlaycount, max(dataDate) AS MaxDataDate
+			INNER JOIN (SELECT artistMBID, artistListeners, artistPlaycount, artistRatio, max(dataDate) AS MaxDataDate
 						FROM artistsLastFM  
 						GROUP BY artistMBID) groupedf
 			ON f.artistMBID = groupedf.artistMBID
@@ -70,18 +70,20 @@ if(!$getit){ echo 'Cursed-Crap. Did not run the query.'; }
 <tr>
 	<th><div>Pretty Face</div></th>	
 	<th onClick="sortColumn('artistNameSpot', 'ASC')"><div class="pointyHead">Artist Name</div></th>
-	<!-- -->
+	<!-- 
 	<th><div class="popStyle">Spotify ID</div></th>
 	<th><div class="popStyle">Spotify MBID</div></th>
 	<th><div class="popStyle">Spotify<br>Data Date</div></th>
+    <th onClick="sortColumn('datadate', 'unsorted')"><div class="pointyHead popStyle">LastFM<br>Data Date</div></th>
+    -->
 	<th onClick="sortColumn('pop', 'unsorted')"><div class="pointyHead popStyle">Spotify<br>Popularity</div></th>
 	<th onClick="sortColumn('followers', 'unsorted')"><div class="pointyHead rightNum">Spotify<br>Followers</div></th>
-	<th onClick="sortColumn('datadate', 'unsorted')"><div class="pointyHead popStyle">LastFM<br>Data Date</div></th>
 	<th onClick="sortColumn('artistListeners', 'unsorted')"><div class="pointyHead rightNum">LastFM<br>Listeners</div></th>
 	<th onClick="sortColumn('artistPlaycount', 'unsorted')"><div class="pointyHead rightNum">LastFM<br>Playcount</div></th>
-	<th><div class="popStyle">LastFM<br>Ratio</div></th>
+	<th onClick="sortColumn('artistRatio', 'unsorted')"><div class="pointyHead popStyle">LastFM<br>Ratio</div></th>
 	<!-- 
-	<th onClick="sortColumn('ratio', 'unsorted')"><div class="pointyHead popStyle">LastFM<br>Ratio</div></th>
+    <th><div class="popStyle">LastFM<br>Ratio</div></th>
+	
 	USE Duckett table sorting chapter thingy
 	-->
 </tr>
@@ -106,30 +108,35 @@ if(!$getit){ echo 'Cursed-Crap. Did not run the query.'; }
 				};
 				$artistPlaycountNum = $row[ "artistPlaycount"];
 				$artistPlaycount = number_format ($artistPlaycountNum);
+                //$artistRatio = floor($artistPlaycountNum/$artistListenersNum);
+                /**/
 				$artistRatio = 0;
+                $ppl = 0;
+                
 				if (!$artistPlaycount > 0) {
 					$artistPlaycount = "n/a";
 					$artistRatio = "n/a";
 					$lastFMDate = "n/a";
 				} else {
-					$artistRatio = "1:" . floor($artistPlaycountNum/$artistListenersNum);
+                    //$ppl = floor($artistPlaycountNum/$artistListenersNum);
+                    $ppl = $row["artistRatio"];
+					$artistRatio = "1:" . $ppl;
+                    //$artistRatio = floor($artistPlaycountNum/$artistListenersNum);
 				};
+                
 		?>
 <tr>
 	<td><a href='https://www.roxorsoxor.com/poprock/artist_ChartsSpot.php?artistSpotID=<?php echo $artistSpotID ?>&artistMBID=<?php echo $artistMBID ?>'><img src='<?php echo $artistArtSpot ?>' class="indexArtistArt"></a></td>	
 	
 	<td><a href='https://www.roxorsoxor.com/poprock/artist_ChartsSpot.php?artistSpotID=<?php echo $artistSpotID ?>&artistMBID=<?php echo $artistMBID ?>'><?php echo $artistNameSpot ?></a></td>
-	
-	<td class="popStyle"><?php echo $artistSpotID ?></td>
-	<td class="popStyle"><?php echo $artistMBID ?></td>
-	<!---->
-	
-	<td class="popStyle"><?php echo $popDate ?></td>
-	
-		<td class="popStyle"><?php echo $artistPop ?></td>
+	<!--
+	<td class="popStyle"><?php //echo $artistSpotID ?></td>
+	<td class="popStyle"><?php //echo $artistMBID ?></td>
+	<td class="popStyle"><?php //echo $popDate ?></td>
+	<td class="popStyle"><?php //echo $lastFMDate ?></td>
+    -->
+	<td class="popStyle"><?php echo $artistPop ?></td>
 	<td id="followers" class="rightNum"><?php echo $artistFollowers ?></td>
-
-	<td class="popStyle"><?php echo $lastFMDate ?></td>	
 	<td class="rightNum"><?php echo $artistListeners ?></td>
 	<td class="rightNum"><?php echo $artistPlaycount ?></td>
 	<td class="popStyle"><?php echo $artistRatio ?></td>
