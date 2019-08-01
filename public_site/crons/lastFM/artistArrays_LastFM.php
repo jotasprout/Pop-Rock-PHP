@@ -258,6 +258,7 @@ function insertLastFMtrackDataFilenames ($filenames) {
 						$trackPlaycount = $track['stats']['playcount'];
 						$trackNumber = $track['trackNumber'];
 
+                        /**/
 						$insertMBIDtrackInfo = "INSERT INTO tracksMB (
 							albumMBID,
 							trackMBID,
@@ -277,7 +278,8 @@ function insertLastFMtrackDataFilenames ($filenames) {
 							echo '<p>Could not add <b>' . $trackNameMB . '</b> into tracksMB.</p>';
 						} else {
 							echo '<p>Added <b>' . $trackNameMB . '</b> from <i>' . $releaseName . '</i> into tracksMB.</p>';
-						};
+                        };
+                        */
 
 						$insertLastFMtrackStats = "INSERT INTO tracksLastFM (
 							trackMBID, 
@@ -299,7 +301,7 @@ function insertLastFMtrackDataFilenames ($filenames) {
 						} else {
 							echo '<p>' . $trackNameMB . ' from ' . $releaseName . ' had ' . $trackListeners . ' listeners and ' . $trackPlaycount . ' plays on ' . $dataDate . '.</p>';
 						}; // end of IF query is not successful ELSE it is    
-						
+						/**/
 						$updateTracksMBwithTrackNumber = "UPDATE tracksMB SET
 							trackNumber = '$trackNumber' WHERE trackMBID = '$trackMBID'";
 
@@ -309,7 +311,8 @@ function insertLastFMtrackDataFilenames ($filenames) {
 							echo '<p>Could not update <b>' . $trackNameMB . '</b> with track number.</p>';
 						} else {
 							echo '<p>Updated <b>' . $trackNameMB . '</b> from <i>' . $releaseName . '</i> with track #' . $trackNumber . '</p>';
-						};
+                        };
+                        */
 
 
 

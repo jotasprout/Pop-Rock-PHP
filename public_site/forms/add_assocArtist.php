@@ -195,11 +195,11 @@ else // if the form isn't being submitted, get the data from the db and display 
 		echo 'Darn. Did not connect. Screwed up like this: ' . mysqli_error($connekt) . '</p>';
 	}
 
-	$getAssocArtists = "SELECT a.assocArtistName, a.assocArtistSpotID, a.assocArtistMBID, s.artistArtSpot, m.artistArtMB
-						FROM artistAssocArtists a
-						LEFT JOIN artistsSpot s ON a.assocArtistSpotID = s.artistSpotID
-						LEFT JOIN artistsMB m ON a.assocArtistMBID = m.artistMBID
-						WHERE a.primaryArtistSpotID = '$artistSpotID';";
+    $getAssocArtists = "SELECT r.assocArtistName, r.assocArtistSpotID, r.assocArtistMBID, a.artistArtSpot, m.artistArtMB
+                        FROM artistAssocArtists r
+                        LEFT JOIN artistsSpot a ON r.assocArtistSpotID = a.artistSpotID
+                        LEFT JOIN artistsMB m ON m.artistMBID = r.assocArtistMBID
+                        WHERE r.primaryArtistSpotID = '$artistSpotID';";
 
 	$result0 = $connekt->query($getAssocArtists);
 	
@@ -216,10 +216,18 @@ else // if the form isn't being submitted, get the data from the db and display 
         $assocArtistSpotID = $row['assocArtistSpotID'];
         $assocArtistArtMB = $row['artistArtMB'];
         $assocArtistArtSpot = $row['artistArtSpot'];
+        $prettyFace = '';
+
+        if ($assocArtistArtMB == "" || $assocArtistArtMB == null) {
+            $prettyFace = $artistArtMBFilePath . 'nope.png';
+        } else {
+            $artistArtMBFilename = $assocArtistArtMB;
+            $prettyFace = $artistArtMBFilePath . $artistArtMBFilename;
+        }
 	?>		
     
         <tr>
-            <td><img src='<?php echo $assocArtistArtMB ?>' height='64'</td>
+            <td><img src='<?php echo $prettyFace ?>' height='64'</td>
             <td><img src='<?php echo $assocArtistArtSpot ?>' height='64'</td>
             <td><?php echo $assocArtistName ?></td>
             <td><?php echo $assocArtistSpotID ?></td>

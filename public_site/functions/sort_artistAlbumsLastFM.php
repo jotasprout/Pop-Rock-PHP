@@ -19,7 +19,7 @@ $postedCurrentOrder = $_POST[ "currentOrder" ];
 // if any of these did not come through, the defaults are the basic starting sort from the sql query
 $artistMBID = $_POST[ "artistMBID" ];
 //
-$columnName = "year";
+$columnName = "albumNameMB";
 //
 $currentOrder = "ASC";
 //
@@ -74,31 +74,6 @@ if ( $columnName == "albumNameMB" ) {
 		$columnName = "b.albumNameMB";
 		$albumNameNewOrder = "DESC";
 		$newOrder = "DESC";
-	};
-};
-
-if ( $columnName == "year" and $currentOrder == "ASC" ) {
-	$columnName = "a.year";
-	$yearNewOrder = "DESC";
-}
-
-/*
-if ( $columnName == "pop" and $currentOrder == "ASC" ) {
-	$popNewOrder = "DESC";
-}
-*/
-
-$popNewOrder = "unsorted";
-
-if ( $columnName == "pop" ) {
-	if ($currentOrder == "unsorted" or $currentOrder == "ASC") {
-		$columnName = "p1.pop";
-		$popNewOrder = "DESC";
-		$newOrder = "DESC";
-	} else {
-		$columnName = "p1.pop";
-		$popNewOrder = "ASC";
-		$newOrder = "ASC";
 	};
 };
 
@@ -159,13 +134,16 @@ if(!empty($sortit))	 { ?>
 <thead>
 <tr>
 <th>Cover Art</th>
+<!--
 <th>albumMBID</th>
+<th>LastFM<br>Data Date</th>
+-->
 <th onClick="sortColumn('albumNameMB', '<?php echo $albumNameNewOrder; ?>', '<?php echo $artistMBID; ?>', '<?php echo $source ?>')"><div class="pointyHead">Album Name</div></th>
 
 <th onClick="sortColumn('albumListeners', '<?php echo $listenersNewOrder; ?>', '<?php echo $artistMBID; ?>', '<?php echo $source ?>')"><div class="pointyHead rightNum">LastFM<br>Listeners</div></th>
 <th onClick="sortColumn('albumPlaycount', '<?php echo $playcountNewOrder; ?>', '<?php echo $artistMBID; ?>', '<?php echo $source ?>')"><div class="pointyHead rightNum">LastFM<br>Playcount</div></th>
 <th><div class="popStyle">LastFM<br>Ratio</div></th>
-<th>LastFM<br>Data Date</th>
+
 </tr>
 </thead>
 	
@@ -189,11 +167,13 @@ if(!empty($sortit))	 { ?>
 	<tr>
 	<td><img src='<?php echo $coverArt ?>' height='64' width='64'></td>
 	<td><a href='https://www.roxorsoxor.com/poprock/album_TracksList.php?albumMBID=<?php echo $albumMBID ?>&artistSpotID=<?php echo $artistSpotID ?>&artistMBID=<?php echo $artistMBID ?>&source=<?php echo $source ?>'><?php echo $albumNameMB ?></a></td>
-	<td><?php echo $albumMBID ?></td>
-	<td class="popStyle"><?php echo $lastFMDate ?></td>
-		<td class="rightNum"><?php echo $albumListeners ?></td>
-		<td class="rightNum"><?php echo $albumPlaycount ?></td>
-		<td class="popStyle"><?php echo $albumRatio ?></td>
+    <!--
+	<td><?php //echo $albumMBID ?></td>
+	<td class="popStyle"><?php //echo $lastFMDate ?></td>
+    -->
+    <td class="rightNum"><?php echo $albumListeners ?></td>
+    <td class="rightNum"><?php echo $albumPlaycount ?></td>
+    <td class="popStyle"><?php echo $albumRatio ?></td>
 	</tr>
 
 <?php

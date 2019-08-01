@@ -1,12 +1,6 @@
 <?php
+require 'rockdb.php';
 
-	require 'rockdb.php';
-
-/*
-require __DIR__ . '../../rockdb.php';
-$filename = '';
-function makeFilenameForDailyJSON () {
-*/
 $baseURL = '/home/roxorsox/public_html/poprock/crons/lastFM/data/justDaily_';
 $today = date("m-d-y");
 $endURL = '.json';
@@ -14,10 +8,7 @@ $filenameForDisplay = $baseURL . $today . $endURL;
 echo "<p>" . $filenameForDisplay . "</p>"; 
 $filename = $baseURL . $today . $endURL;
 echo $filename;  
-/*    
-};
-makeFilenameForDailyJSON ();
-*/
+
 $jsonFile = $filename;
 $jsonFileForDisplay = $jsonFile;
 echo "<p> I found " . $jsonFileForDisplay . ".</p>";
@@ -41,6 +32,7 @@ if(!$connekt){
         $artistNameMB = $artist['name'];
         $artistListeners = $artist['stats']['listeners'];
         $artistPlaycount = $artist['stats']['playcount'];
+        $artistRatio = $artistPlaycount/$artistListeners;
 
         $tryInsertArtistData = "INSERT INTO artistsMB (artistMBID, artistNameMB) VALUES ('$artistMBID', '$artistNameMB')";
 
@@ -53,7 +45,7 @@ if(!$connekt){
                 echo '<p>Inserted ' . $artistNameMB . ' in table.</p>';
             }; 
 
-        $insertArtistStats = "INSERT INTO artistsLastFM (artistMBID, dataDate, artistListeners, artistPlaycount) VALUES('$artistMBID','$dataDate','$artistListeners', '$artistPlaycount')";
+        $insertArtistStats = "INSERT INTO artistsLastFM (artistMBID, dataDate, artistListeners, artistPlaycount, artistRatio) VALUES('$artistMBID','$dataDate','$artistListeners', '$artistPlaycount', '$artistRatio')";
             
         $rockout = $connekt->query($insertArtistStats);
 

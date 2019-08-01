@@ -90,7 +90,11 @@ const artistName = "Black Sabbath";
 const formatNums = d3.format(",.2r");                  
 	
 d3.json("data_text/BlackSabbathalbumsLastFM.json", function(dataset) {
+
 	console.log(dataset);
+
+    let firstYear, lastYear, minPlays, maxPlays; // For xScale, yScale
+    let asof; // for Panel Heading
 
 	const artistTitle = d3.select("#name")
 		                  .text(artistName + "'s albums' LastFM playcount as of June 19, 2019");

@@ -70,10 +70,10 @@ if(!$getit){
 	<th>Cover Art</th>
 	<!---->
 	<th onClick="sortColumn('albumNameMB', 'ASC', '<?php echo $artistMBID; ?>', '<?php echo $source ?>')"><div class="pointyHead">Album Name</div></th>
-	<!---->
+	<!--
 	<th>Album MBID</th>		
-	
 	<th class="popStyle">LastFM<br>Data Date</th>
+    -->
 	<th onClick="sortColumn('albumListeners', 'unsorted', '<?php echo $artistMBID; ?>', '<?php echo $source ?>')"><div class="pointyHead rightNum">LastFM<br>Listeners</div></th>
 	<th onClick="sortColumn('albumPlaycount', 'unsorted', '<?php echo $artistMBID; ?>', '<?php echo $source ?>')"><div class="pointyHead rightNum">LastFM<br>Playcount</div></th>
 	<th><div class="popStyle">LastFM<br>Ratio</div></th>
@@ -108,10 +108,10 @@ if(!$getit){
 <tr>
 <td><img src='<?php echo $coverArt ?>' height='64' width='64'></td>
 <td><a href='https://www.roxorsoxor.com/poprock/album_TracksListLastFM.php?artistSpotID=<?php echo $artistSpotID ?>&artistMBID=<?php echo $artistMBID ?>&albumMBID=<?php echo $albumMBID ?>&source=musicbrainz'><?php echo $albumNameMB ?></a></td>
-<!---->
-<td><?php echo $albumMBID ?></td>
-
-<td class="popStyle"><?php echo $lastFMDate ?></td>
+<!--
+<td><?php //echo $albumMBID ?></td>
+<td class="popStyle"><?php //echo $lastFMDate ?></td>
+-->
 <td class="rightNum"><?php echo $albumListeners ?></td>
 <td class="rightNum"><?php echo $albumPlaycount ?></td>
 <td class="popStyle"><?php echo $albumRatio ?></td>
