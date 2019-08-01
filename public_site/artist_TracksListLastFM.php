@@ -71,6 +71,7 @@ if ( !$getit ) {
 <thead>
 <tr>
 <!---->
+<th class="popStyle" onClick="sortColumn('trackNumber', 'ASC', '<?php echo $albumMBID ?>', 'musicbrainz')"><div class="pointyHead">Track #</div></th>
 <th onClick="sortColumn('albumNameMB', 'DESC', '<?php echo $artistMBID ?>', '<?php echo $source ?>')"><div class="pointyHead">Album Title</div></th>
 
 <th onClick="sortColumn('trackNameMB', 'ASC', '<?php echo $artistMBID ?>', '<?php echo $source ?>')"><div class="pointyHead">Track Title</div></th>
@@ -106,11 +107,10 @@ if ( !$getit ) {
 							}
 					?>
 							<tr>
-								
+                            <td class="popStyle"><?php echo $trackNumber ?></td>
 								<td><?php echo $albumNameMB ?></td>
 								<td><?php echo $trackNameMB ?></td>
                                 <!--
-								<td><?php //echo $trackNumber ?></td>
 								<td class="popStyle"><?php //echo $lastFMDate ?></td>
                                 -->
 								<td class="rightNum"><?php echo $trackListeners ?></td>

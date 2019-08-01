@@ -20,11 +20,11 @@ $thirteen_MBID = '7dbf4b1f-d3e9-47bc-9194-d15b31017bd6';
 */
 $albumArtMBFilePath = "https://www.roxorsoxor.com/poprock/cover-art/";
 
-$getAlbumTracksAndAssocArt = "SELECT d.trackMBID, d.trackNameMB, d.albumNameMB, d.trackListeners, d.trackPlaycount, max(d.dataDate) AS MaxDataDate, d.albumArtMB
+$getAlbumTracksAndAssocArt = "SELECT d.trackMBID, d.trackNameMB, d.trackNumber, d.albumNameMB, d.trackListeners, d.trackPlaycount, max(d.dataDate) AS MaxDataDate, d.albumArtMB
 FROM (
-    SELECT k.trackMBID, k.trackNameMB, h.albumNameMB, h.albumArtMB, fm.dataDate, fm.trackListeners, fm.trackPlaycount
+    SELECT k.trackMBID, k.trackNameMB, k.trackNumber, h.albumNameMB, h.albumArtMB, fm.dataDate, fm.trackListeners, fm.trackPlaycount
         FROM (
-            SELECT m.trackMBID, m.trackNameMB, m.albumMBID
+            SELECT m.trackMBID, m.trackNameMB, m.trackNumber, m.albumMBID
                 FROM tracksMB m
                 WHERE m.albumMBID = '$albumMBID'
         ) k
@@ -33,7 +33,8 @@ FROM (
         JOIN tracksLastFM fm
             ON fm.trackMBID = k.trackMBID
 ) d
-GROUP BY d.trackMBID";
+GROUP BY d.trackMBID
+ORDER BY d.trackNumber ASC";
 
 $getit2 = $connekt->query( $getAlbumTracksAndAssocArt );
 
@@ -117,6 +118,7 @@ if ( !$getit2 ) {
 <table class="table" id="tableotracks">
 <thead>
 <tr>
+<th class="popStyle" onClick="sortColumn('trackNumber', 'ASC', '<?php echo $albumMBID ?>', 'musicbrainz')"><div class="pointyHead">Track #</div></th>
 <th onClick="sortColumn('trackNameMB', 'DESC', '<?php echo $albumMBID ?>', 'musicbrainz')"><div class="pointyHead">Track Title</div></th>
 <th class="popStyle" >LastFM<br>Data Date</th>
 <th class="rightNum pointyHead" onClick="sortColumn('trackListeners', 'DESC', '<?php echo $albumMBID ?>', 'musicbrainz')">LastFM<br>Listeners</th>
@@ -126,27 +128,29 @@ if ( !$getit2 ) {
 </thead>
 	
 	<tbody>
-	<?php
-		while ( $row = mysqli_fetch_array( $getit2 ) ) {
-			$albumNameMB = $row[ "albumNameMB" ];
-			$trackNameMB = $row[ "trackNameMB" ];
-			$trackMBID = $row[ "trackMBID" ];
-			$lastFMDate = $row[ "MaxDataDate" ];
-			$trackListenersNum = $row[ "trackListeners"];
-			$trackPlaycountNum = $row[ "trackPlaycount"];
-			$trackListeners = number_format ($trackListenersNum);
-			$trackPlaycount = number_format ($trackPlaycountNum);
-            $trackRatio = "1:" . floor($trackPlaycount/$trackListeners);
-            $albumArtMBFilename = $row[ "albumArtMB" ];
-            $albumArtMB = $albumArtMBFilePath . $albumArtMBFilename;
-	?>
-		<tr>
-		<td><a href='https://www.roxorsoxor.com/poprock/track_Chart.php?trackMBID=<?php echo $trackMBID ?>'><?php echo $trackNameMB ?></a></td>
-		<td class="popStyle"><?php echo $lastFMDate ?></td>
-		<td class="rightNum"><?php echo $trackListeners ?></td>
-		<td class="rightNum"><?php echo $trackPlaycount ?></td>
-		<td class="popStyle"><?php echo $trackRatio ?></td>
-		</tr>
+<?php
+while ( $row = mysqli_fetch_array( $getit2 ) ) {
+    $albumNameMB = $row[ "albumNameMB" ];
+    $trackNameMB = $row[ "trackNameMB" ];
+    $trackNumber = $row[ "trackNumber" ];
+    $trackMBID = $row[ "trackMBID" ];
+    $lastFMDate = $row[ "MaxDataDate" ];
+    $trackListenersNum = $row[ "trackListeners"];
+    $trackPlaycountNum = $row[ "trackPlaycount"];
+    $trackListeners = number_format ($trackListenersNum);
+    $trackPlaycount = number_format ($trackPlaycountNum);
+    $trackRatio = "1:" . floor($trackPlaycount/$trackListeners);
+    $albumArtMBFilename = $row[ "albumArtMB" ];
+    $albumArtMB = $albumArtMBFilePath . $albumArtMBFilename;
+?>
+<tr>
+<td class="popStyle"><?php echo $trackNumber ?></td>
+<td><a href='https://www.roxorsoxor.com/poprock/track_Chart.php?trackMBID=<?php echo $trackMBID ?>'><?php echo $trackNameMB ?></a></td>
+<td class="popStyle"><?php echo $lastFMDate ?></td>
+<td class="rightNum"><?php echo $trackListeners ?></td>
+<td class="rightNum"><?php echo $trackPlaycount ?></td>
+<td class="popStyle"><?php echo $trackRatio ?></td>
+</tr>
 			<?php 
 				} // end of while
 			?>

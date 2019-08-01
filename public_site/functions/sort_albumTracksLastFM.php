@@ -48,6 +48,12 @@ if ( $currentOrder == "ASC" ) {
 	$newOrder = "DESC";
 }
 
+$trackNumberNewOrder = "DESC";
+
+if ( $columnName == "trackNumber" and $currentOrder == "DESC" ) {
+	$trackNumberNewOrder = "ASC";
+}
+
 $albumNameNewOrder = "DESC";
 
 if ( $columnName == "albumName" and $currentOrder == "DESC" ) {
@@ -66,9 +72,9 @@ if ( $columnName == "pop" and $currentOrder == "ASC" ) {
 	$popNewOrder = "DESC";
 }
 
-$gatherTrackInfoLastFM = "SELECT v.trackName, v.albumNameMB, v.trackListeners, v.trackPlaycount, max(v.dataDate) AS MaxDataDate
+$gatherTrackInfoLastFM = "SELECT v.trackName, v.trackNumber, v.albumNameMB, v.trackListeners, v.trackPlaycount, max(v.dataDate) AS MaxDataDate
 					FROM (
-						SELECT z.trackMBID, z.trackName, z.albumNameMB, p.dataDate, p.trackListeners, p.trackPlaycount
+						SELECT z.trackMBID, z.trackName, z.trackNumber, z.albumNameMB, p.dataDate, p.trackListeners, p.trackPlaycount
 							FROM (
 								SELECT t.*, r.albumNameMB
 									FROM tracksMB t
@@ -92,7 +98,7 @@ if(!empty($sortit)) { ?>
 <table class="table" id="tableotracks">
 <thead>
 <tr>
-
+<th onClick="sortColumn('trackNumber', '<?php echo $trackNumberNewOrder; ?>', '<?php echo $albumMBID ?>', '<?php echo $source ?>')"><div class="pointyHead">Track #</div></th>
 <th onClick="sortColumn('trackName', '<?php echo $trackNameNewOrder; ?>', '<?php echo $albumMBID ?>', '<?php echo $source ?>')"><div class="pointyHead">Track Title</div></th>
 
 <th class="popStyle">LastFM<br>Data Date</th>
@@ -105,6 +111,7 @@ if(!empty($sortit)) { ?>
 	<tbody>
 	<?php
 		while ( $row = mysqli_fetch_array( $sortit ) ) {
+            $trackNumber = $row[ "trackNumber" ];
             $trackName = $row[ "trackName" ];
 			$lastFMDate = $row[ "MaxDataDate" ];
 			$trackListenersNum = $row["trackListeners"];
@@ -113,7 +120,8 @@ if(!empty($sortit)) { ?>
 			$trackPlaycount = number_format ($trackPlaycountNum);
 	?>
 			<tr>
-				<td><?php echo $trackName ?></td>
+				<td><?php echo $trackNumber ?></td>
+                <td><?php echo $trackName ?></td>
 				<td class="popStyle"><?php echo $lastFMDate ?></td>
 				<td class="rightNum"><?php echo $trackListeners ?></td>
 				<td class="rightNum"><?php echo $trackPlaycount ?></td>

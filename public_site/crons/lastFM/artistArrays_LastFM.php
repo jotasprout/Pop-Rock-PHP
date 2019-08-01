@@ -301,7 +301,7 @@ function insertLastFMtrackDataFilenames ($filenames) {
 						} else {
 							echo '<p>' . $trackNameMB . ' from ' . $releaseName . ' had ' . $trackListeners . ' listeners and ' . $trackPlaycount . ' plays on ' . $dataDate . '.</p>';
 						}; // end of IF query is not successful ELSE it is    
-						/**/
+						/*
 						$updateTracksMBwithTrackNumber = "UPDATE tracksMB SET
 							trackNumber = '$trackNumber' WHERE trackMBID = '$trackMBID'";
 

@@ -42,6 +42,12 @@ if ( $currentOrder == "ASC" ) {
 	$newOrder = "DESC";
 }
 
+$trackNumberNewOrder = "DESC";
+
+if ( $columnName == "trackNumber" and $currentOrder == "DESC" ) {
+	$trackNumberNewOrder = "ASC";
+}
+
 $albumNameNewOrder = "DESC";
 
 if ( $columnName == "albumNameMB" and $currentOrder == "DESC" ) {
@@ -60,9 +66,9 @@ if ( $columnName == "pop" and $currentOrder == "ASC" ) {
 	$popNewOrder = "DESC";
 }
 
-$gatherTrackInfoLastFM = "SELECT v.artistMBID, v.artistNameMB, v.trackMBID, v.trackNameMB, v.albumNameMB, v.trackListeners, v.trackPlaycount, max(v.dataDate) AS MaxDataDate
+$gatherTrackInfoLastFM = "SELECT v.artistMBID, v.trackNumber, v.artistNameMB, v.trackMBID, v.trackNameMB, v.albumNameMB, v.trackListeners, v.trackPlaycount, max(v.dataDate) AS MaxDataDate
 					FROM (
-						SELECT z.artistMBID, z.trackMBID, z.trackNameMB, z.albumNameMB, z.artistNameMB, p.dataDate, p.trackListeners, p.trackPlaycount
+						SELECT z.artistMBID, z.trackMBID, z.trackNameMB, z.trackNumber, z.albumNameMB, z.artistNameMB, p.dataDate, p.trackListeners, p.trackPlaycount
 							FROM (
 								SELECT t.*, r.albumNameMB, a.artistNameMB, a.artistMBID
 									FROM tracksMB t
@@ -87,6 +93,7 @@ if(!empty($sortit)) { ?>
 <table class="table" id="tableotracks">
 <thead>
 <tr>
+<th onClick="sortColumn('trackNumber', '<?php echo $trackNumberNewOrder; ?>', '<?php echo $albumMBID ?>', '<?php echo $source ?>')"><div class="pointyHead">Track #</div></th>
 	<th onClick="sortColumn('albumNameMB', '<?php echo $albumNameNewOrder; ?>', '<?php echo $artistMBID ?>', '<?php echo $source ?>')"><div class="pointyHead">Album Title</div></th>
 	<th onClick="sortColumn('trackNameMB', '<?php echo $trackNameNewOrder; ?>', '<?php echo $artistMBID ?>', '<?php echo $source ?>')"><div class="pointyHead">Track Title</div></th>
     <!--
@@ -104,7 +111,7 @@ if(!empty($sortit)) { ?>
 			$albumNameMB = $row[ "albumNameMB" ];
 			$trackNameMB = $row[ "trackNameMB" ];
 			$trackMBID = $row[ "trackMBID" ];
-
+            $trackNumber = $row[ "trackNumber" ];
 			$lastFMDate = $row[ "MaxDataDate" ];
 			$trackListenersNum = $row["trackListeners"];
 			$trackListeners = number_format ($trackListenersNum);
@@ -114,6 +121,7 @@ if(!empty($sortit)) { ?>
 			$trackRatio = "1:" . floor($trackPlaycountNum/$trackListenersNum);
 	?>
 			<tr>
+                <td><?php echo $trackNumber ?></td>
 				<td><?php echo $albumNameMB ?></td>
 				<td><?php echo $trackNameMB ?></td>
                 <!--
