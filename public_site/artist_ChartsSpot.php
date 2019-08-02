@@ -494,16 +494,7 @@ d3.json("functions/get_artist_Playcounts.php?artistSpotID=<?php echo $artistSpot
 </script>
 
 <?php echo $scriptsAndSuch; ?>
-<!--
-<script>
-const artistName = '<?php //echo $artistName; ?>';
-const docTitleText = artistName + ' main Charts and Spotify Stats';
-$(document).ready(function(){
-    panelTitle.innerHTML = panelTitleText;
-    document.title = docTitleText;
-});
-</script>
--->
+
 <script>
 const artistSpotID = '<?php echo $artistSpotID; ?>';
 const artistMBID = '<?php echo $artistMBID ?>';

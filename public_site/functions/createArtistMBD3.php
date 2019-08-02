@@ -10,9 +10,16 @@ $connekt = new mysqli($GLOBALS['host'], $GLOBALS['un'], $GLOBALS['magicword'], $
 if (!$connekt) {
 	echo 'Darn. Did not connect. Screwed up like this: ' . mysqli_error($connekt) . '</p>';
 };
-
-$artistInfoAll = "SELECT a.artistMBID, a.artistNameMB, a.artistArtMB
+/**/
+$artistInfoAll = "SELECT a.artistMBID, a.artistNameMB, a.artistArtMB, f1.dataDate, f1.artistListeners, f1.artistPlaycount, f1.artistRatio
 	FROM artistsMB a
+    JOIN (SELECT f.*
+            FROM artistsLastFM f
+            INNER JOIN (SELECT artistMBID, artistListeners, artistPlaycount, artistRatio, max(dataDate) AS MaxDataDate
+                        FROM artistsLastFM  
+                        GROUP BY artistMBID) groupedf
+	       ON f.artistMBID = groupedf.artistMBID
+	       AND f.dataDate = groupedf.MaxDataDate) f1
 	WHERE a.artistMBID = '$artistMBID'";
 
 $getit = mysqli_query($connekt, $artistInfoAll);
@@ -32,6 +39,9 @@ if (mysqli_num_rows($getit) > 0) {
 else {
 	echo "Nope. Nothing to see here.";
 }
+
+
+
 
 mysqli_close($connekt);
 
