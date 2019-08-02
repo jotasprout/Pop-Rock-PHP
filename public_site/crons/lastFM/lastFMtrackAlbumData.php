@@ -8,8 +8,8 @@ $rainbow = array ('data/Rainbow_Group_07-27-19.json', 'data/Rainbow_Group_07-20-
 #insertLastFMalbumDataFilenames ($rainbow); 
 #insertLastFMtrackDataFilenames ($rainbow); 
 
-#insertLastFMalbumDataFilenames ($aliceJJ); 
-#insertLastFMtrackDataFilenames ($aliceJJ);
+insertLastFMalbumDataFilenames ($aliceJJ); 
+insertLastFMtrackDataFilenames ($aliceJJ);
 #insertLastFMalbumDataFilenames ($filenames_01); 
 #insertLastFMtrackDataFilenames ($filenames_01);    
 #insertLastFMalbumDataFilenames ($filenames_02); 

@@ -60,15 +60,15 @@ if ( $columnName == "trackNameMB" and $currentOrder == "ASC" ) {
 	$trackNameNewOrder = "DESC";
 }
 
-$popNewOrder = "ASC";
+$trackRatioNewOrder = "ASC";
 
-if ( $columnName == "pop" and $currentOrder == "ASC" ) {
-	$popNewOrder = "DESC";
+if ( $columnName == "trackRatio" and $currentOrder == "ASC" ) {
+	$trackRatioNewOrder = "DESC";
 }
 
-$gatherTrackInfoLastFM = "SELECT v.artistMBID, v.trackNumber, v.artistNameMB, v.trackMBID, v.trackNameMB, v.albumNameMB, v.trackListeners, v.trackPlaycount, max(v.dataDate) AS MaxDataDate
+$gatherTrackInfoLastFM = "SELECT v.artistMBID, v.trackNumber, v.artistNameMB, v.trackMBID, v.trackNameMB, v.albumNameMB, v.trackListeners, v.trackPlaycount, v.trackRatio, max(v.dataDate) AS MaxDataDate
 					FROM (
-						SELECT z.artistMBID, z.trackMBID, z.trackNameMB, z.trackNumber, z.albumNameMB, z.artistNameMB, p.dataDate, p.trackListeners, p.trackPlaycount
+						SELECT z.artistMBID, z.trackMBID, z.trackNameMB, z.trackNumber, z.albumNameMB, z.artistNameMB, p.dataDate, p.trackListeners, p.trackPlaycount, p.trackRatio
 							FROM (
 								SELECT t.*, r.albumNameMB, a.artistNameMB, a.artistMBID
 									FROM tracksMB t
@@ -101,8 +101,7 @@ if(!empty($sortit)) { ?>
     -->
 	<th class="rightNum pointyHead" onClick="sortColumn('trackListeners', '<?php echo $popNewOrder; ?>', '<?php echo $artistMBID ?>', '<?php echo $source ?>')">LastFM<br>Listeners</th>
 	<th class="rightNum pointyHead" onClick="sortColumn('trackPlaycount', '<?php echo $popNewOrder; ?>', '<?php echo $artistMBID ?>', '<?php echo $source ?>')">LastFM<br>Playcount</th>
-	<th><div class="popStyle">LastFM<br>Ratio</div></th>
-</tr>
+	<th class="pointyHead popStyle" onClick="sortColumn('trackRatio', '<?php echo $trackRatioNewOrder; ?>', '<?php echo $artistMBID ?>', '<?php echo $source ?>')">LastFM<br>Ratio</th>
 </thead>
 
 	<tbody>
@@ -118,7 +117,16 @@ if(!empty($sortit)) { ?>
 
 			$trackPlaycountNum = $row["trackPlaycount"];
 			$trackPlaycount = number_format ($trackPlaycountNum);
-			$trackRatio = "1:" . floor($trackPlaycountNum/$trackListenersNum);
+            /**/
+            $ppl = $row["trackRatio"];
+
+            if (!$trackPlaycount > 0) {
+                $trackPlaycount = "n/a";
+                $trackRatio = "n/a";
+                $lastFMDate = "n/a";
+            } else {
+                $trackRatio = "1:" . $ppl;
+            };
 	?>
 			<tr>
                 <td><?php echo $trackNumber ?></td>

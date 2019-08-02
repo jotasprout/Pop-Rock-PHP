@@ -20,9 +20,9 @@ $thirteen_MBID = '7dbf4b1f-d3e9-47bc-9194-d15b31017bd6';
 */
 $albumArtMBFilePath = "https://www.roxorsoxor.com/poprock/cover-art/";
 
-$getAlbumTracksAndAssocArt = "SELECT d.trackMBID, d.trackNameMB, d.trackNumber, d.albumNameMB, d.trackListeners, d.trackPlaycount, max(d.dataDate) AS MaxDataDate, d.albumArtMB
+$getAlbumTracksAndAssocArt = "SELECT d.trackMBID, d.trackNameMB, d.trackNumber, d.albumNameMB, d.trackListeners, d.trackPlaycount, d.trackRatio AS trackRatio, max(d.dataDate) AS MaxDataDate, d.albumArtMB
 FROM (
-    SELECT k.trackMBID, k.trackNameMB, k.trackNumber, h.albumNameMB, h.albumArtMB, fm.dataDate, fm.trackListeners, fm.trackPlaycount
+    SELECT k.trackMBID, k.trackNameMB, k.trackNumber, h.albumNameMB, h.albumArtMB, fm.dataDate, fm.trackListeners, fm.trackPlaycount, fm.trackRatio
         FROM (
             SELECT m.trackMBID, m.trackNameMB, m.trackNumber, m.albumMBID
                 FROM tracksMB m
@@ -123,7 +123,7 @@ if ( !$getit2 ) {
 <th class="popStyle" >LastFM<br>Data Date</th>
 <th class="rightNum pointyHead" onClick="sortColumn('trackListeners', 'DESC', '<?php echo $albumMBID ?>', 'musicbrainz')">LastFM<br>Listeners</th>
 <th class="rightNum pointyHead" onClick="sortColumn('trackPlaycount', 'DESC', '<?php echo $albumMBID ?>', 'musicbrainz')">LastFM<br>Playcount</th>
-<th><div class="popStyle">LastFM<br>Ratio</div></th>
+<th onClick="sortColumn('trackRatio', 'unsorted')"><div class="pointyHead popStyle">LastFM<br>Ratio</div></th>
 </tr>
 </thead>
 	
@@ -138,10 +138,19 @@ while ( $row = mysqli_fetch_array( $getit2 ) ) {
     $trackListenersNum = $row[ "trackListeners"];
     $trackPlaycountNum = $row[ "trackPlaycount"];
     $trackListeners = number_format ($trackListenersNum);
-    $trackPlaycount = number_format ($trackPlaycountNum);
-    $trackRatio = "1:" . floor($trackPlaycount/$trackListeners);
+    
     $albumArtMBFilename = $row[ "albumArtMB" ];
     $albumArtMB = $albumArtMBFilePath . $albumArtMBFilename;
+    $trackPlaycount = number_format ($trackPlaycountNum);
+    $ppl = $row["trackRatio"];
+
+    if (!$trackPlaycount > 0) {
+        $trackPlaycount = "n/a";
+        $trackRatio = "n/a";
+        $lastFMDate = "n/a";
+    } else {
+        $trackRatio = "1:" . $ppl;
+    };
 ?>
 <tr>
 <td class="popStyle"><?php echo $trackNumber ?></td>
@@ -211,14 +220,13 @@ d3.json("functions/get_albumStats_LastFM.php?albumMBID=<?php echo $albumMBID; ?>
     const artistPlaycount = d3.select("#forCurrentPlaycount")
             .text(playcount);  
 
-    const artistArtMB = dataset[0].artistArtMB;
-    /*
+    const albumArtMB = dataset[0].albumArtMB;
+    /**/
     d3.select("#forArt")
             .data(dataset)
             .attr("src", albumArtMB)
             .attr("height", 166);
             //.attr("width", auto)
-    */
 });
 
 </script>	

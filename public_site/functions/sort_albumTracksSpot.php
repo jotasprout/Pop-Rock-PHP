@@ -7,6 +7,8 @@ $connekt = new mysqli( $GLOBALS[ 'host' ], $GLOBALS[ 'un' ], $GLOBALS[ 'magicwor
 
 if ( !$connekt ) {
 	echo '<p>Darn. Did not connect because ' . mysqli_connect_error() . '.</p>';
+} else {
+    echo '<p>Apparently connected.</p>';
 };
 
 // if any of these did not come through, the defaults are the basic starting sort from the sql query
@@ -66,9 +68,15 @@ if ( $columnName == "pop" and $currentOrder == "ASC" ) {
 	$popNewOrder = "DESC";
 }
 
-$gatherTrackInfoSpot = "SELECT v.trackSpotID, v.trackNameSpot, v.albumNameSpot, v.pop, max(v.date) AS MaxDate
+$trackNumberNewOrder = "ASC";
+
+if ( $columnName == "trackNumber" and $currentOrder == "ASC" ) {
+	$trackNumberNewOrder = "DESC";
+}
+
+$gatherTrackInfoSpot = "SELECT v.trackSpotID, v.trackNameSpot, v.trackNumber, v.albumNameSpot, v.pop, max(v.date) AS MaxDate
 					FROM (
-						SELECT z.trackSpotID, z.trackNameSpot, z.albumNameSpot, p.date, p.pop
+						SELECT z.trackSpotID, z.trackNameSpot, z.trackNumber, z.albumNameSpot, p.date, p.pop
 							FROM (
 								SELECT t.*, r.albumNameSpot
 									FROM tracksSpot t

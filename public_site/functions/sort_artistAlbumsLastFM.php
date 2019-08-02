@@ -105,20 +105,34 @@ if ( $columnName == "albumPlaycount" ) {
 	};
 };
 
-$gatherAlbumInfoLastFM = "SELECT b.albumNameMB, b.albumMBID, z.artistNameMB, f1.dataDate, f1.albumListeners, f1.albumPlaycount, x.albumArtMB
-					FROM (SELECT mb.albumNameMB, mb.albumMBID, mb.artistMBID
-						FROM albumsMB mb 
-						WHERE mb.artistMBID='$artistMBID') b 
-					JOIN artistsMB z ON z.artistMBID = b.artistMBID
-					LEFT JOIN albumsMB x ON b.albumMBID = x.albumMBID
-					LEFT JOIN (SELECT f.*
-							FROM albumsLastFM f
-							INNER JOIN (SELECT albumMBID, albumListeners, albumPlaycount, max(dataDate) AS MaxDataDate
-							FROM albumsLastFM
-							GROUP BY albumMBID) groupedf
-							ON f.albumMBID = groupedf.albumMBID
-							AND f.dataDate = groupedf.MaxDataDate) f1
-					ON b.albumMBID = f1.albumMBID	
+$albumRatioNewOrder = "unsorted";
+
+if ( $columnName == "albumRatio" ) {
+	if ($currentOrder == "unsorted" or $currentOrder == "ASC") {
+		$columnName = "f1.albumRatio";
+		$albumRatioNewOrder = "DESC";
+		$newOrder = "DESC";
+	} else {
+		$columnName = "f1.albumRatio";
+		$albumRatioNewOrder = "ASC";
+		$newOrder = "ASC";
+	};
+};
+
+$gatherAlbumInfoLastFM = "SELECT b.albumNameMB, b.albumMBID, z.artistNameMB, f1.dataDate, f1.albumListeners, f1.albumPlaycount, f1.albumRatio AS albumRatio, b.albumArtMB
+FROM (SELECT mb.albumNameMB, mb.albumMBID, mb.artistMBID, mb.assocAlbumSpotID, mb.albumArtMB
+    FROM albumsMB mb 
+    WHERE mb.artistMBID='$artistMBID') b 
+JOIN artistsMB z ON z.artistMBID = b.artistMBID
+LEFT JOIN albumsMB x ON b.albumMBID = x.albumMBID
+LEFT JOIN (SELECT f.*
+        FROM albumsLastFM f
+        INNER JOIN (SELECT albumMBID, albumListeners, albumPlaycount, albumRatio, max(dataDate) AS MaxDataDate
+        FROM albumsLastFM
+        GROUP BY albumMBID) groupedf
+        ON f.albumMBID = groupedf.albumMBID
+        AND f.dataDate = groupedf.MaxDataDate) f1
+ON b.albumMBID = f1.albumMBID	
 					ORDER BY " . $columnName . " " . $newOrder . ";";
 
 $sortit = $connekt->query( $gatherAlbumInfoLastFM );
@@ -142,7 +156,7 @@ if(!empty($sortit))	 { ?>
 
 <th onClick="sortColumn('albumListeners', '<?php echo $listenersNewOrder; ?>', '<?php echo $artistMBID; ?>', '<?php echo $source ?>')"><div class="pointyHead rightNum">LastFM<br>Listeners</div></th>
 <th onClick="sortColumn('albumPlaycount', '<?php echo $playcountNewOrder; ?>', '<?php echo $artistMBID; ?>', '<?php echo $source ?>')"><div class="pointyHead rightNum">LastFM<br>Playcount</div></th>
-<th><div class="popStyle">LastFM<br>Ratio</div></th>
+<th onClick="sortColumn('albumRatio', '<?php echo $albumRatioNewOrder; ?>', '<?php echo $artistMBID; ?>', '<?php echo $source ?>')"><div class="pointyHead popStyle">LastFM<br>Ratio</div></th>
 
 </tr>
 </thead>
@@ -161,7 +175,16 @@ if(!empty($sortit))	 { ?>
 		$albumListeners = number_format ($albumListenersNum);
 		$albumPlaycountNum = $row[ "albumPlaycount"];
 		$albumPlaycount = number_format ($albumPlaycountNum);
-		$albumRatio = "1:" . floor($albumPlaycountNum/$albumListenersNum);
+        /**/
+        $ppl = $row["albumRatio"];
+        
+        if (!$albumPlaycount > 0) {
+            $albumPlaycount = "n/a";
+            $albumRatio = "n/a";
+            $lastFMDate = "n/a";
+        } else {
+            $albumRatio = "1:" . $ppl;
+        };
 ?>
 
 	<tr>

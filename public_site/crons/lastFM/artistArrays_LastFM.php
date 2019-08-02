@@ -279,7 +279,6 @@ function insertLastFMtrackDataFilenames ($filenames) {
 						} else {
 							echo '<p>Added <b>' . $trackNameMB . '</b> from <i>' . $releaseName . '</i> into tracksMB.</p>';
                         };
-                        */
 
 						$insertLastFMtrackStats = "INSERT INTO tracksLastFM (
 							trackMBID, 
@@ -388,12 +387,12 @@ function insertLastFMalbumDataFilenames ($filenames) {
 		};
 	};	
 };
-/*
+/**/
 $aliceJJ = array (
-	'data/AliceCooper_Combined_06-16-19.json',
-	'data/JoanJett_Combined_06-16-19.json'
+	'data/AliceCooper_Combined_07-28-19.json',
+	'data/JoanJett_Combined_07-28-19.json'
 );
-*/
+
 $filenames_01 = array (	
     'data/AliceCooper_Combined_07-21-19.json',
     'data/TheAmboyDukes_Group_07-21-19.json',

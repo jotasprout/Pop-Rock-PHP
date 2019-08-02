@@ -108,20 +108,15 @@ if(!$getit){ echo 'Cursed-Crap. Did not run the query.'; }
 				};
 				$artistPlaycountNum = $row[ "artistPlaycount"];
 				$artistPlaycount = number_format ($artistPlaycountNum);
-                //$artistRatio = floor($artistPlaycountNum/$artistListenersNum);
                 /**/
-				$artistRatio = 0;
-                $ppl = 0;
+				$ppl = $row["artistRatio"];
                 
 				if (!$artistPlaycount > 0) {
 					$artistPlaycount = "n/a";
 					$artistRatio = "n/a";
 					$lastFMDate = "n/a";
 				} else {
-                    //$ppl = floor($artistPlaycountNum/$artistListenersNum);
-                    $ppl = $row["artistRatio"];
 					$artistRatio = "1:" . $ppl;
-                    //$artistRatio = floor($artistPlaycountNum/$artistListenersNum);
 				};
                 
 		?>

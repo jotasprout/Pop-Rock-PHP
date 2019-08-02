@@ -10,11 +10,11 @@ if ( !$connekt ) {
 	echo 'Darn. Did not connect.';
 };
 
-$allthatAndLastFM = "SELECT a.artistMBID AS artistMBID, s.artistSpotID, s.artistArtSpot, a.artistArtMB AS artistArtMB, a.artistNameMB AS artistNameMB, f1.dataDate AS dataDate, f1.artistListeners AS artistListeners, f1.artistPlaycount AS artistPlaycount, f1.dataDate AS date
+$allthatAndLastFM = "SELECT a.artistMBID AS artistMBID, s.artistSpotID, s.artistArtSpot, a.artistArtMB AS artistArtMB, a.artistNameMB AS artistNameMB, f1.dataDate AS dataDate, f1.artistListeners AS artistListeners, f1.artistPlaycount AS artistPlaycount, f1.artistRatio AS artistRatio, f1.dataDate AS date
     FROM artistsMB a
 	LEFT JOIN (SELECT f.*
 			FROM artistsLastFM f
-			INNER JOIN (SELECT artistMBID, artistListeners, artistPlaycount, max(dataDate) AS MaxDataDate
+			INNER JOIN (SELECT artistMBID, artistListeners, artistPlaycount, artistRatio, max(dataDate) AS MaxDataDate
 						FROM artistsLastFM  
 						GROUP BY artistMBID) groupedf
 			ON f.artistMBID = groupedf.artistMBID
@@ -67,9 +67,8 @@ if(!$getit){ echo 'Cursed-Crap. Did not run the query.'; }
 	<th onClick="sortColumn('datadate', 'unsorted')"><div class="pointyHead popStyle">LastFM<br>Data Date</div></th>			
 	<th onClick="sortColumn('artistListeners', 'unsorted')"><div class="pointyHead rightNum">LastFM<br>Listeners</div></th>
 	<th onClick="sortColumn('artistPlaycount', 'unsorted')"><div class="pointyHead rightNum">LastFM<br>Playcount</div></th>
-	<th><div class="popStyle">LastFM<br>Ratio</div></th>
+	<th onClick="sortColumn('artistRatio', 'unsorted')"><div class="pointyHead popStyle">LastFM<br>Ratio</div></th>
 	<!--
-	<th onClick="sortColumn('ratio', 'unsorted')"><div class="pointyHead popStyle">LastFM<br>Ratio</div></th>
 	-->
 </tr>
 </thead>
@@ -104,14 +103,16 @@ if(!$getit){ echo 'Cursed-Crap. Did not run the query.'; }
 
 		$artistPlaycountNum = $row[ "artistPlaycount"];
 		$artistPlaycount = number_format ($artistPlaycountNum);
-		$playsPerListener = 0;
-		if ($artistPlaycount != 0) {
-			$playsPerListener = floor($artistPlaycountNum/$artistListenersNum);
-		};
-		$artistRatio = "1:" . $playsPerListener;
-		if ($artistListeners == 0){
-			$artistRatio = "0:" . $playsPerListener;
-		}
+        /**/
+        $ppl = $row["artistRatio"];
+        
+        if (!$artistPlaycount > 0) {
+            $artistPlaycount = "n/a";
+            $artistRatio = "n/a";
+            $lastFMDate = "n/a";
+        } else {
+            $artistRatio = "1:" . $ppl;
+        };
 ?>
 
 <tr>
@@ -125,10 +126,6 @@ if(!$getit){ echo 'Cursed-Crap. Did not run the query.'; }
 	<td class="rightNum"><?php echo $artistListeners ?></td>
 	<td class="rightNum"><?php echo $artistPlaycount ?></td>
 	<td class="popStyle"><?php echo $artistRatio ?></td>
-	<!-- 
-	<th onClick="sortColumn('ratio', 'unsorted')"><div class="pointyHead popStyle">LastFM<br>Ratio</div></th>
-	USE Duckett table sorting chapter thingy
-	-->
 </tr>
 
 				<?php 

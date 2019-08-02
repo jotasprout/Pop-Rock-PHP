@@ -78,11 +78,23 @@ if ( $columnName == "artistPlaycount" ) {
 	};
 };
 
-$allthatAndLastFM = "SELECT a.artistMBID AS artistMBID, a.artistArtMB AS artistArtMB, a.artistNameMB AS artistNameMB, f1.dataDate AS dataDate, f1.artistListeners AS artistListeners, f1.artistPlaycount AS artistPlaycount
+$artistRatioNewOrder = "unsorted";
+
+if ( $columnName == "artistRatio" ) {
+	if ($currentOrder == "unsorted" or $currentOrder == "ASC") {
+		$artistRatioNewOrder = "DESC";
+		$newOrder = "DESC";
+	} else {
+		$artistRatioNewOrder = "ASC";
+		$newOrder = "ASC";
+	};
+};
+
+$allthatAndLastFM = "SELECT a.artistMBID AS artistMBID, a.artistArtMB AS artistArtMB, a.artistNameMB AS artistNameMB, f1.dataDate AS dataDate, f1.artistListeners AS artistListeners, f1.artistPlaycount AS artistPlaycount, f1.artistRatio AS artistRatio
     FROM artistsMB a
     JOIN (SELECT f.*
 			FROM artistsLastFM f
-			INNER JOIN (SELECT artistMBID, artistListeners, artistPlaycount, max(dataDate) AS MaxDataDate
+			INNER JOIN (SELECT artistMBID, artistListeners, artistPlaycount, artistRatio, max(dataDate) AS MaxDataDate
 						FROM artistsLastFM  
 						GROUP BY artistMBID) groupedf
 			ON f.artistMBID = groupedf.artistMBID
@@ -109,7 +121,7 @@ if (!empty($sortit)) { ?>
 	<th onClick="sortColumn('datadate', '<?php echo $datadateNewOrder; ?>')"><div class="pointyHead popStyle">LastFM<br>Data Date</div></th>
 	<th onClick="sortColumn('artistListeners', '<?php echo $listenersNewOrder; ?>')"><div class="pointyHead rightNum">LastFM<br>Listeners</div></th>
 	<th onClick="sortColumn('artistPlaycount', '<?php echo $playcountNewOrder; ?>')"><div class="pointyHead rightNum">LastFM<br>Playcount</div></th>
-	<th><div class="popStyle">LastFM<br>Ratio</div></th>
+	<th onClick="sortColumn('artistRatio', 'unsorted')"><div class="pointyHead popStyle">LastFM<br>Ratio</div></th>
 	</tr>
 </thead>
 
@@ -119,24 +131,38 @@ if (!empty($sortit)) { ?>
 			while ($row = mysqli_fetch_array($sortit)) {
 				$artistNameMB = $row[ "artistNameMB" ];
 				$artistMBID = $row[ "artistMBID" ];
-				$artistArtMB = $row[ "artistArtMB" ];
+                $artistArtFilename = $row['artistArtMB'];
+                $artistArtMB = "https://www.roxorsoxor.com/poprock/artist-art/" . $artistArtFilename;
+                $artistArt = '';
+                
+                if(empty($row["artistArtMB"]) && empty($row["artistArtSpot"])) {
+                    $artistArt = "nope.png";
+                }
+                elseif (empty($row["artistArtMB"]) && !empty($row["artistArtSpot"])) {
+                    $artistArt = $artistArtSpot;
+                }	
+                else {
+                    $artistArt = $artistArtMB;
+                };
 				$lastFMDate = $row[ "dataDate" ];
 				$artistListenersNum = $row[ "artistListeners"];
 				$artistListeners = number_format ($artistListenersNum);
 				$artistPlaycountNum = $row[ "artistPlaycount"];
 				$artistPlaycount = number_format ($artistPlaycountNum);
-				$playsPerListener = 0;
-				if ($artistPlaycount != 0) {
-					$playsPerListener = floor($artistPlaycountNum/$artistListenersNum);
-				};
-				$artistRatio = "1:" . $playsPerListener;
-				if ($artistListeners == 0){
-					$artistRatio = "0:" . $playsPerListener;
-				}
+                /**/
+                $ppl = $row["artistRatio"];
+                
+                if (!$artistPlaycount > 0) {
+                    $artistPlaycount = "n/a";
+                    $artistRatio = "n/a";
+                    $lastFMDate = "n/a";
+                } else {
+                    $artistRatio = "1:" . $ppl;
+                };
 		?>
 
 <tr>
-	<td><img src='<?php echo $artistArtMB ?>' class="indexArtistArt"></td>	
+<td><a href='https://www.roxorsoxor.com/poprock/artist_ChartsLastFM.php?artistMBID=<?php echo $artistMBID ?>&artistSpotID=<?php echo $artistSpotID ?>'><img src='<?php echo $artistArt ?>' class="indexArtistArt"></a></td>	
 	<td><a href='https://www.roxorsoxor.com/poprock/artist_ChartsLastFM.php?artistSpotID=<?php echo $artistSpotID ?>&artistMBID=<?php echo $artistMBID ?>&source=<?php echo $source ?>'><?php echo $artistNameMB ?></a></td>
 <!---->
 <td><?php echo $artistMBID ?></td>

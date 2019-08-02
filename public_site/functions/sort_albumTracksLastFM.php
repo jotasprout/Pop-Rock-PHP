@@ -66,15 +66,15 @@ if ( $columnName == "trackName" and $currentOrder == "ASC" ) {
 	$trackNameNewOrder = "DESC";
 }
 
-$popNewOrder = "ASC";
+$trackRatioNewOrder = "ASC";
 
-if ( $columnName == "pop" and $currentOrder == "ASC" ) {
-	$popNewOrder = "DESC";
+if ( $columnName == "trackRatio" and $currentOrder == "ASC" ) {
+	$trackRatioNewOrder = "DESC";
 }
 
-$gatherTrackInfoLastFM = "SELECT v.trackName, v.trackNumber, v.albumNameMB, v.trackListeners, v.trackPlaycount, max(v.dataDate) AS MaxDataDate
+$gatherTrackInfoLastFM = "SELECT v.trackName, v.trackNumber, v.albumNameMB, v.trackListeners, v.trackPlaycount, v.trackRatio AS trackRatio, max(v.dataDate) AS MaxDataDate
 					FROM (
-						SELECT z.trackMBID, z.trackName, z.trackNumber, z.albumNameMB, p.dataDate, p.trackListeners, p.trackPlaycount
+						SELECT z.trackMBID, z.trackName, z.trackNumber, z.albumNameMB, p.dataDate, p.trackListeners, p.trackPlaycount, p.trackRatio
 							FROM (
 								SELECT t.*, r.albumNameMB
 									FROM tracksMB t
@@ -104,7 +104,7 @@ if(!empty($sortit)) { ?>
 <th class="popStyle">LastFM<br>Data Date</th>
 <th class="rightNum pointyHead" onClick="sortColumn('trackListeners', '<?php echo $popNewOrder; ?>', '<?php echo $albumMBID ?>', '<?php echo $source ?>')">LastFM<br>Listeners</th>
 <th class="rightNum pointyHead" onClick="sortColumn('trackPlaycount', '<?php echo $popNewOrder; ?>', '<?php echo $albumMBID ?>', '<?php echo $source ?>')">LastFM<br>Playcount</th>
-
+<th onClick="sortColumn('trackRatio', 'unsorted')"><div class="pointyHead popStyle">LastFM<br>Ratio</div></th>
 </tr>
 </thead>
 
@@ -117,7 +117,17 @@ if(!empty($sortit)) { ?>
 			$trackListenersNum = $row["trackListeners"];
 			$trackListeners = number_format ($trackListenersNum);
 			$trackPlaycountNum = $row["trackPlaycount"];
-			$trackPlaycount = number_format ($trackPlaycountNum);
+            $trackPlaycount = number_format ($trackPlaycountNum);
+                /**/
+            $ppl = $row["trackRatio"];
+
+            if (!$trackPlaycount > 0) {
+                $trackPlaycount = "n/a";
+                $trackRatio = "n/a";
+                $lastFMDate = "n/a";
+            } else {
+                $trackRatio = "1:" . $ppl;
+            };
 	?>
 			<tr>
 				<td><?php echo $trackNumber ?></td>
@@ -125,6 +135,7 @@ if(!empty($sortit)) { ?>
 				<td class="popStyle"><?php echo $lastFMDate ?></td>
 				<td class="rightNum"><?php echo $trackListeners ?></td>
 				<td class="rightNum"><?php echo $trackPlaycount ?></td>
+                <td class="popStyle"><?php echo $trackRatio ?></td>
 			</tr>
 	<?php 
 		} // end of while

@@ -12,6 +12,8 @@ $connekt = new mysqli( $GLOBALS[ 'host' ], $GLOBALS[ 'un' ], $GLOBALS[ 'magicwor
 
 if ( !$connekt ) {
 	echo 'Darn. Did not connect. Screwed up like this: ' . mysqli_connect_error() . '</p>';
+} else {
+    echo 'Apparently connected to DB.';
 };
 
 $liveEvil_albumSpotID = '1Uq7JKrKGGYCkg6l79gkoa';
@@ -80,7 +82,7 @@ if ( !$getit ) {
 <tr>
 <!---->
 <th onClick="sortColumn('trackNumber', 'ASC')"><div class="pointyHead">Track #</div></th>
-<th>Spotify<br>trackSpotID</th>
+<th>Track<br>Spotify ID</th>
 
 <th onClick="sortColumn('trackNameSpot', 'DESC', '<?php echo $albumSpotID ?>', 'spotify')"><div class="pointyHead">Track Title</div></th>
 <th class="popStyle">Spotify<br>Data Date</th>

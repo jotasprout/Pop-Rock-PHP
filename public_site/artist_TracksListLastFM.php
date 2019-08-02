@@ -15,9 +15,9 @@ if ( !$connekt ) {
 
 $blackSabbath_MBID = '5182c1d9-c7d2-4dad-afa0-ccfeada921a8';
 
-$gatherTrackInfo = "SELECT v.artistNameMB, v.trackNameMB, v.trackNumber, v.albumNameMB, v.trackListeners, v.trackPlaycount, max(v.dataDate) AS MaxDataDate
+$gatherTrackInfo = "SELECT v.artistNameMB, v.trackNameMB, v.trackNumber, v.albumNameMB, v.trackListeners, v.trackPlaycount, v.trackRatio, max(v.dataDate) AS MaxDataDate
 					FROM (
-						SELECT z.trackMBID, z.trackNameMB, z.trackNumber, z.albumNameMB, z.artistNameMB, p.dataDate, p.trackListeners, p.trackPlaycount
+						SELECT z.trackMBID, z.trackNameMB, z.trackNumber, z.albumNameMB, z.artistNameMB, p.dataDate, p.trackListeners, p.trackPlaycount, p.trackRatio
 							FROM (
 								SELECT t.*, r.albumNameMB, a.artistNameMB
 									FROM tracksMB t
@@ -74,45 +74,45 @@ if ( !$getit ) {
 <th class="popStyle" onClick="sortColumn('trackNumber', 'ASC', '<?php echo $albumMBID ?>', 'musicbrainz')"><div class="pointyHead">Track #</div></th>
 <th onClick="sortColumn('albumNameMB', 'DESC', '<?php echo $artistMBID ?>', '<?php echo $source ?>')"><div class="pointyHead">Album Title</div></th>
 
-<th onClick="sortColumn('trackNameMB', 'ASC', '<?php echo $artistMBID ?>', '<?php echo $source ?>')"><div class="pointyHead">Track Title</div></th>
-<!--
-<th class="popStyle">Track #</th>
+<th class="pointyHead" onClick="sortColumn('trackNameMB', 'ASC', '<?php echo $artistMBID ?>', '<?php echo $source ?>')">Track Title</th>
 <th class="popStyle">LastFM<br>Data Date</th>
--->
-<th class="rightNum pointyHead" onClick="sortColumn('trackListeners', '<?php echo $popNewOrder; ?>', '<?php echo $artistMBID ?>', '<?php echo $source ?>')"">LastFM<br>Listeners</th>
-<th class="rightNum pointyHead" onClick="sortColumn('trackPlaycount', '<?php echo $popNewOrder; ?>', '<?php echo $artistMBID ?>', '<?php echo $source ?>')">LastFM<br>Playcount</th>
-<th><div class="popStyle">LastFM<br>Ratio</div></th>
+<!---->
+<th class="rightNum pointyHead" onClick="sortColumn('trackListeners', 'DESC', '<?php echo $albumMBID ?>', 'musicbrainz')">LastFM<br>Listeners</th>
+<th class="rightNum pointyHead" onClick="sortColumn('trackPlaycount', 'DESC', '<?php echo $albumMBID ?>', 'musicbrainz')">LastFM<br>Playcount</th>
+<th class="pointyHead popStyle" onClick="sortColumn('trackRatio', 'unsorted')">LastFM<br>Ratio</th>
+
 </tr>
 </thead>
 					
-					<tbody>
-					<?php
-						while ( $row = mysqli_fetch_array( $getit ) ) {
-							$albumNameMB = $row[ "albumNameMB" ];
-							$trackNameMB = $row[ "trackNameMB" ];
-							$trackNumber = $row[ "trackNumber" ];
-							$artistNameMB = $row[ "artistNameMB" ];
-							$lastFMDate = $row[ "MaxDataDate" ];
-							$trackListenersNum = $row["trackListeners"];
-							$trackListeners = number_format ($trackListenersNum);
-							$trackPlaycountNum = $row["trackPlaycount"];
-							$trackPlaycount = number_format ($trackPlaycountNum);
-							$playsPerListener = 0;
-							if ($trackPlaycount != 0) {
-								$playsPerListener = floor($trackPlaycountNum/$trackListenersNum);
-							};
-							$trackRatio = "1:" . $playsPerListener;
-							if ($trackListeners == 0){
-								$trackRatio = "0:" . $playsPerListener;
-							}
+<tbody>
+<?php
+    while ( $row = mysqli_fetch_array( $getit ) ) {
+        $albumNameMB = $row[ "albumNameMB" ];
+        $trackNameMB = $row[ "trackNameMB" ];
+        $trackNumber = $row[ "trackNumber" ];
+        $artistNameMB = $row[ "artistNameMB" ];
+        $lastFMDate = $row[ "MaxDataDate" ];
+        $trackListenersNum = $row["trackListeners"];
+        $trackListeners = number_format ($trackListenersNum);
+        $trackPlaycountNum = $row["trackPlaycount"];
+        $trackPlaycount = number_format ($trackPlaycountNum);
+        /**/
+        $ppl = $row["trackRatio"];
+
+        if (!$trackPlaycount > 0) {
+            $trackPlaycount = "n/a";
+            $trackRatio = "n/a";
+            $lastFMDate = "n/a";
+        } else {
+            $trackRatio = "1:" . $ppl;
+        };
 					?>
 							<tr>
                             <td class="popStyle"><?php echo $trackNumber ?></td>
 								<td><?php echo $albumNameMB ?></td>
 								<td><?php echo $trackNameMB ?></td>
-                                <!--
-								<td class="popStyle"><?php //echo $lastFMDate ?></td>
-                                -->
+                                <!---->
+								<td class="popStyle"><?php echo $lastFMDate ?></td>
 								<td class="rightNum"><?php echo $trackListeners ?></td>
 								<td class="rightNum"><?php echo $trackPlaycount ?></td>
 								<td class="popStyle"><?php echo $trackRatio ?></td>
