@@ -182,6 +182,14 @@ function insertLastFMalbumDataArtistNames ($artistNames) {
 						echo '<p>Shuzbutt! Could not add <b>' . $releaseName . '</b> to albumsMB.</p>';
 					};
 
+					$updateMBalbumInfo = "UPDATE albumsMB SET yearReleased = '$yearReleased' WHERE albumMBID = '$releaseMBID';";	
+    
+					if(!$updateMBalbumInfo){
+						echo '<p>Shickety Brickety! Could not insert ' . $releaseName . ' release date.</p>';
+					} else {
+						echo '<p><b><i>' . $releaseName . '</i></b> (' . $releaseMBID . ') was born the year of Our Lord <b>' . $yearReleased . '</b>.</p>';
+					}
+					
 					$insertLastFMalbumData = "INSERT INTO albumsLastFM (
 						albumMBID, 
 						dataDate,
@@ -358,8 +366,37 @@ function insertLastFMalbumDataFilenames ($filenames) {
 					$releaseMBID = $album['releases'][0]['mbid'];
 					$releaseNameYucky = $album['releases'][0]['name'];
 					$releaseName = mysqli_real_escape_string($connekt,$releaseNameYucky);
+					$releaseBirthday = $album['releases'][0]['date'];
+					$yearReleased = substr($releaseBirthday, 0, 4);					
 					$albumListeners = $album['releases'][0]['listeners'];
 					$albumPlaycount = $album['releases'][0]['playcount'];
+
+					$insertAlbumMBinfo = "INSERT INTO albumsMB (
+						albumMBID,
+						albumNameMB,
+						artistMBID,
+						yearReleased
+						) 
+						VALUES(
+							'$releaseMBID',
+							'$releaseName',
+							'$artistMBID',
+							'$yearReleased'
+							)";
+
+					$rockout = $connekt->query($insertAlbumMBinfo);
+		
+					if(!$rockout){
+						echo '<p>Shuzbutt! Could not add <b>' . $releaseName . '</b> to albumsMB.</p>';
+					};
+
+					$updateMBalbumInfo = "UPDATE albumsMB SET yearReleased = '$yearReleased' WHERE albumMBID = '$releaseMBID';";	
+    
+					if(!$updateMBalbumInfo){
+						echo '<p>Shickety Brickety! Could not insert ' . $releaseName . ' release date.</p>';
+					} else {
+						echo '<p><b><i>' . $releaseName . '</i></b> (' . $releaseMBID . ') was born the year of Our Lord <b>' . $yearReleased . '</b>.</p>';
+					}
 
 					$insertLastFMalbumData = "INSERT INTO albumsLastFM (
 						albumMBID, 

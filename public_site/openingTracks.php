@@ -13,22 +13,21 @@
 
     $blackSabbath_MBID = '5182c1d9-c7d2-4dad-afa0-ccfeada921a8';
 
-    $gatherOpeningTracks = "SELECT v.artistNameMB, v.trackNameMB, v.trackNumber, v.albumNameMB, v.albumArtMB, v.trackPlaycount, max(v.dataDate) AS MaxDataDate
-                        FROM (
-                            SELECT z.trackMBID, z.trackNameMB, z.trackNumber, z.albumNameMB, z.albumArtMB, z.artistNameMB, p.dataDate, p.trackPlaycount
-                                FROM (
-                                    SELECT t.*, r.albumNameMB, a.artistNameMB, r.albumArtMB
-                                        FROM tracksMB t
-                                        INNER JOIN albumsMB r ON r.albumMBID = t.albumMBID
-                                        JOIN artistsMB a ON r.artistMBID = a.artistMBID
-                                        WHERE a.artistMBID = '$artistMBID'
-                                ) z
-                            JOIN tracksLastFM p 
-                                ON z.trackMBID = p.trackMBID					
-                        ) v
-                        GROUP BY v.trackMBID
-                        WHERE v.trackNumber = 1;
-                        ORDER BY v.trackPlaycount DESC";
+    $gatherOpeningTracks = "SELECT v.artistNameMB, v.trackNameMB, v.trackNumber, v.albumNameMB, v.albumArtMB, v.yearReleased, v.trackPlaycount, max(v.dataDate) AS MaxDataDate
+    FROM (
+        SELECT z.trackMBID, z.trackNameMB, z.trackNumber, z.albumNameMB, z.yearReleased, z.artistNameMB, z.albumArtMB, p.dataDate, p.trackPlaycount
+            FROM (
+                SELECT t.*, r.albumNameMB, r.albumArtMB, a.artistNameMB, r.yearReleased
+                    FROM tracksMB t
+                    INNER JOIN albumsMB r ON r.albumMBID = t.albumMBID
+                    JOIN artistsMB a ON r.artistMBID = a.artistMBID
+                    WHERE a.artistMBID = '$artistMBID' AND t.trackNumber = '1'
+            ) z
+        JOIN tracksLastFM p 
+            ON z.trackMBID = p.trackMBID					
+    ) v
+    GROUP BY v.trackMBID
+    ORDER BY v.yearReleased ASC";
 
 
     $getit = $connekt->query( $gatherOpeningTracks );
