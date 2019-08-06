@@ -1,8 +1,9 @@
 <?php
 
 require_once 'rockdb.php';
-
 require_once 'page_pieces/stylesAndScripts.php';
+
+$artistArtMBFilePath = "https://www.roxorsoxor.com/poprock/artist-art/";
 
 $connekt = new mysqli( $GLOBALS[ 'host' ], $GLOBALS[ 'un' ], $GLOBALS[ 'magicword' ], $GLOBALS[ 'db' ] );
 
@@ -83,8 +84,8 @@ if(!$getit){ echo 'Cursed-Crap. Did not run the query.'; }
 		$artistSpotID = $row[ "artistSpotID" ];
 		$artistArtMB = $row["artistArtMB"];
 		$artistArtSpot = $row["artistArtSpot"];
-        $artistArtFilename = $row['artistArtMB'];
-        $artistArtMB = "https://www.roxorsoxor.com/poprock/artist-art/" . $artistArtFilename;
+		$artistArtFilename = $row['artistArtMB'];
+        $artistArtMB = $artistArtMBFilePath . $artistArtFilename;
         $artistArt = '';
         
 		if(empty($row["artistArtMB"]) && empty($row["artistArtSpot"])) {

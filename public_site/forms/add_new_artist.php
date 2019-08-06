@@ -16,22 +16,10 @@ $accessToken = $_SESSION['accessToken'];
 $GLOBALS['api'] = new SpotifyWebAPI\SpotifyWebAPI();
 $GLOBALS['api']->setAccessToken($accessToken);
 $baseURL = "https://api.spotify.com/v1/artists/";
-// $artistSpotID = $_POST['artist'];
-
-// $artistFromJS = $_POST['artist'];
-
-// $thisArtist = json_encode($artistFromJS);
-$_POST = json_decode(file_get_contents('php://input'), true);
-
-//$thisArtist = $_POST['artist'];
 
 $thisArtist = '3D4qYDvoPn5cQxtBm4oseo';
 
-// echo $thisArtist;
-
 function addArtist ($thisArtist) {
-
-    // echo $thisArtist;
 
     $artist = $GLOBALS['api']->getArtist($thisArtist);
 			

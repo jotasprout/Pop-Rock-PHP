@@ -46,30 +46,27 @@
 
 <body>
 
+
 <div class="container-fluid">
-<div id="fluidCon">
-</div> <!-- end of fluidCon -->
+<div id="fluidCon"></div> <!-- end of fluidCon -->
 
 <p><a href="forms/edit_Artist.php?artistSpotID=<?php echo $artistSpotID ?>&artistMBID=<?php echo $artistMBID ?>">Edit this Artist</a> | <a href="forms/add_assocArtist.php?artistSpotID=<?php echo $artistSpotID ?>&artistMBID=<?php echo $artistMBID ?>">Add Associated Artist</a></p>	
 
-<div class="row"> <!-- Start of Row 1 -->
-	<div class="col-md-6"> <!-- Start of Row #1 Column 1 -->
-		
-	<div class="panel panel-primary"> <!-- Start of Left Panel in Row #1 -->
 
+<div class="row"> <!-- Start of Row 1 -->
+	<div class="col-md-6"> <!-- Start of Row #1 Column 1 -->		
+	<div class="panel panel-primary"> <!-- Start of Left Panel in Row #1 -->
 		<div class="panel-heading">
 			<h3 class="panel-title" id="topHead">Current Stats for </h3>
 		</div> <!-- close panel-heading -->
-
-	  <div class="panel-body">
-
+        <div class="panel-body">
+            <div class="col-md-6"> <!-- Start of Column 1-1 -->
+                <img id="forArt">
+            </div> <!-- End of Column 1-1 -->
+            <!--
 		   <div class="row">
-
-				<div class="col-md-6"> <!-- Start of Column 1-1 -->
-					<img id="forArt">
-				</div> <!-- End of Column 1-1 -->
-
-				<div class="col-md-6"><!-- Start of Column 1-2 Stats Table -->
+-->
+				<div class="col-md-6"><!-- Start of Stats Table -->
 					<ul class="list-group">
 						<li class="list-group-item d-flex justify-content-between align-items-center">
 							Popularity on Spotify
@@ -88,13 +85,14 @@
 							<span class="badge badge-primary badge-pill" id="forCurrentPlaycount">No data yet</span>
 						</li>
 					</ul>
-				</div> <!-- End of Column 1-2 Stats Table -->
-
-		   </div> <!-- End of Row in Left Panel Body Row #1 -->
-
+				</div> <!-- End of Column Stats Table -->
+                <!--
+		   </div> 
+           -->
+           <!-- End of Row in Left Panel Body -->
 	  </div> <!-- End of Left Panel Body -->
-	</div> <!-- End of Left Panel Row #1 -->
-		</div> <!-- End of Row #1 Column 1 -->
+	</div> <!-- End of Left Panel Primary -->
+</div> <!-- End of Row #1 Column 1 -->
 
 	<div class="col-md-6"> <!-- Start of Row #1 Column 2 -->
 		<div class="panel panel-primary"> <!-- Start of Right Panel Primary Row #1-->
@@ -126,7 +124,6 @@
 		</div> <!-- close Panel Primary -->
 	</div> <!-- End of Column 1 -->
 
-
 	<div class="col-md-6"> <!-- Start of Column 2 -->
 		<div class="panel panel-primary">
 			<div class="panel-heading">
@@ -138,7 +135,6 @@
 			</div> <!-- panel body -->
 		</div> <!-- close Panel Primary -->
 	</div> <!-- End of Column 2 -->
-	
 </div> <!-- End of row 2 -->	
 	
 	<!-- START OF ROW #3 WITH ALBUMS COLUMNS -->
@@ -151,7 +147,6 @@
 		<div class="panel-body">
 			<div id="recordCollection"></div>
 		</div> <!-- panel body -->
-
 	</div> <!-- close Panel Primary -->
 
 </div> <!-- close container -->
@@ -183,7 +178,7 @@ d3.json("functions/get_assocArtists.php?artistSpotID=<?php echo $artistSpotID ?>
 			  .attr("x", function (d,i) {
 				return i * 65;
 			  })
-              .attr("height", 128)
+              .attr("height", 166)
               .attr("class", "assocArtistArt")
 			  .attr("title", (d) => d.assocArtistName);
 });
