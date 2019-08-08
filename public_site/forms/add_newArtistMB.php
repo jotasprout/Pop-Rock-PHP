@@ -9,7 +9,7 @@ require_once '../page_pieces/stylesAndScripts.php';
 <head>
 <meta name="viewport" content="user-scalable=no, width=device-width" />
 <meta charset="UTF-8">
-<title>Add New Artist</title>
+<title>Add New MusicBrainz Artist</title>
 <?php echo $stylesAndSuch; ?>
 </head>
 <body>
@@ -20,7 +20,7 @@ require_once '../page_pieces/stylesAndScripts.php';
 	
 	<!-- main -->
 	<div class="panel panel-primary">
-		<div class="panel-heading"><h3 class="panel-title">Add New Artist</h3></div>
+		<div class="panel-heading"><h3 class="panel-title">Add New MusicBrainz Artist</h3></div>
 			<div class="panel-body">
 			<!-- Panel Content -->
 	
@@ -28,18 +28,20 @@ require_once '../page_pieces/stylesAndScripts.php';
 		
 		<fieldset> 				       
             
-		<div class="form-group"> <!-- Artist MB Name --> 			
-			<label class="col-lg-2 control-label" for="artistNameMB">MusicBrainz</label>			
+		<div class="form-group"> <!-- Artist MBID --> 			
+			<label class="col-lg-2 control-label" for="artistNameMB">MBID</label>			
 			<div class="col-lg-3">
-				<input class="form-control" type="text" name="artistMBID" value="<?php echo $artistMBID; ?>" />
+				<input class="form-control" type="text" name="artistMBID" value="Enter artist MBID" />
 			</div>
-            
-            <div class="col-lg-3"> <!-- Column 3 -->
+        </div> <!-- / Artist MBID -->
+        <!--    
+        <div class="form-group">     
+            <label class="col-lg-2 control-label" for="artistNameMBFuture">Name</label>	
+            <div class="col-lg-3"> 
 				<input class="form-control" type="text" name="artistNameMBFuture" value="" readonly/>
 			</div>
-            
-		</div> <!-- /Primary Artist MB Name -->		
-				
+		</div>  		
+		-->		
 			<!-- Last Row -->
 			<div class="form-group"> <!-- Last Row -->	
 				<div class="col-lg-4 col-lg-offset-2">

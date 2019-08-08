@@ -3,7 +3,7 @@
     $artistSpotID = $_GET['artistSpotID'];
     require_once 'page_pieces/stylesAndScripts.php';
     
-    $artistArtMBFilePath = "https://www.roxorsoxor.com/poprock/artist-art/";
+    $artistArtMBFilepath = "https://www.roxorsoxor.com/poprock/artist-art/";
 ?>
 
 <!DOCTYPE html>
@@ -52,6 +52,10 @@
 <!-- 
     <p>If, after the page loads, it is empty, or the wrong discography displays, <a href='https://www.roxorsoxor.com/poprock/index.php'>choose an artist</a> from the <a href='https://www.roxorsoxor.com/poprock/index.php'>Artists List</a> first.</p>
  -->
+    
+<a role="button" class="btn btn-warning btn-sm" href="forms/edit_Artist.php?artistSpotID=<?php echo $artistSpotID ?>&artistMBID=<?php echo $artistMBID ?>">Edit this Artist</a>
+    
+<a role="button" class="btn btn-success btn-sm" href="forms/add_assocArtist.php?artistSpotID=<?php echo $artistSpotID ?>&artistMBID=<?php echo $artistMBID ?>">Add Associated Artist</a>
 
  <p><a href="forms/edit_Artist.php?artistSpotID=<?php echo $artistSpotID ?>&artistMBID=<?php echo $artistMBID ?>">Edit this Artist</a> | <a href="forms/add_assocArtist.php?artistSpotID=<?php echo $artistSpotID ?>&artistMBID=<?php echo $artistMBID ?>">Add Associated Artist</a></p>	
 
@@ -151,7 +155,7 @@
     
 <script>
 
-const artistArtMBFilePath = '<?php echo $artistArtMBFilePath ?>';
+const artistArtMBFilepath = '<?php echo $artistArtMBFilepath ?>';
     
 var w = 740;
 var h = 400;
@@ -179,7 +183,7 @@ d3.json("functions/get_artist_LastFM.php?artistSpotID=<?php echo $artistSpotID; 
 
     const artistArtMBFilename = dataset[0].artistArtMB;
         console.log(artistArtMBFilename);
-    const artistArtMB = artistArtMBFilePath + artistArtMBFilename;
+    const artistArtMB = artistArtMBFilepath + artistArtMBFilename;
         console.log(artistArtMB);
 
     d3.select("#forArt")
@@ -394,9 +398,9 @@ d3.json("functions/createArtistSpotD3.php?artistSpotID=<?php echo $artistSpotID;
 			  .append("img")
 			  .attr("src", function (d){
 				if (d.artistArtSpot == "" || d.artistArtSpot == null || d.artistArtSpot == undefined) {
-                    let artistArtMBFilePath = '<?php echo $artistArtMBFilePath ?>';
+                    let artistArtMBFilepath = '<?php echo $artistArtMBFilepath ?>';
                     let artistArtMBFilename = d.artistArtMB;
-                    const prettyFace =  artistArtMBFilePath + artistArtMBFilename;
+                    const prettyFace =  artistArtMBFilepath + artistArtMBFilename;
 					console.log("artistArt is " + prettyFace);
 					return prettyFace;
 				} else {

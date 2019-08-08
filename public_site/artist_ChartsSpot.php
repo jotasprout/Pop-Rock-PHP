@@ -3,7 +3,7 @@
     $artistMBID = $_GET['artistMBID'];
     require_once 'page_pieces/stylesAndScripts.php';
     
-    $artistArtMBFilePath = "https://www.roxorsoxor.com/poprock/artist-art/";
+    $artistArtMBFilepath = "https://www.roxorsoxor.com/poprock/artist-art/";
 ?>
 
 <!DOCTYPE html>
@@ -49,9 +49,10 @@
 
 <div class="container-fluid">
 <div id="fluidCon"></div> <!-- end of fluidCon -->
-
-<p><a href="forms/edit_ArtistSpot.php?artistSpotID=<?php echo $artistSpotID ?>&artistMBID=<?php echo $artistMBID ?>">Edit this Artist</a> | <a href="forms/add_assocArtist.php?artistSpotID=<?php echo $artistSpotID ?>&artistMBID=<?php echo $artistMBID ?>">Add Associated Artist</a></p>	
-
+    
+<a role="button" class="btn btn-warning btn-sm" href="forms/edit_Artist.php?artistSpotID=<?php echo $artistSpotID ?>&artistMBID=<?php echo $artistMBID ?>">Edit this Artist</a>
+    
+<a role="button" class="btn btn-success btn-sm" href="forms/add_assocArtist.php?artistSpotID=<?php echo $artistSpotID ?>&artistMBID=<?php echo $artistMBID ?>">Add Associated Artist</a>
 
 <div class="row"> <!-- Start of Row 1 -->
 	<div class="col-md-6"> <!-- Start of Row #1 Column 1 -->		
@@ -165,9 +166,9 @@ d3.json("functions/get_assocArtists.php?artistSpotID=<?php echo $artistSpotID ?>
 			  .append("img")
 			  .attr("src", function (d){
 				if (d.artistArtSpot == "" || d.artistArtSpot == null || d.artistArtSpot == undefined) {
-                    let artistArtMBFilePath = '<?php echo $artistArtMBFilePath ?>';
+                    let artistArtMBFilepath = '<?php echo $artistArtMBFilepath ?>';
                     let artistArtMBFilename = d.artistArtMB;
-                    const prettyFace =  artistArtMBFilePath + artistArtMBFilename;
+                    const prettyFace =  artistArtMBFilepath + artistArtMBFilename;
 					console.log("artistArt is " + prettyFace);
 					return prettyFace;
 				} else {

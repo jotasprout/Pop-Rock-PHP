@@ -13,7 +13,7 @@ if (!$connekt) {
 	echo 'Darn. Did not connect.';
 };
 
-$getLastFM = "SELECT a.artistMBID, a.artistNameMB, a.artistArtMB, f1.dataDate, f1.artistListeners, f1.artistPlaycount, f1.artistRatio
+$getLastFM = "SELECT a.artistMBID, a.artistNameMB, a.artistArtMBFilename, f1.dataDate, f1.artistListeners, f1.artistPlaycount, f1.artistRatio
 	FROM artistsMB a
     JOIN (SELECT f.*
             FROM artistsLastFM f

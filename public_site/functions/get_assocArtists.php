@@ -13,7 +13,7 @@ if ( !$connekt ) {
 };
 
 
-$getAssocArtists = "SELECT r.assocArtistName, r.assocArtistSpotID, r.assocArtistMBID, a.artistArtSpot, m.artistArtMB
+$getAssocArtists = "SELECT r.assocArtistName, r.assocArtistSpotID, r.assocArtistMBID, a.artistArtSpot, m.artistArtMBFilename
 					FROM artistAssocArtists r
 					LEFT JOIN artistsSpot a ON r.assocArtistSpotID = a.artistSpotID
 					LEFT JOIN artistsMB m ON m.artistMBID = '$artistMBID'

@@ -3,8 +3,6 @@
 require_once 'rockdb.php';
 require_once 'page_pieces/stylesAndScripts.php';
 
-$artistArtMBFilenameFilePath = "https://www.roxorsoxor.com/poprock/artist-art/";
-
 $connekt = new mysqli( $GLOBALS[ 'host' ], $GLOBALS[ 'un' ], $GLOBALS[ 'magicword' ], $GLOBALS[ 'db' ] );
 
 if ( !$connekt ) {
@@ -48,8 +46,7 @@ if(!$getit){ echo 'Cursed-Crap. Did not run the query.'; }
 	</div> <!-- end of fluidCon -->
 
 	<!-- main -->
-
-    <p><a href="forms/add_newArtistMB.php">Add New MusicBrainz Artist</a></p>
+    <a role="button" class="btn btn-success btn-sm" href="forms/add_newArtistMB.php">Add New MusicBrainz Artist</a>
 
 	<div class="panel panel-primary">
 
@@ -85,20 +82,19 @@ if(!$getit){ echo 'Cursed-Crap. Did not run the query.'; }
 
 		$artistMBID = $row[ "artistMBID" ];
 		$artistSpotID = $row[ "artistSpotID" ];
-		$artistArtMBFilename = $row["artistArtMBFilename"];
 		$artistArtSpot = $row["artistArtSpot"];
-		$artistArtFilename = $row['artistArtMBFilename'];
-        $artistArtMBFilename = $artistArtMBFilenameFilePath . $artistArtFilename;
+		$artistArtMBFilename = $row['artistArtMBFilename'];
+        $artistArtMBFilepath = "https://www.roxorsoxor.com/poprock/artist-art/";
         $artistArt = '';
         
 		if(empty($row["artistArtMBFilename"]) && empty($row["artistArtSpot"])) {
-			$artistArt = "nope.png";
+			$artistArt = $artistArtMBFilepath . "nope.png";
 		}
 		elseif (empty($row["artistArtMBFilename"]) && !empty($row["artistArtSpot"])) {
 			$artistArt = $artistArtSpot;
 		}	
 		else {
-			$artistArt = $artistArtMBFilename;
+			$artistArt = $artistArtMBFilepath . $artistArtMBFilename;
 		};
 
 		$lastFMDate = $row[ "dataDate" ];

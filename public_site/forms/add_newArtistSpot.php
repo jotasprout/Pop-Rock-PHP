@@ -9,7 +9,7 @@ require_once '../page_pieces/stylesAndScripts.php';
 <head>
 <meta name="viewport" content="user-scalable=no, width=device-width" />
 <meta charset="UTF-8">
-<title>Add New Artist</title>
+<title>Add New Spotify Artist</title>
 <?php echo $stylesAndSuch; ?>
 </head>
 <body>
@@ -20,7 +20,7 @@ require_once '../page_pieces/stylesAndScripts.php';
 	
 	<!-- main -->
 	<div class="panel panel-primary">
-		<div class="panel-heading"><h3 class="panel-title">Add New Artist</h3></div>
+		<div class="panel-heading"><h3 class="panel-title">Add New Spotify Artist</h3></div>
 			<div class="panel-body">
 			<!-- Panel Content -->
 	
@@ -29,17 +29,10 @@ require_once '../page_pieces/stylesAndScripts.php';
 		<fieldset> 				   
             
 		<div class="form-group"> <!-- Artist Spotify Name --> 			
-			<label class="col-lg-2 control-label" for="artistNameSpot">Spotify</label>		
-            
+			<label class="col-lg-2 control-label" for="artistNameSpot">Spotify ID</label>		
             <div class="col-lg-3">
-				<input class="form-control" type="artistSpotID" name="artistSpotID"  value="<?php echo $artistSpotID; ?>" />
-			</div>
-
-            <!-- Column 3 -->
-			<div class="col-lg-3">
-				<input class="form-control" type="text" name="artistNameSpotFuture" value="" readonly/>
-			</div>
-            
+				<input class="form-control" type="artistSpotID" name="artistSpotID"  value="Enter artist Spotify ID" />
+            </div>
 		</div> <!-- /Artist Spotify Name -->    
 				
 			<!-- Last Row -->

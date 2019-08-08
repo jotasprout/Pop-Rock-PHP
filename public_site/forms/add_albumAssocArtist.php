@@ -1,8 +1,8 @@
 <?php
-$artistMBID = $_GET['artistMBID'];
-$artistSpotID = $_GET['artistSpotID'];
+$artistMBID = $_GET['albumMBID'];
+$artistSpotID = $_GET['albumSpotID'];
 
-$artistArtMBFilepath = "https://www.roxorsoxor.com/poprock/artist-art/";
+$artistArtMBFilepath = "https://www.roxorsoxor.com/poprock/cover-art/";
 
 require_once '../rockdb.php';
 require_once '../page_pieces/stylesAndScripts.php';
