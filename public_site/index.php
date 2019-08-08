@@ -3,13 +3,13 @@
 require_once 'rockdb.php';
 require_once 'page_pieces/stylesAndScripts.php';
 
+$source = 'spotify';
+
 $connekt = new mysqli( $GLOBALS[ 'host' ], $GLOBALS[ 'un' ], $GLOBALS[ 'magicword' ], $GLOBALS[ 'db' ] );
 
 if ( !$connekt ) {
 	echo 'Darn. Did not connect.';
 };
-
-$source = 'spotify';
 
 $allthatAndLastFM = "SELECT a.artistSpotID AS artistSpotID, a.artistMBID AS artistMBID, a.artistArtSpot AS artistArtSpot, a.artistNameSpot AS artistNameSpot, a.albumsTotal AS albumsTotal, p1.pop AS pop, p1.followers AS followers, f1.dataDate AS dataDate, f1.artistListeners AS artistListeners, f1.artistPlaycount AS artistPlaycount, f1.artistRatio AS artistRatio, p1.date AS date
     FROM artistsSpot a
@@ -33,7 +33,9 @@ $allthatAndLastFM = "SELECT a.artistSpotID AS artistSpotID, a.artistMBID AS arti
 
 $getit = $connekt->query( $allthatAndLastFM );
 
-if(!$getit){ echo 'Cursed-Crap. Did not run the query.'; }	
+if(!$getit){ 
+    echo 'Cursed-Crap. Did not run the query.'; 
+};	
 
 ?>
 
@@ -54,6 +56,8 @@ if(!$getit){ echo 'Cursed-Crap. Did not run the query.'; }
 	
 	<!-- main -->
 
+    <p><a href="forms/add_newArtistSpot.php">Add New Spotify Artist</a></p>
+
 	<div class="panel panel-primary">
 
 		<div class="panel-heading">
@@ -65,7 +69,7 @@ if(!$getit){ echo 'Cursed-Crap. Did not run the query.'; }
 			<!-- Panel Content -->
 			<?php if (!empty($getit)) { ?>
 
-<table class="table" id="tableoartists">
+<table class="table table-striped table-hover" id="tableoartists">
 	<thead>
 <tr>
 	<th><div>Pretty Face</div></th>	

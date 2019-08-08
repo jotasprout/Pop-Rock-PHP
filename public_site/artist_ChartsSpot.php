@@ -50,7 +50,7 @@
 <div class="container-fluid">
 <div id="fluidCon"></div> <!-- end of fluidCon -->
 
-<p><a href="forms/edit_Artist.php?artistSpotID=<?php echo $artistSpotID ?>&artistMBID=<?php echo $artistMBID ?>">Edit this Artist</a> | <a href="forms/add_assocArtist.php?artistSpotID=<?php echo $artistSpotID ?>&artistMBID=<?php echo $artistMBID ?>">Add Associated Artist</a></p>	
+<p><a href="forms/edit_ArtistSpot.php?artistSpotID=<?php echo $artistSpotID ?>&artistMBID=<?php echo $artistMBID ?>">Edit this Artist</a> | <a href="forms/add_assocArtist.php?artistSpotID=<?php echo $artistSpotID ?>&artistMBID=<?php echo $artistMBID ?>">Add Associated Artist</a></p>	
 
 
 <div class="row"> <!-- Start of Row 1 -->

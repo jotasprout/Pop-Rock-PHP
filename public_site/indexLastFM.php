@@ -3,7 +3,7 @@
 require_once 'rockdb.php';
 require_once 'page_pieces/stylesAndScripts.php';
 
-$artistArtMBFilePath = "https://www.roxorsoxor.com/poprock/artist-art/";
+$artistArtMBFilenameFilePath = "https://www.roxorsoxor.com/poprock/artist-art/";
 
 $connekt = new mysqli( $GLOBALS[ 'host' ], $GLOBALS[ 'un' ], $GLOBALS[ 'magicword' ], $GLOBALS[ 'db' ] );
 
@@ -11,7 +11,7 @@ if ( !$connekt ) {
 	echo 'Darn. Did not connect.';
 };
 
-$allthatAndLastFM = "SELECT a.artistMBID AS artistMBID, s.artistSpotID, s.artistArtSpot, a.artistArtMB AS artistArtMB, a.artistNameMB AS artistNameMB, f1.dataDate AS dataDate, f1.artistListeners AS artistListeners, f1.artistPlaycount AS artistPlaycount, f1.artistRatio AS artistRatio, f1.dataDate AS date
+$allthatAndLastFM = "SELECT a.artistMBID AS artistMBID, s.artistSpotID, s.artistArtSpot, a.artistArtMBFilename AS artistArtMBFilename, a.artistNameMB AS artistNameMB, f1.dataDate AS dataDate, f1.artistListeners AS artistListeners, f1.artistPlaycount AS artistPlaycount, f1.artistRatio AS artistRatio, f1.dataDate AS date
     FROM artistsMB a
 	LEFT JOIN (SELECT f.*
 			FROM artistsLastFM f
@@ -46,7 +46,10 @@ if(!$getit){ echo 'Cursed-Crap. Did not run the query.'; }
 	
 	<div id="fluidCon">
 	</div> <!-- end of fluidCon -->
+
 	<!-- main -->
+
+    <p><a href="forms/add_newArtistMB.php">Add New MusicBrainz Artist</a></p>
 
 	<div class="panel panel-primary">
 
@@ -59,7 +62,7 @@ if(!$getit){ echo 'Cursed-Crap. Did not run the query.'; }
 			<!-- Panel Content -->
 			<?php if (!empty($getit)) { ?>
 
-<table class="table" id="tableoartists">
+<table class="table table-striped table-hover" id="tableoartists">
 <thead>
 <tr>
 	<th><div>Pretty Face</div></th>	
@@ -82,20 +85,20 @@ if(!$getit){ echo 'Cursed-Crap. Did not run the query.'; }
 
 		$artistMBID = $row[ "artistMBID" ];
 		$artistSpotID = $row[ "artistSpotID" ];
-		$artistArtMB = $row["artistArtMB"];
+		$artistArtMBFilename = $row["artistArtMBFilename"];
 		$artistArtSpot = $row["artistArtSpot"];
-		$artistArtFilename = $row['artistArtMB'];
-        $artistArtMB = $artistArtMBFilePath . $artistArtFilename;
+		$artistArtFilename = $row['artistArtMBFilename'];
+        $artistArtMBFilename = $artistArtMBFilenameFilePath . $artistArtFilename;
         $artistArt = '';
         
-		if(empty($row["artistArtMB"]) && empty($row["artistArtSpot"])) {
+		if(empty($row["artistArtMBFilename"]) && empty($row["artistArtSpot"])) {
 			$artistArt = "nope.png";
 		}
-		elseif (empty($row["artistArtMB"]) && !empty($row["artistArtSpot"])) {
+		elseif (empty($row["artistArtMBFilename"]) && !empty($row["artistArtSpot"])) {
 			$artistArt = $artistArtSpot;
 		}	
 		else {
-			$artistArt = $artistArtMB;
+			$artistArt = $artistArtMBFilename;
 		};
 
 		$lastFMDate = $row[ "dataDate" ];

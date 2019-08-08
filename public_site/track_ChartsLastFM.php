@@ -9,7 +9,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Track Info</title>
+    <title>This Track's Last FM stats</title>
 	<?php echo $stylesAndSuch; ?>
 	<style type="text/css">
 		.line {
@@ -49,7 +49,7 @@
 
 	<div class="panel panel-primary">
 		<div class="panel-heading">
-			<h3 class="panel-title">This Track's Popularity Over Time</h3>
+			<h3 class="panel-title">This Track's Last FM stats</h3>
 		</div>
 
 		<div class="panel-body">

@@ -77,7 +77,7 @@ if ( !$getit ) {
 
 				<?php if(!empty($getit)) { ?>
 				
-<table class="table" id="tableotracks">
+<table class="table table-striped table-hover" id="tableotracks">
 <thead>
 <tr>
 <!---->

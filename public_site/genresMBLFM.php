@@ -54,7 +54,7 @@ if(!$getit){
 				<!-- D3 chart goes here -->
 				<?php if (!empty($getit)) { ?>
 
-				<table class="table" id="tableoartists">
+				<table class="table table-striped table-hover" id="tableoartists">
 				<thead>
 					<tr>
 						<!--

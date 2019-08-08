@@ -20,9 +20,9 @@ $thirteen_MBID = '7dbf4b1f-d3e9-47bc-9194-d15b31017bd6';
 */
 $albumArtMBFilePath = "https://www.roxorsoxor.com/poprock/cover-art/";
 
-$getAlbumTracksAndAssocArt = "SELECT d.trackMBID, d.trackNameMB, d.trackNumber, d.albumNameMB, d.trackListeners, d.trackPlaycount, d.trackRatio AS trackRatio, max(d.dataDate) AS MaxDataDate, d.albumArtMB
+$getAlbumTracksAndAssocArt = "SELECT d.trackMBID, d.trackNameMB, d.trackNumber, d.albumNameMB, d.trackListeners, d.trackPlaycount, d.trackRatio AS trackRatio, max(d.dataDate) AS MaxDataDate, d.albumArtMBFilename
 FROM (
-    SELECT k.trackMBID, k.trackNameMB, k.trackNumber, h.albumNameMB, h.albumArtMB, fm.dataDate, fm.trackListeners, fm.trackPlaycount, fm.trackRatio
+    SELECT k.trackMBID, k.trackNameMB, k.trackNumber, h.albumNameMB, h.albumArtMBFilename, fm.dataDate, fm.trackListeners, fm.trackPlaycount, fm.trackRatio
         FROM (
             SELECT m.trackMBID, m.trackNameMB, m.trackNumber, m.albumMBID
                 FROM tracksMB m
@@ -115,7 +115,7 @@ if ( !$getit2 ) {
 
 		<?php if(!empty($getit2)) { ?>
 				
-<table class="table" id="tableotracks">
+<table class="table table-striped table-hover" id="tableotracks">
 <thead>
 <tr>
 <th class="popStyle" onClick="sortColumn('trackNumber', 'ASC', '<?php echo $albumMBID ?>', 'musicbrainz')"><div class="pointyHead">Track #</div></th>
@@ -139,8 +139,8 @@ while ( $row = mysqli_fetch_array( $getit2 ) ) {
     $trackPlaycountNum = $row[ "trackPlaycount"];
     $trackListeners = number_format ($trackListenersNum);
     
-    $albumArtMBFilename = $row[ "albumArtMB" ];
-    $albumArtMB = $albumArtMBFilePath . $albumArtMBFilename;
+    $albumArtMBFilename = $row[ "albumArtMBFilename" ];
+    $coverArt = $albumArtMBFilePath . $albumArtMBFilename;
     $trackPlaycount = number_format ($trackPlaycountNum);
     $ppl = $row["trackRatio"];
 
@@ -154,7 +154,7 @@ while ( $row = mysqli_fetch_array( $getit2 ) ) {
 ?>
 <tr>
 <td class="popStyle"><?php echo $trackNumber ?></td>
-<td><a href='https://www.roxorsoxor.com/poprock/track_Chart.php?trackMBID=<?php echo $trackMBID ?>'><?php echo $trackNameMB ?></a></td>
+<td><a href='https://www.roxorsoxor.com/poprock/track_ChartLastFM.php?trackMBID=<?php echo $trackMBID ?>'><?php echo $trackNameMB ?></a></td>
 <td class="popStyle"><?php echo $lastFMDate ?></td>
 <td class="rightNum"><?php echo $trackListeners ?></td>
 <td class="rightNum"><?php echo $trackPlaycount ?></td>
@@ -220,11 +220,13 @@ d3.json("functions/get_albumStats_LastFM.php?albumMBID=<?php echo $albumMBID; ?>
     const artistPlaycount = d3.select("#forCurrentPlaycount")
             .text(playcount);  
 
-    const albumArtMB = dataset[0].albumArtMB;
+    const albumArtMBFilePath = "https://www.roxorsoxor.com/poprock/cover-art/";
+    const albumArtMBFilename = dataset[0].albumArtMBFilename;
+    const coverArt = albumArtMBFilePath + albumArtMBFilename;
     /**/
     d3.select("#forArt")
             .data(dataset)
-            .attr("src", albumArtMB)
+            .attr("src", coverArt)
             .attr("height", 166);
             //.attr("width", auto)
 });

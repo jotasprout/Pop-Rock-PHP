@@ -1,7 +1,7 @@
 <?php
 $artistMBID = $_GET['artistMBID'];
 $artistSpotID = $_GET['artistSpotID'];
-$albumMBID = $_GET['albumMBID'];
+$albumSpotID = $_GET['albumSpotID'];
 
 require_once '../rockdb.php';
 require_once '../page_pieces/stylesAndScripts.php';
@@ -16,18 +16,18 @@ if ( !$connekt ) {
 if (isset($_POST['submit'])){
 	// If form is being submitted, process the form
 	// get form data, making sure it is valid
-	$albumMBID = $_POST['albumMBID'];
-	$albumNameMB = mysqli_real_escape_string($connekt, htmlspecialchars($_POST['albumNameMB']));
-	$artistNameMB = mysqli_real_escape_string($connekt, htmlspecialchars($_POST['artistNameMB']));
+	$albumSpotID = $_POST['albumSpotID'];
+	$albumNameSpot = mysqli_real_escape_string($connekt, htmlspecialchars($_POST['albumNameSpot']));
+	$artistNameSpot = mysqli_real_escape_string($connekt, htmlspecialchars($_POST['artistNameSpot']));
 	$artistMBID = mysqli_real_escape_string($connekt, htmlspecialchars($_POST['artistMBID']));
 	$artistSpotID = mysqli_real_escape_string($connekt, htmlspecialchars($_POST['artistSpotID']));
 	$assocArtistSpotID = mysqli_real_escape_string($connekt, htmlspecialchars($_POST['assocArtistSpotID']));
 	$assocAlbumSpotID = mysqli_real_escape_string($connekt, htmlspecialchars($_POST['assocAlbumSpotID']));
-	$albumArtFilename = mysqli_real_escape_string($connekt, htmlspecialchars($_POST['albumArtMBFilename']));
-	
+	$albumArtMBFilename = mysqli_real_escape_string($connekt, htmlspecialchars($_POST['albumArtMBFilename']));
+	$albumArtMBFilename = "https://www.roxorsoxor.com/poprock/cover-art/" . $albumArtMBFilename;
 	
 	// save data to database
-	$updateAlbum = "UPDATE albumsMB SET albumNameMB='$albumNameMB', artistMBID='$artistMBID', artistSpotID='$artistSpotID', assocArtistSpotID='$assocArtistSpotID', assocAlbumSpotID='$assocAlbumSpotID', albumArtMBFilename='$albumArtMBFilename' WHERE albumMBID='$albumMBID'";
+	$updateAlbum = "UPDATE albumsMB SET albumNameSpot='$albumNameSpot', artistMBID='$artistMBID', artistSpotID='$artistSpotID', assocArtistSpotID='$assocArtistSpotID', assocAlbumSpotID='$assocAlbumSpotID', albumArtMBFilename='$albumArtMBFilename' WHERE albumSpotID='$albumSpotID'";
 	
 	$retval = $connekt->query($updateAlbum);
 	
@@ -40,7 +40,7 @@ if (isset($_POST['submit'])){
 	{
 		// if update worked, go to list of albums
 		// do I want to change that to something AJAXy?
-		header("Location: ../artist_AlbumsListLastFM.php?artistSpotID=" . $artistSpotID . "&artistMBID=" . $artistMBID . "&albumMBID=" . $albumMBID . "&source=musicbrainz");
+		header("Location: ../artist_AlbumsListLastFM.php?artistSpotID=" . $artistSpotID . "&artistMBID=" . $artistMBID . "&source=musicbrainz");
 	}
 	
 
@@ -48,39 +48,36 @@ if (isset($_POST['submit'])){
 else // if the form isn't being submitted, get the data from the db and display the form
 {
 	// confirm id is valid and is numeric/larger than 0)
-	if (isset($_GET['albumMBID'])){
+	if (isset($_GET['albumSpotID'])){
 		// query db
-		$albumMBID = $_GET['albumMBID'];
+		$albumSpotID = $_GET['albumSpotID'];
 		
 		$queryZ = "
-			SELECT mb.albumNameMB, mb.albumMBID, z.artistNameMB, z.artistMBID, z.artistSpotID, mb.albumArtMBFilename, mb.assocArtistSpotID, mb.assocAlbumSpotID
+			SELECT mb.albumNameSpot, mb.albumSpotID, z.artistNameSpot, z.artistMBID, z.artistSpotID, mb.albumArtMBFilename, mb.assocArtistSpotID, mb.assocAlbumSpotID
 				FROM albumsMB mb 
-				JOIN artistsMB z ON z.artistMBID = mb.artistMBID
-				WHERE mb.albumMBID='" . $albumMBID . "';";
+				JOIN artists z ON z.artistMBID = mb.artistMBID
+				WHERE mb.albumSpotID='" . $albumSpotID . "';";
 		
 		$resultZ = mysqli_query($connekt, $queryZ) 
 			or die(mysqli_error($connekt));
 		
 		$row = mysqli_fetch_array($resultZ);
 		
-		// check that the 'albumMBID' matches up with a row in the databse
+		// check that the 'albumSpotID' matches up with a row in the databse
 		if($row){
-			$albumMBID = $row['albumMBID'];
-			$albumNameMB = $row['albumNameMB'];
-			$artistNameMB = $row['artistNameMB'];
+			$albumSpotID = $row['albumSpotID'];
+			$albumNameSpot = $row['albumNameSpot'];
+			$artistNameSpot = $row['artistNameSpot'];
 			$artistMBID = $row['artistMBID'];
 			$artistSpotID = $row['artistSpotID'];
 			$assocArtistSpotID = $row['assocArtistSpotID'];
-			//$assocArtistNameMB = $row['assocArtistNameMB'];
-            $assocAlbumSpotID = $row['assocAlbumSpotID'];
-            $albumArtMBFilename = $row['albumArtMBFilename'];
-            $albumArtMBFilepath = "https://www.roxorsoxor.com/poprock/cover-art/";
-            $coverArt = $albumArtMBFilepath . $albumArtMBFilename;
-			if($albumArtMBFilename == "") {
+			//$assocArtistNameSpot = $row['assocArtistNameSpot'];
+			$assocAlbumSpotID = $row['assocAlbumSpotID'];
+			if($row["albumArtMBFilename"] == "") {
 				$albumArtMBFilename = "nope.png";
 			}
 			else {
-				$albumArtMBFilename = $row['albumArtMBFilename'];
+				$albumArtMBFilename = $row["albumArtMBFilename"];
 			}				
 		}
 		else // if no match, display error
@@ -88,7 +85,7 @@ else // if the form isn't being submitted, get the data from the db and display 
 			echo "No results!";
 		}
 	}
-	else // if the 'albumMBID' in the URL isn't valid, or if there is no 'albumMBID' value, display an error
+	else // if the 'albumSpotID' in the URL isn't valid, or if there is no 'albumSpotID' value, display an error
 	{
 		echo $error;
 	}
@@ -100,7 +97,7 @@ else // if the form isn't being submitted, get the data from the db and display 
 <head>
 <meta name="viewport" content="user-scalable=no, width=device-width" />
 <meta charset="UTF-8">
-<title>Edit <?php echo $albumNameMB; ?> by <?php echo $artistNameMB; ?></title>
+<title>Edit <?php echo $albumNameSpot; ?> by <?php echo $artistNameSpot; ?></title>
 <?php echo $stylesAndSuch; ?>
 </head>
 <body>
@@ -114,32 +111,32 @@ else // if the form isn't being submitted, get the data from the db and display 
 	
 	<!-- main -->
 	<div class="panel panel-primary">
-		<div class="panel-heading"><h3 class="panel-title">Edit <?php echo $albumNameMB; ?> by <?php echo $artistNameMB; ?></h3></div>
+		<div class="panel-heading"><h3 class="panel-title">Edit <?php echo $albumNameSpot; ?> by <?php echo $artistNameSpot; ?></h3></div>
 			<div class="panel-body">
 				<!-- Panel Content -->
 	
 	<!-- This form displays user profile info from the database -->
 	
 	<form class="form-horizontal" action="" method="post">
-		<input type="hidden" name="albumMBID" value="<?php echo $albumMBID; ?>"/>
+		<input type="hidden" name="albumSpotID" value="<?php echo $albumSpotID; ?>"/>
 		<fieldset>
             
 			<div class="form-group"> <!-- Row 1 --> 
 				<!-- Column 1 -->
-				<label class="col-lg-2 control-label" for="albumNameMB">Album Name</label>				
+				<label class="col-lg-2 control-label" for="albumNameSpot">Album Name</label>				
 				<!-- Column 2 -->
 				<div class="col-lg-4">
-					<input class="form-control" type="text" name="albumNameMB" value="<?php echo $albumNameMB; ?>" />
+					<input class="form-control" type="text" name="albumNameSpot" value="<?php echo $albumNameSpot; ?>" />
 				</div>
 			</div>
 			<!-- /Row 1 -->		
             	
 			<div class="form-group"> <!-- Row 2 --> 
 				<!-- Column 1 -->				
-				<label class="col-lg-2 control-label" for="artistNameMB">Artist Name</label>
+				<label class="col-lg-2 control-label" for="artistNameSpot">Artist Name</label>
 				<!-- Column 2 -->				
 				<div class="col-lg-4">
-					<input class="form-control" type="text" name="artistNameMB" value="<?php echo $artistNameMB; ?>" />
+					<input class="form-control" type="text" name="artistNameSpot" value="<?php echo $artistNameSpot; ?>" />
 				</div>
 			</div>
 			<!-- /Row 2 -->
@@ -183,7 +180,7 @@ else // if the form isn't being submitted, get the data from the db and display 
 				</div>
 				<!-- Column 3 
 				<div class="col-lg-3">
-					<input class="form-control" type="assocArtistNameMB" name="assocArtistNameMB"  value="<?php //echo $assocArtistNameMB; ?>" readonly/>
+					<input class="form-control" type="assocArtistNameSpot" name="assocArtistNameSpot"  value="<?php //echo $assocArtistNameSpot; ?>" readonly/>
 				</div>
 				-->
 			</div>
@@ -198,7 +195,7 @@ else // if the form isn't being submitted, get the data from the db and display 
 				</div>
 				<!-- Column 3 
 				<div class="col-lg-3">
-					<input class="form-control" type="assocArtistNameMB" name="assocArtistNameMB"  value="<?php //echo $assocArtistNameMB; ?>" readonly/>
+					<input class="form-control" type="assocArtistNameSpot" name="assocArtistNameSpot"  value="<?php //echo $assocArtistNameSpot; ?>" readonly/>
 				</div>
 				-->
 			</div>
@@ -217,7 +214,7 @@ else // if the form isn't being submitted, get the data from the db and display 
 	
 	<?php
 	// Start creating an HTML table for Assigned Cases and create header row
-    echo "<table class='table table-striped table-hover'><thead><tr><th>Other Albums by " . $artistNameMB . "</th></tr></thead>";
+    echo "<table class='table table-striped table-hover '><thead><tr><th>Other Albums by " . $artistNameSpot . "</th></tr></thead>";
 	echo "<tbody>";
 
 	$connekt = new mysqli( $GLOBALS[ 'host' ], $GLOBALS[ 'un' ], $GLOBALS[ 'magicword' ], $GLOBALS[ 'db' ] );
@@ -227,21 +224,18 @@ else // if the form isn't being submitted, get the data from the db and display 
 	}
 
 	$query0 = "
-		SELECT b.albumNameMB, b.albumMBID, z.artistNameMB, z.artistMBID, z.artistSpotID, x.albumArtMBFilename
-			FROM (SELECT mb.albumNameMB, mb.albumMBID, mb.artistMBID
+		SELECT b.albumNameSpot, b.albumSpotID, z.artistNameSpot, z.artistMBID, z.artistSpotID, x.albumArtMBFilename
+			FROM (SELECT mb.albumNameSpot, mb.albumSpotID, mb.artistMBID
 				FROM albumsMB mb 
 				WHERE mb.artistMBID='" . $artistMBID . "') b 
 			JOIN artists z ON z.artistMBID = b.artistMBID
-			LEFT JOIN albumsMB x ON b.albumMBID = x.albumMBID
-			ORDER BY b.albumNameMB ASC;";
+			LEFT JOIN albumsMB x ON b.albumSpotID = x.albumSpotID
+			ORDER BY b.albumNameSpot ASC;";
 	
 	$result0 = $connekt->query($query0);
-    // Create a row in HTML table for each row from database
-    
-    
+	// Create a row in HTML table for each row from database
     while ($row = mysqli_fetch_array($result0)) {
-
-		echo "<tr><td><img src='" . $row['albumArtMBFilename'] . "' height='64' width='64'></td><td>" . $row['albumNameMB'] . "</td></tr>";
+		echo "<tr><td><img src='" . $row['albumArtMBFilename'] . "' height='64' width='64'></td><td>" . $row['albumNameSpot'] . "</td></tr>";
     }
 
     echo "</tbody></table>";

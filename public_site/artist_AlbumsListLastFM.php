@@ -6,14 +6,16 @@ $source = $_GET['source'];
 require_once 'rockdb.php';
 require_once 'page_pieces/stylesAndScripts.php';
 
+$albumArtMBFilePath = "https://www.roxorsoxor.com/poprock/cover-art/";
+
 $connekt = new mysqli($GLOBALS['host'], $GLOBALS['un'], $GLOBALS['magicword'], $GLOBALS['db']);
 
 if (!$connekt) {
 	echo '<p>Darn. Did not connect. Screwed up like this: ' . mysqli_connect_error() . '</p>';
 };
 
-$blackScabies = "SELECT b.albumNameMB, b.albumMBID, z.artistNameMB, f1.dataDate, f1.albumListeners, f1.albumPlaycount, f1.albumRatio AS albumRatio, b.albumArtMB
-					FROM (SELECT mb.albumNameMB, mb.albumMBID, mb.artistMBID, mb.assocAlbumSpotID, mb.albumArtMB
+$blackScabies = "SELECT b.albumNameMB, b.albumMBID, z.artistNameMB, f1.dataDate, f1.albumListeners, f1.albumPlaycount, f1.albumRatio AS albumRatio, b.albumArtMBFilename
+					FROM (SELECT mb.albumNameMB, mb.albumMBID, mb.artistMBID, mb.assocAlbumSpotID, mb.albumArtMBFilename
 						FROM albumsMB mb 
 						WHERE mb.artistMBID='$artistMBID') b 
 					JOIN artistsMB z ON z.artistMBID = b.artistMBID
@@ -62,7 +64,7 @@ if(!$getit){
 
 		<?php if(!empty($getit)) { ?>
 		
-<table class="table" id="recordCollection">
+<table class="table table-striped table-hover" id="recordCollection">
 
 <thead>
 
@@ -70,10 +72,10 @@ if(!$getit){
 	<th>Cover Art</th>
 	<!---->
 	<th onClick="sortColumn('albumNameMB', 'ASC', '<?php echo $artistMBID; ?>', '<?php echo $source ?>')"><div class="pointyHead">Album Name</div></th>
+    <th class="popStyle">Released</div></th>
     <th class="popStyle">LastFM<br>Data Date</th>
 	<!--
 	<th>Album MBID</th>		
-	
     -->
 	<th onClick="sortColumn('albumListeners', 'unsorted', '<?php echo $artistMBID; ?>', '<?php echo $source ?>')"><div class="pointyHead rightNum">LastFM<br>Listeners</div></th>
 	<th onClick="sortColumn('albumPlaycount', 'unsorted', '<?php echo $artistMBID; ?>', '<?php echo $source ?>')"><div class="pointyHead rightNum">LastFM<br>Playcount</div></th>
@@ -90,7 +92,8 @@ if(!$getit){
 		$artistNameMB = $row['artistNameMB'];
 		$albumMBID = $row['albumMBID'];
 		$albumNameMB = $row['albumNameMB'];	
-        $coverArt = $row['albumArtMB'];
+        $albumArtMBFilename = $row['albumArtMBFilename'];
+        $coverArt = $albumArtMBFilePath . $albumArtMBFilename;
 		$lastFMDate = $row[ "dataDate" ];
 		$albumListenersNum = $row[ "albumListeners"];
 		$albumListeners = number_format ($albumListenersNum);
@@ -111,6 +114,7 @@ if(!$getit){
 <tr>
 <td><img src='<?php echo $coverArt ?>' height='64' width='64'></td>
 <td><a href='https://www.roxorsoxor.com/poprock/album_TracksListLastFM.php?artistSpotID=<?php echo $artistSpotID ?>&artistMBID=<?php echo $artistMBID ?>&albumMBID=<?php echo $albumMBID ?>&source=musicbrainz'><?php echo $albumNameMB ?></a></td>
+<td class="popStyle">year</td>
 <td class="popStyle"><?php echo $lastFMDate ?></td>
 <!--
 <td><?php //echo $albumMBID ?></td>

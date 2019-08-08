@@ -68,7 +68,7 @@ if(!$getit){
 
 		<?php if(!empty($getit)) { ?>
 		
-<table class="table" id="recordCollection">
+<table class="table table-striped table-hover" id="recordCollection">
 
 <thead>
 <tr>

@@ -9,7 +9,7 @@ if (!$connekt) {
 	echo 'Darn. Did not connect. Screwed up like this: ' . mysqli_connect_error() . '</p>';
 };
 // b7d17108-0217-36e6-9110-b7f24ab6da8f
-$getLastFM = "SELECT z.artistNameMB, a.albumNameMB, a.albumMBID, f1.albumListeners, f1.albumPlaycount, f1.dataDate
+$getLastFM = "SELECT z.artistNameMB, a.albumNameMB, a.albumMBID, a.albumArtMBFilename, f1.albumListeners, f1.albumPlaycount, f1.dataDate
 				FROM (SELECT f.*
 						FROM albumsLastFM f
 						INNER JOIN (SELECT albumMBID, albumListeners, albumPlaycount, max(dataDate) AS MaxDataDate
