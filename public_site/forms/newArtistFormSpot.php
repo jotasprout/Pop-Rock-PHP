@@ -1,7 +1,5 @@
 <?php
-
-require_once '../page_pieces/stylesAndScripts.php';
-
+    require_once '../page_pieces/stylesAndScripts.php';
 ?>
 
 <!DOCTYPE html>
@@ -24,7 +22,7 @@ require_once '../page_pieces/stylesAndScripts.php';
 			<div class="panel-body">
 			<!-- Panel Content -->
 	
-	<form class="form-horizontal" action="../functions/add_ArtistSpot.php" method="post">
+	<form class="form-horizontal" action="../functions/addArtistSpot.php" method="post">
 		
 		<fieldset> 				   
             

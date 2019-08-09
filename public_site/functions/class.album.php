@@ -4,8 +4,6 @@
 
         public function insert_album($albumSpotID,$albumName,$albumReleased,$thisartistSpotID) {
 
-            
-
             try {
                 $stmt = $rock->conn->prepare("INSERT INTO albums (albumSpotID,albumName,albumReleased,thisartistSpotID) VALUES(:albumSpotID, :albumName, :albumReleased, :thisartistSpotID)");
                 $stmt->bindparam(":albumSpotID",$albumSpotID);
@@ -60,14 +58,6 @@
             return $this -> albumPop;
         }
 		
-		function set_albumPop ($new_albumPop) {
-            $this -> albumPop = $new_albumPop;
-        }
-
-        function get_albumPop () {
-            return $this -> albumPop;
-        }
-		
 		function set_albumArtSpotist ($new_albumArtSpotist) {
             $this -> albumArtSpotist = $new_albumArtSpotist;
         }
@@ -83,7 +73,6 @@
         function get_albumReleased () {
             return $this -> albumReleased;
         }
-
 
     }
 

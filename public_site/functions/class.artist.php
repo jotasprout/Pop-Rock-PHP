@@ -7,36 +7,37 @@
 
     class artist {
 
+        // Do I need these first three lines?
         var $artistSpotID;
-        var $artistName;
+        var $artistNameSpot;
         var $artistPop;
 
-        function __construct ($artists_id, $artists_name) {
-            $this -> artistSpotID = $artists_id;
-            $this -> artistName = $artists_name;
+        function __construct ($artistSpotID, $artistNameSpot) {
+            $this -> artistSpotID = $artistSpotID;
+            $this -> artistNameSpot = $artistNameSpot;
         }
 
-        function set_artistSpotID ($new_artistSpotID) {
-            $this -> artistSpotID = $new_artistSpotID;
+        function setArtistSpotID ($newArtistSpotID) {
+            $this -> artistSpotID = $newArtistSpotID;
         }
 
-        function get_artistSpotID () {
+        function getArtistSpotID () {
             return $this -> artistSpotID;
         }
 
-        function set_artistName ($new_artistName) {
-            $this -> artistName = $new_artistName;
+        function setArtistNameSpot ($newArtistNameSpot) {
+            $this -> artistNameSpot = $newArtistNameSpot;
         }
 
-        function get_artistName () {
-            return $this -> artistName;
+        function getArtistNameSpot () {
+            return $this -> artistNameSpot;
         }
 		
-		function set_artistPop ($new_artistPop) {
-            $this -> artistPop = $new_artistPop;
+		function setArtistPop ($newArtistPop) {
+            $this -> artistPop = $newArtistPop;
         }
 
-        function get_artistPop () {
+        function getArtistPop () {
             return $this -> artistPop;
         }
 

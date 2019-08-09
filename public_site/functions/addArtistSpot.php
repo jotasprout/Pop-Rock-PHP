@@ -5,7 +5,7 @@ require '../secrets/spotifySecrets.php';
 require '../vendor/autoload.php';
 require_once '../rockdb.php';
 require_once '../functions/artists.php';
-// require_once '../data_text/artists_arrays_objects.php';
+
 $session = new SpotifyWebAPI\Session($myClientID, $myClientSecret);
 $session->requestCredentialsToken();
 $accessToken = $session->getAccessToken();
@@ -17,7 +17,7 @@ $GLOBALS['api'] = new SpotifyWebAPI\SpotifyWebAPI();
 $GLOBALS['api']->setAccessToken($accessToken);
 $baseURL = "https://api.spotify.com/v1/artists/";
 
-$artistSpotID = $_GET['artistSpotID'];
+$artistSpotID = $_POST['artistSpotID'];
 // $thisArtist = '3D4qYDvoPn5cQxtBm4oseo';
 
 function addArtistSpot ($thisArtist) {
@@ -39,28 +39,35 @@ function addArtistSpot ($thisArtist) {
     // echo $artistArt;
     $artistPop = $artist->popularity;
     // echo $artistPop;
+    $artistFollowers = $artist->followers->total;
+
+    // What is this next line?
     $artistInfo = '{"artistSpotID": "' . $artistSpotID . '", "artistNameSpot": "' . $artistNameSpot . '", "artistArtSpot": "' . $artistArtSpot . '", "artistPop": "' . $artistPop . '"}';
 
-    $insertArtistsInfo = "INSERT INTO artistsSpot (artistSpotID,artistNameSpot, artistArtSpot) VALUES('$artistSpotID','$artistNameSpot', '$artistArtSpot')";
+    $insertArtistsInfo = "INSERT INTO artistsSpot (artistSpotID, artistNameSpot, artistArtSpot) VALUES('$artistSpotID','$artistNameSpot', '$artistArtSpot')";
 
     $rockout = $connekt->query($insertArtistsInfo);
 
     if(!$rockout){
         echo 'Cursed-Crap. Could not insert artist ' . $artistNameSpot . '.<br>';
+    } else {
+        'Inserted ' . $artistNameSpot . ' name and art.<br>';
+        echo json_encode($artist);
     }
     
-    $insertArtistsPop = "INSERT INTO popArtists (artistSpotID,pop) VALUES ('$artistSpotID','$artistPop')";
-    
+    $insertArtistsPop = "INSERT INTO popArtists (artistSpotID,pop,followers,date) VALUES('$artistSpotID','$artistPop','$artistFollowers',curdate())";
+
     $rockpop = $connekt->query($insertArtistsPop);
-    
     if(!$rockpop){
-        echo 'Cursed-Crap. Could not insert artists popularity.';
-    } else {
-        echo json_encode($artist);
+        echo '<p>Cursed-Crap. Could not insert artists popularity & followers.</p>';
+    }
+
+    else {
+        echo '<p><img src="' . $artistArtSpot . '"></p><p>' . $artistName . '</p><p><b>Popularity:</b> ' . $artistPop . '</p><p><b>Followers:</b> ' . $artistFollowers . '</p>';
     };
 };
 
-addArtistSpot ($thisArtistSpotID);
+addArtistSpot ($artistSpotID);
 
 die();
 

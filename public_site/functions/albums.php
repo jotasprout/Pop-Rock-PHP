@@ -1,5 +1,15 @@
 <?php
 
+// CONTAINS
+// divideCombineAlbumsForTracks
+//      Gets lists of tracks from Spotify -- inefficient
+//      CALLS divideCombineInsertTracksAndPop
+// divideCombineAlbums
+//      Gets list of albums from Spotify
+//      Gets popularity for each album
+//      Inserts albums into my DB
+//      Inserts album pop into my DB
+
 $artistAlbums = array ();
 
 require_once '../rockdb.php';
@@ -33,7 +43,8 @@ function divideCombineAlbumsForTracks ($artistAlbums) {
 
 			$AlbumsTracks = array();
 	
-			$albumSpotID = $album->id;
+            $albumSpotID = $album->id;
+            // Does the above get get the id from Spotify? If so, do I need it anymore? At least not here?
 			
 			$thisAlbumTracks = $GLOBALS['api']->getAlbumTracks($albumSpotID);
 

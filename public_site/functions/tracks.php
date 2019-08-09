@@ -1,5 +1,11 @@
 <?php
 
+// CONTAINS
+// divideCombineTracksAndInsertPop
+//      trackalbumNameSpotSpot?
+//      Not to be confused with divideCombineInsertTracksAndPop (called from albums)
+//      Gets popularity of tracks and inserts into popTracks
+
 $albumsTracksArrays = array ();
 
 function divideCombineTracksAndInsertPop ($allArtistTracks) {
