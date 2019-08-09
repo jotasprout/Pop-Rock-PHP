@@ -1,24 +1,12 @@
 <?php
-session_start();
-require '../secrets/MBifySecrets.php';
+
 // require '../secrets/auth.php';
 require '../vendor/autoload.php';
 require_once '../rockdb.php';
 require_once '../functions/artists.php';
 // require_once '../data_text/artists_arrays_objects.php';
-$session = new MBifyWebAPI\Session($myClientID, $myClientSecret);
-$session->requestCredentialsToken();
-$accessToken = $session->getAccessToken();
-// I don't think the cron needs this next line 
-$_SESSION['accessToken'] = $accessToken;
-// and I don't think the cron needs this next line either
-$accessToken = $_SESSION['accessToken'];
-$GLOBALS['api'] = new MBifyWebAPI\MBifyWebAPI();
-$GLOBALS['api']->setAccessToken($accessToken);
-$baseURL = "https://api.MBify.com/v1/artists/";
 
 $artistMBID = $_POST['artistMBID'];
-// $thisArtist = '3D4qYDvoPn5cQxtBm4oseo';
 
 function addArtistMB ($thisArtist) {
 
@@ -60,7 +48,7 @@ function addArtistMB ($thisArtist) {
     };
 };
 
-addArtistMB ($thisArtistMBID);
+addArtistMB ($artistMBID);
 
 die();
 
