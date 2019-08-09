@@ -4,13 +4,29 @@
 require '../vendor/autoload.php';
 require_once '../rockdb.php';
 require_once '../functions/artists.php';
-// require_once '../data_text/artists_arrays_objects.php';
+require_once '../functions/py_musicBrainz.php';
 
-$artistMBID = $_POST['artistMBID'];
 
+
+// need to capture response here
+
+$gimmeJSON = file_get_contents($getReleaseGroups_totalURL);
+
+$lemmeSeeJSON = json_decode($gimmeJSON, true);
+
+var_dump($lemmeSeeJSON);
+
+echo "<script>console.log(" . $gimmeJSON . ");</script>";
+
+
+
+
+echo "<script>console.log(" . $lemmeSeeJSON . ");</script>";
+
+
+
+/*
 function addArtistMB ($thisArtist) {
-
-    $artist = $GLOBALS['api']->getArtist($thisArtist);
 			
     $connekt = new mysqli($GLOBALS['host'], $GLOBALS['un'], $GLOBALS['magicword'], $GLOBALS['db']);
 
@@ -49,7 +65,7 @@ function addArtistMB ($thisArtist) {
 };
 
 addArtistMB ($artistMBID);
-
+*/
 die();
 
 ?>

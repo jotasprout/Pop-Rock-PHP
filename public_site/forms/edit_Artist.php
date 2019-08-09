@@ -68,7 +68,7 @@ else // if the form isn't being submitted, get the data from the db and display 
 		//$artistMBID = $_GET['artistMBID'];
 
 		$queryZ = "
-			SELECT z.artistNameSpot, z.artistSpotID, z.artistArtSpot, z.artistMBID, mb.artistArtMB, mb.artistNameMB
+			SELECT z.artistNameSpot, z.artistSpotID, z.artistArtSpot, z.artistMBID, mb.artistArtMBFilename, mb.artistNameMB
                 FROM artistsSpot z 
                 LEFT JOIN artistsMB mb ON z.artistMBID = mb.artistMBID
 				WHERE z.artistSpotID='" . $artistSpotID . "';";
@@ -80,7 +80,7 @@ else // if the form isn't being submitted, get the data from the db and display 
 		// check that the 'artistMBID' matches up with a row in the database
 		if($row){
             $artistArtSpot = $row['artistArtSpot'];
-			$artistArtMBFilename = $row['artistArtMB'];
+			$artistArtMBFilename = $row['artistArtMBFilename'];
             $artistNameMB = $row['artistNameMB'];
             $artistNameSpot = $row['artistNameSpot'];
             $artistMBID = $row['artistMBID'];
