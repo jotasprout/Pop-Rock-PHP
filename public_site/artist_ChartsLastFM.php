@@ -57,8 +57,6 @@
     
 <a role="button" class="btn btn-success btn-sm" href="forms/add_assocArtist.php?artistSpotID=<?php echo $artistSpotID ?>&artistMBID=<?php echo $artistMBID ?>">Add Associated Artist</a>
 
- <p><a href="forms/edit_Artist.php?artistSpotID=<?php echo $artistSpotID ?>&artistMBID=<?php echo $artistMBID ?>">Edit this Artist</a> | <a href="forms/add_assocArtist.php?artistSpotID=<?php echo $artistSpotID ?>&artistMBID=<?php echo $artistMBID ?>">Add Associated Artist</a></p>	
-
  <div class="row"> <!-- Start of Row 1 -->
     <div class="col-md-6"> <!-- Start of Row #1 Column 1 -->
         <div class="panel panel-primary"> <!-- Start of Left Panel Primary -->

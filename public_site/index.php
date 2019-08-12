@@ -74,11 +74,11 @@ if(!$getit){
 <tr>
 	<th><div>Pretty Face</div></th>	
 	<th onClick="sortColumn('artistNameSpot', 'ASC')"><div class="pointyHead">Artist Name</div></th>
-	<!-- 
+	<!-- -->
 	<th><div class="popStyle">Spotify ID</div></th>
 	<th><div class="popStyle">Spotify MBID</div></th>
 
-    -->
+    
 	<th onClick="sortColumn('pop', 'unsorted')"><div class="pointyHead popStyle">Spotify<br>Popularity</div></th>
 	<th onClick="sortColumn('followers', 'unsorted')"><div class="pointyHead rightNum">Spotify<br>Followers</div></th>
     <th><div class="popStyle">Spotify<br>Data Date</div></th>
@@ -129,11 +129,11 @@ if(!$getit){
 	<td><a href='https://www.roxorsoxor.com/poprock/artist_ChartsSpot.php?artistSpotID=<?php echo $artistSpotID ?>&artistMBID=<?php echo $artistMBID ?>'><img src='<?php echo $artistArtSpot ?>' class="indexArtistArt"></a></td>	
 	
 	<td><a href='https://www.roxorsoxor.com/poprock/artist_ChartsSpot.php?artistSpotID=<?php echo $artistSpotID ?>&artistMBID=<?php echo $artistMBID ?>'><?php echo $artistNameSpot ?></a></td>
-	<!--
-	<td class="popStyle"><?php //echo $artistSpotID ?></td>
-	<td class="popStyle"><?php //echo $artistMBID ?></td>
+	<!---->
+	<td class="popStyle"><?php echo $artistSpotID ?></td>
+	<td class="popStyle"><?php echo $artistMBID ?></td>
 
-    -->
+    
 	<td class="popStyle"><?php echo $artistPop ?></td>
 	<td id="followers" class="rightNum"><?php echo $artistFollowers ?></td>
     <td class="popStyle"><?php echo $popDate ?></td>

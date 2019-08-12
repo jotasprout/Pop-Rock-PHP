@@ -236,10 +236,12 @@ function gatherArtistAlbums ($artistSpotID) {
 
 addArtistSpot ($artistSpotID);      // inserts artist in artistsSpot, inserts current pop in popArtist
 gatherArtistAlbums ($artistSpotID); // gets all artist's albums from Spotify, sends them to ...
+
 // divideCombineAlbums
 // gets album info, inserts into albumsSpot, gets stats, inserts into popAlbums, gets tracks from all this artist's albums, sends them to ...
-// divideCombineTracksAndInsertPop
-// DOES NOT INSERT TRACKS INTO tracksSpot
+
+// divideCombineInsertTracksAndPop
+// DOES NOT INSERT TRACKS INTO tracksSpot ...?????
 // gets stats, inserts into popTracks
 
 
