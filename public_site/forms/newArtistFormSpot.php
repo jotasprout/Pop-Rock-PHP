@@ -13,39 +13,37 @@
 <body>
 <div class="container-fluid">	
 		
-	<div id="fluidCon">
-	</div> <!-- end of fluidCon -->
+	<div id="fluidCon"></div> <!-- end of fluidCon -->
 	
 	<!-- main -->
 	<div class="panel panel-primary">
-		<div class="panel-heading"><h3 class="panel-title">Add New Spotify Artist</h3></div>
-			<div class="panel-body">
+		<div class="panel-heading">
+			<h3 class="panel-title">Add New Spotify Artist</h3>
+		</div>
+		<div class="panel-body">
 			<!-- Panel Content -->
 	
-	<form class="form-horizontal" action="../functions/addArtistSpot.php" method="post">
-		
-		<fieldset> 				   
-            
-		<div class="form-group"> <!-- Artist Spotify Name --> 			
-			<label class="col-lg-2 control-label" for="artistNameSpot">Spotify ID</label>		
-            <div class="col-lg-3">
-				<input class="form-control" type="artistSpotID" name="artistSpotID"  value="Enter artist Spotify ID" />
-            </div>
-		</div> <!-- /Artist Spotify Name -->    
+			<form class="form-horizontal" action="../functions/addArtistSpot.php" method="post">
 				
-			<!-- Last Row -->
-			<div class="form-group"> <!-- Last Row -->	
-				<div class="col-lg-4 col-lg-offset-2">
-					<button class="btn btn-primary" type="submit" name="submit">Insert</button>
-				</div>
-			</div>
-			<!-- /Last Row -->
-		</fieldset>
-	</form>
-
-	</div> <!-- /panel-body -->
-</div> <!-- /panel IS THIS PRIMARY? -->
-	
+				<fieldset> 				   					
+				<div class="form-group"> <!-- Artist Spotify ID --> 			
+					<label class="col-lg-2 control-label" for="artistSpotID">Spotify ID</label>		
+					<div class="col-lg-3">
+						<input class="form-control" type="text" name="artistSpotID"  value="" />
+					</div>
+				</div> <!-- /Artist Spotify ID -->    
+						
+					<!-- Last Row -->
+					<div class="form-group"> <!-- Last Row -->	
+						<div class="col-lg-4 col-lg-offset-2">
+							<button class="btn btn-primary" type="submit" name="submit">Insert</button>
+						</div>
+					</div>
+					<!-- /Last Row -->
+				</fieldset>
+			</form>
+		</div> <!-- /panel-body -->
+	</div> <!-- /panel IS THIS PRIMARY? -->
 
 	</div> <!-- /container-fluid --> 
 

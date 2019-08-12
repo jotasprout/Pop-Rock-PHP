@@ -1,14 +1,11 @@
 <?php
-
+session_start();
+require '../secrets/spotifySecrets.php';
 // require '../secrets/auth.php';
 require '../vendor/autoload.php';
 require_once '../rockdb.php';
-require_once '../functions/artists.php';
+//require_once '../functions/artists.php';
 require_once '../functions/py_musicBrainz.php';
-
-
-
-// need to capture response here
 
 $gimmeJSON = file_get_contents($getReleaseGroups_totalURL);
 
@@ -18,12 +15,7 @@ var_dump($lemmeSeeJSON);
 
 echo "<script>console.log(" . $gimmeJSON . ");</script>";
 
-
-
-
 echo "<script>console.log(" . $lemmeSeeJSON . ");</script>";
-
-
 
 /*
 function addArtistMB ($thisArtist) {
