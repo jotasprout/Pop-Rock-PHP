@@ -77,11 +77,12 @@ if(!$getit){
 	<!-- 
 	<th><div class="popStyle">Spotify ID</div></th>
 	<th><div class="popStyle">Spotify MBID</div></th>
-	<th><div class="popStyle">Spotify<br>Data Date</div></th>
-    <th onClick="sortColumn('datadate', 'unsorted')"><div class="pointyHead popStyle">LastFM<br>Data Date</div></th>
+
     -->
 	<th onClick="sortColumn('pop', 'unsorted')"><div class="pointyHead popStyle">Spotify<br>Popularity</div></th>
 	<th onClick="sortColumn('followers', 'unsorted')"><div class="pointyHead rightNum">Spotify<br>Followers</div></th>
+    <th><div class="popStyle">Spotify<br>Data Date</div></th>
+    <th onClick="sortColumn('datadate', 'unsorted')"><div class="pointyHead popStyle">LastFM<br>Data Date</div></th>
 	<th onClick="sortColumn('artistListeners', 'unsorted')"><div class="pointyHead rightNum">LastFM<br>Listeners</div></th>
 	<th onClick="sortColumn('artistPlaycount', 'unsorted')"><div class="pointyHead rightNum">LastFM<br>Playcount</div></th>
 	<th onClick="sortColumn('artistRatio', 'unsorted')"><div class="pointyHead popStyle">LastFM<br>Ratio</div></th>
@@ -131,11 +132,12 @@ if(!$getit){
 	<!--
 	<td class="popStyle"><?php //echo $artistSpotID ?></td>
 	<td class="popStyle"><?php //echo $artistMBID ?></td>
-	<td class="popStyle"><?php //echo $popDate ?></td>
-	<td class="popStyle"><?php //echo $lastFMDate ?></td>
+
     -->
 	<td class="popStyle"><?php echo $artistPop ?></td>
 	<td id="followers" class="rightNum"><?php echo $artistFollowers ?></td>
+    <td class="popStyle"><?php echo $popDate ?></td>
+	<td class="popStyle"><?php echo $lastFMDate ?></td>
 	<td class="rightNum"><?php echo $artistListeners ?></td>
 	<td class="rightNum"><?php echo $artistPlaycount ?></td>
 	<td class="popStyle"><?php echo $artistRatio ?></td>
