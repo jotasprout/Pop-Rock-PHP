@@ -55,6 +55,12 @@ if ( $columnName == "trackName" and $currentOrder == "ASC" ) {
 	$trackNameNewOrder = "DESC";
 }
 
+$trackNumberNewOrder = "DESC";
+
+if ( $columnName == "trackNumber" and $currentOrder == "ASC" ) {
+	$trackNameNewOrder = "DESC";
+}
+
 $popNewOrder = "ASC";
 
 if ( $columnName == "pop" and $currentOrder == "ASC" ) {
@@ -88,13 +94,14 @@ if(!empty($sortit)) { ?>
 <table class="table" id="tableotracks">
 <thead>
 <tr>
-	<th onClick="sortColumn('albumNameSpot', '<?php echo $albumNameNewOrder; ?>', '<?php echo $artistSpotID ?>', '<?php echo $source ?>')"><div class="pointyHead">Album Title</div></th>
-	<th onClick="sortColumn('trackNameSpot', '<?php echo $trackNameNewOrder; ?>', '<?php echo $artistSpotID ?>', '<?php echo $source ?>')"><div class="pointyHead">Track Title</div></th>
-	<th onClick="sortColumn('trackNumber', '<?php echo $trackNameNewOrder; ?>', '<?php echo $artistSpotID ?>', '<?php echo $source ?>')"><div class="pointyHead">Track #</div></th>
-	<th class="popStyle" onClick="sortColumn('pop', '<?php echo $popNewOrder; ?>', '<?php echo $artistSpotID ?>', '<?php echo $source ?>')"><div class="pointyHead">Spotify<br>Popularity</div></th>
-	<!---->
-	<th>Spotify<br>trackSpotID</th>
-	<th>Spotify<br>Data Date</th>
+<th onClick="sortColumn('albumNameSpot', '<?php echo $albumNameNewOrder; ?>', '<?php echo $artistSpotID ?>', '<?php echo $source ?>')"><div class="pointyHead">Album Title</div></th>
+<th onClick="sortColumn('trackNameSpot', '<?php echo $trackNameNewOrder; ?>', '<?php echo $artistSpotID ?>', '<?php echo $source ?>')"><div class="pointyHead">Track Title</div></th>
+<th>Spotify<br>trackSpotID</th>
+<th onClick="sortColumn('trackNumber', '<?php echo $trackNumberNewOrder; ?>', '<?php echo $artistSpotID ?>', '<?php echo $source ?>')"><div class="pointyHead">Track #</div></th>
+<th class="popStyle" onClick="sortColumn('pop', '<?php echo $popNewOrder; ?>', '<?php echo $artistSpotID ?>', '<?php echo $source ?>')"><div class="pointyHead">Spotify<br>Popularity</div></th>
+<!---->
+<th>Spotify<br>trackSpotID</th>
+<th>Spotify<br>Data Date</th>
 
 </tr>
 </thead>
@@ -103,7 +110,7 @@ if(!empty($sortit)) { ?>
 	<?php
 		while ( $row = mysqli_fetch_array( $sortit ) ) {
 			$albumNameSpot = $row[ "albumNameSpot" ];
-			$trackName = $row[ "trackName" ];
+			$trackNameSpot = $row[ "trackNameSpot" ];
 			$trackNumber = $row[ "trackNumber" ];
 			$trackSpotID = $row[ "trackSpotID" ];
 			$trackPop = $row[ "pop" ];
@@ -112,10 +119,11 @@ if(!empty($sortit)) { ?>
 	?>
 			<tr>
 				<td><?php echo $albumNameSpot ?></td>
-				<td><?php echo $trackName ?></td>
+				<td><?php echo $trackNameSpot ?></td>
+                <td><?php echo $trackSpotID ?></td>
 				<td><?php echo $trackNumber ?></td>
 				<td class="popStyle"><?php echo $trackPop ?></td>
-				<td><?php echo $trackSpotID ?></td>
+				
 				<td><?php echo $popDate ?></td>
 			
 			</tr>
