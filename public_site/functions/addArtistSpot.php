@@ -6,6 +6,7 @@ require '../vendor/autoload.php';
 require_once '../rockdb.php';
 //require_once '../functions/artists.php';
 require_once '../functions/tracks.php';
+require_once '../functions/goto_ArtistChartsSpot.php';
 
 $session = new SpotifyWebAPI\Session($myClientID, $myClientSecret);
 $session->requestCredentialsToken();
@@ -214,8 +215,6 @@ function gatherArtistAlbums ($artistSpotID) {
 			$albumSpotID = $album->id;
 			$discogChunk [] = $albumSpotID;
 		};
-        
-        
 
 		$allAlbumsThisArtist = array_merge($allAlbumsThisArtist, $discogChunk);
 		
@@ -228,22 +227,25 @@ function gatherArtistAlbums ($artistSpotID) {
 
 	echo "I have gathered " . $thisMany . " albums total.";
 
-	divideCombineAlbums ($allAlbumsThisArtist);
+    divideCombineAlbums ($allAlbumsThisArtist);
+    
+
 
 	unset($allAlbumsThisArtist);
 
 }
 
-addArtistSpot ($artistSpotID);      // inserts artist in artistsSpot, inserts current pop in popArtist
+addArtistSpot ($artistSpotID); // inserts artist in artistsSpot, inserts current pop in popArtist
 gatherArtistAlbums ($artistSpotID); // gets all artist's albums from Spotify, sends them to ...
 
 // divideCombineAlbums
 // gets album info, inserts into albumsSpot, gets stats, inserts into popAlbums, gets tracks from all this artist's albums, sends them to ...
 
 // divideCombineInsertTracksAndPop
-// DOES NOT INSERT TRACKS INTO tracksSpot ...?????
+// Gets tracks info, inserts into tracksSpot
 // gets stats, inserts into popTracks
 
+goto_ArtistChartsSpot($artistSpotID);
 
 die();
 

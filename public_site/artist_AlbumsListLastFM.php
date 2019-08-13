@@ -75,8 +75,9 @@ if(!$getit){
     <th class="popStyle">Released</div></th>
     <th class="popStyle">LastFM<br>Data Date</th>
 	<!--
-	<th>Album MBID</th>		
+		
     -->
+    <th>Album MBID</th>	
 	<th onClick="sortColumn('albumListeners', 'unsorted', '<?php echo $artistMBID; ?>', '<?php echo $source ?>')"><div class="pointyHead rightNum">LastFM<br>Listeners</div></th>
 	<th onClick="sortColumn('albumPlaycount', 'unsorted', '<?php echo $artistMBID; ?>', '<?php echo $source ?>')"><div class="pointyHead rightNum">LastFM<br>Playcount</div></th>
 	<th onClick="sortColumn('albumRatio', 'unsorted')"><div class="pointyHead popStyle">LastFM<br>Ratio</div></th>
@@ -117,8 +118,9 @@ if(!$getit){
 <td class="popStyle">year</td>
 <td class="popStyle"><?php echo $lastFMDate ?></td>
 <!--
-<td><?php //echo $albumMBID ?></td>
+
 -->
+<td><?php echo $albumMBID ?></td>
 <td class="rightNum"><?php echo $albumListeners ?></td>
 <td class="rightNum"><?php echo $albumPlaycount ?></td>
 <td class="popStyle"><?php echo $albumRatio ?></td>

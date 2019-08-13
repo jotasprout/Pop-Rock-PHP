@@ -28,17 +28,29 @@ if (isset($_POST['submit'])){
 	$assocArtistSpotID = mysqli_real_escape_string($connekt, htmlspecialchars($_POST['assocArtistSpotID']));
     $assocArtistMBID = mysqli_real_escape_string($connekt, htmlspecialchars($_POST['assocArtistMBID']));
 
-    $insertArtistAssocArtists = "INSERT INTO artistAssocArtists SET assocArtistSpotID='$assocArtistSpotID', assocArtistMBID='$assocArtistMBID', primaryArtistSpotID='$primaryArtistSpotID', assocArtistName='$assocArtistName', primaryArtistName='$primaryArtistName', primaryArtistMBID='$primaryArtistMBID'";
+    $insertArtistAssocArtists1 = "INSERT INTO artistAssocArtists SET assocArtistSpotID='$assocArtistSpotID', assocArtistMBID='$assocArtistMBID', primaryArtistSpotID='$primaryArtistSpotID', assocArtistName='$assocArtistName', primaryArtistName='$primaryArtistName', primaryArtistMBID='$primaryArtistMBID'";
 
-    $retval3 = $connekt->query($insertArtistAssocArtists);	
+    $insertArtistAssocArtists2 = "INSERT INTO artistAssocArtists SET assocArtistSpotID='$primaryArtistSpotID', assocArtistMBID='$primaryArtistMBID', primaryArtistSpotID='$assocArtistSpotID', assocArtistName='$primaryArtistName', primaryArtistName='$assocArtistName', primaryArtistMBID='$assocArtistMBID'";
 
-        // Feedback of whether UPDATE worked or not
-    if(!$retval3){
-        // if update did NOT work
-        die('Crap. Could not update this artist because: ' . mysqli_error($connekt));
+    $retval1 = $connekt->query($insertArtistAssocArtists1);	
+
+        // Feedback of whether insert1 worked or not
+    if(!$retval1){
+        // if insert1 did NOT work
+        die('Crap. Could not this associated artist because: ' . mysqli_error($connekt));
     } else {
-        // if update worked, go back to artist page
-        header("Location: https://www.roxorsoxor.com/poprock/artist_ChartsSpot.php?artistSpotID=" . $artistSpotID . "&artistMBID=" . $artistMBID);
+        // if insert1 DID work
+        $retval2 = $connekt->query($insertArtistAssocArtists2);	
+
+        // Feedback of whether insert2 worked or not
+        if(!$retval2){
+            // if insert2 did NOT work
+            die('Crap. Could not update inverse relationship because: ' . mysqli_error($connekt));
+        } else {
+            // if insert2 worked, go back to artist page
+            header("Location: https://www.roxorsoxor.com/poprock/artist_ChartsSpot.php?artistSpotID=" . $artistSpotID . "&artistMBID=" . $artistMBID);
+        };         
+
     };    
     
 }
