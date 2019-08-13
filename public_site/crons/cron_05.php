@@ -49,6 +49,7 @@ function divideCombineAlbums ($artistAlbums) {
 			$albumPop = $album->popularity;
 			$albumArtSpot = $album->images[0]->url;
 
+            /*
 			$insertAlbum = "INSERT INTO albumsSpot (albumSpotID,albumNameSpot,artistSpotID,yearReleased,tracksTotal,albumArtSpot) VALUES('$albumSpotID','$albumNameSpot','$thisartistSpotID','$albumReleased','$albumTotalTracks','$albumArtSpot')";
 			
 			if (!$connekt) {
@@ -60,6 +61,7 @@ function divideCombineAlbums ($artistAlbums) {
 			if(!$rockout){
 				echo '<p>Crap de General Tsao! Could not insert ' . $albumNameSpot . '.</p>';
 			}
+            */
 		
 			$insertAlbumsPop = "INSERT INTO popAlbums (albumSpotID,pop,date) VALUES('$albumSpotID','$albumPop',curdate())";
 		

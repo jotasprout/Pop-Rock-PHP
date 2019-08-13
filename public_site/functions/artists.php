@@ -2,7 +2,6 @@
 
 require ("class.artist.php");
 
-
 function divideCombineArtists ($theseArtists) {
 	
 	$totalArtists = count($theseArtists);
@@ -42,7 +41,7 @@ function divideCombineArtists ($theseArtists) {
 			$artistPop = $artist->popularity;
 			$artistFollowers = $artist->followers->total;
 			$jsonArtistGenres = $artist->genres;
-
+            /*
 			$insertArtistsInfo = "INSERT INTO artistsSpot (artistSpotID, artistNameSpot, artistArtSpot) VALUES('$artistSpotID','$artistNameSpot', '$artistArtSpot')";
 
 			$rockout = $connekt->query($insertArtistsInfo);
@@ -50,7 +49,7 @@ function divideCombineArtists ($theseArtists) {
 			if(!$rockout){
 			echo 'Cursed-Crap. Could not insert artist ' . $artistNameSpot . '.<br>';
 			}
-	
+            */
 			$insertArtistsPop = "INSERT INTO popArtists (artistSpotID,pop,followers,date) VALUES('$artistSpotID','$artistPop','$artistFollowers',curdate())";
 
 			$rockpop = $connekt->query($insertArtistsPop);

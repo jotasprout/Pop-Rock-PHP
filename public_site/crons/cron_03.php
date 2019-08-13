@@ -49,17 +49,19 @@ function divideCombineAlbums ($artistAlbums) {
 			$albumPop = $album->popularity;
 			$albumArtSpot = $album->images[0]->url;
 
+            /*
 			$insertAlbum = "INSERT INTO albumsSpot (albumSpotID,albumNameSpot,artistSpotID,yearReleased,tracksTotal,albumArtSpot) VALUES('$albumSpotID','$albumNameSpot','$thisartistSpotID','$albumReleased','$albumTotalTracks','$albumArtSpot')";
 			
 			if (!$connekt) {
-				echo '<p>Darn. Did not connect. Screwed up like: ' . mysqli_connect_error() . '</p>';
+				echo '<p>Darn. Did not connect.</p>';
 			};
 			
 			$rockout = $connekt->query($insertAlbum);
 		
 			if(!$rockout){
-				echo '<p>Crap de General Tsao! Could not insert ' . $albumNameSpot . ' by ' . $thisArtistName . '. Screwed up like this: ' . mysqli_error($connekt) . '</p>';
+				echo '<p>Crap de General Tsao! Could not insert ' . $albumNameSpot . '.</p>';
 			}
+            */
 		
 			$insertAlbumsPop = "INSERT INTO popAlbums (albumSpotID,pop,date) VALUES('$albumSpotID','$albumPop',curdate())";
 		

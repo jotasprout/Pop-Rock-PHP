@@ -154,6 +154,7 @@
 <script>
 
 const artistArtMBFilepath = '<?php echo $artistArtMBFilepath ?>';
+console.log(artistArtMBFilepath);
     
 var w = 740;
 var h = 400;
@@ -179,7 +180,7 @@ d3.json("functions/get_artist_LastFM.php?artistSpotID=<?php echo $artistSpotID; 
     const topHeading = d3.select("#topHead")
             .text(artistNameMB + "'s current stats on Spotify and LastFM");   
 
-    const artistArtMBFilename = dataset[0].artistArtMB;
+    const artistArtMBFilename = dataset[0].artistArtMBFilename;
         console.log(artistArtMBFilename);
     const artistArtMB = artistArtMBFilepath + artistArtMBFilename;
         console.log(artistArtMB);
@@ -397,7 +398,7 @@ d3.json("functions/createArtistSpotD3.php?artistSpotID=<?php echo $artistSpotID;
 			  .attr("src", function (d){
 				if (d.artistArtSpot == "" || d.artistArtSpot == null || d.artistArtSpot == undefined) {
                     let artistArtMBFilepath = '<?php echo $artistArtMBFilepath ?>';
-                    let artistArtMBFilename = d.artistArtMB;
+                    let artistArtMBFilename = d.artistArtMBFilename;
                     const prettyFace =  artistArtMBFilepath + artistArtMBFilename;
 					console.log("artistArt is " + prettyFace);
 					return prettyFace;
