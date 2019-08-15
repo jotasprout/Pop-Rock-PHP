@@ -23,7 +23,7 @@ if (isset($_POST['submit'])){
 	$artistSpotID = mysqli_real_escape_string($connekt, htmlspecialchars($_POST['artistSpotID']));
 	$assocArtistSpotID = mysqli_real_escape_string($connekt, htmlspecialchars($_POST['assocArtistSpotID']));
 	$assocAlbumSpotID = mysqli_real_escape_string($connekt, htmlspecialchars($_POST['assocAlbumSpotID']));
-	$albumArtFilename = mysqli_real_escape_string($connekt, htmlspecialchars($_POST['albumArtMBFilename']));
+	$albumArtMBFilename = mysqli_real_escape_string($connekt, htmlspecialchars($_POST['albumArtMBFilename']));
 	
 	
 	// save data to database
@@ -53,7 +53,7 @@ else // if the form isn't being submitted, get the data from the db and display 
 		$albumMBID = $_GET['albumMBID'];
 		
 		$queryZ = "
-			SELECT mb.albumNameMB, mb.albumMBID, z.artistNameMB, z.artistMBID, z.artistSpotID, mb.albumArtMBFilename, mb.assocArtistSpotID, mb.assocAlbumSpotID
+			SELECT mb.albumNameMB, mb.albumMBID, z.artistNameMB, z.artistMBID, mb.albumArtMBFilename, mb.assocArtistSpotID, mb.assocAlbumSpotID
 				FROM albumsMB mb 
 				JOIN artistsMB z ON z.artistMBID = mb.artistMBID
 				WHERE mb.albumMBID='" . $albumMBID . "';";
@@ -69,7 +69,7 @@ else // if the form isn't being submitted, get the data from the db and display 
 			$albumNameMB = $row['albumNameMB'];
 			$artistNameMB = $row['artistNameMB'];
 			$artistMBID = $row['artistMBID'];
-			$artistSpotID = $row['artistSpotID'];
+			//$artistSpotID = $row['artistSpotID'];
 			$assocArtistSpotID = $row['assocArtistSpotID'];
 			//$assocArtistNameMB = $row['assocArtistNameMB'];
             $assocAlbumSpotID = $row['assocAlbumSpotID'];
@@ -109,12 +109,9 @@ else // if the form isn't being submitted, get the data from the db and display 
 	<div id="fluidCon">
 	</div> <!-- end of fluidCon -->
 	
-	  
-
-	
 	<!-- main -->
 	<div class="panel panel-primary">
-		<div class="panel-heading"><h3 class="panel-title">Edit <?php echo $albumNameMB; ?> by <?php echo $artistNameMB; ?></h3></div>
+		<div class="panel-heading"><h3 class="panel-title">Edit <i><?php echo $albumNameMB; ?></i> by <?php echo $artistNameMB; ?></h3></div>
 			<div class="panel-body">
 				<!-- Panel Content -->
 	
@@ -213,44 +210,6 @@ else // if the form isn't being submitted, get the data from the db and display 
 		</fieldset>
 	</form>
     
-<div class="well">	
-	
-	<?php
-	// Start creating an HTML table for Assigned Cases and create header row
-    echo "<table class='table table-striped table-hover'><thead><tr><th>Other Albums by " . $artistNameMB . "</th></tr></thead>";
-	echo "<tbody>";
-
-	$connekt = new mysqli( $GLOBALS[ 'host' ], $GLOBALS[ 'un' ], $GLOBALS[ 'magicword' ], $GLOBALS[ 'db' ] );
-	// Connection test and feedback
-	if (!$connekt) {
-		die('Rats! Could not connect: ' . mysqli_error());
-	}
-
-	$query0 = "
-		SELECT b.albumNameMB, b.albumMBID, z.artistNameMB, z.artistMBID, z.artistSpotID, x.albumArtMBFilename
-			FROM (SELECT mb.albumNameMB, mb.albumMBID, mb.artistMBID
-				FROM albumsMB mb 
-				WHERE mb.artistMBID='" . $artistMBID . "') b 
-			JOIN artists z ON z.artistMBID = b.artistMBID
-			LEFT JOIN albumsMB x ON b.albumMBID = x.albumMBID
-			ORDER BY b.albumNameMB ASC;";
-	
-	$result0 = $connekt->query($query0);
-    // Create a row in HTML table for each row from database
-    
-    
-    while ($row = mysqli_fetch_array($result0)) {
-
-		echo "<tr><td><img src='" . $row['albumArtMBFilename'] . "' height='64' width='64'></td><td>" . $row['albumNameMB'] . "</td></tr>";
-    }
-
-    echo "</tbody></table>";
-	// When attempt is complete, connection closes
-    mysqli_close($connekt);
-?>
-
-</div> <!-- /well -->
-
 	</div> <!-- /panel-body -->
 </div> <!-- /panel -->
 	
