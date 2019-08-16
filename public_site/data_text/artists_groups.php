@@ -59,7 +59,7 @@ $group_sabbath = array ('6ZLTlhejhndI4Rh53vYhrY', '4UjiBRkTw9VmvDZiJZKPJ7', '4CY
 $group_ozzy = array ('6ZLTlhejhndI4Rh53vYhrY', '5M52tdBnJaKSvOpJGz8mfZ');
 
 # Heaven & Hell, Dio, Black Sabbath, Rainbow
-$group_dio = array ('4UjiBRkTw9VmvDZiJZKPJ7', '4CYeVo5iZbtYGBN4Isc3n6', '5M52tdBnJaKSvOpJGz8mfZ', '6SLAMfhOi7UJI0fMztaK0m');
+$group_dio = array ('6ZLTlhejhndI4Rh53vYhrY', '4UjiBRkTw9VmvDZiJZKPJ7', '4CYeVo5iZbtYGBN4Isc3n6', '5M52tdBnJaKSvOpJGz8mfZ', '6SLAMfhOi7UJI0fMztaK0m');
 
 # Ozzy, Heaven & Hell, Dio, Black Sabbath, Rainbow
 $group_sabbathRainbow = array ('6ZLTlhejhndI4Rh53vYhrY', '4UjiBRkTw9VmvDZiJZKPJ7', '4CYeVo5iZbtYGBN4Isc3n6', '5M52tdBnJaKSvOpJGz8mfZ', '6SLAMfhOi7UJI0fMztaK0m');
