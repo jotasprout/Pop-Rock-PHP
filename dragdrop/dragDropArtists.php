@@ -267,7 +267,7 @@ d3.json("dragDropCompare.php", function (dataset) {
                   .attr("pointer-events", "auto");
 
                 let aa = svg.selectAll(".choice")
-                            .data(thechoices);
+                            .data(thechoices, key);
                 
                 aa.enter()
                  .append("svg:image")
