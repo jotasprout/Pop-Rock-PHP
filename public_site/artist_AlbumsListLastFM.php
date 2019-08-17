@@ -14,6 +14,8 @@ if (!$connekt) {
 	echo '<p>Darn. Did not connect. Screwed up like this: ' . mysqli_connect_error() . '</p>';
 };
 
+$twoPac = '382f1005-e9ab-4684-afd4-0bdae4ee37f2';
+
 $blackScabies = "SELECT b.albumNameMB, b.albumMBID, b.yearReleased, z.artistNameMB, f1.dataDate, f1.albumListeners, f1.albumPlaycount, f1.albumRatio, b.albumArtMBFilename
 					FROM (SELECT mb.albumNameMB, mb.albumMBID, mb.yearReleased, mb.artistMBID, mb.albumArtMBFilename
 						FROM albumsMB mb 

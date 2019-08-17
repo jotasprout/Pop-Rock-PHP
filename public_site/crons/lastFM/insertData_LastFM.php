@@ -1,4 +1,14 @@
 <?php
+/*
+function assembleURL ($artistForURL) {
+    $baseURL = 'data/';
+	$today = date("m-d-y");
+	//$today = "05-19-19";
+    $endURL = '.json';
+	$artistURL = $baseURL . $artistForURL . "_" . $today . $endURL;
+	//echo "<p>" . $artistURL . "</p>";
+};
+*/
 
 function insertLastFMtrackDataArtistNames ($artistNames) {
 	
@@ -151,8 +161,7 @@ function insertLastFMalbumDataArtistNames ($artistNames) {
 					$releaseBirthday = $album['releases'][0]['date'];
 					$yearReleased = substr($releaseBirthday, 0, 4);					
 					$albumListeners = $album['releases'][0]['listeners'];
-                    $albumPlaycount = $album['releases'][0]['playcount'];
-                    $albumRatio = $albumPlaycount/$albumListeners;
+					$albumPlaycount = $album['releases'][0]['playcount'];
 
 					$insertAlbumMBinfo = "INSERT INTO albumsMB (
 						albumMBID,
@@ -185,15 +194,13 @@ function insertLastFMalbumDataArtistNames ($artistNames) {
 						albumMBID, 
 						dataDate,
 						albumListeners,
-						albumPlaycount,
-                        albumRatio
+						albumPlaycount
 						) 
 						VALUES(
 							'$releaseMBID',
 							'$dataDate',
 							'$albumListeners',
-							'$albumPlaycount',
-                            '$albumRatio'
+							'$albumPlaycount'
 						)";	
 
 					$insertReleaseStats = $connekt->query($insertLastFMalbumData);
@@ -257,8 +264,7 @@ function insertLastFMtrackDataFilenames ($filenames) {
 						$trackNameMB = mysqli_real_escape_string($connekt,$trackNameYucky);
 						$trackListeners = $track['stats']['listeners'];
 						$trackPlaycount = $track['stats']['playcount'];
-                        $trackNumber = $track['trackNumber'];
-                        $trackRatio = $trackPlaycount/$trackListeners;
+						$trackNumber = $track['trackNumber'];
 
                         /**/
 						$insertMBIDtrackInfo = "INSERT INTO tracksMB (
@@ -286,15 +292,13 @@ function insertLastFMtrackDataFilenames ($filenames) {
 							trackMBID, 
 							dataDate,
 							trackListeners,
-							trackPlaycount,
-                            trackRatio 
+							trackPlaycount 
 							) 
 							VALUES(
 								'$trackMBID',
 								'$dataDate',
 								'$trackListeners',
-								'$trackPlaycount',
-                                '$trackRatio'
+								'$trackPlaycount'
 							)";
 
 						$pushTrack = $connekt->query($insertLastFMtrackStats);
