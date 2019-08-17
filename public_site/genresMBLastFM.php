@@ -10,9 +10,9 @@ if ( !$connekt ) {
 	echo '<p>Darn. Did not connect. Screwed up like this: ' . mysqli_error($connekt) . '</p>';
 };
 
-$artistInfoWithArtAndGenres = "SELECT a.artistMBID, a.artistArtMB, a.artistNameMB, g.genre
-    FROM artistsMB a
-    JOIN genresLastFM g ON a.artistMBID = g.artistMBID
+$artistInfoWithArtAndGenres = "SELECT g.artistMBID, g.genre, g.source, a.artistArtMBFilename, a.artistNameMB
+    FROM genresMBLastFM g 
+    JOIN artistsMB a ON a.artistMBID = g.artistMBID
 	ORDER BY a.artistNameMB ASC";
 
 $getit = $connekt->query( $artistInfoWithArtAndGenres );
@@ -24,12 +24,11 @@ if(!$getit){
 ?>
 
 <!DOCTYPE html>
-
 <html>
 
 <head>
 	<meta charset="UTF-8">
-	<title>Genres LastFM</title>
+	<title>Genres MusicBrainz</title>
 	<?php echo $stylesAndSuch; ?>
 </head>
 
@@ -44,8 +43,6 @@ if(!$getit){
 
 			<div class="panel-heading">
 				<h3 class="panel-title">Click a genre to compare artists in that genre.</h3>
-				<p>Create LastFM versions of related scripts</p>
-				<p>As well as sorting files</p>
 			</div>
 
 			<div class="panel-body">
@@ -71,12 +68,12 @@ if(!$getit){
 						while ( $row = mysqli_fetch_array( $getit ) ) {
 							$artistNameMB = $row[ "artistNameMB" ];
 							$artistGenre = $row[ "genre" ];
-							$artistArtMB = $row[ "artistArtMB" ];
+							$artistArtMB = $row[ "artistArtMBFilename" ];
 					?>
 
 					<tr>
 						<!--
-						<td><img src='<?php //echo $artistArtMB ?>' height='64' width='64'></td>	
+						<td><img src='<?php //echo $artistArtMBFilename ?>' height='64' width='64'></td>	
 						-->
 						<td><?php echo $artistNameMB ?></td>
 						<td><a href='https://www.roxorsoxor.com/poprock/genreArtists_popCurrentBars.php?artistGenre=<?php echo $artistGenre ?>'><?php echo $artistGenre ?></a></td>
@@ -102,7 +99,7 @@ if(!$getit){
 	<!-- close container -->
 
 	<?php echo $scriptsAndSuch; ?>
-	<script src="https://www.roxorsoxor.com/poprock/functions/sort_genresArtists.js"></script>
+	<script src="https://www.roxorsoxor.com/poprock/functions/sort_genresMBLastFM.js"></script>
 	<script src="https://www.roxorsoxor.com/poprock/page_pieces/navbarIndex.js"></script>
 </body>
 
