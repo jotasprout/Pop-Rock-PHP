@@ -14,12 +14,11 @@ if (!$connekt) {
 	echo '<p>Darn. Did not connect. Screwed up like this: ' . mysqli_connect_error() . '</p>';
 };
 
-$blackScabies = "SELECT b.albumNameMB, b.albumMBID, z.artistNameMB, f1.dataDate, f1.albumListeners, f1.albumPlaycount, f1.albumRatio AS albumRatio, b.albumArtMBFilename
-					FROM (SELECT mb.albumNameMB, mb.albumMBID, mb.artistMBID, mb.assocAlbumSpotID, mb.albumArtMBFilename
+$blackScabies = "SELECT b.albumNameMB, b.albumMBID, b.yearReleased, z.artistNameMB, f1.dataDate, f1.albumListeners, f1.albumPlaycount, f1.albumRatio, b.albumArtMBFilename
+					FROM (SELECT mb.albumNameMB, mb.albumMBID, mb.yearReleased, mb.artistMBID, mb.albumArtMBFilename
 						FROM albumsMB mb 
 						WHERE mb.artistMBID='$artistMBID') b 
 					JOIN artistsMB z ON z.artistMBID = b.artistMBID
-					LEFT JOIN albumsMB x ON b.albumMBID = x.albumMBID
 					LEFT JOIN (SELECT f.*
 							FROM albumsLastFM f
 							INNER JOIN (SELECT albumMBID, albumListeners, albumPlaycount, albumRatio, max(dataDate) AS MaxDataDate
@@ -67,22 +66,18 @@ if(!$getit){
 <table class="table table-striped table-hover" id="recordCollection">
 
 <thead>
-
 <tr>
 	<th>Cover Art</th>
-	<!---->
+	<!--  -->
 	<th onClick="sortColumn('albumNameMB', 'ASC', '<?php echo $artistMBID; ?>', '<?php echo $source ?>')"><div class="pointyHead">Album Name</div></th>
     <th class="popStyle">Released</div></th>
     <th class="popStyle">LastFM<br>Data Date</th>
-	<!--
-		
-    -->
+	<!--  -->
     <th>Album MBID</th>	
 	<th onClick="sortColumn('albumListeners', 'unsorted', '<?php echo $artistMBID; ?>', '<?php echo $source ?>')"><div class="pointyHead rightNum">LastFM<br>Listeners</div></th>
 	<th onClick="sortColumn('albumPlaycount', 'unsorted', '<?php echo $artistMBID; ?>', '<?php echo $source ?>')"><div class="pointyHead rightNum">LastFM<br>Playcount</div></th>
 	<th onClick="sortColumn('albumRatio', 'unsorted')"><div class="pointyHead popStyle">LastFM<br>Ratio</div></th>
 </tr>
-
 </thead>
 
 <tbody>
@@ -92,7 +87,8 @@ if(!$getit){
 	while ($row = mysqli_fetch_array($getit)) {
 		$artistNameMB = $row['artistNameMB'];
 		$albumMBID = $row['albumMBID'];
-		$albumNameMB = $row['albumNameMB'];	
+        $albumNameMB = $row['albumNameMB'];	
+        $yearReleased = $row['yearReleased'];	
         $albumArtMBFilename = $row['albumArtMBFilename'];
         $coverArt = $albumArtMBFilePath . $albumArtMBFilename;
 		$lastFMDate = $row[ "dataDate" ];
@@ -102,28 +98,25 @@ if(!$getit){
 		$albumPlaycount = number_format ($albumPlaycountNum);
         /**/
         $ppl = $row["albumRatio"];
+        //$albumRatio = "1:" . $ppl;
         
         if (!$albumPlaycount > 0) {
             $albumPlaycount = "n/a";
             $albumRatio = "n/a";
             $lastFMDate = "n/a";
-        } else {
-            $albumRatio = "1:" . $ppl;
         };
 ?>
 					
 <tr>
 <td><img src='<?php echo $coverArt ?>' height='64' width='64'></td>
 <td><a href='https://www.roxorsoxor.com/poprock/album_TracksListLastFM.php?artistSpotID=<?php echo $artistSpotID ?>&artistMBID=<?php echo $artistMBID ?>&albumMBID=<?php echo $albumMBID ?>&source=musicbrainz'><?php echo $albumNameMB ?></a></td>
-<td class="popStyle">year</td>
+<td class="popStyle"><?php echo $yearReleased ?></td>
 <td class="popStyle"><?php echo $lastFMDate ?></td>
-<!--
-
--->
+<!--  -->
 <td><?php echo $albumMBID ?></td>
 <td class="rightNum"><?php echo $albumListeners ?></td>
 <td class="rightNum"><?php echo $albumPlaycount ?></td>
-<td class="popStyle"><?php echo $albumRatio ?></td>
+<td class="popStyle">1:<?php echo $ppl ?></td>
 </tr>
 					
 <?php 

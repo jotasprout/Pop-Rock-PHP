@@ -33,28 +33,7 @@ if(!$connekt){
         $artistListeners = $artist['stats']['listeners'];
         $artistPlaycount = $artist['stats']['playcount'];
         $artistRatio = $artistPlaycount/$artistListeners;
-        $MBgenres = $artist['MBgenres'];
-        $MBgenresNum = ceil((count($MBgenres)));
-        if ($MBgenresNumb > 0) {
-            for ($g=0; $g<$MBgenresNum; ++$g) {
-                $genre = $MBgenres[$g]['name'];
-
-                $insertMBgenres = "INSERT INTO genresMB (
-                    artistMBID,
-                    genre,
-                    source
-                )
-                VALUES (
-                    '$artistMBID',
-                    '$genre',
-                    'musicbrainz'
-                )";
-
-                // FINISH THIS
-
-            }
-        }
-###########################
+        /*
         $tryInsertArtistData = "INSERT INTO artistsMB (artistMBID, artistNameMB) VALUES ('$artistMBID', '$artistNameMB')";
 
         $rockin = $connekt->query($tryInsertArtistData);
@@ -64,17 +43,7 @@ if(!$connekt){
         } else {
                 echo '<p>Inserted ' . $artistNameMB . ' in table.</p>';
         }; 
-########################
-        $tryInsertArtistData = "INSERT INTO artistsMB (artistMBID, artistNameMB) VALUES ('$artistMBID', '$artistNameMB')";
-
-        $rockin = $connekt->query($tryInsertArtistData);
-
-        if(!$rockin){
-            echo 'Could not insert ' . $artistNameMB . ' into artistsMB table.<br>';
-        } else {
-                echo '<p>Inserted ' . $artistNameMB . ' in table.</p>';
-        }; 
-
+        */
         $insertArtistStats = "INSERT INTO artistsLastFM (artistMBID, dataDate, artistListeners, artistPlaycount, artistRatio) VALUES('$artistMBID','$dataDate','$artistListeners', '$artistPlaycount', '$artistRatio')";
             
         $rockout = $connekt->query($insertArtistStats);
