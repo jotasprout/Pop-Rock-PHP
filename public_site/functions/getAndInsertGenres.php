@@ -15,6 +15,7 @@ $accessToken = $_SESSION['accessToken'];
 $GLOBALS['api'] = new SpotifyWebAPI\SpotifyWebAPI();
 $GLOBALS['api']->setAccessToken($accessToken);
 
+
 function addGenres ($artistSpotID, $jsonArtistGenres, $artistNameYucky) {
 
     $connekt = new mysqli($GLOBALS['host'], $GLOBALS['un'], $GLOBALS['magicword'], $GLOBALS['db']);
