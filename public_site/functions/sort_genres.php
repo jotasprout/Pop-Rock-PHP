@@ -7,11 +7,13 @@ $artistArtMBFilepath = "https://www.roxorsoxor.com/poprock/artist-art/";
 $connekt = new mysqli($GLOBALS['host'], $GLOBALS['un'], $GLOBALS['magicword'], $GLOBALS['db']);
 
 if (!$connekt) {
-    echo 'Darn. Did not connect.';
+    echo '<p>Darn. Did not connect. Screwed up like this: ' . mysqli_error($connekt) . '</p>';
 };
 
 $sortBy = "genre";
 $order = "DESC";
+
+if ($_POST["source"])
 
 if ( !empty( $_POST[ "sortBy" ] ) ) {
 	// echo $_POST[ "sortBy" ] . "<br>";
@@ -26,7 +28,7 @@ if ( !empty( $_POST[ "order" ] ) ) {
 $artistNameNextOrder = "ASC";
 $genreNextOrder = "ASC";
 
-if ( $sortBy == "artistNameSpot" and $order == "ASC" ) {
+if ( $sortBy == "artistName" and $order == "ASC" ) {
 	$artistNameNextOrder = "DESC";
 }
 
@@ -36,14 +38,14 @@ if ( $sortBy == "genre" and $order == "ASC" ) {
 
 $artistInfoWithArtAndGenres = "SELECT g.id,
                                       g.artistID,
+									  s.artistArtSpot, 
+									  m.artistArtMBFilename,
+									  s.artistSpotID, 
+									  m.artistMBID, 
+									  s.artistNameSpot,
+									  m.artistNameMB,
                                       g.genre,
-                                      g.genreSource,
-                                      s.artistSpotID, 
-                                      s.artistArtSpot, 
-                                      s.artistNameSpot,
-                                      m.artistMBID, 
-                                      m.artistArtMBFilename, 
-                                      m.artistNameMB
+                                      g.genreSource
                                 FROM genres g
                                 LEFT JOIN artistsSpot s ON s.artistSpotID = g.artistID
                                 LEFT JOIN artistsMB m ON m.artistMBID = g.artistID
@@ -61,9 +63,11 @@ if (!empty($sortit)) { ?>
 <thead>
 <tr>
     <!--  -->
+    <th>Table ID</th>
     <th>Pretty Face</th>	
-    <th onClick="sortColumn('artistNameSpot', '<?php echo $artistNameNextOrder; ?>')"><div class="pointyHead">Artist Name</div></th>
+    <th onClick="sortColumn('artistName', '<?php echo $artistNameNextOrder; ?>')"><div class="pointyHead">Artist Name</div></th>
     <th onClick="sortColumn('genre', '<?php echo $genreNextOrder; ?>')"><div class="pointyHead">Genre</div></th>
+    <th><div class="popStyle">Genre<br>Source</div></th>
 </tr>
 </thead>
 
@@ -71,19 +75,37 @@ if (!empty($sortit)) { ?>
 
 		<?php
 			while ($row = mysqli_fetch_array($sortit)) {
+                $rowID = $row["id"];
+                $artistID = '';
+                $artistArtSpot = $row[ "artistArtSpot" ];
+                $artistArtMBFilename = $row[ "artistArtMBFilename" ];
+                $artistSpotID = $row["artistSpotID"];
+                $artistMBID = $row["artistMBID"];
+                $artistArt = '';
+                $artistName = '';
                 $artistNameSpot = $row[ "artistNameSpot" ];
                 $artistNameMB = $row[ "artistNameMB" ];
-                $artistArtSpot = $row[ "artistArtSpot" ];
-                $artistArtMB = $row[ "artistArtMBFilename" ];
                 $genre = $row["genre"];
+                $genreSource = $row["genreSource"];
+                if ($genreSource = "spotify") {
+                    $artistID = $artistSpotID;
+                    $artistArt = $artistArtSpot;
+                    $artistName = $artistNameSpot;
+                } else {
+                    $artistID = $artistMBID;
+                    $artistArt = $artistArtMBFilepath . $artistArtMBFilename;
+                    $artistName = $artistNameMB;
+                };
 		?>
 
 		<tr>
 		<!--  -->
-		    <td><img src='<?php // echo $artistArtSpot ?>' height='64' width='64'></td>	
+        <td><?php echo $rowID ?></td>
+		    <td><img src='<?php echo $artistArt ?>' height='64' width='64'></td>	
 		
-			<td><?php echo $artistNameSpot ?></td>
+			<td><?php echo $artistName ?></td>
 			<td><a href='https://www.roxorsoxor.com/poprock/genreArtists_popCurrentBars.php?artistGenre=<?php echo $genre ?>'><?php echo $genre ?></a></td>
+            <td class="popStyle"><?php echo $genreSource ?></td>
 			<!--  -->
 		</tr>
 
