@@ -16,9 +16,10 @@ $newGenresQuery = "SELECT g.*, s.artistNameSpot, m.artistNameMB
 					FROM genres g
 					LEFT JOIN artistsSpot s ON s.artistSpotID = g.artistID
 					LEFT JOIN artistsMB m ON m.artistMBID = g.artistID
-					ORDER BY g.genre DESC;";
+					ORDER BY g.artistID ASC;";
 
 $getit = $connekt->query( $newGenresQuery );
+
 if(!$getit){ 
 	echo '<p>Cursed-Crap. Did not run the query. Screwed up like this: ' . mysqli_error($getit) . '</p>';
 }	
@@ -65,7 +66,7 @@ if(!$getit){
 							$artistNameMB = $row[ "artistNameMB" ];
 							$genre = $row["genre"];
                             $genreSource = $row["genreSource"];
-                            if ($genreSource = "spotify") {
+                            if ($genreSource == "Spotify") {
 								//$artistArt = $artistArtSpot;
 								$artistName = $artistNameSpot;
                             } else {

@@ -90,7 +90,7 @@ if ( $columnName == "artistRatio" ) {
 	};
 };
 
-$allthatAndLastFM = "SELECT a.artistMBID AS artistMBID, a.artistArtMB AS artistArtMB, a.artistNameMB AS artistNameMB, f1.dataDate AS dataDate, f1.artistListeners AS artistListeners, f1.artistPlaycount AS artistPlaycount, f1.artistRatio AS artistRatio
+$allthatAndLastFM = "SELECT a.artistMBID AS artistMBID, a.artistArtMBFilename AS artistArtMBFilename, a.artistNameMB AS artistNameMB, f1.dataDate AS dataDate, f1.artistListeners AS artistListeners, f1.artistPlaycount AS artistPlaycount, f1.artistRatio AS artistRatio
     FROM artistsMB a
     JOIN (SELECT f.*
 			FROM artistsLastFM f
@@ -131,18 +131,18 @@ if (!empty($sortit)) { ?>
 			while ($row = mysqli_fetch_array($sortit)) {
 				$artistNameMB = $row[ "artistNameMB" ];
 				$artistMBID = $row[ "artistMBID" ];
-                $artistArtFilename = $row['artistArtMB'];
-                $artistArtMB = "https://www.roxorsoxor.com/poprock/artist-art/" . $artistArtFilename;
-                $artistArt = '';
+                $artistArtFilename = $row['artistArtMBFilename'];
+                $artistArtMBFilepath = "https://www.roxorsoxor.com/poprock/artist-art/";
+                $artistArt = "";
                 
-                if(empty($row["artistArtMB"]) && empty($row["artistArtSpot"])) {
+                if(empty($row["artistArtMBFilename"]) && empty($row["artistArtSpot"])) {
                     $artistArt = "nope.png";
                 }
-                elseif (empty($row["artistArtMB"]) && !empty($row["artistArtSpot"])) {
+                elseif (empty($row["artistArtMBFilename"]) && !empty($row["artistArtSpot"])) {
                     $artistArt = $artistArtSpot;
                 }	
                 else {
-                    $artistArt = $artistArtMB;
+                    $artistArt = $artistArtMBFilepath . $artistArtFilename;
                 };
 				$lastFMDate = $row[ "dataDate" ];
 				$artistListenersNum = $row[ "artistListeners"];
