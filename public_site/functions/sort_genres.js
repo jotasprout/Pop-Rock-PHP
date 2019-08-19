@@ -1,7 +1,7 @@
-function sortColumn (columnName, columnOrder, source) {
+function sortColumn (columnName, currentOrder) {
 	$.ajax ({
 		url: "functions/sort_genres.php",
-		data: "sortBy=" + columnName + "&order=" + columnOrder + "&source" + source,
+		data: "columnName=" + columnName + "&currentOrder=" + currentOrder,
 		type: "POST",
 		success: function (data) {
 			$("#tableoartists").html(data);

@@ -18,21 +18,6 @@ $newGenresQuery = "SELECT g.*, s.artistNameSpot, m.artistNameMB
 					LEFT JOIN artistsMB m ON m.artistMBID = g.artistID
 					ORDER BY g.genre DESC;";
 
-$artistInfoWithArtAndGenres = "SELECT g.id,
-                                      g.artistID,
-									  s.artistArtSpot, 
-									  m.artistArtMBFilename,
-									  s.artistSpotID, 
-									  m.artistMBID, 
-									  s.artistNameSpot,
-									  m.artistNameMB,
-                                      g.genre,
-                                      g.genreSource
-                                FROM genres g
-                                LEFT JOIN artistsSpot s ON s.artistSpotID = g.artistID
-                                LEFT JOIN artistsMB m ON m.artistMBID = g.artistID
-                                ORDER BY g.genre ASC";
-
 $getit = $connekt->query( $newGenresQuery );
 if(!$getit){ 
 	echo '<p>Cursed-Crap. Did not run the query. Screwed up like this: ' . mysqli_error($getit) . '</p>';
@@ -62,11 +47,10 @@ if(!$getit){
 							<!-- 
 							<th>Pretty Face</th>	
 							 -->
-							<th>Table ID</th>
-								
-							<th onClick="sortColumn('artistName', 'unsorted', 'source')"><div class="pointyHead popStyle">Artist Name</div></th>
-							<th onClick="sortColumn('genre', 'ASC', 'source')"><div class="pointyHead popStyle">Genre</div></th>
-							<th><div class="popStyle">Genre<br>Source</div></th>
+							<th>Table ID</th>								
+							<th onClick="sortColumn('artistName', 'unsorted')"><div class="pointyHead">Artist Name</div></th>
+							<th onClick="sortColumn('genre', 'ASC')"><div class="pointyHead popStyle">Genre</div></th>
+							<th><div class="popStyle">Source</div></th>
 						</tr>
 					</thead>
 					<tbody>
@@ -74,30 +58,24 @@ if(!$getit){
 						while ( $row = mysqli_fetch_array( $getit ) ) {
 							$rowID = $row["id"];
 							$artistID = '';
-                            //$artistArtSpot = $row[ "artistArtSpot" ];
-                            //$artistArtMBFilename = $row[ "artistArtMBFilename" ];
-                            //$artistSpotID = $row["artistSpotID"];
-                            //$artistMBID = $row["artistMBID"];
-                            //$artistArt = '';
+							//$artistArtSpot = $row[ "artistArtSpot" ];
+							//$artistArtMBFilename = $row[ "artistArtMBFilename" ];
                             $artistName = '';
                             $artistNameSpot = $row[ "artistNameSpot" ];
 							$artistNameMB = $row[ "artistNameMB" ];
 							$genre = $row["genre"];
                             $genreSource = $row["genreSource"];
                             if ($genreSource = "spotify") {
-                                //$artistID = $artistSpotID;
-                                //$artistArt = $artistArtSpot;
-                                $artistName = $artistNameSpot;
+								//$artistArt = $artistArtSpot;
+								$artistName = $artistNameSpot;
                             } else {
-                                //$artistID = $artistMBID;
-                                //$artistArt = $artistArtMBFilepath . $artistArtMBFilename;
+								//$artistArt = $artistArtMBFilepath . $artistArtMBFilename;
                                 $artistName = $artistNameMB;
-                            };
-                                  
+                            };          
 					?>
 
 					<tr>
-						<!-- <td><img src='<?php echo $artistArt ?>' height='64' width='64'></td> -->
+						<!-- <td><img src='<?php //echo $artistArt ?>' height='64' width='64'></td> -->
 						<td><?php echo $rowID ?></td>
 						
 						<td><?php echo $artistName ?></td>

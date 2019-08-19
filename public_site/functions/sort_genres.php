@@ -2,7 +2,7 @@
 
 require_once '../rockdb.php';
 
-$artistArtMBFilepath = "https://www.roxorsoxor.com/poprock/artist-art/";
+//$artistArtMBFilepath = "https://www.roxorsoxor.com/poprock/artist-art/";
 
 $connekt = new mysqli($GLOBALS['host'], $GLOBALS['un'], $GLOBALS['magicword'], $GLOBALS['db']);
 
@@ -10,51 +10,60 @@ if (!$connekt) {
     echo '<p>Darn. Did not connect. Screwed up like this: ' . mysqli_error($connekt) . '</p>';
 };
 
-$sortBy = "genre";
-$order = "DESC";
+$postedColumnName = $_POST[ "columnName" ];
+$postedCurrentOrder = $_POST[ "currentOrder" ];
+//$postedSource = $_POST[ "source" ];
 
-if ($_POST["source"])
+// if any POSTed variables did not come through, these defaults were basic starting sort from original sql query
+$columnName = "artistName";
+$currentOrder = "ASC";
+//$source="spotify";
 
-if ( !empty( $_POST[ "sortBy" ] ) ) {
-	// echo $_POST[ "sortBy" ] . "<br>";
-	$sortBy = $_POST[ "sortBy" ];
+if ( !empty( $_POST[ "columnName" ] ) ) {
+    // if the column name came through, use it
+	$columnName = $_POST[ "columnName" ];
 }
 
-if ( !empty( $_POST[ "order" ] ) ) {
-	// echo $order = $_POST[ "order" ] . "<br>";
-	$order = $_POST[ "order" ];
+if ( !empty( $_POST[ "currentOrder" ] ) ) {
+    // if the current order came through, use it
+	$currentOrder = $_POST[ "currentOrder" ];
 }
 
-$artistNameNextOrder = "ASC";
-$genreNextOrder = "ASC";
+$artistNameNewOrder = "unsorted";
 
-if ( $sortBy == "artistName" and $order == "ASC" ) {
-	$artistNameNextOrder = "DESC";
-}
+if ( $columnName == "artistName" ) {
+	if ($currentOrder == "unsorted" or $currentOrder == "DESC") {
+		$artistNameNewOrder = "ASC";
+		$newOrder = "ASC";
+	} else {
+		$artistNameNewOrder = "DESC";
+		$newOrder = "DESC";
+	};
+};
 
-if ( $sortBy == "genre" and $order == "ASC" ) {
-	$genreNextOrder = "DESC";
-}
+$genreNewOrder = "unsorted";
 
-$artistInfoWithArtAndGenres = "SELECT g.id,
-                                      g.artistID,
-									  s.artistArtSpot, 
-									  m.artistArtMBFilename,
-									  s.artistSpotID, 
-									  m.artistMBID, 
-									  s.artistNameSpot,
-									  m.artistNameMB,
-                                      g.genre,
-                                      g.genreSource
-                                FROM genres g
-                                LEFT JOIN artistsSpot s ON s.artistSpotID = g.artistID
-                                LEFT JOIN artistsMB m ON m.artistMBID = g.artistID
-                                ORDER BY " . $sortBy . " " . $order . ";";
+if ( $columnName == "genre" ) {
+	if ($currentOrder == "unsorted" or $currentOrder == "ASC") {
+		$genreNewOrder = "DESC";
+		$newOrder = "DESC";
+	} else {
+		$genreNewOrder = "ASC";
+		$newOrder = "ASC";
+	};
+};
 
-$sortit = $connekt->query($artistInfoWithArtAndGenres); 
+$newGenresQuery = "SELECT g.*, s.artistNameSpot, m.artistNameMB
+					FROM genres g
+					LEFT JOIN artistsSpot s ON s.artistSpotID = g.artistID
+					LEFT JOIN artistsMB m ON m.artistMBID = g.artistID
+                    ORDER BY " . $columnName . " " . $newOrder . ";";
 
-if (!$sortit) {
-    echo 'Darn. No query.';
+$sortit = $connekt->query($newGenresQuery); 
+
+
+if(!$sortit){ 
+	echo '<p>Cursed-Crap. Did not run the query. Screwed up like this: ' . mysqli_error($connekt) . '</p>';
 };
 
 if (!empty($sortit)) { ?>
@@ -62,41 +71,37 @@ if (!empty($sortit)) { ?>
 <table class="table" id="tableoartists">
 <thead>
 <tr>
-    <!--  -->
-    <th>Table ID</th>
+    <!-- 
     <th>Pretty Face</th>	
-    <th onClick="sortColumn('artistName', '<?php echo $artistNameNextOrder; ?>')"><div class="pointyHead">Artist Name</div></th>
-    <th onClick="sortColumn('genre', '<?php echo $genreNextOrder; ?>')"><div class="pointyHead">Genre</div></th>
-    <th><div class="popStyle">Genre<br>Source</div></th>
+    -->
+    <th>Table ID</th>	
+    <th onClick="sortColumn('artistName', '<?php echo $artistNameNewOrder; ?>')"><div class="pointyHead">Artist Name</div></th>
+    <th onClick="sortColumn('genre', '<?php echo $genreNewOrder; ?>')"><div class="pointyHead">Genre</div></th>
+    <th><div class="popStyle">Source</div></th>
 </tr>
 </thead>
 
 <tbody>
 
-		<?php
-			while ($row = mysqli_fetch_array($sortit)) {
-                $rowID = $row["id"];
-                $artistID = '';
-                $artistArtSpot = $row[ "artistArtSpot" ];
-                $artistArtMBFilename = $row[ "artistArtMBFilename" ];
-                $artistSpotID = $row["artistSpotID"];
-                $artistMBID = $row["artistMBID"];
-                $artistArt = '';
-                $artistName = '';
-                $artistNameSpot = $row[ "artistNameSpot" ];
-                $artistNameMB = $row[ "artistNameMB" ];
-                $genre = $row["genre"];
-                $genreSource = $row["genreSource"];
-                if ($genreSource = "spotify") {
-                    $artistID = $artistSpotID;
-                    $artistArt = $artistArtSpot;
-                    $artistName = $artistNameSpot;
-                } else {
-                    $artistID = $artistMBID;
-                    $artistArt = $artistArtMBFilepath . $artistArtMBFilename;
-                    $artistName = $artistNameMB;
-                };
-		?>
+    <?php
+        while ( $row = mysqli_fetch_array( $getit ) ) {
+            $rowID = $row["id"];
+            $artistID = '';
+            //$artistArtSpot = $row[ "artistArtSpot" ];
+            //$artistArtMBFilename = $row[ "artistArtMBFilename" ];
+            $artistName = '';
+            $artistNameSpot = $row[ "artistNameSpot" ];
+            $artistNameMB = $row[ "artistNameMB" ];
+            $genre = $row["genre"];
+            $genreSource = $row["genreSource"];
+            if ($genreSource = "spotify") {
+                //$artistArt = $artistArtSpot;
+                $artistName = $artistNameSpot;
+            } else {
+                //$artistArt = $artistArtMBFilepath . $artistArtMBFilename;
+                $artistName = $artistNameMB;
+            };          
+    ?>
 
 		<tr>
 		<!--  -->
