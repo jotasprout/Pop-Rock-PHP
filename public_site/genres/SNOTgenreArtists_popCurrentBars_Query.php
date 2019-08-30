@@ -5,6 +5,8 @@ require( "../functions/class.artist.php" );
 
 $artistGenre = $_GET['artistGenre'];
 
+echo $artistGenre;
+
 $connekt = new mysqli( $GLOBALS[ 'host' ], $GLOBALS[ 'un' ], $GLOBALS[ 'magicword' ], $GLOBALS[ 'db' ] );
 
 if ( !$connekt ) {

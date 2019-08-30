@@ -1,6 +1,42 @@
 <?php
     require_once '../page_pieces/stylesAndScripts.php';
     $artistGenre = $_GET['artistGenre'];
+    echo $artistGenre;
+
+    $connekt = new mysqli( $GLOBALS[ 'host' ], $GLOBALS[ 'un' ], $GLOBALS[ 'magicword' ], $GLOBALS[ 'db' ] );
+
+if ( !$connekt ) {
+	echo 'Darn. Did not connect.';
+};
+
+$genreArtistsRecentWithArt = "SELECT a.artistSpotID AS artistSpotID, a.artistArtSpot AS artistArtSpot, a.artistNameSpot AS artistNameSpot, g.genre AS genre, p1.pop AS pop, p1.date AS date
+    FROM artistsSpot a
+    JOIN (SELECT p.*
+			FROM popArtists p
+			INNER JOIN (SELECT artistSpotID, pop, max(date) AS MaxDate
+						FROM popArtists  
+						GROUP BY artistSpotID) groupedp
+			ON p.artistSpotID = groupedp.artistSpotID
+			AND p.date = groupedp.MaxDate) p1
+	ON a.artistSpotID = p1.artistSpotID
+	JOIN genres g ON a.artistSpotID = g.artistID WHERE g.genre = '$artistGenre'   
+    ORDER BY a.artistNameSpot ASC";
+    
+$result = mysqli_query($connekt, $genreArtistsRecentWithArt);
+
+$myPeeps = array ();
+
+if (mysqli_num_rows($result) > 0) {
+	$rows = array();
+	while ($row = mysqli_fetch_array($result)) {
+		$rows[] = $row;
+	}
+	$myPeeps = json_encode($rows);
+}
+
+else {
+	echo "Nope. Nothing to see here.";
+}
 ?>
 
 <!doctype html>
@@ -31,19 +67,20 @@
 </div> <!-- /container -->		 
 
 <script type="text/javascript">
-    d3.json("genreArtists_popCurrentBars_Query.php?artistGenre=<?php echo $artistGenre; ?>", function(dataset) {
+    const myPeeps = <?php echo $$myPeeps; ?>;
+    d3.json(myPeeps, function(dataset) {
         console.log(dataset);
         // Width and height
         var w = 2400;
         var h = 265;
         var barPadding = 1;
-        const widen = dataset.length;
+        //const widen = dataset.length;
         
         const artistGenre = dataset[0].genre;
 
         const genreTitle = d3.select("#genreHeader")
-            //.data(dataset)
-            //.append("text")
+            .data(dataset)
+            .append("text")
             .text(artistGenre + " -- Artists Current Popularity on Spotify");
 
         // Create SVG element
