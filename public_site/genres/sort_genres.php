@@ -2,8 +2,6 @@
 
 require_once '../rockdb.php';
 
-//$artistArtMBFilepath = "https://www.roxorsoxor.com/poprock/artist-art/";
-
 $connekt = new mysqli($GLOBALS['host'], $GLOBALS['un'], $GLOBALS['magicword'], $GLOBALS['db']);
 
 if (!$connekt) {
@@ -14,9 +12,9 @@ $postedColumnName = $_POST[ "columnName" ];
 $postedCurrentOrder = $_POST[ "currentOrder" ];
 //$postedSource = $_POST[ "source" ];
 
-// if any POSTed variables did not come through, these defaults were basic starting sort from original sql query
-$columnName = "artistName";
-$currentOrder = "ASC";
+// if any POSTed variables did not come through, these defaults are opposite-ish starting sort from original sql query
+$columnName = "genre";
+$currentOrder = "unsorted";
 //$source="spotify";
 
 if ( !empty( $_POST[ "columnName" ] ) ) {
@@ -53,10 +51,7 @@ if ( $columnName == "genre" ) {
 	};
 };
 
-$newGenresQuery = "SELECT g.*, s.artistNameSpot, m.artistNameMB
-					FROM genres g
-					LEFT JOIN artistsSpot s ON s.artistSpotID = g.artistID
-					LEFT JOIN artistsMB m ON m.artistMBID = g.artistID
+$newGenresQuery = "SELECT * FROM genresNames
                     ORDER BY " . $columnName . " " . $newOrder . ";";
 
 $sortit = $connekt->query($newGenresQuery); 
@@ -71,10 +66,6 @@ if (!empty($sortit)) { ?>
 <table class="table" id="tableoartists">
 <thead>
 <tr>
-    <!-- 
-    <th>Pretty Face</th>	
-    -->
-    <th>Table ID</th>	
     <th onClick="sortColumn('artistName', '<?php echo $artistNameNewOrder; ?>')"><div class="pointyHead">Artist Name</div></th>
     <th onClick="sortColumn('genre', '<?php echo $genreNewOrder; ?>')"><div class="pointyHead">Genre</div></th>
     <th><div class="popStyle">Source</div></th>
@@ -83,33 +74,16 @@ if (!empty($sortit)) { ?>
 
 <tbody>
 
-    <?php
-        while ( $row = mysqli_fetch_array( $getit ) ) {
-            $rowID = $row["id"];
-            $artistID = '';
-            //$artistArtSpot = $row[ "artistArtSpot" ];
-            //$artistArtMBFilename = $row[ "artistArtMBFilename" ];
-            $artistName = '';
-            $artistNameSpot = $row[ "artistNameSpot" ];
-            $artistNameMB = $row[ "artistNameMB" ];
-            $genre = $row["genre"];
-            $genreSource = $row["genreSource"];
-            if ($genreSource = "spotify") {
-                //$artistArt = $artistArtSpot;
-                $artistName = $artistNameSpot;
-            } else {
-                //$artistArt = $artistArtMBFilepath . $artistArtMBFilename;
-                $artistName = $artistNameMB;
-            };          
-    ?>
+					<?php
+						while ( $row = mysqli_fetch_array( $sortit ) ) {
+                            $artistName = $row[ "artistName" ];
+							$genre = $row["genre"];
+                            $genreSource = $row["genreSource"];         
+					?>
 
 		<tr>
-		<!--  -->
-        <td><?php echo $rowID ?></td>
-		    <td><img src='<?php echo $artistArt ?>' height='64' width='64'></td>	
-		
-			<td><?php echo $artistName ?></td>
-			<td><a href='https://www.roxorsoxor.com/poprock/genreArtists_popCurrentBars.php?artistGenre=<?php echo $genre ?>'><?php echo $genre ?></a></td>
+		<td><?php echo $artistName ?></td>
+			<td><a href='https://www.roxorsoxor.com/poprock/genres/genreArtists_popCurrentBars.php?artistGenre=<?php echo $genre ?>'><?php echo $genre ?></a></td>
             <td class="popStyle"><?php echo $genreSource ?></td>
 			<!--  -->
 		</tr>
