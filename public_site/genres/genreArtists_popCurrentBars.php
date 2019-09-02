@@ -8,7 +8,7 @@
 
 <head>
 	<meta charset="utf-8">
-	<title>Artists Compare Bar Chart</title>
+	<title>Genre | Chart of artists current popularity on Spotify</title>
 	<?php echo $stylesAndSuch; ?>
 </head>
 
@@ -44,7 +44,7 @@
         const genreTitle = d3.select("#genreHeader")
             //.data(dataset)
             //.append("text")
-            .text(artistGenre + " -- Artists Current Popularity on Spotify");
+            .text("<b>" + artistGenre + "</b> genre artists Current Popularity on Spotify");
 
         // Create SVG element
         var svg = d3.select("#forChart")

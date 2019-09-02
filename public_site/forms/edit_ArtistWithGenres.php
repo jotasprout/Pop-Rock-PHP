@@ -97,19 +97,22 @@ else // if the form isn't being submitted, get the data from the db and display 
 			echo "No results!";
         }
         
-        $queryG = "
-        SELECT z.artistNameSpot, z.artistSpotID, z.artistArtSpot, z.artistMBID, mb.artistArtMBFilename, mb.artistNameMB
-            FROM artistsSpot z 
-            LEFT JOIN artistsMB mb ON z.artistMBID = mb.artistMBID
-            LEFT JOIN genresNames g ON z.artistMBID = g.artistID OR z.artistSpotID = g.artistID
-            WHERE z.artistSpotID='" . $artistSpotID . "';";
-    
+        $queryG = "SELECT g.genre FROM genresNames g 
+        WHERE g.artistID='" . $artistSpotID . "' OR g.artistID='" . $artistMBID . "';";
+        
+        $rows = array();
+
         $resultG = mysqli_query($connekt, $queryG) or die(mysqli_error($connekt));
         
-        $rows = mysqli_fetch_array($resultG);
+        $rowsG = mysqli_fetch_array($resultG);
+        
+        while ($rowsG = mysqli_fetch_array($resultG)) {
+            $rows[] = $row;
+        };
+        echo json_encode($rows);
+    }
 
-	}
-	else // if the 'artistMBID' in the URL isn't valid, or if there is no 'artistMBID' value, display an error
+	else 
 	{
 		echo $error;
 	}
@@ -185,21 +188,22 @@ else // if the form isn't being submitted, get the data from the db and display 
 				<input class="form-control" type="text" name="artistMBID" value="<?php echo $artistMBID; ?>" />
 			</div>
 		</div> <!-- /Primary Artist MB Name -->	
-        
-        <?php
-            while ($row = mysqli_fetch_array($getit)) {
-                $artistNameSpot = $row['artistNameSpot'];
-                $albumSpotID = $row['albumSpotID'];
-                $date = $row['date'];
-                $source = 'spotify';
-                $albumPop = $row['pop'];
-                $coverArt = $row['albumArtSpot'];
-                $tracksTotal = $row['tracksTotal'];
-                $albumNameSpot = $row['albumNameSpot'];
-                $albumReleased = $row['yearReleased'];	
 
+        <?php
+            while ($row = mysqli_fetch_array($resultG)) {
+                $genre = $row['genre'];
         ?>	
-				
+
+        <div class="form-group"> <!-- Artist Genree --> 			
+			<label class="col-lg-2 control-label" for="genre">Genre</label>			
+			<div class="col-lg-3">
+				<input class="form-control" type="text" name="genre" value="<?php echo $genre; ?>" />
+			</div>
+		</div> <!-- /Artist Genre -->
+
+        <?php 
+            } // end of while
+        ?>		
 			<!-- Last Row -->
 			<div class="form-group"> <!-- Last Row -->	
 				<div class="col-lg-4 col-lg-offset-2">
