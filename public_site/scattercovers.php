@@ -87,9 +87,11 @@ const rowConverter = function(d){
 	
 const artistName = "Black Sabbath";
 
-const formatNums = d3.format(",.2r");                  
-	
-d3.json("data_text/BlackSabbathalbumsLastFM.json", function(dataset) {
+const formatNums = d3.format(","); 
+/*
+const formatNums = d3.format(",.2r");                   
+*/	
+d3.json("data_text/BlackSabbathalbumsLastFM_083019.json", function(dataset) {
 
 	console.log(dataset);
 
@@ -97,7 +99,7 @@ d3.json("data_text/BlackSabbathalbumsLastFM.json", function(dataset) {
     let asof; // for Panel Heading
 
 	const artistTitle = d3.select("#name")
-		                  .text(artistName + "'s albums' LastFM playcount as of June 19, 2019");
+		                  .text(artistName + "'s albums' LastFM playcount as of August 30, 2019");
 	
 	const xScale = d3.scaleLinear()
 					 .domain([1970, 2015])
