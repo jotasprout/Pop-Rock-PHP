@@ -441,8 +441,11 @@ $artistNames_01 = array (
 	'TheRunaways_Group',
     'TheAmboyDukes_Group',
 	'TedNugent_Person', 
-	'DavidBowie_Person',
-	'JanetJackson_Person'
+    'JanetJackson_Person',
+    '12thTribe_Group',
+    'ArgylePark_Group',
+    'BarrenCross_Group',
+    'Believer_Group'
 );
 
 $filenames_02 = array (	
@@ -458,11 +461,21 @@ $filenames_02 = array (
 $artistNames_02 = array (
     'Anvil_Group',
     'LindseyBuckingham_Person',
+    'BuckinghamNicks_Group',
 	'TheCure_Group',
     'Eminem_Person',
     'FleetwoodMac_Group',
     'StevieNicks_Person',
-    'Radiohead_Group'
+    'Radiohead_Group',
+    'Bloodgood_Group',
+    'BobDylan_Person',
+    'Bride_Group',
+    'CannibalCorpse_Group',
+    'ChagallGuevara_Group',
+    'CircleofDust_Group',
+    'Crashdog_Group',
+    'Deitiphobia_Group',
+    'Deliverance_Group'
 );
 
 $filenames_03 = array (
@@ -487,15 +500,19 @@ $filenames_03 = array (
 );
 
 $artistNames_03 = array (
-	'BlackSabbath_Group',
-	'Dio_Group', 
+    'Dio_Group', 
+    'RonnieDioandtheProphets_Group', 
+    'RonnieDioandtheRedCaps_Group',
+    'TheElectricElves_Group',
     'Elf_Group',
-	'TheElectricElves_Group',
-	'Heaven&Hell_Group',
-	'OzzyOsbourne_Person',
-	'Rainbow_Group',
-	'RonnieDioandtheProphets_Group', 
-    'RonnieDioandtheRedCaps_Group'
+    'Heaven&Hell_Group',
+    'Rainbow_Group',
+    'RonnieJamesDio_Person',
+    'OzzyOsbourne_Person',
+    'BlackSabbath_Group',
+    'DisciplesofChrist_Group',
+    'E-Roc_Person',
+    'BillyIdol_Person'
 );
 
 $filenames_04 = array (
@@ -519,7 +536,17 @@ $artistNames_04 = array (
     'JimmyPage&RobertPlant_Group',
 	'LedZeppelin_Group',
 	'RobertPlant_Person',
-	'TheYardbirds_Group'
+    'TheYardbirds_Group',
+    'EltonJohn_Person', 
+    'AceFrehley_Person',  
+    #'Frehleys Comet',    
+    'Jerusalem_Group', 
+    'GlennKaiser_Person', 
+    'ResurrectionBand_Group',       
+    #'KingsX_Group',   
+    'LarryNorman_Person',  
+    #'LifeSavers_Group', 
+    'LustControl_Group'   
 );
 
 $filenames_05 = array (
@@ -536,8 +563,20 @@ $artistNames_05 = array (
 	'IggyPop_Person',
 	'Journey_Group',
 	'MeatLoaf_Person',
-	'Stoney&Meatloaf_Group',
-	'TheStooges_Group'
+    'Stoney&Meatloaf_Group',
+    'DavidBowie_Person',
+    'TheStooges_Group',
+    'MadattheWorld_Group',  
+    'Mortal_Group',  
+    'Mortification_Group',  
+    #'MxPx_Group',      
+    'NinetyPoundWuss_Group',  
+    'OneBadPig_Group',      
+    'P.I.D._Group',  
+    'P.O.D._Group',    
+    'SackclothFashion_Group',  
+    'Saint_Group',  
+    'SayWhat?_Group'  
 );
 
 $filenames_06 = array (
@@ -557,7 +596,15 @@ $artistNames_06 = array (
 	'Queen_Group', 
     'QuietRiot_Group',
 	'ToddRundgren_Person',
-    'Utopia_Group'
+    'Utopia_Group',
+    'SteveTaylor_Person',  
+    'TheCrucified_Group',  
+    #'The Dynamic Twins_Group',      
+    'TheVioletBurning_Group',  
+    'TomPetty_Person',  
+    'TomPettyandtheHeartbreakers_Group'   
+    #'SFC_Group', # 
+    #'Sintax the Terrific_Person' # 
 );
 
 $filenames_07 = array (
@@ -576,6 +623,14 @@ $artistNames_07 = array (
     'Saxon_Group',
 	'NeilYoung_Person',
     'TheZombies_Group',
+    #'TRYTAN_Group', 
+    #'Veil of Ashes_Group', 
+    #'Vengeance Rising_Group', 
+    #'Veni Domine_Group', 
+    #'Whitecross_Group', 
+    #'XL and Death Before Dishonor_Group',     
+    'ScaterdFew_Group',  
+    'SeventhAngel_Group'  
 );
 
 ?>
