@@ -50,7 +50,15 @@
 <div class="container-fluid">
 <div id="fluidCon"></div> <!-- end of fluidCon -->
     
-<a role="button" class="btn btn-warning btn-sm" href="forms/edit_Artist.php?artistSpotID=<?php echo $artistSpotID ?>&artistMBID=<?php echo $artistMBID ?>">Edit this Artist</a>
+  <!-- Breadcrumbs start -->
+<ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="../index.php">Spotify Artists</a></li>
+    <li class="breadcrumb-item active">Artist Name</li>
+</ol>
+<!-- Breadcrumbs end -->
+
+
+<a role="button" class="btn btn-warning btn-sm" href="forms/edit_ArtistWithGenres.php?artistSpotID=<?php echo $artistSpotID ?>&artistMBID=<?php echo $artistMBID ?>">Edit this Artist</a>
     
 <a role="button" class="btn btn-success btn-sm" href="forms/add_artistAssocArtist.php?artistSpotID=<?php echo $artistSpotID ?>&artistMBID=<?php echo $artistMBID ?>">Add Associated Artist</a>
 

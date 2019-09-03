@@ -99,16 +99,20 @@ else // if the form isn't being submitted, get the data from the db and display 
         
         $queryG = "SELECT g.genre FROM genresNames g 
         WHERE g.artistID='" . $artistSpotID . "' OR g.artistID='" . $artistMBID . "';";
-    
+        
+        $rows = array();
+
         $resultG = mysqli_query($connekt, $queryG) or die(mysqli_error($connekt));
-        /*
-        $rows = mysqli_fetch_array($resultG);
-        $encodedGenres = json_encode($rows);
-        $forConsole = "<script>console.log($encodedGenres)</script>";
-        echo $forConsole;
-        */
-	}
-	else // if the 'artistMBID' in the URL isn't valid, or if there is no 'artistMBID' value, display an error
+        
+        $rowsG = mysqli_fetch_array($resultG);
+        
+        while ($rowsG = mysqli_fetch_array($resultG)) {
+            $rows[] = $row;
+        };
+        echo json_encode($rows);
+    }
+
+	else 
 	{
 		echo $error;
 	}
@@ -184,7 +188,6 @@ else // if the form isn't being submitted, get the data from the db and display 
 				<input class="form-control" type="text" name="artistMBID" value="<?php echo $artistMBID; ?>" />
 			</div>
 		</div> <!-- /Primary Artist MB Name -->	
-
 
         <?php
             while ($row = mysqli_fetch_array($resultG)) {

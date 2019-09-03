@@ -187,6 +187,8 @@ else // if the form isn't being submitted, get the data from the db and display 
 			</div>
 		</div> <!-- /Primary Artist MB Name -->	
 
+        <fieldset class="form-group"> <!-- Artist Genree --> 
+            <legend>Genres</legend>
 
         <?php
             $i = 0;
@@ -204,17 +206,20 @@ else // if the form isn't being submitted, get the data from the db and display 
                 */
         ?>	
 
-        <div class="form-group"> <!-- Artist Genree --> 			
-			<label class="col-lg-2 control-label" for="<?php echo $genreID; ?>">Genre</label>			
-			<div class="col-lg-3">
-				<input class="form-control" type="text" name="<?php echo $genreID; ?>" value="<?php echo $genre; ?>" />
+
+            <div class="form-check">
+			    <label class="form-check-label">			
+				<input class="form-check-input" type="checkbox" id="<?php echo $genreID; ?>" value="<?php echo $genre; ?>" />
+                <?php echo $genre; ?>
+                </label>
 			</div>
-		</div> <!-- /Artist Genre -->
+		
 
         <?php 
                
             } // end of while
         ?>		
+        </fieldset> <!-- /Artist Genre -->
 			<!-- Last Row -->
 			<div class="form-group"> <!-- Last Row -->	
 				<div class="col-lg-4 col-lg-offset-2">

@@ -66,6 +66,15 @@ if ( !$getit ) {
 	<div class="container-fluid">
 	<div id="fluidCon"></div> <!-- end of fluidCon -->
 
+  <!-- Breadcrumbs start -->
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="../index.php">Spotify Artists</a></li>
+    <li class="breadcrumb-item"><a href="../artist_ChartsSpot.php?artistSpotID=<?php echo $artistSpotID; ?>&artistMBID=<?php echo $artistMBID; ?>"><?php echo $artistNameSpot; ?></a></li>
+    <li class="breadcrumb-item active"> Edit <?php echo $albumNameSpot; ?></li>
+</ol>
+<!-- Breadcrumbs end -->
+
+
 		<!-- main -->
     <a role="button" class="btn btn-warning btn-sm" href="forms/edit_AlbumSpot.php?albumSpotID=<?php echo $albumSpotID ?>">Edit this Album</a>
     
