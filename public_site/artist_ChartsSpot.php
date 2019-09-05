@@ -397,7 +397,7 @@ d3.json("functions/get_artist_Playcounts.php?artistSpotID=<?php echo $artistSpot
     d3.json("functions/createAlbumsD3.php?artistSpotID=<?php echo $artistSpotID ?>", function(dataset) {
         console.log(dataset);
         // Width and height
-        var w = 2400;
+        var w = 4800;
         var h = 265;
         var barPadding = 1;
 
