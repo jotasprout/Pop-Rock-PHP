@@ -14,10 +14,16 @@ Creating dashboards and data visualizations using data gathered from multiple AP
 ### FanArt.tv
 - Artist, logos and album art
 
-### Last.fm
+### Last.fm (perhaps being replaced by ListenBrainz)
 - Listeners for artists, albums, tracks
 - Playcount for artists, albums, tracks
 - Tags (genres)
+
+### ListenBrainz.org
+[ListenBrainz.org](https://listenbrainz.org/) includes these helpful pages:
+- [Main Documentation](https://listenbrainz.readthedocs.io/en/production/)
+- [ListenBrainz API](https://listenbrainz.readthedocs.io/en/production/dev/api.html)
+- [JSON Documentation](https://listenbrainz.readthedocs.io/en/production/dev/json.html)
 
 ### SeatGeek
 **Future**
