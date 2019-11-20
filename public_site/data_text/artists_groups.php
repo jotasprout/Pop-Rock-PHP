@@ -1,5 +1,8 @@
 <?php
 
+$newPeeps = array ('2GVBp7QyHckoOg7rYkLvrA', '450o9jw6AtiQlQkHCdH6Ru', '2f9ZiYA2ic1r1voObUimdd', '3eskO5m0H4yiF64vRySBjr', '1CYsQCypByMVgnv17qsSbQ', '3CkvROUTQ6nRi9yQOcsB50', '7C4sUpWGlTy7IANjruj02I', '4lxfqrEsLX6N1N4OCSkILp', '2TquqtkGaRsFigvIhrGff7', '0Y6RVcznKZUqbWBwgOVNvv', '01Ppu7N8uYJI8SAONo2YZA', '4wM29TDTr3HI0qFY3KoSFG', '1NdZSjGpm3jktmGbvkLadW', '7oPgCQqMMXEXrNau5vxYZP', '4awU3JRQXIYoxabdwO92AU', '3X0tJzVYoWlfjLYI0Ridsw', '3Gf6z7kuVRjZ2e3W2cxoXN', '52BKc9OtCbQstAAPTIvLGH');
+# George Clinton, Funkadelic, Grace Jones, Buffalo Springfield, CSNY, Genesis, Peter Gabriel, Phil Collins, Jacob's Trouble, Lost Dogs, Melissa Etheridge, Indigo Girls, Timbuk 3, Tracy Chapman, Edie Brickell, Suzanne Vega, Godfathers, James McMurtry,  
+
 $dragdrop = array ('2BTZIqw0ntH9MvilQ3ewNY', '0oSGxfWSnnOXhD2fKuz2Gy', '3RYdggbT5C9r4BsljokJ1Q', '3qm84nBOXUEQ2vnTfUTTFC','33EUXrFKGjpUSGacqEHhU4', '6mdiAmATAx73kdxrNrnlao', '4xtWjIlVuZwTCeqVAsgEXy', '1Fmb52lZ6Jv7FMWXXTPO3K', '3lPQ2Fk5JOwGWAF3ORFCqH', '4VCZkmckTZMDFU0WsaepBe', '0klkYTAeGHgItyB4R9YYjU', '36QJpDe2go2KgaRleHCDTp', '7dnB1wSxbYa8CejeVg98hz', '0VOvF0kfqCTRe37XzWQdvH', '1P72cdCRCvytPnFLkGSeVm', '5a2EaR3hamoenG9rDuVn8j', '2y8Jo9CKhJvtfeKOsYzRdT', '3PXQl96QHBJbzAGENdJWc1', '0t1uzfQspxLvAifZLdmFe2', '4salDzkGmfycRqNUbyBphh', '2x9SpqnPi8rlE9pjHBwmSC', '3lHPBMb024SqetFwwVwuwH', '3lgxzeCbj6oMQMmaUhH2H6', '3h66yQiOXZpT6AV2Np5yIq');
 
 $dragdrop2 = array (
