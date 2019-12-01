@@ -445,7 +445,12 @@ $artistNames_01 = array (
     '12thTribe_Group',
     'ArgylePark_Group',
     'BarrenCross_Group',
-    'Believer_Group'
+	'Believer_Group',
+	'GeorgeClinton_Person',
+	'Funkadelic_Group',
+	'Parliament-Funkadelic_Group',
+	'Parliament_Group',
+	'GraceJones_Person'
 );
 
 $filenames_02 = array (	
@@ -507,7 +512,9 @@ $artistNames_03 = array (
     'Elf_Group',
     'Heaven&Hell_Group',
     'Rainbow_Group',
-    'RonnieJamesDio_Person',
+	'RonnieJamesDio_Person',
+	'RogerGlover_Person',
+	'KerryLivgren_Person',
     'OzzyOsbourne_Person',
     'BlackSabbath_Group',
     'DisciplesofChrist_Group',
@@ -622,7 +629,9 @@ $artistNames_07 = array (
 	'RoxyMusic_Group',
     'Saxon_Group',
 	'NeilYoung_Person',
-    'TheZombies_Group',
+	'Crosby,Stills,Nash&Young_Group',
+	'BuffaloSpringfield_Group',
+	'TheZombies_Group',
     #'TRYTAN_Group', 
     #'Veil of Ashes_Group', 
     #'Vengeance Rising_Group', 
