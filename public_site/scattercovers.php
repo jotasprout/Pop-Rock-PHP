@@ -9,7 +9,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Albums Scatterplot | PopRock</title>
+    <title>Black Sabbath Albums Scatterplot | PopRock</title>
 	
 	<?php echo $stylesAndSuch; ?>
 	<style>

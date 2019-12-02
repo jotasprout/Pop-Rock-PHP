@@ -33,7 +33,7 @@ if(!$connekt){
         $artistListeners = $artist['stats']['listeners'];
         $artistPlaycount = $artist['stats']['playcount'];
         $artistRatio = $artistPlaycount/$artistListeners;
-        /*
+        /**/
         $tryInsertArtistData = "INSERT INTO artistsMB (artistMBID, artistNameMB) VALUES ('$artistMBID', '$artistNameMB')";
 
         $rockin = $connekt->query($tryInsertArtistData);
@@ -43,7 +43,7 @@ if(!$connekt){
         } else {
                 echo '<p>Inserted ' . $artistNameMB . ' in table.</p>';
         }; 
-        */
+        
         $insertArtistStats = "INSERT INTO artistsLastFM (artistMBID, dataDate, artistListeners, artistPlaycount, artistRatio) VALUES('$artistMBID','$dataDate','$artistListeners', '$artistPlaycount', '$artistRatio')";
             
         $rockout = $connekt->query($insertArtistStats);
