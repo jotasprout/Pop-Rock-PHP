@@ -465,7 +465,8 @@ $artistNames_01 = array (
     'WhitneyHouston_Person',
     'ThinLizzy_Group',
     'NineInchNails_Group',
-    'NotoriousB.I.G._Person'
+    'NotoriousB.I.G._Person',
+    'DeepPurple_Group'
 );
 
 
