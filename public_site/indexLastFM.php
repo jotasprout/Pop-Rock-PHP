@@ -88,7 +88,7 @@ if(!$getit){ echo 'Cursed-Crap. Did not run the query.'; }
         $artistArt = '';
         
 		if(empty($row["artistArtMBFilename"]) && empty($row["artistArtSpot"])) {
-			$artistArt = $artistArtMBFilepath . "nope.png";
+			$artistArt = $artistArtMBFilepath . "nope-artist.png";
 		}
 		elseif (empty($row["artistArtMBFilename"]) && !empty($row["artistArtSpot"])) {
 			$artistArt = $artistArtSpot;

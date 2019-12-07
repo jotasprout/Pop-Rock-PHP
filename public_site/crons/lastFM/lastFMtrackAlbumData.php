@@ -3,7 +3,7 @@
 require '../../rockdb.php';
 require_once 'artistArrays_LastFM.php';
 
-$rainbow = array ('data/Rainbow_Group_07-27-19.json', 'data/Rainbow_Group_07-20-19.json', 'data/Rainbow_Group_07-13-19.json', 'data/Rainbow_Group_07-06-19.json', 'data/Rainbow_Group_06-29-19.json', 'Rainbow_Group_06-22-19.json', 'Rainbow_Group_06-15-19.json',);
+#$rainbow = array ('data/Rainbow_Group_07-27-19.json', 'data/Rainbow_Group_07-20-19.json', 'data/Rainbow_Group_07-13-19.json', 'data/Rainbow_Group_07-06-19.json', 'data/Rainbow_Group_06-29-19.json', 'Rainbow_Group_06-22-19.json', 'Rainbow_Group_06-15-19.json',);
 
 #insertLastFMalbumDataFilenames ($rainbow); 
 #insertLastFMtrackDataFilenames ($rainbow); 

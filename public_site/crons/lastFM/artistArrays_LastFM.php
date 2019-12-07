@@ -450,7 +450,25 @@ $artistNames_01 = array (
 	'Funkadelic_Group',
 	'Parliament-Funkadelic_Group',
 	'Parliament_Group',
-	'GraceJones_Person'
+    'GraceJones_Person',
+    'JudasPriest_Group',
+    'DepecheMode_Group',
+    'Motörhead_Group',
+    'T.Rex_Group',
+    'Kraftwerk_Group',
+    'Rufus_Group',
+    'MC5_Group',
+    'DaveMatthewsBand_Group',
+    'PatBenatar_Person',
+    'DoobieBrothers_Group',
+    'Soundgarden_Group',
+    'WhitneyHouston_Person',
+    'ThinLizzy_Group',
+    'NineInchNails_Group',
+    'NotoriousB.I.G._Person'
+);
+
+
 );
 
 $filenames_02 = array (	
