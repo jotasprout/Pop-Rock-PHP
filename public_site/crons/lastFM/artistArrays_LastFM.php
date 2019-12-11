@@ -469,9 +469,6 @@ $artistNames_01 = array (
     'DeepPurple_Group'
 );
 
-
-);
-
 $filenames_02 = array (	
     'data/Anvil_Group_07-22-19.json',
     'data/LindseyBuckingham_Person_07-22-19.json',
