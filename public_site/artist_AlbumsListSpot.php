@@ -81,9 +81,9 @@ if(!$getit){
 <!--
 <th><div class="pointyHead popStyle">Total<br>Tracks</div></th>
 -->
-
-<th onClick="sortColumn('pop', 'unsorted', '<?php echo $artistSpotID ?>', '<?php echo $source ?>')"><div class="pointyHead popStyle">Spotify<br>Popularity</div></th>
 <th class="popStyle">Spotify<br>Data Date</th>
+<th onClick="sortColumn('pop', 'unsorted', '<?php echo $artistSpotID ?>', '<?php echo $source ?>')"><div class="pointyHead popStyle">Spotify<br>Popularity</div></th>
+
 </tr>
 </thead>
 

@@ -8,8 +8,8 @@ function insertLastFMtrackDataArtistNames ($artistNames) {
 		
 		$artistForURL = $artistNames[$i];
 		$baseURL = 'data/';
-		$today = date("m-d-y");
-		//$today = "05-19-19";
+	    $today = date("m-d-y");
+		//$today = "12-08-19";
 		$endURL = '.json';
 		$artistURL = $baseURL . $artistForURL . "_" . $today . $endURL;
 		echo "<p>" . $artistURL . "</p>";
@@ -115,7 +115,7 @@ function insertLastFMalbumDataArtistNames ($artistNames) {
 		$artistForURL = $artistNames[$j];
 		$baseURL = 'data/';
 		$today = date("m-d-y");
-		//$today = "05-19-19";
+		//$today = "12-08-19";
 		$endURL = '.json';
 		$artistURL = $baseURL . $artistForURL . "_" . $today . $endURL;
 		echo "<p>" . $artistURL . "</p>";

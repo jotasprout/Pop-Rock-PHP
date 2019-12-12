@@ -59,7 +59,11 @@ if ( !$getit2 ) {
 	
 	<div id="fluidCon"></div> <!-- end of fluidCon -->
 
-		<!-- main -->	
+		<!-- main -->
+    
+    <a role="button" class="btn btn-warning btn-sm" href="forms/edit_AlbumMB.php?artistSpotID=<?php echo $artistSpotID ?>&artistMBID=<?php echo $artistMBID ?>&albumMBID=<?php echo $albumMBID ?>&source=musicbrainz">Edit this Album</a>
+    
+    <a role="button" class="btn btn-success btn-sm" href="forms/add_albumAssocArtist.php?albumMBID=<?php echo $albumMBID ?>">Add Associated Artist</a>	
 
 <!-- START OF ROW #1 COVER ART AND STATS SUMMARY -->
 <div class="panel panel-primary">

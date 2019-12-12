@@ -46,6 +46,7 @@ if(!$getit){ echo 'Cursed-Crap. Did not run the query.'; }
 	</div> <!-- end of fluidCon -->
 
 	<!-- main -->
+    <a role="button" class="btn btn-success btn-sm" href="forms/newArtistFormMB.php">Add New MusicBrainz Artist</a>
 
 	<div class="panel panel-primary">
 

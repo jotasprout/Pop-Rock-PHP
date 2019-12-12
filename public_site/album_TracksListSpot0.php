@@ -76,7 +76,9 @@ if ( !$getit ) {
 
 
 		<!-- main -->
-        
+    <a role="button" class="btn btn-warning btn-sm" href="forms/edit_AlbumSpot.php?albumSpotID=<?php echo $albumSpotID ?>">Edit this Album</a>
+    
+    <a role="button" class="btn btn-success btn-sm" href="forms/add_albumAssocArtist.php?albumSpotID=<?php echo $albumSpotID ?>">Add Associated Artist</a>	        
 		<!-- -->
 		<div class="panel panel-primary">
 			<div class="panel-heading">

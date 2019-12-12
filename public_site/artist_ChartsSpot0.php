@@ -57,6 +57,11 @@
 </ol>
 <!-- Breadcrumbs end -->
 
+
+<a role="button" class="btn btn-warning btn-sm" href="forms/edit_ArtistWithGenres.php?artistSpotID=<?php echo $artistSpotID ?>&artistMBID=<?php echo $artistMBID ?>">Edit this Artist</a>
+    
+<a role="button" class="btn btn-success btn-sm" href="forms/add_artistAssocArtist.php?artistSpotID=<?php echo $artistSpotID ?>&artistMBID=<?php echo $artistMBID ?>">Add Associated Artist</a>
+
 <div class="row"> <!-- Start of Row 1 -->
 	<div class="col-md-6"> <!-- Start of Row #1 Column 1 -->		
 	<div class="panel panel-primary"> <!-- Start of Left Panel in Row #1 -->

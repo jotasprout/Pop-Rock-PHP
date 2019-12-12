@@ -55,6 +55,8 @@ if(!$getit){
 	<div id="fluidCon"></div> <!-- end of fluidCon -->
 	
 	<!-- main -->
+
+    <a role="button" class="btn btn-success btn-sm" href="https://roxorsoxor.com/poprock/forms/newArtistFormSpot.php">Add New Spotify Artist</a>
         
 	<div class="panel panel-primary">
 
