@@ -636,7 +636,13 @@ $filenames_07 = array (
     'data/RoxyMusic_Group_07-20-19.json',
     'data/Saxon_Group_07-20-19.json', 
     'data/NeilYoung_Person_07-20-19.json',
-	'data/TheZombies_Group_07-20-19.json'
+    'data/TheZombies_Group_07-20-19.json',
+    'data/Crosby,Stills,Nash&Young_Group_07-20-19.json',
+    'data/BuffaloSpringfield_Group_07-20-19.json',
+    'data/TheZombies_Group_07-20-19.json',
+    'data/ScaterdFew_Group_07-20-19.json',
+    'data/SeventhAngel_Group_07-20-19.json',
+    'data/Prince_Person__07-20-19.json'
 );
 
 $artistNames_07 = array (
@@ -649,13 +655,14 @@ $artistNames_07 = array (
 	'BuffaloSpringfield_Group',
 	'TheZombies_Group',
     #'TRYTAN_Group', 
-    #'Veil of Ashes_Group', 
-    #'Vengeance Rising_Group', 
-    #'Veni Domine_Group', 
+    #'VeilofAshes_Group', 
+    #'VengeanceRising_Group', 
+    #'VeniDomine_Group', 
     #'Whitecross_Group', 
-    #'XL and Death Before Dishonor_Group',     
+    #'XLandDeathBeforeDishonor_Group',     
     'ScaterdFew_Group',  
-    'SeventhAngel_Group'  
+    'SeventhAngel_Group',
+    'Prince_Person'  
 );
 
 ?>
