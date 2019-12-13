@@ -94,6 +94,7 @@ const $xianPunk = "Christian Punk & Alternative";
 const $detroitRockers = "Detroit Rock Citizens";
 const $latinos = "Alternativo y Rock en Espanol";
 const $2019Noms = "2019 Rock and Roll Hall of Fame Nominees";
+const $2020Noms = "2020 Rock and Roll Hall of Fame Nominees";
 const $2019Inductees = "2019 Rock and Roll Hall of Fame Inductees";
 
 d3.json("functions/multiArtists_pop.php", function(data) {

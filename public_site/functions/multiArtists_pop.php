@@ -12,7 +12,7 @@ if (!$connekt) {
 $multiArtistPop = "SELECT a.artistSpotID, a.artistArtSpot , a.artistNameSpot, p.pop, p.date
     FROM artistsSpot a
     JOIN popArtists p ON p.artistSpotID = a.artistSpotID
-	WHERE a.artistSpotID IN ('" . implode("', '", $group_sabbathRainbow) . "')
+	WHERE a.artistSpotID IN ('" . implode("', '", $noms2020) . "')
 	ORDER BY a.artistSpotID ASC, p.date ASC";
 
 $getit = mysqli_query($connekt, $multiArtistPop);
