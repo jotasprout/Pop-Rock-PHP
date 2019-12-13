@@ -105,7 +105,7 @@ d3.json("functions/multiArtists_pop.php", function(data) {
 
         var parseTime = d3.timeParse("%y-%m-%d");
 
-        const title = $sabbathAndFriends;
+        const title = $2020Noms;
 
         dataset.forEach(function(d) {
             // date = parseTime(d.date);

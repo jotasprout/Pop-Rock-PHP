@@ -35,7 +35,7 @@ require_once 'page_pieces/stylesAndScripts.php';
         console.log(dataset);
         // Width and height
         var w = 2400;
-        var h = 1000;
+        var h = 1200;
         var barPadding = 1;
         const widen = dataset.length;
         console.log(widen);
