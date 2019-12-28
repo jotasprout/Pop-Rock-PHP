@@ -18,7 +18,7 @@
  <div id="fluidCon"></div> <!-- end of fluidCon -->
 	<div class="panel panel-primary">
 		<div class="panel-heading">
-			<h3 id="genreHeader" class="panel-title">These Artists' Current Popularity On Spotify</h3>
+			<h3 id="genreHeader" class="panel-title"><b><span id="genreHeaderGenre">These</span></b> Artists' Current Popularity On Spotify</h3>
 		</div>
 
 		<div class="panel-body">
@@ -41,10 +41,10 @@
         
         const artistGenre = dataset[0].genre;
 
-        const genreTitle = d3.select("#genreHeader")
+        const genreTitle = d3.select("#genreHeaderGenre")
             //.data(dataset)
             //.append("text")
-            .text("<b>" + artistGenre + "</b> genre artists Current Popularity on Spotify");
+            .text(artistGenre);
 
         // Create SVG element
         var svg = d3.select("#forChart")
