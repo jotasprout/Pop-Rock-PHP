@@ -1,6 +1,8 @@
 # Pop Rock (PHP)
 Creating dashboards and data visualizations using data gathered from multiple APIs. Working on making it more interactive and visually appealing.
 
+[roxorsoxor.com/poprock/](https://roxorsoxor.com/poprock/index.php)
+
 ### Spotify Web API
 - Artists: Popularity and Followers 
 - Albums: Popularity
