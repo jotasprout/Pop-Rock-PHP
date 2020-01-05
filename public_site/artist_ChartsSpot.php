@@ -53,7 +53,7 @@
   <!-- Breadcrumbs start -->
 <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="../index.php">Spotify Artists</a></li>
-    <li class="breadcrumb-item active">Artist Name</li>
+    <li class="breadcrumb-item active" id="artistNameCrumb">Artist Name</li>
 </ol>
 <!-- Breadcrumbs end -->
 
@@ -207,8 +207,11 @@ d3.json("functions/createArtistSpotD3.php?artistSpotID=<?php echo $artistSpotID;
 
     const artistNameSpot = dataset[0].artistNameSpot;
 
+    const nameInBreadcrumbs = d3.select("#artistNameCrumb")
+                                .text(artistNameSpot);
+
     const nameInTitle = d3.select("title")
-            .text(artistNameSpot + "'s current stats on Spotify and LastFM")
+            .text(artistNameSpot + "'s current stats on Spotify and LastFM");
 
     const topHeading = d3.select("#topHead")
             .text(artistNameSpot + "'s current stats on Spotify and LastFM"); 
