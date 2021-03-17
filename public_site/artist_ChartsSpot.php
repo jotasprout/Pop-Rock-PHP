@@ -49,180 +49,171 @@
 
 <div class="container-fluid">
 
-<div id="fluidCon">
-			<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div id="fluidCon">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
 
-				<a class="navbar-brand" href="#">PopRock</a>
+            <a class="navbar-brand" href="#">PopRock</a>
 
-				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-				</button>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-				<div class="collapse navbar-collapse" id="navbarColor01">
+            <div class="collapse navbar-collapse" id="navbarColor01">
 
-					<ul class="navbar-nav mr-auto">
-						<li class="nav-item">
-							<a class="nav-link" href='https://roxorsoxor.com/poprock/index.php'>Artists<br>Spotify
-							<span class="sr-only">(current)</span>
-							</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href='https://roxorsoxor.com/poprock/indexLastFM.php'>Artists<br>LastFM</a>
-						</li>
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href='https://roxorsoxor.com/poprock/index.php'>Artists<br>Spotify
+                        <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href='https://roxorsoxor.com/poprock/indexLastFM.php'>Artists<br>LastFM</a>
+                    </li>
 
-						<li class="nav-item">
-							<a class="nav-link" href='https://roxorsoxor.com/poprock/artist_AlbumsListSpot.php?artistSpotID=" + artistSpotID + "&artistMBID=" + artistMBID + "&source=spotify'>Albums<br>Spotify</a>
-						</li>  
-						<li class="nav-item">
-							<a class="nav-link" href='https://roxorsoxor.com/poprock/artist_AlbumsListLastFM.php?artistSpotID=" + artistSpotID + "&artistMBID=" + artistMBID + "&source=musicbrainz'>Albums<br>LastFM</a>
-						</li>                                                
-						<li class="nav-item">
-							<a class="nav-link" href='https://roxorsoxor.com/poprock/artist_TracksListSpot.php?artistSpotID=" + artistSpotID + "&artistMBID=" + artistMBID + "&source=spotify'>Tracks<br>Spotify</a>
-						</li>  
-						<li class="nav-item">
-							<a class="nav-link" href='https://roxorsoxor.com/poprock/artist_TracksListLastFM.php?artistSpotID=" + artistSpotID + "&artistMBID=" + artistMBID + "&source=musicbrainz'>Tracks<br>LastFM</a>
-						</li>   
+                    <li class="nav-item">
+                        <a class="nav-link" href='https://roxorsoxor.com/poprock/artist_AlbumsListSpot.php?artistSpotID=" + artistSpotID + "&artistMBID=" + artistMBID + "&source=spotify'>Albums<br>Spotify</a>
+                    </li>  
+                    <li class="nav-item">
+                        <a class="nav-link" href='https://roxorsoxor.com/poprock/artist_AlbumsListLastFM.php?artistSpotID=" + artistSpotID + "&artistMBID=" + artistMBID + "&source=musicbrainz'>Albums<br>LastFM</a>
+                    </li>                                                
+                    <li class="nav-item">
+                        <a class="nav-link" href='https://roxorsoxor.com/poprock/artist_TracksListSpot.php?artistSpotID=" + artistSpotID + "&artistMBID=" + artistMBID + "&source=spotify'>Tracks<br>Spotify</a>
+                    </li>  
+                    <li class="nav-item">
+                        <a class="nav-link" href='https://roxorsoxor.com/poprock/artist_TracksListLastFM.php?artistSpotID=" + artistSpotID + "&artistMBID=" + artistMBID + "&source=musicbrainz'>Tracks<br>LastFM</a>
+                    </li>   
 
-						<li class="nav-item">
-							<a class="nav-link" href='https://roxorsoxor.com/poprock/multiArtists_albumsChart.php'>Related<br>Artists</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href='https://roxorsoxor.com/poprock/multiArtists_popTimeLines.php'>Over Time<br>Popularity</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href='https://roxorsoxor.com/poprock/multiArtists_popCurrentColumns.php'>Current<br>Popularity</a>
-						</li>				
-						<li class="nav-item">
-							<a class="nav-link" href='https://roxorsoxor.com/poprock/multiArtists_followersCurrentColumns.php'>Current<br>Followers</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href='https://roxorsoxor.com/poprock/genres/artistsGenres.php'>Genres</a>
-						</li>		
-						<li class="nav-item">
-							<a class="nav-link" href='https://roxorsoxor.com/poprock/dragdrop/dragDropArtists.php'>Drag Drop</a>
-						</li>			
-						<li class="nav-item">
-							<a class="nav-link" href='https://roxorsoxor.com/poprock/rels.php'>Network</a>
-						</li>
-													
-						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Scatter</a>
-							<div class="dropdown-menu">
-								<a class="dropdown-item" href='https://roxorsoxor.com/poprock/scattercovers.php'>Black Sabbath</a>
-								<a class="dropdown-item" href='https://roxorsoxor.com/poprock/scattercovers2.php'>Ronnie James Dio</a>
-								<a class="dropdown-item" href='https://roxorsoxor.com/poprock/scattercovers3.php'>Dio</a>
-								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" href="#">Separated link</a>
-							</div>
-						</li>
-					</ul>
+                    <li class="nav-item">
+                        <a class="nav-link" href='https://roxorsoxor.com/poprock/multiArtists_albumsChart.php'>Related<br>Artists</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href='https://roxorsoxor.com/poprock/multiArtists_popTimeLines.php'>Over Time<br>Popularity</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href='https://roxorsoxor.com/poprock/multiArtists_popCurrentColumns.php'>Current<br>Popularity</a>
+                    </li>				
+                    <li class="nav-item">
+                        <a class="nav-link" href='https://roxorsoxor.com/poprock/multiArtists_followersCurrentColumns.php'>Current<br>Followers</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href='https://roxorsoxor.com/poprock/genres/artistsGenres.php'>Genres</a>
+                    </li>		
+                    <li class="nav-item">
+                        <a class="nav-link" href='https://roxorsoxor.com/poprock/dragdrop/dragDropArtists.php'>Drag Drop</a>
+                    </li>			
+                    <li class="nav-item">
+                        <a class="nav-link" href='https://roxorsoxor.com/poprock/rels.php'>Network</a>
+                    </li>
+                                                
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Scatter</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href='https://roxorsoxor.com/poprock/scattercovers.php'>Black Sabbath</a>
+                            <a class="dropdown-item" href='https://roxorsoxor.com/poprock/scattercovers2.php'>Ronnie James Dio</a>
+                            <a class="dropdown-item" href='https://roxorsoxor.com/poprock/scattercovers3.php'>Dio</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Separated link</a>
+                        </div>
+                    </li>
+                </ul>
 
-				</div> <!-- end of collapse -->
-			</nav> <!-- end of navbar -->		
-		</div> <!-- end of fluidCon -->
+            </div> <!-- end of collapse -->
+        </nav> <!-- end of navbar -->		
+    </div> <!-- end of fluidCon -->
     
-  <!-- Breadcrumbs start -->
-<ol class="breadcrumb">
-    <li class="breadcrumb-item"><a href="../index.php">Spotify Artists</a></li>
-    <li class="breadcrumb-item active" id="artistNameCrumb">Artist Name</li>
-</ol>
-<!-- Breadcrumbs end -->
+    <!-- Breadcrumbs start -->
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="../index.php">Spotify Artists</a></li>
+        <li class="breadcrumb-item active" id="artistNameCrumb">Artist Name</li>
+    </ol> <!-- Breadcrumbs end -->
 
-<div class="row"> <!-- Start of Row 1 -->
-	<div class="col-md-6"> <!-- Start of Row #1 Column 1 -->		
-	<div class="panel panel-primary"> <!-- Start of Left Panel in Row #1 -->
-		<div class="panel-heading">
-			<h3 class="panel-title" id="topHead">Current Stats for </h3>
-		</div> <!-- close panel-heading -->
-        <div class="panel-body">
-            <div class="col-md-6"> <!-- Start of Column 1-1 -->
-                <img id="forArt">
-            </div> <!-- End of Column 1-1 -->
-            <!--
-		   <div class="row">
--->
-				<div class="col-md-6"><!-- Start of Stats Table -->
-					<ul class="list-group">
-						<li class="list-group-item d-flex justify-content-between align-items-center">
-							Popularity on Spotify
-							<span class="badge badge-primary badge-pill" id="forCurrentPopularity"></span>
-						</li>
-						<li class="list-group-item d-flex justify-content-between align-items-center">
-							Followers on Spotify
-							<span class="badge badge-primary badge-pill" id="forCurrentFollowers"></span>
-						</li>
-						<li class="list-group-item d-flex justify-content-between align-items-center">
-							Listeners on LastFM
-							<span class="badge badge-primary badge-pill" id="forCurrentListeners">No data yet</span>
-						</li>
-						<li class="list-group-item d-flex justify-content-between align-items-center">
-							Playcount on LastFM
-							<span class="badge badge-primary badge-pill" id="forCurrentPlaycount">No data yet</span>
-						</li>
-					</ul>
-				</div> <!-- End of Column Stats Table -->
-                <!--
-		   </div> 
-           -->
-           <!-- End of Row in Left Panel Body -->
-	  </div> <!-- End of Left Panel Body -->
-	</div> <!-- End of Left Panel Primary -->
-</div> <!-- End of Row #1 Column 1 -->
+    <div class="row"> <!-- Start of Row 1 -->
+        <div class="col-md-6"> <!-- Start of Row #1 Column 1 -->		
+            <div class="card text-white bg-dark mb-3"> <!-- Start of Left card in Row #1 -->
+                <div class="card-header" id="topHead">Current Stats for </div> <!-- close card-header -->
+                <div class="card-body">
+                    <div class="row align-items-start">
 
-	<div class="col-md-6"> <!-- Start of Row #1 Column 2 -->
-		<div class="panel panel-primary"> <!-- Start of Right Panel Primary Row #1-->
-			<div class="panel-heading">
-				<h3 class="panel-title">Associated Artists</h3>
-			</div> <!-- close panel-heading -->
+                        <div class="col"> <!-- Start of Column 1-1 -->
+                            <img id="forArt">
+                        </div> <!-- End of Column 1-1 -->
 
-			<div class="panel-body">
-				<div id="assocArtists"></div> <!-- Associated Artists -->
-			</div> <!-- End of Right Panel Body -->
-		</div> <!-- End of Right Panel Primary Row #1-->
-	</div> <!-- End of Row #1 Column 2 -->
+                        <div class="col"><!-- Start of Stats Table -->
+                            <ul class="list-group">
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    Popularity on Spotify
+                                    <span class="badge badge-primary badge-pill" id="forCurrentPopularity"></span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    Followers on Spotify
+                                    <span class="badge badge-primary badge-pill" id="forCurrentFollowers"></span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    Listeners on LastFM
+                                    <span class="badge badge-primary badge-pill" id="forCurrentListeners">No data yet</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    Playcount on LastFM
+                                    <span class="badge badge-primary badge-pill" id="forCurrentPlaycount">No data yet</span>
+                                </li>
+                            </ul>
+                        </div> <!-- End of Column Stats Table -->
+
+                    </div>
+
+
+
+
+                </div> <!-- End of Left card Body -->
+            </div> <!-- End of Left card Primary -->
+        </div> <!-- End of Row #1 Column 1 -->
+
+        <div class="col-md-6"> <!-- Start of Row #1 Column 2 -->
+            <div class="card text-white bg-dark mb-3"> <!-- Start of Right card Primary Row #1-->
+                <div class="card-header">Associated Artists</div> <!-- close card-header -->
+
+                <div class="card-body">
+                    <div id="assocArtists"></div> <!-- Associated Artists -->
+                </div> <!-- End of Right card Body -->
+            </div> <!-- End of Right card Primary Row #1-->
+        </div> <!-- End of Row #1 Column 2 -->
+        
+    </div>	<!-- End of Row #1 -->
 	
-</div>	<!-- End of Row #1 -->
-	
-<!-- START OF ROW #2 WITH POPULARITY LINE GRAPH AND FOLLOWERS LINE GRAPH -->	
-	
-<div class="row"> <!-- Start of Row 2 -->	
-	
-	<div class="col-md-6"> <!-- Start of Column 1 -->
-		<div class="panel panel-primary">
-			<div class="panel-heading">
-				<h3 id="artistPop" class="panel-title">This artist's popularity on Spotify over time</h3>
-			</div> <!-- close panel-heading -->
+    <!-- START OF ROW #2 WITH POPULARITY LINE GRAPH AND FOLLOWERS LINE GRAPH -->	
+        
+    <div class="row"> <!-- Start of Row 2 -->	
+        
+        <div class="col-md-6"> <!-- Start of Column 1 -->
+            <div class="card text-white bg-dark mb-3">
+                <div class="card-header" id="artistPop">This artist's popularity on Spotify over time</div> <!-- close card-header -->
 
-			<div class="panel-body">
-				<div id="forArtistChart"></div> <!-- close forChart -->
-			</div> <!-- panel body -->
-		</div> <!-- close Panel Primary -->
-	</div> <!-- End of Column 1 -->
+                <div class="card-body">
+                    <div id="forArtistChart"></div> <!-- close forChart -->
+                </div> <!-- card body -->
+            </div> <!-- close card Primary -->
+        </div> <!-- End of Column 1 -->
 
-	<div class="col-md-6"> <!-- Start of Column 2 -->
-		<div class="panel panel-primary">
-			<div class="panel-heading">
-				<h3 id="artistPlaycounts" class="panel-title">This artist's daily LastFM playcounts</h3>
-			</div> <!-- close panel-heading -->
+        <div class="col-md-6"> <!-- Start of Column 2 -->
+            <div class="card text-white bg-dark mb-3">
+                <div class="card-header" id="artistPlaycounts">This artist's daily LastFM playcounts</div> <!-- close card-header -->
 
-			<div class="panel-body">
-				<div id="forPlaycountChart"></div> <!-- close forChart -->
-			</div> <!-- panel body -->
-		</div> <!-- close Panel Primary -->
-	</div> <!-- End of Column 2 -->
-</div> <!-- End of row 2 -->	
+                <div class="card-body">
+                    <div id="forPlaycountChart"></div> <!-- close forChart -->
+                </div> <!-- card body -->
+            </div> <!-- close card Primary -->
+        </div> <!-- End of Column 2 -->
+    </div> <!-- End of row 2 -->	
 	
 	<!-- START OF ROW #3 WITH ALBUMS COLUMNS -->
 	
-    <div class="panel panel-primary">
-		<div class="panel-heading">
-			<h3 id="albumPop" class="panel-title">This Artist's Albums Current Popularity</h3>
-		</div>
+    <div class="card text-white bg-dark mb-3">
+		<div class="card-header" id="albumPop">This Artist's Albums Current Popularity</div>
 
-		<div class="panel-body">
+		<div class="card-body">
 			<div id="recordCollection"></div>
-		</div> <!-- panel body -->
-	</div> <!-- close Panel Primary -->
+		</div> <!-- card body -->
+	</div> <!-- close card Primary -->
 
 </div> <!-- close container -->
 
@@ -306,7 +297,7 @@ d3.json("functions/createArtistSpotD3.php?artistSpotID=<?php echo $artistSpotID;
     d3.select("#forArt")
             .data(dataset)
             .attr("src", artistArtSpot)
-            .attr("height", 166);
+            .attr("height", 189);
             //.attr("width", auto)
 
     dataset.forEach(function(d) {

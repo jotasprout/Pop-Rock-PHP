@@ -6,7 +6,11 @@
     padding-left: 15px;
     padding-right: 15px;
 }
-
+/*
+.artStats {
+    display: block;
+}
+*/
 #forChart {
     margin: 10px;
 }
