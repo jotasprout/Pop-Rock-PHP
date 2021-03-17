@@ -123,7 +123,7 @@
     
     <!-- Breadcrumbs start -->
     <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="../index.php">Spotify Artists</a></li>
+        <li class="breadcrumb-item"><a href="index.php">Spotify Artists</a></li>
         <li class="breadcrumb-item active" id="artistNameCrumb">Artist Name</li>
     </ol> <!-- Breadcrumbs end -->
 
