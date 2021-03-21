@@ -44,7 +44,7 @@ Below is a line graph showing the increase in popularity of the song "Bohemian R
 
 ![Line chart created with D3 showing Bohemian Rhapsody's popularity score over approximately six months.](https://jotascript.files.wordpress.com/2018/12/bohemian_01.png)
 
-<!-->
+<!--
 Below is a multiline graph comparing this year's inductees into the **Rock and Roll Hall of Fame** showing the lack of influence their nominations and inductions had on their popularity.
 
 <img src="https://github.com/jotasprout/Pop-Rock-PHP/blob/master/imgs/induct-2018-12-18.png">
