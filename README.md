@@ -44,11 +44,14 @@ Below is a line graph showing the increase in popularity of the song "Bohemian R
 
 ![Line chart created with D3 showing Bohemian Rhapsody's popularity score over approximately six months.](https://jotascript.files.wordpress.com/2018/12/bohemian_01.png)
 
+<!-->
 Below is a multiline graph comparing this year's inductees into the **Rock and Roll Hall of Fame** showing the lack of influence their nominations and inductions had on their popularity.
 
 <img src="https://github.com/jotasprout/Pop-Rock-PHP/blob/master/imgs/induct-2018-12-18.png">
 
 For the line graphs similar to the one above, clicking an artist's image toggles the line's visibility.
+
+-->
 
 ### Albums Bar Chart
 ![Column chart created with D3 displaying popularity score for Billy Idol albums. Album cover art appears beneath each column. Numerical score appears above each column.](https://jotascript.files.wordpress.com/2018/04/billyidol.png)
