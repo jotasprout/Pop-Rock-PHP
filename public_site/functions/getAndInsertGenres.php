@@ -1,4 +1,4 @@
-<?php
+00<?php
 session_start();
 require '../secrets/spotifySecrets.php';
 require '../vendor/autoload.php';
