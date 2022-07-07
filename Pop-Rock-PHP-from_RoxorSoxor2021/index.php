@@ -1,6 +1,6 @@
 <?php
 
-require_once 'rockdb.php';
+require_once 'secrets/rockdb.php';
 require_once 'page_pieces/stylesAndScripts.php';
 
 $source = 'spotify';

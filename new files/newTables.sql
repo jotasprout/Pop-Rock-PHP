@@ -1,0 +1,1 @@
+CREATE TABLE `roxorsoxor_poprock`.`artistsSpot` ( `albumNameSpot` VARCHAR(96) NOT NULL , `albumIDSpot` VARCHAR(36) NOT NULL , `yearReleased` INT(4) NOT NULL , `artistIDSpot` VARCHAR(36) NOT NULL ) ENGINE = InnoDB;
