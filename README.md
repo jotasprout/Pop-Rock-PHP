@@ -57,7 +57,10 @@ The above, older, screenshot shows the main menu (dynamic, adapting to type of p
 This interactive graph displays how artists are related to each other. Users can move nodes around to focuse on a particular band or band member.
 <img src="https://roxorsoxor.com/imgs/pop-rock-php/MusicBrainzForceRelation.jpg" alt="">
 As such, one can also consider this a graph for Black Sabbath, Rainbow, Deep Purple, etc.
-    
+
+Another interactive feature is dragging and dropping the artist(s) of the user's choice to create their own custom bar graph.
+<img src="https://roxorsoxor.com/imgs/pop-rock-php/drag-drop.jpg" alt="">
+
 ### Albums
 ### Albums List
 Albums in list view can be sorted by album title, release date, and popularity.
@@ -73,7 +76,7 @@ Even older screenshot showing album list displaying only year and current Spotif
 
 **Some artists have scatterplots (powered by D3)**
 
-<img src="https://roxorsoxor.com/imgs/pop-rock-php/Dio.jpg" alt="Scatterplot of albums featuring Ronnie James Dio with current Spotify popularity score">
+<img src="https://roxorsoxor.com/imgs/pop-rock-php/Dio.jpeg" alt="Scatterplot of albums featuring Ronnie James Dio with current Spotify popularity score">
 This scatterplot displaying Spotify popularity uses the "Associated Artists" feature/table (powered by data gathered through the MusicBrainz API to include every album on which Ronnie James Dio was lead singer from Elf to Heaven & Hell.
 Hovering over an album cover gives additional information.
 ### Tracks
