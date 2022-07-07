@@ -32,13 +32,18 @@ For the line graphs similar to the one above, clicking an artist's image toggles
 ## Home Page: Artist List with some stats
 <img src="https://roxorsoxor.com/imgs/pop-rock-php/all-Stats.jpg" alt="list of artists and their statistics from Spotify and Last F M">
 <img src="https://roxorsoxor.com/imgs/pop-rock-php/all-artist-Stats.jpg" alt="list of artists and their statistics from Spotify and Last F M">
+
 User can:
+
 - Select an artist for comprehensive information 
+
 - Sort by Artist or rank using stats from Spotify and Last.FM
+
 - Last.FM "ratio" column accounts for inflated playcounts I assume are due to fans playing the same albums and songs endlessly
 
 ## Artist Dashboard
 <img src="https://roxorsoxor.com/imgs/pop-rock-php/popRock-Artist-Thumb.jpg" alt="Dashboard for artist Ozzy Osbourne including many of the features listed below">
+
 The above, older, screenshot shows the main menu (dynamic, adapting to type of page you're viewing) along the top (built with **Bootstrap**) for quick navigation anywhere. All buttons apply to the artist currently displayed. As features such as data visualizations were added to the artists dashboards, those buttons were removed.
 
 - Images usually pulled from Spotify but sometimes manually uploaded (after downloading from fanart.tv)
@@ -54,11 +59,15 @@ The above, older, screenshot shows the main menu (dynamic, adapting to type of p
 - User can click Albums for discography stats
 
 **Associated Artists Force Graph**
+
 This interactive graph displays how artists are related to each other. Users can move nodes around to focuse on a particular band or band member.
+
 <img src="https://roxorsoxor.com/imgs/pop-rock-php/MusicBrainzForceRelation.jpg" alt="">
+
 As such, one can also consider this a graph for Black Sabbath, Rainbow, Deep Purple, etc.
 
 Another interactive feature is dragging and dropping the artist(s) of the user's choice to create their own custom bar graph.
+
 <img src="https://roxorsoxor.com/imgs/pop-rock-php/drag-drop.jpg" alt="">
 
 ### Albums
@@ -72,17 +81,21 @@ Discrography pages used to be separated by Spotify and Last.FM stats but now con
 
 
 Even older screenshot showing album list displaying only year and current Spotify popularity:
+
 <img src="https://jotascript.files.wordpress.com/2018/10/zombiesalbums2.png" alt="Top five albums by The Zombies on Spotify October 11, 2018.">
 
 **Some artists have scatterplots (powered by D3)**
 
 <img src="https://roxorsoxor.com/imgs/pop-rock-php/Dio.jpeg" alt="Scatterplot of albums featuring Ronnie James Dio with current Spotify popularity score">
+
 This scatterplot displaying Spotify popularity uses the "Associated Artists" feature/table (powered by data gathered through the MusicBrainz API to include every album on which Ronnie James Dio was lead singer from Elf to Heaven & Hell.
+
 Hovering over an album cover gives additional information.
-### Tracks
 
 <img src="https://roxorsoxor.com/imgs/pop-rock-php/DioLastFM.jpeg" alt="Scatterplot of albums featuring Ronnie James Dio with current LastFM stats">
+
 This scatterplot displaying LastFM playcounts uses the "Associated Artists" feature/table as well but since there are, in some cases, more releases available in personal collections, you'll notice this image displays releases from the 50s even before he joined Elf.
+
 Hovering over an album cover gives additional information.
 
 ### Albums Bar Chart
@@ -91,7 +104,11 @@ Hovering over an album cover gives additional information.
 Data stored in MySQL (MariaDB) database. D3 gets data using PHP scripts containing SQL queries and builds the graphs and charts. 
 I think album charts need to be vertical, rather than horizontal bar chart because some artists have tons of albums and it requires horizontal scrolling even on a desktop that overflows out of the Bootstrap elements, eventually getting cut off by SVG boundaries.
 
+**Associated Artists Albums Bar Graph**
 
+Much like the above scatterplots included all albums feature Ronnie James Dio as lead singer, the bar graphs below aggregate all groups Steve Taylor sang for with his solo work.
+
+<img src="https://roxorsoxor.com/imgs/pop-rock-php/steveTaylor.png" alt="">
 
 ### Tracks List
 
