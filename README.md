@@ -3,23 +3,31 @@ Creating dashboards and data visualizations using data gathered from multiple AP
 
 ## Home Page: Artist List with some stats
 <img src="https://roxorsoxor.com/imgs/pop-rock-php/all-Stats.jpg" alt="list of artists and their statistics from Spotify and Last F M">
+
 User can:
-    - Select an artist for comprehensive information 
-    - Sort by Artist or rank using stats from Spotify and Last.FM
+- Select an artist for comprehensive information 
+- Sort by Artist or rank using stats from Spotify and Last.FM
+- Last.FM "ratio" column accounts for inflated playcounts I assume are due to fans playing the same albums and songs endlessly
 
 ## Artist Dashboard
-    - Images usually pulled from Spotify but sometimes manually uploaded (after downloading from fanart.tv)
-    - Related artists (eg Related artists for Ronnie James Dio are Dio, Rainbow, Black Sabbath, etc.)
-    - Current Spotify followers for Artist
-    - Current LastFM listeners and playcount 
-    - Line Graphs for stats over time
-    - User can click Albums for discography stats
+<img src="https://roxorsoxor.com/imgs/pop-rock-php/popRock-Artist-Thumb.jpg" alt="Dashboard for artist Ozzy Osbourne including many of the features listed below">
+The above screenshot shows the main menu (dynamic, adapting to type of page you're viewing) along the top (built with **Bootstrap**) for quick navigation anywhere. 
+- Images usually pulled from Spotify but sometimes manually uploaded (after downloading from fanart.tv)
+- Related artists (eg Related artists for Ronnie James Dio are Dio, Rainbow, Black Sabbath, etc.) - data gathered via algorithms used with MusicBrainz.com
+- Current Spotify followers for Artist
+- Current LastFM listeners and playcount 
+- Line Graphs for stats over time - data visualization created using D3.js
+- User can click Albums for discography stats
     
 ### Albums
 ### Albums List
-
 Albums in list view can be sorted by album title, release date, and popularity.
+Discrography pages used to be separated by Spotify and Last.FM stats
+<img src="https://roxorsoxor.com/imgs/pop-rock-php/Nugent-Spotify.jpg" alt="list of albums by Ted Nugent with current Spotify popularity score">
+<img src="https://roxorsoxor.com/imgs/pop-rock-php/Nugent-LastFM.jpg" alt="list of albums by Ted Nugent with current Last.FM stats">
 
+
+Even older album list showing only year and current Spotify popularity:
 <img src="https://jotascript.files.wordpress.com/2018/10/zombiesalbums2.png" alt="Top five albums by The Zombies on Spotify October 11, 2018.">
 
 ### Tracks
